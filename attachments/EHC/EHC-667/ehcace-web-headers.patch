@@ -1,0 +1,1094 @@
+Index: checkstyle/suppressions.xml
+===================================================================
+--- checkstyle/suppressions.xml	(revision 2113)
++++ checkstyle/suppressions.xml	(working copy)
+@@ -24,7 +24,10 @@
+     <!--<suppress checks="JavadocTypeCheck" files="Test.java"/>-->
+     <suppress checks="JavadocMethodCheck" files="Test.java"/>
+     
+-
++    <!-- Fails on the most-efficient way to implement equals(Object) -->
++    <suppress checks="CyclomaticComplexity" files="Header.java"/>
++    <suppress checks="NPathComplexity" files="Header.java"/>
++    
+     <suppress checks="IllegalTypeCheck" files="JMSCachePeer.java"/>
+     <suppress checks="NPathComplexity" files="JMSCacheReplicator.java"/>
+     <suppress checks="GenericIllegalRegexpCheck" files="Server.java"/>
+Index: src/main/java/net/sf/ehcache/constructs/web/GenericResponseWrapper.java
+===================================================================
+--- src/main/java/net/sf/ehcache/constructs/web/GenericResponseWrapper.java	(revision 2113)
++++ src/main/java/net/sf/ehcache/constructs/web/GenericResponseWrapper.java	(working copy)
+@@ -16,14 +16,6 @@
+ 
+ package net.sf.ehcache.constructs.web;
+ 
+-import net.sf.ehcache.constructs.web.filter.FilterServletOutputStream;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-import javax.servlet.ServletOutputStream;
+-import javax.servlet.http.Cookie;
+-import javax.servlet.http.HttpServletResponse;
+-import javax.servlet.http.HttpServletResponseWrapper;
+ import java.io.IOException;
+ import java.io.OutputStream;
+ import java.io.OutputStreamWriter;
+@@ -31,11 +23,25 @@
+ import java.io.Serializable;
+ import java.util.ArrayList;
+ import java.util.Collection;
+-import java.util.HashMap;
++import java.util.Collections;
++import java.util.Date;
++import java.util.LinkedList;
+ import java.util.List;
+ import java.util.Map;
++import java.util.TreeMap;
+ 
++import javax.servlet.ServletOutputStream;
++import javax.servlet.http.Cookie;
++import javax.servlet.http.HttpServletResponse;
++import javax.servlet.http.HttpServletResponseWrapper;
+ 
++import net.sf.ehcache.constructs.web.Header.Type;
++import net.sf.ehcache.constructs.web.filter.FilterServletOutputStream;
++
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
++
+ /**
+  * Provides a wrapper for {@link javax.servlet.http.HttpServletResponseWrapper}.
+  * <p/>
+@@ -50,17 +56,17 @@
+ public class GenericResponseWrapper extends HttpServletResponseWrapper implements Serializable {
+ 
+     private static final long serialVersionUID = -5976708169031065498L;
+-
++    
+     private static final Logger LOG = LoggerFactory.getLogger(GenericResponseWrapper.class);
+     private int statusCode = SC_OK;
+     private int contentLength;
+     private String contentType;
+-    private Map headerTracker = new HashMap();
+-    private final List headers = new ArrayList();
++    private final Map<String, List<Serializable>> headersMap = new TreeMap<String, List<Serializable>>(String.CASE_INSENSITIVE_ORDER);
+     private final List cookies = new ArrayList();
+     private ServletOutputStream outstr;
+     private PrintWriter writer;
+     private boolean disableFlushBuffer;
++    private transient HttpDateFormatter httpDateFormatter;
+ 
+     /**
+      * Creates a GenericResponseWrapper
+@@ -179,54 +185,159 @@
+         return writer;
+     }
+ 
++
++
+     /**
+-     * Adds a header, even if one already exists, in accordance with the spec
++     * @see javax.servlet.http.HttpServletResponseWrapper#addHeader(java.lang.String, java.lang.String)
+      */
+-    public void addHeader(final String name, final String value) {
+-        final String[] header = new String[]{name, value};
+-        headers.add(header);
++    @Override
++    public void addHeader(String name, String value) {
++        List<Serializable> values = this.headersMap.get(name);
++        if (values == null) {
++            values = new LinkedList<Serializable>();
++            this.headersMap.put(name, values);
++        }
++        values.add(value);
++     
++        super.addHeader(name, value);
++    }
+ 
+-        Integer count = (Integer) headerTracker.get(name.toLowerCase());
+-        if (count == null) {
+-            count = new Integer(1);
+-        } else {
+-            count = new Integer(count.intValue() + 1);
++    /**
++     * @see javax.servlet.http.HttpServletResponseWrapper#setHeader(java.lang.String, java.lang.String)
++     */
++    @Override
++    public void setHeader(String name, String value) {
++        final LinkedList<Serializable> values = new LinkedList<Serializable>();
++        values.add(value);
++        this.headersMap.put(name, values);
++     
++        super.setHeader(name, value);
++    }
++
++    /**
++     * @see javax.servlet.http.HttpServletResponseWrapper#addDateHeader(java.lang.String, long)
++     */
++    @Override
++    public void addDateHeader(String name, long date) {
++        List<Serializable> values = this.headersMap.get(name);
++        if (values == null) {
++            values = new LinkedList<Serializable>();
++            this.headersMap.put(name, values);
+         }
+-        headerTracker.put(name.toLowerCase(), count);
++        values.add(date);
++     
++        super.addDateHeader(name, date);
+     }
+ 
+     /**
+-     * Sets a header overwriting any previous values for the header if
+-     * it existed.
++     * @see javax.servlet.http.HttpServletResponseWrapper#setDateHeader(java.lang.String, long)
+      */
+-    public void setHeader(final String name, final String value) {
+-        Integer count = (Integer) headerTracker.get(name);
+-        if (count != null && count.intValue() > 0) {
+-            for (int i = headers.size() - 1; i >= 0; i--) {
+-                String[] header = (String[]) headers.get(i);
+-                String hName = header[0];
+-                if (hName.equalsIgnoreCase(name)) {
+-                    if (count > 1) {
+-                        headers.remove(i);
+-                        count = count.intValue() - 1;
+-                        headerTracker.put(name.toLowerCase(), new Integer(count));
+-                    } else {
+-                        ((String[]) headers.get(i))[1] = value;
+-                    }
++    @Override
++    public void setDateHeader(String name, long date) {
++        final LinkedList<Serializable> values = new LinkedList<Serializable>();
++        values.add(date);
++        this.headersMap.put(name, values);
++     
++        super.setDateHeader(name, date);
++    }
+ 
++    /**
++     * @see javax.servlet.http.HttpServletResponseWrapper#addIntHeader(java.lang.String, int)
++     */
++    @Override
++    public void addIntHeader(String name, int value) {
++        List<Serializable> values = this.headersMap.get(name);
++        if (values == null) {
++            values = new LinkedList<Serializable>();
++            this.headersMap.put(name, values);
++        }
++        values.add(value);
++     
++        //Bypass GenericResponseWrapper
++        super.addIntHeader(name, value);
++    }
++
++    /**
++     * @see javax.servlet.http.HttpServletResponseWrapper#setIntHeader(java.lang.String, int)
++     */
++    @Override
++    public void setIntHeader(String name, int value) {
++        final LinkedList<Serializable> values = new LinkedList<Serializable>();
++        values.add(value);
++        this.headersMap.put(name, values);
++     
++        //Bypass GenericResponseWrapper
++        super.setIntHeader(name, value);
++    }
++    
++    private HttpDateFormatter getHttpDateFormatter() {
++        if (this.httpDateFormatter == null) {
++            this.httpDateFormatter = new HttpDateFormatter();
++        }
++        
++        return this.httpDateFormatter;
++    }
++
++    /**
++     * Gets the headersMap.
++     * @deprecated use {@link #getAllHeaders()} instead
++     */
++    @Deprecated
++    public Collection getHeaders() {
++        final Collection<String[]> headers = new ArrayList<String[]>(this.headersMap.size());
++        
++        for (final Map.Entry<String, List<Serializable>> headerEntry : this.headersMap.entrySet()) {
++            final String name = headerEntry.getKey();
++            for (final Serializable value : headerEntry.getValue()) {
++                final Type type = Header.Type.determineType(value.getClass());
++                switch (type) {
++                    case STRING:
++                        headers.add(new String[]{name, (String)value});
++                    break;
++                    case DATE:
++                        final HttpDateFormatter localHttpDateFormatter = this.getHttpDateFormatter();
++                        final String formattedValue = localHttpDateFormatter.formatHttpDate(new Date((Long)value));
++                        headers.add(new String[]{name, formattedValue});
++                    break;
++                    case INT:
++                        headers.add(new String[]{name, ((Integer)value).toString()});
++                    break;
++                    default: 
++                        throw new IllegalArgumentException("No mapping for Header.Type: " + type);
+                 }
+             }
+-        } else {
+-            final String[] header = new String[]{name, value};
+-            headers.add(header);
+-            headerTracker.put(name.toLowerCase(), new Integer(1));
+         }
++        
++        return Collections.unmodifiableCollection(headers);
+     }
+ 
++    
+     /**
+-     * Gets the headers.
++     * @return All of the headersMap set/added on the response
+      */
+-    public Collection getHeaders() {
++    public Collection<Header<? extends Serializable>> getAllHeaders() {
++        final List<Header<? extends Serializable>> headers = new LinkedList<Header<? extends Serializable>>();
++        
++        for (final Map.Entry<String, List<Serializable>> headerEntry : this.headersMap.entrySet()) {
++            final String name = headerEntry.getKey();
++            for (final Serializable value : headerEntry.getValue()) {
++                final Type type = Header.Type.determineType(value.getClass());
++                switch (type) {
++                    case STRING:
++                        headers.add(new Header<String>(name, (String)value));
++                    break;
++                    case DATE:
++                        headers.add(new Header<Long>(name, (Long)value));
++                    break;
++                    case INT:
++                        headers.add(new Header<Integer>(name, (Integer)value));
++                    break;
++                    default:
++                        throw new IllegalArgumentException("No mapping for Header.Type: " + type);
++                }
++            }
++        }
++        
+         return headers;
+     }
+ 
+@@ -261,7 +372,7 @@
+     public void reset() {
+         super.reset();
+         cookies.clear();
+-        headers.clear();
++        headersMap.clear();
+         statusCode = SC_OK;
+         contentType = null;
+         contentLength = 0;
+Index: src/main/java/net/sf/ehcache/constructs/web/Header.java
+===================================================================
+--- src/main/java/net/sf/ehcache/constructs/web/Header.java	(revision 0)
++++ src/main/java/net/sf/ehcache/constructs/web/Header.java	(revision 0)
+@@ -0,0 +1,195 @@
++/**
++ *  Copyright 2003-2009 Terracotta, Inc.
++ *
++ *  Licensed under the Apache License, Version 2.0 (the "License");
++ *  you may not use this file except in compliance with the License.
++ *  You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *  Unless required by applicable law or agreed to in writing, software
++ *  distributed under the License is distributed on an "AS IS" BASIS,
++ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *  See the License for the specific language governing permissions and
++ *  limitations under the License.
++ */
++
++package net.sf.ehcache.constructs.web;
++
++import java.io.Serializable;
++import java.util.Map;
++import java.util.concurrent.ConcurrentHashMap;
++
++/**
++ * Generic implementation of a HTTP header. Handles String, Int and Date typed headers.
++ * 
++ * @author Eric Dalquist
++ * @version $Revision$
++ * @param <T> The type of Header value being stored. Must implement {@link Serializable}
++ */
++public class Header<T extends Serializable> implements Serializable {
++    private static final long serialVersionUID = 1L;
++    
++    /**
++     * Used to help differentiate the different header types
++     */
++    public enum Type {
++        /**
++         * A String Header. {@link javax.servlet.http.HttpServletResponse#setHeader(String, String)}
++         */
++        STRING(String.class),
++        /**
++         * A date Header. {@link javax.servlet.http.HttpServletResponse#setDateHeader(String, long)}
++         */
++        DATE(Long.class),
++        /**
++         * A int Header. {@link javax.servlet.http.HttpServletResponse#setIntHeader(String, int)}
++         */
++        INT(Integer.class);
++        
++        private static final Map<Class<? extends Serializable>, Type> TYPE_LOOKUP = 
++            new ConcurrentHashMap<Class<? extends Serializable>, Type>();
++        private final Class<? extends Serializable> type;
++        
++        /**
++         * Create a new Type
++         */
++        private Type(Class<? extends Serializable> type) {
++            this.type = type;
++        }
++
++        /**
++         * @return The header type class this Type represents
++         */
++        public Class<? extends Serializable> getTypeClass() {
++            return this.type;
++        }
++        
++        /**
++         * Determines the {@link Type} of the Header. Throws IllegalArgumentException if the specified class does not match any of the Types
++         */
++        public static Type determineType(Class<? extends Serializable> typeClass) {
++            final Type lookupType = TYPE_LOOKUP.get(typeClass);
++            if (lookupType != null) {
++                return lookupType;
++            }
++            
++            for (final Type t : Type.values()) {
++                if (typeClass == t.getTypeClass()) {
++                    //If the class explicitly matches add to the lookup cache
++                    TYPE_LOOKUP.put(typeClass, t);
++                    return t;
++                }
++                
++                if (typeClass.isAssignableFrom(t.getTypeClass())) {
++                    return t;
++                }
++            }
++            
++            throw new IllegalArgumentException("No Type for class " + typeClass);
++        }
++    }
++
++    private final String name;
++    private final T value;
++    private final Type type;
++
++    /**
++     * Create a new Header
++     * 
++     * @param name Name of the header, may not be null
++     * @param value Value of the header, may not be null
++     */
++    public Header(String name, T value) {
++        if (name == null) {
++            throw new IllegalArgumentException("Header cannnot have a null name");
++        }
++        if (value == null) {
++            throw new IllegalArgumentException("Header cannnot have a null value");
++        }
++        this.name = name;
++        this.value = value;
++        this.type = Type.determineType(value.getClass());
++    }
++
++    /**
++     * @return Name of the header, will never be null
++     */
++    public String getName() {
++        return this.name;
++    }
++
++    /**
++     * @return Value for the header, will never be null
++     */
++    public T getValue() {
++        return this.value;
++    }
++    
++    /**
++     * @return The header type
++     */
++    public Type getType() {
++        return this.type;
++    }
++
++    /**
++     * @see java.lang.Object#hashCode()
++     */
++    @Override
++    public int hashCode() {
++        final int prime = 31;
++        int result = 1;
++        result = prime * result + ((this.name == null) ? 0 : this.name.hashCode());
++        result = prime * result + ((this.type == null) ? 0 : this.type.hashCode());
++        result = prime * result + ((this.value == null) ? 0 : this.value.hashCode());
++        return result;
++    }
++
++    /**
++     * @see java.lang.Object#equals(java.lang.Object)
++     */
++    @Override
++    public boolean equals(Object obj) {
++        if (this == obj) {
++            return true;
++        }
++        if (obj == null) {
++            return false;
++        }
++        if (getClass() != obj.getClass()) {
++            return false;
++        }
++        Header<?> other = (Header<?>) obj;
++        if (this.name == null) {
++            if (other.name != null) {
++                return false;
++            }
++        } else if (!this.name.equals(other.name)) {
++            return false;
++        }
++        if (this.type == null) {
++            if (other.type != null) {
++                return false;
++            }
++        } else if (!this.type.equals(other.type)) {
++            return false;
++        }
++        if (this.value == null) {
++            if (other.value != null) {
++                return false;
++            }
++        } else if (!this.value.equals(other.value)) {
++            return false;
++        }
++        return true;
++    }
++
++    /**
++     * @see java.lang.Object#toString()
++     */
++    @Override
++    public String toString() {
++        return "Header<" + this.type.getTypeClass().getSimpleName() + "> [name=" + this.name + ", value=" + this.value + "]";
++    }
++}
+
+Property changes on: src/main/java/net/sf/ehcache/constructs/web/Header.java
+___________________________________________________________________
+Added: svn:mime-type
+   + text/plain
+Added: svn:keywords
+   + Date Revision Author HeadURL Id
+Added: svn:eol-style
+   + native
+
+Index: src/main/java/net/sf/ehcache/constructs/web/PageInfo.java
+===================================================================
+--- src/main/java/net/sf/ehcache/constructs/web/PageInfo.java	(revision 2113)
++++ src/main/java/net/sf/ehcache/constructs/web/PageInfo.java	(working copy)
+@@ -17,23 +17,25 @@
+ package net.sf.ehcache.constructs.web;
+ 
+ 
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-import javax.servlet.http.Cookie;
+-import javax.servlet.http.HttpServletResponse;
+ import java.io.ByteArrayInputStream;
+ import java.io.ByteArrayOutputStream;
+ import java.io.IOException;
+ import java.io.Serializable;
+ import java.util.ArrayList;
+ import java.util.Collection;
++import java.util.Collections;
+ import java.util.Date;
+ import java.util.Iterator;
+ import java.util.List;
+ import java.util.zip.GZIPInputStream;
+ import java.util.zip.GZIPOutputStream;
+ 
++import javax.servlet.http.Cookie;
++import javax.servlet.http.HttpServletResponse;
++
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
+ /**
+  * A Serializable representation of a {@link HttpServletResponse}.
+  *
+@@ -49,7 +51,7 @@
+     private static final int GZIP_MAGIC_NUMBER_BYTE_1 = 31;
+     private static final int GZIP_MAGIC_NUMBER_BYTE_2 = -117;
+     private static final long ONE_YEAR_IN_SECONDS = 60 * 60 * 24 * 365;
+-    private final ArrayList responseHeaders = new ArrayList();
++    private final ArrayList<Header<? extends Serializable>> responseHeaders = new ArrayList<Header<? extends Serializable>>();
+     private final ArrayList serializableCookies = new ArrayList();
+     private String contentType;
+     private byte[] gzippedBody;
+@@ -58,6 +60,7 @@
+     private boolean storeGzipped;
+     private Date created;
+     private long timeToLiveSeconds;
++    private transient HttpDateFormatter httpDateFormatter;
+ 
+     /**
+      * Creates a PageInfo object representing the "page". 
+@@ -71,17 +74,66 @@
+      * @param storeGzipped      set this to false for images and page fragments which should never
+      * @param timeToLiveSeconds the time to Live in seconds. 0 means maximum, which is one year per RFC2616.
+      * @throws AlreadyGzippedException
++     * @{@link Deprecated} use {{@link #PageInfo(int, String, Collection, Collection, Collection, Collection, byte[], boolean, long)}
+      */
++    @Deprecated
+     public PageInfo(final int statusCode, final String contentType, final Collection headers, final Collection cookies,
+                     final byte[] body, boolean storeGzipped, long timeToLiveSeconds) throws AlreadyGzippedException {
++        
++        //Convert the old
++        final Collection<Header<? extends Serializable>> stringHeadersBuilder;
++        if (headers == null) {
++            stringHeadersBuilder = null;
++        } else {
++            stringHeadersBuilder = new ArrayList<Header<? extends Serializable>>(headers.size());
++            for (final String[] header : (Collection<String[]>)headers) {
++                stringHeadersBuilder.add(new Header<String>(header[0], header[1]));
++            }
++        }
++        
++        this.init(statusCode, contentType, stringHeadersBuilder, cookies, body, storeGzipped, timeToLiveSeconds);
++    }
++    
++    /**
++     * Creates a PageInfo object representing the "page". 
++     * <p/>
++     *
++     * @param statusCode
++     * @param contentType
++     * @param stringHeaders
++     * @param dateHeaders
++     * @param intHeaders
++     * @param cookies
++     * @param body
++     * @param storeGzipped      set this to false for images and page fragments which should never
++     * @param timeToLiveSeconds the time to Live in seconds. 0 means maximum, which is one year per RFC2616.
++     * @throws AlreadyGzippedException
++     */
++    public PageInfo(final int statusCode, final String contentType, 
++                    final Collection cookies, 
++                    final byte[] body, boolean storeGzipped, long timeToLiveSeconds,
++                    final Collection<Header<? extends Serializable>> headers) throws AlreadyGzippedException {
++        //Note that the ordering is switched with headers at the end to deal with the erasure issues with Java generics causing
++        //a conflict with the deprecated PageInfo header 
++        
++        this.init(statusCode, contentType, headers, cookies, body, storeGzipped, timeToLiveSeconds);
++    }
++        
++    /**
++     * This really should be in the non-deprecated constructor but exists to allow for the deprecated constructor to work
++     * correctly without duplicating code.
++     */
++    private void init(final int statusCode, final String contentType, 
++            final Collection<Header<? extends Serializable>> headers, final Collection cookies,
++            final byte[] body, boolean storeGzipped, long timeToLiveSeconds) throws AlreadyGzippedException {
+         if (headers != null) {
+             this.responseHeaders.addAll(headers);
+         }
++        
+         setTimeToLiveWithCheckForNeverExpires(timeToLiveSeconds);
+ 
+ 
+         created = new Date();
+-        this.responseHeaders.remove("Content-Encoding");
+         this.contentType = contentType;
+         this.storeGzipped = storeGzipped;
+         this.statusCode = statusCode;
+@@ -162,9 +214,8 @@
+      * @return true if the body is gzipped
+      */
+     private boolean isBodyParameterGzipped() {
+-        for (int i = 0; i < responseHeaders.size(); i++) {
+-            String[] keyValuePair = (String[]) responseHeaders.get(i);
+-            if (keyValuePair[1].equals("gzip")) {
++        for (final Header<? extends Serializable> header : this.responseHeaders) {
++            if ("gzip".equals(header.getValue())) {
+                 return true;
+             }
+         }
+@@ -207,13 +258,50 @@
+             return null;
+         }
+     }
++    
++    private HttpDateFormatter getHttpDateFormatter() {
++        if (this.httpDateFormatter == null) {
++            this.httpDateFormatter = new HttpDateFormatter();
++        }
++        
++        return this.httpDateFormatter;
++    }
+ 
+     /**
+      * Returns the headers of the response.
++     * @deprecated use {@link #getHeaders()}
+      */
++    @Deprecated
+     public List getResponseHeaders() {
+-        return responseHeaders;
++        final List<String[]> headers = new ArrayList<String[]>(this.responseHeaders.size());
++        
++        for (final Header<? extends Serializable> header : this.responseHeaders) {
++            switch (header.getType()) {
++                case STRING:
++                    headers.add(new String[]{header.getName(), (String)header.getValue()});
++                break;
++                case DATE:
++                    final HttpDateFormatter localHttpDateFormatter = this.getHttpDateFormatter();
++                    final String formattedValue = localHttpDateFormatter.formatHttpDate(new Date((Long)header.getValue()));
++                    headers.add(new String[]{header.getName(), formattedValue});
++                break;
++                case INT:
++                    headers.add(new String[]{header.getName(), ((Integer)header.getValue()).toString()});
++                break;
++                default:
++                    throw new IllegalArgumentException("No mapping for Header: " + header);
++            }
++        }
++        
++        return Collections.unmodifiableList(headers);
+     }
++    
++    /**
++     * @return All of the headers set on the page
++     */
++    public List<Header<? extends Serializable>> getHeaders() {
++        return this.responseHeaders;
++    }
+ 
+     /**
+      * Returns the cookies of the response.
+Index: src/main/java/net/sf/ehcache/constructs/web/filter/CachingFilter.java
+===================================================================
+--- src/main/java/net/sf/ehcache/constructs/web/filter/CachingFilter.java	(revision 2118)
++++ src/main/java/net/sf/ehcache/constructs/web/filter/CachingFilter.java	(working copy)
+@@ -16,6 +16,22 @@
+ 
+ package net.sf.ehcache.constructs.web.filter;
+ 
++import java.io.BufferedOutputStream;
++import java.io.ByteArrayOutputStream;
++import java.io.IOException;
++import java.io.OutputStream;
++import java.io.Serializable;
++import java.util.Collection;
++import java.util.Iterator;
++import java.util.List;
++import java.util.zip.DataFormatException;
++
++import javax.servlet.FilterChain;
++import javax.servlet.FilterConfig;
++import javax.servlet.http.Cookie;
++import javax.servlet.http.HttpServletRequest;
++import javax.servlet.http.HttpServletResponse;
++
+ import net.sf.ehcache.CacheException;
+ import net.sf.ehcache.CacheManager;
+ import net.sf.ehcache.Ehcache;
+@@ -25,26 +41,15 @@
+ import net.sf.ehcache.constructs.web.AlreadyCommittedException;
+ import net.sf.ehcache.constructs.web.AlreadyGzippedException;
+ import net.sf.ehcache.constructs.web.GenericResponseWrapper;
++import net.sf.ehcache.constructs.web.Header;
+ import net.sf.ehcache.constructs.web.PageInfo;
+ import net.sf.ehcache.constructs.web.ResponseHeadersNotModifiableException;
+ import net.sf.ehcache.constructs.web.ResponseUtil;
+ import net.sf.ehcache.constructs.web.SerializableCookie;
++
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
+-import javax.servlet.FilterChain;
+-import javax.servlet.FilterConfig;
+-import javax.servlet.http.Cookie;
+-import javax.servlet.http.HttpServletRequest;
+-import javax.servlet.http.HttpServletResponse;
+-import java.io.BufferedOutputStream;
+-import java.io.ByteArrayOutputStream;
+-import java.io.IOException;
+-import java.io.OutputStream;
+-import java.util.Collection;
+-import java.util.Iterator;
+-import java.util.zip.DataFormatException;
+-
+ /**
+  * An abstract CachingFilter.
+  * <p/>
+@@ -265,8 +270,9 @@
+         long timeToLiveSeconds = blockingCache.getCacheConfiguration().getTimeToLiveSeconds();
+ 
+         // Return the page info
+-        return new PageInfo(wrapper.getStatus(), wrapper.getContentType(), wrapper.getHeaders(), wrapper.getCookies(),
+-                outstr.toByteArray(), true, timeToLiveSeconds);
++        return new PageInfo(wrapper.getStatus(), wrapper.getContentType(), 
++                wrapper.getCookies(),
++                outstr.toByteArray(), true, timeToLiveSeconds, wrapper.getAllHeaders());
+     }
+ 
+     /**
+@@ -343,14 +349,23 @@
+     protected void setHeaders(final PageInfo pageInfo,
+                               boolean requestAcceptsGzipEncoding,
+                               final HttpServletResponse response) {
+-
+-        final Collection headers = pageInfo.getResponseHeaders();
+-        final int header = 0;
+-        final int value = 1;
+-
+-        for (Iterator iterator = headers.iterator(); iterator.hasNext();) {
+-            final String[] headerPair = (String[]) iterator.next();
+-            response.addHeader(headerPair[header], headerPair[value]);
++        
++        final List<Header<? extends Serializable>> headers = pageInfo.getHeaders();
++        
++        for (final Header<? extends Serializable> header : headers) {
++            switch (header.getType()) {
++                case STRING:
++                    response.addHeader(header.getName(), (String)header.getValue());
++                break;
++                case DATE:
++                    response.addDateHeader(header.getName(), (Long)header.getValue());
++                break;
++                case INT:
++                    response.addIntHeader(header.getName(), (Integer)header.getValue());
++                break;
++                default:
++                    throw new IllegalArgumentException("No mapping for Header: " + header);
++            }
+         }
+     }
+ 
+Index: src/main/java/net/sf/ehcache/constructs/web/filter/PageFragmentCachingFilter.java
+===================================================================
+--- src/main/java/net/sf/ehcache/constructs/web/filter/PageFragmentCachingFilter.java	(revision 2113)
++++ src/main/java/net/sf/ehcache/constructs/web/filter/PageFragmentCachingFilter.java	(working copy)
+@@ -16,17 +16,18 @@
+ 
+ package net.sf.ehcache.constructs.web.filter;
+ 
+-import net.sf.ehcache.constructs.web.AlreadyGzippedException;
+-import net.sf.ehcache.constructs.web.GenericResponseWrapper;
+-import net.sf.ehcache.constructs.web.PageInfo;
++import java.io.ByteArrayOutputStream;
++import java.io.IOException;
+ 
+ import javax.servlet.FilterChain;
+ import javax.servlet.http.HttpServletRequest;
+ import javax.servlet.http.HttpServletResponse;
+-import java.io.ByteArrayOutputStream;
+-import java.io.IOException;
+ 
++import net.sf.ehcache.constructs.web.AlreadyGzippedException;
++import net.sf.ehcache.constructs.web.GenericResponseWrapper;
++import net.sf.ehcache.constructs.web.PageInfo;
+ 
++
+ /**
+  * A Template for a page caching filter that is designed for "included" pages, eg: jsp:includes.  This filter
+  * differs from the {@link CachingFilter} in that it is not writing an entire response to the output stream.
+@@ -74,8 +75,9 @@
+         long timeToLiveSeconds = blockingCache.getCacheConfiguration().getTimeToLiveSeconds();
+ 
+         // Return the page info
+-        return new PageInfo(wrapper.getStatus(), wrapper.getContentType(), wrapper.getHeaders(), wrapper.getCookies(),
+-                outstr.toByteArray(), false, timeToLiveSeconds);
++        return new PageInfo(wrapper.getStatus(), wrapper.getContentType(), 
++                wrapper.getCookies(),
++                outstr.toByteArray(), false, timeToLiveSeconds, wrapper.getAllHeaders());
+     }
+ 
+ 
+Index: src/main/java/net/sf/ehcache/constructs/web/filter/SimpleCachingHeadersPageCachingFilter.java
+===================================================================
+--- src/main/java/net/sf/ehcache/constructs/web/filter/SimpleCachingHeadersPageCachingFilter.java	(revision 2113)
++++ src/main/java/net/sf/ehcache/constructs/web/filter/SimpleCachingHeadersPageCachingFilter.java	(working copy)
+@@ -35,24 +35,27 @@
+ 
+ package net.sf.ehcache.constructs.web.filter;
+ 
++import java.io.IOException;
++import java.io.Serializable;
++import java.util.Date;
++import java.util.List;
++import java.util.zip.DataFormatException;
++
++import javax.servlet.FilterChain;
++import javax.servlet.http.HttpServletRequest;
++import javax.servlet.http.HttpServletResponse;
++
+ import net.sf.ehcache.config.CacheConfiguration;
+ import net.sf.ehcache.constructs.web.AlreadyGzippedException;
++import net.sf.ehcache.constructs.web.Header;
+ import net.sf.ehcache.constructs.web.HttpDateFormatter;
+ import net.sf.ehcache.constructs.web.PageInfo;
+ import net.sf.ehcache.constructs.web.ResponseHeadersNotModifiableException;
++
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
+-import javax.servlet.FilterChain;
+-import javax.servlet.http.HttpServletRequest;
+-import javax.servlet.http.HttpServletResponse;
+-import java.io.IOException;
+-import java.util.Collection;
+-import java.util.Date;
+-import java.util.List;
+-import java.util.zip.DataFormatException;
+ 
+-
+ /**
+  * This Filter extends {@link SimplePageCachingFilter}, adding support for
+  * the HTTP cache headers: ETag, Last-Modified and Expires.
+@@ -161,6 +164,8 @@
+ 
+     private static final long ONE_YEAR_IN_MILLISECONDS = 60 * 60 * 24 * 365 * 1000L;
+     private static final int MILLISECONDS_PER_SECOND = 1000;
++    
++    private HttpDateFormatter httpDateFormatter;
+ 
+ 
+     /**
+@@ -193,15 +198,13 @@
+         //add expires and last-modified headers
+         Date now = new Date();
+ 
+-        List<String[]> headers = pageInfo.getResponseHeaders();
++        final List<Header<? extends Serializable>> headers = pageInfo.getHeaders();
+ 
+-        HttpDateFormatter httpDateFormatter = new HttpDateFormatter();
+-        String lastModified = httpDateFormatter.formatHttpDate(pageInfo.getCreated());
+         long ttlMilliseconds = calculateTimeToLiveMilliseconds();
+-        headers.add(new String[]{"Last-Modified", lastModified});
+-        headers.add(new String[]{"Expires", httpDateFormatter.formatHttpDate(new Date(now.getTime() + ttlMilliseconds))});
+-        headers.add(new String[]{"Cache-Control", "max-age=" + ttlMilliseconds / MILLISECONDS_PER_SECOND});
+-        headers.add(new String[]{"ETag", generateEtag(ttlMilliseconds)});
++        headers.add(new Header<Long>("Last-Modified", pageInfo.getCreated().getTime()));
++        headers.add(new Header<Long>("Expires", now.getTime() + ttlMilliseconds));
++        headers.add(new Header<String>("Cache-Control", "max-age=" + ttlMilliseconds / MILLISECONDS_PER_SECOND));
++        headers.add(new Header<String>("ETag", generateEtag(ttlMilliseconds)));
+         return pageInfo;
+     }
+ 
+@@ -226,8 +229,18 @@
+         return eTag;
+     }
+ 
++    /**
++     * @return A lazily created HttpDateFormatter instance scoped to this filter
++     */
++    protected final HttpDateFormatter getHttpDateFormatter() {
++        if (httpDateFormatter == null) {
++            //Delay init since SimpleDateFormat is expensive to create
++            httpDateFormatter = new HttpDateFormatter();
++        }
++        
++        return this.httpDateFormatter;
++    }
+ 
+-
+     /**
+      * Writes the response from a PageInfo object.
+      *
+@@ -240,19 +253,11 @@
+     protected void writeResponse(HttpServletRequest request, HttpServletResponse response, PageInfo pageInfo)
+             throws IOException, DataFormatException, ResponseHeadersNotModifiableException {
+ 
+-        HttpDateFormatter httpDateFormatter = new HttpDateFormatter();
+-
+-
+-        final Collection responseHeaders = pageInfo.getResponseHeaders();
+-        final int header = 0;
+-        final int value = 1;
+-        for (Object header1 : responseHeaders) {
+-            final String[] headerPair = (String[]) header1;
+-
+-
+-            if (headerPair[header].equals("ETag")) {
++        final List<Header<? extends Serializable>> headers = pageInfo.getHeaders();
++        for (final Header<? extends Serializable> header : headers) {
++            if ("ETag".equals(header.getName())) {
+                 String requestIfNoneMatch = request.getHeader("If-None-Match");
+-                if (headerPair[value].equals(requestIfNoneMatch)) {
++                if (header.getValue().equals(requestIfNoneMatch)) {
+                     response.sendError(HttpServletResponse.SC_NOT_MODIFIED);
+                     // use the same date we sent when we created the ETag the first time through
+                     //response.setHeader("Last-Modified", request.getHeader("If-Modified-Since"));
+@@ -260,11 +265,18 @@
+                 }
+                 break;
+             }
+-            if (headerPair[header].equals("Last-Modified")) {
+-                String requestIfModifiedSince = request.getHeader("If-Modified-Since");
+-                if (requestIfModifiedSince != null) {
+-                    Date requestDate = httpDateFormatter.parseDateFromHttpDate(requestIfModifiedSince);
+-                    Date pageInfoDate = httpDateFormatter.parseDateFromHttpDate(headerPair[value]);
++            if ("Last-Modified".equals(header.getName())) {
++                long requestIfModifiedSince = request.getDateHeader("If-Modified-Since");
++                if (requestIfModifiedSince != -1) {
++                    Date requestDate = new Date(requestIfModifiedSince);
++                    Date pageInfoDate;
++                    if (header.getValue() instanceof String) {
++                        pageInfoDate = this.getHttpDateFormatter().parseDateFromHttpDate((String)header.getValue());
++                    } else if (header.getValue() instanceof Long) {
++                        pageInfoDate = new Date((Long)header.getValue());
++                    } else {
++                        throw new IllegalArgumentException("Header " + header + " should not be of type int");
++                    }
+                     if (requestDate.getTime() >= pageInfoDate.getTime()) {
+                         response.sendError(HttpServletResponse.SC_NOT_MODIFIED);
+                         response.setHeader("Last-Modified", request.getHeader("If-Modified-Since"));
+Index: src/test/java/net/sf/ehcache/constructs/web/GenericResponseWrapperTest.java
+===================================================================
+--- src/test/java/net/sf/ehcache/constructs/web/GenericResponseWrapperTest.java	(revision 2113)
++++ src/test/java/net/sf/ehcache/constructs/web/GenericResponseWrapperTest.java	(working copy)
+@@ -16,17 +16,19 @@
+ 
+ package net.sf.ehcache.constructs.web;
+ 
++import static org.junit.Assert.assertEquals;
++import static org.junit.Assert.assertTrue;
++
++import java.io.OutputStream;
++import java.io.Serializable;
++
++import javax.servlet.http.HttpServletResponse;
++
+ import org.junit.Before;
+ import org.junit.Test;
+ import org.mockito.Mock;
+ import org.mockito.MockitoAnnotations;
+ 
+-import javax.servlet.http.HttpServletResponse;
+-import java.io.OutputStream;
+-
+-import static org.junit.Assert.assertEquals;
+-import static org.junit.Assert.assertTrue;
+-
+ /**
+  * Tests for the GenericResponseWrapper
+  * @author Benjamin Schmaus
+@@ -49,19 +51,38 @@
+     public void verifySetHeaderOverwritesExistingHeaderValues() {
+         impl.addHeader("Cache-Control", "public, max-age=0, stale-if-error=600");
+         impl.addHeader("CACHE-CONTROL", "public, max-age=120, stale-if-error=600");
+-        int headerSize = impl.getHeaders().size();
++        int headerSize = impl.getAllHeaders().size();
+         assertTrue(String.format("Expected size for headers is two but got %d", headerSize), headerSize == 2);
+ 
+         String cacheHeader = "public, max-age=120, stale-if-error=300";
+ 
+         impl.setHeader("cache-control", cacheHeader);
+ 
+-        headerSize = impl.getHeaders().size();
++        headerSize = impl.getAllHeaders().size();
+         assertTrue(String.format("Expected size for headers is 1 but got %d", headerSize), headerSize == 1);
+ 
+-        String[] retrievedHeader = (String[]) impl.getHeaders().iterator().next();
++        final Header<? extends Serializable> retrievedHeader = impl.getAllHeaders().iterator().next();
+ 
+-        assertEquals(cacheHeader, retrievedHeader[1]);
++        assertEquals(cacheHeader, retrievedHeader.getValue());
+     }
++    
++    @Test
++    public void testHeaderCrossTypeOverwrite() {
++        impl.addHeader("Expires", "Tue, 29 Mar 2011 19:46:30 GMT");
++        impl.addDateHeader("Expires", 123456789L);
++        impl.addIntHeader("Expires", 123456789);
++        int headerSize = impl.getAllHeaders().size();
++        assertTrue(String.format("Expected size for headers is 3 but got %d", headerSize), headerSize == 3);
+ 
++        String expiresHeader = "Tue, 29 Mar 2011 19:46:30 GMT";
++        impl.setHeader("Expires", "Tue, 29 Mar 2011 19:46:30 GMT");
++
++        headerSize = impl.getAllHeaders().size();
++        assertTrue(String.format("Expected size for headers is 1 but got %d", headerSize), headerSize == 1);
++
++        final Header<? extends Serializable> retrievedHeader = impl.getAllHeaders().iterator().next();
++
++        assertEquals(expiresHeader, retrievedHeader.getValue());
++    }
++
+ }
+Index: src/test/java/net/sf/ehcache/constructs/web/PageInfoTest.java
+===================================================================
+--- src/test/java/net/sf/ehcache/constructs/web/PageInfoTest.java	(revision 2113)
++++ src/test/java/net/sf/ehcache/constructs/web/PageInfoTest.java	(working copy)
+@@ -16,15 +16,9 @@
+ 
+ package net.sf.ehcache.constructs.web;
+ 
+-import net.sf.ehcache.StopWatch;
+-import org.junit.After;
+ import static org.junit.Assert.assertEquals;
+ import static org.junit.Assert.assertTrue;
+ import static org.junit.Assert.fail;
+-import org.junit.Before;
+-import org.junit.Test;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+ 
+ import java.io.ByteArrayInputStream;
+ import java.io.ByteArrayOutputStream;
+@@ -32,11 +26,20 @@
+ import java.io.FileInputStream;
+ import java.io.FileOutputStream;
+ import java.io.IOException;
++import java.io.Serializable;
+ import java.util.ArrayList;
+ import java.util.Collection;
+ import java.util.zip.GZIPInputStream;
+ import java.util.zip.GZIPOutputStream;
+ 
++import net.sf.ehcache.StopWatch;
++
++import org.junit.After;
++import org.junit.Before;
++import org.junit.Test;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
+ /**
+  * PageInfo is a {@link java.io.Serializable} representation of a {@link javax.servlet.http.HttpServletResponse}.
+  *
+@@ -93,7 +96,7 @@
+     public void testAttemptedDoubleGzip() throws IOException {
+         byte[] gzip = getGzipFileAsBytes();
+         try {
+-            new PageInfo(200, "text/plain", new ArrayList(), new ArrayList(), gzip, true, 0);
++            new PageInfo(200, "text/plain", new ArrayList(), gzip, true, 0, null);
+             fail();
+         } catch (AlreadyGzippedException e) {
+             assertEquals("The byte[] is already gzipped. It should not be gzipped again.", e.getMessage());
+@@ -113,10 +116,10 @@
+     @Test
+     public void testUsedGunzipImplementationPerformance() throws IOException, AlreadyGzippedException, InterruptedException {
+         byte[] gzip = getGzipFileAsBytes();
+-        Collection headers = new ArrayList();
+-        String[] header = new String[]{"Content-Encoding", "gzip"};
++        Collection<Header<? extends Serializable>> headers = new ArrayList<Header<? extends Serializable>>();
++        Header<String> header = new Header<String>("Content-Encoding", "gzip");
+         headers.add(header);
+-        PageInfo pageInfo = new PageInfo(200, "text/plain", headers, new ArrayList(), gzip, true, 0);
++        PageInfo pageInfo = new PageInfo(200, "text/plain", new ArrayList(), gzip, true, 0, headers);
+         long initialMemoryUsed = memoryUsed();
+         StopWatch stopWatch = new StopWatch();
+         int size = 0;

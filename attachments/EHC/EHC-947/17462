@@ -1,0 +1,12 @@
+ net.sf.ehcache.CacheException: java.io.StreamCorruptedException: invalid stream header: 35013501                                                                                                               
+     at net.sf.ehcache.store.disk.DiskStorageFactory.retrieve(DiskStorageFactory.java:954)                                                                                                                      
+     at net.sf.ehcache.store.disk.Segment.decodeHit(Segment.java:178)                                                                                                                                           
+     at net.sf.ehcache.store.disk.Segment.get(Segment.java:216)                                                                                                                                                 
+     at net.sf.ehcache.store.disk.DiskStore.get(DiskStore.java:506)                                                                                                                                             
+     at net.sf.ehcache.store.disk.DiskStore.getQuiet(DiskStore.java:513)                                                                                                                                        
+     at net.sf.ehcache.store.FrontEndCacheTier.getQuiet(FrontEndCacheTier.java:231)                                                                                                                             
+     at net.sf.ehcache.Cache.searchInStoreWithoutStats(Cache.java:2061)                                                                                                                                         
+     at net.sf.ehcache.Cache.getQuiet(Cache.java:1853)                                                                                                                                                          
+     at net.sf.ehcache.constructs.blocking.BlockingCache.get(BlockingCache.java:165)                                                                                                                            
+     at net.sf.ehcache.constructs.blocking.SelfPopulatingCache.get(SelfPopulatingCache.java:72)                                                                                                                 
+     at net.sf.ehcache.constructs.blocking.BlockingCache.get(BlockingCache.java:264)     

@@ -1,0 +1,59 @@
+Index: AttributeType.java
+===================================================================
+--- AttributeType.java	(revision 10258)
++++ AttributeType.java	(working copy)
+@@ -16,6 +16,8 @@
+ 
+ package net.sf.ehcache.search.attribute;
+ 
++import java.math.BigDecimal;
++import java.math.BigInteger;
+ import java.util.Collections;
+ import java.util.HashMap;
+ import java.util.Map;
+@@ -208,6 +210,36 @@
+                 throw new SearchException("Expecting a String value for attribute [" + name + "] but was " + type(value));
+             }
+         }
++    },
++
++    /**
++     * Big Decimal type
++     */
++    BIG_DECIMAL {
++        /**
++         * {@inheritDoc}
++         */
++        @Override
++        public void validateValue(String name, Object value) {
++            if (!(value instanceof BigDecimal)) {
++                throw new SearchException("Expecting a Big Decimal value for attribute [" + name + "] but was " + type(value));
++            }
++        }
++    },
++
++    /**
++     * Big Integer type
++     */
++    BIG_INTEGER {
++        /**
++         * {@inheritDoc}
++         */
++        @Override
++        public void validateValue(String name, Object value) {
++            if (!(value instanceof BigInteger)) {
++                throw new SearchException("Expecting a Big Integer value for attribute [" + name + "] but was " + type(value));
++            }
++        }
+     };
+ 
+     private static final Map<Class<?>, AttributeType> MAPPINGS = new HashMap<Class<?>, AttributeType>();
+@@ -323,6 +355,8 @@
+         MAPPINGS.put(float.class, FLOAT);
+         MAPPINGS.put(double.class, DOUBLE);
+         MAPPINGS.put(short.class, SHORT);
++        MAPPINGS.put(BigDecimal.class, BIG_DECIMAL);
++        MAPPINGS.put(BigInteger.class, BIG_INTEGER);
+     }
+ 
+     /**

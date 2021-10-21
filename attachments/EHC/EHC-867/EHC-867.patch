@@ -1,0 +1,18 @@
+Index: ../../ehcache-core-ee/trunk/core/src/main/java/net/sf/ehcache/Cache.java
+===================================================================
+--- ../../ehcache-core-ee/trunk/core/src/main/java/net/sf/ehcache/Cache.java	(revision 4035)
++++ ../../ehcache-core-ee/trunk/core/src/main/java/net/sf/ehcache/Cache.java	(revision )
+@@ -1952,8 +1952,11 @@
+             }
+         }
+         if (writeLocked) {
++            try {
+-            removeInternal(key, true, notifyListeners, false, false);
++                removeInternal(key, true, notifyListeners, false, false);
++            } finally {
+-            syncForKey.unlock(LockType.WRITE);
++                syncForKey.unlock(LockType.WRITE);
++            }
+         } else {
+             if (LOG.isDebugEnabled()) {
+                 LOG.debug(configuration.getName() + " cache: element " + key + " expired, but couldn't be inline evicted");

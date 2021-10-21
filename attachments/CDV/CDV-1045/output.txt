@@ -1,0 +1,126 @@
+2008-11-11 14:49:20,685 INFO - Terracotta 2.7.1, as of 20081106-141102 (Revision 10770 by cruise@su10mo5 from 2.7)
+2008-11-11 14:49:21,373 INFO - Configuration loaded from the file at 'C:\Documents and Settings\teck\workspace\inner\tc-config.xml'.
+2008-11-11 14:49:21,654 INFO - Log file: 'C:\Documents and Settings\teck\workspace\inner\terracotta\client-logs\terracotta-client.log'.
+2008-11-11 14:49:28,373 INFO - Statistics buffer: 'C:\Documents and Settings\teck\workspace\inner\terracotta\client-statistics\20081111144927935'.
+com.tc.exception.TCNonPortableObjectError: 
+*******************************************************************************
+Attempt to share an instance of a non-portable class referenced by a portable class. This
+unshareable class has not been included for sharing in the configuration.
+
+For more information on this issue, please visit our Troubleshooting Guide at:
+http://terracotta.org/kit/troubleshooting
+
+Referring class   : test.Foo$Parent$Inner
+Referring field   : test.Foo$Parent$Inner.test.Foo$Parent$Inner.this$1
+Thread            : main
+JVM ID            : VM(0)
+Non-included class: test.Foo$Parent
+
+Under most circumstances, you should only be adding classes for your
+application. If you are adding classes for frameworks or code not written by
+you, then you should consider finding a Terracotta Integration Module (TIM)
+that matches the framework you are using.
+
+As an example, if the non-portable class listed below is
+net.sf.ehcache.CacheManager, you should consider using the ehcache TIM.
+
+It is also possible that some or all of the classes above are truly
+non-portable, the solution is then to mark the referring field as transient.
+For more information on non-portable classes see the Troubleshooting Guide.
+
+Action to take:
+
+1) Reconfigure to include the unshareable classes
+   * edit your tc-config.xml file
+   * locate the <dso> element
+   * add this snippet inside the <dso> element
+
+       <instrumented-classes>
+         <include>
+           <class-expression>test.Foo$Parent</class-expression>
+         </include>
+       </instrumented-classes>
+
+   * if there is already an <instrumented-classes> element present, simply add
+     the new includes inside it
+
+*******************************************************************************
+
+	at com.tc.object.ClientObjectManagerImpl.throwNonPortableException(ClientObjectManagerImpl.java:754)
+	at com.tc.object.ClientObjectManagerImpl.checkPortabilityOfTraversedReference(ClientObjectManagerImpl.java:646)
+	at com.tc.object.ClientObjectManagerImpl.access$900(ClientObjectManagerImpl.java:75)
+	at com.tc.object.ClientObjectManagerImpl$NewObjectTraverseTest.checkPortability(ClientObjectManagerImpl.java:986)
+	at com.tc.object.Traverser.addReferencedObjects(Traverser.java:48)
+	at com.tc.object.Traverser.traverse(Traverser.java:81)
+	at com.tc.object.ClientObjectManagerImpl.addToManagedFromRoot(ClientObjectManagerImpl.java:909)
+	at com.tc.object.ClientObjectManagerImpl.create(ClientObjectManagerImpl.java:267)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateIfNecesary(ClientObjectManagerImpl.java:327)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreate(ClientObjectManagerImpl.java:300)
+	at com.tc.object.tx.ClientTransactionManagerImpl.logicalInvoke(ClientTransactionManagerImpl.java:746)
+	at com.tc.object.TCObjectLogical.logicalInvoke(TCObjectLogical.java:18)
+	at com.tc.object.bytecode.ManagerImpl.logicalInvoke(ManagerImpl.java:229)
+	at com.tc.object.bytecode.ManagerUtil.logicalInvoke(ManagerUtil.java:247)
+	at java.util.concurrent.ConcurrentHashMap$Segment.put(ConcurrentHashMap.java:439)
+	at java.util.concurrent.ConcurrentHashMap.put(Unknown Source)
+	at test.Foo.main(Foo.java:12)
+Exception in thread "main" com.tc.exception.TCNonPortableObjectError: 
+*******************************************************************************
+Attempt to share an instance of a non-portable class referenced by a portable class. This
+unshareable class has not been included for sharing in the configuration.
+
+For more information on this issue, please visit our Troubleshooting Guide at:
+http://terracotta.org/kit/troubleshooting
+
+Referring class   : test.Foo$Parent$Inner
+Referring field   : test.Foo$Parent$Inner.test.Foo$Parent$Inner.this$1
+Thread            : main
+JVM ID            : VM(0)
+Non-included class: test.Foo$Parent
+
+Under most circumstances, you should only be adding classes for your
+application. If you are adding classes for frameworks or code not written by
+you, then you should consider finding a Terracotta Integration Module (TIM)
+that matches the framework you are using.
+
+As an example, if the non-portable class listed below is
+net.sf.ehcache.CacheManager, you should consider using the ehcache TIM.
+
+It is also possible that some or all of the classes above are truly
+non-portable, the solution is then to mark the referring field as transient.
+For more information on non-portable classes see the Troubleshooting Guide.
+
+Action to take:
+
+1) Reconfigure to include the unshareable classes
+   * edit your tc-config.xml file
+   * locate the <dso> element
+   * add this snippet inside the <dso> element
+
+       <instrumented-classes>
+         <include>
+           <class-expression>test.Foo$Parent</class-expression>
+         </include>
+       </instrumented-classes>
+
+   * if there is already an <instrumented-classes> element present, simply add
+     the new includes inside it
+
+*******************************************************************************
+
+	at com.tc.object.ClientObjectManagerImpl.throwNonPortableException(ClientObjectManagerImpl.java:754)
+	at com.tc.object.ClientObjectManagerImpl.checkPortabilityOfTraversedReference(ClientObjectManagerImpl.java:646)
+	at com.tc.object.ClientObjectManagerImpl.access$900(ClientObjectManagerImpl.java:75)
+	at com.tc.object.ClientObjectManagerImpl$NewObjectTraverseTest.checkPortability(ClientObjectManagerImpl.java:986)
+	at com.tc.object.Traverser.addReferencedObjects(Traverser.java:48)
+	at com.tc.object.Traverser.traverse(Traverser.java:81)
+	at com.tc.object.ClientObjectManagerImpl.addToManagedFromRoot(ClientObjectManagerImpl.java:909)
+	at com.tc.object.ClientObjectManagerImpl.create(ClientObjectManagerImpl.java:267)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateIfNecesary(ClientObjectManagerImpl.java:327)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreate(ClientObjectManagerImpl.java:300)
+	at com.tc.object.tx.ClientTransactionManagerImpl.logicalInvoke(ClientTransactionManagerImpl.java:746)
+	at com.tc.object.TCObjectLogical.logicalInvoke(TCObjectLogical.java:18)
+	at com.tc.object.bytecode.ManagerImpl.logicalInvoke(ManagerImpl.java:229)
+	at com.tc.object.bytecode.ManagerUtil.logicalInvoke(ManagerUtil.java:247)
+	at java.util.concurrent.ConcurrentHashMap$Segment.put(ConcurrentHashMap.java:439)
+	at java.util.concurrent.ConcurrentHashMap.put(Unknown Source)
+	at test.Foo.main(Foo.java:12)

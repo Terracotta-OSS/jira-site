@@ -1,0 +1,121 @@
+Index: src/main/java/net/sf/ehcache/management/CacheStatistics.java
+===================================================================
+--- src/main/java/net/sf/ehcache/management/CacheStatistics.java	(revision 1436)
++++ src/main/java/net/sf/ehcache/management/CacheStatistics.java	(working copy)
+@@ -22,6 +22,7 @@
+ 
+ import javax.management.MalformedObjectNameException;
+ import javax.management.ObjectName;
++
+ import java.io.Serializable;
+ 
+ 
+@@ -243,4 +244,50 @@
+     public Ehcache getEhcache() {
+         return ehcache;
+     }
++
++    /**
++     * {@inheritDoc}
++     */
++    public long getCacheHitPercentage() {
++        updateIfNeeded();
++        long hits = statistics.getCacheHits();
++        long misses = statistics.getCacheMisses();
++        
++        return hits * 100 / (hits + misses);
++    }
++
++    /**
++     * {@inheritDoc}
++     */
++    public long getCacheMissPercentage() {
++        updateIfNeeded();
++        long hits = statistics.getCacheHits();
++        long misses = statistics.getCacheMisses();
++        
++        return misses * 100 / (hits + misses);
++    }
++
++    /**
++     * {@inheritDoc}
++     */
++    public long getInMemoryHitPercentage() {
++        updateIfNeeded();
++        long memoryHits = statistics.getInMemoryHits();
++        long hits = statistics.getCacheHits();
++        long misses = statistics.getCacheMisses();
++        
++        return memoryHits * 100 / (hits + misses);
++    }
++
++    /**
++     * {@inheritDoc}
++     */
++    public long getOnDiskHitPercentage() {
++        updateIfNeeded();
++        long diskHits = statistics.getOnDiskHits();
++        long hits = statistics.getCacheHits();
++        long misses = statistics.getCacheMisses();
++        
++        return diskHits * 100 / (hits + misses);
++    }
+ }
+Index: src/main/java/net/sf/ehcache/management/CacheStatisticsMBean.java
+===================================================================
+--- src/main/java/net/sf/ehcache/management/CacheStatisticsMBean.java	(revision 1436)
++++ src/main/java/net/sf/ehcache/management/CacheStatisticsMBean.java	(working copy)
+@@ -34,6 +34,13 @@
+      * @return the number of times a requested item was found in the cache
+      */
+     public long getCacheHits();
++    
++    /**
++     * Returns the percentage of cache accesses that found a requested item in the cache.
++     * 
++     * @return the percentage of successful hits
++     */
++    public long getCacheHitPercentage();
+ 
+     /**
+      * Number of times a requested item was found in the Memory Store.
+@@ -41,6 +48,13 @@
+      * @return the number of times a requested item was found in memory
+      */
+     public long getInMemoryHits();
++    
++    /**
++     * Returns the percentage of cache accesses that found a requested item cached in-memory.
++     * 
++     * @return the percentage of successful hits from the MemoryStore
++     */
++    public long getInMemoryHitPercentage();
+ 
+     /**
+      * Number of times a requested item was found in the Disk Store.
+@@ -48,11 +62,25 @@
+      * @return the number of times a requested item was found on Disk, or 0 if there is no disk storage configured.
+      */
+     public long getOnDiskHits();
++    
++    /**
++     * Returns the percentage of cache accesses that found a requested item cached on disk.
++     * 
++     * @return the percentage of successful hits from the DiskStore.
++     */
++    public long getOnDiskHitPercentage();
+ 
+     /**
+      * @return the number of times a requested element was not found in the cache
+      */
+     public long getCacheMisses();
++    
++    /**
++     * Returns the percentage of cache accesses that did not find a requested element in the cache.
++     * 
++     * @return the percentage of accesses that failed to find anything
++     */
++    public long getCacheMissPercentage();
+ 
+     /**
+      * Gets the number of elements stored in the cache. Caclulating this can be expensive. Accordingly,

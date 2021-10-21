@@ -1,0 +1,310 @@
+
+Ehcache standalone server initializing...
+Apr 6, 2013 1:41:30 AM com.sun.enterprise.v3.server.AppServerStartup run
+INFO: GlassFish v3 (74.2) startup time : Embedded(292ms) startup services(186ms) total(478ms)
+Apr 6, 2013 1:41:30 AM com.sun.enterprise.transaction.JavaEETransactionManagerSimplified initDelegates
+INFO: Using com.sun.enterprise.transaction.jts.JavaEETransactionManagerJTSDelegate as the delegate
+Apr 6, 2013 1:41:30 AM org.glassfish.admin.mbeanserver.JMXStartupService$JMXConnectorsStarterThread run
+INFO: JMXStartupService: JMXConnector system is disabled, skipping.
+Apr 6, 2013 1:41:30 AM AppServerStartup run
+INFO: [Thread[GlassFish Kernel Main Thread,5,main]] started
+Apr 6, 2013 1:41:30 AM org.hibernate.validator.util.Version <clinit>
+INFO: Hibernate Validator null
+Apr 6, 2013 1:41:30 AM org.hibernate.validator.engine.resolver.DefaultTraversableResolver detectJPA
+INFO: Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+Apr 6, 2013 1:41:30 AM com.sun.enterprise.v3.services.impl.GrizzlyProxy$2$1 onReady
+INFO: Grizzly Framework 1.9.18-k started in: 106ms listening on port 8080
+Apr 6, 2013 1:41:30 AM com.sun.common.util.logging.LoggingConfigImpl openPropFile
+INFO: Cannot read logging.properties file. 
+Apr 6, 2013 1:41:30 AM com.sun.enterprise.web.WebContainer createHttpListener
+INFO: Created HTTP listener embedded-listener on port 8080
+Apr 6, 2013 1:41:30 AM com.sun.enterprise.web.WebContainer configureHttpServiceProperties
+WARNING: pewebcontainer.invalid_http_service_property
+Apr 6, 2013 1:41:30 AM com.sun.enterprise.web.WebContainer createHosts
+INFO: Created virtual server server
+Apr 6, 2013 1:41:31 AM com.sun.enterprise.web.WebContainer loadSystemDefaultWebModules
+INFO: Virtual server server loaded system default web module
+Apr 6, 2013 1:41:54 AM com.sun.enterprise.security.SecurityLifecycle <init>
+INFO: security.secmgroff
+Apr 6, 2013 1:41:54 AM com.sun.enterprise.security.ssl.SSLUtils checkCertificateDates
+SEVERE: java_security.expired_certificate
+Apr 6, 2013 1:41:54 AM com.sun.enterprise.security.SecurityLifecycle onInitialization
+INFO: Security startup service called
+Apr 6, 2013 1:41:54 AM com.sun.enterprise.security.PolicyLoader loadPolicy
+INFO: policy.loading
+Apr 6, 2013 1:41:54 AM com.sun.enterprise.security.auth.realm.Realm doInstantiate
+INFO: Realm admin-realm of classtype com.sun.enterprise.security.auth.realm.file.FileRealm successfully created.
+Apr 6, 2013 1:41:54 AM com.sun.enterprise.security.auth.realm.Realm doInstantiate
+INFO: Realm file of classtype com.sun.enterprise.security.auth.realm.file.FileRealm successfully created.
+Apr 6, 2013 1:41:54 AM com.sun.enterprise.security.auth.realm.Realm doInstantiate
+INFO: Realm certificate of classtype com.sun.enterprise.security.auth.realm.certificate.CertificateRealm successfully created.
+Apr 6, 2013 1:41:54 AM com.sun.enterprise.security.SecurityLifecycle onInitialization
+INFO: Security service(s) started successfully....
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.transport.http.servlet.WSServletContextListener contextInitialized
+INFO: WSSERVLET12: JAX-WS context listener initializing
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.Get
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.GetResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getExceptionBeanClass
+INFO: Dynamically creating exception bean Class net.sf.ehcache.server.soap.jaxws.IllegalStateExceptionBean
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getExceptionBeanClass
+INFO: Dynamically creating exception bean Class net.sf.ehcache.server.soap.jaxws.NoSuchCacheExceptionBean
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getExceptionBeanClass
+INFO: Dynamically creating exception bean Class net.sf.ehcache.server.soap.jaxws.CacheExceptionBean
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.Put
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.PutResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.Load
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.LoadResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.Remove
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.RemoveResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.GetSize
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.GetSizeResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.RemoveAll
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.RemoveAllResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.LoadAll
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.LoadAllResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.GetKeys
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.GetKeysResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.GetStatus
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.GetStatusResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.GetCache
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.GetCacheResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.Ping
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.PingResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.AddCache
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.AddCacheResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getExceptionBeanClass
+INFO: Dynamically creating exception bean Class net.sf.ehcache.server.soap.jaxws.ObjectExistsExceptionBean
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.RemoveCache
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.RemoveCacheResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.CacheNames
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.CacheNamesResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.GetKeysWithExpiryCheck
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.GetKeysWithExpiryCheckResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.GetKeysNoDuplicateCheck
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.GetKeysNoDuplicateCheckResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.GetQuiet
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.GetQuietResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.PutQuiet
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.PutQuietResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getExceptionBeanClass
+INFO: Dynamically creating exception bean Class net.sf.ehcache.server.soap.jaxws.IllegalArgumentExceptionBean
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.RemoveQuiet
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.RemoveQuietResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.GetStatistics
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.GetStatisticsResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.GetStatisticsAccuracy
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.GetStatisticsAccuracyResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.ClearStatistics
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.ClearStatisticsResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.GetAllWithLoader
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.GetAllWithLoaderResponse
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getRequestWrapperClass
+INFO: Dynamically creating request wrapper Class net.sf.ehcache.server.soap.jaxws.GetWithLoader
+Apr 6, 2013 1:41:57 AM com.sun.xml.ws.model.RuntimeModeler getResponseWrapperClass
+INFO: Dynamically creating response wrapper bean Class net.sf.ehcache.server.soap.jaxws.GetWithLoaderResponse
+Apr 6, 2013 1:41:58 AM com.sun.xml.bind.v2.runtime.reflect.opt.Injector inject
+WARNING: duplicate class definition bug occured? Please report this : net/sf/ehcache/server/jaxb/Element$JaxbAccessorM_getValue_setValue_[B
+java.lang.ClassFormatError: Illegal class name "net/sf/ehcache/server/jaxb/Element$JaxbAccessorM_getValue_setValue_[B" in class file net/sf/ehcache/server/jaxb/Element$JaxbAccessorM_getValue_setValue_[B
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(ClassLoader.java:631)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:615)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:465)
+	at sun.reflect.GeneratedMethodAccessor25.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.sun.xml.bind.v2.runtime.reflect.opt.Injector.inject(Injector.java:205)
+	at com.sun.xml.bind.v2.runtime.reflect.opt.Injector.inject(Injector.java:85)
+	at com.sun.xml.bind.v2.runtime.reflect.opt.AccessorInjector.prepare(AccessorInjector.java:89)
+	at com.sun.xml.bind.v2.runtime.reflect.opt.OptimizedAccessorFactory.get(OptimizedAccessorFactory.java:114)
+	at com.sun.xml.bind.v2.runtime.reflect.Accessor$GetterSetterReflection.optimize(Accessor.java:369)
+	at com.sun.xml.bind.v2.runtime.property.SingleElementLeafProperty.<init>(SingleElementLeafProperty.java:81)
+	at sun.reflect.GeneratedConstructorAccessor35.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.sun.xml.bind.v2.runtime.property.PropertyFactory.create(PropertyFactory.java:124)
+	at com.sun.xml.bind.v2.runtime.ClassBeanInfoImpl.<init>(ClassBeanInfoImpl.java:179)
+	at com.sun.xml.bind.v2.runtime.JAXBContextImpl.getOrCreate(JAXBContextImpl.java:515)
+	at com.sun.xml.bind.v2.runtime.JAXBContextImpl.getOrCreate(JAXBContextImpl.java:534)
+	at com.sun.xml.bind.v2.runtime.property.SingleElementNodeProperty.<init>(SingleElementNodeProperty.java:101)
+	at sun.reflect.GeneratedConstructorAccessor34.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.sun.xml.bind.v2.runtime.property.PropertyFactory.create(PropertyFactory.java:124)
+	at com.sun.xml.bind.v2.runtime.ClassBeanInfoImpl.<init>(ClassBeanInfoImpl.java:179)
+	at com.sun.xml.bind.v2.runtime.JAXBContextImpl.getOrCreate(JAXBContextImpl.java:515)
+	at com.sun.xml.bind.v2.runtime.JAXBContextImpl.<init>(JAXBContextImpl.java:330)
+	at com.sun.xml.bind.v2.runtime.JAXBContextImpl$JAXBContextBuilder.build(JAXBContextImpl.java:1140)
+	at com.sun.xml.bind.v2.ContextFactory.createContext(ContextFactory.java:154)
+	at com.sun.xml.bind.api.JAXBRIContext.newInstance(JAXBRIContext.java:106)
+	at com.sun.xml.ws.developer.JAXBContextFactory$1.createJAXBContext(JAXBContextFactory.java:73)
+	at com.sun.xml.ws.model.AbstractSEIModelImpl$1.run(AbstractSEIModelImpl.java:159)
+	at com.sun.xml.ws.model.AbstractSEIModelImpl$1.run(AbstractSEIModelImpl.java:152)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.xml.ws.model.AbstractSEIModelImpl.createJAXBContext(AbstractSEIModelImpl.java:151)
+	at com.sun.xml.ws.model.AbstractSEIModelImpl.postProcess(AbstractSEIModelImpl.java:94)
+	at com.sun.xml.ws.model.RuntimeModeler.buildRuntimeModel(RuntimeModeler.java:256)
+	at com.sun.xml.ws.server.EndpointFactory.createSEIModel(EndpointFactory.java:323)
+	at com.sun.xml.ws.server.EndpointFactory.createEndpoint(EndpointFactory.java:189)
+	at com.sun.xml.ws.api.server.WSEndpoint.create(WSEndpoint.java:467)
+	at com.sun.xml.ws.transport.http.DeploymentDescriptorParser.parseAdapters(DeploymentDescriptorParser.java:253)
+	at com.sun.xml.ws.transport.http.DeploymentDescriptorParser.parse(DeploymentDescriptorParser.java:147)
+	at com.sun.xml.ws.transport.http.servlet.WSServletContextListener.contextInitialized(WSServletContextListener.java:108)
+	at org.apache.catalina.core.StandardContext.contextListenerStart(StandardContext.java:4591)
+	at com.sun.enterprise.web.WebModule.contextListenerStart(WebModule.java:535)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:5193)
+	at com.sun.enterprise.web.WebModule.start(WebModule.java:499)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:928)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:912)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:694)
+	at com.sun.enterprise.web.WebContainer.loadWebModule(WebContainer.java:1933)
+	at com.sun.enterprise.web.WebContainer.loadWebModule(WebContainer.java:1605)
+	at com.sun.enterprise.web.WebApplication.start(WebApplication.java:90)
+	at org.glassfish.internal.data.EngineRef.start(EngineRef.java:126)
+	at org.glassfish.internal.data.ModuleInfo.start(ModuleInfo.java:241)
+	at org.glassfish.internal.data.ApplicationInfo.start(ApplicationInfo.java:236)
+	at com.sun.enterprise.v3.server.ApplicationLifecycle.deploy(ApplicationLifecycle.java:339)
+	at org.glassfish.kernel.embedded.EmbeddedDeployerImpl.deploy(EmbeddedDeployerImpl.java:214)
+	at org.glassfish.kernel.embedded.EmbeddedDeployerImpl.deploy(EmbeddedDeployerImpl.java:144)
+	at net.sf.ehcache.server.standalone.Server$GlassfishServerThread.startWithGlassfish(Server.java:264)
+	at net.sf.ehcache.server.standalone.Server$GlassfishServerThread.run(Server.java:237)
+Apr 6, 2013 1:41:58 AM com.sun.xml.bind.v2.runtime.reflect.opt.Injector inject
+WARNING: duplicate class definition bug occured? Please report this : net/sf/ehcache/server/jaxb/Element$JaxbAccessorM_getValue_setValue_[B
+java.lang.ClassFormatError: Illegal class name "net/sf/ehcache/server/jaxb/Element$JaxbAccessorM_getValue_setValue_[B" in class file net/sf/ehcache/server/jaxb/Element$JaxbAccessorM_getValue_setValue_[B
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClassCond(ClassLoader.java:631)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:615)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:465)
+	at sun.reflect.GeneratedMethodAccessor25.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.sun.xml.bind.v2.runtime.reflect.opt.Injector.inject(Injector.java:205)
+	at com.sun.xml.bind.v2.runtime.reflect.opt.Injector.inject(Injector.java:85)
+	at com.sun.xml.bind.v2.runtime.reflect.opt.AccessorInjector.prepare(AccessorInjector.java:89)
+	at com.sun.xml.bind.v2.runtime.reflect.opt.OptimizedAccessorFactory.get(OptimizedAccessorFactory.java:114)
+	at com.sun.xml.bind.v2.runtime.reflect.Accessor$GetterSetterReflection.optimize(Accessor.java:369)
+	at com.sun.xml.bind.v2.runtime.reflect.TransducedAccessor$CompositeTransducedAccessorImpl.<init>(TransducedAccessor.java:231)
+	at com.sun.xml.bind.v2.runtime.reflect.TransducedAccessor.get(TransducedAccessor.java:173)
+	at com.sun.xml.bind.v2.runtime.property.SingleElementLeafProperty.<init>(SingleElementLeafProperty.java:83)
+	at sun.reflect.GeneratedConstructorAccessor35.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.sun.xml.bind.v2.runtime.property.PropertyFactory.create(PropertyFactory.java:124)
+	at com.sun.xml.bind.v2.runtime.ClassBeanInfoImpl.<init>(ClassBeanInfoImpl.java:179)
+	at com.sun.xml.bind.v2.runtime.JAXBContextImpl.getOrCreate(JAXBContextImpl.java:515)
+	at com.sun.xml.bind.v2.runtime.JAXBContextImpl.getOrCreate(JAXBContextImpl.java:534)
+	at com.sun.xml.bind.v2.runtime.property.SingleElementNodeProperty.<init>(SingleElementNodeProperty.java:101)
+	at sun.reflect.GeneratedConstructorAccessor34.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at com.sun.xml.bind.v2.runtime.property.PropertyFactory.create(PropertyFactory.java:124)
+	at com.sun.xml.bind.v2.runtime.ClassBeanInfoImpl.<init>(ClassBeanInfoImpl.java:179)
+	at com.sun.xml.bind.v2.runtime.JAXBContextImpl.getOrCreate(JAXBContextImpl.java:515)
+	at com.sun.xml.bind.v2.runtime.JAXBContextImpl.<init>(JAXBContextImpl.java:330)
+	at com.sun.xml.bind.v2.runtime.JAXBContextImpl$JAXBContextBuilder.build(JAXBContextImpl.java:1140)
+	at com.sun.xml.bind.v2.ContextFactory.createContext(ContextFactory.java:154)
+	at com.sun.xml.bind.api.JAXBRIContext.newInstance(JAXBRIContext.java:106)
+	at com.sun.xml.ws.developer.JAXBContextFactory$1.createJAXBContext(JAXBContextFactory.java:73)
+	at com.sun.xml.ws.model.AbstractSEIModelImpl$1.run(AbstractSEIModelImpl.java:159)
+	at com.sun.xml.ws.model.AbstractSEIModelImpl$1.run(AbstractSEIModelImpl.java:152)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.xml.ws.model.AbstractSEIModelImpl.createJAXBContext(AbstractSEIModelImpl.java:151)
+	at com.sun.xml.ws.model.AbstractSEIModelImpl.postProcess(AbstractSEIModelImpl.java:94)
+	at com.sun.xml.ws.model.RuntimeModeler.buildRuntimeModel(RuntimeModeler.java:256)
+	at com.sun.xml.ws.server.EndpointFactory.createSEIModel(EndpointFactory.java:323)
+	at com.sun.xml.ws.server.EndpointFactory.createEndpoint(EndpointFactory.java:189)
+	at com.sun.xml.ws.api.server.WSEndpoint.create(WSEndpoint.java:467)
+	at com.sun.xml.ws.transport.http.DeploymentDescriptorParser.parseAdapters(DeploymentDescriptorParser.java:253)
+	at com.sun.xml.ws.transport.http.DeploymentDescriptorParser.parse(DeploymentDescriptorParser.java:147)
+	at com.sun.xml.ws.transport.http.servlet.WSServletContextListener.contextInitialized(WSServletContextListener.java:108)
+	at org.apache.catalina.core.StandardContext.contextListenerStart(StandardContext.java:4591)
+	at com.sun.enterprise.web.WebModule.contextListenerStart(WebModule.java:535)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:5193)
+	at com.sun.enterprise.web.WebModule.start(WebModule.java:499)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:928)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:912)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:694)
+	at com.sun.enterprise.web.WebContainer.loadWebModule(WebContainer.java:1933)
+	at com.sun.enterprise.web.WebContainer.loadWebModule(WebContainer.java:1605)
+	at com.sun.enterprise.web.WebApplication.start(WebApplication.java:90)
+	at org.glassfish.internal.data.EngineRef.start(EngineRef.java:126)
+	at org.glassfish.internal.data.ModuleInfo.start(ModuleInfo.java:241)
+	at org.glassfish.internal.data.ApplicationInfo.start(ApplicationInfo.java:236)
+	at com.sun.enterprise.v3.server.ApplicationLifecycle.deploy(ApplicationLifecycle.java:339)
+	at org.glassfish.kernel.embedded.EmbeddedDeployerImpl.deploy(EmbeddedDeployerImpl.java:214)
+	at org.glassfish.kernel.embedded.EmbeddedDeployerImpl.deploy(EmbeddedDeployerImpl.java:144)
+	at net.sf.ehcache.server.standalone.Server$GlassfishServerThread.startWithGlassfish(Server.java:264)
+	at net.sf.ehcache.server.standalone.Server$GlassfishServerThread.run(Server.java:237)
+Apr 6, 2013 1:41:58 AM com.sun.xml.ws.transport.http.servlet.WSServletDelegate <init>
+INFO: WSSERVLET14: JAX-WS servlet initializing
+Apr 6, 2013 1:41:58 AM net.sf.ehcache.server.ServerContext contextInitialized
+INFO: Starting JMS MBeanServer
+Apr 6, 2013 1:41:58 AM com.sun.jersey.api.core.PackagesResourceConfig init
+INFO: Scanning for root resource and provider classes in the packages:
+  net.sf.ehcache.server.rest.resources
+Apr 6, 2013 1:41:58 AM com.sun.jersey.api.core.PackagesResourceConfig init
+INFO: Root resource classes found:
+  class net.sf.ehcache.server.rest.resources.CachesResource
+Apr 6, 2013 1:41:58 AM com.sun.jersey.api.core.PackagesResourceConfig init
+INFO: Provider classes found:
+Apr 6, 2013 1:41:58 AM com.sun.jersey.server.spi.monitoring.glassfish.GlobalStatsProvider register
+INFO: GlobalStatsProvider registered
+Apr 6, 2013 1:41:58 AM com.sun.jersey.server.impl.application.WebApplicationImpl initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.1.4.1 11/24/2009 01:37 AM'
+Apr 6, 2013 1:41:58 AM com.sun.jersey.server.impl.application.WebApplicationImpl initiate
+INFO: Adding the following classes declared in META-INF/services/jersey-server-components to the resource configuration:
+  class com.sun.jersey.multipart.impl.FormDataMultiPartDispatchProvider
+  class com.sun.jersey.multipart.impl.MultiPartConfigProvider
+  class com.sun.jersey.multipart.impl.MultiPartReader
+  class com.sun.jersey.multipart.impl.MultiPartWriter
+Apr 6, 2013 1:41:59 AM net.sf.ehcache.util.UpdateChecker doCheck
+INFO: New update(s) found: 2.4.7 [http://www.terracotta.org/confluence/display/release/Release+Notes+Ehcache+Core+2.4]. Please check http://ehcache.org for the latest version.
+Apr 6, 2013 1:41:59 AM com.sun.enterprise.web.WebApplication start
+INFO: Loading application war at /ehcache
+Apr 6, 2013 1:41:59 AM net.sf.ehcache.server.standalone.Server$GlassfishServerThread startWithGlassfish
+INFO: Glassfish server running on httpPort 8080 with WAR ../war

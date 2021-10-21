@@ -1,0 +1,21 @@
+Index: ehcache/ehcache-core/src/main/java/net/sf/ehcache/Cache.java
+===================================================================
+--- ehcache/ehcache-core/src/main/java/net/sf/ehcache/Cache.java	(revision 5517)
++++ ehcache/ehcache-core/src/main/java/net/sf/ehcache/Cache.java	(working copy)
+@@ -110,6 +110,7 @@
+ import java.beans.PropertyChangeSupport;
+ import java.io.IOException;
+ import java.io.Serializable;
++import java.lang.System;
+ import java.lang.reflect.InvocationTargetException;
+ import java.net.InetAddress;
+ import java.net.UnknownHostException;
+@@ -196,7 +197,7 @@
+     /**
+      * The FQCN for offheap stores
+      */
+-    public static final String OFF_HEAP_STORE_CLASSNAME = "net.sf.ehcache.store.offheap.OffHeapStore";
++    public static final String OFF_HEAP_STORE_CLASSNAME = System.getProperty("net.sf.ehcache.store.offheap.fqcn", "net.sf.ehcache.store.offheap.OffHeapStore");
+ 
+     private static final Logger LOG = LoggerFactory.getLogger(Cache.class.getName());
+ 

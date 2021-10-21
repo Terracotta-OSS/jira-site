@@ -1,0 +1,60 @@
+Found one Java-level deadlock:
+=============================
+"Call Half Input Adapter 5":
+waiting to lock monitor 0x0000002b4b691848 (object 0x0000002aea2ac9b8, a com.tc.object.TCObjectLogical),
+which is held by "Call Half Input Adapter 4"
+"Call Half Input Adapter 4":
+waiting to lock monitor 0x0000002b4b6917d0 (object 0x0000002aea256d88, a java.util.Hashtable),
+which is held by "Call Half Input Adapter 5"
+
+Java stack information for the threads listed above:
+===================================================
+"Call Half Input Adapter 5":
+at com.tc.object.TCObjectImpl.setFlag(TCObjectImpl.java:164)
+- waiting to lock <0x0000002aea2ac9b8> (a com.tc.object.TCObjectLogical)
+at com.tc.object.TCObjectImpl.markAccessed(TCObjectImpl.java:381)
+at com.tc.object.TCObjectLogical.logicalInvoke(TCObjectLogical.java:19)
+at com.tc.object.bytecode.ManagerImpl.logicalInvoke(ManagerImpl.java:21
+at com.tc.object.bytecode.ManagerUtil.logicalInvoke(ManagerUtil.java:13
+at java.util.Hashtable.put(Unknown Source)
+- locked <0x0000002aea256d88> (a java.util.Hashtable)
+at com.broadsoft.sessionmanagers.callhalf.CallHalfServiceSession.createEndpoint(CallHalfServiceSession.java:2241)
+at com.broadsoft.sessionmanagers.callhalf.CallHalfServiceSession.findOrCreateEndpoint(CallHalfServiceSession.java:2133)
+at com.broadsoft.sessionmanagers.callhalf.CallHalfServiceSession.addEndpoint(CallHalfServiceSession.java:63
+at com.broadsoft.apm.callp.CHCallManager.addEndpoint(CHCallManager.java:2541)
+at com.broadsoft.apm.callp.handlers.callmanager.InvitationEventHandler.postProcess(InvitationEventHandler.java:371)
+at com.broadsoft.apm.callp.CHCallManager.processEvent(CHCallManager.java:141
+at com.broadsoft.sessionmanagers.callhalf.CallHalfServiceSession.__tc_wrapped_deliverEvent(CallHalfServiceSession.java:1334)
+- locked <0x0000002ae9d87b20> (a com.broadsoft.sessionmanagers.callhalf.CallHalfServiceSession)
+at com.broadsoft.sessionmanagers.callhalf.CallHalfServiceSession.deliverEvent(CallHalfServiceSession.java)
+at com.broadsoft.apm.session.InputAdapter.distributeEvent(InputAdapter.java:139)
+at com.broadsoft.apm.session.SimpleQAdapter.processInput(SimpleQAdapter.java:242)
+at com.broadsoft.util.watchdog.WatchedThread.run(WatchedThread.java:292)
+at java.lang.Thread.run(Thread.java:595)
+"Call Half Input Adapter 4":
+at java.util.Hashtable$EntriesIterator.hasNext(Hashtable/java:521)
+- waiting to lock <0x0000002aea256d88> (a java.util.Hashtable)
+at com.tc.object.applicator.HashMapApplicator.dehydrate(HashMapApplicator.java:147)
+at com.tc.object.TCClassImpl.dehydrate(TCClassImpl.java:165)
+at com.tc.object.TCObjectImpl.dehydrateIfNew(TCObjectImpl.java:273)
+- locked <0x0000002aea2ac9b8> (a com.tc.object.TCObjectLogical)
+at com.tc.object.change.TCChangeBufferImpl.writeTo(TCChangeBufferImpl.java:8
+at com.tc.object.tx.TransactionBatchWriter.addTransaction(TransactionBatchWriter.java:136)
+- locked <0x0000002aea305178> (a com.tc.object.tx.TransactionBatchWriter)
+at com.tc.object.tx.TransactionSequencer.addTransactionToBatch(TransactionSequencer.java:67)
+at com.tc.object.tx.TransactionSequencer.addTxnInternal(TransactionSequencer.java:99)
+at com.tc.object.tx.TransactionSequencer.addTransaction(TransactionSequencer.java:77)
+- locked <0x0000002a9fac9bb8> (a com.tc.object.tx.TransactionSequencer)
+at com.tc.object.tx.RemoteTransactionManagerImpl.commit(RemoteTransactionManagerImpl.java:209)
+at com.tc.object.tx.ClientTransactionManagerImpl.commitInternal(ClientTransactionManagerImpl.java:389)
+at com.tc.object.tx.ClientTransactionManagerImpl.commit(ClientTransactionManagerImpl.java:355)
+at com.tc.object.tx.ClientTransactionManagerImpl.commit(ClientTransactionManagerImpl.java:301)
+at com.tc.object.bytecode.ManagerImpl.monitorExit(ManagerImpl.java:470)
+at com.tc.object.bytecode.ManagerUtil.monitorExit(ManagerUtil.java:214)
+at com.broadsoft.sessionmanagers.callhalf.CallHalfServiceSession.deliverEvent(CallHalfServiceSession.java)
+at com.broadsoft.apm.session.InputAdapter.distributeEvent(InputAdapter.java:139)
+at com.broadsoft.apm.session.SimpleQAdapter.processInput(SimpleQAdapter.java:242)
+at com.broadsoft.util.watchdog.WatchedThread.run(WatchedThread.java:292)
+at java.lang.Thread.run(Thread.java:595)
+
+Found 1 deadlock. 

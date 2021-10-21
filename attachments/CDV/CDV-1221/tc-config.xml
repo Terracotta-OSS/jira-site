@@ -1,0 +1,28 @@
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-4.xsd">
+
+  <application>
+    <dso>  
+       <additional-boot-jar-classes>
+        <include>java.util.PriorityQueue</include>
+       </additional-boot-jar-classes>
+
+      <instrumented-classes>
+         <include>
+           <class-expression>Main$Routed</class-expression>
+         </include>
+       </instrumented-classes>
+      <locks>
+        <autolock>
+          <method-expression>* Main.*(..)</method-expression>
+        </autolock>
+      </locks>
+      <roots>
+        <root>
+          <field-name>Main.instance</field-name>
+        </root>
+      </roots>
+    </dso>
+  </application>
+</tc:tc-config>

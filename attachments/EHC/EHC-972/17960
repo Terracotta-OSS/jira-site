@@ -1,0 +1,60 @@
+ .../distribution/jgroups/JGroupsCachePeer.java     |   18 +++---------------
+ 1 files changed, 3 insertions(+), 15 deletions(-)
+
+diff --git a/src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCachePeer.java b/src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCachePeer.java
+index db352bc..0220cbe 100644
+--- a/src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCachePeer.java
++++ b/src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCachePeer.java
+@@ -21,7 +21,6 @@ import net.sf.ehcache.distribution.CachePeer;
+ import org.jgroups.Address;
+ import org.jgroups.Channel;
+ import org.jgroups.Message;
+-import org.jgroups.Message.Flag;
+ import org.jgroups.View;
+ import org.jgroups.util.Util;
+ import org.slf4j.Logger;
+@@ -162,7 +161,7 @@ public class JGroupsCachePeer implements CachePeer {
+         }
+ 
+         LOG.debug("Sending {} JGroupEventMessages synchronously.", synchronousEventMessages.size());
+-        this.sendData(dest, synchronousEventMessages, false);
++        this.sendData(dest, synchronousEventMessages);
+     }
+ 
+     private Queue<JGroupEventMessage> getMessageQueue(long asyncTime) {
+@@ -187,7 +186,7 @@ public class JGroupsCachePeer implements CachePeer {
+      * Sends a serializable object to the specified address. If no address is specified it is sent to the
+      * entire group.
+      */
+-    private void sendData(Address dest, List<? extends Serializable> dataList, boolean asynchronous) {
++    private void sendData(Address dest, List<? extends Serializable> dataList) {
+         //Remove the list wrapper if only a single event is being sent
+         final Serializable toSend;
+         if (dataList.size() == 1) {
+@@ -207,17 +206,6 @@ public class JGroupsCachePeer implements CachePeer {
+         
+         //Send it off to the group
+         final Message msg = new Message(dest, null, data);
+-
+-        //
+-        // If not asynchronous, set RSVP flag in order to wait for acknowledge, this depends on the RSVP protocol to be active in the stack
+-        // and properly positionned above the GMS protocol and under the UNICAST one in order to receive view change events from the GMS protocol
+-        //
+-        // -- Cedric Vidal (cedric at vidal dot biz) 28/09/2012
+-        //
+-        if (!asynchronous) {
+-            msg.setFlag(Flag.RSVP);
+-        }
+-
+         try {
+             this.channel.send(msg);
+         } catch (IllegalStateException e) {
+@@ -253,7 +241,7 @@ public class JGroupsCachePeer implements CachePeer {
+             }
+ 
+             LOG.debug("Sending {} JGroupEventMessages from the asynchronous queue.", events.size());
+-            this.sendData(null, events, true);
++            this.sendData(null, events);
+         }
+     }
+ 

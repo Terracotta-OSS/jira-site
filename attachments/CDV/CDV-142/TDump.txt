@@ -1,0 +1,678 @@
+C:\Documents and Settings\siyer.TC\gf\glassfish>cd bin
+
+ 
+
+C:\Documents and Settings\siyer.TC\gf\glassfish\bin>asadmin.bat start-domain dom
+
+ain1
+
+"c:\jdk\Sun\jdk1.5.0_06\bin\java -Dcom.sun.aas.instanceRoot="C:\Documents and Se
+
+ttings\siyer.TC\gf\glassfish" -Dcom.sun.aas.instanceName=server -Djava.library.p
+
+ath="C:\Documents and Settings\siyer.TC\gf\glassfish\bin";"C:\Documents and Sett
+
+ings\siyer.TC\gf\glassfish\lib" -Dcom.sun.aas.configRoot="C:\Documents and Setti
+
+ngs\siyer.TC\gf\glassfish\config" -Djava.endorsed.dirs="C:\Documents and Setting
+
+s\siyer.TC\gf\glassfish\lib\endorsed" -Dcom.sun.aas.processLauncher="SE" -cp "C:
+
+\Documents and Settings\siyer.TC\gf\glassfish\javadb\lib\derby.jar";"C:\Document
+
+s and Settings\siyer.TC\gf\glassfish\lib\appserv-ws.jar";"C:\Documents and Setti
+
+ngs\siyer.TC\gf\glassfish\lib\appserv-rt.jar";"C:\Documents and Settings\siyer.T
+
+C\gf\glassfish\lib\appserv-ext.jar";"C:\Documents and Settings\siyer.TC\gf\glass
+
+fish\lib\javaee.jar";"C:\Documents and Settings\siyer.TC\gf\glassfish\lib\admin-
+
+cli.jar";"C:\Documents and Settings\siyer.TC\gf\glassfish\lib\appserv-admin.jar"
+
+;"C:\Documents and Settings\siyer.TC\gf\glassfish\lib\commons-launcher.jar";"C:\
+
+Documents and Settings\siyer.TC\gf\glassfish\lib\install\applications\jmsra\imqj
+
+msra.jar" com.sun.enterprise.cli.framework.CLIMain  start-domain domain1"
+
+Starting Domain domain1, please wait.
+
+Log redirected to C:\Documents and Settings\siyer.TC\gf\glassfish\domains\domain
+
+1\logs\server.log.
+
+Terminate batch job (Y/N)? ^C
+
+ 
+
+C:\Documents and Settings\siyer.TC\gf\glassfish\bin>
+
+ 
+
+C:\Documents and Settings\siyer.TC\gf\glassfish\bin>
+
+C:\Documents and Settings\siyer.TC\gf\glassfish\bin>cd ..
+
+ 
+
+C:\Documents and Settings\siyer.TC\gf\glassfish>cd domains\domain1
+
+ 
+
+C:\Documents and Settings\siyer.TC\gf\glassfish\domains\domain1>dir
+
+ Volume in drive C is IBM_PRELOAD
+
+ Volume Serial Number is BC88-2386
+
+ 
+
+ Directory of C:\Documents and Settings\siyer.TC\gf\glassfish\domains\domain1
+
+ 
+
+02/12/2007  05:30 AM    <DIR>          .
+
+02/12/2007  05:30 AM    <DIR>          ..
+
+01/30/2007  04:54 PM    <DIR>          applications
+
+02/12/2007  06:15 AM    <DIR>          autodeploy
+
+01/30/2007  04:54 PM    <DIR>          bin
+
+02/12/2007  06:56 AM    <DIR>          config
+
+01/30/2007  04:54 PM    <DIR>          docroot
+
+02/12/2007  06:15 AM    <DIR>          generated
+
+01/30/2007  04:55 PM    <DIR>          imq
+
+02/12/2007  05:39 AM    <DIR>          java-web-start
+
+01/30/2007  04:54 PM    <DIR>          lib
+
+02/12/2007  06:53 AM    <DIR>          logs
+
+01/30/2007  04:55 PM               500 master-password
+
+01/30/2007  04:54 PM    <DIR>          session-store
+
+02/12/2007  05:30 AM    <DIR>          work
+
+               1 File(s)            500 bytes
+
+              14 Dir(s)   5,505,769,472 bytes free
+
+ 
+
+C:\Documents and Settings\siyer.TC\gf\glassfish\domains\domain1>cd bin
+
+ 
+
+C:\Documents and Settings\siyer.TC\gf\glassfish\domains\domain1\bin>startserv.ba
+
+t
+
+""c:\jdk\Sun\jdk1.5.0_06\bin\java" -Xbootclasspath/p:C:\Terracotta\terracotta-2.
+
+2.1\common\lib\dso-boot\dso-boot-hotspot_win32_150_06.jar -Dtc.config=localhost:
+
+9510 -Dtc.install-root=C:\Terracotta\terracotta-2.2.1 -cp "C:\Documents and Sett
+
+ings\siyer.TC\gf\glassfish\lib\appserv-rt.jar";"C:\Documents and Settings\siyer.
+
+TC\gf\glassfish\lib\appserv-admin.jar";"C:\Documents and Settings\siyer.TC\gf\gl
+
+assfish\lib\javaee.jar" -Dcom.sun.enterprise.config.config_environment_factory_c
+
+lass=com.sun.enterprise.config.serverbeans.AppserverConfigEnvironmentFactory -Dc
+
+om.sun.aas.installRoot="C:\Documents and Settings\siyer.TC\gf\glassfish" -Dcom.s
+
+un.aas.instanceRoot="C:\Documents and Settings\siyer.TC\gf\glassfish\domains\dom
+
+ain1"  -Dcom.sun.aas.configRoot="C:/Documents and Settings/siyer.TC/gf/glassfish
+
+/config" -DJAVA_HOME="c:\jdk\Sun\jdk1.5.0_06" -Dcom.sun.aas.instanceName="server
+
+" -Ddomain.name="domain1" -DCATALINA_OPTS="" -Djava.util.logging.manager=com.sun
+
+.enterprise.server.logging.ServerLogManager -Dcom.sun.aas.launcherReturn="return
+
+" -Dcom.sun.aas.processName="as9-server" -Dcom.sun.aas.processLauncher="SE" -Dco
+
+m.sun.aas.promptForIdentity="true" com.sun.enterprise.tools.launcher.ProcessLaun
+
+cher start "
+
+2007-02-12 13:41:29,521 INFO - Terracotta, version 2.2.1 as of 20070119-120113.
+
+2007-02-12 13:41:30,252 INFO - Configuration loaded from the server at 'localhos
+
+t:9510'.
+
+2007-02-12 13:41:30,272 INFO - Log file: 'C:\Documents and Settings\siyer.TC\gf\
+
+glassfish\domains\domain1\config\logs\client-logs\terracotta-client.log'.
+
+Full thread dump Java HotSpot(TM) Client VM (1.5.0_06-b05 mixed mode):
+
+ 
+
+"DistributedMethodInvoke" daemon prio=6 tid=0x0b3e3980 nid=0x1274 in Object.wait
+
+() [0x0c0cf000..0x0c0cfd68]
+
+        at java.lang.Object.wait(Native Method)
+
+        - waiting on <0x03873418> (a java.util.IdentityHashMap)
+
+        at java.lang.Object.wait(Object.java:474)
+
+        at com.tc.object.lockmanager.impl.ClientLock.waitForLock(ClientLock.java
+
+:456)
+
+        - locked <0x03873418> (a java.util.IdentityHashMap)
+
+        at com.tc.object.lockmanager.impl.ClientLock.wait(ClientLock.java:272)
+
+        at com.tc.object.lockmanager.impl.ClientLockManagerImpl.wait(ClientLockM
+
+anagerImpl.java:266)
+
+        at com.tc.object.lockmanager.impl.ThreadLockManagerImpl.wait(ThreadLockM
+
+anagerImpl.java:54)
+
+        at com.tc.object.tx.ClientTransactionManagerImpl.wait(ClientTransactionM
+
+anagerImpl.java:216)
+
+        at com.tc.object.event.DistributedMethodCallManagerImpl$InvokerThread.ru
+
+n(DistributedMethodCallManagerImpl.java:183)
+
+ 
+
+"WorkerThread(lock_response_stage,0)" daemon prio=6 tid=0x0b3a3b38 nid=0xefc in
+
+Object.wait() [0x0c04f000..0x0c04fa68]
+
+        at java.lang.Object.wait(Native Method)
+
+        - waiting on <0x03704178> (a java.lang.Object)
+
+        at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Sour
+
+ce)
+
+        - locked <0x03704178> (a java.lang.Object)
+
+        at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:111)
+
+        at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:127)
+
+ 
+
+"WorkerThread(object_id_request_response_stage,0)" daemon prio=6 tid=0x0b3a3038
+
+nid=0xb7c in Object.wait() [0x0c00f000..0x0c00fae8]
+
+        at java.lang.Object.wait(Native Method)
+
+        - waiting on <0x03704238> (a java.lang.Object)
+
+        at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Sour
+
+ce)
+
+        - locked <0x03704238> (a java.lang.Object)
+
+        at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:111)
+
+        at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:127)
+
+ 
+
+"WorkerThread(jmxremote_tunnel_stage,0)" daemon prio=6 tid=0x0b3a2538 nid=0xa48
+
+in Object.wait() [0x0bfcf000..0x0bfcfb68]
+
+        at java.lang.Object.wait(Native Method)
+
+        - waiting on <0x037042f8> (a java.lang.Object)
+
+        at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Sour
+
+ce)
+
+        - locked <0x037042f8> (a java.lang.Object)
+
+        at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:111)
+
+        at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:127)
+
+ 
+
+"WorkerThread(receive_root_id_stage,0)" daemon prio=6 tid=0x0b0ec830 nid=0x14a0
+
+in Object.wait() [0x0bf8f000..0x0bf8fbe8]
+
+        at java.lang.Object.wait(Native Method)
+
+        - waiting on <0x037043b8> (a java.lang.Object)
+
+        at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Sour
+
+ce)
+
+        - locked <0x037043b8> (a java.lang.Object)
+
+        at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:111)
+
+        at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:127)
+
+ 
+
+"WorkerThread(batch_txn_ack_stage,0)" daemon prio=6 tid=0x0b0ec190 nid=0xe80 in
+
+Object.wait() [0x0bf4f000..0x0bf4fc68]
+
+        at java.lang.Object.wait(Native Method)
+
+        - waiting on <0x03704478> (a java.lang.Object)
+
+        at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Sour
+
+ce)
+
+        - locked <0x03704478> (a java.lang.Object)
+
+        at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:111)
+
+        at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:127)
+
+ 
+
+"WorkerThread(client_pause_stage,0)" daemon prio=6 tid=0x0b0eb808 nid=0x830 in O
+
+bject.wait() [0x0bf0f000..0x0bf0fce8]
+
+        at java.lang.Object.wait(Native Method)
+
+        - waiting on <0x03704538> (a java.lang.Object)
+
+        at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Sour
+
+ce)
+
+        - locked <0x03704538> (a java.lang.Object)
+
+        at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:111)
+
+        at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:127)
+
+ 
+
+"WorkerThread(receive_transaction_stage,0)" daemon prio=6 tid=0x0b0eaea0 nid=0xb
+
+3c in Object.wait() [0x0becf000..0x0becfd68]
+
+        at java.lang.Object.wait(Native Method)
+
+        - waiting on <0x037045f8> (a java.lang.Object)
+
+        at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Sour
+
+ce)
+
+        - locked <0x037045f8> (a java.lang.Object)
+
+        at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:111)
+
+        at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:127)
+
+ 
+
+"WorkerThread(receive_object_stage,0)" daemon prio=6 tid=0x0b0ead18 nid=0x1044 i
+
+n Object.wait() [0x0be8f000..0x0be8f9e8]
+
+        at java.lang.Object.wait(Native Method)
+
+        - waiting on <0x037046b8> (a java.lang.Object)
+
+        at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Sour
+
+ce)
+
+        - locked <0x037046b8> (a java.lang.Object)
+
+        at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:111)
+
+        at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:127)
+
+ 
+
+"WorkerThread(receive_transaction_complete_stage,0)" daemon prio=6 tid=0x0b3aa40
+
+8 nid=0x1514 in Object.wait() [0x0be4f000..0x0be4fa68]
+
+        at java.lang.Object.wait(Native Method)
+
+        - waiting on <0x03704778> (a java.lang.Object)
+
+        at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Sour
+
+ce)
+
+        - locked <0x03704778> (a java.lang.Object)
+
+        at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:111)
+
+        at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:127)
+
+ 
+
+"WorkerThread(hydrate_message_stage,0)" daemon prio=6 tid=0x0b37bc88 nid=0x1168
+
+in Object.wait() [0x0be0f000..0x0be0fae8]
+
+        at java.lang.Object.wait(Native Method)
+
+        - waiting on <0x03704838> (a java.lang.Object)
+
+        at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Sour
+
+ce)
+
+        - locked <0x03704838> (a java.lang.Object)
+
+        at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:111)
+
+        at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:127)
+
+ 
+
+"L1Management JMX registration" daemon prio=6 tid=0x0b37b628 nid=0xc08 waiting f
+
+or monitor entry [0x0bdce000..0x0bdcfb68]
+
+        at java.util.logging.Logger.getLogger(Logger.java:269)
+
+        - waiting to lock <0x073f3af0> (a java.lang.Class)
+
+        at com.sun.enterprise.server.logging.BaseLogManager.doInitializeLogger(B
+
+aseLogManager.java:112)
+
+        at com.sun.enterprise.server.logging.BaseLogManager.addLogger(BaseLogMan
+
+ager.java:182)
+
+        - locked <0x03884608> (a java.util.ArrayList)
+
+        at java.util.logging.LogManager$1.run(LogManager.java:180)
+
+        at java.security.AccessController.doPrivileged(Native Method)
+
+        at java.util.logging.LogManager.<clinit>(LogManager.java:156)
+
+        at java.lang.Class.forName0(Native Method)
+
+        at java.lang.Class.forName(Class.java:164)
+
+        at com.sun.jmx.trace.Trace.initDestination(Trace.java:46)
+
+        at com.sun.jmx.trace.Trace.<clinit>(Trace.java:25)
+
+        at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.isTraceOn(Defau
+
+ltMBeanServerInterceptor.java:1732)
+
+        at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerObject(
+
+DefaultMBeanServerInterceptor.java:916)
+
+        at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerMBean(D
+
+efaultMBeanServerInterceptor.java:337)
+
+        at com.sun.jmx.mbeanserver.JmxMBeanServer$1.run(JmxMBeanServer.java:1208
+
+)
+
+        at java.security.AccessController.doPrivileged(Native Method)
+
+        at com.sun.jmx.mbeanserver.JmxMBeanServer.initialize(JmxMBeanServer.java
+
+:1206)
+
+        at com.sun.jmx.mbeanserver.JmxMBeanServer.<init>(JmxMBeanServer.java:222
+
+)
+
+        at com.sun.jmx.mbeanserver.JmxMBeanServer.<init>(JmxMBeanServer.java:171
+
+)
+
+        at com.sun.jmx.mbeanserver.JmxMBeanServer.newMBeanServer(JmxMBeanServer.
+
+java:1395)
+
+        at javax.management.MBeanServerBuilder.newMBeanServer(MBeanServerBuilder
+
+.java:93)
+
+        at javax.management.MBeanServerFactory.newMBeanServer(MBeanServerFactory
+
+.java:316)
+
+        - locked <0x037049d8> (a javax.management.MBeanServerBuilder)
+
+        at javax.management.MBeanServerFactory.createMBeanServer(MBeanServerFact
+
+ory.java:219)
+
+        at javax.management.MBeanServerFactory.createMBeanServer(MBeanServerFact
+
+ory.java:180)
+
+        at com.tc.management.L1Management.attemptToRegister(L1Management.java:12
+
+0)
+
+        - locked <0x037049e0> (a java.lang.Object)
+
+        at com.tc.management.L1Management.access$000(L1Management.java:36)
+
+        at com.tc.management.L1Management$1.run(L1Management.java:69)
+
+        at java.lang.Thread.run(Thread.java:595)
+
+ 
+
+"TC Memory Monitor" daemon prio=6 tid=0x0b386260 nid=0x11c4 waiting on condition
+
+ [0x0bd8f000..0x0bd8fbe8]
+
+        at java.lang.Thread.sleep(Native Method)
+
+        at com.tc.runtime.TCMemoryManagerImpl$MemoryMonitor.run(TCMemoryManagerI
+
+mpl.java:127)
+
+        at java.lang.Thread.run(Thread.java:595)
+
+ 
+
+"Reaper" daemon prio=6 tid=0x0b3860d8 nid=0xb60 in Object.wait() [0x0bd4f000..0x
+
+0bd4fc68]
+
+        at java.lang.Object.wait(Native Method)
+
+        - waiting on <0x036f5180> (a java.lang.ref.ReferenceQueue$Lock)
+
+        at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+
+        - locked <0x036f5180> (a java.lang.ref.ReferenceQueue$Lock)
+
+        at com.tc.object.ClientObjectManagerImpl$1.run(ClientObjectManagerImpl.j
+
+ava:1021)
+
+ 
+
+"DSO Lock Object.wait() timer" daemon prio=6 tid=0x0b0ece08 nid=0xac in Object.w
+
+ait() [0x0bd0f000..0x0bd0fce8]
+
+        at java.lang.Object.wait(Native Method)
+
+        - waiting on <0x036f5208> (a java.util.TaskQueue)
+
+        at java.util.TimerThread.mainLoop(Timer.java:509)
+
+        - locked <0x036f5208> (a java.util.TaskQueue)
+
+        at java.util.TimerThread.run(Timer.java:462)
+
+ 
+
+"TCComm Selector Thread 1" daemon prio=6 tid=0x0b31e488 nid=0x62c runnable [0x0b
+
+ccf000..0x0bccfd68]
+
+        at sun.nio.ch.WindowsSelectorImpl$SubSelector.poll0(Native Method)
+
+        at sun.nio.ch.WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.j
+
+ava:275)
+
+        at sun.nio.ch.WindowsSelectorImpl$SubSelector.access$400(WindowsSelector
+
+Impl.java:257)
+
+        at sun.nio.ch.WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:138)
+
+ 
+
+        at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+
+        - locked <0x036f1e68> (a sun.nio.ch.Util$1)
+
+        - locked <0x036f1e78> (a java.util.Collections$UnmodifiableSet)
+
+        - locked <0x036f1df0> (a sun.nio.ch.WindowsSelectorImpl)
+
+        at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+
+        at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+
+        at com.tc.net.core.TCCommJDK14.selectLoop(TCCommJDK14.java:276)
+
+        at com.tc.net.core.TCCommJDK14$TCCommThread.run(TCCommJDK14.java:620)
+
+ 
+
+"Low Memory Detector" daemon prio=6 tid=0x0094fc28 nid=0xff8 runnable [0x0000000
+
+0..0x00000000]
+
+ 
+
+"CompilerThread0" daemon prio=10 tid=0x00037298 nid=0x1624 waiting on condition
+
+[0x00000000..0x0abdf8cc]
+
+ 
+
+"Signal Dispatcher" daemon prio=10 tid=0x0098b510 nid=0x4b8 waiting on condition
+
+ [0x00000000..0x00000000]
+
+ 
+
+"Finalizer" daemon prio=8 tid=0x00968d08 nid=0x1084 in Object.wait() [0x0ab5f000
+
+..0x0ab5fc68]
+
+        at java.lang.Object.wait(Native Method)
+
+        - waiting on <0x02f65800> (a java.lang.ref.ReferenceQueue$Lock)
+
+        at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+
+        - locked <0x02f65800> (a java.lang.ref.ReferenceQueue$Lock)
+
+        at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:132)
+
+        at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+ 
+
+"Reference Handler" daemon prio=10 tid=0x00971368 nid=0x14d0 in Object.wait() [0
+
+x0ab1f000..0x0ab1fce8]
+
+        at java.lang.Object.wait(Native Method)
+
+        - waiting on <0x02f65880> (a java.lang.ref.Reference$Lock)
+
+        at java.lang.Object.wait(Object.java:474)
+
+        at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+
+        - locked <0x02f65880> (a java.lang.ref.Reference$Lock)
+
+ 
+
+"main" prio=6 tid=0x0003ab20 nid=0x12a4 in Object.wait() [0x0007f000..0x0007fc40
+
+]
+
+        at java.util.logging.LogManager.getLogManager(LogManager.java:229)
+
+        at java.util.logging.Logger.getLogger(Logger.java:269)
+
+        - locked <0x073f3af0> (a java.lang.Class)
+
+        at com.sun.logging.LogDomains.getLogger(LogDomains.java:227)
+
+        at com.sun.enterprise.util.i18n.StringManagerBase.<clinit>(StringManager
+
+Base.java:88)
+
+        at com.sun.enterprise.tools.launcher.ProcessLauncher.buildInternalComman
+
+d(ProcessLauncher.java:453)
+
+        at com.sun.enterprise.tools.launcher.ProcessLauncher.buildCommand(Proces
+
+sLauncher.java:434)
+
+        at com.sun.enterprise.tools.launcher.ProcessLauncher.process(ProcessLaun
+
+cher.java:234)
+
+        at com.sun.enterprise.tools.launcher.ProcessLauncher.main(ProcessLaunche
+
+r.java:158)
+
+ 
+
+"VM Thread" prio=10 tid=0x009515b8 nid=0x1438 runnable
+
+ 
+
+"VM Periodic Task Thread" prio=10 tid=0x00950db0 nid=0x149c waiting on condition
+
+ 
+
+ 
+ 

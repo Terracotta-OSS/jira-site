@@ -1,0 +1,60 @@
+Index: src/main/java/net/sf/ehcache/Cache.java
+===================================================================
+--- src/main/java/net/sf/ehcache/Cache.java	(revision 3999)
++++ src/main/java/net/sf/ehcache/Cache.java	(revision )
+@@ -40,6 +40,7 @@
+ import net.sf.ehcache.constructs.nonstop.store.RejoinAwareNonstopStore;
+ import net.sf.ehcache.event.CacheEventListener;
+ import net.sf.ehcache.event.CacheEventListenerFactory;
++import net.sf.ehcache.event.NotificationScope;
+ import net.sf.ehcache.event.RegisteredEventListeners;
+ import net.sf.ehcache.exceptionhandler.CacheExceptionHandler;
+ import net.sf.ehcache.extension.CacheExtension;
+@@ -2554,13 +2555,14 @@
+             copy.registeredEventListeners = new RegisteredEventListeners(copy);
+         } else {
+             copy.registeredEventListeners = new RegisteredEventListeners(copy);
+-            Set cacheEventListeners = registeredEventListeners.getCacheEventListeners();
+-            for (Object cacheEventListener1 : cacheEventListeners) {
+-                CacheEventListener cacheEventListener = (CacheEventListener) cacheEventListener1;
++            for (NotificationScope notificationScope : NotificationScope.values()) {
++                Set<CacheEventListener> cacheEventListeners = registeredEventListeners.getCacheEventListeners(notificationScope);
++                for (CacheEventListener cacheEventListener : cacheEventListeners) {
+-                CacheEventListener cacheEventListenerClone = (CacheEventListener) cacheEventListener.clone();
++                    CacheEventListener cacheEventListenerClone = (CacheEventListener) cacheEventListener.clone();
+-                copy.registeredEventListeners.registerListener(cacheEventListenerClone);
++                    copy.registeredEventListeners.registerListener(cacheEventListenerClone, notificationScope);
+-            }
+-        }
++                }
++            }
++        }
+ 
+ 
+         copy.registeredCacheExtensions = new CopyOnWriteArrayList<CacheExtension>();
+Index: src/main/java/net/sf/ehcache/event/RegisteredEventListeners.java
+===================================================================
+--- src/main/java/net/sf/ehcache/event/RegisteredEventListeners.java	(revision 2154)
++++ src/main/java/net/sf/ehcache/event/RegisteredEventListeners.java	(revision )
+@@ -266,6 +266,21 @@
+     }
+ 
+     /**
++     * Gets a copy of the set of the listeners registered to this class
++     *
++     * @return a set of type <code>CacheEventListener</code>
++     */
++    public final Set<CacheEventListener> getCacheEventListeners(NotificationScope notificationScope) {
++        Set<CacheEventListener> listenerSet = new HashSet<CacheEventListener>();
++        for (ListenerWrapper listenerWrapper : cacheEventListeners) {
++            if (listenerWrapper.getScope() == notificationScope) {
++                listenerSet.add(listenerWrapper.getListener());
++            }
++        }
++        return listenerSet;
++    }
++
++    /**
+      * Tell listeners to dispose themselves.
+      * Because this method is only ever called from a synchronized cache method, it does not itself need to be
+      * synchronized.

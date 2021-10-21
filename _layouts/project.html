@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+<article class="post">
+
+    {% assign sorted = site.pages | where: "project_key", page.project | sort: "issue_numeric_sort_key"  %}
+
+    <header class="post-header">
+        <h1 class="post-title">{{page.project | escape}} ({{ page.title | escape }}) ({{ sorted.size }})</h1>
+    </header>
+
+    <table class="issue-list">
+        <tr>
+            <th>Issue</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Summary</th>
+        </tr>
+        {% for item in sorted %}
+        {% if item.project_key == page.project%}
+        <tr>
+            <th class="issue">
+                <a href="{{ item.url | relative_url }}">{{ item.issue_key | escape }}</a>
+            </th>
+            <td class="date">{{ item.created | date: "%Y-%m-%d" }}</td>
+            <td class="status">{{ item.status }}</td>
+            <td class="summary"><abbr title="{{ item.title | escape }}">{{ item.title | escape | truncate: 80 }}</abbr></td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+
+
+    <div class="post-content">
+        {{ content }}
+    </div>
+
+</article>

@@ -1,0 +1,449 @@
+Index: tim-map-evictor-system-tests/src/test/java/org/terracotta/modules/dmap/MutableConfigTest.java
+===================================================================
+--- tim-map-evictor-system-tests/src/test/java/org/terracotta/modules/dmap/MutableConfigTest.java	(revision 0)
++++ tim-map-evictor-system-tests/src/test/java/org/terracotta/modules/dmap/MutableConfigTest.java	(revision 0)
+@@ -0,0 +1,112 @@
++/*
++ * All content copyright (c) 2003-2009 Terracotta, Inc., except as may otherwise be noted in a separate copyright notice.  All rights reserved.
++ */
++package org.terracotta.modules.dmap;
++
++import org.terracotta.modules.BasicTimInfo;
++
++import com.tc.object.config.ConfigVisitor;
++import com.tc.object.config.DSOClientConfigHelper;
++import com.tc.object.config.TransparencyClassSpec;
++import com.tc.simulator.app.ApplicationConfig;
++import com.tc.simulator.listener.ListenerProvider;
++import com.tctest.TransparentTestBase;
++import com.tctest.TransparentTestIface;
++import com.tctest.runner.AbstractErrorCatchingTransparentApp;
++
++import java.util.concurrent.CyclicBarrier;
++
++public class MutableConfigTest extends TransparentTestBase {
++  public static final int NODE_COUNT = 2;
++
++  public void doSetUp(final TransparentTestIface tt) throws Exception {
++    tt.getTransparentAppConfig().setClientCount(NODE_COUNT);
++    tt.initializeTestRunner();
++  }
++
++  protected Class<MutableConfigTestApp> getApplicationClass() {
++    return MutableConfigTestApp.class;
++  }
++
++  public static class MutableConfigTestApp extends AbstractErrorCatchingTransparentApp {
++    private final CyclicBarrier                   barrier = new CyclicBarrier(NODE_COUNT);
++    private final MutableConfig                   config;
++    
++    public MutableConfigTestApp(final String appId, final ApplicationConfig cfg, final ListenerProvider listenerProvider) {
++      super(appId, cfg, listenerProvider);
++      config = new MutableConfig(
++                                 "testConfig", // name
++                                 2,            // concurrency
++                                 true,         // evictor logging enabled
++                                 true,         // logging enabled
++                                 0, 0,         // TTI, TTL
++                                 true,         // orphan eviction enabled
++                                 1);           // orphan eviction frequency
++      
++    }
++
++    public static void visitL1DSOConfig(final ConfigVisitor visitor, final DSOClientConfigHelper config) {
++      String TIM_NAME = "tim-map-evictor";
++      config.addModule(TIM_NAME, new BasicTimInfo(TIM_NAME).version());
++
++      final String testClass = MutableConfigTestApp.class.getName();
++      final TransparencyClassSpec spec = config.getOrCreateSpec(testClass);
++      spec.addRoot("barrier", "barrier");
++      spec.addRoot("config", "config");
++    }
++
++    @Override
++    protected void runTest() throws Throwable {
++      boolean node0 = barrier.await() == 0;
++      assertEquals(0, config.getMaxTTISeconds());
++      assertEquals(0, config.getMaxTTLSeconds());
++      assertEquals(1, config.getOrphanEvictionFrequency());
++      assertTrue(config.isEvictorLoggingEnabled());
++      assertTrue(config.isOrphanEvictionEnabled());
++      
++      if (node0) {
++        config.setMaxTTISeconds(30);
++        config.setMaxTTLSeconds(45);
++      }
++      
++      barrier.await();
++      if (node0) {
++        assertEquals(30, config.getMaxTTISeconds());
++        assertEquals(45, config.getMaxTTLSeconds());
++      } else {
++        // won't update on other node till we refresh
++        assertEquals(0, config.getMaxTTISeconds());
++        assertEquals(0, config.getMaxTTLSeconds());
++        config.refresh();
++        // should now be updated on both nodes
++        assertEquals(30, config.getMaxTTISeconds());
++        assertEquals(45, config.getMaxTTLSeconds());
++      }
++      
++      barrier.await();
++
++      assertTrue(config.isEvictorLoggingEnabled());
++      assertTrue(config.isOrphanEvictionEnabled());
++      if (node0) {
++        config.setEvictorLoggingEnabled(false);
++        config.setOrphanEvictionEnabled(false);
++      }
++      
++      barrier.await();
++      if (node0) {
++        assertFalse(config.isOrphanEvictionEnabled());
++        assertFalse(config.isEvictorLoggingEnabled());
++      } else {
++        // won't update on other node till we refresh
++        assertTrue(config.isOrphanEvictionEnabled());
++        assertTrue(config.isEvictorLoggingEnabled());
++      }
++
++      barrier.await();
++      config.refresh();
++      // should now be updated on both nodes
++      assertFalse(config.isOrphanEvictionEnabled());
++      assertFalse(config.isEvictorLoggingEnabled());
++    }
++  }
++}
+
+Property changes on: tim-map-evictor-system-tests/src/test/java/org/terracotta/modules/dmap/MutableConfigTest.java
+___________________________________________________________________
+Added: svn:mime-type
+   + text/x-java
+Added: svn:keywords
+   + Date Revision Author HeadURL Id
+Added: svn:eol-style
+   + native
+
+Index: tim-map-evictor/src/main/java/org/terracotta/modules/dmap/MutableConfig.java
+===================================================================
+--- tim-map-evictor/src/main/java/org/terracotta/modules/dmap/MutableConfig.java	(revision 15979)
++++ tim-map-evictor/src/main/java/org/terracotta/modules/dmap/MutableConfig.java	(working copy)
+@@ -5,8 +5,6 @@
+ package org.terracotta.modules.dmap;
+ 
+ import java.util.concurrent.locks.ReentrantReadWriteLock;
+-import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
+-import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
+ 
+ /**
+  * Initialized with default configuration values. The default values are:
+@@ -41,10 +39,16 @@
+   private boolean                loggingEnabled          = false;                       // Basic map logging
+   private boolean                evictorLoggingEnabled   = false;                       // Eviction logging
+ 
+-  private ReentrantReadWriteLock lock                    = new ReentrantReadWriteLock();
++  private final ReentrantReadWriteLock lock              = new ReentrantReadWriteLock();
++  
++  private volatile transient Config snapshot;
++  
++  public void initializeOnLoad() {
++    refresh();
++  }
+ 
+   public MutableConfig() {
+-    // no-op
++    refresh();
+   }
+ 
+   public MutableConfig(final String name, final int concurrency, final boolean evictorLoggingEnabled,
+@@ -59,146 +63,125 @@
+     this.maxTTLSeconds = maxTTLSeconds;
+     this.orphanEvictionEnabled = orphanEvictionEnabled;
+     this.orphanEvictionFrequency = orphanEvictionFrequency;
++    refresh();
+   }
+ 
+   public String getName() {
+-    return this.name;
++    return snapshot.getName();
+   }
+ 
+   public int getConcurrency() {
+-    return concurrency;
++    return snapshot.getConcurrency();
+   }
+ 
+   public int getMaxTTISeconds() {
+-    getReadLock().lock();
+-    try {
+-      return maxTTISeconds;
+-    } finally {
+-      getReadLock().unlock();
+-    }
++    return snapshot.getMaxTTISeconds();
+   }
+ 
+   public int getMaxTTLSeconds() {
+-    getReadLock().lock();
+-    try {
+-      return maxTTLSeconds;
+-    } finally {
+-      getReadLock().unlock();
+-    }
++    return snapshot.getMaxTTLSeconds();
+   }
+ 
+   public boolean isOrphanEvictionEnabled() {
+-    getReadLock().lock();
+-    try {
+-      return orphanEvictionEnabled;
+-    } finally {
+-      getReadLock().unlock();
+-    }
+-
++    return snapshot.isOrphanEvictionEnabled();
+   }
+ 
+   public int getOrphanEvictionFrequency() {
+-    getReadLock().lock();
+-    try {
+-      return orphanEvictionFrequency;
+-    } finally {
+-      getReadLock().unlock();
+-    }
++    return snapshot.getOrphanEvictionFrequency();
+   }
+ 
+   public boolean isLoggingEnabled() {
+-    getReadLock().lock();
+-    try {
+-      return loggingEnabled;
+-    } finally {
+-      getReadLock().unlock();
+-    }
++    return snapshot.isLoggingEnabled();
+   }
+ 
+   public boolean isEvictorLoggingEnabled() {
+-    getReadLock().lock();
++    return snapshot.isEvictorLoggingEnabled();
++  }
++
++  public void setConcurrency(int concurrency) {
++    lock.writeLock().lock();
+     try {
+-      return evictorLoggingEnabled;
++      this.concurrency = concurrency;
+     } finally {
+-      getReadLock().unlock();
++      lock.writeLock().unlock();
+     }
++    refresh();
+   }
+ 
+-  public void setConcurrency(int concurrency) {
+-    this.concurrency = concurrency;
+-  }
+-
+   public void setMaxTTISeconds(int maxTTISeconds) {
+-    getWriteLock().lock();
++    lock.writeLock().lock();
+     try {
+       this.maxTTISeconds = maxTTISeconds;
+     } finally {
+-      getWriteLock().unlock();
++      lock.writeLock().unlock();
+     }
++    refresh();
+   }
+ 
+   public void setMaxTTLSeconds(int maxTTLSeconds) {
+-    getWriteLock().lock();
++    lock.writeLock().lock();
+     try {
+       this.maxTTLSeconds = maxTTLSeconds;
+     } finally {
+-      getWriteLock().unlock();
++      lock.writeLock().unlock();
+     }
++    refresh();
+   }
+ 
+   public void setOrphanEvictionEnabled(boolean orphanEvictionEnabled) {
+-    getWriteLock().lock();
++    lock.writeLock().lock();
+     try {
+       this.orphanEvictionEnabled = orphanEvictionEnabled;
+     } finally {
+-      getWriteLock().unlock();
++      lock.writeLock().unlock();
+     }
++    refresh();
+   }
+ 
+   public void setOrphanEvictionFrequency(int orphanEvictionFrequency) {
+-    getWriteLock().lock();
++    lock.writeLock().lock();
+     try {
+       this.orphanEvictionFrequency = orphanEvictionFrequency;
+     } finally {
+-      getWriteLock().unlock();
++      lock.writeLock().unlock();
+     }
++    refresh();
+   }
+ 
+   public void setLoggingEnabled(boolean loggingEnabled) {
+-    getWriteLock().lock();
++    lock.writeLock().lock();
+     try {
+       this.loggingEnabled = loggingEnabled;
+     } finally {
+-      getWriteLock().unlock();
++      lock.writeLock().unlock();
+     }
+-
++    refresh();
+   }
+ 
+   public void setEvictorLoggingEnabled(boolean evictorLoggingEnabled) {
+-    getWriteLock().lock();
++    lock.writeLock().lock();
+     try {
+       this.evictorLoggingEnabled = evictorLoggingEnabled;
+     } finally {
+-      getWriteLock().unlock();
++      lock.writeLock().unlock();
+     }
++    refresh();
+   }
+ 
+   public void setName(String name) {
+-    this.name = name;
++    lock.writeLock().lock();
++    try {
++      this.name = name;
++    } finally {
++      lock.writeLock().unlock();
++    }
++    refresh();
+   }
+ 
+   public boolean isEvictionEnabled() {
+-    return getMaxTTISeconds() > 0 || getMaxTTLSeconds() > 0;
++    return snapshot.isEvictionEnabled();
+   }
+ 
+-  private ReadLock getReadLock() {
+-    return lock.readLock();
+-  }
+-
+-  private WriteLock getWriteLock() {
+-    return lock.writeLock();
+-  }
+-
+   public DynamicConfig getDynamicConfig() {
+     return this;
+   }
+@@ -207,4 +190,21 @@
+     return true;
+   }
+ 
++  public void refresh() {
++    lock.readLock().lock();
++    try {
++      // don't use the ImmutableConfig(Config) constructor; it would read the snapshot...
++      snapshot = new ImmutableConfig(name, 
++                                     concurrency, 
++                                     evictorLoggingEnabled, 
++                                     loggingEnabled, 
++                                     maxTTISeconds, 
++                                     maxTTLSeconds, 
++                                     orphanEvictionEnabled, 
++                                     orphanEvictionFrequency);
++    } finally {
++      lock.readLock().unlock();
++    }
++  }
++
+ }
+Index: tim-map-evictor/src/main/java/org/terracotta/modules/dmap/Config.java
+===================================================================
+--- tim-map-evictor/src/main/java/org/terracotta/modules/dmap/Config.java	(revision 15979)
++++ tim-map-evictor/src/main/java/org/terracotta/modules/dmap/Config.java	(working copy)
+@@ -6,9 +6,21 @@
+ 
+ /**
+  * Defines the configuration parameters for a DistributedMap.
++ * <p>
++ * Config implementations are permitted to return out-of-date results from getters; that is,
++ * a change made to a DynamicConfig may not immediately be visible. This permits clustered
++ * Configs to be accessed without locking. In order to ensure that values are up to date, the
++ * user should periodically call {@link #refresh()}.
+  */
+ public interface Config {
+   /**
++   * Take a new snapshot of the current state of the config. For immutable configs this will 
++   * generally be a no-op. For dynamic configs, calling refresh will ensure that values
++   * returned by getters reflect the most recent changes. 
++   */
++  void refresh();
++  
++  /**
+    * The concurrency allowed in the map, which you think of as the number of allowed writers for example.
+    * 
+    * @return The concurrency allowed, must be >= 1
+Index: tim-map-evictor/src/main/java/org/terracotta/modules/dmap/ImmutableConfig.java
+===================================================================
+--- tim-map-evictor/src/main/java/org/terracotta/modules/dmap/ImmutableConfig.java	(revision 15979)
++++ tim-map-evictor/src/main/java/org/terracotta/modules/dmap/ImmutableConfig.java	(working copy)
+@@ -95,4 +95,8 @@
+     return false;
+   }
+ 
++  public void refresh() {
++    //
++  }
++
+ }
+Index: tim-map-evictor/src/main/java/org/terracotta/modules/dmap/NoOpDynamicConfig.java
+===================================================================
+--- tim-map-evictor/src/main/java/org/terracotta/modules/dmap/NoOpDynamicConfig.java	(revision 15979)
++++ tim-map-evictor/src/main/java/org/terracotta/modules/dmap/NoOpDynamicConfig.java	(working copy)
+@@ -84,4 +84,8 @@
+     return this;
+   }
+ 
++  public void refresh() {
++    //
++  }
++
+ }
+Index: tim-map-evictor/src/main/java/org/terracotta/modules/evictor/EvictionScheduler.java
+===================================================================
+--- tim-map-evictor/src/main/java/org/terracotta/modules/evictor/EvictionScheduler.java	(revision 15979)
++++ tim-map-evictor/src/main/java/org/terracotta/modules/evictor/EvictionScheduler.java	(working copy)
+@@ -92,6 +92,7 @@
+       try {
+         do {
+           sleep(getSleepTimeSeconds());
++          config.refresh();
+           evictor.run();
+         } while (running);
+       } finally {
+Index: tim-map-evictor/src/main/resources/terracotta.xml
+===================================================================
+--- tim-map-evictor/src/main/resources/terracotta.xml	(revision 15979)
++++ tim-map-evictor/src/main/resources/terracotta.xml	(working copy)
+@@ -8,6 +8,10 @@
+   <instrumented-classes>
+     <include>
+       <class-expression>org.terracotta.modules.dmap.MutableConfig</class-expression>
++      <honor-transient>true</honor-transient>
++      <on-load>
++        <method>initializeOnLoad</method>
++      </on-load>
+     </include>
+     <include>
+       <class-expression>org.terracotta.modules.dmap.ImmutableConfig</class-expression>

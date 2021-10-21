@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-6.xsd">
+
+  <tc-properties>
+    <property name="l2.nha.dirtydb.autoDelete" value="true"/>
+    <property name="l1.cachemanager.enabled" value="true"/>
+    <property name="logging.maxLogFileSize" value="1024"/>
+    <property name="l2.l1reconnect.enabled" value="true"/>
+    <property name="l2.nha.tcgroupcomm.reconnect.enabled" value="true"/>
+    <property name="l1.healthcheck.l2.ping.enabled" value="true" />
+
+    <property name="l1.healthcheck.l2.ping.idletime" value="5000" />
+    <property name="l1.healthcheck.l2.ping.interval" value="1000" />
+    <property name="l1.healthcheck.l2.ping.probes" value="3" />
+    <property name="l1.healthcheck.l2.socketConnect" value="true" />
+    <property name="l1.healthcheck.l2.socketConnectTimeout" value="5" />
+    <property name="l1.healthcheck.l2.socketConnectCount" value="10" />
+
+    <property name="l2.db.factory.name" value="com.tc.objectserver.storage.derby.DerbyDBFactory" />
+  </tc-properties>
+  
+  <system>
+    <configuration-model>production</configuration-model>
+  </system>
+
+  <servers>
+    <server host="10.141.174.102" name="FNUI1">
+        <data>/opt/41st/terracotta/FNUI1/server-data</data>
+        <logs>/opt/41st/terracotta/FNUI1/server-logs</logs> 
+        <statistics>/opt/41st/terracotta/FNUI1/server-stats</statistics>
+        <jmx-port bind="10.141.174.102">9520</jmx-port>
+      <dso>
+        <persistence>
+          <mode>permanent-store</mode>
+        </persistence>
+      </dso>
+    </server>
+    <server host="10.141.174.103" name="FNUI2">
+        <data>/opt/41st/terracotta/FNUI2/server-data</data>
+        <logs>/opt/41st/terracotta/FNUI2/server-logs</logs> 
+        <statistics>/opt/41st/terracotta/FNUI2/server-stats</statistics>
+        <jmx-port bind="10.141.174.103">9520</jmx-port>
+      <dso>
+        <persistence>
+          <mode>permanent-store</mode>
+        </persistence>
+      </dso>
+    </server>
+    <ha>
+        <mode>networked-active-passive</mode>
+        <networked-active-passive>
+            <election-time>5</election-time>
+        </networked-active-passive>
+    </ha>
+  </servers>    
+</tc:tc-config>

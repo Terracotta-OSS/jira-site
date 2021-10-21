@@ -1,0 +1,114 @@
+Index: src/main/java/net/sf/ehcache/constructs/web/GenericResponseWrapper.java
+===================================================================
+--- src/main/java/net/sf/ehcache/constructs/web/GenericResponseWrapper.java	(revision 1442)
++++ src/main/java/net/sf/ehcache/constructs/web/GenericResponseWrapper.java	(working copy)
+@@ -16,14 +16,6 @@
+ 
+ package net.sf.ehcache.constructs.web;
+ 
+-import net.sf.ehcache.constructs.web.filter.FilterServletOutputStream;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-import javax.servlet.ServletOutputStream;
+-import javax.servlet.http.Cookie;
+-import javax.servlet.http.HttpServletResponse;
+-import javax.servlet.http.HttpServletResponseWrapper;
+ import java.io.IOException;
+ import java.io.OutputStream;
+ import java.io.OutputStreamWriter;
+@@ -31,9 +23,21 @@
+ import java.io.Serializable;
+ import java.util.ArrayList;
+ import java.util.Collection;
++import java.util.HashMap;
+ import java.util.List;
++import java.util.Map;
+ 
++import javax.servlet.ServletOutputStream;
++import javax.servlet.http.Cookie;
++import javax.servlet.http.HttpServletResponse;
++import javax.servlet.http.HttpServletResponseWrapper;
+ 
++import net.sf.ehcache.constructs.web.filter.FilterServletOutputStream;
++
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
++
+ /**
+  * Provides a wrapper for {@link javax.servlet.http.HttpServletResponseWrapper}.
+  * <p/>
+@@ -53,6 +57,7 @@
+     private int statusCode = SC_OK;
+     private int contentLength;
+     private String contentType;
++    private Map headerTracker = new HashMap();
+     private final List headers = new ArrayList();
+     private final List cookies = new ArrayList();
+     private ServletOutputStream outstr;
+@@ -182,13 +187,36 @@
+         final String[] header = new String[]{name, value};
+         headers.add(header);
+         super.addHeader(name, value);
++        
++        Integer count = (Integer) headerTracker.get(name.toLowerCase());
++        count = count == null ? new Integer(1) : new Integer(count.intValue() + 1) ;
++        headerTracker.put(name.toLowerCase(), count);
+     }
+ 
+     /**
+-     * @see #addHeader
++     * Sets a header overwriting any previous values for the header if
++     * it existed.
+      */
+     public void setHeader(final String name, final String value) {
+-        addHeader(name, value);
++        super.setHeader(name, value);
++        
++        Integer count = (Integer) headerTracker.get(name);
++        if (count != null && count.intValue() > 0) {
++            for (int i = headers.size()-1; i >= 0; i--) {
++                String[] header = (String[]) headers.get(i);
++                String hName = header[0];
++                if (hName.equalsIgnoreCase(name)) {
++                    if (count > 1) {
++                        headers.remove(i);
++                        count = count.intValue() - 1;
++                        headerTracker.put(name.toLowerCase(), new Integer(count));                        
++                    } else {
++                        ((String[]) headers.get(i))[1] = value;
++                    }
++
++                }
++            }            
++        }
+     }
+ 
+     /**
+@@ -250,6 +278,5 @@
+         outstr.flush();
+     }
+ 
+-
+ }
+ 
+Index: pom.xml
+===================================================================
+--- pom.xml	(revision 1442)
++++ pom.xml	(working copy)
+@@ -28,8 +28,13 @@
+             <artifactId>servlet-api</artifactId>
+             <scope>provided</scope>
+         </dependency>
+-
+         <dependency>
++            <groupId>org.mockito</groupId>
++            <artifactId>mockito-all</artifactId>
++            <version>1.8.0</version>
++            <scope>test</scope>
++        </dependency>
++        <dependency>
+             <groupId>junit</groupId>
+             <artifactId>junit</artifactId>
+             <version>4.1</version>

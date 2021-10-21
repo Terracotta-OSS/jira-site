@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd" name="cache-manager"
+         updateCheck="false" monitoring="autodetect"
+         dynamicConfig="true" maxBytesLocalHeap="10%">
+
+     <cache name="test" timeToIdleSeconds="20" timeToLiveSeconds="30" 
+           memoryStoreEvictionPolicy="LFU" 
+           copyOnRead="true" copyOnWrite="true" statistics="true" logging="true" />
+
+</ehcache>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesource.org/schema/mule/core/2.2"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xm="http://www.mulesource.org/schema/mule/xml/2.2"
+       xmlns:quartz="http://www.mulesource.org/schema/mule/quartz/2.2" 
+       xsi:schemaLocation="
+       http://www.mulesource.org/schema/mule/core/2.2 http://www.mulesource.org/schema/mule/core/2.2/mule.xsd
+       http://www.mulesource.org/schema/mule/xml/2.2 http://www.mulesource.org/schema/mule/xml/2.2/mule-xml.xsd
+       http://www.mulesource.org/schema/mule/quartz/2.2 http://www.mulesource.org/schema/mule/quartz/2.2/mule-quartz.xsd">
+         
+    <description>zCorum Enterprise Services</description>  
+    
+    <model name="enterpriseServices">
+    
+        <service name="testService">
+            <inbound>
+                <quartz:inbound-endpoint jobName="testServiceJob" cronExpression="0 * * * * ?">
+                   <quartz:event-generator-job />
+                </quartz:inbound-endpoint>
+            </inbound>
+            <log-component/>
+        </service>
+    </model>
+</mule> 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd"
+         updateCheck="false" monitoring="autodetect"
+         name="org.jahia.ehcachemanager"
+         dynamicConfig="true"
+         maxBytesLocalHeap="20M"
+         maxBytesLocalDisk="100G">
+    <diskStore path="c:/dev/temp/ehcache"/>
+
+    <transactionManagerLookup class="net.sf.ehcache.transaction.manager.DefaultTransactionManagerLookup"
+                              properties="jndiName=java:/TransactionManager" propertySeparator=";"/>
+
+    <cacheManagerEventListenerFactory class="" properties=""/>
+
+    <defaultCache
+            eternal="false"
+            timeToIdleSeconds="3600"
+            timeToLiveSeconds="14400"
+            >
+    </defaultCache>
+
+    <cache
+            name="my"
+            eternal="false"
+            timeToIdleSeconds="3600"
+            timeToLiveSeconds="14400"
+            maxBytesLocalHeap="10M"
+            >
+    </cache>            
+</ehcache>

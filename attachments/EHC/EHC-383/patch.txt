@@ -1,0 +1,39 @@
+Index: src/main/java/net/sf/ehcache/distribution/jgroups/JGroupManager.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/jgroups/JGroupManager.java	(revision 1156)
++++ src/main/java/net/sf/ehcache/distribution/jgroups/JGroupManager.java	(working copy)
+@@ -16,7 +16,6 @@
+ 
+ package net.sf.ehcache.distribution.jgroups;
+ 
+-import net.sf.ehcache.Cache;
+ import net.sf.ehcache.CacheException;
+ import net.sf.ehcache.CacheManager;
+ import net.sf.ehcache.Ehcache;
+@@ -85,7 +84,7 @@
+     }
+ 
+     private void handleJGroupNotification(JGroupSerializable e) {
+-        Cache cache = cacheManager.getCache(e.getCacheName());
++        Ehcache cache = cacheManager.getEhcache(e.getCacheName());
+         if (cache != null) {
+             if (e.getEvent() == JGroupEventMessage.REMOVE && cache.getQuiet(e.getKey()) != null) {
+                 cache.remove(e.getKey(), true);
+@@ -104,7 +103,7 @@
+ 
+     }
+ 
+-    private void sendBootstrapResponse(JGroupSerializable e, Cache cache) {
++    private void sendBootstrapResponse(JGroupSerializable e, Ehcache cache) {
+         IpAddress requestAddress = (IpAddress) e.getKey();
+         LOG.fine("received bootstrap request from " + requestAddress + ", cache=" + e.getCacheName());
+         List keys = cache.getKeys();
+@@ -134,7 +133,7 @@
+         }
+     }
+ 
+-    private void sendResponseChunk(Cache cache, IpAddress requestAddress, List events) {
++    private void sendResponseChunk(Ehcache cache, IpAddress requestAddress, List events) {
+         LOG.fine("reply " + events.size() + " elements to " + requestAddress + " to boot cache " + cache.getName());
+         try {
+             send(requestAddress, events);

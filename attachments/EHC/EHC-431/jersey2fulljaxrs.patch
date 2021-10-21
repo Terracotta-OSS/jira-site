@@ -1,0 +1,184 @@
+diff -u /home/keo/Bureau/ehcache-server-0.8-sources/net/sf/ehcache/server/rest/resources/CacheResource.java /home/keo/EclipseWorkspace/workspace_sirhen/ct-commun/src/main/java/net/sf/ehcache/server/rest/resources/CacheResource.java
+--- /home/keo/Bureau/ehcache-server-0.8-sources/net/sf/ehcache/server/rest/resources/CacheResource.java	2008-12-08 12:26:02.000000000 +0100
++++ /home/keo/EclipseWorkspace/workspace_sirhen/ct-commun/src/main/java/net/sf/ehcache/server/rest/resources/CacheResource.java	2009-10-17 00:07:23.000000000 +0200
+@@ -16,26 +16,25 @@
+ 
+ package net.sf.ehcache.server.rest.resources;
+ 
+-import com.sun.jersey.api.NotFoundException;
+-import com.sun.jersey.api.ConflictException;
+ import net.sf.ehcache.CacheManager;
+ import net.sf.ehcache.server.jaxb.Cache;
+ import net.sf.ehcache.server.jaxb.Statistics;
+ 
+ import javax.ws.rs.DELETE;
+ import javax.ws.rs.GET;
++import javax.ws.rs.HEAD;
+ import javax.ws.rs.PUT;
+ import javax.ws.rs.Path;
+ import javax.ws.rs.PathParam;
+ import javax.ws.rs.Produces;
+-import javax.ws.rs.HEAD;
++import javax.ws.rs.WebApplicationException;
+ import javax.ws.rs.core.Context;
+ import javax.ws.rs.core.Request;
+ import javax.ws.rs.core.Response;
+ import javax.ws.rs.core.UriInfo;
+ import java.net.URI;
+-import java.util.logging.Logger;
+ import java.util.logging.Level;
++import java.util.logging.Logger;
+ 
+ /**
+  * A resource for a Cache.
+@@ -59,6 +58,7 @@
+  * Deletes the Cache.
+  *
+  * @author Greg Luck
++ * @author Gregoire Autric (remove jersey API for full JAX-RS API)
+  * @version $Id$
+  */
+ @Produces("application/xml")
+@@ -114,7 +114,7 @@
+ 
+         net.sf.ehcache.Cache ehcache = MANAGER.getCache(this.cache);
+         if (ehcache == null) {
+-            throw new NotFoundException("Cache not found");
++        	throw new WebApplicationException(Response.Status.NOT_FOUND);
+         }
+         return Response.ok().build();
+     }
+@@ -129,7 +129,7 @@
+ 
+         net.sf.ehcache.Cache ehcache = MANAGER.getCache(cache);
+         if (ehcache == null) {
+-            throw new NotFoundException("Cache not found");
++        	throw new WebApplicationException(Response.Status.NOT_FOUND);
+         }
+ 
+         //The REST API has extra information encoded in the String representation.
+@@ -158,7 +158,7 @@
+             response = Response.created(uri).build();
+             LOG.log(Level.FINE, "Created Cache {}" + cache);
+         } else {
+-            throw new ConflictException("Cache already exists " + cache);
++        	throw new WebApplicationException(Response.Status.CONFLICT);
+         }
+         return response;
+     }
+@@ -173,7 +173,7 @@
+         net.sf.ehcache.Cache ehcache = MANAGER.getCache(cache);
+         Response response;
+         if (ehcache == null) {
+-            throw new NotFoundException("Cache not found " + cache);
++        	throw new WebApplicationException(Response.Status.NOT_FOUND);
+         } else {
+             CacheManager.getInstance().removeCache(cache);
+             response = Response.ok().build();
+diff -u /home/keo/Bureau/ehcache-server-0.8-sources/net/sf/ehcache/server/rest/resources/ElementResource.java /home/keo/EclipseWorkspace/workspace_sirhen/ct-commun/src/main/java/net/sf/ehcache/server/rest/resources/ElementResource.java
+--- /home/keo/Bureau/ehcache-server-0.8-sources/net/sf/ehcache/server/rest/resources/ElementResource.java	2009-04-10 16:00:12.000000000 +0200
++++ /home/keo/EclipseWorkspace/workspace_sirhen/ct-commun/src/main/java/net/sf/ehcache/server/rest/resources/ElementResource.java	2009-10-17 00:08:50.000000000 +0200
+@@ -16,15 +16,15 @@
+ 
+ package net.sf.ehcache.server.rest.resources;
+ 
+-import com.sun.jersey.api.NotFoundException;
+ import net.sf.ehcache.CacheManager;
+ import net.sf.ehcache.MimeTypeByteArray;
+ import net.sf.ehcache.server.jaxb.Element;
+ 
+ import javax.ws.rs.DELETE;
+ import javax.ws.rs.GET;
+-import javax.ws.rs.PUT;
+ import javax.ws.rs.HEAD;
++import javax.ws.rs.PUT;
++import javax.ws.rs.WebApplicationException;
+ import javax.ws.rs.core.Context;
+ import javax.ws.rs.core.EntityTag;
+ import javax.ws.rs.core.HttpHeaders;
+@@ -35,11 +35,12 @@
+ import java.net.URI;
+ import java.util.Date;
+ import java.util.List;
+-import java.util.logging.Logger;
+ import java.util.logging.Level;
++import java.util.logging.Logger;
+ 
+ /**
+  * @author Greg Luck
++ * @author Gregoire Autric (remove jersey API for full JAX-RS API)
+  * @version $Id$
+  */
+ public class ElementResource {
+@@ -97,7 +98,7 @@
+      *          if either the cache or the element is not found. Jersey will send a 404 response with the message.
+      */
+     @HEAD
+-    public Response getElementHeader() throws NotFoundException {
++    public Response getElementHeader() {
+         LOG.log(Level.FINE, "HEAD element {}", element);
+ 
+         net.sf.ehcache.Cache ehcache = lookupCache();
+@@ -127,7 +128,7 @@
+      *          if either the cache or the element is not found. Jersey will send a 404 response with the message.
+      */
+     @GET
+-    public Response getElement() throws NotFoundException {
++    public Response getElement() {
+         LOG.log(Level.FINE, "GET element {}", element);
+         net.sf.ehcache.Cache ehcache = lookupCache();
+         net.sf.ehcache.Element ehcacheElement = lookupElement(ehcache);
+@@ -164,7 +165,7 @@
+      * @throws com.sun.jersey.api.NotFoundException if the cache is not found a 404 response with the message.
+      */
+     @PUT
+-    public Response putElement(@Context HttpHeaders headers, byte[] data) throws NotFoundException {
++    public Response putElement(@Context HttpHeaders headers, byte[] data)  {
+         LOG.log(Level.FINE, "PUT element {}" + element);
+ 
+         net.sf.ehcache.Cache ehcache = lookupCache();
+@@ -230,7 +231,7 @@
+      *          if either the cache or the element did not exist
+      */
+     @DELETE
+-    public void deleteElement() throws NotFoundException {
++    public void deleteElement() {
+         LOG.log(Level.FINE, "DELETE element {0}", element);
+         net.sf.ehcache.Cache ehcache = lookupCache();
+ 
+@@ -239,7 +240,7 @@
+         } else {
+             boolean removed = ehcache.remove(element);
+             if (!removed) {
+-                throw new NotFoundException("Element " + element + " not found");
++            	throw new WebApplicationException(Response.Status.NOT_FOUND);
+             }
+         }
+     }
+@@ -284,10 +285,10 @@
+      * @throws com.sun.jersey.api.NotFoundException
+      *          if the element is not found. Jersey will send a 404 response with the message.
+      */
+-    private net.sf.ehcache.Element lookupElement(net.sf.ehcache.Cache ehcache) throws NotFoundException {
++    private net.sf.ehcache.Element lookupElement(net.sf.ehcache.Cache ehcache) {
+         net.sf.ehcache.Element ehcacheElement = ehcache.get(element);
+         if (ehcacheElement == null) {
+-            throw new NotFoundException("Element not found: " + element);
++        	throw new WebApplicationException(Response.Status.NOT_FOUND);
+         }
+         return ehcacheElement;
+     }
+@@ -299,10 +300,10 @@
+      * @throws com.sun.jersey.api.NotFoundException
+      *          if the cache is not found. Jersey will send a 404 response with the message.
+      */
+-    private net.sf.ehcache.Cache lookupCache() throws NotFoundException {
++    private net.sf.ehcache.Cache lookupCache()  {
+         net.sf.ehcache.Cache ehcache = MANAGER.getCache(cache);
+         if (ehcache == null) {
+-            throw new NotFoundException("Cache not found: " + cache);
++        	throw new WebApplicationException(Response.Status.NOT_FOUND);
+         }
+         return ehcache;
+     }
+

@@ -1,0 +1,140 @@
+2008-06-13 12:10:13,153 [main] INFO com.tc.properties.TCProperties - Loading default properties from tc.properties
+2008-06-13 12:10:13,153 [main] INFO com.tc.properties.TCProperties - Loading override properties from : C:\Program Files\eclipse\plugins\org.terracotta.dso_2.5.2.r7031_v20080218\lib\tc.properties
+2008-06-13 12:10:13,153 [main] INFO com.tc.properties.TCProperties - Loaded TCProperties : TCProperties={l2.objectmanager.maxObjectsInTxnObjGrouping=5000, l1.lock.statistics.gatherInterval=1, tc.bytebuffer.common.pool.maxcount=3000, l1.cachemanager.logging.enabled=false, l2.berkeleydb.je.cleaner.minAge=5, ehcache.evictor.pool.size=1, session.debug.hops=false, l2.nha.tribes.mcast.mcastAddress=228.0.0.4, ehcache.evictor.logging.enabled=false, l1.objectmanager.remote.maxDNALRUSize=60, session.request.bench.enabled=false, l2.transactionmanager.logging.printStats=true, l2.nha.send.timeout.millis=16000, l2.nha.tribes.orderinterceptor.enabled=false, l1.connect.versionMatchCheck.enabled=true, l1.modules.additional=, l2.berkeleydb.je.lock.timeout=180000000, l2.nha.tribes.mcast.mcastFrequency=500, l2.transactionmanager.logging.verbose=false, l2.berkeleydb.je.maxMemoryPercent=25, l2.transactionmanager.logging.enabled=false, logging.maxLogFileSize=512, l1.transactionmanager.strings.compress.enabled=true, l2.beanshell.port=9929, l2.cachemanager.logging.enabled=false, l2.cachemanager.criticalObjectThreshold=-1, l2.cachemanager.criticalThreshold=90, l1.cachemanager.criticalThreshold=90, ehcache.global.eviction.frequency=10, net.core.tcpnodelay=true, session.debug.hops.interval=100, net.core.keepalive=false, l2.nha.tribes.mcast.tcpListenHost=127.0.0.1, l2.cachemanager.enabled=true, session.request.tracking.interval=2500, tc.management.test.mbeans.enabled=false, l1.transactionmanager.completedAckFlushTimeout=5000, l1.modules.default=org.terracotta.modules.excludes_config;bundle-version:=2.5.2,org.terracotta.modules.guimodels_config;bundle-version:=2.5.2,org.terracotta.modules.jdk15_preinst_config;bundle-version:=2.5.2,org.terracotta.modules.spring_config;bundle-version:=2.5.2,org.terracotta.modules.standard_config;bundle-version:=2.5.2, ehcache.logging.enabled=false, l1.transactionmanager.maxOutstandingBatchSize=16, l1.cachemanager.sleepInterval=3000, ehcache.global.eviction.rest.timeMillis=10, session.request.tracking.threshold=15000, l2.seda.commitstage.threads=4, l1.objectmanager.remote.logging.enabled=false, l1.cachemanager.criticalObjectThreshold=-1, session.invalidator.sleep=300, l1.cachemanager.enabled=true, l1.transactionmanager.logging.enabled=false, ehcache.lock.writeLevel=WRITE, l2.nha.tribes.failuredetector.millis=5000, session.debug.sessions=false, l1.transactionmanager.maxBatchSizeInKiloBytes=128, tc.bytebuffer.pooling.enabled=true, l2.berkeleydb.je.cleaner.bytesInterval=20000000, l2.lfu.agingFactor=1, l2.objectmanager.maxObjectsToCommit=5000, logging.maxBackups=20, l2.cachemanager.leastCount=2, memory.monitor.forcebasic=false, l1.transactionmanager.maxSleepTimeBeforeHalt=1024, session.request.tracking=false, session.debug.invalidate=false, l2.cachemanager.threshold=70, l2.lfu.recentlyAccessedIgnorePercentage=20, net.core.recv.buffer=65536, l1.reconnect.timeout.millis=30000, l2.cachemanager.sleepInterval=3000, ehcache.global.eviction.segments=2, l2.beanshell.enabled=false, ehcache.concurrency=1, l1.jvm.check.compatibility=true, l2.berkeleydb.je.lock.nLockTables=7, l2.objectmanager.maxTxnsInTxnObjectGrouping=500, l2.nha.tribes.mcast.mcastPort=7777, l1.reconnect.enabled=false, l1.transactionmanager.maxPendingBatches=64, l2.berkeleydb.je.cleaner.lookAheadCacheSize=32768, ehcache.global.eviction.enable=true, l2.berkeleydb.je.checkpointer.bytesInterval=100000000, l2.nha.tribes.mcast.tcpListenPort=4000, l2.objectmanager.loadObjectID.fastLoad=false, l2.objectmanager.cachePolicy=lfu, l2.objectmanager.loadObjectID.longsPerMemoryEntry=128, l1.lock.statistics.traceDepth=1, l2.lfu.debug.enabled=false, l2.cachemanager.percentageToEvict=10, l1.cachemanager.percentageToEvict=10, session.vhosts.excluded=, tc.management.mbeans.enabled=true, l2.seda.flushstage.threads=4, net.core.send.buffer=65536, console.showObjectID=true, l1.modules.repositories=, l2.objectmanager.fault.logging.enabled=false, l2.berkeleydb.je.cleaner.detailMaxMemoryPercentage=5, l1.transactionmanager.strings.compress.minSize=512, session.request.tracking.dump=false, l2.nha.mcast.enabled=false, ehcache.lock.readLevel=READ, l2.seda.faultstage.threads=4, tc.stage.monitor.enabled=false, l2.cachemanager.monitorOldGenOnly=true, l1.cachemanager.monitorOldGenOnly=true, tc.stage.monitor.delay=5000, l2.objectmanager.deleteBatchSize=5000, l1.cachemanager.threshold=70, l2.objectmanager.loadObjectID.longsPerDiskEntry=4, lock.statistics.enabled=false, tc.bytebuffer.threadlocal.pool.maxcount=2000, session.invalidator.bench.enabled=true, l1.transactionmanager.strings.compress.logging.enabled=false, l2.nha.tribes.mcast.memberDropTime=3000, l1.cachemanager.leastCount=2, l1.max.connect.retries=-1}
+2008-06-13 12:10:13,169 [main] INFO com.terracottatech.general - New logging session started.
+2008-06-13 12:10:13,184 [main] INFO com.terracottatech.console - Terracotta 2.5.2, as of 20080218-120250 (Revision 7031 by cruise@rh4mo0 from 2.5)
+2008-06-13 12:10:13,184 [main] INFO com.tc.logging.TCLogging - Terracotta 2.5.2, as of 20080218-120250 (Revision 7031 by cruise@rh4mo0 from 2.5)
+2008-06-13 12:10:13,419 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Attempting to load configuration from the file at 'C:\work\eclipse\workspace-HEAD\RWLockTest\tc-config.xml'...
+2008-06-13 12:10:13,419 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Successfully loaded configuration from the file at 'C:\work\eclipse\workspace-HEAD\RWLockTest\tc-config.xml'. Config is:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<con:tc-config xmlns:con="http://www.terracotta.org/config">
+  <servers>
+    <server host="%i" name="localhost">
+      <dso-port>9510</dso-port>
+      <jmx-port>9520</jmx-port>
+      <data>terracotta/server-data</data>
+      <logs>terracotta/server-logs</logs>
+    </server>
+  </servers>
+  <clients>
+    <logs>terracotta/client-logs</logs>
+  </clients>
+  <application>
+    <dso>
+      <instrumented-classes/>
+      <roots>
+        <root>
+          <field-name>SimpleRWLockTest.lock</field-name>
+        </root>
+      </roots>
+    </dso>
+  </application>
+</con:tc-config>
+2008-06-13 12:10:13,591 [main] INFO com.terracottatech.console - Configuration loaded from the file at 'C:\work\eclipse\workspace-HEAD\RWLockTest\tc-config.xml'.
+2008-06-13 12:10:13,763 [main] INFO com.terracottatech.console - Log file: 'C:\work\eclipse\workspace-HEAD\RWLockTest\terracotta\client-logs\terracotta-client.log'.
+2008-06-13 12:10:13,778 [main] INFO com.tc.logging.TCLogging - ========================================================================
+All Java System Properties for this Terracotta instance:
+awt.toolkit                  : sun.awt.windows.WToolkit
+file.encoding                : Cp1252
+file.encoding.pkg            : sun.io
+file.separator               : \
+java.awt.graphicsenv         : sun.awt.Win32GraphicsEnvironment
+java.awt.printerjob          : sun.awt.windows.WPrinterJob
+java.class.path              : C:\work\eclipse\workspace-HEAD\RWLockTest\bin;C:\work\eclipse\workspace-HEAD\ThirdPartyLibs\ext\junit.jar;/C:/Program Files/eclipse/configuration/org.eclipse.osgi/bundles/205/1/.cp/;/C:/Program Files/eclipse/configuration/org.eclipse.osgi/bundles/203/1/.cp/
+java.class.version           : 50.0
+java.endorsed.dirs           : C:\jdk1.6.0_04\jre\lib\endorsed
+java.ext.dirs                : C:\jdk1.6.0_04\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext
+java.home                    : C:\jdk1.6.0_04\jre
+java.io.tmpdir               : C:\DOCUME~1\florescu\LOCALS~1\Temp\
+java.library.path            : C:\jdk1.6.0_04\bin;.;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\jdk1.6.0_04\jre\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\ActivCard\ActivCard Gold\resources;C:\Program Files\MySQL\MySQL Server 5.0\bin;C:\java\apache-maven-2.0.8\bin;c:\jdk1.6.0_04\bin;C:\Program Files\QuickTime\QTSystem\
+java.runtime.name            : Java(TM) SE Runtime Environment
+java.runtime.version         : 1.6.0_04-b12
+java.specification.name      : Java Platform API Specification
+java.specification.vendor    : Sun Microsystems Inc.
+java.specification.version   : 1.6
+java.vendor                  : Sun Microsystems Inc.
+java.vendor.url              : http://java.sun.com/
+java.vendor.url.bug          : http://java.sun.com/cgi-bin/bugreport.cgi
+java.version                 : 1.6.0_04
+java.vm.info                 : mixed mode
+java.vm.name                 : Java HotSpot(TM) Client VM
+java.vm.specification.name   : Java Virtual Machine Specification
+java.vm.specification.vendor : Sun Microsystems Inc.
+java.vm.specification.version: 1.0
+java.vm.vendor               : Sun Microsystems Inc.
+java.vm.version              : 10.0-b19
+line.separator               : 
+
+os.arch                      : x86
+os.name                      : Windows XP
+os.version                   : 5.1
+path.separator               : ;
+project.name                 : RWLockTest
+sun.arch.data.model          : 32
+sun.boot.class.path          : C:\work\eclipse\workspace-HEAD\RWLockTest\dso-boot-hotspot_win32_160_04.jar;C:\jdk1.6.0_04\jre\lib\resources.jar;C:\jdk1.6.0_04\jre\lib\rt.jar;C:\jdk1.6.0_04\jre\lib\sunrsasign.jar;C:\jdk1.6.0_04\jre\lib\jsse.jar;C:\jdk1.6.0_04\jre\lib\jce.jar;C:\jdk1.6.0_04\jre\lib\charsets.jar;C:\jdk1.6.0_04\jre\classes
+sun.boot.library.path        : C:\jdk1.6.0_04\jre\bin
+sun.cpu.endian               : little
+sun.cpu.isalist              : pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86
+sun.desktop                  : windows
+sun.io.unicode.encoding      : UnicodeLittle
+sun.java.launcher            : SUN_STANDARD
+sun.jnu.encoding             : Cp1252
+sun.management.compiler      : HotSpot Client Compiler
+sun.os.patch.level           : Service Pack 2
+tc.config                    : C:\work\eclipse\workspace-HEAD\RWLockTest\tc-config.xml
+tc.install-root              : C:\Program Files\eclipse\plugins\org.terracotta.dso_2.5.2.r7031_v20080218
+user.country                 : US
+user.dir                     : C:\work\eclipse\workspace-HEAD\RWLockTest
+user.home                    : C:\Documents and Settings\florescu
+user.language                : en
+user.name                    : florescu
+user.timezone                : America/Los_Angeles
+user.variant                 : 
+========================================================================
+
+2008-06-13 12:10:16,591 [main] INFO com.tc.net.core.TCComm - Comm Worker Threads NOT requested
+2008-06-13 12:10:16,903 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - ConnectionID(-1.ffffffffffffffffffffffffffffffff): Attaching new connection: com.tc.net.core.TCConnectionJDK14@2293223: connected: true, closed: false local=10.255.147.128:3162 remote=10.255.147.128:9510 connect=[Fri Jun 13 12:10:16 PDT 2008] idle=15ms
+2008-06-13 12:10:16,966 [WorkerThread(client_coordination_stage,0)] INFO com.tc.object.handshakemanager.ClientHandshakeManager - ChannelID=[0]: Unpause State[ PAUSED ]
+2008-06-13 12:10:17,388 [L1Management JMX registration] INFO com.tc.management.L1Management - Terracotta JMX connector available at[service:jmx:terracotta://localhost]
+2008-06-13 12:10:17,403 [L1Management JMX registration] INFO com.tc.management.remote.protocol.terracotta.TunnelingEventHandler - Client JMX server ready; sending notification to L2 server
+2008-06-13 12:10:22,138 [main] ERROR com.tc.object.bytecode.Manager - Exception thrown
+com.tc.exception.TCLockUpgradeNotSupportedError: 
+*******************************************************************************
+Lock upgrade is not supported. The READ lock needs to be unlocked before a WRITE lock can be requested. 
+
+*******************************************************************************
+
+	at com.tc.object.lockmanager.impl.ClientLock.basicLock(ClientLock.java:148)
+	at com.tc.object.lockmanager.impl.ClientLock.lock(ClientLock.java:117)
+	at com.tc.object.lockmanager.impl.ClientLock.tryLock(ClientLock.java:102)
+	at com.tc.object.lockmanager.impl.ClientLockManagerImpl.tryLock(ClientLockManagerImpl.java:237)
+	at com.tc.object.lockmanager.impl.ThreadLockManagerImpl.tryLock(ThreadLockManagerImpl.java:50)
+	at com.tc.object.tx.ClientTransactionManagerImpl.tryBegin(ClientTransactionManagerImpl.java:148)
+	at com.tc.object.bytecode.ManagerImpl.tryBegin(ManagerImpl.java:330)
+	at com.tc.object.bytecode.ManagerImpl.tryMonitorEnter(ManagerImpl.java:549)
+	at com.tc.object.bytecode.ManagerUtil.tryMonitorEnter(ManagerUtil.java:527)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$DsoLock.tryLock(ReentrantReadWriteLock/java:50)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.tryLock(ReentrantReadWriteLock/java)
+	at SimpleRWLockTest.test(SimpleRWLockTest.java:19)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at junit.framework.TestCase.runTest(TestCase.java:154)
+	at junit.framework.TestCase.runBare(TestCase.java:127)
+	at junit.framework.TestResult$1.protect(TestResult.java:106)
+	at junit.framework.TestResult.runProtected(TestResult.java:124)
+	at junit.framework.TestResult.run(TestResult.java:109)
+	at junit.framework.TestCase.run(TestCase.java:118)
+	at junit.framework.TestSuite.runTest(TestSuite.java:208)
+	at junit.framework.TestSuite.run(TestSuite.java:203)
+	at org.eclipse.jdt.internal.junit.runner.junit3.JUnit3TestReference.run(JUnit3TestReference.java:130)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)
+2008-06-13 12:11:16,749 [DSO Lock Object.wait() timer] INFO com.tc.object.lockmanager.api.ClientLockManager - ChannelID=[0]: Running Lock GC...
+2008-06-13 12:12:16,751 [DSO Lock Object.wait() timer] INFO com.tc.object.lockmanager.api.ClientLockManager - ChannelID=[0]: Running Lock GC...
+2008-06-13 12:13:16,753 [DSO Lock Object.wait() timer] INFO com.tc.object.lockmanager.api.ClientLockManager - ChannelID=[0]: Running Lock GC...

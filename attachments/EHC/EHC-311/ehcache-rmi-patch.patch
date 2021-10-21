@@ -1,0 +1,43 @@
+Index: core/src/main/java/net/sf/ehcache/distribution/ConfigurableRMIClientSocketFactory.java
+===================================================================
+--- core/src/main/java/net/sf/ehcache/distribution/ConfigurableRMIClientSocketFactory.java	(revision 989)
++++ core/src/main/java/net/sf/ehcache/distribution/ConfigurableRMIClientSocketFactory.java	(working copy)
+@@ -69,7 +69,8 @@
+      * @since 1.2
+      */
+     public Socket createSocket(String host, int port) throws IOException {
+-        Socket socket = RMISocketFactory.getDefaultSocketFactory().createSocket(host, port);
++        RMISocketFactory sf = (RMISocketFactory.getSocketFactory() == null) ? RMISocketFactory.getDefaultSocketFactory() : RMISocketFactory.getSocketFactory();
++        Socket socket = sf.createSocket(host, port);
+ 
+         socket.setSoTimeout(socketTimeoutMillis);
+         
+Index: core/src/main/java/net/sf/ehcache/distribution/RMICacheManagerPeerListener.java
+===================================================================
+--- core/src/main/java/net/sf/ehcache/distribution/RMICacheManagerPeerListener.java	(revision 989)
++++ core/src/main/java/net/sf/ehcache/distribution/RMICacheManagerPeerListener.java	(working copy)
+@@ -312,7 +312,7 @@
+      */
+     protected void startRegistry() throws RemoteException {
+         try {
+-            registry = LocateRegistry.getRegistry(port.intValue());
++            registry = LocateRegistry.getRegistry(hostName,port.intValue());
+             try {
+                 registry.list();
+             } catch (RemoteException e) {
+Index: core/src/main/java/net/sf/ehcache/distribution/RMICachePeer.java
+===================================================================
+--- core/src/main/java/net/sf/ehcache/distribution/RMICachePeer.java	(revision 989)
++++ core/src/main/java/net/sf/ehcache/distribution/RMICachePeer.java	(working copy)
+@@ -62,9 +62,8 @@
+     public RMICachePeer(Ehcache cache, String hostName, Integer rmiRegistryPort, Integer remoteObjectPort,
+                         Integer socketTimeoutMillis)
+             throws RemoteException {
+-        super(remoteObjectPort.intValue(), new ConfigurableRMIClientSocketFactory(socketTimeoutMillis),
+-                RMISocketFactory.getDefaultSocketFactory());
+-
++         super(remoteObjectPort.intValue(), new ConfigurableRMIClientSocketFactory(socketTimeoutMillis),
++                (RMISocketFactory.getSocketFactory() == null) ? RMISocketFactory.getDefaultSocketFactory() : RMISocketFactory.getSocketFactory());
+         this.remoteObjectPort = remoteObjectPort;
+         this.hostname = hostName;
+         this.rmiRegistryPort = rmiRegistryPort;

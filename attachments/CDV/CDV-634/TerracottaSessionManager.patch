@@ -1,0 +1,13 @@
+Index: TerracottaSessionManager.java
+===================================================================
+--- TerracottaSessionManager.java	(revision 10775)
++++ TerracottaSessionManager.java	(working copy)
+@@ -595,7 +595,7 @@
+           }
+           return rv;
+         }
+-        if (!sd.isValid(debugInvalidate, logger)) {
++        if (!sd.isReallyValid(debugInvalidate, logger)) {
+           if (debugInvalidate) {
+             logger.info(id.getKey() + " IS invalid");
+           }

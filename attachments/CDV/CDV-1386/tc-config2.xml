@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config">
+  <servers>
+    <!--Tell DSO where the Terracotta server can be found.-->
+    <server host="localhost" name="TCCalenderBugServer">
+      <data>Z:\junk\target\terracotta-data\logs\server-data</data>
+      <logs>Z:\junk\target\terracotta-data\logs\server-logs</logs>
+    </server>
+  </servers>
+  <clients>
+    <logs>Z:\junk\target\terracotta-data\logs\client-logs</logs>
+    <statistics>Z:\junk\target\terracotta-data\logs\clients-statistics</statistics>
+    <dso>
+      <debugging>
+        <runtime-logging>
+          <non-portable-dump>false</non-portable-dump>
+          <lock-debug>false</lock-debug>
+          <wait-notify-debug>false</wait-notify-debug>
+          <distributed-method-debug>false</distributed-method-debug>
+          <new-object-debug>false</new-object-debug>
+        </runtime-logging>
+      </debugging>
+    </dso>
+  </clients>
+  <application>
+    <dso>
+      <locks>
+      <autolock auto-synchronized="true">
+          <method-expression>void java.util.Calendar.complete(..)</method-expression>
+          <lock-level>write</lock-level>
+        </autolock>
+      <autolock auto-synchronized="true">
+          <method-expression>void java.util.Calendar.setFieldsComputed(..)</method-expression>
+          <lock-level>write</lock-level>
+        </autolock>
+      <autolock auto-synchronized="true">
+          <method-expression>void java.util.Calendar.internalSet(..)</method-expression>
+          <lock-level>write</lock-level>
+        </autolock>
+        <autolock auto-synchronized="true">
+          <method-expression>void java.util.Calendar.setTimeInMillis(..)</method-expression>
+          <lock-level>write</lock-level>
+        </autolock>
+      </locks>
+      <roots>
+        <root>
+          <field-name>com.terracottatest.CalendarTest.sut</field-name>
+        </root>
+      </roots>
+      <additional-boot-jar-classes>
+        <include>java.util.TimeZone</include>
+        <include>sun.util.calendar.ZoneInfo</include>
+      </additional-boot-jar-classes>
+      <instrumented-classes>
+        <include>
+          <class-expression>com.terracottatest.CalendarTest</class-expression>
+        </include>
+        <include>
+          <class-expression>java.util.Calendar</class-expression>
+          <honor-transient>true</honor-transient>
+        </include>
+      </instrumented-classes>
+    </dso>
+  </application>
+</tc:tc-config>

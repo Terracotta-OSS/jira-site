@@ -1,0 +1,41 @@
+Index: tim-distributed-cache/src/main/java/org/terracotta/cache/impl/DistributedCacheImpl.java
+===================================================================
+--- tim-distributed-cache/src/main/java/org/terracotta/cache/impl/DistributedCacheImpl.java	(revision 19720)
++++ tim-distributed-cache/src/main/java/org/terracotta/cache/impl/DistributedCacheImpl.java	(working copy)
+@@ -21,6 +21,7 @@
+ 
+ import com.tc.cluster.DsoCluster;
+ import com.tc.logging.TCLogger;
++import com.tc.object.bytecode.Manager;
+ import com.tc.object.bytecode.ManagerUtil;
+ import com.tc.object.bytecode.NotClearable;
+ import com.tc.util.Assert;
+@@ -153,7 +154,8 @@
+   }
+ 
+   /**
+-   * Get an entry for the specified key. If the entry is expired, it will be evicted from the cache (thus this, get may
++   * Get an entry for the specified key. If the entry is expired, it will be evicted from the cache,
++   * except if a read lock is currently held by the current thread on the key (otherwise, get may
+    * incur a write lock during removal). If markUsed is set, the entry's last accessed timestamp will be updated.
+    *
+    * @param key The key for the entry to get
+@@ -167,13 +169,16 @@
+     if (isEvictionEnabled() || isCapacityEvictionEnabled()) {
+       final int now = getTime();
+ 
++      String lockId = getLockIdForKey(key);
+       if (entry.isExpired(now, config)) {
+-        evict(key, entry, now);
++        if (!ManagerUtil.isLockHeldByCurrentThread(lockId, Manager.LOCK_TYPE_READ)) {
++          evict(key, entry, now);
++        }
+         return null;
+       }
+ 
+       if (markUsed) {
+-        entry.markUsed(now, getLockIdForKey(key), config);
++        entry.markUsed(now, lockId, config);
+       }
+     }
+ 

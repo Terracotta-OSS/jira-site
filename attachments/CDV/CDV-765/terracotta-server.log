@@ -1,0 +1,211 @@
+2008-05-27 21:39:44,311 [main] INFO com.tc.properties.TCProperties - Loading default properties from tc.properties
+2008-05-27 21:39:44,311 [main] INFO com.tc.properties.TCProperties - Loaded TCProperties : TCProperties={l2.objectmanager.maxObjectsInTxnObjGrouping=5000, l1.lock.statistics.gatherInterval=1, tc.bytebuffer.common.pool.maxcount=3000, l1.cachemanager.logging.enabled=false, l2.berkeleydb.je.cleaner.minAge=5, ehcache.evictor.pool.size=1, session.debug.hops=false, l2.nha.tribes.mcast.mcastAddress=228.0.0.4, ehcache.evictor.logging.enabled=false, l1.objectmanager.remote.maxDNALRUSize=60, session.request.bench.enabled=false, l2.transactionmanager.logging.printStats=true, l2.nha.send.timeout.millis=16000, l2.nha.tribes.orderinterceptor.enabled=false, l1.connect.versionMatchCheck.enabled=true, l2.startuplock.retries.enabled=false, l1.modules.additional=, l2.berkeleydb.je.lock.timeout=180000000, l2.nha.tribes.mcast.mcastFrequency=500, l2.transactionmanager.logging.verbose=false, l2.berkeleydb.je.maxMemoryPercent=25, l2.transactionmanager.logging.enabled=false, logging.maxLogFileSize=512, l1.transactionmanager.strings.compress.enabled=true, l2.beanshell.port=9929, l2.cachemanager.logging.enabled=false, l2.cachemanager.criticalObjectThreshold=-1, l2.cachemanager.criticalThreshold=90, l1.cachemanager.criticalThreshold=90, ehcache.global.eviction.frequency=10, net.core.tcpnodelay=true, session.debug.hops.interval=100, net.core.keepalive=false, l2.nha.tribes.mcast.tcpListenHost=127.0.0.1, l2.cachemanager.enabled=true, session.request.tracking.interval=2500, tc.management.test.mbeans.enabled=false, l1.transactionmanager.completedAckFlushTimeout=5000, l1.modules.default=org.terracotta.modules.excludes-config;bundle-version:=2.5.4,org.terracotta.modules.guimodels-config;bundle-version:=2.5.4,org.terracotta.modules.jdk15-preinst-config;bundle-version:=2.5.4,org.terracotta.modules.spring-config;bundle-version:=2.5.4,org.terracotta.modules.standard-config;bundle-version:=2.5.4, ehcache.logging.enabled=false, l1.transactionmanager.maxOutstandingBatchSize=16, l1.cachemanager.sleepInterval=3000, ehcache.global.eviction.rest.timeMillis=10, session.request.tracking.threshold=15000, l2.seda.commitstage.threads=4, l1.objectmanager.remote.logging.enabled=false, l1.cachemanager.criticalObjectThreshold=-1, session.invalidator.sleep=300, l1.cachemanager.enabled=true, l1.transactionmanager.logging.enabled=false, ehcache.lock.writeLevel=WRITE, l2.nha.tribes.failuredetector.millis=5000, session.debug.sessions=false, l1.transactionmanager.maxBatchSizeInKiloBytes=128, tc.bytebuffer.pooling.enabled=true, l2.berkeleydb.je.cleaner.bytesInterval=20000000, l2.lfu.agingFactor=1, l2.objectmanager.maxObjectsToCommit=5000, logging.maxBackups=20, l2.cachemanager.leastCount=2, memory.monitor.forcebasic=false, l1.transactionmanager.maxSleepTimeBeforeHalt=1024, session.request.tracking=false, session.debug.invalidate=false, l2.cachemanager.threshold=70, l2.lfu.recentlyAccessedIgnorePercentage=20, net.core.recv.buffer=65536, l1.reconnect.timeout.millis=5000, l2.cachemanager.sleepInterval=3000, ehcache.global.eviction.segments=2, l2.beanshell.enabled=false, ehcache.concurrency=1, l1.jvm.check.compatibility=true, l2.berkeleydb.je.lock.nLockTables=7, l2.objectmanager.maxTxnsInTxnObjectGrouping=500, l2.nha.tribes.mcast.mcastPort=7777, l1.reconnect.enabled=false, l1.transactionmanager.maxPendingBatches=64, l2.berkeleydb.je.cleaner.lookAheadCacheSize=32768, ehcache.global.eviction.enable=true, l2.berkeleydb.je.checkpointer.bytesInterval=100000000, l2.nha.tribes.mcast.tcpListenPort=4000, l2.objectmanager.loadObjectID.fastLoad=false, l2.objectmanager.cachePolicy=lfu, l2.objectmanager.loadObjectID.longsPerMemoryEntry=128, l1.lock.statistics.traceDepth=1, l2.lfu.debug.enabled=false, l2.cachemanager.percentageToEvict=10, l1.cachemanager.percentageToEvict=10, session.vhosts.excluded=, tc.management.mbeans.enabled=true, l2.seda.flushstage.threads=4, net.core.send.buffer=65536, console.showObjectID=true, l1.modules.repositories=, l2.objectmanager.fault.logging.enabled=false, l2.berkeleydb.je.cleaner.detailMaxMemoryPercentage=5, l1.transactionmanager.strings.compress.minSize=512, session.request.tracking.dump=false, l2.nha.mcast.enabled=false, ehcache.lock.readLevel=READ, l2.seda.faultstage.threads=4, tc.stage.monitor.enabled=false, l2.cachemanager.monitorOldGenOnly=true, l1.cachemanager.monitorOldGenOnly=true, tc.stage.monitor.delay=5000, l2.objectmanager.deleteBatchSize=5000, l1.cachemanager.threshold=70, l2.objectmanager.loadObjectID.longsPerDiskEntry=4, lock.statistics.enabled=false, tc.bytebuffer.threadlocal.pool.maxcount=2000, session.invalidator.bench.enabled=true, l1.transactionmanager.strings.compress.logging.enabled=false, l2.nha.tribes.mcast.memberDropTime=3000, l1.cachemanager.leastCount=2, l1.max.connect.retries=-1}
+2008-05-27 21:39:44,316 [main] INFO com.terracottatech.general - New logging session started.
+2008-05-27 21:39:44,331 [main] INFO com.terracottatech.console - Terracotta 2.5.4, as of 20080328-160336 (Revision 7748 by cruise@rh4mo0 from 2.5)
+2008-05-27 21:39:44,331 [main] INFO com.tc.logging.TCLogging - Terracotta 2.5.4, as of 20080328-160336 (Revision 7748 by cruise@rh4mo0 from 2.5)
+2008-05-27 21:39:44,504 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Attempting to load configuration from the file at '/opt/songtexte/webapp/WEB-INF/classes/tc-config.xml'...
+2008-05-27 21:39:44,506 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Successfully loaded configuration from the file at '/opt/songtexte/webapp/WEB-INF/classes/tc-config.xml'. Config is:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config">
+  <servers>
+    <server name="localhost" host="localhost">
+      <dso-port>9510</dso-port>
+      <jmx-port>9520</jmx-port>
+      <data>/opt/myapp/terracotta</data>
+      <logs>/var/log/myapp/terracotta/server</logs>
+
+      <dso>
+        <persistence>
+          <mode>permanent-store</mode>
+        </persistence>
+      </dso>
+    </server>
+  </servers>
+  <clients>
+
+    <modules>
+      <module name="clustered-wicket-1.3" version="2.5.4"/>
+      <module name="clustered-jetty-6.1" version="2.5.4"/>
+      <module name="clustered-cglib-2.1.3" version="2.5.4"/>
+    </modules>
+    <logs>/var/log/myapp/terracotta/client</logs>
+  </clients>
+  <application>
+
+    <dso>
+      <instrumented-classes>
+      	<!-- jetty -->
+        <exclude>org.mortbay.jetty..*</exclude>
+        <exclude>org.apache.jasper..*</exclude>
+        <exclude>org.mortbay.thread.BoundedThreadPool</exclude>
+        <exclude>org.mortbay.component.AbstractLifeCycle</exclude>
+
+        <!-- jetty terracotta sessions -->
+        <include>
+          <class-expression>org.mortbay.terracotta..*</class-expression>
+        </include>
+        <include>
+          <class-expression>org.mortbay.terracotta.servlet.TerracottaSessionManager$SessionData</class-expression>
+        </include>
+        <!-- wicket -->
+
+        <include>
+          <class-expression>org.apache.wicket.util.collections.MiniMap</class-expression>
+        </include>
+        <include>
+          <class-expression>org.wicketstuff.dojo.AbstractRequireDojoBehavior$RequireDojoLibs</class-expression>
+        </include>
+        <include>
+          <class-expression>org.wicketstuff.dojo.widgets.StyleAttribute</class-expression>
+
+        </include>
+        <!-- lucene directory stuff -->
+        <include>
+          <class-expression>at.molindo.util.terracotta.*</class-expression>
+        </include>
+        <include>
+          <class-expression>org.apache.lucene.store.Directory</class-expression>
+        </include>
+
+        <include>
+          <class-expression>org.apache.lucene.store.LockFactory</class-expression>
+        </include>
+        <!-- hibernate -->
+        <include>
+          <class-expression>at.molindo.util.hibernate.EnumUserType</class-expression>
+        </include>
+      </instrumented-classes>
+
+      <roots>
+        <root>
+          <field-name>org.mortbay.terracotta.servlet.TerracottaSessionManager._sessionDataMap</field-name>
+          <root-name>sessionTimeoutMap</root-name>
+        </root>
+        <root>
+          <field-name>org.mortbay.terracotta.servlet.TerracottaSessionIdManager._sessionIds</field-name>
+
+          <root-name>sessionIdMap</root-name>
+        </root>
+        <root>
+          <field-name>at.molindo.util.terracotta.ClusteredTerracottaDirectoryProvider._directories</field-name>
+          <root-name>luceneTerracottaDirectories</root-name>
+        </root>
+      </roots>
+
+      <locks>
+        <autolock>
+          <method-expression>* org.mortbay.terracotta.servlet.*.*(..)</method-expression>
+          <lock-level>write</lock-level>
+        </autolock>
+	
+        <!-- compass' RAMDirectory -->
+        <autolock>
+          <method-expression>* at.molindo.util.terracotta.*.*(..)</method-expression>
+
+          <lock-level>write</lock-level>
+        </autolock>
+        <autolock>
+          <method-expression>* at.molindo.util.terracotta.*.get*(..)</method-expression>
+          <lock-level>read</lock-level>
+        </autolock>
+        
+      </locks>
+
+      <web-applications>
+        <web-application>ROOT</web-application>
+      </web-applications>
+    </dso>
+  </application>
+</tc:tc-config>
+2008-05-27 21:39:44,646 [main] INFO com.terracottatech.console - Configuration loaded from the file at '/opt/myapp/webapp/WEB-INF/classes/tc-config.xml'.
+2008-05-27 21:39:44,734 [main] INFO com.terracottatech.console - Log file: '/var/log/myapp/terracotta/server/terracotta-server.log'.
+2008-05-27 21:39:44,736 [main] INFO com.tc.logging.TCLogging - ========================================================================
+All Java System Properties for this Terracotta instance:
+com.sun.management.jmxremote :
+file.encoding                : UTF-8
+file.encoding.pkg            : sun.io
+file.separator               : /
+java.awt.graphicsenv         : sun.awt.X11GraphicsEnvironment
+java.awt.printerjob          : sun.print.PSPrinterJob
+java.class.path              : /opt/terracotta/bin/../lib/tc.jar
+java.class.version           : 50.0
+java.endorsed.dirs           : /usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/endorsed
+java.ext.dirs                : /usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/ext:/usr/java/packages/lib/ext
+java.home                    : /usr/lib/jvm/java-6-sun-1.6.0.06/jre
+java.io.tmpdir               : /tmp
+java.library.path            : /usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/amd64/server:/usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/amd64:/usr/lib/jvm/java-6-sun-1.6.0.06/jre/../lib/amd64:/usr/java/packages/lib/amd64:/lib:/usr/lib
+java.rmi.server.randomIDs    : true
+java.runtime.name            : Java(TM) SE Runtime Environment
+java.runtime.version         : 1.6.0_06-b02
+java.specification.name      : Java Platform API Specification
+java.specification.vendor    : Sun Microsystems Inc.
+java.specification.version   : 1.6
+java.vendor                  : Sun Microsystems Inc.
+java.vendor.url              : http://java.sun.com/
+java.vendor.url.bug          : http://java.sun.com/cgi-bin/bugreport.cgi
+java.version                 : 1.6.0_06
+java.vm.info                 : mixed mode
+java.vm.name                 : Java HotSpot(TM) 64-Bit Server VM
+java.vm.specification.name   : Java Virtual Machine Specification
+java.vm.specification.vendor : Sun Microsystems Inc.
+java.vm.specification.version: 1.0
+java.vm.vendor               : Sun Microsystems Inc.
+java.vm.version              : 10.0-b22
+line.separator               :
+
+os.arch                      : amd64
+os.name                      : Linux
+os.version                   : 2.6.24-16-server
+path.separator               : :
+sun.arch.data.model          : 64
+sun.boot.class.path          : /usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/resources.jar:/usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/rt.jar:/usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/jsse.jar:/usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/jce.jar:/usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/charsets.jar:/usr/lib/jvm/java-6-sun-1.6.0.06/jre/classes
+sun.boot.library.path        : /usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/amd64
+sun.cpu.endian               : little
+sun.cpu.isalist              :
+sun.io.unicode.encoding      : UnicodeLittle
+sun.java.launcher            : SUN_STANDARD
+sun.jnu.encoding             : UTF-8
+sun.management.compiler      : HotSpot 64-Bit Server Compiler
+sun.os.patch.level           : unknown
+tc.install-root              : /opt/terracotta/bin/..
+user.country                 : US
+user.dir                     : /
+user.home                    : /root
+user.language                : en
+user.name                    : root
+user.timezone                : Europe/Vienna
+========================================================================
+
+2008-05-27 21:39:45,026 [main] INFO com.terracottatech.console - JMX Server started. Available at URL[service:jmx:jmxmp://0.0.0.0:9520]
+2008-05-27 21:39:45,049 [main] INFO com.tc.objectserver.persistence.sleepycat.DBEnvironment - Env config = allowCreate=true
+{je.cleaner.minAge=5, je.cleaner.bytesInterval=20000000, je.env.isTransactional=true, je.cleaner.lookAheadCacheSize=32768, je.env.isReadOnly=false, je.maxMemoryPercent=25, je.lock.nLockTables=7, je.checkpointer.bytesInterval=100000000, je.cleaner.detailMaxMemoryPercentage=5, je.lock.timeout=180000000} DB Config = com.sleepycat.je.DatabaseConfig@5d15126e JE Properties = {je.cleaner.detailMaxMemoryPercentage=5, je.cleaner.bytesInterval=20000000, je.checkpointer.bytesInterval=100000000, je.cleaner.lookAheadCacheSize=32768, je.maxMemoryPercent=25, je.lock.nLockTables=7, je.cleaner.minAge=5, je.lock.timeout=180000000}
+2008-05-27 21:39:51,826 [main] INFO com.tc.net.core.TCWorkerCommManager - Creating 4 worker comm threads.
+2008-05-27 21:39:52,527 [main] INFO com.tc.objectserver.tx.ServerTransactionManager - Waiting for txns to complete
+2008-05-27 21:39:52,528 [main] INFO com.tc.objectserver.tx.ServerTransactionManager - No more txns in the system.
+2008-05-27 21:39:52,545 [main] INFO com.terracottatech.console - Starting reconnect window: 120000 ms.
+2008-05-27 21:39:52,562 [main] INFO com.tc.net.protocol.transport.ServerStackProvider - Preparing comms stack for previously connected client: ConnectionID(41.d9c3bbd3a59b4e10a0832b98cffed290)
+2008-05-27 21:39:52,620 [main] INFO com.terracottatech.console - Terracotta Server has started up as ACTIVE node on 0:0:0:0:0:0:0:0:9510 successfully, and is now ready for work.
+2008-05-27 21:39:53,233 [TCWorkerComm # 0] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(41.d9c3bbd3a59b4e10a0832b98cffed290): Attaching new connection: com.tc.net.core.TCConnectionJDK14@2109380939: connected: true, closed: false local=127.0.0.1:9510 remote=127.0.0.1:56997 connect=[Tue May 27 21:39:53 CEST 2008] idle=7ms
+2008-05-27 21:39:53,245 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[41]] notified us that their JMX server is now available
+2008-05-27 21:39:53,569 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[41]
+2008-05-27 21:39:53,572 [WorkerThread(client_handshake_stage,0)] INFO com.tc.util.SequenceValidator - Setting initial Sequence IDs for ClientID[41] current = SequenceID=[0] next = [SequenceID=[570911]]
+2008-05-27 21:39:53,735 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Starting DSO services...
+2008-05-27 21:39:53,749 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownAllClientsExcept() : Removing txns from DB : 0
+2008-05-27 21:39:53,752 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.impl.ObjectRequestManagerImpl - Processing Pending Lookups = 0
+2008-05-27 21:39:53,754 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.tx.ResentTransactionSequencer - Unregistering ResentTransactionSequencer since no more resent Transactions : 0
+2008-05-27 21:39:53,754 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.gtx.GlobalTransactionIDLowWaterMarkProvider - Switching GlobalTransactionID Low Water mark provider since all resent transactions are applied
+2008-05-27 21:39:53,993 [WorkerThread(process_transaction_stage,0)] INFO com.tc.util.SequenceValidator - Setting current Sequence IDs from current = SequenceID=[0] to next = SequenceID=[570911]
+2008-05-27 21:39:57,895 [TC Memory Monitor] INFO com.tc.runtime.TCMemoryManagerImpl - Sleep time changed to : 375
+2008-05-27 21:56:32,406 [TC Memory Monitor] INFO com.tc.runtime.TCMemoryManagerImpl - Sleep time changed to : 187
+2008-05-27 21:57:26,631 [TC Memory Monitor] INFO com.tc.runtime.TCMemoryManagerImpl - Sleep time changed to : 93
+2008-05-27 21:58:55,824 [TC Memory Monitor] INFO com.tc.runtime.TCMemoryManagerImpl - Sleep time changed to : 46
+2008-05-27 22:22:03,484 [TC Memory Monitor] INFO com.tc.runtime.TCMemoryManagerImpl - Sleep time changed to : 23
+2008-05-27 22:39:59,245 [GC] ERROR com.tc.server.TCServerMain - Thread:Thread[GC,5,TC Thread Group] got an uncaught exception.  About to sleep then exit.
+java.lang.NullPointerException
+        at com.tc.objectserver.core.impl.MarkAndSweepGarbageCollector.collectRoot(MarkAndSweepGarbageCollector.java:228)
+        at com.tc.objectserver.core.impl.MarkAndSweepGarbageCollector.collect(MarkAndSweepGarbageCollector.java:206)
+        at com.tc.objectserver.core.impl.MarkAndSweepGarbageCollector.rescue(MarkAndSweepGarbageCollector.java:109)
+        at com.tc.objectserver.core.impl.MarkAndSweepGarbageCollector.gc(MarkAndSweepGarbageCollector.java:146)
+        at com.tc.objectserver.impl.ObjectManagerImpl$1.run(ObjectManagerImpl.java:705)
+2008-05-27 22:40:02,246 [CommonShutDownHook - com.tc.object.msg.RequestManagedObjectResponseMessage$1@3a4747f9] INFO com.tc.net.protocol.TCNetworkMessage - No of times Buffers wasted = 0 Buffers wasted count = 0

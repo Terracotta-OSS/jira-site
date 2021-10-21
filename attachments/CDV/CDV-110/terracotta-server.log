@@ -1,0 +1,176 @@
+2007-01-04 15:24:07,218 [main] INFO com.tc.properties.TCProperties - Loading default properties from tc.properties
+2007-01-04 15:24:07,234 [main] INFO com.tc.properties.TCProperties - Loaded TCProperties : TCProperties={l1.cachemanager.sleepInterval=3000, tc.stage.monitor.enabled=false, l2.objectmanager.deleteBatchSize=5000, l2.cachemanager.percentageToEvict=10, l1.cachemanager.logging.enabled=false, l2.object.cachePolicy=lfu, tc.stage.monitor.delay=5000, l1.cachemanager.criticalThreshold=90, l2.beanshell.enabled=false, l2.beanshell.port=9929, l1.cachemanager.leastCount=2, l1.cachemanager.enabled=true, tc.management.mbeans.enabled=true, l2.cachemanager.logging.enabled=false, l2.cachemanager.sleepInterval=3000, l1.cachemanager.monitorOldGenOnly=true, l2.cachemanager.threshold=60, l2.cachemanager.criticalThreshold=90, l2.cachemanager.enabled=true, l1.cachemanager.percentageToEvict=10, l2.cachemanager.leastCount=2, l2.cachemanager.monitorOldGenOnly=true, l1.cachemanager.threshold=70}
+2007-01-04 15:24:07,234 [main] INFO com.tc.management.beans.logging.TCLoggingBroadcasterMBean - No resource bundle exists for MBean com.tc.management.beans.logging.TCLoggingBroadcasterMBean
+2007-01-04 15:24:07,234 [main] INFO com.terracottatech.general - New logging session started.
+2007-01-04 15:24:07,312 [main] INFO com.terracottatech.console - Terracotta, version 2.2 as of 20061126-221107.
+2007-01-04 15:24:07,312 [main] INFO com.terracottatech.console - Terracotta, version 2.2 as of 20061126-221107.
+2007-01-04 15:24:07,312 [main] INFO com.tc.logging.TCLogging - Terracotta version: Terracotta Version 2.2, as of 20061126-221107 (443 by cruise@WXPMO0 from trunk)
+2007-01-04 15:24:07,906 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Attempting to load configuration from the file at 'C:\tc-dso\terracotta-2.2\dso\samples\tc-config.xml'...
+2007-01-04 15:24:07,906 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Successfully loaded configuration from the file at 'C:\tc-dso\terracotta-2.2\dso\samples\tc-config.xml'. Config is:
+
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config">
+
+  <servers>
+    <server name="localhost">
+      <data>%(user.home)/terracotta/demo-server/server-data</data>
+      <logs>%(user.home)/terracotta/demo-server/server-logs</logs>
+    </server>
+  </servers>
+
+</tc:tc-config>
+
+2007-01-04 15:24:08,390 [main] INFO com.terracottatech.console - Configuration loaded from the file at 'C:\tc-dso\terracotta-2.2\dso\samples\tc-config.xml'.
+2007-01-04 15:24:08,390 [main] INFO com.terracottatech.console - Configuration loaded from the file at 'C:\tc-dso\terracotta-2.2\dso\samples\tc-config.xml'.
+2007-01-04 15:24:08,984 [main] INFO com.terracottatech.console - Log file: 'C:\Documents and Settings\Gordon\terracotta\demo-server\server-logs\terracotta-server.log'.
+2007-01-04 15:24:08,984 [main] INFO com.terracottatech.console - Log file: 'C:\Documents and Settings\Gordon\terracotta\demo-server\server-logs\terracotta-server.log'.
+2007-01-04 15:24:09,000 [main] INFO com.tc.logging.TCLogging - ========================================================================
+All Java System Properties for this Terracotta instance:
+awt.toolkit                  : sun.awt.windows.WToolkit
+com.sun.jmx.trace.level      : TRACE
+com.sun.management.jmxremote : 
+file.encoding                : Cp1252
+file.encoding.pkg            : sun.io
+file.separator               : \
+java.awt.graphicsenv         : sun.awt.Win32GraphicsEnvironment
+java.awt.printerjob          : sun.awt.windows.WPrinterJob
+java.class.path              : C:\tc-dso\terracotta-2.2\common\lib\tc.jar
+java.class.version           : 49.0
+java.endorsed.dirs           : C:\tc-dso\terracotta-2.2\jre\lib\endorsed
+java.ext.dirs                : C:\tc-dso\terracotta-2.2\jre\lib\ext
+java.home                    : C:\tc-dso\terracotta-2.2\jre
+java.io.tmpdir               : C:\DOCUME~1\Gordon\LOCALS~1\Temp\
+java.library.path            : C:\tc-dso\terracotta-2.2\jre\bin;.;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\ATI Technologies\ATI.ACE\;C:\Program Files\Microsoft SQL Server\80\Tools\BINN;C:\Program Files\Common Files\Adaptec Shared\System;C:\Program Files\QuickTime\QTSystem\;d:\gdata\InNTPath;C:\Program Files\Microsoft SQL Server\90\Tools\binn\;C:\apache-ant-1.6.5\bin
+java.rmi.server.randomIDs    : true
+java.runtime.name            : Java(TM) 2 Runtime Environment, Standard Edition
+java.runtime.version         : 1.5.0_09-b01
+java.specification.name      : Java Platform API Specification
+java.specification.vendor    : Sun Microsystems Inc.
+java.specification.version   : 1.5
+java.vendor                  : Sun Microsystems Inc.
+java.vendor.url              : http://java.sun.com/
+java.vendor.url.bug          : http://java.sun.com/cgi-bin/bugreport.cgi
+java.version                 : 1.5.0_09
+java.vm.info                 : mixed mode
+java.vm.name                 : Java HotSpot(TM) Server VM
+java.vm.specification.name   : Java Virtual Machine Specification
+java.vm.specification.vendor : Sun Microsystems Inc.
+java.vm.specification.version: 1.0
+java.vm.vendor               : Sun Microsystems Inc.
+java.vm.version              : 1.5.0_09-b01
+line.separator               : 
+
+os.arch                      : x86
+os.name                      : Windows 2003
+os.version                   : 5.2
+path.separator               : ;
+sun.arch.data.model          : 32
+sun.boot.class.path          : C:\tc-dso\terracotta-2.2\jre\lib\rt.jar;C:\tc-dso\terracotta-2.2\jre\lib\i18n.jar;C:\tc-dso\terracotta-2.2\jre\lib\sunrsasign.jar;C:\tc-dso\terracotta-2.2\jre\lib\jsse.jar;C:\tc-dso\terracotta-2.2\jre\lib\jce.jar;C:\tc-dso\terracotta-2.2\jre\lib\charsets.jar;C:\tc-dso\terracotta-2.2\jre\classes
+sun.boot.library.path        : C:\tc-dso\terracotta-2.2\jre\bin
+sun.cpu.endian               : little
+sun.cpu.isalist              : 
+sun.desktop                  : windows
+sun.io.unicode.encoding      : UnicodeLittle
+sun.jnu.encoding             : Cp1252
+sun.management.compiler      : HotSpot Server Compiler
+sun.os.patch.level           : Service Pack 1
+tc.install-root              : C:\tc-dso\terracotta-2.2
+user.country                 : US
+user.dir                     : C:\tc-dso\terracotta-2.2\dso\samples
+user.home                    : C:\Documents and Settings\Gordon
+user.language                : en
+user.name                    : Gordon
+user.timezone                : America/New_York
+user.variant                 : 
+========================================================================
+
+2007-01-04 15:24:09,031 [main] INFO com.terracottatech.console - Terracotta license: Open Source - No License Needed
+2007-01-04 15:24:09,031 [main] INFO com.terracottatech.console - Terracotta license: Open Source - No License Needed
+2007-01-04 15:24:10,281 [main] INFO com.tc.management.beans.object.ObjectManagementMonitorMBean - No resource bundle exists for MBean com.tc.management.beans.object.ObjectManagementMonitorMBean
+2007-01-04 15:24:10,359 [main] INFO com.terracottatech.console - JMX Server started. Available at URL[service:jmx:jmxmp://localhost:9520]
+2007-01-04 15:24:10,359 [main] INFO com.terracottatech.console - JMX Server started. Available at URL[service:jmx:jmxmp://localhost:9520]
+2007-01-04 15:24:11,312 [main] INFO com.tc.objectserver.DSOApplicationEventsMBean - No resource bundle exists for MBean com.tc.objectserver.DSOApplicationEventsMBean
+2007-01-04 15:24:11,500 [main] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Starting DSO services...
+2007-01-04 15:24:11,546 [main] INFO com.terracottatech.console - DSO Server started on port 9510.
+2007-01-04 15:24:11,546 [main] INFO com.terracottatech.console - DSO Server started on port 9510.
+2007-01-04 15:24:11,593 [main] INFO com.terracottatech.console - Terracotta Server has started up successfully, and is now ready for work.
+2007-01-04 15:24:11,593 [main] INFO com.terracottatech.console - Terracotta Server has started up successfully, and is now ready for work.
+2007-01-04 15:24:54,656 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.protocol.transport.ServerMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@7158674: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1323 connect=[Thu Jan 04 15:24:54 EST 2007] idle=16ms
+2007-01-04 15:24:54,765 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ChannelID=[0]
+2007-01-04 15:25:16,921 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.protocol.transport.ServerMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@18871377: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1330 connect=[Thu Jan 04 15:25:16 EST 2007] idle=0ms
+2007-01-04 15:25:17,046 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ChannelID=[1]
+2007-01-04 15:25:39,625 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnection - error reading from channel java.nio.channels.SocketChannel[connected local=/10.100.20.120:9510 remote=STILLNESS/10.100.20.120:1323]: An existing connection was forcibly closed by the remote host
+2007-01-04 15:25:39,625 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnectionManager - error event on connection com.tc.net.core.TCConnectionJDK14@7158674: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1323 connect=[Thu Jan 04 15:24:54 EST 2007] idle=266ms: An existing connection was forcibly closed by the remote host
+2007-01-04 15:25:39,640 [WorkerThread(jmxremote_connect_stage,0)] INFO com.tc.management.remote.connect.ClientConnectEventHandler - DSO client channel[0] removed, closing tunneled JMX connection
+2007-01-04 15:25:39,734 [Job_Executor4] INFO com.tc.management.remote.connect.ClientConnectEventHandler$ConnectorClosedListener - Tunneled JMX connection to a DSO client has terminated, unregistering its beans
+2007-01-04 15:25:40,156 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Killing client ChannelID=[0]
+2007-01-04 15:25:40,609 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.protocol.transport.ServerMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@15828870: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1443 connect=[Thu Jan 04 15:25:40 EST 2007] idle=0ms
+2007-01-04 15:25:40,687 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ChannelID=[2]
+2007-01-04 15:26:38,468 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnection - error reading from channel java.nio.channels.SocketChannel[connected local=/10.100.20.120:9510 remote=STILLNESS/10.100.20.120:1330]: An existing connection was forcibly closed by the remote host
+2007-01-04 15:26:38,468 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnectionManager - error event on connection com.tc.net.core.TCConnectionJDK14@18871377: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1330 connect=[Thu Jan 04 15:25:16 EST 2007] idle=20203ms: An existing connection was forcibly closed by the remote host
+2007-01-04 15:26:38,468 [WorkerThread(jmxremote_connect_stage,0)] INFO com.tc.management.remote.connect.ClientConnectEventHandler - DSO client channel[1] removed, closing tunneled JMX connection
+2007-01-04 15:26:38,578 [Job_Executor4] INFO com.tc.management.remote.connect.ClientConnectEventHandler$ConnectorClosedListener - Tunneled JMX connection to a DSO client has terminated, unregistering its beans
+2007-01-04 15:26:38,968 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Killing client ChannelID=[1]
+2007-01-04 15:26:42,343 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnection - error reading from channel java.nio.channels.SocketChannel[connected local=/10.100.20.120:9510 remote=STILLNESS/10.100.20.120:1443]: An existing connection was forcibly closed by the remote host
+2007-01-04 15:26:42,343 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnectionManager - error event on connection com.tc.net.core.TCConnectionJDK14@15828870: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1443 connect=[Thu Jan 04 15:25:40 EST 2007] idle=515ms: An existing connection was forcibly closed by the remote host
+2007-01-04 15:26:42,343 [WorkerThread(jmxremote_connect_stage,0)] INFO com.tc.management.remote.connect.ClientConnectEventHandler - DSO client channel[2] removed, closing tunneled JMX connection
+2007-01-04 15:26:42,453 [Job_Executor3] INFO com.tc.management.remote.connect.ClientConnectEventHandler$ConnectorClosedListener - Tunneled JMX connection to a DSO client has terminated, unregistering its beans
+2007-01-04 15:26:42,843 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Killing client ChannelID=[2]
+2007-01-04 15:27:19,859 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.protocol.transport.ServerMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@24559518: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1457 connect=[Thu Jan 04 15:27:19 EST 2007] idle=0ms
+2007-01-04 15:27:20,046 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ChannelID=[3]
+2007-01-04 15:27:52,218 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.protocol.transport.ServerMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@8671408: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1463 connect=[Thu Jan 04 15:27:52 EST 2007] idle=0ms
+2007-01-04 15:27:52,328 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ChannelID=[4]
+2007-01-04 15:27:53,984 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.protocol.transport.ServerMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@28156384: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1468 connect=[Thu Jan 04 15:27:53 EST 2007] idle=31ms
+2007-01-04 15:27:54,671 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ChannelID=[5]
+2007-01-04 15:28:12,718 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnection - error reading from channel java.nio.channels.SocketChannel[connected local=/10.100.20.120:9510 remote=STILLNESS/10.100.20.120:1463]: An existing connection was forcibly closed by the remote host
+2007-01-04 15:28:12,718 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnectionManager - error event on connection com.tc.net.core.TCConnectionJDK14@8671408: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1463 connect=[Thu Jan 04 15:27:52 EST 2007] idle=484ms: An existing connection was forcibly closed by the remote host
+2007-01-04 15:28:12,718 [WorkerThread(jmxremote_connect_stage,0)] INFO com.tc.management.remote.connect.ClientConnectEventHandler - DSO client channel[4] removed, closing tunneled JMX connection
+2007-01-04 15:28:12,828 [Job_Executor6] INFO com.tc.management.remote.connect.ClientConnectEventHandler$ConnectorClosedListener - Tunneled JMX connection to a DSO client has terminated, unregistering its beans
+2007-01-04 15:28:13,218 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Killing client ChannelID=[4]
+2007-01-04 15:28:15,046 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnection - error reading from channel java.nio.channels.SocketChannel[connected local=/10.100.20.120:9510 remote=STILLNESS/10.100.20.120:1457]: An existing connection was forcibly closed by the remote host
+2007-01-04 15:28:15,046 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnectionManager - error event on connection com.tc.net.core.TCConnectionJDK14@24559518: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1457 connect=[Thu Jan 04 15:27:19 EST 2007] idle=875ms: An existing connection was forcibly closed by the remote host
+2007-01-04 15:28:15,046 [WorkerThread(jmxremote_connect_stage,0)] INFO com.tc.management.remote.connect.ClientConnectEventHandler - DSO client channel[3] removed, closing tunneled JMX connection
+2007-01-04 15:28:15,140 [Job_Executor1] INFO com.tc.management.remote.connect.ClientConnectEventHandler$ConnectorClosedListener - Tunneled JMX connection to a DSO client has terminated, unregistering its beans
+2007-01-04 15:28:15,546 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Killing client ChannelID=[3]
+2007-01-04 15:28:56,828 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnection - error reading from channel java.nio.channels.SocketChannel[connected local=/10.100.20.120:9510 remote=STILLNESS/10.100.20.120:1468]: An existing connection was forcibly closed by the remote host
+2007-01-04 15:28:56,828 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnectionManager - error event on connection com.tc.net.core.TCConnectionJDK14@28156384: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1468 connect=[Thu Jan 04 15:27:53 EST 2007] idle=110ms: An existing connection was forcibly closed by the remote host
+2007-01-04 15:28:56,828 [WorkerThread(jmxremote_connect_stage,0)] INFO com.tc.management.remote.connect.ClientConnectEventHandler - DSO client channel[5] removed, closing tunneled JMX connection
+2007-01-04 15:28:56,937 [Job_Executor3] INFO com.tc.management.remote.connect.ClientConnectEventHandler$ConnectorClosedListener - Tunneled JMX connection to a DSO client has terminated, unregistering its beans
+2007-01-04 15:28:57,328 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Killing client ChannelID=[5]
+2007-01-04 15:30:57,890 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.protocol.transport.ServerMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@5751300: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1574 connect=[Thu Jan 04 15:30:57 EST 2007] idle=0ms
+2007-01-04 15:30:58,062 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ChannelID=[6]
+2007-01-04 15:31:12,218 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnection - error reading from channel java.nio.channels.SocketChannel[connected local=/10.100.20.120:9510 remote=STILLNESS/10.100.20.120:1574]: An existing connection was forcibly closed by the remote host
+2007-01-04 15:31:12,218 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnectionManager - error event on connection com.tc.net.core.TCConnectionJDK14@5751300: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1574 connect=[Thu Jan 04 15:30:57 EST 2007] idle=13156ms: An existing connection was forcibly closed by the remote host
+2007-01-04 15:31:12,218 [WorkerThread(jmxremote_connect_stage,0)] INFO com.tc.management.remote.connect.ClientConnectEventHandler - DSO client channel[6] removed, closing tunneled JMX connection
+2007-01-04 15:31:12,343 [Job_Executor1] INFO com.tc.management.remote.connect.ClientConnectEventHandler$ConnectorClosedListener - Tunneled JMX connection to a DSO client has terminated, unregistering its beans
+2007-01-04 15:31:12,718 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Killing client ChannelID=[6]
+2007-01-04 15:32:16,906 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.protocol.transport.ServerMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@12907287: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1582 connect=[Thu Jan 04 15:32:16 EST 2007] idle=0ms
+2007-01-04 15:32:17,015 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ChannelID=[7]
+2007-01-04 15:32:30,500 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.protocol.transport.ServerMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@15697395: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1587 connect=[Thu Jan 04 15:32:30 EST 2007] idle=0ms
+2007-01-04 15:32:30,765 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ChannelID=[8]
+2007-01-04 15:32:54,578 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnection - error reading from channel java.nio.channels.SocketChannel[connected local=/10.100.20.120:9510 remote=STILLNESS/10.100.20.120:1587]: An existing connection was forcibly closed by the remote host
+2007-01-04 15:32:54,578 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnectionManager - error event on connection com.tc.net.core.TCConnectionJDK14@15697395: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1587 connect=[Thu Jan 04 15:32:30 EST 2007] idle=2375ms: An existing connection was forcibly closed by the remote host
+2007-01-04 15:32:54,703 [WorkerThread(jmxremote_connect_stage,0)] INFO com.tc.management.remote.connect.ClientConnectEventHandler - DSO client channel[8] removed, closing tunneled JMX connection
+2007-01-04 15:32:54,796 [Job_Executor1] INFO com.tc.management.remote.connect.ClientConnectEventHandler$ConnectorClosedListener - Tunneled JMX connection to a DSO client has terminated, unregistering its beans
+2007-01-04 15:32:55,203 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Killing client ChannelID=[8]
+2007-01-04 15:32:56,187 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnection - error reading from channel java.nio.channels.SocketChannel[connected local=/10.100.20.120:9510 remote=STILLNESS/10.100.20.120:1582]: An existing connection was forcibly closed by the remote host
+2007-01-04 15:32:56,187 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.core.TCConnectionManager - error event on connection com.tc.net.core.TCConnectionJDK14@12907287: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1582 connect=[Thu Jan 04 15:32:16 EST 2007] idle=3984ms: An existing connection was forcibly closed by the remote host
+2007-01-04 15:32:56,187 [WorkerThread(jmxremote_connect_stage,0)] INFO com.tc.management.remote.connect.ClientConnectEventHandler - DSO client channel[7] removed, closing tunneled JMX connection
+2007-01-04 15:32:56,296 [Job_Executor3] INFO com.tc.management.remote.connect.ClientConnectEventHandler$ConnectorClosedListener - Tunneled JMX connection to a DSO client has terminated, unregistering its beans
+2007-01-04 15:32:56,687 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Killing client ChannelID=[7]
+2007-01-04 15:33:16,343 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.protocol.transport.ServerMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@9514761: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1736 connect=[Thu Jan 04 15:33:16 EST 2007] idle=0ms
+2007-01-04 15:33:16,468 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ChannelID=[9]
+2007-01-04 15:33:19,968 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.protocol.transport.ServerMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@11456443: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1741 connect=[Thu Jan 04 15:33:19 EST 2007] idle=0ms
+2007-01-04 15:33:20,125 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ChannelID=[10]
+2007-01-04 15:33:38,328 [TCComm Selector Thread 1 (listen 0.0.0.0:9510)] INFO com.tc.net.protocol.transport.ServerMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@16049476: connected: true, closed: false local=10.100.20.120:9510 remote=10.100.20.120:1835 connect=[Thu Jan 04 15:33:38 EST 2007] idle=0ms
+2007-01-04 15:33:38,406 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ChannelID=[11]
+2007-01-04 15:34:59,187 [TC Memory Monitor] INFO com.tc.runtime.TCMemoryManagerImpl - Sleep time changed to : 1200
+2007-01-04 15:36:17,531 [WorkerThread(batch_transaction_lookup_stage,0)] ERROR com.tc.server.TCServerMain - Thread:Thread[WorkerThread(batch_transaction_lookup_stage,0),5,TC Thread Group] got an uncaught exception.  About to sleep then exit.
+java.lang.AssertionError: SequenceID Validator Failed : current = SequenceID=[13606] but this = SequenceID=[13608]
+ TransactionQueue = TransactionQueue[ChannelID=[10] ] = { State[ PROCESSING ] current Txn = ServerTransaction[SequenceID=[13608] , TransactionID=[18374],ChannelID=[10],NORMAL] = { changes = 2, notifies = 0, newRoots = 0} batchedContext = BatchedTransactionProcessingContext : { Txn count = 145 ObjectIDs = [ObjectID=[612804], ObjectID=[612742], ObjectID=[612790], ObjectID=[612814], ObjectID=[612746], ObjectID=[612727], ObjectID=[612846], ObjectID=[612844], ObjectID=[612802], ObjectID=[612792], ObjectID=[612728], ObjectID=[612809], ObjectID=[612718], ObjectID=[612773], ObjectID=[612791], ObjectID=[612842], ObjectID=[612797], ObjectID=[544352], ObjectID=[612722], ObjectID=[612803], ObjectID=[612786], ObjectID=[612752], ObjectID=[612835], ObjectID=[544346], ObjectID=[612744], ObjectID=[612785], ObjectID=[612841], ObjectID=[612777], ObjectID=[612741], ObjectID=[612721], ObjectID=[612784], ObjectID=[612848], ObjectID=[612826], ObjectID=[612798], ObjectID=[612775], ObjectID=[612743], ObjectID=[612711], ObjectID=[612736], ObjectID=[612837], ObjectID=[612751], ObjectID=[612815], ObjectID=[612745], ObjectID=[612738], ObjectID=[612735], ObjectID=[612748], ObjectID=[612825], ObjectID=[612750], ObjectID=[612774], ObjectID=[612771], ObjectID=[612739], ObjectID=[612731], ObjectID=[612816], ObjectID=[612749], ObjectID=[612787], ObjectID=[612813], ObjectID=[612845], ObjectID=[612730], ObjectID=[612838], ObjectID=[612827], ObjectID=[612729], ObjectID=[612769], ObjectID=[612776], ObjectID=[612828], ObjectID=[612732], ObjectID=[612847], ObjectID=[612823], ObjectID=[612788], ObjectID=[612734], ObjectID=[612740], ObjectID=[612762], ObjectID=[612818], ObjectID=[544358], ObjectID=[612714], ObjectID=[612761], ObjectID=[612737], ObjectID=[612817], ObjectID=[612824], ObjectID=[612760], ObjectID=[612770], ObjectID=[544356], ObjectID=[612780], ObjectID=[612819], ObjectID=[612757], ObjectID=[612716], ObjectID=[612822], ObjectID=[612779], ObjectID=[612747], ObjectID=[612707], ObjectID=[612733], ObjectID=[612772], ObjectID=[612758], ObjectID=[612821], ObjectID=[612723], ObjectID=[612831], ObjectID=[612712], ObjectID=[612759], ObjectID=[612795], ObjectID=[612805], ObjectID=[612724], ObjectID=[612764], ObjectID=[612713], ObjectID=[612820], ObjectID=[612783], ObjectID=[544364], ObjectID=[612796], ObjectID=[612840], ObjectID=[612793], ObjectID=[612839], ObjectID=[612726], ObjectID=[612754], ObjectID=[612807], ObjectID=[612720], ObjectID=[612812], ObjectID=[612806], ObjectID=[612778], ObjectID=[612799], ObjectID=[612834], ObjectID=[612782], ObjectID=[612709], ObjectID=[612768], ObjectID=[612800], ObjectID=[612832], ObjectID=[612801], ObjectID=[612706], ObjectID=[612753], ObjectID=[612725], ObjectID=[612763], ObjectID=[612810], ObjectID=[612829], ObjectID=[612717], ObjectID=[612836], ObjectID=[612794], ObjectID=[612766], ObjectID=[612830], ObjectID=[612715], ObjectID=[612755], ObjectID=[612811], ObjectID=[612781], ObjectID=[612843], ObjectID=[612765], ObjectID=[612789], ObjectID=[612708], ObjectID=[612756], ObjectID=[612705], ObjectID=[612719], ObjectID=[544370], ObjectID=[612833], ObjectID=[612808], ObjectID=[612710], ObjectID=[612767]] }  } 
+	at com.tc.objectserver.tx.BatchedTransactionProcessorImpl$TransactionQueue.processTransactions(BatchedTransactionProcessorImpl.java:167)
+	at com.tc.objectserver.tx.BatchedTransactionProcessorImpl.processTransactions(BatchedTransactionProcessorImpl.java:66)
+	at com.tc.objectserver.handler.BatchTransactionLookupHandler.handleEvent(BatchTransactionLookupHandler.java:19)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:141)
+2007-01-04 15:36:20,546 [CommonShutDownHook - com.tc.object.msg.RequestManagedObjectResponseMessage$1@f37872] INFO com.tc.net.protocol.TCNetworkMessage - No of times Buffers wasted = 0 Buffers wasted count = 0

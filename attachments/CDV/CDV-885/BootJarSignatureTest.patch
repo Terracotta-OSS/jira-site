@@ -1,0 +1,25 @@
+Index: code/base/dso-l1/tests.unit/com/tc/object/tools/BootJarSignatureTest.java
+===================================================================
+--- code/base/dso-l1/tests.unit/com/tc/object/tools/BootJarSignatureTest.java	(revision 15913)
++++ code/base/dso-l1/tests.unit/com/tc/object/tools/BootJarSignatureTest.java	(working copy)
+@@ -107,6 +107,20 @@
+     assertEquals("jrockit_linux_142_05", sig.getSignature());
+   }
+ 
++  public void testFreeBSD() throws UnsupportedVMException {
++
++      // OpenJDK 6 port java/openjdk6
++      Properties props = makeProps("FreeBSD", "Sun Microsystems, Inc.", "1.6.0",  "1.6.0-b20", "amd64");
++      BootJarSignature sig = new BootJarSignature(props);
++      assertEquals("hotspot_freebsd_160", sig.getSignature());
++
++      // Diablo 1.6 port java/diablo-j(dk|re)16
++      props = makeProps("FreeBSD", "Sun Microsystems, Inc.", "1.6.0",  "1.6.0-b20", "amd64");
++      sig = new BootJarSignature(props);
++      assertEquals("hotspot_freebsd_160", sig.getSignature());
++
++  }
++
+   private Properties makeProps(String os, String vendor, String version, String runtime, String arch) {
+     Properties props = new Properties();
+     if (version != null) props.put("java.version", version);

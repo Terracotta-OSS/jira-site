@@ -1,0 +1,75 @@
+Index: express-impl/src/main/java/com/terracotta/express/ClientImpl.java
+===================================================================
+--- express-impl/src/main/java/com/terracotta/express/ClientImpl.java	(revision 27929)
++++ express-impl/src/main/java/com/terracotta/express/ClientImpl.java	(working copy)
+@@ -51,6 +51,7 @@
+   private final boolean              isUrlConfig;
+   private final boolean              dedicatedClient;
+   private final boolean              rejoinClient;
++  private final AppClassLoader       appLoader;
+ 
+   boolean isDedicatedClient() {
+     return dedicatedClient;
+@@ -85,6 +86,8 @@
+             continue;
+           }
+           introspected.put(source, Boolean.TRUE);
++
++          appLoader.addLoader(source.getClassLoader());
+         }
+ 
+         InputStream in = null;
+@@ -264,11 +267,12 @@
+     this.isUrlConfig = isUrlConfig;
+     this.jarManager = jarManager;
+     this.parent = parent;
++    this.appLoader = new AppClassLoader(appClassLoader);
+ 
+     try {
+       this.bootJarLoader = new BootjarLoader(newTcJarUrl(bootJarUrl), Collections.EMPTY_SET);
+       L1Loader clientLoader = newL1Loader(l1Jars);
+-      this.clusteredStateLoader = new ClusteredStateLoader(timJars, bootJarLoader, appClassLoader);
++      this.clusteredStateLoader = new ClusteredStateLoader(timJars, bootJarLoader, appLoader);
+ 
+       clusteredStateLoader.addPublicApiType("org.terracotta.api.ClusteringToolkit");
+       clusteredStateLoader.addPublicApiType("org.terracotta.api.ClusteringToolkitExtension");
+Index: express-impl/src/main/java/com/terracotta/express/AppClassLoader.java
+===================================================================
+--- express-impl/src/main/java/com/terracotta/express/AppClassLoader.java	(revision 0)
++++ express-impl/src/main/java/com/terracotta/express/AppClassLoader.java	(revision 0)
+@@ -0,0 +1,35 @@
++/*
++ * All content copyright Terracotta, Inc., unless otherwise indicated. All rights reserved.
++ */
++package com.terracotta.express;
++
++import java.util.List;
++import java.util.concurrent.CopyOnWriteArrayList;
++
++class AppClassLoader extends ClassLoader {
++
++  private final List<ClassLoader> loaders = new CopyOnWriteArrayList<ClassLoader>();
++
++  AppClassLoader(ClassLoader parent) {
++    super(parent);
++  }
++
++  @Override
++  protected Class<?> findClass(String name) throws ClassNotFoundException {
++    for (ClassLoader loader : loaders) {
++      try {
++        return loader.loadClass(name);
++      } catch (ClassNotFoundException cnfe) {
++        //
++      }
++    }
++
++    return super.findClass(name);
++  }
++
++  void addLoader(ClassLoader loader) {
++    // XXX: probably should accept duplicate refs here
++    loaders.add(loader);
++  }
++
++}

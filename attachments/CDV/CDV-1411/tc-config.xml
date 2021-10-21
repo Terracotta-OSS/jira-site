@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tc:tc-config xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-5.xsd" xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <system>
+    <configuration-model>development</configuration-model>
+  </system>
+  <servers>
+    <server name="server1" host="%i" bind="0.0.0.0">
+      <data>c:\temp\terracotta\servers\server1\data</data>
+      <logs>c:\temp\terracotta\servers\server1\logs</logs>
+      <statistics>c:\temp\terracotta\servers\server1\statistics</statistics>
+      <dso-port>9511</dso-port>
+      <jmx-port>9521</jmx-port>
+      <l2-group-port>9531</l2-group-port>
+      <dso>
+        <persistence>
+          <mode>temporary-swap-only</mode>
+        </persistence>
+      </dso>
+    </server>
+  </servers>
+  <clients>
+    <modules/>
+    <logs>c:\temp\terracotta\clients\tests\ThreadInterruptTest\logs\%D</logs>
+    <dso/>
+    <statistics>c:\temp\terracotta\clients\tests\ThreadInterruptTest\statistics\%D</statistics>
+  </clients>
+  <application>
+    <dso>
+      <locks>
+        <autolock>
+          <method-expression>* MySharedObject.doWait(..)</method-expression>
+          <lock-level>write</lock-level>
+        </autolock>
+      </locks>
+      <roots>
+        <root>
+          <field-name>ThreadInterruptTest.barrier</field-name>
+        </root>
+        <root>
+          <field-name>ThreadInterruptTest.sharedObject</field-name>
+        </root>
+      </roots>
+      <instrumented-classes>
+        <include>
+          <class-expression>MySharedObject</class-expression>
+        </include>
+        <include>
+          <class-expression>ThreadInterruptTest</class-expression>
+        </include>
+      </instrumented-classes>
+    </dso>
+  </application>
+</tc:tc-config>

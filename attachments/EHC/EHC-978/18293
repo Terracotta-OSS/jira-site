@@ -1,0 +1,410 @@
+﻿2012-12-13 12:49:53 net.sf.ehcache.config.ConfigurationFactory parseConfiguration
+WARNING: No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/opt/bigm/wl/test/lib/ehcache-ee-2.6.1.jar!/ehcache-failsafe.xml
+2012-12-13 12:49:53 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter <init>
+INFO: Starting recovery for /opt/bigm/wl/test/tmp/t0/persistence/metadata
+2012-12-13 12:49:53 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 0%
+2012-12-13 12:49:53 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 10%
+2012-12-13 12:49:53 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 20%
+2012-12-13 12:49:53 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 30%
+2012-12-13 12:49:53 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 40%
+2012-12-13 12:49:53 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 50%
+2012-12-13 12:49:53 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 60%
+2012-12-13 12:49:53 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 70%
+2012-12-13 12:49:53 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 80%
+2012-12-13 12:49:53 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 90%
+2012-12-13 12:49:53 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 100%
+2012-12-13 12:49:54 net.sf.ehcache.store.restartability.EhcacheRestartability bootstrapRestartability
+INFO: Auto-creating missing restartable cache 'alarmcache' using configuration : 
+<cache     
+    name="alarmcache"     
+    maxEntriesLocalHeap="5000"     
+    overflowToOffHeap="true"     
+    maxBytesLocalOffHeap="20000m">    
+    <persistence         
+        strategy="localrestartable"/>    
+    <elementValueComparator         
+        class="net.sf.ehcache.store.DefaultElementValueComparator"/>    
+    <searchable>        
+        <searchAttribute             
+            name="CITY_ID"/>        
+        <searchAttribute             
+            name="CIRCUIT_NO"/>        
+        <searchAttribute             
+            name="PROBABLE_CAUSE"/>        
+        <searchAttribute             
+            name="UNSEND_REASON"/>        
+        <searchAttribute             
+            name="SEND_JT_FLAG"/>        
+        <searchAttribute             
+            name="STANDARD_ALARM_NAME"/>        
+        <searchAttribute             
+            name="ORG_TYPE"/>        
+        <searchAttribute             
+            name="VENDOR_TYPE"/>        
+        <searchAttribute             
+            name="CANCEL_TIME"/>        
+        <searchAttribute             
+            name="EVENT_TIME"/>        
+        <searchAttribute             
+            name="AC_RULE_NAME"/>        
+        <searchAttribute             
+            name="ALARM_NE_STATUS"/>        
+        <searchAttribute             
+            name="NE_LABEL"/>        
+        <searchAttribute             
+            name="NE_IP"/>        
+        <searchAttribute             
+            name="NE_STATUS"/>        
+        <searchAttribute             
+            name="ACK_FLAG"/>        
+        <searchAttribute             
+            name="PREPROCESS_MANNER"/>        
+        <searchAttribute             
+            name="REMOTE_PROJ_SUB_STATUS"/>        
+        <searchAttribute             
+            name="GCSS_CLIENT_GRADE_MGT"/>        
+        <searchAttribute             
+            name="SITE_NO"/>        
+        <searchAttribute             
+            name="GCSS_CLIENT_NAME"/>        
+        <searchAttribute             
+            name="GCSS_SERVICE"/>        
+        <searchAttribute             
+            name="EXTRA_STRING3"/>        
+        <searchAttribute             
+            name="ACK_USER"/>        
+        <searchAttribute             
+            name="SHEET_DEAL_DEP"/>        
+        <searchAttribute             
+            name="SHEET_SEND_STATUS"/>        
+        <searchAttribute             
+            name="REC_VERSION"/>        
+        <searchAttribute             
+            name="REDEFINE_SEVERITY"/>        
+        <searchAttribute             
+            name="EQP_ALIAS"/>        
+        <searchAttribute             
+            name="PROFESSIONAL_TYPE"/>        
+        <searchAttribute             
+            name="OBJECT_LEVEL"/>        
+        <searchAttribute             
+            name="ACTIVE_STATUS"/>        
+        <searchAttribute             
+            name="DEAL_TIME_LIMIT"/>        
+        <searchAttribute             
+            name="EQP_INT_ID"/>        
+        <searchAttribute             
+            name="GCSS_SERVICE_TYPE"/>        
+        <searchAttribute             
+            name="STANDARD_ALARM_ID"/>        
+        <searchAttribute             
+            name="OMC_ALARM_ID"/>        
+        <searchAttribute             
+            name="VENDOR_ID"/>        
+        <searchAttribute             
+            name="RELATION_TYPE"/>        
+        <searchAttribute             
+            name="TIME_STAMP"/>        
+        <searchAttribute             
+            name="REMOTE_RESOURCE_STATUS"/>        
+        <searchAttribute             
+            name="GCSS_SERVICE_LEVEL"/>        
+        <searchAttribute             
+            name="NETWORK_TYPE"/>        
+        <searchAttribute             
+            name="C_FP0"/>        
+        <searchAttribute             
+            name="C_FP1"/>        
+        <searchAttribute             
+            name="C_FP2"/>        
+        <searchAttribute             
+            name="C_FP3"/>        
+        <searchAttribute             
+            name="INFECT_CUSTOMER_COUNT"/>        
+        <searchAttribute             
+            name="DEADLINE_TIME"/>        
+        <searchAttribute             
+            name="EQP_OBJECT_CLASS"/>        
+        <searchAttribute             
+            name="ALARM_ACT_COUNT"/>        
+        <searchAttribute             
+            name="GCSS_SERVICE_NUM"/>        
+        <searchAttribute             
+            name="ALARM_TITLE"/>        
+        <searchAttribute             
+            name="OBJECT_CLASS"/>        
+        <searchAttribute             
+            name="INSERT_TIME"/>        
+        <searchAttribute             
+            name="NE_ADMIN_STATUS"/>        
+        <searchAttribute             
+            name="ALARM_SOURCE"/>        
+        <searchAttribute             
+            name="LOGIC_SUB_ALARM_TYPE"/>        
+        <searchAttribute             
+            name="SUB_ALARM_TYPE"/>        
+        <searchAttribute             
+            name="IS_ROOT"/>        
+        <searchAttribute             
+            name="GCSS_CLIENT_GRADE"/>        
+        <searchAttribute             
+            name="GCSS_CLIENT_LEVEL"/>        
+        <searchAttribute             
+            name="HAS_CHILD"/>        
+        <searchAttribute             
+            name="GCSS_CLIENT_NUM"/>        
+        <searchAttribute             
+            name="ORG_SEVERITY"/>        
+        <searchAttribute             
+            name="TMSC_CAT"/>        
+        <searchAttribute             
+            name="EXTRA_ID1"/>        
+        <searchAttribute             
+            name="LOGIC_ALARM_TYPE"/>        
+        <searchAttribute             
+            name="EXTRA_ID3"/>        
+        <searchAttribute             
+            name="ALARM_RESOURCE_STATUS"/>        
+        <searchAttribute             
+            name="PREPROCESS_FLAG"/>        
+        <searchAttribute             
+            name="GCSS_CLIENT"/>        
+        <searchAttribute             
+            name="FP3"/>        
+        <searchAttribute             
+            name="RESOURCE_STATUS"/>        
+        <searchAttribute             
+            name="FP2"/>        
+        <searchAttribute             
+            name="CHANNEL_TYPE"/>        
+        <searchAttribute             
+            name="ALARM_ID"/>        
+        <searchAttribute             
+            name="EFFECT_NE"/>        
+        <searchAttribute             
+            name="FP1"/>        
+        <searchAttribute             
+            name="PROBABLE_CAUSE_TXT"/>        
+        <searchAttribute             
+            name="FP0"/>        
+        <searchAttribute             
+            name="ACK_TIME"/>        
+        <searchAttribute             
+            name="REMOTE_EQP_LABEL"/>        
+        <searchAttribute             
+            name="ALARM_TEXT"/>        
+        <searchAttribute             
+            name="SHEET_NO"/>        
+        <searchAttribute             
+            name="NMS_NAME"/>        
+        <searchAttribute             
+            name="NE_ALIAS"/>        
+        <searchAttribute             
+            name="PROVINCE_NAME"/>        
+        <searchAttribute             
+            name="NE_LOCATION"/>        
+        <searchAttribute             
+            name="CIRCUIT_ID"/>        
+        <searchAttribute             
+            name="SPECIAL_FIELD23"/>        
+        <searchAttribute             
+            name="PROJ_OA_FILE_ID"/>        
+        <searchAttribute             
+            name="ALARM_REASON"/>        
+        <searchAttribute             
+            name="SHEET_STATUS"/>        
+        <searchAttribute             
+            name="STANDARD_FLAG"/>        
+        <searchAttribute             
+            name="INT_ID"/>        
+        <searchAttribute             
+            name="VENDOR_SEVERITY"/>        
+        <searchAttribute             
+            name="EQP_LABEL"/>        
+        <searchAttribute             
+            name="EFFECT_SERVICE"/>        
+        <searchAttribute             
+            name="FAILED_REASON"/>        
+        <searchAttribute             
+            name="OMC_ID"/>        
+        <searchAttribute             
+            name="REMARK_EXIST"/>        
+        <searchAttribute             
+            name="EQP_VERSION"/>        
+        <searchAttribute             
+            name="REGION_ID"/>        
+        <searchAttribute             
+            name="REGION_NAME"/>        
+        <searchAttribute             
+            name="CITY_NAME"/>        
+        <searchAttribute             
+            name="REDEFINE_TYPE"/>        
+        <searchAttribute             
+            name="TITLE_TEXT"/>        
+        <searchAttribute             
+            name="ALARM_ORIGIN"/>        
+        <searchAttribute             
+            name="LAYER_RETE"/>    
+    </searchable>
+</cache>
+
+2012-12-13 12:49:54 org.terracotta.license.ehcache.LicenseManager init
+INFO: Terracotta license loaded from resource /terracotta-license.key
+Capabilities: TMC, ehcache offheap
+Date of Issue: 2012-09-29
+Edition: Go
+License Number: 1000122
+License Type: Free Production
+Licensee: li jie, personal (bluerocly@yahoo.com.cn)
+Max Client Count: 0
+Product: BigMemory Go
+ehcache.maxOffHeap: 32G
+
+2012-12-13 12:49:54 net.sf.ehcache.store.offheap.search.LuceneIndexedSearchManager <init>
+INFO: Deleting existing search index files in [/opt/bigm/wl/test/tmp/t0/search-index]
+2012-12-13 12:49:55 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Lucene version: 3.0.3
+2012-12-13 12:49:55 net.sf.ehcache.store.offheap.OffHeapStoreFactory createRestartableBackingMap
+INFO: Creating Off-Heap Area Using Config
+ Heuristic Configuration: alarmcache
+Maximum Size (specified)   : 19.5GB
+Minimum Chunk Size         : 156.2MB
+Maximum Chunk Size         : 1GB
+Concurrency                : 512
+Initial Segment Table Size : 2K slots
+Segment Data Page Size     : 2MB
+
+2012-12-13 12:49:55 com.terracottatech.offheapstore.paging.UpfrontAllocatingPageSource <init>
+INFO: Allocating 19.5GB in chunks
+2012-12-13 12:49:57 com.terracottatech.offheapstore.paging.UpfrontAllocatingPageSource <init>
+INFO: Allocation 20% complete
+2012-12-13 12:49:59 com.terracottatech.offheapstore.paging.UpfrontAllocatingPageSource <init>
+INFO: Allocation 40% complete
+2012-12-13 12:50:01 com.terracottatech.offheapstore.paging.UpfrontAllocatingPageSource <init>
+INFO: Allocation 60% complete
+2012-12-13 12:50:03 com.terracottatech.offheapstore.paging.UpfrontAllocatingPageSource <init>
+INFO: Allocation 80% complete
+2012-12-13 12:50:04 com.terracottatech.offheapstore.paging.UpfrontAllocatingPageSource <init>
+INFO: Allocation 100% complete
+2012-12-13 12:50:04 com.terracottatech.offheapstore.paging.UpfrontAllocatingPageSource <init>
+INFO: Allocated 19.5GB in 1GB chunks.
+2012-12-13 12:50:04 com.terracottatech.offheapstore.paging.UpfrontAllocatingPageSource <init>
+INFO: Took 9410 ms to create CacheManager off-heap storage of 19.5GB.
+2012-12-13 12:50:05 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter <init>
+INFO: Starting recovery for /opt/bigm/wl/test/tmp/t0/persistence/cachedata
+2012-12-13 12:50:05 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 0%
+2012-12-13 12:50:05 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Creating search index [alarmcache/0]
+2012-12-13 12:50:05 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Directory type: org.terracotta.shaded.lucene.store.NIOFSDirectory with max buffer size 16.0 and merge factor 10 ram buffer 16.0 maxBufferedDocs: -1 maxMergeDocs: 2147483647
+2012-12-13 12:50:05 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Creating search index [alarmcache/1]
+2012-12-13 12:50:05 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Directory type: org.terracotta.shaded.lucene.store.NIOFSDirectory with max buffer size 16.0 and merge factor 10 ram buffer 16.0 maxBufferedDocs: -1 maxMergeDocs: 2147483647
+2012-12-13 12:50:05 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Creating search index [alarmcache/2]
+2012-12-13 12:50:05 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Directory type: org.terracotta.shaded.lucene.store.NIOFSDirectory with max buffer size 16.0 and merge factor 10 ram buffer 16.0 maxBufferedDocs: -1 maxMergeDocs: 2147483647
+2012-12-13 12:50:05 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Creating search index [alarmcache/3]
+2012-12-13 12:50:05 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Directory type: org.terracotta.shaded.lucene.store.NIOFSDirectory with max buffer size 16.0 and merge factor 10 ram buffer 16.0 maxBufferedDocs: -1 maxMergeDocs: 2147483647
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:36 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:38 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:38 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:40 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:40 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:50:46 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:51:00 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:51:37 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 10%
+2012-12-13 12:52:24 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:53:53 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 20%
+2012-12-13 12:55:33 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 30%
+2012-12-13 12:56:05 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 12:57:33 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 40%
+2012-12-13 12:59:40 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 50%
+2012-12-13 13:01:20 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 60%
+2012-12-13 13:03:29 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 70%
+2012-12-13 13:05:23 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 80%
+2012-12-13 13:07:31 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 90%
+2012-12-13 13:08:24 net.sf.ehcache.store.offheap.search.Slf4jLoggerFactory$Logger info
+INFO: Updating stored schema
+2012-12-13 13:09:27 com.terracottatech.frs.recovery.RecoveryManagerImpl$ProgressLoggingFilter filter
+INFO: Recovery progress 100%
+recover cost = 1180500 ms, cache.size = 2800000

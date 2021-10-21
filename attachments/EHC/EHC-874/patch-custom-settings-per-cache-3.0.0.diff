@@ -1,0 +1,822 @@
+Index: net/sf/ehcache/distribution/jgroups/JGroupsCacheManagerPeerProvider.java
+===================================================================
+--- net/sf/ehcache/distribution/jgroups/JGroupsCacheManagerPeerProvider.java	(revisión: 29615)
++++ net/sf/ehcache/distribution/jgroups/JGroupsCacheManagerPeerProvider.java	(revisión: 29867)
+@@ -24,9 +24,11 @@
+ import net.sf.ehcache.distribution.CacheManagerPeerProvider;
+ import net.sf.ehcache.distribution.CachePeer;
+ import net.sf.ehcache.management.ManagedCacheManagerPeerProvider;
+-import org.jgroups.Channel;
+-import org.jgroups.ChannelException;
+ import org.jgroups.JChannel;
++import org.jgroups.Message;
++import org.jgroups.blocks.MessageDispatcher;
++import org.jgroups.blocks.RequestHandler;
++import org.jgroups.blocks.ResponseMode;
+ import org.jgroups.jmx.JmxConfigurator;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+@@ -59,8 +61,11 @@
+     private final CacheManager cacheManager;
+     private final String groupProperties;
+     private final URL groupUrl;
++    private final ResponseMode defaultSyncMode;
++    private final long defaultSyncTimeout;
+     
+     private JChannel channel;
++    private MessageDispatcher messageDispatcher;
+     private JGroupsCachePeer cachePeer;
+     private JGroupsCacheReceiver cacheReceiver;
+     private List<CachePeer> cachePeersListCache;
+@@ -76,10 +81,12 @@
+      * @param cacheManager the cache manager
+      * @param properties   the JGroups connection String
+      */
+-    public JGroupsCacheManagerPeerProvider(CacheManager cacheManager, String properties) {
++    public JGroupsCacheManagerPeerProvider(CacheManager cacheManager, String properties, ResponseMode defaultSyncMode, long defaultSyncTimeout) {
+         this.cacheManager = cacheManager;
+         this.groupProperties = properties;
+         this.groupUrl = null;
++        this.defaultSyncMode = defaultSyncMode;
++        this.defaultSyncTimeout = defaultSyncTimeout;
+     }
+     
+     /**
+@@ -88,12 +95,22 @@
+      * @param cacheManager the cache manager
+      * @param configUrl    the JGroups configuration file
+      */
+-    public JGroupsCacheManagerPeerProvider(CacheManager cacheManager, URL configUrl) {
++    public JGroupsCacheManagerPeerProvider(CacheManager cacheManager, URL configUrl, ResponseMode defaultSyncMode, long defaultSyncTimeout) {
+         this.cacheManager = cacheManager;
+         this.groupProperties = null;
+         this.groupUrl = configUrl;
++        this.defaultSyncMode = defaultSyncMode;
++        this.defaultSyncTimeout = defaultSyncTimeout;
+     }
++
++    public ResponseMode getDefaultSyncMode() {
++    	return this.defaultSyncMode;
++    }
+     
++    public long getDefaultSyncTimeout() {
++    	return this.defaultSyncTimeout;
++    }
++
+     /**
+      * Given an {@link Ehcache} get the corresponding instance of this class.
+      */
+@@ -130,23 +147,32 @@
+             } else {
+                 channel = new JChannel();
+             }
+-        } catch (ChannelException e) {
++        } catch (Exception e) {
+             LOG.error("Failed to create JGroups Channel, replication will not function. JGroups properties:\n" + this.groupProperties, e);
+             this.dispose();
+             return;
+         }                               
+ 
++        this.messageDispatcher = new MessageDispatcher(this.channel, null, null, new RequestHandler() {
++			@Override
++			public Object handle(Message msg) {
++				if (cacheReceiver != null) {
++					cacheReceiver.receive(msg);
++				}
++				return null;
++			}
++		});
++
+         final String clusterName = this.getClusterName();
+         
+-        this.cachePeer = new JGroupsCachePeer(this.channel, clusterName);
++        this.cachePeer = new JGroupsCachePeer(this.channel, this.messageDispatcher, clusterName, this.defaultSyncMode, this.defaultSyncTimeout);
+         this.bootstrapManager = new JGroupsBootstrapManager(clusterName, this.cachePeer, this.cacheManager);
+         this.cacheReceiver = new JGroupsCacheReceiver(this.cacheManager, this.bootstrapManager);
+-        this.channel.setReceiver(this.cacheReceiver);
+-        this.channel.setOpt(Channel.LOCAL, Boolean.FALSE);
++        this.channel.setDiscardOwnMessages(true);
+         
+         try {
+             this.channel.connect(clusterName);
+-        } catch (ChannelException e) {
++        } catch (Exception e) {
+             LOG.error("Failed to connect to JGroups cluster '" + clusterName + 
+                     "', replication will not function. JGroups properties:\n" + this.groupProperties, e);
+             this.dispose();
+@@ -221,7 +247,14 @@
+                 }
+             }
+             
++            try {
++            	this.messageDispatcher.stop();
++            } catch (Exception e) {
++            	LOG.error("Error stopping MessageDispatcher for cluster " + clusterName, e);
++            }
++            
+             this.channel = null;
++            this.messageDispatcher = null;
+         }
+     }
+ 
+Index: net/sf/ehcache/distribution/jgroups/JGroupsBootstrapManager.java
+===================================================================
+--- net/sf/ehcache/distribution/jgroups/JGroupsBootstrapManager.java	(revisión: 29615)
++++ net/sf/ehcache/distribution/jgroups/JGroupsBootstrapManager.java	(revisión: 29867)
+@@ -38,6 +38,7 @@
+ import net.sf.ehcache.util.NamedThreadFactory;
+ 
+ import org.jgroups.Address;
++import org.jgroups.blocks.ResponseMode;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
+@@ -286,7 +287,7 @@
+                     final int randomPeerNumber = BOOTSTRAP_PEER_CHOOSER.nextInt(addresses.size());
+                     final Address address = addresses.remove(randomPeerNumber);
+                     
+-                    JGroupEventMessage event = new JGroupEventMessage(JGroupEventMessage.BOOTSTRAP_REQUEST, localAddress, null, cacheName);
++                    JGroupEventMessage event = new JGroupEventMessage(JGroupEventMessage.BOOTSTRAP_REQUEST, localAddress, null, cacheName, -1, ResponseMode.GET_NONE, 0L);
+                     if (LOG.isDebugEnabled()) {
+                         LOG.debug("Requesting bootstrap of {} from {}", cacheName, address);
+                     }
+@@ -367,7 +368,7 @@
+                         requestAddress, cacheName);
+                 
+                 final JGroupEventMessage bootstrapCompleteMessage = new JGroupEventMessage(JGroupEventMessage.BOOTSTRAP_INCOMPLETE, 
+-                        null, null, cacheName);
++                        null, null, cacheName, -1, ResponseMode.GET_NONE, 0L);
+                 cachePeer.send(requestAddress, Arrays.asList(bootstrapCompleteMessage));
+                 
+                 return;
+@@ -382,7 +383,7 @@
+                         "bootstrap request for this cache. Notifying requester of incomplete bootstrap", cacheName);
+                 
+                 final JGroupEventMessage bootstrapCompleteMessage = new JGroupEventMessage(JGroupEventMessage.BOOTSTRAP_INCOMPLETE, 
+-                        null, null, cacheName);
++                        null, null, cacheName, -1, ResponseMode.GET_NONE, 0L);
+                 cachePeer.send(requestAddress, Arrays.asList(bootstrapCompleteMessage));
+             }
+             
+@@ -404,7 +405,7 @@
+                     }
+                     
+                     final JGroupEventMessage groupEventMessage = new JGroupEventMessage(JGroupEventMessage.BOOTSTRAP_RESPONSE, 
+-                            (Serializable) key, element, cacheName);
++                            (Serializable) key, element, cacheName, -1, ResponseMode.GET_NONE, 0L);
+                     
+                     messageList.add(groupEventMessage);
+         
+@@ -423,7 +424,7 @@
+ 
+             //Tell the requester that bootstrap is complete
+             final JGroupEventMessage bootstrapCompleteMessage = new JGroupEventMessage(JGroupEventMessage.BOOTSTRAP_COMPLETE, 
+-                    null, null, cacheName);
++                    null, null, cacheName, -1, ResponseMode.GET_NONE, 0L);
+             cachePeer.send(requestAddress, Arrays.asList(bootstrapCompleteMessage));
+         }
+         
+Index: net/sf/ehcache/distribution/jgroups/JGroupsCacheReceiver.java
+===================================================================
+--- net/sf/ehcache/distribution/jgroups/JGroupsCacheReceiver.java	(revisión: 29615)
++++ net/sf/ehcache/distribution/jgroups/JGroupsCacheReceiver.java	(revisión: 29867)
+@@ -16,6 +16,8 @@
+ 
+ package net.sf.ehcache.distribution.jgroups;
+ 
++import java.io.InputStream;
++import java.io.OutputStream;
+ import java.io.Serializable;
+ import java.util.List;
+ 
+@@ -176,15 +178,14 @@
+     /**
+      * {@inheritDoc}
+      */
+-    public byte[] getState() {
++    public void getState(OutputStream out) throws Exception {
+         //Not Implemented
+-        return null;
+     }
+ 
+     /**
+      * {@inheritDoc}
+      */
+-    public void setState(byte[] state) {
++    public void setState(InputStream in) throws Exception {
+         //Not Implemented
+     }
+ 
+@@ -198,6 +199,13 @@
+     /**
+      * {@inheritDoc}
+      */
++    public void unblock() {
++        //Not Implemented
++    }
++
++    /**
++     * {@inheritDoc}
++     */
+     public void suspect(Address suspectedMbr) {
+         //Not Implemented
+     }
+Index: net/sf/ehcache/distribution/jgroups/JGroupsCacheReplicator.java
+===================================================================
+--- net/sf/ehcache/distribution/jgroups/JGroupsCacheReplicator.java	(revisión: 29615)
++++ net/sf/ehcache/distribution/jgroups/JGroupsCacheReplicator.java	(revisión: 29867)
+@@ -17,6 +17,11 @@
+ 
+ package net.sf.ehcache.distribution.jgroups;
+ 
++import java.io.Serializable;
++import java.rmi.RemoteException;
++import java.util.Arrays;
++import java.util.List;
++
+ import net.sf.ehcache.CacheException;
+ import net.sf.ehcache.CacheManager;
+ import net.sf.ehcache.Ehcache;
+@@ -24,14 +29,11 @@
+ import net.sf.ehcache.distribution.CacheManagerPeerProvider;
+ import net.sf.ehcache.distribution.CachePeer;
+ import net.sf.ehcache.distribution.CacheReplicator;
++
++import org.jgroups.blocks.ResponseMode;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
+-import java.io.Serializable;
+-import java.rmi.RemoteException;
+-import java.util.Arrays;
+-import java.util.List;
+-
+ /**
+  * @author Pierre Monestie (pmonestie[at]@gmail.com)
+  * @author <a href="mailto:gluck@gregluck.com">Greg Luck</a>
+@@ -71,15 +73,33 @@
+      */
+     private final boolean replicateRemovals;
+ 
++    /**
++     * The synchronous replication mode (may be null if unset).
++     */
++    private final ResponseMode syncMode;
++
++    /**
++     * The synchronous replication timeout (may be null if unset).
++     */
++    private final Long syncTimeout;
++
+     private boolean alive;
+ 
+     /**
+      * Constructor called by factory, does synchronous replication
+      */
+     public JGroupsCacheReplicator(boolean replicatePuts, boolean replicateUpdates, boolean replicateUpdatesViaCopy,
+-                                  boolean replicateRemovals) {
++                                  boolean replicateRemovals, ResponseMode syncMode, Long syncTimeout) {
+ 
+-        this(replicatePuts, replicateUpdates, replicateUpdatesViaCopy, replicateRemovals, -1);
++        this.replicatePuts = replicatePuts;
++        this.replicateUpdates = replicateUpdates;
++        this.replicateUpdatesViaCopy = replicateUpdatesViaCopy;
++        this.replicateRemovals = replicateRemovals;
++        this.syncMode = syncMode;
++        this.syncTimeout = syncTimeout;
++
++        this.asynchronousReplicationInterval = -1;
++        this.alive = true;
+     }
+     
+     /**
+@@ -92,6 +112,8 @@
+         this.replicateUpdates = replicateUpdates;
+         this.replicateUpdatesViaCopy = replicateUpdatesViaCopy;
+         this.replicateRemovals = replicateRemovals;
++        this.syncMode = null;
++        this.syncTimeout = null;
+ 
+         this.asynchronousReplicationInterval = asynchronousReplicationInterval;
+         this.alive = true;
+@@ -185,8 +207,10 @@
+         if (replicateRemovals) {
+             final String cacheName = cache.getName();
+             LOG.debug("Remove all elements called on {}", cacheName);
++            ResponseMode resolvedSyncMode = resolveSyncMode(cache);
++            long resolvedSyncTimeout = resolveSyncTimeout(cache);
+             JGroupEventMessage e = new JGroupEventMessage(JGroupEventMessage.REMOVE_ALL, null, null, cacheName, 
+-                    this.asynchronousReplicationInterval);
++                    this.asynchronousReplicationInterval, resolvedSyncMode, resolvedSyncTimeout);
+             sendNotification(cache, e);
+         }
+     }
+@@ -200,8 +224,10 @@
+             LOG.warn("Object with key {} is not Serializable and cannot be updated via copy", element.getObjectKey());
+             return;
+         }
++        ResponseMode resolvedSyncMode = resolveSyncMode(cache);
++        long resolvedSyncTimeout = resolveSyncTimeout(cache);
+         JGroupEventMessage e = new JGroupEventMessage(JGroupEventMessage.PUT, (Serializable) element.getObjectKey(), element,
+-                cache.getName(), this.asynchronousReplicationInterval);
++                cache.getName(), this.asynchronousReplicationInterval, resolvedSyncMode, resolvedSyncTimeout);
+ 
+         sendNotification(cache, e);
+     }
+@@ -211,12 +237,34 @@
+             LOG.warn("Key {} is not Serializable and cannot be replicated.", element.getObjectKey());
+             return;
+         }
++        ResponseMode resolvedSyncMode = resolveSyncMode(cache);
++        long resolvedSyncTimeout = resolveSyncTimeout(cache);
+         JGroupEventMessage e = new JGroupEventMessage(JGroupEventMessage.REMOVE, (Serializable) element.getObjectKey(), null,
+-                cache.getName(), this.asynchronousReplicationInterval);
++                cache.getName(), this.asynchronousReplicationInterval, resolvedSyncMode, resolvedSyncTimeout);
+ 
+         sendNotification(cache, e);
+     }
++    
++    private ResponseMode resolveSyncMode(Ehcache cache) {
++    	
++    	if (this.syncMode != null) {
++    		return this.syncMode;
++    	}
+ 
++        JGroupsCacheManagerPeerProvider provider = JGroupsCacheManagerPeerProvider.getCachePeerProvider(cache);
++        return provider.getDefaultSyncMode();
++    }
++
++    private long resolveSyncTimeout(Ehcache cache) {
++    	
++    	if (this.syncTimeout != null) {
++    		return this.syncTimeout;
++    	}
++
++        JGroupsCacheManagerPeerProvider provider = JGroupsCacheManagerPeerProvider.getCachePeerProvider(cache);
++        return provider.getDefaultSyncTimeout();
++    }
++
+     /**
+      * Used to send notification to the peer. If Async this method simply add
+      * the element to the replication queue. If not async, searches for the
+Index: net/sf/ehcache/distribution/jgroups/JGroupsCacheManagerPeerProviderFactory.java
+===================================================================
+--- net/sf/ehcache/distribution/jgroups/JGroupsCacheManagerPeerProviderFactory.java	(revisión: 29615)
++++ net/sf/ehcache/distribution/jgroups/JGroupsCacheManagerPeerProviderFactory.java	(revisión: 29867)
+@@ -17,17 +17,19 @@
+ 
+ package net.sf.ehcache.distribution.jgroups;
+ 
++import java.net.URL;
++import java.util.Properties;
++
+ import net.sf.ehcache.CacheManager;
+ import net.sf.ehcache.distribution.CacheManagerPeerProvider;
+ import net.sf.ehcache.distribution.CacheManagerPeerProviderFactory;
+ import net.sf.ehcache.util.ClassLoaderUtil;
+ import net.sf.ehcache.util.PropertyUtil;
++
++import org.jgroups.blocks.ResponseMode;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
+-import java.net.URL;
+-import java.util.Properties;
+-
+ /**
+  * @author Pierre Monestie (pmonestie__REMOVE__THIS__@gmail.com)
+  * @author <a href="mailto:gluck@gregluck.com">Greg Luck</a>
+@@ -39,6 +41,8 @@
+     
+     private static final String CONNECT = "connect";
+     private static final String FILE = "file";
++    private static final String DEFAULT_SYNC_MODE = "defaultSyncMode";
++    private static final String DEFAULT_SYNC_TIMEOUT = "defaultSyncTimeout";
+ 
+     /**
+      * {@inheritDoc}
+@@ -49,7 +53,29 @@
+         
+         final String connect = this.getProperty(CONNECT, properties);
+         final String file = this.getProperty(FILE, properties);
++        final String defaultSyncModeStr = this.getProperty(DEFAULT_SYNC_MODE, properties);
++        final String defaultSyncTimeoutStr = this.getProperty(DEFAULT_SYNC_TIMEOUT, properties);
+         
++        ResponseMode defaultSyncMode = ResponseMode.GET_NONE;
++        if (defaultSyncModeStr != null) {
++            try {
++            	defaultSyncMode = ResponseMode.valueOf(defaultSyncModeStr);
++            } catch (IllegalArgumentException e) {
++	        	LOG.warn("Unknown sync mode, defaulting to GET_NONE");
++	        	defaultSyncMode = ResponseMode.GET_NONE;
++            }
++        }
++        
++        long defaultSyncTimeout = 0L;
++        if (defaultSyncTimeoutStr != null) {
++	        try {
++	        	defaultSyncTimeout = Long.valueOf(defaultSyncTimeoutStr);
++	        } catch (NumberFormatException e) {
++	        	LOG.warn("Invalid sync timeout, defaulting to 0 (no timeout)");
++	        	defaultSyncTimeout = 0L;
++	        }
++        }
++	       
+         final JGroupsCacheManagerPeerProvider peerProvider;
+         if (file != null) {
+             if (connect != null) {
+@@ -60,25 +86,25 @@
+             final URL configUrl = contextClassLoader.getResource(file);
+             
+             LOG.debug("Creating JGroups CacheManagerPeerProvider for {} with configuration file: {}", cacheManager.getName(), configUrl);
+-            peerProvider = new JGroupsCacheManagerPeerProvider(cacheManager, configUrl);
++            peerProvider = new JGroupsCacheManagerPeerProvider(cacheManager, configUrl, defaultSyncMode, defaultSyncTimeout);
+         } else {
+             LOG.debug("Creating JGroups CacheManagerPeerProvider for {} with configuration:\n{}", cacheManager.getName(), connect);
+-            peerProvider = new JGroupsCacheManagerPeerProvider(cacheManager, connect);
++            peerProvider = new JGroupsCacheManagerPeerProvider(cacheManager, connect, defaultSyncMode, defaultSyncTimeout);
+         }
+         
+         return peerProvider;
+     }
+ 
+     private String getProperty(final String name, Properties properties) {
+-        String connect = PropertyUtil.extractAndLogProperty(name, properties);
+-        if (connect != null) {
+-            connect = connect.trim();
+-            connect = connect.replaceAll(" ", "");
+-            if (connect.equals("")) {
+-                connect = null;
++        String value = PropertyUtil.extractAndLogProperty(name, properties);
++        if (value != null) {
++        	value = value.trim();
++        	value = value.replaceAll(" ", "");
++            if (value.equals("")) {
++            	value = null;
+             }
+         }
+-        return connect;
++        return value;
+     }
+ 
+ }
+Index: net/sf/ehcache/distribution/jgroups/JGroupsCachePeer.java
+===================================================================
+--- net/sf/ehcache/distribution/jgroups/JGroupsCachePeer.java	(revisión: 29615)
++++ net/sf/ehcache/distribution/jgroups/JGroupsCachePeer.java	(revisión: 29867)
+@@ -16,30 +16,37 @@
+ 
+ package net.sf.ehcache.distribution.jgroups;
+ 
++import java.io.Serializable;
++import java.rmi.RemoteException;
++import java.util.ArrayList;
++import java.util.Collections;
++import java.util.LinkedHashMap;
++import java.util.LinkedList;
++import java.util.List;
++import java.util.Map;
++import java.util.Map.Entry;
++import java.util.Queue;
++import java.util.Timer;
++import java.util.TimerTask;
++import java.util.concurrent.ConcurrentLinkedQueue;
++import java.util.concurrent.ConcurrentMap;
++
++import net.sf.ehcache.CacheManager;
+ import net.sf.ehcache.Element;
+ import net.sf.ehcache.distribution.CachePeer;
+ import net.sf.ehcache.store.chm.ConcurrentHashMap;
++
+ import org.jgroups.Address;
+ import org.jgroups.Channel;
+-import org.jgroups.ChannelClosedException;
+-import org.jgroups.ChannelNotConnectedException;
+ import org.jgroups.Message;
+ import org.jgroups.View;
++import org.jgroups.blocks.MessageDispatcher;
++import org.jgroups.blocks.RequestOptions;
++import org.jgroups.blocks.ResponseMode;
+ import org.jgroups.util.Util;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
+-import java.io.Serializable;
+-import java.rmi.RemoteException;
+-import java.util.ArrayList;
+-import java.util.LinkedList;
+-import java.util.List;
+-import java.util.Queue;
+-import java.util.Timer;
+-import java.util.TimerTask;
+-import java.util.concurrent.ConcurrentLinkedQueue;
+-import java.util.concurrent.ConcurrentMap;
+-
+ /**
+  * Handles {@link CachePeer}functions around a JGroups {@link Channel} and a
+  * {@link CacheManager}
+@@ -53,20 +60,34 @@
+     private static final int CHUNK_SIZE = 100;
+ 
+     private final Channel channel;
++    private final MessageDispatcher messageDispatcher;
+     private final ConcurrentMap<Long, Queue<JGroupEventMessage>> asyncReplicationQueues =
+             new ConcurrentHashMap<Long, Queue<JGroupEventMessage>>();
+     private final Timer timer;
+     private volatile boolean alive;
++    private final ResponseMode defaultSyncMode;
++    private final long defaultSyncTimeout;
+ 
+     /**
+      * Create a new {@link CachePeer}
+      */
+-    public JGroupsCachePeer(Channel channel, String clusterName) {
++    public JGroupsCachePeer(Channel channel, MessageDispatcher messageDispatcher, String clusterName, ResponseMode defaultSyncMode, long defaultSyncTimeout) {
+         this.channel = channel;
++        this.messageDispatcher = messageDispatcher;
+         this.alive = true;
+         this.timer = new Timer(clusterName + " Async Replication Thread", true);
++        this.defaultSyncMode = defaultSyncMode;
++        this.defaultSyncTimeout = defaultSyncTimeout;
+     }
+ 
++    public ResponseMode getDefaultSyncMode() {
++    	return this.defaultSyncMode;
++    }
++    
++    public long getDefaultSyncTimeout() {
++    	return this.defaultSyncTimeout;
++    }
++
+     /**
+      * {@inheritDoc}
+      */
+@@ -184,11 +205,79 @@
+         return queue;
+     }
+ 
++    private void sendData(Address dest, List<JGroupEventMessage> dataList) {
++
++    	Map<SyncModeKey, List<JGroupEventMessage>> map = new LinkedHashMap<SyncModeKey, List<JGroupEventMessage>>();
++    	for (JGroupEventMessage evt : dataList) {
++    		SyncModeKey syncModeKey = new SyncModeKey(evt.isAsync(), evt.getSyncMode(), evt.getSyncTimeout());
++    		if (!map.containsKey(syncModeKey)) {
++    			map.put(syncModeKey, new ArrayList<JGroupEventMessage>());
++    		}
++    		map.get(syncModeKey).add(evt);
++    	}
++    	
++    	for (Entry<SyncModeKey, List<JGroupEventMessage>> entry: map.entrySet()) {
++    		SyncModeKey syncModeKey = entry.getKey();
++    		List<JGroupEventMessage> dataToSend = entry.getValue();
++    		if (syncModeKey.isAsync){
++    			sendData(dest, dataToSend, ResponseMode.GET_NONE, 0L);
++    		} else {
++    			sendData(dest, dataToSend, syncModeKey.syncMode, syncModeKey.syncTimeout);
++    		}
++    	}
++    }
++
++    private static final class SyncModeKey {
++
++    	private final boolean isAsync;
++    	private final ResponseMode syncMode;
++    	private final Long syncTimeout;
++
++    	private SyncModeKey(boolean isAsync, ResponseMode syncMode, Long syncTimeout) {
++    		this.isAsync = isAsync;
++    		this.syncMode = syncMode;
++    		this.syncTimeout = syncTimeout;
++    	}
++
++    	public boolean equals(Object other) {
++    		if (other == this) {
++    			return true;
++    		} else if (other == null) {
++    			return false;
++    		} else if (!(other instanceof SyncModeKey)) {
++    			return false;
++    		} else {
++    			SyncModeKey rhs = (SyncModeKey) other;
++    			if (this.syncMode != null && this.syncTimeout != null) {
++    				return (this.isAsync == rhs.isAsync) && this.syncMode.equals(rhs.syncMode) && this.syncTimeout.equals(rhs.syncTimeout);
++    			} else if (this.syncMode != null && this.syncTimeout == null) {
++        			return (this.isAsync == rhs.isAsync) && this.syncMode.equals(rhs.syncMode) && (rhs.syncTimeout == null);
++    			} else if (this.syncMode == null && this.syncTimeout != null) {
++        			return (this.isAsync == rhs.isAsync) && (rhs.syncMode == null) && this.syncTimeout.equals(rhs.syncTimeout);
++    			} else {
++    				return (this.isAsync == rhs.isAsync) && (rhs.syncMode == null) && (rhs.syncTimeout == null);
++    			}
++    		}
++    	}
++
++    	public int hashCode() {
++			if (this.syncMode != null && this.syncTimeout != null) {
++    			return (Boolean.valueOf(this.isAsync).hashCode() ^ this.syncMode.hashCode() ^ Long.valueOf(this.syncTimeout).hashCode());
++			} else if (this.syncMode != null && this.syncTimeout == null) {
++    			return (Boolean.valueOf(this.isAsync).hashCode() ^ this.syncMode.hashCode());
++			} else if (this.syncMode == null && this.syncTimeout != null) {
++    			return (Boolean.valueOf(this.isAsync).hashCode() ^ Long.valueOf(this.syncTimeout).hashCode());
++    		} else {
++        		return (Boolean.valueOf(this.isAsync).hashCode());
++    		}
++    	}
++    }
++    
+     /**
+      * Sends a serializable object to the specified address. If no address is specified it is sent to the
+      * entire group.
+      */
+-    private void sendData(Address dest, List<? extends Serializable> dataList) {
++    private void sendData(Address dest, List<JGroupEventMessage> dataList, ResponseMode syncMode, long syncTimeout) {
+         //Remove the list wrapper if only a single event is being sent
+         final Serializable toSend;
+         if (dataList.size() == 1) {
+@@ -208,12 +297,21 @@
+         
+         //Send it off to the group
+         final Message msg = new Message(dest, null, data);
++        List<Address> dests = null;
++        if (dest != null) {
++        	dests = Collections.singletonList(dest);
++        }
++
++        RequestOptions options = new RequestOptions();
++      	options.setMode(syncMode);
++      	if (syncMode != ResponseMode.GET_NONE) {
++      		options.setTimeout(syncTimeout);
++      	}
++        
+         try {
+-            this.channel.send(msg);
+-        } catch (ChannelNotConnectedException e) {
+-            LOG.error("Failed to send message(s) due to the channel being disconnected: " + toSend, e);
+-        } catch (ChannelClosedException e) {
+-            LOG.error("Failed to send message(s) due to the channel being closed: " + toSend, e);
++            this.messageDispatcher.castMessage(dests, msg, options);
++        } catch (Exception e) {
++            LOG.error("Failed to send message(s): " + toSend, e);
+         }
+     }
+ 
+Index: net/sf/ehcache/distribution/jgroups/JGroupsCacheReplicatorFactory.java
+===================================================================
+--- net/sf/ehcache/distribution/jgroups/JGroupsCacheReplicatorFactory.java	(revisión: 29615)
++++ net/sf/ehcache/distribution/jgroups/JGroupsCacheReplicatorFactory.java	(revisión: 29867)
+@@ -20,6 +20,8 @@
+ import net.sf.ehcache.event.CacheEventListener;
+ import net.sf.ehcache.event.CacheEventListenerFactory;
+ import net.sf.ehcache.util.PropertyUtil;
++
++import org.jgroups.blocks.ResponseMode;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
+@@ -46,6 +48,10 @@
+ 
+     private static final String REPLICATE_ASYNCHRONOUSLY = "replicateAsynchronously";
+ 
++    private static final String REPLICATE_SYNC_MODE = "syncMode";
++
++    private static final String REPLICATE_SYNC_TIMEOUT = "syncTimeout";
++
+     /**
+      * Empty arg constructor
+      */
+@@ -64,16 +70,19 @@
+         boolean replicateRemovals = extractBooleanProperty(properties, REPLICATE_REMOVALS, true);
+         boolean replicateAsync = extractBooleanProperty(properties, REPLICATE_ASYNCHRONOUSLY, true);
+         
+-        
+         if (replicateAsync) {
+             long asyncTime = extractAsynchronousReplicationIntervalMillis(properties);
+             
+             return new JGroupsCacheReplicator(replicatePuts, replicateUpdates, replicateUpdatesViaCopy,
+                     replicateRemovals, asyncTime);
+         }
++
++        // Both properties may be null if unset
++        ResponseMode syncMode = extractSyncMode(properties);
++        Long syncTimeout = extractSyncTimeout(properties);
+         
+         return new JGroupsCacheReplicator(replicatePuts, replicateUpdates, replicateUpdatesViaCopy,
+-                replicateRemovals);
++                replicateRemovals, syncMode, syncTimeout);
+     }
+ 
+     /**
+@@ -94,6 +103,40 @@
+         }
+     }
+ 
++    protected ResponseMode extractSyncMode(Properties properties) {
++
++    	String syncModeStr = PropertyUtil.extractAndLogProperty(REPLICATE_SYNC_MODE, properties);
++
++    	ResponseMode syncMode = null;
++        if (syncModeStr != null) {
++            try {
++            	syncMode = ResponseMode.valueOf(syncModeStr);
++            } catch (IllegalArgumentException e) {
++	        	LOG.warn("Unknown sync mode");
++	        	syncMode = null;
++            }
++        }
++
++        return syncMode;
++    }
++
++    protected Long extractSyncTimeout(Properties properties) {
++
++    	String syncTimeoutStr = PropertyUtil.extractAndLogProperty(REPLICATE_SYNC_TIMEOUT, properties);
++
++        Long syncTimeout = null;
++        if (syncTimeoutStr != null) {
++	        try {
++	        	syncTimeout = Long.valueOf(syncTimeoutStr);
++	        } catch (NumberFormatException e) {
++	        	LOG.warn("Invalid sync timeout");
++	        	syncTimeout = null;
++	        }
++        }
++
++        return syncTimeout;
++    }
++
+     /**
+      * Extract a Boolean out of a Property
+      *
+Index: net/sf/ehcache/distribution/jgroups/JGroupEventMessage.java
+===================================================================
+--- net/sf/ehcache/distribution/jgroups/JGroupEventMessage.java	(revisión: 29615)
++++ net/sf/ehcache/distribution/jgroups/JGroupEventMessage.java	(revisión: 29867)
+@@ -22,6 +22,8 @@
+ 
+ import java.io.Serializable;
+ 
++import org.jgroups.blocks.ResponseMode;
++
+ /**
+  * An EventMessage used for JGroups
+  *
+@@ -59,16 +61,10 @@
+ 
+     private final String cacheName;
+     private final long asyncTime;
+-
+-    /**
+-     * @see #JGroupEventMessage(int, Serializable, Element, String, long)
+-     */
+-    public JGroupEventMessage(int event, Serializable key, Element element, String cacheName) {
+-        super(event, key, element);
+-        this.cacheName = cacheName;
+-        this.asyncTime = -1;
+-    }
+     
++    // May be null if unset
++    private final ResponseMode syncMode;
++    private final Long syncTimeout;
+ 
+     /**
+      * An event message for the JGroupsCacheReplicator. We keep as transient the
+@@ -80,12 +76,17 @@
+      * @param element   The element itself. In case of a put.
+      * @param cacheName the name of the cache
+      * @param asyncTime the asynchronous replication period for this message, -1 results in synchronous replication
++     * @param syncMode  the synchronous replication mode
++     * @param syncTimeout the synchronous replication timeout
+      */
+     public JGroupEventMessage(int event, Serializable key, Element element, String cacheName,
+-            long asyncTime) {
+-        super(event, key, element);
++            long asyncTime, ResponseMode syncMode, Long syncTimeout) {
++
++    	super(event, key, element);
+         this.cacheName = cacheName;
+         this.asyncTime = asyncTime;
++        this.syncMode = (asyncTime < 0) ? syncMode : null;
++        this.syncTimeout = (asyncTime < 0) ? syncTimeout : null;
+     }
+     
+     /**
+@@ -103,6 +104,20 @@
+     }
+ 
+     /**
++     * @return The synchronous replication mode.
++     */
++    public ResponseMode getSyncMode() {
++    	return this.syncMode;
++    }
++
++    /**
++     * @return The synchronous replication timeout.
++     */
++    public Long getSyncTimeout() {
++    	return this.syncTimeout;
++    }
++
++    /**
+      * Returns the cache name
+      *
+      * @return the cache name

@@ -1,0 +1,33 @@
+"Model Executor - 1696" Id=1696 in TIMED_WAITING on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@92eb1ed
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+    at java.util.concurrent.PriorityBlockingQueue.poll(Unknown Source)
+    at com.rtrms.application.modeling.local.BlockingTaskList.takeTask(BlockingTaskList.java:20)
+    at com.rtrms.application.modeling.local.ModelExecutor.executeNextTask(ModelExecutor.java:71)
+    at com.rtrms.application.modeling.local.ModelExecutor.run(ModelExecutor.java:46)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync@4a3d767f
+
+"Model Executor - 1694" Id=1694 in WAITING on lock=java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync@4a3d767f
+     owned by Model Executor - 1696 Id=1696
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.park(Unknown Source)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(Unknown Source)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireShared(Unknown Source)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireShared(Unknown Source)
+    at java.util.concurrent.locks.ReentrantReadWriteLock$ReadLock.lock(Unknown Source)
+    at net.sf.ehcache.store.compound.Segment.unretrievedGet(Segment.java:248)
+    at net.sf.ehcache.store.compound.CompoundStore.unretrievedGet(CompoundStore.java:191)
+    at net.sf.ehcache.store.compound.impl.DiskPersistentStore.containsKeyInMemory(DiskPersistentStore.java:72)
+    at net.sf.ehcache.Cache.searchInStoreWithStats(Cache.java:1884)
+    at net.sf.ehcache.Cache.get(Cache.java:1549)
+    at com.rtrms.amoeba.cache.DistributedModeledSecurities.get(DistributedModeledSecurities.java:57)
+    at com.rtrms.amoeba.modeling.AssertPersistedModeledSecurities.get(AssertPersistedModeledSecurities.java:44)
+    at com.rtrms.application.modeling.tasks.ExpandableModelingTask.getNextUnexecutedTask(ExpandableModelingTask.java:35)
+    at com.rtrms.application.modeling.local.BlockingTaskList.takeTask(BlockingTaskList.java:36)
+    at com.rtrms.application.modeling.local.ModelExecutor.executeNextTask(ModelExecutor.java:71)
+    at com.rtrms.application.modeling.local.ModelExecutor.run(ModelExecutor.java:46)
+
+    Locked synchronizers: count = 0	  

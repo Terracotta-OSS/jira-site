@@ -1,0 +1,61 @@
+Found one Java-level deadlock:
+=============================
+"ForkJoinPool-1-worker-4":
+  waiting for ownable synchronizer 0x00000000d86a7f90, (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync),
+  which is held by "ForkJoinPool-1-worker-3"
+"ForkJoinPool-1-worker-3":
+  waiting for ownable synchronizer 0x00000000d86b4de8, (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync),
+  which is held by "ForkJoinPool-1-worker-1"
+"ForkJoinPool-1-worker-1":
+  waiting for ownable synchronizer 0x00000000d86a7f90, (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync),
+  which is held by "ForkJoinPool-1-worker-3"
+
+Java stack information for the threads listed above:
+===================================================
+"ForkJoinPool-1-worker-4":
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000000d86a7f90> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:186)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:834)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireShared(AbstractQueuedSynchronizer.java:964)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireShared(AbstractQueuedSynchronizer.java:1282)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$ReadLock.lock(ReentrantReadWriteLock.java:731)
+	at net.sf.ehcache.concurrent.ReadWriteLockSync.lock(ReadWriteLockSync.java:50)
+	at net.sf.ehcache.constructs.blocking.BlockingCache.acquiredLockForKey(BlockingCache.java:186)
+	at net.sf.ehcache.constructs.blocking.BlockingCache.get(BlockingCache.java:151)
+	at net.sf.ehcache.constructs.blocking.SelfPopulatingCache.get(SelfPopulatingCache.java:68)
+	at net.sf.ehcache.constructs.blocking.BlockingCache.get(BlockingCache.java:243)
+	at com.crcdata.rl.br.sfn_net.addin.tasks.jppf.utils.DTMTileSourceEhCache.getTile(DTMTileSourceEhCache.java:54)
+
+"ForkJoinPool-1-worker-3":
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000000d86b4de8> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:186)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:834)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireShared(AbstractQueuedSynchronizer.java:964)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireShared(AbstractQueuedSynchronizer.java:1282)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$ReadLock.lock(ReentrantReadWriteLock.java:731)
+	at net.sf.ehcache.concurrent.ReadWriteLockSync.lock(ReadWriteLockSync.java:50)
+	at net.sf.ehcache.constructs.blocking.BlockingCache.acquiredLockForKey(BlockingCache.java:186)
+	at net.sf.ehcache.constructs.blocking.BlockingCache.get(BlockingCache.java:151)
+	at net.sf.ehcache.constructs.blocking.SelfPopulatingCache.get(SelfPopulatingCache.java:68)
+	at net.sf.ehcache.constructs.blocking.BlockingCache.get(BlockingCache.java:243)
+	at com.crcdata.rl.br.sfn_net.addin.tasks.jppf.utils.DTMTileSourceEhCache.getTile(DTMTileSourceEhCache.java:54)
+
+"ForkJoinPool-1-worker-1":
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000000d86a7f90> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:186)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:834)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireShared(AbstractQueuedSynchronizer.java:964)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireShared(AbstractQueuedSynchronizer.java:1282)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$ReadLock.lock(ReentrantReadWriteLock.java:731)
+	at net.sf.ehcache.concurrent.ReadWriteLockSync.lock(ReadWriteLockSync.java:50)
+	at net.sf.ehcache.constructs.blocking.BlockingCache.acquiredLockForKey(BlockingCache.java:186)
+	at net.sf.ehcache.constructs.blocking.BlockingCache.get(BlockingCache.java:151)
+	at net.sf.ehcache.constructs.blocking.SelfPopulatingCache.get(SelfPopulatingCache.java:68)
+	at net.sf.ehcache.constructs.blocking.BlockingCache.get(BlockingCache.java:243)
+	at com.crcdata.rl.br.sfn_net.addin.tasks.jppf.utils.DTMTileSourceEhCache.getTile(DTMTileSourceEhCache.java:54)
+
+Found 1 deadlock.
+

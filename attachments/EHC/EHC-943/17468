@@ -1,0 +1,94 @@
+Index: src/main/java/net/sf/ehcache/pool/sizeof/ObjectGraphWalker.java
+===================================================================
+--- src/main/java/net/sf/ehcache/pool/sizeof/ObjectGraphWalker.java	(revision 5747)
++++ src/main/java/net/sf/ehcache/pool/sizeof/ObjectGraphWalker.java	(working copy)
+@@ -21,11 +21,14 @@
+ import java.lang.reflect.Field;
+ import java.lang.reflect.Modifier;
+ import java.text.MessageFormat;
++import java.util.AbstractMap;
+ import java.util.ArrayList;
+ import java.util.Collection;
++import java.util.Collections;
+ import java.util.IdentityHashMap;
+ import java.util.LinkedList;
+ import java.util.Queue;
++import java.util.Set;
+ 
+ import net.sf.ehcache.pool.sizeof.filter.SizeOfFilter;
+ import net.sf.ehcache.util.WeakIdentityConcurrentMap;
+@@ -61,8 +64,6 @@
+ 
+     private static final boolean USE_VERBOSE_DEBUG_LOGGING;
+ 
+-    private static final int INITIAL_MAP_SIZE = 5000;
+-
+     // Todo this is probably not what we want...
+     private final WeakIdentityConcurrentMap<Class<?>, SoftReference<Collection<Field>>> fieldCache =
+             new WeakIdentityConcurrentMap<Class<?>, SoftReference<Collection<Field>>>();
+@@ -125,10 +126,10 @@
+         boolean warned = false;
+         try {
+             Queue<Object> toVisit = new LinkedList<Object>();
+-            
++
+             // avoid excessive Map resizing
+             // TODO should we try to dynamically auto-adjust this value based on the classes of {@code root}?
+-            IdentityHashMap<Object, Object> visited = new IdentityHashMap<Object, Object>(INITIAL_MAP_SIZE);
++            GrowableIdentityHashMap<Object, Object> visited = new GrowableIdentityHashMap<Object, Object>();
+ 
+             if (root != null) {
+                 if (USE_VERBOSE_DEBUG_LOGGING && LOG.isDebugEnabled()) {
+@@ -159,11 +160,15 @@
+                 Class<?> refClass = ref.getClass();
+                 if (!isSharedFlyweight(ref) && shouldWalkClass(refClass)) {
+                     if (refClass.isArray() && !refClass.getComponentType().isPrimitive()) {
+-                        for (int i = 0; i < Array.getLength(ref); i++) {
++                        int size = Array.getLength(ref);
++                        visited.growCapacity(size);
++                        for (int i = 0; i < size; i++) {
+                             nullSafeAdd(toVisit, Array.get(ref, i));
+                         }
+                     } else {
+-                        for (Field field : getFilteredFields(refClass)) {
++                        Collection<Field> visitableFields = getFilteredFields(refClass);
++                        visited.growCapacity(visitableFields.size());
++                        for (Field field : visitableFields) {
+                             try {
+                                 nullSafeAdd(toVisit, field.get(ref));
+                             } catch (IllegalAccessException ex) {
+@@ -292,4 +297,34 @@
+         return type != null && type.isShared(obj);
+     }
+ 
++
++    static class GrowableIdentityHashMap<K, V> extends IdentityHashMap<K, V> {
++
++        private final EvilMap<K, V> evil = new EvilMap<K, V>();
++
++        public GrowableIdentityHashMap() {
++            super();
++        }
++
++        public void growCapacity(int delta) {
++            evil.size = delta + size();
++            putAll(evil);
++        }
++
++        static class EvilMap<K, V> extends AbstractMap<K, V> {
++
++            public int size;
++
++            @Override
++            public int size() {
++                return size;
++            }
++
++            @Override
++            public Set<java.util.Map.Entry<K, V>> entrySet() {
++                return Collections.emptySet();
++            }
++
++        }
++    }
+ }

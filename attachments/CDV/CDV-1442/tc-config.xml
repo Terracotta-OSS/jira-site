@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-4.xsd">
+  <application>
+   <dso>
+     <instrumented-classes>
+       <include>
+         <class-expression>OnLoadTest</class-expression>
+         <on-load>
+           <method>init</method>
+         </on-load>
+       </include>
+     </instrumented-classes>
+
+     <locks>
+       <autolock>
+        <method-expression>void init()</method-expression>
+       </autolock>
+       <autolock>
+        <method-expression>void dump()</method-expression>
+       </autolock>
+     </locks>
+
+     <roots>
+       <root>
+         <field-name>OnLoadTest.onLoadTest</field-name>
+       </root>
+     </roots>
+
+     <injected-instances>
+       <injected-field>
+         <field-name>OnLoadTest.dsoCluster</field-name>
+       </injected-field>
+     </injected-instances>
+    </dso>
+  </application>
+</tc:tc-config>

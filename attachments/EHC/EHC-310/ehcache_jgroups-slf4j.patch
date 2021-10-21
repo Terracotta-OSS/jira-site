@@ -1,0 +1,804 @@
+Index: pom.xml
+===================================================================
+--- pom.xml	(revision 1399)
++++ pom.xml	(working copy)
+@@ -10,20 +10,26 @@
+     <groupId>net.sf.ehcache</groupId>
+     <artifactId>ehcache-jgroupsreplication</artifactId>
+     <name>JGroups Replication</name>
+-    <version>1.4-SNAPSHOT</version>
++    <version>1.3-slf4j.2</version>
+     <packaging>jar</packaging>
+     <description>This module provides replication via JGroups</description>
+     <dependencies>
+         <dependency>
+             <groupId>${pom.groupId}</groupId>
+-            <artifactId>ehcache-core</artifactId>
+-            <version>1.7.1-SNAPSHOT</version>
++            <artifactId>ehcache</artifactId>
++            <version>1.6.2-slf4j.1</version>
+         </dependency>
+         <dependency>
+             <groupId>jgroups</groupId>
+             <artifactId>jgroups</artifactId>
+             <version>2.6.8.GA</version>
+         </dependency>
++        <dependency>
++            <groupId>org.slf4j</groupId>
++            <artifactId>slf4j-api</artifactId>
++            <version>1.5.8</version>
++            <scope>compile</scope>
++        </dependency>
+         <!--Required by JGroups even though it is undeclared by JGroups-->
+         <dependency>
+             <groupId>commons-logging</groupId>
+@@ -37,6 +43,12 @@
+             <version>4.4</version>
+             <scope>test</scope>
+         </dependency>
++        <dependency>
++            <groupId>org.slf4j</groupId>
++            <artifactId>slf4j-log4j12</artifactId>
++            <version>1.5.8</version>
++            <scope>test</scope>
++        </dependency>
+     </dependencies>
+     <build>
+         <plugins>
+@@ -48,6 +60,20 @@
+                 </configuration>
+             </plugin>
+             <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-source-plugin</artifactId>
++                <version>2.0.3</version>
++                <executions>
++                    <execution>
++                        <id>attach-sources</id>
++                        <phase>package</phase>
++                        <goals>
++                            <goal>jar</goal>
++                        </goals>
++                    </execution>
++                </executions>
++            </plugin>
++            <plugin>
+                 <artifactId>maven-assembly-plugin</artifactId>
+                 <configuration>
+                     <filters>
+@@ -124,6 +150,22 @@
+ 
+     <repositories>
+         <repository>
++            <id>jasig-m2</id>
++            <name>Jasig Maven2 Repository</name>
++            <url>http://developer.jasig.org/repo/content/repositories/m2</url>
++        </repository>
++        <repository>
++            <id>jasig-m2-snapshot</id>
++            <name>Jasig Maven2 Repository</name>
++            <url>http://developer.jasig.org/repo/content/repositories/m2-snapshot</url>
++            <snapshots>
++                <enabled>true</enabled>
++            </snapshots>
++            <releases>
++                <enabled>false</enabled>
++            </releases>
++        </repository>
++        <repository>
+             <id>jboss</id>
+             <url>http://repository.jboss.com/maven2</url>
+             <releases>
+@@ -147,7 +189,19 @@
+         <!--
+             The server id here defined must also appear in ~/.m2/settings.xml with username
+             Note: site URL repeated here to ensure correct deployment path -->
++
+         <repository>
++            <id>jasig.maven</id>
++            <name>Jasig Maven 2 Repository</name>
++            <url>http://developer.jasig.org/repo/content/repositories/m2</url>
++        </repository>
++        <snapshotRepository>
++            <id>jasig.maven</id>
++            <name>Jasig Maven 2 Repository (Snapshots and Test Builds)</name>
++            <url>http://developer.jasig.org/repo/content/repositories/m2-snapshot</url>
++        </snapshotRepository>
++        <!-- Not used since this is a modified release
++        <repository>
+             <id>sourceforge-releases</id>
+             <name>Sourceforge Release Repository</name>
+             <url>http://oss.sonatype.org/content/repositories/sourceforge-releases</url>
+@@ -157,6 +211,7 @@
+             <name>Sourceforge Snapshot Repository</name>
+             <url>http://oss.sonatype.org/content/repositories/sourceforge-snapshots</url>
+         </snapshotRepository>
++        -->
+     </distributionManagement>
+ 
+ </project>
+Index: src/main/java/net/sf/ehcache/distribution/jgroups/JGroupManager.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/jgroups/JGroupManager.java	(revision 1399)
++++ src/main/java/net/sf/ehcache/distribution/jgroups/JGroupManager.java	(working copy)
+@@ -17,6 +17,12 @@
+ 
+ package net.sf.ehcache.distribution.jgroups;
+ 
++import java.io.Serializable;
++import java.rmi.RemoteException;
++import java.util.ArrayList;
++import java.util.Iterator;
++import java.util.List;
++
+ import net.sf.ehcache.Cache;
+ import net.sf.ehcache.CacheException;
+ import net.sf.ehcache.CacheManager;
+@@ -25,19 +31,14 @@
+ import net.sf.ehcache.Status;
+ import net.sf.ehcache.distribution.CacheManagerPeerProvider;
+ import net.sf.ehcache.distribution.CachePeer;
++
+ import org.jgroups.Address;
+ import org.jgroups.Channel;
+ import org.jgroups.blocks.NotificationBus;
+ import org.jgroups.stack.IpAddress;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+-import java.io.Serializable;
+-import java.rmi.RemoteException;
+-import java.util.ArrayList;
+-import java.util.Iterator;
+-import java.util.List;
+-import java.util.logging.Level;
+-import java.util.logging.Logger;
+-
+ /**
+  * The main Jgroup class for replication via JGroup. Starts up the Jgroup communication bus and listen for message in
+  * the bus. Because of Ehcache design we have to register this as a CachePeer. In reality this class listen for change
+@@ -49,7 +50,7 @@
+  */
+ public class JGroupManager implements NotificationBus.Consumer, CachePeer, CacheManagerPeerProvider {
+ 
+-    private static final Logger LOG = Logger.getLogger(JGroupManager.class.getName());
++    private static final Logger LOG = LoggerFactory.getLogger(JGroupManager.class.getName());
+ 
+     private static final int CHUNK_SIZE = 100;
+ 
+@@ -73,7 +74,7 @@
+             notificationBus.setConsumer(this);
+             LOG.info("JGroupManager started. address is " + this.notificationBus.getLocalAddress());
+         } catch (Exception e) {
+-            LOG.log(Level.SEVERE, e.getMessage(), e);
++            LOG.error(e.getMessage(), e);
+         }
+ 
+     }
+@@ -89,14 +90,16 @@
+         Cache cache = cacheManager.getCache(e.getCacheName());
+         if (cache != null) {
+             if (e.getEvent() == JGroupEventMessage.REMOVE && cache.getQuiet(e.getKey()) != null) {
++                LOG.debug("received remove:          cache={}, key={}", e.getCacheName(), e.getKey());
+                 cache.remove(e.getKey(), true);
+             } else if (e.getEvent() == JGroupEventMessage.PUT) {
++                LOG.debug("received put:             cache={}, key={}", e.getCacheName(), e.getKey());
+                 cache.put(new Element(e.getKey(), e.getValue()), true);
+             } else if (e.getEvent() == JGroupEventMessage.BOOTSTRAP_REPLY) {
+-                LOG.fine("received bootstrap reply: cache=" + e.getCacheName() + ", key=" + e.getKey());
++                LOG.debug("received bootstrap reply: cache={}, key={}", e.getCacheName(), e.getKey());
+                 cache.put(new Element(e.getKey(), e.getValue()), true);
+             } else if (e.getEvent() == JGroupEventMessage.REMOVE_ALL) {
+-                LOG.fine("remove all");
++                LOG.debug("remove all");
+                 cache.removeAll(true);
+             } else if (e.getEvent() == JGroupEventMessage.ASK_FOR_BOOTSTRAP) {
+                 sendBootstrapResponse(e, cache);
+@@ -107,7 +110,7 @@
+ 
+     private void sendBootstrapResponse(JGroupSerializable e, Cache cache) {
+         IpAddress requestAddress = (IpAddress) e.getKey();
+-        LOG.fine("received bootstrap request from " + requestAddress + ", cache=" + e.getCacheName());
++        LOG.debug("received bootstrap request from {}, cache={}", requestAddress, e.getCacheName());
+         List keys = cache.getKeys();
+         if (keys != null && keys.size() > 0) {
+ 
+@@ -131,16 +134,16 @@
+             }
+ 
+         } else {
+-            LOG.log(Level.FINE, "no keys to reply to " + requestAddress + " to boot cache " + cache.getName());
++            LOG.debug("no keys to reply to {} to boot cache {}", requestAddress, cache.getName());
+         }
+     }
+ 
+     private void sendResponseChunk(Cache cache, IpAddress requestAddress, List events) {
+-        LOG.fine("reply " + events.size() + " elements to " + requestAddress + " to boot cache " + cache.getName());
++        LOG.debug("reply {} elements to {} to boot cache {}", new Object[] {events.size(), requestAddress, cache.getName()});
+         try {
+             send(requestAddress, events);
+         } catch (RemoteException e1) {
+-            LOG.log(Level.SEVERE, "error repling to " + requestAddress, e1);
++            LOG.error("error repling to {}", requestAddress, e1);
+         }
+     }
+ 
+@@ -170,7 +173,7 @@
+      * {@inheritDoc}
+      */
+     public void memberJoined(Address arg0) {
+-        LOG.fine("joined:" + arg0);
++        LOG.debug("joined: {}", arg0);
+ 
+     }
+ 
+@@ -178,7 +181,7 @@
+      * {@inheritDoc}
+      */
+     public void memberLeft(Address arg0) {
+-        LOG.fine("left:" + arg0);
++        LOG.debug("left: {}", arg0);
+ 
+     }
+ 
+@@ -310,7 +313,7 @@
+             try {
+                 notificationBus.stop();
+             } catch (Exception e) {
+-                LOG.log(Level.SEVERE, "Error occured while closing Manager:", e);
++                LOG.error("Error occured while closing Manager:", e);
+             }
+         }
+ 
+Index: src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsBootstrapCacheLoader.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsBootstrapCacheLoader.java	(revision 1399)
++++ src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsBootstrapCacheLoader.java	(working copy)
+@@ -17,21 +17,22 @@
+ 
+ package net.sf.ehcache.distribution.jgroups;
+ 
++import java.rmi.RemoteException;
++import java.util.ArrayList;
++import java.util.List;
++import java.util.Random;
++
+ import net.sf.ehcache.Ehcache;
+ import net.sf.ehcache.Element;
+ import net.sf.ehcache.bootstrap.BootstrapCacheLoader;
+ import net.sf.ehcache.distribution.CacheManagerPeerProvider;
+ import net.sf.ehcache.distribution.CachePeer;
+ import net.sf.ehcache.distribution.RemoteCacheException;
++
+ import org.jgroups.stack.IpAddress;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+-import java.rmi.RemoteException;
+-import java.util.ArrayList;
+-import java.util.List;
+-import java.util.Random;
+-import java.util.logging.Level;
+-import java.util.logging.Logger;
+-
+ /**
+  * Loads Elements from a random Cache Peer
+  *
+@@ -42,7 +43,7 @@
+ 
+     private static final int ONE_SECOND = 1000;
+ 
+-    private static final Logger LOG = Logger.getLogger(JGroupsBootstrapCacheLoader.class.getName());
++    private static final Logger LOG = LoggerFactory.getLogger(JGroupsBootstrapCacheLoader.class.getName());
+ 
+     private static final int WAIT_FOR_RESPONSE = 3000;
+ 
+@@ -108,7 +109,7 @@
+             try {
+                 doLoad(cache);
+             } catch (RemoteCacheException e) {
+-                LOG.log(Level.WARNING, "Error asynchronously performing bootstrap. The cause was: " + e.getMessage(), e);
++                LOG.warn("Error asynchronously performing bootstrap. The cause was: {}", e.getMessage(), e);
+             } finally {
+                 cache = null;
+             }
+@@ -131,21 +132,21 @@
+ 
+         List cachePeers = acquireCachePeers(cache);
+         if (cachePeers == null || cachePeers.size() == 0) {
+-            LOG.log(Level.INFO, "Empty list of cache peers for cache " + cache.getName() + ". No cache peer to bootstrap from.");
++            LOG.info("Empty list of cache peers for cache {}. No cache peer to bootstrap from.", cache.getName());
+             return;
+         }
+ 
+ 
+         jGroupManager = (JGroupManager) cachePeers.get(0);
+         IpAddress localAddress = (IpAddress) jGroupManager.getBusLocalAddress();
+-        if (LOG.isLoggable(Level.FINE)) {
+-            LOG.log(Level.FINE, "(" + cache.getName() + ") localAddress: " + localAddress);
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("({}) localAddress: {}", cache.getName(), localAddress);
+         }
+         List<IpAddress> addresses = buildCachePeerAddressList(cache, jGroupManager, localAddress);
+ 
+ 
+         if (addresses == null || addresses.size() == 0) {
+-            LOG.log(Level.INFO, "This is the first node to start: no cache bootstrap for " + cache.getName());
++            LOG.info("This is the first node to start: no cache bootstrap for {}", cache.getName());
+             return;
+         }
+ 
+@@ -158,8 +159,8 @@
+             addresses.remove(randomPeerNumber);
+             JGroupEventMessage event =
+                     new JGroupEventMessage(JGroupEventMessage.ASK_FOR_BOOTSTRAP, localAddress, null, cache, cache.getName());
+-            if (LOG.isLoggable(Level.FINE)) {
+-                LOG.log(Level.FINE, "contact " + address + " to boot cache " + cache.getName());
++            if (LOG.isDebugEnabled()) {
++                LOG.debug("contact {} to boot cache {}", address, cache.getName());
+             }
+             List events = new ArrayList();
+             events.add(event);
+@@ -168,17 +169,17 @@
+                 try {
+                     Thread.sleep(WAIT_FOR_RESPONSE);
+                 } catch (InterruptedException e) {
+-                    LOG.log(Level.SEVERE, "InterruptedException", e);
++                    LOG.error("InterruptedException", e);
+                 }
+             } catch (RemoteException e1) {
+-                LOG.log(Level.SEVERE, "error calling " + address, e1);
++                LOG.error("error calling {}", address, e1);
+             }
+         }
+ 
+         if (cache.getSize() == 0) {
+-            LOG.log(Level.WARNING, "Cache failed to bootstrap from its peers: " + cache.getName());
++            LOG.warn("Cache failed to bootstrap from its peers: " + cache.getName());
+         } else {
+-            LOG.log(Level.INFO, "Bootstrap for cache " + cache.getName() + " has loaded " + cache.getSize() + " elements");
++            LOG.info("Bootstrap for cache {} has loaded {} elements", cache.getName(), cache.getSize());
+         }
+ 
+ 
+@@ -189,9 +190,9 @@
+         List<IpAddress> addresses = new ArrayList<IpAddress>();
+         for (int i = 0; i < members.size(); i++) {
+             IpAddress member = (IpAddress) members.get(i);
+-            if (LOG.isLoggable(Level.FINE)) {
+-                LOG.log(Level.FINE, "(" + cache.getName() + ") member " + i + ": "
+-                        + member.getIpAddress() + (member.equals(localAddress) ? " ***" : ""));
++            if (LOG.isDebugEnabled()) {
++                LOG.debug("({}) member {}: {}{}",
++                        new Object[] {cache.getName(), i, member.getIpAddress(), member.equals(localAddress) ? " ***" : "" });
+             }
+             if (!member.equals(localAddress)) {
+                 addresses.add(member);
+@@ -212,10 +213,10 @@
+         if (cacheManagerPeerProvider != null) {
+             timeForClusterToForm = cacheManagerPeerProvider.getTimeForClusterToForm();
+         }
+-        if (LOG.isLoggable(Level.INFO)) {
+-            LOG.log(Level.INFO, "Attempting to acquire cache peers for cache "
+-                    + cache.getName() + " to bootstrap from. Will wait up to "
+-                    + timeForClusterToForm + "ms for cache to join cluster.");
++        if (LOG.isInfoEnabled()) {
++            LOG.info("Attempting to acquire cache peers for cache {}"
++                    + " to bootstrap from. Will wait up to "
++                    + "{}ms for cache to join cluster.", cache.getName(), timeForClusterToForm);
+         }
+         List cachePeers = null;
+         for (int i = 0; i <= timeForClusterToForm; i = i + ONE_SECOND) {
+@@ -223,15 +224,15 @@
+             /*
+              * if (cachePeers == null) { break; } if (cachePeers.size() > 0) { break; }
+              */
+-            LOG.log(Level.INFO, "waiting...");
++            LOG.info("waiting...");
+             try {
+                 Thread.sleep(ONE_SECOND);
+             } catch (InterruptedException e) {
+-                LOG.log(Level.INFO, "doLoad for " + cache.getName() + " interrupted.");
++                LOG.info("doLoad for {} interrupted.", cache.getName());
+             }
+         }
+-        if (LOG.isLoggable(Level.INFO)) {
+-            LOG.log(Level.INFO, "cache peers: " + cachePeers.size());
++        if (LOG.isInfoEnabled()) {
++            LOG.info("cache peers: {}", cachePeers.size());
+         }
+         return cachePeers;
+     }
+Index: src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsBootstrapCacheLoaderFactory.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsBootstrapCacheLoaderFactory.java	(revision 1399)
++++ src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsBootstrapCacheLoaderFactory.java	(working copy)
+@@ -22,7 +22,8 @@
+ import net.sf.ehcache.util.PropertyUtil;
+ 
+ import java.util.Properties;
+-import java.util.logging.Logger;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ 
+ /**
+@@ -59,7 +60,7 @@
+      */
+     protected static final int FIVE_KB = 5000;
+ 
+-    private static final Logger LOG = Logger.getLogger(JGroupsBootstrapCacheLoaderFactory.class.getName());
++    private static final Logger LOG = LoggerFactory.getLogger(JGroupsBootstrapCacheLoaderFactory.class.getName());
+ 
+ 
+     /**
+@@ -85,13 +86,13 @@
+             try {
+                 int maximumChunkSizeBytesCandidate = Integer.parseInt(maximumChunkSizeBytesString);
+                 if ((maximumChunkSizeBytesCandidate < FIVE_KB) || (maximumChunkSizeBytesCandidate > ONE_HUNDRED_MB)) {
+-                    LOG.warning("Trying to set the chunk size to an unreasonable number. Using the default instead.");
++                    LOG.warn("Trying to set the chunk size to an unreasonable number. Using the default instead.");
+                     maximumChunkSizeBytes = DEFAULT_MAXIMUM_CHUNK_SIZE_BYTES;
+                 } else {
+                     maximumChunkSizeBytes = maximumChunkSizeBytesCandidate;
+                 }
+             } catch (NumberFormatException e) {
+-                LOG.warning("Number format exception trying to set chunk size. Using the default instead.");
++                LOG.warn("Number format exception trying to set chunk size. Using the default instead.");
+                 maximumChunkSizeBytes = DEFAULT_MAXIMUM_CHUNK_SIZE_BYTES;
+             }
+ 
+Index: src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCacheManagerPeerProviderFactory.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCacheManagerPeerProviderFactory.java	(revision 1399)
++++ src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCacheManagerPeerProviderFactory.java	(working copy)
+@@ -23,7 +23,8 @@
+ import net.sf.ehcache.util.PropertyUtil;
+ 
+ import java.util.Properties;
+-import java.util.logging.Logger;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ /**
+  * @author Pierre Monestie (pmonestie__REMOVE__THIS__@gmail.com)
+@@ -32,14 +33,14 @@
+  */
+ 
+ public class JGroupsCacheManagerPeerProviderFactory extends CacheManagerPeerProviderFactory {
+-    private static final Logger LOG = Logger.getLogger(JGroupsCacheManagerPeerProviderFactory.class.getName());
++    private static final Logger LOG = LoggerFactory.getLogger(JGroupsCacheManagerPeerProviderFactory.class.getName());
+     private static final String CONNECT = "connect";
+ 
+     /**
+      * {@inheritDoc}
+      */
+     public CacheManagerPeerProvider createCachePeerProvider(CacheManager cacheManager, Properties properties) {
+-        LOG.fine("CREATING JGOUPS PEER PROVIDER");
++        LOG.debug("CREATING JGOUPS PEER PROVIDER");
+         String connect = PropertyUtil.extractAndLogProperty(CONNECT, properties);
+         if (connect == null) {
+             connect = "";
+@@ -49,7 +50,7 @@
+         if (connect.trim().equals("")) {
+             connect = null;
+         }
+-        LOG.fine("Connect is:" + connect);
++        LOG.debug("Connect is: {}", connect);
+         return new JGroupManager(cacheManager, connect);
+ 
+     }
+Index: src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCacheReplicator.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCacheReplicator.java	(revision 1399)
++++ src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCacheReplicator.java	(working copy)
+@@ -17,6 +17,13 @@
+ 
+ package net.sf.ehcache.distribution.jgroups;
+ 
++import java.io.Serializable;
++import java.rmi.RemoteException;
++import java.rmi.UnmarshalException;
++import java.util.ArrayList;
++import java.util.LinkedList;
++import java.util.List;
++
+ import net.sf.ehcache.CacheException;
+ import net.sf.ehcache.Ehcache;
+ import net.sf.ehcache.Element;
+@@ -25,14 +32,8 @@
+ import net.sf.ehcache.distribution.CachePeer;
+ import net.sf.ehcache.distribution.CacheReplicator;
+ 
+-import java.io.Serializable;
+-import java.rmi.RemoteException;
+-import java.rmi.UnmarshalException;
+-import java.util.ArrayList;
+-import java.util.LinkedList;
+-import java.util.List;
+-import java.util.logging.Level;
+-import java.util.logging.Logger;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ /**
+  * @author Pierre Monestie (pmonestie[at]@gmail.com)
+@@ -49,7 +50,7 @@
+      */
+     public static final long DEFAULT_ASYNC_INTERVAL = 1000;
+ 
+-    private static final Logger LOG = Logger.getLogger(JGroupsCacheReplicator.class.getName());
++    private static final Logger LOG = LoggerFactory.getLogger(JGroupsCacheReplicator.class.getName());
+ 
+     private long asynchronousReplicationInterval = DEFAULT_ASYNC_INTERVAL;
+ 
+@@ -147,7 +148,7 @@
+      */
+     public void notifyElementExpired(Ehcache cache, Element element) {
+ 
+-        // LOG.finest("Sending out exp el:"+element);
++        // LOG.debugst("Sending out exp el:"+element);
+ 
+     }
+ 
+@@ -194,7 +195,7 @@
+ 
+         if (replicatePuts) {
+             // if (log.isTraceEnabled())
+-            // LOG.finest("Sending out add/upd el:" + element);
++            // LOG.debugst("Sending out add/upd el:" + element);
+             replicatePutNotification(cache, element);
+         }
+ 
+@@ -202,11 +203,11 @@
+ 
+     private void replicatePutNotification(Ehcache cache, Element element) {
+         if (!element.isKeySerializable()) {
+-            LOG.warning("Key " + element.getObjectKey() + " is not Serializable and cannot be replicated.");
++            LOG.warn("Key {} is not Serializable and cannot be replicated.", element.getObjectKey());
+             return;
+         }
+         if (!element.isSerializable()) {
+-            LOG.warning("Object with key " + element.getObjectKey() + " is not Serializable and cannot be updated via copy");
++            LOG.warn("Object with key {} is not Serializable and cannot be updated via copy", element.getObjectKey());
+             return;
+         }
+         JGroupEventMessage e = new JGroupEventMessage(JGroupEventMessage.PUT, (Serializable) element.getObjectKey(), element,
+@@ -217,7 +218,7 @@
+ 
+     private void replicateRemoveNotification(Ehcache cache, Element element) {
+         if (!element.isKeySerializable()) {
+-            LOG.warning("Key " + element.getObjectKey() + " is not Serializable and cannot be replicated.");
++            LOG.warn("Key {} is not Serializable and cannot be replicated.", element.getObjectKey());
+             return;
+         }
+         JGroupEventMessage e = new JGroupEventMessage(JGroupEventMessage.REMOVE, (Serializable) element.getObjectKey(), null,
+@@ -271,7 +272,7 @@
+      */
+     public void notifyRemoveAll(Ehcache cache) {
+         if (replicateRemovals) {
+-            LOG.finest("Remove all elements called");
++            LOG.debug("Remove all elements called");
+             JGroupEventMessage e = new JGroupEventMessage(JGroupEventMessage.REMOVE_ALL, null, null, cache, cache.getName());
+             sendNotification(cache, e);
+         }
+@@ -325,7 +326,7 @@
+ 
+                     Thread.sleep(asynchronousReplicationInterval);
+                 } catch (InterruptedException e) {
+-                    LOG.fine("Spool Thread interrupted.");
++                    LOG.debug("Spool Thread interrupted.");
+                     return;
+                 }
+             }
+@@ -337,7 +338,7 @@
+                     flushReplicationQueue();
+                 }
+             } catch (Throwable e) {
+-                LOG.log(Level.WARNING, "Exception on flushing of replication queue: " + e.getMessage() + ". Continuing...", e);
++                LOG.warn("Exception on flushing of replication queue: {}. Continuing...", e.getMessage(), e);
+             }
+         }
+     }
+@@ -380,14 +381,14 @@
+             } catch (UnmarshalException e) {
+                 String message = e.getMessage();
+                 if (message.indexOf("Read time out") != 0) {
+-                    LOG.warning("Unable to send message to remote peer due to socket read timeout. Consider increasing"
+-                            + " the socketTimeoutMillis setting in the cacheManagerPeerListenerFactory. " + "Message was: "
+-                            + e.getMessage());
++                    LOG.warn("Unable to send message to remote peer due to socket read timeout. Consider increasing"
++                            + " the socketTimeoutMillis setting in the cacheManagerPeerListenerFactory. Message was: {}",
++                            e.getMessage());
+                 } else {
+-                    LOG.fine("Unable to send message to remote peer.  Message was: " + e.getMessage());
++                    LOG.debug("Unable to send message to remote peer.  Message was: {}", e.getMessage());
+                 }
+             } catch (Throwable t) {
+-                LOG.log(Level.WARNING, "Unable to send message to remote peer.  Message was: " + t.getMessage(), t);
++                LOG.warn("Unable to send message to remote peer.  Message was: {}", t.getMessage(), t);
+             }
+         }
+ 
+@@ -409,7 +410,7 @@
+             if (eventMessage != null && eventMessage.isValid()) {
+                 list.add(eventMessage);
+             } else {
+-                LOG.severe("Collected soft ref");
++                LOG.error("Collected soft ref");
+             }
+         }
+         return list;
+Index: src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCacheReplicatorFactory.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCacheReplicatorFactory.java	(revision 1399)
++++ src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCacheReplicatorFactory.java	(working copy)
+@@ -22,7 +22,8 @@
+ import net.sf.ehcache.util.PropertyUtil;
+ 
+ import java.util.Properties;
+-import java.util.logging.Logger;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ /**
+  * @author Pierre Monestie (pmonestie__REMOVE__THIS__@gmail.com)
+@@ -33,7 +34,7 @@
+ public class JGroupsCacheReplicatorFactory extends CacheEventListenerFactory {
+     private static final String ASYNCHRONOUS_REPLICATION_INTERVAL_MILLIS = "asynchronousReplicationIntervalMillis";
+ 
+-    private static final Logger LOG = Logger.getLogger(JGroupsCacheReplicatorFactory.class.getName());
++    private static final Logger LOG = LoggerFactory.getLogger(JGroupsCacheReplicatorFactory.class.getName());
+ 
+     private static final String REPLICATE_PUTS = "replicatePuts";
+ 
+@@ -55,7 +56,7 @@
+      * {@inheritDoc}
+      */
+     public CacheEventListener createCacheEventListener(Properties properties) {
+-        LOG.fine("making new cache rep");
++        LOG.debug("making new cache rep");
+         boolean replicatePuts = extractBooleanProperty(properties, REPLICATE_PUTS, true);
+         boolean replicateUpdates = extractBooleanProperty(properties, REPLICATE_UPDATES, true);
+         boolean replicateUpdatesViaCopy = extractBooleanProperty(properties, REPLICATE_UPDATES_VIA_COPY, false);
+@@ -88,8 +89,8 @@
+                 Long longValue = new Long(parsedString);
+                 return longValue.longValue();
+             } catch (NumberFormatException e) {
+-                LOG.warning("Number format exception trying to set asynchronousReplicationIntervalMillis. " +
+-                        "Using the default instead. String value was: '" + parsedString + "'");
++                LOG.warn("Number format exception trying to set asynchronousReplicationIntervalMillis. " +
++                        "Using the default instead. String value was: '{}'", parsedString);
+             }
+ 
+         }
+Index: src/test/java/net/sf/ehcache/distribution/jgroups/AbstractCacheTest.java
+===================================================================
+--- src/test/java/net/sf/ehcache/distribution/jgroups/AbstractCacheTest.java	(revision 1399)
++++ src/test/java/net/sf/ehcache/distribution/jgroups/AbstractCacheTest.java	(working copy)
+@@ -16,22 +16,22 @@
+ 
+ package net.sf.ehcache.distribution.jgroups;
+ 
+-import junit.framework.TestCase;
+-
+-import java.util.logging.Logger;
+-import java.util.logging.Level;
+-import java.util.List;
++import java.io.File;
+ import java.io.IOException;
+-import java.io.File;
+ import java.lang.reflect.Method;
++import java.util.List;
+ 
+-import net.sf.ehcache.CacheManager;
+-
+ import javax.management.MBeanServer;
+ import javax.management.MBeanServerFactory;
+ 
++import junit.framework.TestCase;
++import net.sf.ehcache.CacheManager;
+ 
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
++
++
+ /**
+  * Common fields and methods required by most test cases
+  *
+@@ -55,7 +55,7 @@
+     public static final String TEST_CLASSES_DIR = "target/test-classes/";
+ 
+ 
+-    private static final Logger LOG = Logger.getLogger(AbstractCacheTest.class.getName());
++    private static final Logger LOG = LoggerFactory.getLogger(AbstractCacheTest.class.getName());
+ 
+     /**
+      * name for sample cache 1
+@@ -186,7 +186,7 @@
+             Method method = managementFactoryClass.getMethod("getPlatformMBeanServer", null);
+             return (MBeanServer) method.invoke(null, null);
+         } catch (Exception e) {
+-            LOG.log(Level.INFO, "JDK1.5 ManagementFactory not found. Falling back to JMX1.2.1", e);
++            LOG.info("JDK1.5 ManagementFactory not found. Falling back to JMX1.2.1", e);
+             return MBeanServerFactory.createMBeanServer("SimpleAgent");
+         }
+     }
+Index: src/test/java/net/sf/ehcache/distribution/jgroups/JGroupsBootstrapCacheLoaderTest.java
+===================================================================
+--- src/test/java/net/sf/ehcache/distribution/jgroups/JGroupsBootstrapCacheLoaderTest.java	(revision 1399)
++++ src/test/java/net/sf/ehcache/distribution/jgroups/JGroupsBootstrapCacheLoaderTest.java	(working copy)
+@@ -22,7 +22,8 @@
+ import net.sf.ehcache.Cache;
+ import net.sf.ehcache.distribution.MulticastKeepaliveHeartbeatSender;
+ 
+-import java.util.logging.Logger;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ import java.util.Date;
+ 
+ import org.junit.Before;
+@@ -47,7 +48,7 @@
+      */
+     protected static final boolean SYNCHRONOUS = false;
+ 
+-    private static final Logger LOG = Logger.getLogger(JGroupsBootstrapCacheLoaderTest.class.getName());
++    private static final Logger LOG = LoggerFactory.getLogger(JGroupsBootstrapCacheLoaderTest.class.getName());
+ 
+     /**
+      * CacheManager 1 in the cluster
+Index: src/test/java/net/sf/ehcache/distribution/jgroups/JGroupsReplicationTest.java
+===================================================================
+--- src/test/java/net/sf/ehcache/distribution/jgroups/JGroupsReplicationTest.java	(revision 1399)
++++ src/test/java/net/sf/ehcache/distribution/jgroups/JGroupsReplicationTest.java	(working copy)
+@@ -35,7 +35,8 @@
+ 
+ import java.io.Serializable;
+ import java.util.Date;
+-import java.util.logging.Logger;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ /**
+  * Test JGroups replication
+@@ -49,7 +50,7 @@
+ 
+     private static final String SAMPLE_CACHE1 = "sampleCacheAsync";
+     private static final String SAMPLE_CACHE2 = "sampleCacheAsync2";
+-    private static final Logger LOG = Logger.getLogger(JGroupsReplicationTest.class.getName());
++    private static final Logger LOG = LoggerFactory.getLogger(JGroupsReplicationTest.class.getName());
+ 
+     private CacheManager manager1;
+     private CacheManager manager2;
+@@ -70,13 +71,13 @@
+ 
+     @After
+     public void tearDown() throws Exception {
+-        LOG.fine("Tearing down cm1");
++        LOG.debug("Tearing down cm1");
+         manager1.shutdown();
+-        LOG.fine("Tearing down cm2");
++        LOG.debug("Tearing down cm2");
+         manager2.shutdown();
+-        LOG.fine("Tearing down cm3");
++        LOG.debug("Tearing down cm3");
+         manager3.shutdown();
+-        LOG.fine("Tearing down cm4");
++        LOG.debug("Tearing down cm4");
+         manager4.shutdown();
+         //JGroups needs to close sockets
+         Thread.sleep(2000);
+Index: src/test/resources/log4j.properties
+===================================================================
+--- src/test/resources/log4j.properties	(revision 0)
++++ src/test/resources/log4j.properties	(revision 0)
+@@ -0,0 +1,7 @@
++# sample log4j.properties file for use with MockCentral
++  log4j.rootLogger=warn, myConsole
++
++  # define a console appender
++  log4j.appender.myConsole=org.apache.log4j.ConsoleAppender
++  log4j.appender.myConsole.layout=org.apache.log4j.PatternLayout
++  log4j.appender.myConsole.layout.ConversionPattern=%5p [%t] (%F:%L) %m%n
+\ No newline at end of file

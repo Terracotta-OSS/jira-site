@@ -1,0 +1,943 @@
+diff --git a/src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCacheManagerPeerProvider.java b/src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCacheManagerPeerProvider.java
+index 2602e87..47fd9bb 100755
+--- a/src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCacheManagerPeerProvider.java
++++ b/src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCacheManagerPeerProvider.java
+@@ -17,6 +17,12 @@
+ 
+ package net.sf.ehcache.distribution.jgroups;
+ 
++import java.net.URL;
++import java.util.Collections;
++import java.util.List;
++
++import javax.management.MBeanServer;
++
+ import net.sf.ehcache.CacheException;
+ import net.sf.ehcache.CacheManager;
+ import net.sf.ehcache.Ehcache;
+@@ -24,16 +30,12 @@ import net.sf.ehcache.Status;
+ import net.sf.ehcache.distribution.CacheManagerPeerProvider;
+ import net.sf.ehcache.distribution.CachePeer;
+ import net.sf.ehcache.management.ManagedCacheManagerPeerProvider;
++
+ import org.jgroups.JChannel;
+ import org.jgroups.jmx.JmxConfigurator;
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
+-import javax.management.MBeanServer;
+-import java.net.URL;
+-import java.util.Collections;
+-import java.util.List;
+-
+ /**
+  * The main Jgroup class for replication via JGroup. Starts up the Jgroup communication bus and listen for message in
+  * the bus. Because of Ehcache design we have to register this as a CachePeer. In reality this class listen for change
+@@ -178,7 +180,9 @@ public class JGroupsCacheManagerPeerProvider implements ManagedCacheManagerPeerP
+             LOG.debug("Registered JGroups channel with MBeanServer under domain {} with name {}", JMX_DOMAIN_NAME, clusterName);
+         } catch (Exception e) {
+             LOG.error("Error occured while registering MBeans. Management of JGroups will not be enabled.", e);
+-        }        
++        }
++        
++        this.cacheReceiver.register(mBeanServer);
+     }
+ 
+     /**
+@@ -198,6 +202,7 @@ public class JGroupsCacheManagerPeerProvider implements ManagedCacheManagerPeerP
+     private void shutdownCachePeer() {
+         if (this.cachePeer != null) {
+             this.cachePeersListCache = null;
++            this.cacheReceiver.dispose();
+             this.cacheReceiver = null;
+             this.cachePeer.dispose();
+             this.cachePeer = null;
+diff --git a/src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCacheReceiver.java b/src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCacheReceiver.java
+index c473be9..359fc85 100644
+--- a/src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCacheReceiver.java
++++ b/src/main/java/net/sf/ehcache/distribution/jgroups/JGroupsCacheReceiver.java
+@@ -21,10 +21,16 @@ import java.io.OutputStream;
+ import java.io.Serializable;
+ import java.util.List;
+ 
++import javax.management.MBeanServer;
++import javax.management.ObjectName;
++
+ import net.sf.ehcache.CacheManager;
+ import net.sf.ehcache.Ehcache;
+-
++import net.sf.ehcache.distribution.jgroups.jmx.JGroupsCacheReceiverStatsCounter;
++import net.sf.ehcache.distribution.jgroups.jmx.JGroupsCacheReceiverStats;
++import net.sf.ehcache.distribution.jgroups.jmx.NullJGroupsCacheReceiverStats;
+ import net.sf.ehcache.util.CacheTransactionHelper;
++
+ import org.jgroups.Address;
+ import org.jgroups.Message;
+ import org.jgroups.Receiver;
+@@ -43,6 +49,10 @@ public class JGroupsCacheReceiver implements Receiver {
+ 
+     private final CacheManager cacheManager;
+     private final JGroupsBootstrapManager bootstrapManager;
++    
++    private MBeanServer mBeanServer;
++    private ObjectName objectName;
++    private JGroupsCacheReceiverStatsCounter cacheReceiverStats = new NullJGroupsCacheReceiverStats();
+ 
+     /**
+      * Create a new {@link Receiver}
+@@ -51,6 +61,43 @@ public class JGroupsCacheReceiver implements Receiver {
+         this.cacheManager = cacheManager;
+         this.bootstrapManager = bootstrapManager;
+     }
++    
++    /**
++     * Register with an MBeanServer
++     */
++    public void register(MBeanServer mBeanServer) {
++        this.mBeanServer = mBeanServer;
++        
++        //Replace NULL impl with real impl
++        this.cacheReceiverStats = new JGroupsCacheReceiverStats();
++        try {
++            this.objectName = ObjectName.getInstance("net.sf.ehcache:type=JGroupsStatistics,CacheManager=" + this.cacheManager.getName()
++                    + ",name=JGroupsCacheReceiver");
++            
++            this.mBeanServer.registerMBean(
++                    cacheReceiverStats, 
++                    objectName);
++            
++            LOG.debug("Registered JGroups Cache Receiver with MBeanServer under {}", this.objectName);
++        } catch (Exception e) {
++            LOG.error("Error occured while registering JGroupsCacheReceiver MBean. JGroupsCacheReceiver Statistics will not be enabled.",
++                    e);
++        }
++    }
++
++    /**
++     * Shutdown the cache peer reciever
++     */
++    public void dispose() {
++        if (this.mBeanServer != null) {
++            try {
++                this.mBeanServer.unregisterMBean(this.objectName);
++                
++            } catch (Exception e) {
++                LOG.error("Error occured while unregistering JGroupsCacheReceiver MBean. " + this.objectName, e);
++            }
++        }
++    }
+ 
+     /**
+      * {@inheritDoc}
+@@ -121,21 +168,25 @@ public class JGroupsCacheReceiver implements Receiver {
+ 
+         switch (message.getEvent()) {
+             case JGroupEventMessage.BOOTSTRAP_REQUEST: {
++                this.cacheReceiverStats.countBootstrapRequest();
+                 LOG.debug("received bootstrap request:    from {} for cache={}", message.getSerializableKey(), cacheName);
+                 this.bootstrapManager.sendBootstrapResponse(message);
+                 break;
+             }
+             case JGroupEventMessage.BOOTSTRAP_COMPLETE: {
++                this.cacheReceiverStats.countBootstrapComplete();
+                 LOG.debug("received bootstrap complete:   cache={}", cacheName);
+                 this.bootstrapManager.handleBootstrapComplete(message);
+                 break;
+             }
+             case JGroupEventMessage.BOOTSTRAP_INCOMPLETE: {
++                this.cacheReceiverStats.countBootstrapIncomplete();
+                 LOG.debug("received bootstrap incomplete: cache={}", cacheName);
+                 this.bootstrapManager.handleBootstrapIncomplete(message);
+                 break;
+             }
+             case JGroupEventMessage.BOOTSTRAP_RESPONSE: {
++                this.cacheReceiverStats.countBootstrapResponse();
+                 final Serializable serializableKey = message.getSerializableKey();
+                 LOG.debug("received bootstrap reply:      cache={}, key={}", cacheName, serializableKey);
+                 this.bootstrapManager.handleBootstrapResponse(message);
+@@ -157,6 +208,7 @@ public class JGroupsCacheReceiver implements Receiver {
+         
+         switch (message.getEvent()) {
+             case JGroupEventMessage.REMOVE_ALL: {
++                this.cacheReceiverStats.countRemoveAll();
+                 LOG.debug("received remove all:      cache={}", cacheName);
+                 cache.removeAll(true);
+                 break;
+@@ -164,15 +216,18 @@ public class JGroupsCacheReceiver implements Receiver {
+             case JGroupEventMessage.REMOVE: {
+                 final Serializable serializableKey = message.getSerializableKey();
+                 if (cache.getQuiet(serializableKey) != null) {
++                    this.cacheReceiverStats.countRemoveExisting();
+                     LOG.debug("received remove:          cache={}, key={}", cacheName, serializableKey);
+                     cache.remove(serializableKey, true);
+                 } else if (LOG.isTraceEnabled()) {
++                    this.cacheReceiverStats.countRemoveNotExisting();
+                     LOG.trace("received remove:          cache={}, key={} - Ignoring, key is not in the local cache.", 
+                             cacheName, serializableKey);
+                 }
+                 break;
+             }
+             case JGroupEventMessage.PUT: {
++                this.cacheReceiverStats.countPut();
+                 final Serializable serializableKey = message.getSerializableKey();
+                 LOG.debug("received put:             cache={}, key={}", cacheName, serializableKey);
+                 cache.put(message.getElement(), true);
+diff --git a/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/AtomicRate.java b/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/AtomicRate.java
+new file mode 100644
+index 0000000..43b56af
+--- /dev/null
++++ b/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/AtomicRate.java
+@@ -0,0 +1,157 @@
++/**
++ *  Copyright 2003-2010 Terracotta, Inc.
++ *
++ *  Licensed under the Apache License, Version 2.0 (the "License");
++ *  you may not use this file except in compliance with the License.
++ *  You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *  Unless required by applicable law or agreed to in writing, software
++ *  distributed under the License is distributed on an "AS IS" BASIS,
++ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *  See the License for the specific language governing permissions and
++ *  limitations under the License.
++ */
++
++package net.sf.ehcache.distribution.jgroups.jmx;
++
++import java.util.concurrent.TimeUnit;
++import java.util.concurrent.atomic.AtomicInteger;
++import java.util.concurrent.locks.Lock;
++import java.util.concurrent.locks.ReadWriteLock;
++import java.util.concurrent.locks.ReentrantReadWriteLock;
++
++/**
++ * Tracks a rate (counter / time) using a bucket based approach to reduce overhead.
++ * <p/>
++ * This is thread safe
++ * 
++ * @author Eric Dalquist
++ */
++public final class AtomicRate {
++    private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
++    private final RateBucket[] rateBuckets;
++    private final TimeUnit rateUnit;
++    private final long rateDuration;
++    private final long bucketDuration;
++    private int newestBucket;
++    
++    /**
++     * @param duration Duration the rate spans
++     * @param unit The time unit for the duration
++     */
++    public AtomicRate(int duration, TimeUnit unit) {
++        final int buckets = 10;
++        this.newestBucket = 0;
++        this.rateBuckets = new RateBucket[buckets];
++        this.rateBuckets[this.newestBucket] = new RateBucket();
++        
++        this.rateUnit = unit;
++        this.rateDuration = rateUnit.toNanos(duration);
++        this.bucketDuration = this.rateDuration / buckets;
++    }
++    
++    /**
++     * @return The {@link TimeUnit} the rate is over
++     */
++    public TimeUnit getRateUnit() {
++        return rateUnit;
++    }
++
++    /**
++     * @return The duration the rate covers, returned in the scale of the {@link #getRateUnit()}
++     */
++    public long getRateDuration() {
++        return rateUnit.convert(rateDuration, TimeUnit.NANOSECONDS);
++    }
++
++    /**
++     * Increment the counter
++     */
++    public void count() {
++        final Lock readLock = this.readWriteLock.readLock();
++        readLock.lock();
++        try {
++            //Get the most recent bucket
++            RateBucket rateBucket = this.rateBuckets[this.newestBucket];
++            
++            //If the bucket is old, create a new one
++            if (rateBucket.start + bucketDuration < System.nanoTime()) {
++                //Upgrade the lock and recheck the age of the newest bucket
++                readLock.unlock();
++                final Lock writeLock = this.readWriteLock.writeLock();
++                writeLock.lock();
++                try {
++                    rateBucket = this.rateBuckets[this.newestBucket];
++                    if (rateBucket.start + bucketDuration < System.nanoTime()) {
++                        rateBucket = new RateBucket();
++                        this.newestBucket = (this.newestBucket + 1) % this.rateBuckets.length;
++                        this.rateBuckets[this.newestBucket] = rateBucket;
++                    }
++                } finally {
++                    //Downgrade the lock (don't need to bother with read lock then write unlock and this is safer)
++                    writeLock.unlock();
++                    readLock.lock();
++                }
++            }
++            
++            //Increment the bucket's counter
++            rateBucket.count.incrementAndGet();
++        } finally {
++            readLock.unlock();
++        }
++    }
++    
++    /**
++     * @return The current rate. The rate returned is in the {@link TimeUnit} used provided in the constructor.
++     */
++    public double getRate() {
++        final long now = System.nanoTime();
++        int count = 0;
++        long duration = 0;
++        
++        final Lock readLock = this.readWriteLock.readLock();
++        readLock.lock();
++        try {
++            int bucketIndex = this.newestBucket;
++            while (true) {
++                final RateBucket bucket = this.rateBuckets[bucketIndex];
++                //Stop counting if we hit a null bucket or a bucket older than the max age of the rate window
++                if (bucket == null || bucket.start + this.rateDuration < now) {
++                    break;
++                }
++
++                count += bucket.count.get();
++                duration += Math.min(this.bucketDuration, now - bucket.start);
++
++                bucketIndex = bucketIndex - 1;
++                if (bucketIndex < 0) {
++                    bucketIndex = this.rateBuckets.length - 1;
++                }
++            }
++        } finally {
++            readLock.unlock();
++        }
++        
++        
++        if (duration == 0) {
++            return Double.NaN;
++        }
++        
++        return ((double)count / duration) * this.rateUnit.toNanos(1);
++    }
++    
++    /**
++     * Tracks the count and start time for each bucket
++     */
++    private static final class RateBucket {
++        private final long start = System.nanoTime();
++        private final AtomicInteger count = new AtomicInteger();
++        
++        @Override
++        public String toString() {
++            return "RateBucket [start=" + start + ", count=" + count + "]";
++        }
++    }
++}
+diff --git a/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/JGroupsCacheReceiverStats.java b/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/JGroupsCacheReceiverStats.java
+new file mode 100644
+index 0000000..32d24e2
+--- /dev/null
++++ b/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/JGroupsCacheReceiverStats.java
+@@ -0,0 +1,211 @@
++/**
++ *  Copyright 2003-2010 Terracotta, Inc.
++ *
++ *  Licensed under the Apache License, Version 2.0 (the "License");
++ *  you may not use this file except in compliance with the License.
++ *  You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *  Unless required by applicable law or agreed to in writing, software
++ *  distributed under the License is distributed on an "AS IS" BASIS,
++ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *  See the License for the specific language governing permissions and
++ *  limitations under the License.
++ */
++
++package net.sf.ehcache.distribution.jgroups.jmx;
++
++import java.util.concurrent.TimeUnit;
++import java.util.concurrent.atomic.AtomicLong;
++
++/**
++ * Tracks JGroupsCacheReceiver Statistics
++ * 
++ * @author Eric Dalquist
++ */
++public class JGroupsCacheReceiverStats implements
++        JGroupsCacheReceiverStatsMBean, JGroupsCacheReceiverStatsCounter {
++    
++    private final AtomicLong removeAllCount = new AtomicLong();
++    private final AtomicRate removeAllRate = new AtomicRate(1, TimeUnit.SECONDS);
++    
++    private final AtomicLong removeExistingCount = new AtomicLong();
++    private final AtomicRate removeExistingRate = new AtomicRate(1, TimeUnit.SECONDS);
++    
++    private final AtomicLong removeNotExistingCount = new AtomicLong();
++    private final AtomicRate removeNotExistingRate = new AtomicRate(1, TimeUnit.SECONDS);
++    
++    private final AtomicLong putCount = new AtomicLong();
++    private final AtomicRate putRate = new AtomicRate(1, TimeUnit.SECONDS);
++    
++    private final AtomicLong bootstrapRequestCount = new AtomicLong();
++    private final AtomicLong bootstrapResponseCount = new AtomicLong();
++    private final AtomicLong bootstrapCompleteCount = new AtomicLong();
++    private final AtomicLong bootstrapIncompleteCount = new AtomicLong();
++    
++    
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public void countRemoveAll() {
++        this.removeAllCount.incrementAndGet();
++        this.removeAllRate.count();
++    }
++
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public long getRemoveAllCount() {
++        return this.removeAllCount.get();
++    }
++
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public double getRemoveAllRate() {
++        return removeAllRate.getRate();
++    }
++    
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public void countRemoveExisting() {
++        this.removeExistingCount.incrementAndGet();
++        this.removeExistingRate.count();
++    }
++
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public long getRemoveExistingCount() {
++        return this.removeExistingCount.get();
++    }
++
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public double getRemoveExistingRate() {
++        return this.removeExistingRate.getRate();
++    }
++    
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public void countRemoveNotExisting() {
++        this.removeNotExistingCount.incrementAndGet();
++        this.removeNotExistingRate.count();
++    }
++
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public long getRemoveNotExistingCount() {
++        return this.removeNotExistingCount.get();
++    }
++
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public double getRemoveNotExistingRate() {
++        return this.removeNotExistingRate.getRate();
++    }
++    
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public void countPut() {
++        this.putCount.incrementAndGet();
++        this.putRate.count();
++    }
++
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public long getPutCount() {
++        return this.putCount.get();
++    }
++
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public double getPutRate() {
++        return this.putRate.getRate();
++    }
++
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public void countBootstrapRequest() {
++        this.bootstrapRequestCount.incrementAndGet();
++    }
++
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public void countBootstrapComplete() {
++        this.bootstrapCompleteCount.incrementAndGet();        
++    }
++
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public void countBootstrapIncomplete() {
++        this.bootstrapIncompleteCount.incrementAndGet();        
++    }
++
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public void countBootstrapResponse() {
++        this.bootstrapResponseCount.incrementAndGet();        
++    }
++
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public long getBootstrapRequestCount() {
++        return this.bootstrapRequestCount.get();
++    }
++
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public long getBootstrapCompleteCount() {
++        return this.bootstrapCompleteCount.get();
++    }
++
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public long getBootstrapIncompleteCount() {
++        return this.bootstrapIncompleteCount.get();
++    }
++
++    /**
++     * @inheritDoc
++     */
++    @Override
++    public long getBootstrapResponseCount() {
++        return this.bootstrapResponseCount.get();
++    }
++}
+diff --git a/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/JGroupsCacheReceiverStatsCounter.java b/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/JGroupsCacheReceiverStatsCounter.java
+new file mode 100644
+index 0000000..e9b3082
+--- /dev/null
++++ b/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/JGroupsCacheReceiverStatsCounter.java
+@@ -0,0 +1,66 @@
++/**
++ *  Copyright 2003-2010 Terracotta, Inc.
++ *
++ *  Licensed under the Apache License, Version 2.0 (the "License");
++ *  you may not use this file except in compliance with the License.
++ *  You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *  Unless required by applicable law or agreed to in writing, software
++ *  distributed under the License is distributed on an "AS IS" BASIS,
++ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *  See the License for the specific language governing permissions and
++ *  limitations under the License.
++ */
++
++package net.sf.ehcache.distribution.jgroups.jmx;
++
++/**
++ * Interface for updating the receiver stats
++ * 
++ * @author Eric Dalquist
++ */
++public interface JGroupsCacheReceiverStatsCounter {
++
++    /**
++     * Count a remove all event
++     */
++    void countRemoveAll();
++
++    /**
++     * Count a remove existing event
++     */
++    void countRemoveExisting();
++
++    /**
++     * Count a remove not existing event
++     */
++    void countRemoveNotExisting();
++
++    /**
++     * Count a put event
++     */
++    void countPut();
++    
++    /**
++     * Count a bootstrap request event
++     */
++    void countBootstrapRequest();
++    
++    /**
++     * Count a bootstrap complete event
++     */
++    void countBootstrapComplete();
++    
++    /**
++     * Count a bootstrap incomplete event 
++     */
++    void countBootstrapIncomplete();
++    
++    /**
++     * Count a bootstrap response event
++     */
++    void countBootstrapResponse();
++
++}
+\ No newline at end of file
+diff --git a/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/JGroupsCacheReceiverStatsMBean.java b/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/JGroupsCacheReceiverStatsMBean.java
+new file mode 100644
+index 0000000..539eeb2
+--- /dev/null
++++ b/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/JGroupsCacheReceiverStatsMBean.java
+@@ -0,0 +1,80 @@
++/**
++ *  Copyright 2003-2010 Terracotta, Inc.
++ *
++ *  Licensed under the Apache License, Version 2.0 (the "License");
++ *  you may not use this file except in compliance with the License.
++ *  You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *  Unless required by applicable law or agreed to in writing, software
++ *  distributed under the License is distributed on an "AS IS" BASIS,
++ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *  See the License for the specific language governing permissions and
++ *  limitations under the License.
++ */
++
++package net.sf.ehcache.distribution.jgroups.jmx;
++
++/**
++ * Describes statistics about the JGroups Receiver bean 
++ * 
++ * @author Eric Dalquist
++ */
++public interface JGroupsCacheReceiverStatsMBean {
++    /**
++     * @return Number of remove_all events received
++     */
++    long getRemoveAllCount();
++    /**
++     * @return Rate of remove_all event reception over the last second
++     */
++    double getRemoveAllRate();
++    
++    /**
++     * @return Number of remove events received where the local element existed.
++     */
++    long getRemoveExistingCount();
++    /**
++     * @return Rate of remove event reception where the local element existed over the last second
++     */
++    double getRemoveExistingRate();
++    
++    /**
++     * @return Number of remove events received where the local element did not exist
++     */
++    long getRemoveNotExistingCount();
++    /**
++     * @return Rate of remove event reception where the local element did not exist over the last second
++     */
++    double getRemoveNotExistingRate();
++    
++    /**
++     * @return Number of put events received
++     */
++    long getPutCount();
++    /**
++     * @return Rate of put event reception over the last second
++     */
++    double getPutRate();
++    
++    /**
++     * @return the bootstrap request event count
++     */
++    long getBootstrapRequestCount();
++    
++    /**
++     * @return the bootstrap complete event count
++     */
++    long getBootstrapCompleteCount();
++    
++    /**
++     * @return the bootstrap incomplete event count
++     */
++    long getBootstrapIncompleteCount();
++    
++    /**
++     * @return the bootstrap response event count
++     */
++    long getBootstrapResponseCount();
++}
+diff --git a/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/NullJGroupsCacheReceiverStats.java b/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/NullJGroupsCacheReceiverStats.java
+new file mode 100644
+index 0000000..924bc3b
+--- /dev/null
++++ b/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/NullJGroupsCacheReceiverStats.java
+@@ -0,0 +1,81 @@
++/**
++ *  Copyright 2003-2010 Terracotta, Inc.
++ *
++ *  Licensed under the Apache License, Version 2.0 (the "License");
++ *  you may not use this file except in compliance with the License.
++ *  You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *  Unless required by applicable law or agreed to in writing, software
++ *  distributed under the License is distributed on an "AS IS" BASIS,
++ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *  See the License for the specific language governing permissions and
++ *  limitations under the License.
++ */
++
++package net.sf.ehcache.distribution.jgroups.jmx;
++
++/**
++ * Implementation that does nothing
++ * 
++ * @author Eric Dalquist
++ */
++public final class NullJGroupsCacheReceiverStats implements JGroupsCacheReceiverStatsCounter {
++
++    /**
++     * noop
++     */
++    @Override
++    public void countRemoveAll() {
++    }
++
++    /**
++     * noop
++     */
++    @Override
++    public void countRemoveExisting() {
++    }
++
++    /**
++     * noop
++     */
++    @Override
++    public void countRemoveNotExisting() {
++    }
++
++    /**
++     * noop
++     */
++    @Override
++    public void countPut() {
++    }
++
++    /**
++     * noop
++     */
++    @Override
++    public void countBootstrapRequest() {
++    }
++
++    /**
++     * noop
++     */
++    @Override
++    public void countBootstrapComplete() {
++    }
++
++    /**
++     * noop
++     */
++    @Override
++    public void countBootstrapIncomplete() {
++    }
++
++    /**
++     * noop
++     */
++    @Override
++    public void countBootstrapResponse() {
++    }
++}
+diff --git a/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/package.html b/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/package.html
+new file mode 100755
+index 0000000..5487bc5
+--- /dev/null
++++ b/src/main/java/net/sf/ehcache/distribution/jgroups/jmx/package.html
+@@ -0,0 +1,8 @@
++<html>
++<head>
++</head>
++<body>
++This package is for jxm beans for cache replication using Jgroups.
++
++</body>
++</html>
+diff --git a/src/test/java/net/sf/ehcache/distribution/jgroups/jmx/AtomicRateTest.java b/src/test/java/net/sf/ehcache/distribution/jgroups/jmx/AtomicRateTest.java
+new file mode 100644
+index 0000000..1a52230
+--- /dev/null
++++ b/src/test/java/net/sf/ehcache/distribution/jgroups/jmx/AtomicRateTest.java
+@@ -0,0 +1,113 @@
++/**
++ *  Copyright 2003-2010 Terracotta, Inc.
++ *
++ *  Licensed under the Apache License, Version 2.0 (the "License");
++ *  you may not use this file except in compliance with the License.
++ *  You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *  Unless required by applicable law or agreed to in writing, software
++ *  distributed under the License is distributed on an "AS IS" BASIS,
++ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *  See the License for the specific language governing permissions and
++ *  limitations under the License.
++ */
++
++package net.sf.ehcache.distribution.jgroups.jmx;
++
++import static junit.framework.Assert.assertEquals;
++import static junit.framework.Assert.fail;
++
++import java.util.concurrent.TimeUnit;
++
++import org.junit.Test;
++
++/**
++ * Test {@link AtomicRate} class
++ * 
++ * @author Eric Dalquist
++ */
++public class AtomicRateTest {
++    @Test
++    public void testConsistentRate() throws Exception {
++        final AtomicRate atomicRate = new AtomicRate(1, TimeUnit.SECONDS);
++        assertEquals(0.0, atomicRate.getRate());
++        
++        for (int i = 0; i < 10; i++) {
++            countAndWait(atomicRate, 1234, 101);
++            assertEquals(12340.0, atomicRate.getRate(), 10);
++        }
++    }
++    
++    @Test
++    public void testBucketSkippingRate() throws Exception {
++        final AtomicRate atomicRate = new AtomicRate(1, TimeUnit.SECONDS);
++        assertEquals(0.0, atomicRate.getRate());
++        
++        for (int i = 0; i < 9; i++) {
++            countAndWait(atomicRate, 1234, 101);
++            assertEquals(12340.0, atomicRate.getRate(), 10);
++            
++            if (i % 3 == 0) {
++                Thread.sleep(201);
++            }
++        }
++    }
++    
++    @Test
++    public void testRateSkippingRate() throws Exception {
++        final AtomicRate atomicRate = new AtomicRate(1, TimeUnit.SECONDS);
++        assertEquals(0.0, atomicRate.getRate());
++        
++        for (int i = 0; i < 2; i++) {
++            countAndWait(atomicRate, 1234, 101);
++            assertEquals(12340.0, atomicRate.getRate(), 10);
++            
++            Thread.sleep(1001);
++        }
++    }
++    
++    @Test
++    public void testVariableRate() throws Exception {
++        final AtomicRate atomicRate = new AtomicRate(1, TimeUnit.SECONDS);
++        assertEquals(0.0, atomicRate.getRate());
++        
++        for (int i = 0; i < 5; i++) {
++            countAndWait(atomicRate, 1234 * (i + 1), 101);
++            
++            switch (i) {
++                case 0: {
++                    assertEquals(12340.0, atomicRate.getRate(), 10);
++                    break;
++                }
++                case 1: {
++                    assertEquals(18510.0, atomicRate.getRate(), 10);
++                    break;
++                }
++                case 2: {
++                    assertEquals(24680.0, atomicRate.getRate(), 10);
++                    break;
++                }
++                case 3: {
++                    assertEquals(30850.0, atomicRate.getRate(), 10);
++                    break;
++                }
++                case 4: {
++                    assertEquals(37020.0, atomicRate.getRate(), 10);
++                    break;
++                }
++                default: { 
++                    fail();
++                }
++            }
++        }
++    }
++
++    private void countAndWait(final AtomicRate atomicRate, final int count, final int wait) throws InterruptedException {
++        for (int i = 0; i < count; i++) {
++            atomicRate.count();
++        }
++        Thread.sleep(wait);
++    }
++}

@@ -1,0 +1,843 @@
+
+===== FULL THREAD DUMP ===============
+Fri May 07 21:26:40 2010
+BEA JRockit(R) R27.6.1-20-104573-1.5.0_15-20081016-1236-windows-ia32
+
+"Main Thread" id=1 idx=0x4 tid=620 prio=5 alive, in native, waiting
+    -- Waiting for notification on: weblogic/t3/srvr/T3Srvr@0x0B9A8C90[fat lock]
+    at jrockit/vm/Threads.waitForNotifySignal(JLjava/lang/Object;)Z(Native Method)
+    at java/lang/Object.wait(J)V(Native Method)
+    at java/lang/Object.wait(Object.java:474)
+    at weblogic/t3/srvr/T3Srvr.waitForDeath(T3Srvr.java:747)
+    ^-- Lock released while waiting: weblogic/t3/srvr/T3Srvr@0x0B9A8C90[fat lock]
+    at weblogic/t3/srvr/T3Srvr.run(T3Srvr.java:396)
+    at weblogic/Server.main(Server.java:67)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"(Signal Handler)" id=2 idx=0x8 tid=4164 prio=5 alive, in native, daemon
+
+"(GC Main Thread)" id=3 idx=0xc tid=684 prio=5 alive, in native, native_waiting, daemon
+
+"(GC Worker Thread 1)" id=? idx=0x10 tid=4476 prio=5 alive, in native, daemon
+
+"(GC Worker Thread 2)" id=? idx=0x14 tid=2884 prio=5 alive, in native, daemon
+
+"(Code Generation Thread 1)" id=4 idx=0x18 tid=2320 prio=5 alive, in native, native_waiting, daemon
+
+"(Code Optimization Thread 1)" id=5 idx=0x1c tid=4436 prio=5 alive, in native, native_waiting, daemon
+
+"(VM Periodic Task)" id=6 idx=0x20 tid=928 prio=10 alive, in native, native_blocked, daemon
+
+"(Attach Listener)" id=7 idx=0x24 tid=3220 prio=5 alive, in native, daemon
+
+"Finalizer" id=8 idx=0x28 tid=3308 prio=8 alive, in native, native_waiting, daemon
+    at jrockit/memory/Finalizer.waitForFinalizees([Ljava/lang/Object;)I(Native Method)
+    at jrockit/memory/Finalizer.access$500(Finalizer.java:12)
+    at jrockit/memory/Finalizer$4.run(Finalizer.java:159)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"Reference Handler" id=9 idx=0x2c tid=2656 prio=10 alive, in native, native_waiting, daemon
+    at java/lang/ref/Reference.waitForActivatedQueue()Ljava/lang/ref/Reference;(Native Method)
+    at java/lang/ref/Reference.access$100(Reference.java:11)
+    at java/lang/ref/Reference$ReferenceHandler.run(Reference.java:79)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"(Sensor Event Thread)" id=10 idx=0x30 tid=1032 prio=5 alive, in native, daemon
+
+"Timer-0" id=13 idx=0x34 tid=3656 prio=5 alive, in native, waiting, daemon
+    -- Waiting for notification on: java/util/TaskQueue@0x0BE32898[fat lock]
+    at jrockit/vm/Threads.waitForNotifySignal(JLjava/lang/Object;)Z(Native Method)
+    at java/lang/Object.wait(J)V(Native Method)
+    at java/lang/Object.wait(Object.java:474)
+    at java/util/TimerThread.mainLoop(Timer.java:483)
+    ^-- Lock released while waiting: java/util/TaskQueue@0x0BE32898[fat lock]
+    at java/util/TimerThread.run(Timer.java:462)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"Timer-1" id=14 idx=0x38 tid=3560 prio=5 alive, in native, waiting, daemon
+    -- Waiting for notification on: java/util/TaskQueue@0x0BE32900[fat lock]
+    at jrockit/vm/Threads.waitForNotifySignal(JLjava/lang/Object;)Z(Native Method)
+    at java/lang/Object.wait(J)V(Native Method)[optimized]
+    at java/util/TimerThread.mainLoop(Timer.java:509)
+    ^-- Lock released while waiting: java/util/TaskQueue@0x0BE32900[fat lock]
+    at java/util/TimerThread.run(Timer.java:462)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"[STUCK] ExecuteThread: '0' for queue: 'weblogic.kernel.Default (self-tuning)'" id=15 idx=0x3c tid=1568 prio=1 alive, in native, parked, daemon
+    at jrockit/vm/Locks.park0(J)V(Native Method)
+    at jrockit/vm/Locks.park(Locks.java:2506)
+    at sun/misc/Unsafe.park(ZJ)V(Native Method)
+    at java/util/concurrent/locks/LockSupport.park(LockSupport.java:118)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:716)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:746)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1076)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$NonfairSync.wlock(ReentrantReadWriteLock.java:342)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:637)
+    at net/sf/ehcache/store/compound/Segment.remove(Segment.java:564)
+    at net/sf/ehcache/store/compound/CompoundStore.remove(CompoundStore.java:217)
+    at net/sf/ehcache/Cache.removeInternal(Cache.java:1900)
+    at net/sf/ehcache/Cache.searchInStoreWithoutStats(Cache.java:1717)
+    at net/sf/ehcache/Cache.get(Cache.java:1370)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:444)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:588)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.buildPageInfo(CachingFilter.java:217)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.doFilter(CachingFilter.java:191)
+    at net/sf/ehcache/constructs/web/filter/Filter.doFilter(Filter.java:86)
+    at weblogic/servlet/internal/FilterChainImpl.doFilter(FilterChainImpl.java:42)
+    at weblogic/servlet/internal/WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:3402)
+    at weblogic/security/acl/internal/AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
+    at weblogic/security/service/SecurityManager.runAs(Lweblogic/security/acl/internal/AuthenticatedSubject;Lweblogic/security/acl/internal/AuthenticatedSubject;Ljava/security/PrivilegedAction;)Ljava/lang/Object;(Unknown Source)
+    at weblogic/servlet/internal/WebAppServletContext.securedExecute(WebAppServletContext.java:2140)
+    at weblogic/servlet/internal/WebAppServletContext.execute(WebAppServletContext.java:2046)
+    at weblogic/servlet/internal/ServletRequestImpl.run(ServletRequestImpl.java:1398)
+    at weblogic/work/ExecuteThread.execute(ExecuteThread.java:200)
+    at weblogic/work/ExecuteThread.run(ExecuteThread.java:172)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"weblogic.time.TimeEventGenerator" id=16 idx=0x40 tid=4736 prio=9 alive, in native, waiting, daemon
+    -- Waiting for notification on: weblogic/time/common/internal/TimeTable@0x0B78D9A8[fat lock]
+    at jrockit/vm/Threads.waitForNotifySignal(JLjava/lang/Object;)Z(Native Method)
+    at java/lang/Object.wait(J)V(Native Method)[optimized]
+    at weblogic/time/common/internal/TimeTable.snooze(TimeTable.java:286)
+    ^-- Lock released while waiting: weblogic/time/common/internal/TimeTable@0x0B78D9A8[fat lock]
+    at weblogic/time/common/internal/TimeEventGenerator.run(TimeEventGenerator.java:117)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"JMAPI event thread" id=17 idx=0x44 tid=4676 prio=5 alive, in native, native_waiting, daemon
+
+"weblogic.timers.TimerThread" id=18 idx=0x48 tid=3416 prio=9 alive, in native, waiting, daemon
+    -- Waiting for notification on: weblogic/timers/internal/TimerThread@0x0BE32A70[fat lock]
+    at jrockit/vm/Threads.waitForNotifySignal(JLjava/lang/Object;)Z(Native Method)
+    at java/lang/Object.wait(J)V(Native Method)[optimized]
+    at weblogic/timers/internal/TimerThread$Thread.run(TimerThread.java:265)
+    ^-- Lock released while waiting: weblogic/timers/internal/TimerThread@0x0BE32A70[fat lock]
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"Thread-7" id=21 idx=0x4c tid=1908 prio=5 alive, in native, parked, daemon
+    at jrockit/vm/Locks.park0(J)V(Native Method)
+    at jrockit/vm/Locks.park(Locks.java:2506)
+    at sun/misc/Unsafe.park(ZJ)V(Native Method)
+    at java/util/concurrent/locks/LockSupport.park(LockSupport.java:118)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1841)
+    at java/util/concurrent/LinkedBlockingQueue.take(LinkedBlockingQueue.java:359)
+    at weblogic/utils/concurrent/JDK15ConcurrentBlockingQueue.take(JDK15ConcurrentBlockingQueue.java:89)
+    at weblogic/store/internal/PersistentStoreImpl.getOutstandingWork(PersistentStoreImpl.java:562)
+    at weblogic/store/internal/PersistentStoreImpl.run(PersistentStoreImpl.java:610)
+    at weblogic/store/internal/PersistentStoreImpl$2.run(PersistentStoreImpl.java:378)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"[STUCK] ExecuteThread: '1' for queue: 'weblogic.kernel.Default (self-tuning)'" id=22 idx=0x50 tid=4752 prio=1 alive, in native, parked, daemon
+    at jrockit/vm/Locks.park0(J)V(Native Method)
+    at jrockit/vm/Locks.park(Locks.java:2506)
+    at sun/misc/Unsafe.park(ZJ)V(Native Method)
+    at java/util/concurrent/locks/LockSupport.park(LockSupport.java:118)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:716)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:746)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1076)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$NonfairSync.wlock(ReentrantReadWriteLock.java:342)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:637)
+    at net/sf/ehcache/store/compound/Segment.remove(Segment.java:564)
+    at net/sf/ehcache/store/compound/CompoundStore.remove(CompoundStore.java:217)
+    at net/sf/ehcache/Cache.removeInternal(Cache.java:1900)
+    at net/sf/ehcache/Cache.searchInStoreWithoutStats(Cache.java:1717)
+    at net/sf/ehcache/Cache.get(Cache.java:1370)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:444)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:588)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.buildPageInfo(CachingFilter.java:217)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.doFilter(CachingFilter.java:191)
+    at net/sf/ehcache/constructs/web/filter/Filter.doFilter(Filter.java:86)
+    at weblogic/servlet/internal/FilterChainImpl.doFilter(FilterChainImpl.java:42)
+    at weblogic/servlet/internal/WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:3402)
+    at weblogic/security/acl/internal/AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
+    at weblogic/security/service/SecurityManager.runAs(Lweblogic/security/acl/internal/AuthenticatedSubject;Lweblogic/security/acl/internal/AuthenticatedSubject;Ljava/security/PrivilegedAction;)Ljava/lang/Object;(Unknown Source)
+    at weblogic/servlet/internal/WebAppServletContext.securedExecute(WebAppServletContext.java:2140)
+    at weblogic/servlet/internal/WebAppServletContext.execute(WebAppServletContext.java:2046)
+    at weblogic/servlet/internal/ServletRequestImpl.run(ServletRequestImpl.java:1398)
+    at weblogic/work/ExecuteThread.execute(ExecuteThread.java:200)
+    at weblogic/work/ExecuteThread.run(ExecuteThread.java:172)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"ExecuteThread: '0' for queue: 'weblogic.socket.Muxer'" id=23 idx=0x54 tid=4516 prio=5 alive, in native, daemon
+    at weblogic/socket/NTSocketMuxer.getIoCompletionResult(Lweblogic/socket/NTSocketMuxer$IoCompletionData;)Z(Native Method)
+    at weblogic/socket/NTSocketMuxer.processSockets(NTSocketMuxer.java:81)
+    at weblogic/socket/SocketReaderRequest.run(SocketReaderRequest.java:29)
+    at weblogic/socket/SocketReaderRequest.execute(SocketReaderRequest.java:42)
+    at weblogic/kernel/ExecuteThread.execute(ExecuteThread.java:145)
+    at weblogic/kernel/ExecuteThread.run(ExecuteThread.java:117)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"ExecuteThread: '1' for queue: 'weblogic.socket.Muxer'" id=24 idx=0x58 tid=3376 prio=5 alive, in native, daemon
+    at weblogic/socket/NTSocketMuxer.getIoCompletionResult(Lweblogic/socket/NTSocketMuxer$IoCompletionData;)Z(Native Method)
+    at weblogic/socket/NTSocketMuxer.processSockets(NTSocketMuxer.java:81)
+    at weblogic/socket/SocketReaderRequest.run(SocketReaderRequest.java:29)
+    at weblogic/socket/SocketReaderRequest.execute(SocketReaderRequest.java:42)
+    at weblogic/kernel/ExecuteThread.execute(ExecuteThread.java:145)
+    at weblogic/kernel/ExecuteThread.run(ExecuteThread.java:117)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"ExecuteThread: '2' for queue: 'weblogic.socket.Muxer'" id=25 idx=0x5c tid=3272 prio=5 alive, in native, daemon
+    at weblogic/socket/NTSocketMuxer.getIoCompletionResult(Lweblogic/socket/NTSocketMuxer$IoCompletionData;)Z(Native Method)
+    at weblogic/socket/NTSocketMuxer.processSockets(NTSocketMuxer.java:81)
+    at weblogic/socket/SocketReaderRequest.run(SocketReaderRequest.java:29)
+    at weblogic/socket/SocketReaderRequest.execute(SocketReaderRequest.java:42)
+    at weblogic/kernel/ExecuteThread.execute(ExecuteThread.java:145)
+    at weblogic/kernel/ExecuteThread.run(ExecuteThread.java:117)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"VDE Transaction Processor Thread" id=28 idx=0x60 tid=4152 prio=2 alive, in native, waiting, daemon
+    -- Waiting for notification on: com/octetstring/vde/backend/standard/TransactionProcessor@0x0B9A3B18[fat lock]
+    at jrockit/vm/Threads.waitForNotifySignal(JLjava/lang/Object;)Z(Native Method)
+    at java/lang/Object.wait(J)V(Native Method)
+    at java/lang/Object.wait(Object.java:474)
+    at com/octetstring/vde/backend/standard/TransactionProcessor.waitChange(TransactionProcessor.java:367)
+    ^-- Lock released while waiting: com/octetstring/vde/backend/standard/TransactionProcessor@0x0B9A3B18[fat lock]
+    at com/octetstring/vde/backend/standard/TransactionProcessor.run(TransactionProcessor.java:212)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DoSManager" id=30 idx=0x68 tid=4492 prio=6 alive, in native, sleeping, native_waiting, daemon
+    at java/lang/Thread.sleep(J)V(Native Method)
+    at com/octetstring/vde/DoSManager.run(DoSManager.java:433)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"Thread-11" id=31 idx=0x6c tid=3464 prio=5 alive, in native, parked, daemon
+    at jrockit/vm/Locks.park0(J)V(Native Method)
+    at jrockit/vm/Locks.park(Locks.java:2506)
+    at sun/misc/Unsafe.park(ZJ)V(Native Method)
+    at java/util/concurrent/locks/LockSupport.park(LockSupport.java:118)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1841)
+    at java/util/concurrent/LinkedBlockingQueue.take(LinkedBlockingQueue.java:359)
+    at weblogic/utils/concurrent/JDK15ConcurrentBlockingQueue.take(JDK15ConcurrentBlockingQueue.java:89)
+    at weblogic/store/internal/PersistentStoreImpl.getOutstandingWork(PersistentStoreImpl.java:562)
+    at weblogic/store/internal/PersistentStoreImpl.run(PersistentStoreImpl.java:610)
+    at weblogic/store/internal/PersistentStoreImpl$2.run(PersistentStoreImpl.java:378)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"Thread-12" id=32 idx=0x70 tid=1088 prio=5 alive, in native, parked, daemon
+    at jrockit/vm/Locks.park0(J)V(Native Method)
+    at jrockit/vm/Locks.park(Locks.java:2506)
+    at sun/misc/Unsafe.park(ZJ)V(Native Method)
+    at java/util/concurrent/locks/LockSupport.park(LockSupport.java:118)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1841)
+    at java/util/concurrent/LinkedBlockingQueue.take(LinkedBlockingQueue.java:359)
+    at weblogic/utils/concurrent/JDK15ConcurrentBlockingQueue.take(JDK15ConcurrentBlockingQueue.java:89)
+    at weblogic/store/internal/PersistentStoreImpl.getOutstandingWork(PersistentStoreImpl.java:562)
+    at weblogic/store/internal/PersistentStoreImpl.run(PersistentStoreImpl.java:610)
+    at weblogic/store/internal/PersistentStoreImpl$2.run(PersistentStoreImpl.java:378)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"Thread-13" id=33 idx=0x74 tid=4268 prio=5 alive, in native, parked, daemon
+    at jrockit/vm/Locks.park0(J)V(Native Method)
+    at jrockit/vm/Locks.park(Locks.java:2506)
+    at sun/misc/Unsafe.park(ZJ)V(Native Method)
+    at java/util/concurrent/locks/LockSupport.park(LockSupport.java:118)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1841)
+    at java/util/concurrent/LinkedBlockingQueue.take(LinkedBlockingQueue.java:359)
+    at weblogic/utils/concurrent/JDK15ConcurrentBlockingQueue.take(JDK15ConcurrentBlockingQueue.java:89)
+    at weblogic/store/internal/PersistentStoreImpl.getOutstandingWork(PersistentStoreImpl.java:562)
+    at weblogic/store/internal/PersistentStoreImpl.run(PersistentStoreImpl.java:610)
+    at weblogic/store/internal/PersistentStoreImpl$2.run(PersistentStoreImpl.java:378)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"[STUCK] ExecuteThread: '2' for queue: 'weblogic.kernel.Default (self-tuning)'" id=34 idx=0x78 tid=5096 prio=1 alive, in native, parked, daemon
+    at jrockit/vm/Locks.park0(J)V(Native Method)
+    at jrockit/vm/Locks.park(Locks.java:2506)
+    at sun/misc/Unsafe.park(ZJ)V(Native Method)
+    at java/util/concurrent/locks/LockSupport.park(LockSupport.java:118)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:716)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:746)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1076)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$NonfairSync.wlock(ReentrantReadWriteLock.java:342)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:637)
+    at net/sf/ehcache/store/compound/Segment.remove(Segment.java:564)
+    at net/sf/ehcache/store/compound/CompoundStore.remove(CompoundStore.java:217)
+    at net/sf/ehcache/Cache.removeInternal(Cache.java:1900)
+    at net/sf/ehcache/Cache.searchInStoreWithoutStats(Cache.java:1717)
+    at net/sf/ehcache/Cache.get(Cache.java:1370)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:444)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:588)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.buildPageInfo(CachingFilter.java:217)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.doFilter(CachingFilter.java:191)
+    at net/sf/ehcache/constructs/web/filter/Filter.doFilter(Filter.java:86)
+    at weblogic/servlet/internal/FilterChainImpl.doFilter(FilterChainImpl.java:42)
+    at weblogic/servlet/internal/WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:3402)
+    at weblogic/security/acl/internal/AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
+    at weblogic/security/service/SecurityManager.runAs(Lweblogic/security/acl/internal/AuthenticatedSubject;Lweblogic/security/acl/internal/AuthenticatedSubject;Ljava/security/PrivilegedAction;)Ljava/lang/Object;(Unknown Source)
+    at weblogic/servlet/internal/WebAppServletContext.securedExecute(WebAppServletContext.java:2140)
+    at weblogic/servlet/internal/WebAppServletContext.execute(WebAppServletContext.java:2046)
+    at weblogic/servlet/internal/ServletRequestImpl.run(ServletRequestImpl.java:1398)
+    at weblogic/work/ExecuteThread.execute(ExecuteThread.java:200)
+    at weblogic/work/ExecuteThread.run(ExecuteThread.java:172)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"[STUCK] ExecuteThread: '4' for queue: 'weblogic.kernel.Default (self-tuning)'" id=36 idx=0x7c tid=4620 prio=1 alive, in native, parked, daemon
+    at jrockit/vm/Locks.park0(J)V(Native Method)
+    at jrockit/vm/Locks.park(Locks.java:2506)
+    at sun/misc/Unsafe.park(ZJ)V(Native Method)
+    at java/util/concurrent/locks/LockSupport.park(LockSupport.java:118)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:716)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:746)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1076)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$NonfairSync.wlock(ReentrantReadWriteLock.java:342)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:637)
+    at net/sf/ehcache/store/compound/Segment.remove(Segment.java:564)
+    at net/sf/ehcache/store/compound/CompoundStore.remove(CompoundStore.java:217)
+    at net/sf/ehcache/Cache.removeInternal(Cache.java:1900)
+    at net/sf/ehcache/Cache.searchInStoreWithoutStats(Cache.java:1717)
+    at net/sf/ehcache/Cache.get(Cache.java:1370)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:444)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:588)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.buildPageInfo(CachingFilter.java:217)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.doFilter(CachingFilter.java:191)
+    at net/sf/ehcache/constructs/web/filter/Filter.doFilter(Filter.java:86)
+    at weblogic/servlet/internal/FilterChainImpl.doFilter(FilterChainImpl.java:42)
+    at weblogic/servlet/internal/WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:3402)
+    at weblogic/security/acl/internal/AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
+    at weblogic/security/service/SecurityManager.runAs(Lweblogic/security/acl/internal/AuthenticatedSubject;Lweblogic/security/acl/internal/AuthenticatedSubject;Ljava/security/PrivilegedAction;)Ljava/lang/Object;(Unknown Source)
+    at weblogic/servlet/internal/WebAppServletContext.securedExecute(WebAppServletContext.java:2140)
+    at weblogic/servlet/internal/WebAppServletContext.execute(WebAppServletContext.java:2046)
+    at weblogic/servlet/internal/ServletRequestImpl.run(ServletRequestImpl.java:1398)
+    at weblogic/work/ExecuteThread.execute(ExecuteThread.java:200)
+    at weblogic/work/ExecuteThread.run(ExecuteThread.java:172)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"[STUCK] ExecuteThread: '3' for queue: 'weblogic.kernel.Default (self-tuning)'" id=35 idx=0x80 tid=4904 prio=1 alive, in native, parked, daemon
+    at jrockit/vm/Locks.park0(J)V(Native Method)
+    at jrockit/vm/Locks.park(Locks.java:2506)
+    at sun/misc/Unsafe.park(ZJ)V(Native Method)
+    at java/util/concurrent/locks/LockSupport.park(LockSupport.java:118)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:716)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:746)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1076)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$NonfairSync.wlock(ReentrantReadWriteLock.java:342)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:637)
+    at net/sf/ehcache/store/compound/Segment.remove(Segment.java:564)
+    at net/sf/ehcache/store/compound/CompoundStore.remove(CompoundStore.java:217)
+    at net/sf/ehcache/Cache.removeInternal(Cache.java:1900)
+    at net/sf/ehcache/Cache.searchInStoreWithoutStats(Cache.java:1717)
+    at net/sf/ehcache/Cache.get(Cache.java:1370)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:444)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:588)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.buildPageInfo(CachingFilter.java:217)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.doFilter(CachingFilter.java:191)
+    at net/sf/ehcache/constructs/web/filter/Filter.doFilter(Filter.java:86)
+    at weblogic/servlet/internal/FilterChainImpl.doFilter(FilterChainImpl.java:42)
+    at weblogic/servlet/internal/WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:3402)
+    at weblogic/security/acl/internal/AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
+    at weblogic/security/service/SecurityManager.runAs(Lweblogic/security/acl/internal/AuthenticatedSubject;Lweblogic/security/acl/internal/AuthenticatedSubject;Ljava/security/PrivilegedAction;)Ljava/lang/Object;(Unknown Source)
+    at weblogic/servlet/internal/WebAppServletContext.securedExecute(WebAppServletContext.java:2140)
+    at weblogic/servlet/internal/WebAppServletContext.execute(WebAppServletContext.java:2046)
+    at weblogic/servlet/internal/ServletRequestImpl.run(ServletRequestImpl.java:1398)
+    at weblogic/work/ExecuteThread.execute(ExecuteThread.java:200)
+    at weblogic/work/ExecuteThread.run(ExecuteThread.java:172)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"net.sf.ehcache.CacheManager@8f0c87" id=37 idx=0x84 tid=1256 prio=5 alive, in native, waiting, daemon
+    -- Waiting for notification on: java/util/TaskQueue@0x0520FE50[fat lock]
+    at jrockit/vm/Threads.waitForNotifySignal(JLjava/lang/Object;)Z(Native Method)
+    at java/lang/Object.wait(J)V(Native Method)
+    at java/util/TimerThread.mainLoop(Timer.java:509)
+    ^-- Lock released while waiting: java/util/TaskQueue@0x0520FE50[fat lock]
+    at java/util/TimerThread.run(Timer.java:462)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"Store cachingFilterCache Spool Thread" id=38 idx=0x88 tid=3356 prio=5 alive, in native, sleeping, native_waiting, daemon
+    at java/lang/Thread.sleep(J)V(Native Method)
+    at net/sf/ehcache/store/DiskStore.spoolAndExpiryThreadMain(DiskStore.java:620)
+    at net/sf/ehcache/store/DiskStore.access$900(DiskStore.java:66)
+    at net/sf/ehcache/store/DiskStore$SpoolAndExpiryThread.run(DiskStore.java:1074)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"[STUCK] ExecuteThread: '5' for queue: 'weblogic.kernel.Default (self-tuning)'" id=40 idx=0x90 tid=3340 prio=1 alive, in native, parked, daemon
+    at jrockit/vm/Locks.park0(J)V(Native Method)
+    at jrockit/vm/Locks.park(Locks.java:2506)
+    at sun/misc/Unsafe.park(ZJ)V(Native Method)
+    at java/util/concurrent/locks/LockSupport.park(LockSupport.java:118)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:716)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:746)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1076)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$NonfairSync.wlock(ReentrantReadWriteLock.java:342)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:637)
+    at net/sf/ehcache/store/compound/Segment.remove(Segment.java:564)
+    at net/sf/ehcache/store/compound/CompoundStore.remove(CompoundStore.java:217)
+    at net/sf/ehcache/Cache.removeInternal(Cache.java:1900)
+    at net/sf/ehcache/Cache.searchInStoreWithoutStats(Cache.java:1717)
+    at net/sf/ehcache/Cache.get(Cache.java:1370)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:444)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:588)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.buildPageInfo(CachingFilter.java:217)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.doFilter(CachingFilter.java:191)
+    at net/sf/ehcache/constructs/web/filter/Filter.doFilter(Filter.java:86)
+    at weblogic/servlet/internal/FilterChainImpl.doFilter(FilterChainImpl.java:42)
+    at weblogic/servlet/internal/WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:3402)
+    at weblogic/security/acl/internal/AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
+    at weblogic/security/service/SecurityManager.runAs(Lweblogic/security/acl/internal/AuthenticatedSubject;Lweblogic/security/acl/internal/AuthenticatedSubject;Ljava/security/PrivilegedAction;)Ljava/lang/Object;(Unknown Source)
+    at weblogic/servlet/internal/WebAppServletContext.securedExecute(WebAppServletContext.java:2140)
+    at weblogic/servlet/internal/WebAppServletContext.execute(WebAppServletContext.java:2046)
+    at weblogic/servlet/internal/ServletRequestImpl.run(ServletRequestImpl.java:1398)
+    at weblogic/work/ExecuteThread.execute(ExecuteThread.java:200)
+    at weblogic/work/ExecuteThread.run(ExecuteThread.java:172)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicSSLListenThread[DefaultSecure[1]]" id=41 idx=0x94 tid=2968 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x063CBBD8[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at javax/net/ssl/impl/SSLServerSocketImpl.accept()Ljava/net/Socket;(Unknown Source)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicListenThread[Default[1]]" id=42 idx=0x98 tid=2584 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x06B73BE8[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at java/net/ServerSocket.accept(ServerSocket.java:421)
+    at weblogic/socket/WeblogicServerSocket.accept(WeblogicServerSocket.java:38)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicSSLListenThread[DefaultSecure]" id=43 idx=0x9c tid=4884 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x06BBAC20[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at javax/net/ssl/impl/SSLServerSocketImpl.accept()Ljava/net/Socket;(Unknown Source)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicListenThread[Default]" id=44 idx=0xa0 tid=2272 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x06BD8710[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at java/net/ServerSocket.accept(ServerSocket.java:421)
+    at weblogic/socket/WeblogicServerSocket.accept(WeblogicServerSocket.java:38)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicSSLListenThread[DefaultSecure[8]]" id=45 idx=0xa4 tid=4028 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x06BF2DA8[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at javax/net/ssl/impl/SSLServerSocketImpl.accept()Ljava/net/Socket;(Unknown Source)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicListenThread[Default[8]]" id=46 idx=0xa8 tid=5064 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x08D361C0[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at java/net/ServerSocket.accept(ServerSocket.java:421)
+    at weblogic/socket/WeblogicServerSocket.accept(WeblogicServerSocket.java:38)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicSSLListenThread[DefaultSecure[2]]" id=47 idx=0xac tid=1920 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x090F61C8[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at javax/net/ssl/impl/SSLServerSocketImpl.accept()Ljava/net/Socket;(Unknown Source)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicListenThread[Default[2]]" id=48 idx=0xb0 tid=4024 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x091161C0[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at java/net/ServerSocket.accept(ServerSocket.java:421)
+    at weblogic/socket/WeblogicServerSocket.accept(WeblogicServerSocket.java:38)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicSSLListenThread[DefaultSecure[6]]" id=49 idx=0xb4 tid=2752 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x092F61C8[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at javax/net/ssl/impl/SSLServerSocketImpl.accept()Ljava/net/Socket;(Unknown Source)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicListenThread[Default[6]]" id=50 idx=0xb8 tid=4772 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x094261C0[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at java/net/ServerSocket.accept(ServerSocket.java:421)
+    at weblogic/socket/WeblogicServerSocket.accept(WeblogicServerSocket.java:38)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicSSLListenThread[DefaultSecure[5]]" id=51 idx=0xbc tid=1144 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x099561C8[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at javax/net/ssl/impl/SSLServerSocketImpl.accept()Ljava/net/Socket;(Unknown Source)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicListenThread[Default[5]]" id=52 idx=0xc0 tid=1196 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x099C61C0[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at java/net/ServerSocket.accept(ServerSocket.java:421)
+    at weblogic/socket/WeblogicServerSocket.accept(WeblogicServerSocket.java:38)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicSSLListenThread[DefaultSecure[3]]" id=53 idx=0xc4 tid=3336 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x0CA3EA48[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at javax/net/ssl/impl/SSLServerSocketImpl.accept()Ljava/net/Socket;(Unknown Source)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicListenThread[Default[3]]" id=54 idx=0xc8 tid=3344 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x0CA42210[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at java/net/ServerSocket.accept(ServerSocket.java:421)
+    at weblogic/socket/WeblogicServerSocket.accept(WeblogicServerSocket.java:38)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicSSLListenThread[DefaultSecure[4]]" id=55 idx=0xcc tid=2348 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x0CA42398[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at javax/net/ssl/impl/SSLServerSocketImpl.accept()Ljava/net/Socket;(Unknown Source)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicSSLListenThread[DefaultSecure[7]]" id=56 idx=0xd0 tid=2052 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x0CA42530[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at javax/net/ssl/impl/SSLServerSocketImpl.accept()Ljava/net/Socket;(Unknown Source)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicListenThread[Default[7]]" id=57 idx=0xd4 tid=4808 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x0CF23318[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at java/net/ServerSocket.accept(ServerSocket.java:421)
+    at weblogic/socket/WeblogicServerSocket.accept(WeblogicServerSocket.java:38)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"DynamicListenThread[Default[4]]" id=58 idx=0xd8 tid=2696 prio=9 alive, in native, daemon
+    at java/net/PlainSocketImpl.socketAccept(Ljava/net/SocketImpl;)V(Native Method)
+    at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    ^-- Holding lock: java/net/SocksSocketImpl@0x0CA426C8[thin lock]
+    at java/net/ServerSocket.implAccept(ServerSocket.java:450)
+    at java/net/ServerSocket.accept(ServerSocket.java:421)
+    at weblogic/socket/WeblogicServerSocket.accept(WeblogicServerSocket.java:38)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.accept(DynamicListenThread.java:523)
+    at weblogic/server/channels/DynamicListenThread$SocketAccepter.access$200(DynamicListenThread.java:420)
+    at weblogic/server/channels/DynamicListenThread.run(DynamicListenThread.java:166)
+    at java/lang/Thread.run(Thread.java:595)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"[STUCK] ExecuteThread: '6' for queue: 'weblogic.kernel.Default (self-tuning)'" id=68 idx=0x100 tid=4956 prio=1 alive, in native, parked, daemon
+    at jrockit/vm/Locks.park0(J)V(Native Method)
+    at jrockit/vm/Locks.park(Locks.java:2506)
+    at sun/misc/Unsafe.park(ZJ)V(Native Method)
+    at java/util/concurrent/locks/LockSupport.park(LockSupport.java:118)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:716)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:746)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1076)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$NonfairSync.wlock(ReentrantReadWriteLock.java:342)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:637)
+    at net/sf/ehcache/store/compound/Segment.remove(Segment.java:564)
+    at net/sf/ehcache/store/compound/CompoundStore.remove(CompoundStore.java:217)
+    at net/sf/ehcache/Cache.removeInternal(Cache.java:1900)
+    at net/sf/ehcache/Cache.searchInStoreWithoutStats(Cache.java:1717)
+    at net/sf/ehcache/Cache.get(Cache.java:1370)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:444)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:588)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.buildPageInfo(CachingFilter.java:217)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.doFilter(CachingFilter.java:191)
+    at net/sf/ehcache/constructs/web/filter/Filter.doFilter(Filter.java:86)
+    at weblogic/servlet/internal/FilterChainImpl.doFilter(FilterChainImpl.java:42)
+    at weblogic/servlet/internal/WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:3402)
+    at weblogic/security/acl/internal/AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
+    at weblogic/security/service/SecurityManager.runAs(Lweblogic/security/acl/internal/AuthenticatedSubject;Lweblogic/security/acl/internal/AuthenticatedSubject;Ljava/security/PrivilegedAction;)Ljava/lang/Object;(Unknown Source)
+    at weblogic/servlet/internal/WebAppServletContext.securedExecute(WebAppServletContext.java:2140)
+    at weblogic/servlet/internal/WebAppServletContext.execute(WebAppServletContext.java:2046)
+    at weblogic/servlet/internal/ServletRequestImpl.run(ServletRequestImpl.java:1398)
+    at weblogic/work/ExecuteThread.execute(ExecuteThread.java:200)
+    at weblogic/work/ExecuteThread.run(ExecuteThread.java:172)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"[STUCK] ExecuteThread: '7' for queue: 'weblogic.kernel.Default (self-tuning)'" id=69 idx=0x104 tid=2828 prio=1 alive, in native, parked, daemon
+    at jrockit/vm/Locks.park0(J)V(Native Method)
+    at jrockit/vm/Locks.park(Locks.java:2506)
+    at sun/misc/Unsafe.park(ZJ)V(Native Method)
+    at java/util/concurrent/locks/LockSupport.park(LockSupport.java:118)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:716)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:746)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1076)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$NonfairSync.wlock(ReentrantReadWriteLock.java:342)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:637)
+    at net/sf/ehcache/store/compound/Segment.remove(Segment.java:564)
+    at net/sf/ehcache/store/compound/CompoundStore.remove(CompoundStore.java:217)
+    at net/sf/ehcache/Cache.removeInternal(Cache.java:1900)
+    at net/sf/ehcache/Cache.searchInStoreWithoutStats(Cache.java:1717)
+    at net/sf/ehcache/Cache.get(Cache.java:1370)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:444)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:588)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.buildPageInfo(CachingFilter.java:217)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.doFilter(CachingFilter.java:191)
+    at net/sf/ehcache/constructs/web/filter/Filter.doFilter(Filter.java:86)
+    at weblogic/servlet/internal/FilterChainImpl.doFilter(FilterChainImpl.java:42)
+    at weblogic/servlet/internal/WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:3402)
+    at weblogic/security/acl/internal/AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
+    at weblogic/security/service/SecurityManager.runAs(Lweblogic/security/acl/internal/AuthenticatedSubject;Lweblogic/security/acl/internal/AuthenticatedSubject;Ljava/security/PrivilegedAction;)Ljava/lang/Object;(Unknown Source)
+    at weblogic/servlet/internal/WebAppServletContext.securedExecute(WebAppServletContext.java:2140)
+    at weblogic/servlet/internal/WebAppServletContext.execute(WebAppServletContext.java:2046)
+    at weblogic/servlet/internal/ServletRequestImpl.run(ServletRequestImpl.java:1398)
+    at weblogic/work/ExecuteThread.execute(ExecuteThread.java:200)
+    at weblogic/work/ExecuteThread.run(ExecuteThread.java:172)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"[STUCK] ExecuteThread: '8' for queue: 'weblogic.kernel.Default (self-tuning)'" id=70 idx=0x108 tid=4720 prio=1 alive, in native, parked, daemon
+    at jrockit/vm/Locks.park0(J)V(Native Method)
+    at jrockit/vm/Locks.park(Locks.java:2506)
+    at sun/misc/Unsafe.park(ZJ)V(Native Method)
+    at java/util/concurrent/locks/LockSupport.park(LockSupport.java:118)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:716)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:746)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1076)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$NonfairSync.wlock(ReentrantReadWriteLock.java:342)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:637)
+    at net/sf/ehcache/store/compound/Segment.remove(Segment.java:564)
+    at net/sf/ehcache/store/compound/CompoundStore.remove(CompoundStore.java:217)
+    at net/sf/ehcache/Cache.removeInternal(Cache.java:1900)
+    at net/sf/ehcache/Cache.searchInStoreWithoutStats(Cache.java:1717)
+    at net/sf/ehcache/Cache.get(Cache.java:1370)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:444)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:588)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.buildPageInfo(CachingFilter.java:217)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.doFilter(CachingFilter.java:191)
+    at net/sf/ehcache/constructs/web/filter/Filter.doFilter(Filter.java:86)
+    at weblogic/servlet/internal/FilterChainImpl.doFilter(FilterChainImpl.java:42)
+    at weblogic/servlet/internal/WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:3402)
+    at weblogic/security/acl/internal/AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
+    at weblogic/security/service/SecurityManager.runAs(Lweblogic/security/acl/internal/AuthenticatedSubject;Lweblogic/security/acl/internal/AuthenticatedSubject;Ljava/security/PrivilegedAction;)Ljava/lang/Object;(Unknown Source)
+    at weblogic/servlet/internal/WebAppServletContext.securedExecute(WebAppServletContext.java:2140)
+    at weblogic/servlet/internal/WebAppServletContext.execute(WebAppServletContext.java:2046)
+    at weblogic/servlet/internal/ServletRequestImpl.run(ServletRequestImpl.java:1398)
+    at weblogic/work/ExecuteThread.execute(ExecuteThread.java:200)
+    at weblogic/work/ExecuteThread.run(ExecuteThread.java:172)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"[STUCK] ExecuteThread: '9' for queue: 'weblogic.kernel.Default (self-tuning)'" id=71 idx=0x10c tid=4288 prio=1 alive, in native, parked, daemon
+    at jrockit/vm/Locks.park0(J)V(Native Method)
+    at jrockit/vm/Locks.park(Locks.java:2506)
+    at sun/misc/Unsafe.park(ZJ)V(Native Method)
+    at java/util/concurrent/locks/LockSupport.park(LockSupport.java:118)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:716)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:746)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1076)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$NonfairSync.wlock(ReentrantReadWriteLock.java:342)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:637)
+    at net/sf/ehcache/store/compound/Segment.remove(Segment.java:564)
+    at net/sf/ehcache/store/compound/CompoundStore.remove(CompoundStore.java:217)
+    at net/sf/ehcache/Cache.removeInternal(Cache.java:1900)
+    at net/sf/ehcache/Cache.searchInStoreWithoutStats(Cache.java:1717)
+    at net/sf/ehcache/Cache.get(Cache.java:1370)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:444)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:588)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.buildPageInfo(CachingFilter.java:217)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.doFilter(CachingFilter.java:191)
+    at net/sf/ehcache/constructs/web/filter/Filter.doFilter(Filter.java:86)
+    at weblogic/servlet/internal/FilterChainImpl.doFilter(FilterChainImpl.java:42)
+    at weblogic/servlet/internal/WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:3402)
+    at weblogic/security/acl/internal/AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
+    at weblogic/security/service/SecurityManager.runAs(Lweblogic/security/acl/internal/AuthenticatedSubject;Lweblogic/security/acl/internal/AuthenticatedSubject;Ljava/security/PrivilegedAction;)Ljava/lang/Object;(Unknown Source)
+    at weblogic/servlet/internal/WebAppServletContext.securedExecute(WebAppServletContext.java:2140)
+    at weblogic/servlet/internal/WebAppServletContext.execute(WebAppServletContext.java:2046)
+    at weblogic/servlet/internal/ServletRequestImpl.run(ServletRequestImpl.java:1398)
+    at weblogic/work/ExecuteThread.execute(ExecuteThread.java:200)
+    at weblogic/work/ExecuteThread.run(ExecuteThread.java:172)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"[STUCK] ExecuteThread: '10' for queue: 'weblogic.kernel.Default (self-tuning)'" id=72 idx=0x110 tid=4248 prio=1 alive, in native, parked, daemon
+    at jrockit/vm/Locks.park0(J)V(Native Method)
+    at jrockit/vm/Locks.park(Locks.java:2506)
+    at sun/misc/Unsafe.park(ZJ)V(Native Method)
+    at java/util/concurrent/locks/LockSupport.park(LockSupport.java:118)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:716)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:746)
+    at java/util/concurrent/locks/AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1076)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$NonfairSync.wlock(ReentrantReadWriteLock.java:342)
+    at java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:637)
+    at net/sf/ehcache/store/compound/Segment.remove(Segment.java:564)
+    at net/sf/ehcache/store/compound/CompoundStore.remove(CompoundStore.java:217)
+    at net/sf/ehcache/Cache.removeInternal(Cache.java:1900)
+    at net/sf/ehcache/Cache.searchInStoreWithoutStats(Cache.java:1717)
+    at net/sf/ehcache/Cache.get(Cache.java:1370)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:444)
+    at net/sf/ehcache/constructs/blocking/BlockingCache.get(BlockingCache.java:588)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.buildPageInfo(CachingFilter.java:217)
+    at net/sf/ehcache/constructs/web/filter/CachingFilter.doFilter(CachingFilter.java:191)
+    at net/sf/ehcache/constructs/web/filter/Filter.doFilter(Filter.java:86)
+    at weblogic/servlet/internal/FilterChainImpl.doFilter(FilterChainImpl.java:42)
+    at weblogic/servlet/internal/WebAppServletContext$ServletInvocationAction.run(WebAppServletContext.java:3402)
+    at weblogic/security/acl/internal/AuthenticatedSubject.doAs(AuthenticatedSubject.java:321)
+    at weblogic/security/service/SecurityManager.runAs(Lweblogic/security/acl/internal/AuthenticatedSubject;Lweblogic/security/acl/internal/AuthenticatedSubject;Ljava/security/PrivilegedAction;)Ljava/lang/Object;(Unknown Source)
+    at weblogic/servlet/internal/WebAppServletContext.securedExecute(WebAppServletContext.java:2140)
+    at weblogic/servlet/internal/WebAppServletContext.execute(WebAppServletContext.java:2046)
+    at weblogic/servlet/internal/ServletRequestImpl.run(ServletRequestImpl.java:1398)
+    at weblogic/work/ExecuteThread.execute(ExecuteThread.java:200)
+    at weblogic/work/ExecuteThread.run(ExecuteThread.java:172)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"[STANDBY] ExecuteThread: '11' for queue: 'weblogic.kernel.Default (self-tuning)'" id=73 idx=0x114 tid=2500 prio=9 alive, in native, waiting, daemon
+    -- Waiting for notification on: weblogic/work/ExecuteThread@0x03D94D10[fat lock]
+    at jrockit/vm/Threads.waitForNotifySignal(JLjava/lang/Object;)Z(Native Method)
+    at jrockit/vm/Locks.wait(Locks.java:2250)[inlined]
+    at java/lang/Object.wait(Object.java:474)[inlined]
+    at weblogic/work/ExecuteThread.waitForRequest(ExecuteThread.java:156)[optimized]
+    ^-- Lock released while waiting: weblogic/work/ExecuteThread@0x03D94D10[fat lock]
+    at weblogic/work/ExecuteThread.run(ExecuteThread.java:177)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"[ACTIVE] ExecuteThread: '12' for queue: 'weblogic.kernel.Default (self-tuning)'" id=74 idx=0x118 tid=3696 prio=5 alive, in native, waiting, daemon
+    -- Waiting for notification on: weblogic/work/ExecuteThread@0x03DD2C10[fat lock]
+    at jrockit/vm/Threads.waitForNotifySignal(JLjava/lang/Object;)Z(Native Method)
+    at jrockit/vm/Locks.wait(Locks.java:2250)[inlined]
+    at java/lang/Object.wait(Object.java:474)[inlined]
+    at weblogic/work/ExecuteThread.waitForRequest(ExecuteThread.java:156)[optimized]
+    ^-- Lock released while waiting: weblogic/work/ExecuteThread@0x03DD2C10[fat lock]
+    at weblogic/work/ExecuteThread.run(ExecuteThread.java:177)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+"[STANDBY] ExecuteThread: '13' for queue: 'weblogic.kernel.Default (self-tuning)'" id=75 idx=0x11c tid=4840 prio=5 alive, in native, waiting, daemon
+    -- Waiting for notification on: weblogic/work/ExecuteThread@0x0403CA40[fat lock]
+    at jrockit/vm/Threads.waitForNotifySignal(JLjava/lang/Object;)Z(Native Method)
+    at jrockit/vm/Locks.wait(Locks.java:2250)[inlined]
+    at java/lang/Object.wait(Object.java:474)[inlined]
+    at weblogic/work/ExecuteThread.waitForRequest(ExecuteThread.java:156)[optimized]
+    ^-- Lock released while waiting: weblogic/work/ExecuteThread@0x0403CA40[fat lock]
+    at weblogic/work/ExecuteThread.run(ExecuteThread.java:177)
+    at jrockit/vm/RNI.c2java(IIIII)V(Native Method)
+    -- end of trace
+
+===== END OF THREAD DUMP ===============

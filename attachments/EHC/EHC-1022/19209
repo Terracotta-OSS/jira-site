@@ -1,0 +1,220 @@
+2013-04-23 08:54:13,099 [main] INFO com.terracottatech.general - New logging session started.
+2013-04-23 08:54:13,123 [main] INFO com.terracottatech.console - Terracotta Enterprise 4.0.0, as of 20130301-064135 (Revision 25020-22359 by cruise@rh5vmo135.terracotta.lan from 4.0.0)
+2013-04-23 08:54:13,125 [main] INFO com.tc.logging.TCLogging - PID is 5868
+2013-04-23 08:54:13,169 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Attempting to load configuration from the file at '/etc/bigmemory/tc-config.xml'...
+2013-04-23 08:54:13,682 [main] INFO com.terracottatech.console - Successfully loaded base configuration from file at '/etc/bigmemory/tc-config.xml'.
+2013-04-23 08:54:13,694 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - The configuration specified by 'base configuration from file at '/etc/bigmemory/tc-config.xml'':
+
+<tc:tc-config xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-6.xsd" xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <servers>
+    <server host="devbox5.build.internal" name="tc1">
+      <logs>/var/bigmemory/tc1/logs</logs>
+      <data>/opt/extraspace/bigmemory/tc1/data</data>
+      <data-backup>/opt/extraspace/bigmemory/tc1/data-backup</data-backup>
+      <index>/opt/extraspace/bigmemory/tc1/index</index>
+      <offheap>
+        <enabled>true</enabled>
+        <maxDataSize>6g</maxDataSize>
+      </offheap>
+    </server>
+    <restartable enabled="true"/>
+  </servers>
+</tc:tc-config>
+2013-04-23 08:54:13,695 [main] INFO com.tc.properties.TCProperties - Loading default properties from tc.properties
+2013-04-23 08:54:13,695 [main] WARN com.tc.properties.TCProperties - The property "l2.transactionmanager.logging.enabled" has been removed/renamed in the latest release. Please update the tc.properties file or some of your settings might not work
+2013-04-23 08:54:13,695 [main] WARN com.tc.properties.TCProperties - The property "l2.transactionmanager.logging.verbose" has been removed/renamed in the latest release. Please update the tc.properties file or some of your settings might not work
+2013-04-23 08:54:13,695 [main] WARN com.tc.properties.TCProperties - The property "l2.transactionmanager.logging.printStats" has been removed/renamed in the latest release. Please update the tc.properties file or some of your settings might not work
+2013-04-23 08:54:13,695 [main] WARN com.tc.properties.TCProperties - The property "l2.transactionmanager.logging.printCommits" has been removed/renamed in the latest release. Please update the tc.properties file or some of your settings might not work
+2013-04-23 08:54:13,695 [main] INFO com.tc.properties.TCProperties - The property "l2.dump.on.exception.timeout" was read before initialization completed. "l2.dump.on.exception.timeout" = 30
+2013-04-23 08:54:13,695 [main] INFO com.tc.properties.TCProperties - The property "tc.config.total.timeout" was read before initialization completed. "tc.config.total.timeout" = 300000
+2013-04-23 08:54:13,695 [main] INFO com.tc.properties.TCProperties - The property "tc.config.getFromSource.timeout" was read before initialization completed. "tc.config.getFromSource.timeout" = 30000
+2013-04-23 08:54:13,695 [main] INFO com.tc.properties.TCProperties - tc-config doesn't have any tc-property. No tc-property will be overridden
+2013-04-23 08:54:13,698 [main] INFO com.tc.properties.TCProperties - Loaded TCProperties : TCProperties = { appgroups.debug = false, dev.console.max.operator.events = 5000, ehcache.clusterAllCacheManagers = true, ehcache.concurrency = 128, ehcache.evictor.logging.enabled = false, ehcache.evictor.pool.size = 1, ehcache.global.eviction.enable = true, ehcache.global.eviction.frequency = 10, ehcache.global.eviction.rest.timeMillis = 10, ehcache.global.eviction.segments = 2, ehcache.lock.readLevel = READ, ehcache.lock.writeLevel = WRITE, ehcache.logging.enabled = false, ehcache.storageStrategy.dcv2.evictUnexpiredEntries.enabled = true, ehcache.storageStrategy.dcv2.eviction.overshoot = 15, ehcache.storageStrategy.dcv2.localcache.enabled = true, ehcache.storageStrategy.dcv2.perElementTTITTL.enabled = false, ehcache.storageStrategy.dcv2.periodicEviction.enabled = true, http.defaultservlet.attribute.aliases = false;, http.defaultservlet.attribute.dirallowed = false;, http.defaultservlet.enabled = false;, l1.cachemanager.criticalObjectThreshold = -1, l1.cachemanager.criticalThreshold = 70, l1.cachemanager.enabled = true, l1.cachemanager.leastCount = 2, l1.cachemanager.logging.enabled = false, l1.cachemanager.monitorOldGenOnly = true, l1.cachemanager.percentageToEvict = 10, l1.cachemanager.sleepInterval = 3000, l1.cachemanager.threshold = 50, l1.clusterevents.outofbandnotifier.jointime.millis = 100, l1.connect.versionMatchCheck.enabled = true, l1.healthcheck.l2.bindAddress = 0.0.0.0, l1.healthcheck.l2.bindPort = 0, l1.healthcheck.l2.ping.enabled = true, l1.healthcheck.l2.ping.idletime = 5000, l1.healthcheck.l2.ping.interval = 1000, l1.healthcheck.l2.ping.probes = 3, l1.healthcheck.l2.socketConnect = true, l1.healthcheck.l2.socketConnectCount = 13, l1.healthcheck.l2.socketConnectTimeout = 5, l1.jvm.check.compatibility = true, l1.l2.config.validation.enabled = true, l1.lock.statistics.gatherInterval = 1, l1.lock.statistics.traceDepth = 0, l1.lockmanager.pinning.enabled = true, l1.lockmanager.striped.count = 128, l1.lockmanager.timeout.interval = 60000, l1.max.connect.retries = -1, l1.objectmanager.fault.count = 500, l1.objectmanager.fault.logging.enabled = false, l1.objectmanager.flush.logging.enabled = false, l1.objectmanager.objectid.request.size = 50000, l1.objectmanager.remote.batchLookupTimePeriod = 1, l1.objectmanager.remote.logging.enabled = false, l1.objectmanager.remote.maxDNALRUSize = 60, l1.objectmanager.remote.maxRequestSentImmediately = 4, l1.seda.stage.sink.capacity = -1, l1.serverarray.objectCreationStrategy = round-robin, l1.serverarray.objectCreationStrategy.groupAffinity.groupName = mirror-group1, l1.serverarray.objectCreationStrategy.roundRobin.startIndex = sequential, l1.servermapmanager.remote.batchLookupTimePeriod = 1, l1.servermapmanager.remote.maxRequestSentImmediately = 4, l1.shutdown.force.finalization = true, l1.shutdown.threadgroup.gracetime = 30000, l1.socket.connect.timeout = 10000, l1.socket.reconnect.waitInterval = 1000, l1.transactionmanager.completedAckFlushTimeout = 5000, l1.transactionmanager.folding.debug = false, l1.transactionmanager.folding.enabled = true, l1.transactionmanager.folding.lock.limit = 0, l1.transactionmanager.folding.object.limit = 0, l1.transactionmanager.logging.enabled = false, l1.transactionmanager.maxBatchSizeInKiloBytes = 128, l1.transactionmanager.maxOutstandingBatchSize = 4, l1.transactionmanager.maxPendingBatches = 88, l1.transactionmanager.maxSleepTimeBeforeHalt = 1024, l1.transactionmanager.strings.compress.enabled = true, l1.transactionmanager.strings.compress.logging.enabled = false, l1.transactionmanager.strings.compress.minSize = 512, l1.transactionmanager.timeoutForAckOnExit = 300, l2.beanshell.enabled = false, l2.beanshell.port = 9929, l2.dump.on.exception.timeout = 30, l2.enable.legacy.production.mode = false, l2.frs.compactor.lsnGap.maxLoad = 0.80, l2.frs.compactor.lsnGap.minLoad = 0.40, l2.healthcheck.l1.ping.enabled = true, l2.healthcheck.l1.ping.idletime = 5000, l2.healthcheck.l1.ping.interval = 1000, l2.healthcheck.l1.ping.probes = 3, l2.healthcheck.l1.socketConnect = true, l2.healthcheck.l1.socketConnectCount = 10, l2.healthcheck.l1.socketConnectTimeout = 5, l2.healthcheck.l2.ping.enabled = true, l2.healthcheck.l2.ping.idletime = 5000, l2.healthcheck.l2.ping.interval = 1000, l2.healthcheck.l2.ping.probes = 3, l2.healthcheck.l2.socketConnect = true, l2.healthcheck.l2.socketConnectCount = 10, l2.healthcheck.l2.socketConnectTimeout = 5, l2.l1reconnect.enabled = true, l2.l1reconnect.maxDelayedAcks = 16, l2.l1reconnect.sendWindow = 32, l2.l1reconnect.sendqueue.cap = 5000, l2.l1reconnect.timeout.millis = 5000, l2.lockmanager.greedy.lease.enabled = true, l2.lockmanager.greedy.lease.leaseTimeInMillis = 50, l2.lockmanager.greedy.locks.enabled = true, l2.logs.store = 1500, l2.nha.autoRestart = true, l2.nha.dirtydb.autoDelete = true, l2.nha.dirtydb.backup.enabled = true, l2.nha.dirtydb.rolling = 0, l2.nha.send.timeout.millis = 16000, l2.nha.tcgroupcomm.discovery.interval = 1000, l2.nha.tcgroupcomm.handshake.timeout = 5000, l2.nha.tcgroupcomm.reconnect.enabled = true, l2.nha.tcgroupcomm.reconnect.maxDelayedAcks = 16, l2.nha.tcgroupcomm.reconnect.sendWindow = 32, l2.nha.tcgroupcomm.reconnect.sendqueue.cap = 5000, l2.nha.tcgroupcomm.reconnect.timeout = 5000, l2.objectmanager.dgc.inline.cleanup.delaySeconds = 0, l2.objectmanager.dgc.inline.intervalInSeconds = 10, l2.objectmanager.dgc.inline.maxObjects = 10000, l2.objectmanager.dgc.throttle.requestsPerThrottle = 1000, l2.objectmanager.dgc.throttle.timeInMillis = 0, l2.objectmanager.maxTxnsInTxnObjectGrouping = 10, l2.objectmanager.objectrequest.logging.enabled = false, l2.objectmanager.objectrequest.split.size = 500, l2.objectmanager.passive.sync.batch.size = 500, l2.objectmanager.passive.sync.message.maxSizeInMegaBytes = 10, l2.objectmanager.passive.sync.throttle.maxPendingMessages = 10, l2.objectmanager.passive.sync.throttle.timeInMillis = 0, l2.objectmanager.persistor.logging.enabled = false, l2.objectmanager.request.logging.enabled = false, l2.offHeap.allocation.critical = 15000, l2.offHeap.allocation.critical.halt = true, l2.offHeap.allocation.slow = 1500, l2.offHeap.map.concurrency = 1, l2.offHeap.map.tableSize = 128, l2.operator.events.store = 1500, l2.remotejmx.idletime = 5, l2.remotejmx.maxthreads = 50, l2.seda.apply.stage.threads = 8, l2.seda.evictionprocessorstage.sink.capacity = 1000, l2.seda.local.cache.invalidations.sink.capacity = 5000, l2.seda.local.cache.transaction.complete.sink.capacity = 5000, l2.seda.local.cache.transaction.complete.threads = 8, l2.seda.query.threads = 4, l2.seda.search.threads = 16, l2.seda.stage.sink.capacity = -1, l2.serverarray.2pc.enabled = true, l2.servermap.eviction.broadcast.maxkeys = 10000, l2.servermap.eviction.clientObjectReferences.refresh.interval = 60000, l2.startuplock.retries.enabled = false, l2.transactionmanager.logging.enabled = false, l2.transactionmanager.logging.printBroadcastStats = false, l2.transactionmanager.logging.printCommits = false, l2.transactionmanager.logging.printStats = true, l2.transactionmanager.logging.verbose = false, l2.transactionmanager.passive.throttle.enabled = true, l2.transactionmanager.passive.throttle.maxSleepSeconds = 5, l2.transactionmanager.passive.throttle.threshold = 20000, lock.statistics.enabled = false, logging.longgc.threshold = 8000, logging.maxBackups = 20, logging.maxLogFileSize = 512, management.rest.enabled = true, memory.monitor.forcebasic = false, net.core.keepalive = false, net.core.tcpnodelay = true, offHeapFileSystem.file.maxDataPageSize = 262144, offHeapFilesystem.chm.segments = 4, offHeapFilesystem.file.blockSize = 8192, productkey.path = /opt/bigmemory-max-4.0.0/server/bin/../../terracotta-license.key, search.lucene.indexes.per.cache = 4, search.lucene.max.boolean.clauses = 1024, search.lucene.max.buffer = 16.0, search.lucene.use.offHeap.directory = false, search.lucene.use.ram.directory = false, search.passive.max.chunk = 2097152, search.passive.max.pending = 8, session.debug.hops = false, session.debug.hops.interval = 100, session.debug.invalidate = false, session.debug.sessions = false, session.invalidator.bench.enabled = true, session.invalidator.sleep = 300, session.request.bench.enabled = false, session.request.tracking = false, session.request.tracking.dump = false, session.request.tracking.interval = 2500, session.request.tracking.threshold = 15000, session.statistics.enabled = false, session.verify.set.attribute = false, session.vhosts.excluded = , stats.printer.intervalInMillis = 5000, tc.bytebuffer.common.pool.maxcount = 3000, tc.bytebuffer.pooling.enabled = true, tc.bytebuffer.threadlocal.pool.maxcount = 2000, tc.config.getFromSource.timeout = 30000, tc.config.total.timeout = 300000, tc.management.mbeans.enabled = true, tc.management.test.mbeans.enabled = false, tc.messages.grouping.enabled = true, tc.messages.grouping.maxSizeKiloBytes = 1024, tc.messages.packup.enabled = true, tc.stage.monitor.delay = 5000, tc.stage.monitor.enabled = false, tc.time.sync.threshold = 30, tc.transport.handshake.timeout = 10000, tcm.monitor.delay = 5, tcm.monitor.enabled = false }
+2013-04-23 08:54:13,731 [main] INFO com.terracottatech.console - Log file: '/var/bigmemory/tc1/logs/terracotta-server.log'.
+2013-04-23 08:54:13,732 [main] INFO com.tc.logging.TCLogging - All Java System Properties for this Terracotta instance:
+========================================================================
+JVM arguments: [-XX:MaxDirectMemorySize=9223372036854775807, -Xms4g, -Xmx4g, -XX:+HeapDumpOnOutOfMemoryError, -Dcom.sun.management.jmxremote, -Dtc.install-root=/opt/bigmemory-max-4.0.0/server/bin/.., -Dsun.rmi.dgc.server.gcInterval=31536000000, -Dcom.tc.productkey.path=/opt/bigmemory-max-4.0.0/server/bin/../../terracotta-license.key, -Dnet.sf.ehcache.offheap.categoryTree.config.idealMaxSegmentSize=30M]
+awt.toolkit                                                   : sun.awt.X11.XToolkit
+com.sun.management.jmxremote                                  : 
+com.tc.productkey.path                                        : /opt/bigmemory-max-4.0.0/server/bin/../../terracotta-license.key
+file.encoding                                                 : UTF-8
+file.encoding.pkg                                             : sun.io
+file.separator                                                : /
+java.awt.graphicsenv                                          : sun.awt.X11GraphicsEnvironment
+java.awt.printerjob                                           : sun.print.PSPrinterJob
+java.class.path                                               : /opt/bigmemory-max-4.0.0/server/bin/../lib/tc.jar
+java.class.version                                            : 51.0
+java.endorsed.dirs                                            : /usr/java/jdk1.7.0_21/jre/lib/endorsed
+java.ext.dirs                                                 : /usr/java/jdk1.7.0_21/jre/lib/ext:/usr/java/packages/lib/ext
+java.home                                                     : /usr/java/jdk1.7.0_21/jre
+java.io.tmpdir                                                : /tmp
+java.library.path                                             : /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+java.rmi.server.randomIDs                                     : true
+java.runtime.name                                             : Java(TM) SE Runtime Environment
+java.runtime.version                                          : 1.7.0_21-b11
+java.specification.name                                       : Java Platform API Specification
+java.specification.vendor                                     : Oracle Corporation
+java.specification.version                                    : 1.7
+java.vendor                                                   : Oracle Corporation
+java.vendor.url                                               : http://java.oracle.com/
+java.vendor.url.bug                                           : http://bugreport.sun.com/bugreport/
+java.version                                                  : 1.7.0_21
+java.vm.info                                                  : mixed mode
+java.vm.name                                                  : Java HotSpot(TM) 64-Bit Server VM
+java.vm.specification.name                                    : Java Virtual Machine Specification
+java.vm.specification.vendor                                  : Oracle Corporation
+java.vm.specification.version                                 : 1.7
+java.vm.vendor                                                : Oracle Corporation
+java.vm.version                                               : 23.21-b01
+line.separator                                                : 
+
+net.sf.ehcache.offheap.categoryTree.config.idealMaxSegmentSize: 30M
+os.arch                                                       : amd64
+os.name                                                       : Linux
+os.version                                                    : 2.6.32-220.7.1.el6.x86_64
+path.separator                                                : :
+sun.arch.data.model                                           : 64
+sun.boot.class.path                                           : /usr/java/jdk1.7.0_21/jre/lib/resources.jar:/usr/java/jdk1.7.0_21/jre/lib/rt.jar:/usr/java/jdk1.7.0_21/jre/lib/sunrsasign.jar:/usr/java/jdk1.7.0_21/jre/lib/jsse.jar:/usr/java/jdk1.7.0_21/jre/lib/jce.jar:/usr/java/jdk1.7.0_21/jre/lib/charsets.jar:/usr/java/jdk1.7.0_21/jre/lib/jfr.jar:/usr/java/jdk1.7.0_21/jre/classes
+sun.boot.library.path                                         : /usr/java/jdk1.7.0_21/jre/lib/amd64
+sun.cpu.endian                                                : little
+sun.cpu.isalist                                               : 
+sun.io.unicode.encoding                                       : UnicodeLittle
+sun.java.command                                              : com.tc.server.TCServerMain -f /etc/bigmemory/tc-config.xml -name tc1
+sun.java.launcher                                             : SUN_STANDARD
+sun.jnu.encoding                                              : UTF-8
+sun.management.compiler                                       : HotSpot 64-Bit Tiered Compilers
+sun.os.patch.level                                            : unknown
+sun.rmi.dgc.server.gcInterval                                 : 31536000000
+tc.install-root                                               : /opt/bigmemory-max-4.0.0/server/bin/..
+user.country                                                  : US
+user.dir                                                      : /home/terracotta
+user.home                                                     : /home/terracotta
+user.language                                                 : en
+user.name                                                     : terracotta
+user.timezone                                                 : America/Los_Angeles
+========================================================================
+2013-04-23 08:54:13,781 [main] INFO com.terracottatech.console - Terracotta license loaded from /opt/bigmemory-max-4.0.0/server/bin/../../terracotta-license.key
+Capabilities: ehcache, search, TMC, server array offheap
+Date of Issue: 2013-04-17
+Edition: Free
+Email: greg.adams@build.com
+License Number: 1004106
+License Type: Free Production
+Licensee: Greg Adams, Build.com
+Max Client Count: 4
+Product: BigMemory Max
+terracotta.serverArray.maxOffHeap: 8G
+
+2013-04-23 08:54:13,821 [main] INFO com.terracottatech.console - Available Max Runtime Memory: 3925MB
+2013-04-23 08:54:14,035 [main] INFO com.terracottatech.dso - Standard DSO Server created
+2013-04-23 08:54:14,050 [main] INFO com.tc.objectserver.storage.cache.offheap.OffHeapCacheConfig - OffHeapCacheConfig [ Enabled:true; MaxDataSize: 6g; MapsDBConcurrency: 1; mapsTableSize: 128; mapMaxPageSize, mapMinPageSize: 512k,4k; ObjInitialDataSize: 1m; ObjTableSize: 1048576; ObjConcurrency: 96 ], Vm.MaxDirectMemorySize [ 8589934592g ]
+2013-04-23 08:54:14,053 [main] INFO com.terracottatech.dso - Creating server nodeID: NodeID[devbox5.build.internal:9510]
+2013-04-23 08:54:14,074 [main] INFO com.tc.objectserver.managedobject.ConcurrentDistributedServerMapManagedObjectState - Eviction overshoot threshold is 15.0
+2013-04-23 08:54:14,137 [main] INFO com.terracottatech.console - JMX Server started. Available at URL[service:jmx:jmxmp://0.0.0.0:9520]
+2013-04-23 08:54:14,722 [main] INFO com.terracottatech.frs.recovery.RecoveryManager - Starting recovery for /opt/extraspace/bigmemory/tc1/data/objectdb/config
+2013-04-23 08:54:14,724 [main] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 0%
+2013-04-23 08:54:14,859 [main] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 10%
+2013-04-23 08:54:14,995 [main] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 20%
+2013-04-23 08:54:15,089 [main] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 30%
+2013-04-23 08:54:15,198 [main] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 40%
+2013-04-23 08:54:15,301 [main] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 50%
+2013-04-23 08:54:15,417 [main] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 60%
+2013-04-23 08:54:15,509 [main] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 70%
+2013-04-23 08:54:15,587 [main] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 80%
+2013-04-23 08:54:15,657 [main] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 90%
+2013-04-23 08:54:15,736 [main] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 100%
+2013-04-23 08:54:15,810 [Thread-35] INFO com.terracottatech.offheapstore.paging.UpfrontAllocatingPageSource - Allocating 6.0GB in chunks
+2013-04-23 08:54:19,290 [Thread-35] INFO com.terracottatech.offheapstore.paging.UpfrontAllocatingPageSource - Allocation 40% complete
+2013-04-23 08:54:21,048 [Thread-35] INFO com.terracottatech.offheapstore.paging.UpfrontAllocatingPageSource - Allocation 100% complete
+2013-04-23 08:54:21,049 [Thread-35] INFO com.terracottatech.offheapstore.paging.UpfrontAllocatingPageSource - Allocated 6.0GB in 1GB chunks.
+2013-04-23 08:54:21,049 [Thread-35] INFO com.terracottatech.offheapstore.paging.UpfrontAllocatingPageSource - Took 5239 ms to create CacheManager off-heap storage of 6.0GB.
+2013-04-23 08:54:32,820 [Thread-35] INFO com.terracottatech.frs.recovery.RecoveryManager - Starting recovery for /opt/extraspace/bigmemory/tc1/data/objectdb/data
+2013-04-23 08:54:32,821 [Thread-35] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 0%
+2013-04-23 08:54:32,888 [Thread-35] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 10%
+2013-04-23 08:54:32,923 [Thread-35] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 20%
+2013-04-23 08:54:32,970 [Thread-35] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 30%
+2013-04-23 08:54:33,017 [Thread-35] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 40%
+2013-04-23 08:54:33,056 [Thread-35] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 50%
+2013-04-23 08:54:33,115 [Thread-35] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 60%
+2013-04-23 08:54:33,158 [Thread-35] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 70%
+2013-04-23 08:54:33,197 [Thread-35] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 80%
+2013-04-23 08:54:33,208 [Thread-35] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 90%
+2013-04-23 08:54:33,306 [Thread-35] INFO com.terracottatech.frs.recovery.RecoveryManager - Recovery progress 100%
+2013-04-23 08:54:34,442 [main] INFO com.tc.net.core.TCWorkerCommManager - Creating 4 worker comm threads for L2_L1
+2013-04-23 08:54:34,471 [main] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl: DSO Server - HealthChecker Started
+2013-04-23 08:54:34,471 [main] INFO com.tc.net.protocol.tcm.CommunicationsManager - HealthCheck CallbackPort Listener not requested
+2013-04-23 08:54:34,482 [main] INFO com.tc.objectserver.l1.impl.ClientObjectReferenceSet - ServerMapEviction Client Object References refresh interval 60 seconds.
+2013-04-23 08:54:34,506 [main] INFO com.tc.runtime.TCMemoryManagerImpl - GarbageCollector: PS Scavenge
+2013-04-23 08:54:34,506 [main] INFO com.tc.runtime.TCMemoryManagerImpl - GarbageCollector: PS MarkSweep
+2013-04-23 08:54:34,747 [main] INFO com.tc.objectserver.impl.ProgressiveEvictionManager - Using threshold EvictionThreshold{name=8G, max=8589934592, used=773849088, reserved=134217728} for total size 6442450944
+2013-04-23 08:54:34,748 [main] INFO com.tc.objectserver.impl.ProgressiveEvictionManager - used:773849088,reserved:134217728
+2013-04-23 08:54:34,769 [main] WARN com.terracottatech.dso - High Availability Not Configured Properly: L1L2HealthCheck should be less than L2-L2HealthCheck + ElectionTime + ClientReconnectWindow
+2013-04-23 08:54:34,784 [main] INFO com.tc.net.core.TCWorkerCommManager - Creating 4 worker comm threads for L2_L2
+2013-04-23 08:54:34,797 [main] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl: TCGroupManager - HealthChecker Started
+2013-04-23 08:54:34,797 [main] INFO com.tc.net.protocol.tcm.CommunicationsManager - HealthCheck CallbackPort Listener not requested
+2013-04-23 08:54:34,820 [main] INFO com.tc.objectserver.search.JournalIndexManager - Removing any files present in /opt/extraspace/bigmemory/tc1/index/journal
+2013-04-23 08:54:34,840 [main] INFO com.terracottatech.search.LuceneIndexManager - Lucene version: 4.0.0.2
+2013-04-23 08:54:35,755 [main] INFO com.tc.l2.L2DebugLogging - L2 debug logging: DISABLED
+2013-04-23 08:54:35,799 [main] INFO com.terracottatech.dso - This L2 Node ID = NodeID[devbox5.build.internal:9510]
+2013-04-23 08:54:35,801 [main] INFO com.tc.l2.state.ElectionManagerImpl - Election Started : Enrollment [ NodeID[devbox5.build.internal:9510], isNew = true, weights = -3911155255003808781,9152171096548158796 ]
+2013-04-23 08:54:40,802 [main] INFO com.tc.l2.state.ElectionManagerImpl - Election Complete : [Enrollment [ NodeID[devbox5.build.internal:9510], isNew = true, weights = -3911155255003808781,9152171096548158796 ]] : State[ Election-Complete ]
+2013-04-23 08:54:40,804 [main] INFO com.tc.l2.state.StateManagerImpl - Becoming State[ ACTIVE-COORDINATOR ]
+2013-04-23 08:54:40,804 [main] INFO com.terracottatech.console - Becoming State[ ACTIVE-COORDINATOR ]
+2013-04-23 08:54:40,811 [main] INFO tc.operator.event - NODE : tc1  Subsystem: CLUSTER_TOPOLOGY Message: Moved to ACTIVE-COORDINATOR
+2013-04-23 08:54:40,811 [main] INFO com.tc.l2.state.ElectionManagerImpl - Declared as Winner: Winner is : Enrollment [ NodeID[devbox5.build.internal:9510], isNew = true, weights = -3911155255003808781,9152171096548158796 ]
+2013-04-23 08:54:40,811 [main] WARN tc.operator.event - NODE : tc1  Subsystem: SYSTEM_SETUP Message: tc1 started as an ACTIVE with existing data
+2013-04-23 08:54:40,813 [WorkerThread(l2_state_change_stage, 0)] INFO com.terracottatech.search.LuceneIndexManager - Initializing lucene index directory at /opt/extraspace/bigmemory/tc1/index/lucene offheap : false ram : false index/cache ratio : 4
+2013-04-23 08:54:40,842 [WorkerThread(l2_state_change_stage, 0)] INFO com.tc.objectserver.tx.ServerTransactionManager - Waiting for txns to complete
+2013-04-23 08:54:40,844 [WorkerThread(l2_state_change_stage, 0)] INFO com.tc.objectserver.tx.ServerTransactionManager - No more txns in the system.
+2013-04-23 08:54:40,844 [WorkerThread(l2_state_change_stage, 0)] INFO com.tc.objectserver.tx.ResentTransactionSequencer - Making callback com.tc.objectserver.gtx.GlobalTransactionIDLowWaterMarkProvider$2@7ad138dd pending since in State[ ADD_RESENT ] resent txns size : 0
+2013-04-23 08:54:40,846 [WorkerThread(l2_state_change_stage, 0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Starting DSO services...
+2013-04-23 08:54:40,847 [WorkerThread(l2_state_change_stage, 0)] INFO com.tc.objectserver.impl.TransactionStoreImpl - shutdownAllClientsExcept() : Removing txns from DB : 0
+2013-04-23 08:54:40,847 [main] INFO com.tc.server.TCServer - deploying management REST services from archive /opt/bigmemory-max-4.0.0/server/bin/../lib/management-tsa-war-4.0.0.war
+2013-04-23 08:54:40,850 [WorkerThread(l2_state_change_stage, 0)] INFO com.tc.objectserver.impl.ObjectRequestManagerRestartImpl - Processing Pending Lookups = 0
+2013-04-23 08:54:40,850 [WorkerThread(l2_state_change_stage, 0)] INFO com.tc.objectserver.tx.ResentTransactionSequencer - Unregistering ResentTransactionSequencer since no more resent Transactions : 0
+2013-04-23 08:54:40,851 [WorkerThread(l2_state_change_stage, 0)] INFO com.tc.objectserver.tx.ResentTransactionSequencer - Adding Pending resent CallBacks to  TxnMgr : com.tc.objectserver.gtx.GlobalTransactionIDLowWaterMarkProvider$2@7ad138dd
+2013-04-23 08:54:40,851 [WorkerThread(l2_state_change_stage, 0)] INFO com.tc.objectserver.gtx.GlobalTransactionIDLowWaterMarkProvider - Switching GlobalTransactionID Low Water mark provider since all resent transactions are applied
+2013-04-23 08:54:40,851 [WorkerThread(l2_state_change_stage, 0)] INFO com.tc.objectserver.impl.ServerMapEvictionEngine - ehcache.evictor.logging.enabled : false
+2013-04-23 08:54:40,851 [WorkerThread(l2_state_change_stage, 0)] INFO com.tc.objectserver.impl.ServerMapEvictionEngine - ehcache.storageStrategy.dcv2.periodicEviction.enabled : true
+2013-04-23 08:54:40,853 [WorkerThread(l2_state_change_stage, 0)] INFO com.tc.objectserver.l1.impl.InvalidateObjectManagerImpl - Restart txn processing complete : Adding validation of Objects for 0 Clients
+2013-04-23 08:54:40,854 [WorkerThread(l2_state_change_stage, 0)] INFO com.terracottatech.console - Terracotta Server instance has started up as ACTIVE node on 0:0:0:0:0:0:0:0:9510 successfully, and is now ready for work.
+2013-04-23 08:54:40,885 [WorkerThread(garbage_collect_stage, 0)] INFO tc.operator.event - NODE : tc1  Subsystem: DGC Message: Inline DGC [ 2 ] reference cleanup started.
+2013-04-23 08:54:41,060 [Resource Monitor] INFO com.tc.objectserver.impl.ProgressiveEvictionManager - Percent usage:0 reserved:2 poll time:6113 msec.
+2013-04-23 08:54:43,820 [L2_L2:TCComm Main Selector Thread_R (listen 0:0:0:0:0:0:0:0:9530)] INFO com.tc.net.core.TCConnection - Comms Message Batching enabled
+2013-04-23 08:54:44,387 [WorkerThread(garbage_collect_stage, 0)] INFO com.tc.objectserver.dgc.impl.MarkAndSweepGarbageCollector - DGC[ 2 ] complete : GarbageCollectionInfo [ Iteration = 2 ] =  type  = INLINE_CLEANUP startTime = 1366732480868 begin object count = 8263 end object count = 8263 markStageTime = 3519 pauseStageTime = 0 elapsedTime = 3519 totalMarkCycleTime = 3519 candidate garbage  count = 0 actual garbage count = 0 pre rescue count = 0 rescue1Time = 0 rescue 1 Count = 0 rescue2Time = 0
+2013-04-23 08:54:44,388 [WorkerThread(garbage_collect_stage, 0)] INFO tc.operator.event - NODE : tc1  Subsystem: DGC Message: Inline DGC [ 2 ] reference cleanup finished. Begin Count : 8,263 Collected : 0 Time Taken : 3,519 ms Live Objects : 8,263
+2013-04-23 08:54:45,718 [main] INFO com.tc.server.TCServer - Server started as tc1
+2013-04-23 08:55:44,184 [Resource Monitor] INFO com.tc.objectserver.impl.ProgressiveEvictionManager - Percent usage:0 reserved:2 poll time:5730 msec.
+2013-04-23 08:55:56,472 [L2_L1:TCComm Main Selector Thread_R (listen 0:0:0:0:0:0:0:0:9510)] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(1.9c0b205fb1134e43879aae01ac652fb2.25652cff-f836-4906-bd63-938b2cefd5a3-13e379ac845)[]: Attaching new connection: com.tc.net.core.TCConnectionImpl@1292030534: connected: true, closed: false local=172.25.1.105:9510 remote=172.25.1.104:52087 connect=[Tue Apr 23 08:55:56 PDT 2013] idle=20ms [0 read, 0 write]
+2013-04-23 08:55:56,490 [L2_L1:TCComm Main Selector Thread_R (listen 0:0:0:0:0:0:0:0:9510)] INFO com.tc.net.protocol.transport.ConnectionPolicyImpl - Allocated connection license for jvm 25652cff-f836-4906-bd63-938b2cefd5a3-13e379ac845; ConnectionPolicy[maxConnections=4, connectedJvmCount=1]
+2013-04-23 08:55:56,490 [L2_L1:TCComm Main Selector Thread_R (listen 0:0:0:0:0:0:0:0:9510)] INFO com.tc.net.protocol.transport.ConnectionPolicyImpl - New connection [1] from jvm 25652cff-f836-4906-bd63-938b2cefd5a3-13e379ac845
+2013-04-23 08:55:56,490 [L2_L1:TCComm Main Selector Thread_R (listen 0:0:0:0:0:0:0:0:9510)] INFO com.tc.net.protocol.transport.ServerStackProvider - User null successfully authenticated
+2013-04-23 08:55:56,490 [L2_L1:TCComm Main Selector Thread_R (listen 0:0:0:0:0:0:0:0:9510)] INFO com.tc.net.core.TCWorkerCommManager - Selecting [L2_L1:TCWorkerComm # 0, FD, wt:0]  from [[L2_L1:TCWorkerComm # 0, FD, wt:0], [L2_L1:TCWorkerComm # 1, FD, wt:0], [L2_L1:TCWorkerComm # 2, FD, wt:0], [L2_L1:TCWorkerComm # 3, FD, wt:0]]
+2013-04-23 08:55:56,496 [L2_L1:TCComm Main Selector Thread_R (listen 0:0:0:0:0:0:0:0:9510)] INFO com.tc.net.core.CoreNIOServices - selection key cancelled key@1950030121
+2013-04-23 08:55:56,519 [L2_L1:TCWorkerComm # 0_R] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl. DSO Server - Health monitoring agent started for devbox4.build.internal:52087
+2013-04-23 08:55:56,526 [L2_L1:TCComm Main Selector Thread_R (listen 0:0:0:0:0:0:0:0:9510)] INFO com.tc.net.core.CoreNIOServices - IOException attempting to finish socket connection
+java.net.NoRouteToHostException: No route to host
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:692)
+	at com.tc.net.core.CoreNIOServices$CommThread.doConnect(CoreNIOServices.java:684)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:624)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:295)
+2013-04-23 08:55:56,531 [L2_L1:TCComm Main Selector Thread_R (listen 0:0:0:0:0:0:0:0:9510)] INFO com.tc.net.core.TCConnectionManager - error event on connection com.tc.net.core.TCConnectionImpl@1302272683: connected: false, closed: false connect=[no connect time] idle=10ms [0 read, 0 write]: No route to host
+2013-04-23 08:55:56,534 [L2_L1:TCComm Main Selector Thread_R (listen 0:0:0:0:0:0:0:0:9510)] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl. DSO Server - Config Factor updated from  1 to 3
+2013-04-23 08:55:56,535 [L2_L1:TCComm Main Selector Thread_R (listen 0:0:0:0:0:0:0:0:9510)] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl. DSO Server - HealthCheckCallbackPort verification FAILED for devbox4.build.internal:52087(callbackport: 36086)
+2013-04-23 08:55:56,657 [WorkerThread(client_handshake_stage, 0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[1]
+2013-04-23 08:55:56,663 [WorkerThread(client_handshake_stage, 0)] INFO tc.operator.event - NODE : tc1  Subsystem: CLUSTER_TOPOLOGY Message: Node ClientID[1] joined the cluster
+2013-04-23 08:55:56,701 [WorkerThread(jmxremote_tunnel_stage, 0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[1]] notified us that their JMX server is now available
+2013-04-23 08:56:34,133 [L2_L2:TCComm Main Selector Thread_W (listen 0:0:0:0:0:0:0:0:9530)] WARN com.tc.net.core.CoreNIOServices - Exception trying to process interest request: java.nio.channels.ClosedChannelException
+2013-04-23 08:56:47,280 [Resource Monitor] INFO com.tc.objectserver.impl.ProgressiveEvictionManager - Percent usage:0 reserved:2 poll time:5731 msec.
+2013-04-23 08:56:47,920 [L2_L1:TCWorkerComm # 0_R] WARN com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(1.9c0b205fb1134e43879aae01ac652fb2.25652cff-f836-4906-bd63-938b2cefd5a3-13e379ac845)[]: CLOSE EVENT : com.tc.net.core.TCConnectionImpl@1292030534: connected: false, closed: true local=172.25.1.105:9510 remote=172.25.1.104:52087 connect=[Tue Apr 23 08:55:56 PDT 2013] idle=3600ms [1059062 read, 1801891 write]. STATUS : ESTABLISHED
+2013-04-23 08:56:47,921 [L2_L1:TCWorkerComm # 0_R] INFO com.tc.net.protocol.transport.ConnectionPolicyImpl - Removed connection [1] from jvm 25652cff-f836-4906-bd63-938b2cefd5a3-13e379ac845
+2013-04-23 08:56:47,921 [L2_L1:TCWorkerComm # 0_R] INFO com.tc.net.protocol.transport.ConnectionPolicyImpl - De-allocated connection license for jvm 25652cff-f836-4906-bd63-938b2cefd5a3-13e379ac845; ConnectionPolicy[maxConnections=4, connectedJvmCount=0]
+2013-04-23 08:56:47,921 [L2_L1:TCWorkerComm # 0_R] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl: DSO Server - Connection to [devbox4.build.internal:52087] DISCONNECTED. Health Monitoring for this node is now disabled.
+2013-04-23 08:56:52,935 [OOO Connection Restore Timer] WARN tc.operator.event - NODE : tc1  Subsystem: CLUSTER_TOPOLOGY Message: Node ClientID[1] left the cluster
+2013-04-23 08:56:52,935 [WorkerThread(channel_life_cycle_stage, 0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - : Received transport disconnect.  Shutting down client ClientID[1]
+2013-04-23 08:56:52,939 [WorkerThread(channel_life_cycle_stage, 0)] INFO com.tc.objectserver.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 0
+2013-04-23 08:56:59,381 [Job_Executor6] INFO com.tc.management.L2Management - JMX shutdown request connectionId:jmxmp://localhost:53461  78759400 execute methodId: 14 params: org.terracotta.internal:type=Terracotta Server,name=Terracotta Server shutdown [B@4efe2553 [Ljava.lang.String;@f4494a9
+2013-04-23 08:56:59,383 [RemoteJMXProcessor-13] WARN com.tc.management.beans.TCServerInfo - shutdown is invoked by MBean
+2013-04-23 08:57:00,385 [TCServerInfo shutdown timer] INFO com.terracottatech.console - Server exiting...
+2013-04-23 08:57:00,392 [CommonShutDownHook] INFO com.terracottatech.dso - L2 Exiting...

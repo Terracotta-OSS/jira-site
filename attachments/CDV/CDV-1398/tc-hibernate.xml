@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<terracotta-hibernate-cache-configuration>
+
+  <cache>
+    <region-name>org.hibernate.cache.StandardQueryCache</region-name>
+    <region-name>org.hibernate.cache.UpdateTimestampsCache</region-name>
+    <region-name>
+    org.springframework.samples.petclinic.Owner
+    </region-name>
+    <region-name>
+    org.springframework.samples.petclinic.Owner.petsInternal
+    </region-name>
+    <region-name>
+    org.springframework.samples.petclinic.Pet</region-name>
+    <region-name>org.springframework.samples.petclinic.Pet.visitsInternal</region-name>
+    <region-name>org.springframework.samples.petclinic.PetType</region-name>
+    <region-name>org.springframework.samples.petclinic.Specialty</region-name>
+    <region-name>org.springframework.samples.petclinic.Vet</region-name>
+    <region-name>org.springframework.samples.petclinic.Vet.specialtiesInternal</region-name>
+    <region-name>org.springframework.samples.petclinic.Visit</region-name>
+
+    <configuration>
+      <advanced>
+        <local-key-optimization>true</local-key-optimization>
+        <orphan-eviction>
+          <enabled>false</enabled>
+        </orphan-eviction>
+      </advanced>
+    </configuration>
+  </cache>
+
+</terracotta-hibernate-cache-configuration>
+

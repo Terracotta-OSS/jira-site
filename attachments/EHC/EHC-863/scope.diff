@@ -1,0 +1,87 @@
+Index: src/main/java/net/sf/ehcache/Cache.java
+===================================================================
+--- src/main/java/net/sf/ehcache/Cache.java	(revision 4031)
++++ src/main/java/net/sf/ehcache/Cache.java	(working copy)
+@@ -2544,13 +2544,7 @@
+         if (registeredEventListenersFromCopy == null || registeredEventListenersFromCopy.getCacheEventListeners().size() == 0) {
+             copy.registeredEventListeners = new RegisteredEventListeners(copy);
+         } else {
+-            copy.registeredEventListeners = new RegisteredEventListeners(copy);
+-            Set cacheEventListeners = registeredEventListeners.getCacheEventListeners();
+-            for (Object cacheEventListener1 : cacheEventListeners) {
+-                CacheEventListener cacheEventListener = (CacheEventListener) cacheEventListener1;
+-                CacheEventListener cacheEventListenerClone = (CacheEventListener) cacheEventListener.clone();
+-                copy.registeredEventListeners.registerListener(cacheEventListenerClone);
+-            }
++            copy.registeredEventListeners = registeredEventListeners.copy(copy);
+         }
+ 
+ 
+Index: src/main/java/net/sf/ehcache/event/RegisteredEventListeners.java
+===================================================================
+--- src/main/java/net/sf/ehcache/event/RegisteredEventListeners.java	(revision 4031)
++++ src/main/java/net/sf/ehcache/event/RegisteredEventListeners.java	(working copy)
+@@ -265,6 +265,14 @@
+         return listenerSet;
+     }
+ 
++    public RegisteredEventListeners copy(Ehcache cache) throws CloneNotSupportedException {
++        RegisteredEventListeners copy = new RegisteredEventListeners(cache);
++        for (ListenerWrapper listenerWrapper : cacheEventListeners) {
++            copy.registerListener((CacheEventListener)listenerWrapper.listener.clone(), listenerWrapper.scope);
++        }
++        return copy;
++    }
++
+     /**
+      * Tell listeners to dispose themselves.
+      * Because this method is only ever called from a synchronized cache method, it does not itself need to be
+Index: src/test/java/net/sf/ehcache/CacheTest.java
+===================================================================
+--- src/test/java/net/sf/ehcache/CacheTest.java	(revision 4031)
++++ src/test/java/net/sf/ehcache/CacheTest.java	(working copy)
+@@ -50,6 +50,7 @@
+ 
+ import net.sf.ehcache.bootstrap.BootstrapCacheLoader;
+ import net.sf.ehcache.event.CacheEventListener;
++import net.sf.ehcache.event.NotificationScope;
+ import net.sf.ehcache.event.RegisteredEventListeners;
+ import net.sf.ehcache.loader.CacheLoader;
+ import net.sf.ehcache.loader.CountingCacheLoader;
+@@ -2143,7 +2144,36 @@
+         return propertyChangeSupport;
+     }
+ 
++    /**
++     * Tests that when cloning a cache, the notification scope for any registred listener is also
++     * applied to the clone.
++     * @throws CloneNotSupportedException
++     */
++    @Test
++    public void testCloningCacheKeepsNotificationScope() throws CloneNotSupportedException {
++        // Create the source cache, register a listener
++        Cache cache = new Cache("testCloningCacheKeepsNotificationScope", 10, false, false, 100, 200);
++        cache.getCacheEventNotificationService().registerListener(new RemoveCountingListener(), NotificationScope.LOCAL);
+ 
++        // Clone the cache, access the cloned listener
++        Cache cloned = cache.clone();
++        cloned.setName("testCloningCacheKeepsNotificationScopeClone");
++        assertEquals("The cloned cache should have only one registered listener", 1, cloned.getCacheEventNotificationService().getCacheEventListeners().size());
++        RemoveCountingListener clonedListener = (RemoveCountingListener) cloned.getCacheEventNotificationService().getCacheEventListeners().iterator().next();
++
++        manager.addCache(cache);
++        manager.addCache(cloned);
++
++        // Put an element
++        Element element = new Element("foo", "bar", 1L);
++        cloned.put(element);
++
++        // Remove an element - only listeners with notification scope "REMOTE" should be notified
++        cloned.remove("foo", true);
++        assertEquals("The cloned listener was notified of the event even though its scope should be LOCAL", 0, clonedListener.count);
++    }
++
++
+     /**
+      * Checks that notification only happens once when clearOnFlush is false i.e.
+      * The impact of this is that there will be one copy in each store.

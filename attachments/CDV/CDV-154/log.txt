@@ -1,0 +1,61 @@
+com.tctest.MemoryDataMapTest...
+2007-03-01 12:10:36,461 [main] INFO com.tc.properties.TCProperties - Loading default properties from tc.properties
+2007-03-01 12:10:36,462 [main] INFO com.tc.properties.TCProperties - Loaded TCProperties : TCProperties={tc.management.mbeans.enabled=true, l2.berkeleydb.je.lock.nLockTables=7, l2.beanshell.port=9929, l1.cachemanager.monitorOldGenOnly=true, l1.transactionmanager.maxOutstandingBatchSize=8, l2.objectmanager.cachePolicy=lfu, l1.transactionmanager.logging.enabled=false, session.request.tracking=false, l2.cachemanager.percentageToEvict=10, l2.cachemanager.logging.enabled=false, l1.transactionmanager.maxBatchSizeInKiloBytes=128, l2.objectmanager.fault.logging.enabled=false, l1.cachemanager.leastCount=2, l1.cachemanager.sleepInterval=3000, tc.stage.monitor.enabled=false, l1.transactionmanager.maxPendingBatches=32, l1.cachemanager.logging.enabled=false, l1.cachemanager.percentageToEvict=10, l2.cachemanager.criticalThreshold=90, l2.objectmanager.maxObjectsToCommit=5000, l2.lfu.debug.enabled=false, session.request.bench.enabled=false, session.invalidator.bench.enabled=true, l2.berkeleydb.je.cleaner.lookAheadCacheSize=32768, l2.berkeleydb.je.cleaner.minAge=5, tc.stage.monitor.delay=5000, l1.cachemanager.threshold=70, l2.cachemanager.sleepInterval=3000, l1.transactionmanager.maxSleepTimeBeforeHalt=1024, l1.cachemanager.criticalThreshold=90, l2.berkeleydb.je.checkpointer.bytesInterval=100000000, l1.cachemanager.enabled=true, l2.objectmanager.maxObjectsInTxnObjGrouping=5000, session.request.tracking.threshold=15000, session.request.tracking.dump=false, session.debug.hops.interval=100, l2.cachemanager.enabled=true, l2.beanshell.enabled=false, l2.berkeleydb.je.cleaner.detailMaxMemoryPercentage=5, l2.lfu.agingFactor=1, l2.objectmanager.maxTxnsInTxnObjectGrouping=500, l2.cachemanager.leastCount=2, l2.cachemanager.threshold=70, session.request.tracking.interval=2500, l2.lfu.recentlyAccessedIgnorePercentage=20, l2.cachemanager.monitorOldGenOnly=true, l2.berkeleydb.je.cleaner.bytesInterval=20000000, l2.objectmanager.deleteBatchSize=5000, session.invalidator.sleep=300, session.debug.hops=false}
+2007-03-01 12:10:36,476 [main] INFO com.tc.management.beans.logging.TCLoggingBroadcasterMBean - No resource bundle exists for MBean com.tc.management.beans.logging.TCLoggingBroadcasterMBean
+2007-03-01 12:10:36,514 [main] INFO com.terracottatech.console - Terracotta, version 2.3.0 as of 20070301-110355.
+2007-03-01 12:10:36,516 [main] INFO com.tc.logging.TCLogging - Terracotta version: Terracotta Version 2.3.0, as of 20070301-110355 (Revision 1506 by cruise@su10mo2 from trunk)
+Server started on port 47179
+2007-03-01 12:10:36,728 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@6131844: connected: false, closed: false connect=[no connect time] idle=1ms
+2007-03-01 12:10:36,752 [TCComm Selector Thread 1 (listen 0:0:0:0:0:0:0:0:47179)] INFO com.tc.net.protocol.transport.ServerMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@14721926: connected: true, closed: false local=127.0.0.1:47179 remote=127.0.0.1:59177 connect=[Thu Mar 01 12:10:36 PST 2007] idle=7ms
+Send out: 0 requests
+Time to get 1 item: 1264ms
+Time to get 5000 items: 108ms
+2007-03-01 12:10:39,654 [TCComm Selector Thread 2] ERROR com.tc.net.core.TCComm - Unhandled exception from selectLoop
+java.io.IOException: Operation not permitted
+	at sun.nio.ch.EPollArrayWrapper.epollCtl(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.updateRegistrations(EPollArrayWrapper.java:202)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:183)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.TCCommJDK14.selectLoop(TCCommJDK14.java:286)
+	at com.tc.net.core.TCCommJDK14$TCCommThread.run(TCCommJDK14.java:636)
+java.io.IOException: Operation not permitted
+	at sun.nio.ch.EPollArrayWrapper.epollCtl(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.updateRegistrations(EPollArrayWrapper.java:202)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:183)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.TCCommJDK14.selectLoop(TCCommJDK14.java:286)
+	at com.tc.net.core.TCCommJDK14$TCCommThread.run(TCCommJDK14.java:636)
+Server started on port 59453
+2007-03-01 12:10:44,693 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@24159824: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:11:19,716 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@19716308: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:11:54,734 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@3470405: connected: false, closed: false connect=[no connect time] idle=1ms
+2007-03-01 12:12:29,747 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@13043649: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:13:04,763 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@22768301: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:13:39,776 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@32630374: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:14:14,793 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@23836633: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:14:49,807 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@23700747: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:15:24,824 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@12832866: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:15:59,840 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@19875128: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:16:34,857 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@6588728: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:17:09,872 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@7584802: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:17:44,889 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@137758: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:18:19,905 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@21553723: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:18:54,921 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@11595238: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:19:29,937 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@14512731: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:20:04,954 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@20052249: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:20:39,971 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@23240342: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:21:14,986 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@15186833: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:21:50,004 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@32187507: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:22:25,021 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@6966554: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:23:00,033 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@33491508: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:23:35,050 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@12647566: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:24:10,064 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@5872987: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:24:45,081 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@28983641: connected: false, closed: false connect=[no connect time] idle=0ms
+2007-03-01 12:25:20,100 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - Attaching new connection: com.tc.net.core.TCConnectionJDK14@13018016: connected: false, closed: false connect=[no connect time] idle=0ms
+        <message priority="info"><![CDATA[ERROR    Test com.tctest.MemoryDataMapTest FAILED (timeout)

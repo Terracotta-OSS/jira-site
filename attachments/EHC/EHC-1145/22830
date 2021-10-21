@@ -1,0 +1,447 @@
+Index: ehcache-core/src/main/java/net/sf/ehcache/distribution/ConfigurableRMIClientSocketFactory.java
+===================================================================
+--- ehcache-core/src/main/java/net/sf/ehcache/distribution/ConfigurableRMIClientSocketFactory.java	(revision 10517)
++++ ehcache-core/src/main/java/net/sf/ehcache/distribution/ConfigurableRMIClientSocketFactory.java	(working copy)
+@@ -101,22 +101,12 @@
+     }
+ 
+     /**
+-     * Return the JVM-level configured {@code RMISocketFactory}.
+-     * <p>
+-     * If a global socket factory has been set via the
+-     * {@link RMISocketFactory#setSocketFactory(RMISocketFactory)} method then
+-     * that factory will be returned.  Otherwise the default socket factory as
+-     * returned by {@link RMISocketFactory#getDefaultSocketFactory()} is used
+-     * instead.
++     * Return the {@link RMISocketFactory} defined by
++     * {@link RMISocketFactorySecuritySettings}.
+      *
+      * @return the configured @{code {@link RMISocketFactory}
+      */
+     public static RMISocketFactory getConfiguredRMISocketFactory() {
+-        RMISocketFactory globalSocketFactory = RMISocketFactory.getSocketFactory();
+-        if (globalSocketFactory == null) {
+-            return RMISocketFactory.getDefaultSocketFactory();
+-        } else {
+-            return globalSocketFactory;
+-        }
++        return RMISocketFactorySecuritySettings.getRMISocketFactory();
+     }
+-}
+\ No newline at end of file
++}
+Index: ehcache-core/src/main/java/net/sf/ehcache/distribution/RMICacheManagerPeerListener.java
+===================================================================
+--- ehcache-core/src/main/java/net/sf/ehcache/distribution/RMICacheManagerPeerListener.java	(revision 10517)
++++ ehcache-core/src/main/java/net/sf/ehcache/distribution/RMICacheManagerPeerListener.java	(working copy)
+@@ -26,7 +26,6 @@
+ import java.net.InetAddress;
+ import java.net.ServerSocket;
+ import java.net.UnknownHostException;
+-import java.rmi.Naming;
+ import java.rmi.NotBoundException;
+ import java.rmi.Remote;
+ import java.rmi.RemoteException;
+@@ -33,6 +32,7 @@
+ import java.rmi.registry.LocateRegistry;
+ import java.rmi.registry.Registry;
+ import java.rmi.server.ExportException;
++import java.rmi.server.RMISocketFactory;
+ import java.rmi.server.UnicastRemoteObject;
+ import java.util.ArrayList;
+ import java.util.HashMap;
+@@ -231,7 +231,7 @@
+      * @param rmiCachePeer
+      */
+     protected void bind(String peerName, RMICachePeer rmiCachePeer) throws Exception {
+-        Naming.rebind(peerName, rmiCachePeer);
++        registry.rebind(peerName, rmiCachePeer);
+     }
+ 
+     /**
+@@ -317,13 +317,14 @@
+      * @throws RemoteException
+      */
+     protected void startRegistry() throws RemoteException {
++        RMISocketFactory rmiSocketFactory = RMISocketFactorySecuritySettings.getRMISocketFactory();
+         try {
+-            registry = LocateRegistry.getRegistry(port.intValue());
++            registry = LocateRegistry.getRegistry(hostName, port.intValue(), rmiSocketFactory);
+             try {
+                 registry.list();
+             } catch (RemoteException e) {
+                 //may not be created. Let's create it.
+-                registry = LocateRegistry.createRegistry(port.intValue());
++                registry = LocateRegistry.createRegistry(port.intValue(), rmiSocketFactory, rmiSocketFactory);
+                 registryCreated = true;
+             }
+         } catch (ExportException exception) {
+@@ -409,7 +410,7 @@
+     protected void unbind(RMICachePeer rmiCachePeer) throws Exception {
+         String url = rmiCachePeer.getUrl();
+         try {
+-            Naming.unbind(url);
++            registry.unbind(url);
+         } catch (NotBoundException e) {
+             LOG.warn(url + " not bound therefore not unbinding.");
+         }
+Index: ehcache-core/src/main/java/net/sf/ehcache/distribution/RMICacheManagerPeerProvider.java
+===================================================================
+--- ehcache-core/src/main/java/net/sf/ehcache/distribution/RMICacheManagerPeerProvider.java	(revision 10517)
++++ ehcache-core/src/main/java/net/sf/ehcache/distribution/RMICacheManagerPeerProvider.java	(working copy)
+@@ -21,9 +21,12 @@
+ import net.sf.ehcache.Ehcache;
+ 
+ import java.net.MalformedURLException;
+-import java.rmi.Naming;
++import java.net.URI;
++import java.net.URISyntaxException;
+ import java.rmi.NotBoundException;
+ import java.rmi.RemoteException;
++import java.rmi.registry.LocateRegistry;
++import java.rmi.registry.Registry;
+ import java.util.Collections;
+ import java.util.Date;
+ import java.util.HashMap;
+@@ -124,7 +127,21 @@
+      */
+     public CachePeer lookupRemoteCachePeer(String url) throws MalformedURLException, NotBoundException, RemoteException {
+         LOG.debug("Lookup URL {}", url);
+-        CachePeer cachePeer = (CachePeer) Naming.lookup(url);
++        
++        URI uri = null;
++        try {
++            uri = new URI(url);
++        } catch (URISyntaxException e) {
++            LOG.error("Caught Exception " + e + " url: " + url + ". Will re-throw.", e);
++            throw new IllegalStateException(e);
++        }
++
++        Registry r = LocateRegistry.getRegistry(
++            uri.getHost(),
++            uri.getPort(),
++            RMISocketFactorySecuritySettings.getRMISocketFactory());
++
++        CachePeer cachePeer = (CachePeer) r.lookup(url);
+         return cachePeer;
+     }
+ 
+Index: ehcache-core/src/main/java/net/sf/ehcache/distribution/RMISocketFactorySecuritySettings.java
+===================================================================
+--- ehcache-core/src/main/java/net/sf/ehcache/distribution/RMISocketFactorySecuritySettings.java	(nonexistent)
++++ ehcache-core/src/main/java/net/sf/ehcache/distribution/RMISocketFactorySecuritySettings.java	(working copy)
+@@ -0,0 +1,147 @@
++/**
++ *  Copyright Terracotta, Inc.
++ *
++ *  Licensed under the Apache License, Version 2.0 (the "License");
++ *  you may not use this file except in compliance with the License.
++ *  You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *  Unless required by applicable law or agreed to in writing, software
++ *  distributed under the License is distributed on an "AS IS" BASIS,
++ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *  See the License for the specific language governing permissions and
++ *  limitations under the License.
++ */
++
++package net.sf.ehcache.distribution;
++
++import java.security.NoSuchAlgorithmException;
++import java.security.UnrecoverableKeyException;
++import java.io.FileInputStream;
++import java.io.IOException;
++import java.rmi.server.RMISocketFactory;
++import java.security.KeyStore;
++import java.security.cert.CertificateException;
++import java.security.KeyManagementException;
++import java.security.KeyStoreException;
++
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
++/**
++ * <p>
++ * Configures and provides the RMISocketFactory in use to enable SSL-based sockets.
++ * </p>
++ * <p>
++ * Properties can be used to configure the RMI sockets to use SSL.
++ * <table>
++ * <tr><th>Property</th><th>Usage</th><th>Default</th></tr>
++ * <tr><td><pre>net.sf.ehcache.distribution.useSslRmi</pre></td><td>Enables SSL for RMI sockets.</td><td>false</td></tr>
++ * <tr><td><pre>net.sf.ehcache.distribution.verboseLogging</pre></td><td>Log from the SSL RMI socket creation.</td><td>false</td></tr>
++ * <tr><td><pre>net.sf.ehcache.distribution.keyStorePath</pre></td><td>Path to the keystore file.</td><td>none</td></tr>
++ * <tr><td><pre>net.sf.ehcache.distribution.keyStoreType</pre></td><td>Type of the keystore file.</td><td>pkcs12</td></tr>
++ * <tr><td><pre>net.sf.ehcache.distribution.keyStorePassword</pre></td><td>Password for the keystore file.</td><td>umask 077</td></tr>
++ * <tr><td><pre>net.sf.ehcache.distribution.trustStorePath</pre></td><td>Path to the truststore file.</td><td>none</td></tr>
++ * <tr><td><pre>net.sf.ehcache.distribution.trustStoreType</pre></td><td>Type of the truststore file.</td><td>JKS</td></tr>
++ * <tr><td><pre>net.sf.ehcache.distribution.trustStorePassword</pre></td><td>Password for the truststore file.</td><td>umask 077</td></tr>
++ * </table>
++ * </p>
++ *
++ * @author <a href="mailto:dmitri@twosigma.com">Dmitri Lemmerman</a>
++ */
++public final class RMISocketFactorySecuritySettings {
++
++    /**
++     * Configuration properties for SSL RMI sockets.
++     */
++    public static final String USE_SSL_RMI_PROPERTY = "net.sf.ehcache.distribution.useSslRmi";
++    public static final String VERBOSE_LOGGING_PROPERTY = "net.sf.ehcache.distribution.verboseLogging";
++    public static final String KEY_STORE_PATH_PROPERTY = "net.sf.ehcache.distribution.keyStorePath";
++    public static final String KEY_STORE_TYPE_PROPERTY = "net.sf.ehcache.distribution.keyStoreType";
++    public static final String KEY_STORE_PASSWORD_PROPERTY = "net.sf.ehcache.distribution.keyStorePassword";
++    public static final String TRUST_STORE_PATH_PROPERTY = "net.sf.ehcache.distribution.trustStorePath";
++    public static final String TRUST_STORE_TYPE_PROPERTY = "net.sf.ehcache.distribution.trustStoreType";
++    public static final String TRUST_STORE__PASSWORD_PROPERTY = "net.sf.ehcache.distribution.trustStorePassword";
++
++    private static final Logger LOG = LoggerFactory.getLogger(RMISocketFactorySecuritySettings.class.getName());
++
++    private static final String defaultPassword = "umask 077";
++    private static final String defaultKeyStoreType = "pkcs12";
++    private static final String defaultTrustStoreType = "JKS";
++
++    private static final RMISocketFactory instance = initialize();
++
++    private RMISocketFactorySecuritySettings() {}
++
++    /**
++     * <p>
++     * Returns the singleton RMISocketFactory in use based on the
++     * security settings. If SSL is enabled, the instance will be
++     * {@link SslRMISocketFactory}.
++     * </p><p>
++     * Otherwise, if a global socket factory has been set via the
++     * {@link RMISocketFactory#setSocketFactory(RMISocketFactory)} method then
++     * that factory will be returned.  Otherwise the default socket factory as
++     * returned by {@link RMISocketFactory#getDefaultSocketFactory()} is used
++     * instead.
++     * </p>
++     */
++    public static RMISocketFactory getRMISocketFactory() {
++        return instance;
++    }
++
++    private static RMISocketFactory initialize() {
++        if ("true".equals(System.getProperty(USE_SSL_RMI_PROPERTY, "false"))) {
++            return createSslInstanceFromProperties();
++        }
++
++        // Logic moved from ConfigurableRMIClientSocketFactory.
++        RMISocketFactory globalSocketFactory = RMISocketFactory.getSocketFactory();
++        if (globalSocketFactory == null) {
++            return RMISocketFactory.getDefaultSocketFactory();
++        } else {
++            return globalSocketFactory;
++        }
++    }
++
++    private static SslRMISocketFactory createSslInstanceFromProperties() {
++        String keyStorePath = System.getProperty(KEY_STORE_PATH_PROPERTY);
++        String keyStoreType = System.getProperty(KEY_STORE_TYPE_PROPERTY, defaultKeyStoreType);
++        String keyStorePassword = System.getProperty(KEY_STORE_PASSWORD_PROPERTY, defaultPassword);
++        String trustStorePath = System.getProperty(TRUST_STORE_PATH_PROPERTY);
++        String trustStoreType = System.getProperty(TRUST_STORE_TYPE_PROPERTY, defaultTrustStoreType);
++        String trustStorePassword = System.getProperty(TRUST_STORE_TYPE_PROPERTY, defaultPassword);
++
++        if (keyStorePath == null) {
++            throw new IllegalStateException("Property "
++                + KEY_STORE_PATH_PROPERTY + " is required to use SSL.");
++        }
++        if (trustStorePath == null) {
++            throw new IllegalStateException("Property "
++                + TRUST_STORE_PATH_PROPERTY + " is required to use SSL.");
++        }
++
++        try {
++            LOG.info("About to create keystore from file " + keyStorePath);
++            KeyStore ks = KeyStore.getInstance(keyStoreType);
++            ks.load(new FileInputStream(keyStorePath), keyStorePassword.toCharArray());
++        
++            LOG.info("About to create truststore from file " + trustStorePath);
++            KeyStore ts = KeyStore.getInstance(trustStoreType);
++            ts.load(new FileInputStream(trustStorePath), trustStorePassword.toCharArray());
++
++            return new SslRMISocketFactory(ks, keyStorePassword, ts, trustStorePassword);
++
++        } catch (CertificateException e) {
++            throw new IllegalStateException("Error creating keystore or truststore.", e);
++        } catch (IOException e) {
++            throw new IllegalStateException("Error creating keystore or truststore.", e);
++        } catch (KeyStoreException e) {
++            throw new IllegalStateException("Error creating keystore or truststore.", e);
++        } catch (NoSuchAlgorithmException e) {
++            throw new IllegalStateException("Error creating keystore or truststore.", e);
++        }
++
++    }
++}    
+Index: ehcache-core/src/main/java/net/sf/ehcache/distribution/SslRMISocketFactory.java
+===================================================================
+--- ehcache-core/src/main/java/net/sf/ehcache/distribution/SslRMISocketFactory.java	(nonexistent)
++++ ehcache-core/src/main/java/net/sf/ehcache/distribution/SslRMISocketFactory.java	(working copy)
+@@ -0,0 +1,162 @@
++/**
++ *  Copyright Terracotta, Inc.
++ *
++ *  Licensed under the Apache License, Version 2.0 (the "License");
++ *  you may not use this file except in compliance with the License.
++ *  You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *  Unless required by applicable law or agreed to in writing, software
++ *  distributed under the License is distributed on an "AS IS" BASIS,
++ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *  See the License for the specific language governing permissions and
++ *  limitations under the License.
++ */
++
++package net.sf.ehcache.distribution;
++
++import java.io.IOException;
++import java.net.ServerSocket;
++import java.net.Socket;
++import java.rmi.server.RMISocketFactory;
++import java.security.KeyManagementException;
++import java.security.KeyStore;
++import java.security.KeyStoreException;
++import java.security.NoSuchAlgorithmException;
++import javax.net.ssl.KeyManagerFactory;
++import javax.net.ssl.SSLContext;
++import javax.net.ssl.SSLSocketFactory;
++import javax.net.ssl.TrustManagerFactory;
++import javax.rmi.ssl.SslRMIClientSocketFactory;
++import javax.rmi.ssl.SslRMIServerSocketFactory;
++import java.security.UnrecoverableKeyException;
++
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
++/**
++ * Implementation of a RMISocketFactory using SSL.
++ *
++ * @author <a href="mailto:dmitri@twosigma.com">Dmitri Lemmerman</a>
++ */
++public final class SslRMISocketFactory
++    extends RMISocketFactory {
++
++    private static final Logger LOG = LoggerFactory.getLogger(SslRMISocketFactory.class.getName());
++
++    private final SslRMIClientSocketFactory client;
++    private final SslRMIServerSocketFactory server;
++    private final boolean verboseLogging;
++
++    /**
++     * Create a new instance of a SSL-based RMISocketFactory
++     * using the given key and truststores.
++     * @param keyStore the keystore to use. Should contain the key for
++     * the current hostname.
++     * @param keyStorePassword the password for the keystore.
++     * @param trustStore the truststore to use. Should contain the
++     * keys for all the members of the ehcache cluster.
++     * @param trustStorePassword the password for the truststore.
++     */
++    public SslRMISocketFactory(
++        KeyStore keyStore, String keyStorePassword,
++        KeyStore trustStore, String trustStorePassword)
++    {
++        if (keyStore == null) {
++            throw new IllegalArgumentException("keyStore cannot be null.");
++        }
++        if (keyStorePassword == null) {
++            throw new IllegalArgumentException("keyStorePassword cannot be null.");
++        }
++        if (trustStore == null) {
++            throw new IllegalArgumentException("trustStore cannot be null.");
++        }
++        if (trustStorePassword == null) {
++            throw new IllegalArgumentException("trustStorePassword cannot be null.");
++        }
++
++        verboseLogging = "true".equals(
++            System.getProperty(
++                RMISocketFactorySecuritySettings.VERBOSE_LOGGING_PROPERTY, "false"));
++
++        SSLContext sslContext = getCustomSslContext(
++            keyStore, keyStorePassword,
++            trustStore, trustStorePassword);
++        client = new CustomSslRMIClientSocketFactory(sslContext.getSocketFactory());
++        server = new SslRMIServerSocketFactory(sslContext, null, null, true);
++        
++        if (verboseLogging) {
++            log("Created SslRMISocketFactory.");
++        }
++    }
++
++    private static void log(String message) {
++        log(message, new Throwable());
++    }
++
++    private static void log(String message, Throwable e) {
++        LOG.error(message, e);
++    }
++
++    /**
++     * Subclass to allow non-default SSLSocketFactory.
++     */
++    private static class CustomSslRMIClientSocketFactory
++        extends SslRMIClientSocketFactory {
++
++        private final SSLSocketFactory socketFactory;
++
++        public CustomSslRMIClientSocketFactory(SSLSocketFactory socketFactory) {
++            this.socketFactory = socketFactory;
++        }
++
++        @Override
++        public Socket createSocket(String host, int port) throws IOException {
++            return socketFactory.createSocket(host, port);
++        }
++    }
++
++    private SSLContext getCustomSslContext(
++        KeyStore keyStore, String keyStorePassword,
++        KeyStore trustStore, String trustStorePassword)
++    {
++
++        try {
++            KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
++            kmf.init(keyStore, keyStorePassword.toCharArray());
++        
++            TrustManagerFactory tmf = TrustManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
++            tmf.init(trustStore);
++        
++            SSLContext sslContext = SSLContext.getInstance("TLS");
++            sslContext.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
++            return sslContext;
++
++        } catch (KeyManagementException e) {
++            throw new IllegalStateException("Error creating keystore or truststore.", e);
++        } catch (KeyStoreException e) {
++            throw new IllegalStateException("Error creating keystore or truststore.", e);
++        } catch (NoSuchAlgorithmException e) {
++            throw new IllegalStateException("Error creating keystore or truststore.", e);
++        } catch (UnrecoverableKeyException e) {
++            throw new IllegalStateException("Error creating keystore or truststore.", e);
++        }
++    }
++
++    @Override
++    public Socket createSocket(String host, int port) throws IOException {
++        if (verboseLogging) {
++            log("Creating TwoSigma ssl client socket " + host + " , " + port);
++        }
++        return client.createSocket(host, port);
++    }
++
++    @Override
++    public ServerSocket createServerSocket(int port) throws IOException {
++        if (verboseLogging) {
++            log("Creating TwoSigma ssl server socket " + port);
++        }
++        return server.createServerSocket(port);
++    }
++}

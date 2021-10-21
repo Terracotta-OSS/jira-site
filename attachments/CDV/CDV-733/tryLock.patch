@@ -1,0 +1,12 @@
+Index: code/base/dso-l2/src/com/tc/objectserver/lockmanager/impl/Lock.java
+===================================================================
+--- code/base/dso-l2/src/com/tc/objectserver/lockmanager/impl/Lock.java	(revision 8322)
++++ code/base/dso-l2/src/com/tc/objectserver/lockmanager/impl/Lock.java	(working copy)
+@@ -489,6 +489,7 @@
+       Sink lockResponseSink = context.getLockResponseSink();
+       int lockLevel = context.lockLevel();
+       cannotAwardAndRespond(txn, lockLevel, lockResponseSink);
++      txn.clearWaitingOn();
+     }
+   }
+ 

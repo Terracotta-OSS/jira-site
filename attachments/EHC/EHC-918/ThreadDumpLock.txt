@@ -1,0 +1,522 @@
+Full thread dump OpenJDK 64-Bit Server VM (20.0-b11 mixed mode):
+
+"Thread-32" daemon prio=10 tid=0x00007f0b5c12f000 nid=0x2973 waiting on condition [0x00007f0b6026f000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at com.openpricer.bc.tasks.webapp.TasksFeedbackServlet$TasksFeedback$1.run(TasksFeedbackServlet.java:249)
+	at java.lang.Thread.run(Thread.java:679)
+
+"MessageSender[/ContractPricer]" daemon prio=10 tid=0x0000000003272000 nid=0x2942 in Object.wait() [0x00007f0b60572000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:502)
+	at com.openpricer.bc.tasks.webapp.TasksFeedbackServlet$MessageSender.run(TasksFeedbackServlet.java:151)
+	- locked <0x00000000ecdc7358> (a java.util.ArrayList)
+	at java.lang.Thread.run(Thread.java:679)
+
+"http-8080-exec-5" daemon prio=10 tid=0x0000000003af6800 nid=0x2931 waiting on condition [0x00007f0b60673000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000000bda115e0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:186)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2043)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:386)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1043)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1103)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603)
+	at java.lang.Thread.run(Thread.java:679)
+
+"http-8080-exec-4" daemon prio=10 tid=0x000000000516a000 nid=0x2930 waiting on condition [0x00007f0b60774000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000000bda115e0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:186)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2043)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:386)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1043)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1103)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603)
+	at java.lang.Thread.run(Thread.java:679)
+
+"http-8080-exec-3" daemon prio=10 tid=0x0000000002214800 nid=0x2926 waiting on condition [0x00007f0b60875000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000000bda115e0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:186)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2043)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:386)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1043)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1103)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603)
+	at java.lang.Thread.run(Thread.java:679)
+
+"(org.objectweb.joram.client.jms.QueueConnection@957a0002,proxyId=#0.0.1027,key=2)" prio=10 tid=0x000000000405e800 nid=0x2863 in Object.wait() [0x00007f0b60976000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:502)
+	at fr.dyade.aaa.common.Queue.get(Queue.java:91)
+	- locked <0x00000000fb143e58> (a fr.dyade.aaa.common.Queue)
+	at org.objectweb.joram.client.jms.local.LocalRequestChannel.receive(LocalRequestChannel.java:144)
+	at org.objectweb.joram.client.jms.connection.RequestMultiplexer$DemultiplexerDaemon.run(RequestMultiplexer.java:414)
+	at java.lang.Thread.run(Thread.java:679)
+
+"Timer-10" daemon prio=10 tid=0x0000000002a5e800 nid=0x2862 in Object.wait() [0x00007f0b60a77000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00000000fb184250> (a java.util.TaskQueue)
+	at java.lang.Object.wait(Object.java:502)
+	at java.util.TimerThread.mainLoop(Timer.java:505)
+	- locked <0x00000000fb184250> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:484)
+
+"http-8080-exec-2" daemon prio=10 tid=0x0000000002a5e000 nid=0x2857 waiting on condition [0x00007f0b60b76000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000000b87a9518> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:186)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:838)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:871)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1201)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:840)
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap$MemoryStoreSegment.unpinAll(SelectableConcurrentHashMap.java:339)
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.unpinAll(SelectableConcurrentHashMap.java:211)
+	at net.sf.ehcache.store.MemoryStore.unpinAll(MemoryStore.java:208)
+	at net.sf.ehcache.store.FrontEndCacheTier.unpinAll(FrontEndCacheTier.java:91)
+	at net.sf.ehcache.Cache.unpinAll(Cache.java:4202)
+	at net.sf.ehcache.hibernate.regions.EhcacheTransactionalDataRegion.clear(EhcacheTransactionalDataRegion.java:174)
+	at net.sf.ehcache.hibernate.strategy.AbstractEhcacheAccessStrategy.removeAll(AbstractEhcacheAccessStrategy.java:109)
+	at net.sf.ehcache.hibernate.nonstop.NonstopAwareEntityRegionAccessStrategy.removeAll(NonstopAwareEntityRegionAccessStrategy.java:221)
+	at org.hibernate.action.BulkOperationCleanupAction$EntityCleanup.<init>(BulkOperationCleanupAction.java:206)
+	at org.hibernate.action.BulkOperationCleanupAction$EntityCleanup.<init>(BulkOperationCleanupAction.java:199)
+	at org.hibernate.action.BulkOperationCleanupAction.<init>(BulkOperationCleanupAction.java:78)
+	at org.hibernate.hql.ast.exec.AbstractStatementExecutor.coordinateSharedCacheCleanup(AbstractStatementExecutor.java:261)
+	at org.hibernate.hql.ast.exec.BasicExecutor.execute(BasicExecutor.java:81)
+	at org.hibernate.hql.ast.QueryTranslatorImpl.executeUpdate(QueryTranslatorImpl.java:423)
+	at org.hibernate.engine.query.HQLQueryPlan.performExecuteUpdate(HQLQueryPlan.java:283)
+	at org.hibernate.impl.SessionImpl.executeUpdate(SessionImpl.java:1288)
+	at org.hibernate.impl.QueryImpl.executeUpdate(QueryImpl.java:117)
+	at com.openpricer.ac.contracttoolbox.internal.strategy.DeleteContractProdStrategy.execute(DeleteContractProdStrategy.java:41)
+	at com.openpricer.ac.contracttoolbox.ejb.ContractToolboxBean.deleteContractProd(ContractToolboxBean.java:350)
+	at com.openpricer.contractpricer.webapp.rfqactions.EditSalesProfilesAction.actionForDetails(EditSalesProfilesAction.java:1837)
+	at com.openpricer.contractpricer.webapp.rfqactions.EditSalesProfilesAction.execute(EditSalesProfilesAction.java:442)
+	at org.apache.struts.chain.commands.servlet.ExecuteAction.execute(ExecuteAction.java:58)
+	at org.apache.struts.chain.commands.AbstractExecuteAction.execute(AbstractExecuteAction.java:67)
+	at org.apache.struts.chain.commands.ActionCommandBase.execute(ActionCommandBase.java:51)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:191)
+	at org.apache.commons.chain.generic.LookupCommand.execute(LookupCommand.java:305)
+	at org.apache.commons.chain.impl.ChainBase.execute(ChainBase.java:191)
+	at org.apache.struts.chain.ComposableRequestProcessor.process(ComposableRequestProcessor.java:283)
+	at org.apache.struts.action.ActionServlet.process(ActionServlet.java:1913)
+	at org.apache.struts.action.ActionServlet.doGet(ActionServlet.java:449)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:617)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.openpricer.common.hibernate.Persistance.doFilter(Persistance.java:99)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.openpricer.filters.LogFilter.doFilter(LogFilter.java:87)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.openpricer.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:124)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:563)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:589)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:291)
+	at org.apache.coyote.http11.Http11NioProcessor.process(Http11NioProcessor.java:889)
+	at org.apache.coyote.http11.Http11NioProtocol$Http11ConnectionHandler.process(Http11NioProtocol.java:744)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:2271)
+	- locked <0x00000000ed4b8530> (a org.apache.tomcat.util.net.NioChannel)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603)
+	at java.lang.Thread.run(Thread.java:679)
+
+"TP-Monitor" daemon prio=10 tid=0x00007f0b5ca82000 nid=0x2855 in Object.wait() [0x00007f0b60c87000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at org.apache.tomcat.util.threads.ThreadPool$MonitorRunnable.run(ThreadPool.java:565)
+	- locked <0x00000000fb1847c8> (a org.apache.tomcat.util.threads.ThreadPool$MonitorRunnable)
+	at java.lang.Thread.run(Thread.java:679)
+
+"TP-Processor4" daemon prio=10 tid=0x00007f0b5ca80000 nid=0x2854 runnable [0x00007f0b60d88000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:375)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:470)
+	at java.net.ServerSocket.accept(ServerSocket.java:438)
+	at org.apache.jk.common.ChannelSocket.accept(ChannelSocket.java:311)
+	at org.apache.jk.common.ChannelSocket.acceptConnections(ChannelSocket.java:668)
+	at org.apache.jk.common.ChannelSocket$SocketAcceptor.runIt(ChannelSocket.java:879)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:690)
+	at java.lang.Thread.run(Thread.java:679)
+
+"TP-Processor3" daemon prio=10 tid=0x00007f0b5ceaf000 nid=0x2853 in Object.wait() [0x00007f0b60e89000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00000000fb184b58> (a org.apache.tomcat.util.threads.ThreadPool$ControlRunnable)
+	at java.lang.Object.wait(Object.java:502)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:662)
+	- locked <0x00000000fb184b58> (a org.apache.tomcat.util.threads.ThreadPool$ControlRunnable)
+	at java.lang.Thread.run(Thread.java:679)
+
+"TP-Processor2" daemon prio=10 tid=0x00007f0b5cead000 nid=0x2852 in Object.wait() [0x00007f0b60f8a000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00000000fb184de8> (a org.apache.tomcat.util.threads.ThreadPool$ControlRunnable)
+	at java.lang.Object.wait(Object.java:502)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:662)
+	- locked <0x00000000fb184de8> (a org.apache.tomcat.util.threads.ThreadPool$ControlRunnable)
+	at java.lang.Thread.run(Thread.java:679)
+
+"TP-Processor1" daemon prio=10 tid=0x00007f0b5d36a800 nid=0x2851 in Object.wait() [0x00007f0b6108b000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00000000fb185078> (a org.apache.tomcat.util.threads.ThreadPool$ControlRunnable)
+	at java.lang.Object.wait(Object.java:502)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:662)
+	- locked <0x00000000fb185078> (a org.apache.tomcat.util.threads.ThreadPool$ControlRunnable)
+	at java.lang.Thread.run(Thread.java:679)
+
+"http-8443-Acceptor-0" daemon prio=10 tid=0x00007f0b5c137800 nid=0x2850 runnable [0x00007f0b6118c000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:375)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:470)
+	at sun.security.ssl.SSLServerSocketImpl.accept(SSLServerSocketImpl.java:278)
+	at org.apache.tomcat.util.net.jsse.JSSESocketFactory.acceptSocket(JSSESocketFactory.java:178)
+	at org.apache.tomcat.util.net.JIoEndpoint$Acceptor.run(JIoEndpoint.java:352)
+	at java.lang.Thread.run(Thread.java:679)
+
+"http-8080-exec-1" daemon prio=10 tid=0x00000000029e2800 nid=0x284f waiting on condition [0x00007f0b6128d000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000000bda115e0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:186)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2043)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:386)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1043)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1103)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603)
+	at java.lang.Thread.run(Thread.java:679)
+
+"http-8080-Acceptor-0" daemon prio=10 tid=0x00007f0b5c6ce000 nid=0x284e runnable [0x00007f0b6138e000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.ServerSocketChannelImpl.accept0(Native Method)
+	at sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:163)
+	- locked <0x00000000b69bf848> (a java.lang.Object)
+	at org.apache.tomcat.util.net.NioEndpoint$Acceptor.run(NioEndpoint.java:1309)
+	at java.lang.Thread.run(Thread.java:679)
+
+"http-8080-ClientPoller-1" daemon prio=10 tid=0x0000000001fdd800 nid=0x284d runnable [0x00007f0b6148f000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:228)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:83)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:87)
+	- locked <0x00000000bda6f118> (a sun.nio.ch.Util$1)
+	- locked <0x00000000bda6f108> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00000000bda6eed0> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:98)
+	at org.apache.tomcat.util.net.NioEndpoint$Poller.run(NioEndpoint.java:1588)
+	at java.lang.Thread.run(Thread.java:679)
+
+"http-8080-ClientPoller-0" daemon prio=10 tid=0x0000000002b76000 nid=0x284c runnable [0x00007f0b61590000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:228)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:83)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:87)
+	- locked <0x00000000bda6f918> (a sun.nio.ch.Util$1)
+	- locked <0x00000000bda6f908> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00000000bda6f5d8> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:98)
+	at org.apache.tomcat.util.net.NioEndpoint$Poller.run(NioEndpoint.java:1588)
+	at java.lang.Thread.run(Thread.java:679)
+
+"ContainerBackgroundProcessor[StandardEngine[Catalina]]" daemon prio=10 tid=0x0000000002a4a800 nid=0x284b waiting on condition [0x00007f0b61691000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1631)
+	at java.lang.Thread.run(Thread.java:679)
+
+"(org.objectweb.joram.client.jms.QueueConnection@957a0001,proxyId=#0.0.1027,key=1)" prio=10 tid=0x00000000024cc000 nid=0x284a in Object.wait() [0x00007f0b61792000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00000000bda6dea0> (a fr.dyade.aaa.common.Queue)
+	at java.lang.Object.wait(Object.java:502)
+	at fr.dyade.aaa.common.Queue.get(Queue.java:91)
+	- locked <0x00000000bda6dea0> (a fr.dyade.aaa.common.Queue)
+	at org.objectweb.joram.client.jms.local.LocalRequestChannel.receive(LocalRequestChannel.java:144)
+	at org.objectweb.joram.client.jms.connection.RequestMultiplexer$DemultiplexerDaemon.run(RequestMultiplexer.java:414)
+	at java.lang.Thread.run(Thread.java:679)
+
+"Timer-9" daemon prio=10 tid=0x00000000029b6000 nid=0x2849 in Object.wait() [0x00007f0b61893000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00000000bda74da8> (a java.util.TaskQueue)
+	at java.lang.Object.wait(Object.java:502)
+	at java.util.TimerThread.mainLoop(Timer.java:505)
+	- locked <0x00000000bda74da8> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:484)
+
+"Timer-8" daemon prio=10 tid=0x0000000002dd8000 nid=0x2848 in Object.wait() [0x00007f0b61994000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at org.objectweb.joram.client.jms.connection.Requestor.request(Requestor.java:153)
+	- locked <0x00000000bda745d8> (a org.objectweb.joram.client.jms.connection.Requestor)
+	at org.objectweb.joram.client.jms.Session.receive(Session.java:1631)
+	at org.objectweb.joram.client.jms.MessageConsumer.receive(MessageConsumer.java:344)
+	at com.openpricer.common.webservices.SendWebserviceTask.run(SendWebserviceTask.java:49)
+	at java.util.TimerThread.mainLoop(Timer.java:534)
+	at java.util.TimerThread.run(Timer.java:484)
+
+"(org.objectweb.joram.client.jms.QueueConnection@957a0000,proxyId=#0.0.1027,key=0)" prio=10 tid=0x0000000002b73000 nid=0x2847 in Object.wait() [0x00007f0b61a95000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00000000bda6df60> (a fr.dyade.aaa.common.Queue)
+	at java.lang.Object.wait(Object.java:502)
+	at fr.dyade.aaa.common.Queue.get(Queue.java:91)
+	- locked <0x00000000bda6df60> (a fr.dyade.aaa.common.Queue)
+	at org.objectweb.joram.client.jms.local.LocalRequestChannel.receive(LocalRequestChannel.java:144)
+	at org.objectweb.joram.client.jms.connection.RequestMultiplexer$DemultiplexerDaemon.run(RequestMultiplexer.java:414)
+	at java.lang.Thread.run(Thread.java:679)
+
+"Timer-7" daemon prio=10 tid=0x000000000675f800 nid=0x2846 in Object.wait() [0x00007f0b61e99000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00000000bda762d0> (a java.util.TaskQueue)
+	at java.lang.Object.wait(Object.java:502)
+	at java.util.TimerThread.mainLoop(Timer.java:505)
+	- locked <0x00000000bda762d0> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:484)
+
+"Timer-6" daemon prio=10 tid=0x00000000026e6800 nid=0x2845 in Object.wait() [0x00007f0b61b96000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at org.objectweb.joram.client.jms.connection.Requestor.request(Requestor.java:153)
+	- locked <0x00000000fb143838> (a org.objectweb.joram.client.jms.connection.Requestor)
+	at org.objectweb.joram.client.jms.Session.receive(Session.java:1631)
+	at org.objectweb.joram.client.jms.MessageConsumer.receive(MessageConsumer.java:344)
+	at com.openpricer.common.helpers.WriteLogTask.run(WriteLogTask.java:49)
+	at java.util.TimerThread.mainLoop(Timer.java:534)
+	at java.util.TimerThread.run(Timer.java:484)
+
+"Timer-5" daemon prio=10 tid=0x00000000033f7800 nid=0x2844 in Object.wait() [0x00007f0b61c97000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at org.objectweb.joram.client.jms.connection.Requestor.request(Requestor.java:153)
+	- locked <0x00000000bda75a48> (a org.objectweb.joram.client.jms.connection.Requestor)
+	at org.objectweb.joram.client.jms.Session.receive(Session.java:1631)
+	at org.objectweb.joram.client.jms.MessageConsumer.receive(MessageConsumer.java:344)
+	at com.openpricer.common.mail.SendMailTask.run(SendMailTask.java:48)
+	at java.util.TimerThread.mainLoop(Timer.java:534)
+	at java.util.TimerThread.run(Timer.java:484)
+
+"Timer-4" prio=10 tid=0x0000000004a4b800 nid=0x283f in Object.wait() [0x00007f0b61d98000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:531)
+	- locked <0x00000000bda76f70> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:484)
+
+"Engine#0" prio=10 tid=0x00007f0b5d54a000 nid=0x283d in Object.wait() [0x00007f0b61f9a000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at fr.dyade.aaa.agent.MessageVector.get(MessageVector.java:196)
+	- locked <0x00000000bda772e8> (a fr.dyade.aaa.agent.MessageVector)
+	at fr.dyade.aaa.agent.Engine.run(Engine.java:888)
+	at java.lang.Thread.run(Thread.java:679)
+
+"TcpConnectionListener" prio=10 tid=0x00007f0b5daaa800 nid=0x283c runnable [0x00007f0b6209b000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:375)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:470)
+	at java.net.ServerSocket.accept(ServerSocket.java:438)
+	at org.objectweb.joram.mom.proxies.tcp.TcpConnectionListener.acceptConnection(TcpConnectionListener.java:177)
+	at org.objectweb.joram.mom.proxies.tcp.TcpConnectionListener.run(TcpConnectionListener.java:136)
+	at java.lang.Thread.run(Thread.java:679)
+
+"org.hibernate.cache.StandardQueryCache.data" prio=10 tid=0x0000000005d60000 nid=0x2839 waiting on condition [0x00007f0b6219c000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000000b88dd720> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:226)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2081)
+	at java.util.concurrent.DelayQueue.take(DelayQueue.java:193)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:688)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:681)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1043)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1103)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603)
+	at java.lang.Thread.run(Thread.java:679)
+
+"com.openpricer.ac.Segmentation.is.PDimContent.data" prio=10 tid=0x0000000005b50800 nid=0x2838 waiting on condition [0x00007f0b6229d000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000000b4cc2698> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:226)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2081)
+	at java.util.concurrent.DelayQueue.take(DelayQueue.java:193)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:688)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:681)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1043)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1103)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603)
+	at java.lang.Thread.run(Thread.java:679)
+
+"com.openpricer.ac.Segmentation.is.PDimContent.terminalIds.data" prio=10 tid=0x00000000038f3000 nid=0x2837 waiting on condition [0x00007f0b6239e000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000000b4e57648> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:226)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2081)
+	at java.util.concurrent.DelayQueue.take(DelayQueue.java:193)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:688)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:681)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1043)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1103)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603)
+	at java.lang.Thread.run(Thread.java:679)
+
+"com.openpricer.ac.costsmanagement.is.PCostModelValues.data" prio=10 tid=0x0000000004c64000 nid=0x2836 waiting on condition [0x00007f0b6249f000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000000b8879828> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:226)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2081)
+	at java.util.concurrent.DelayQueue.take(DelayQueue.java:193)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:688)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:681)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1043)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1103)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603)
+	at java.lang.Thread.run(Thread.java:679)
+
+"net.sf.ehcache.CacheManager@43313365" daemon prio=10 tid=0x0000000004b4c000 nid=0x2835 in Object.wait() [0x00007f0b625a0000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00000000b4fb2490> (a java.util.TaskQueue)
+	at java.lang.Object.wait(Object.java:502)
+	at java.util.TimerThread.mainLoop(Timer.java:505)
+	- locked <0x00000000b4fb2490> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:484)
+
+"Timer-1" daemon prio=10 tid=0x0000000002e06000 nid=0x2834 in Object.wait() [0x00007f0b626a1000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:531)
+	- locked <0x00000000b96544b0> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:484)
+
+"Timer-0" daemon prio=10 tid=0x0000000004505000 nid=0x2833 in Object.wait() [0x00007f0b627a2000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:531)
+	- locked <0x00000000b5193120> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:484)
+
+"[Pool-Cleaner]:Tomcat Connection Pool[2-591370671]" daemon prio=10 tid=0x00007f0b649f5000 nid=0x282e waiting on condition [0x00007f0b630f3000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at org.apache.tomcat.jdbc.pool.ConnectionPool$PoolCleaner.run(ConnectionPool.java:1170)
+
+"[Pool-Cleaner]:Tomcat Connection Pool[1-591370671]" daemon prio=10 tid=0x00000000029a5800 nid=0x282d waiting on condition [0x00007f0b631f4000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at org.apache.tomcat.jdbc.pool.ConnectionPool$PoolCleaner.run(ConnectionPool.java:1170)
+
+"NioBlockingSelector.BlockPoller-1" daemon prio=10 tid=0x0000000002679000 nid=0x282c runnable [0x00007f0b68cb3000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:228)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:83)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:87)
+	- locked <0x00000000b69bf508> (a sun.nio.ch.Util$1)
+	- locked <0x00000000b69bf4f8> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00000000b69bf2c0> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:98)
+	at org.apache.tomcat.util.net.NioBlockingSelector$BlockPoller.run(NioBlockingSelector.java:317)
+
+"Low Memory Detector" daemon prio=10 tid=0x00007f0b64038000 nid=0x282a runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C1 CompilerThread2" daemon prio=10 tid=0x00007f0b64035800 nid=0x2829 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" daemon prio=10 tid=0x00007f0b64033000 nid=0x2828 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" daemon prio=10 tid=0x00007f0b64030000 nid=0x2827 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"JDWP Command Reader" daemon prio=10 tid=0x000000000203c800 nid=0x2824 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"JDWP Event Helper Thread" daemon prio=10 tid=0x00007f0b6402e000 nid=0x2823 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"JDWP Transport Listener: dt_socket" daemon prio=10 tid=0x00007f0b6402a800 nid=0x2821 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" daemon prio=10 tid=0x00007f0b6401f000 nid=0x281f waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" daemon prio=10 tid=0x00007f0b64001000 nid=0x281e in Object.wait() [0x00007f0b6a0c7000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:133)
+	- locked <0x00000000b51a9fa8> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:149)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:177)
+
+"Reference Handler" daemon prio=10 tid=0x0000000002034800 nid=0x281d in Object.wait() [0x00007f0b6a1c8000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:133)
+	- locked <0x00000000b51a9fd8> (a java.lang.ref.Reference$Lock)
+
+"main" prio=10 tid=0x0000000001fca000 nid=0x2816 runnable [0x00007f0b74ad0000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:375)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:470)
+	at java.net.ServerSocket.accept(ServerSocket.java:438)
+	at org.apache.catalina.core.StandardServer.await(StandardServer.java:431)
+	at org.apache.catalina.startup.Catalina.await(Catalina.java:676)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:628)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:289)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:414)
+
+"VM Thread" prio=10 tid=0x000000000202d800 nid=0x281c runnable 
+
+"GC task thread#0 (ParallelGC)" prio=10 tid=0x0000000001fd5000 nid=0x2819 runnable 
+
+"GC task thread#1 (ParallelGC)" prio=10 tid=0x0000000001fd6800 nid=0x281a runnable 
+
+"VM Periodic Task Thread" prio=10 tid=0x00007f0b6403a800 nid=0x282b waiting on condition 
+
+JNI global references: 12195
+
+Heap
+ PSYoungGen      total 333248K, used 261581K [0x00000000e6c00000, 0x0000000100000000, 0x0000000100000000)
+  eden space 258560K, 91% used [0x00000000e6c00000,0x00000000f53d16c8,0x00000000f6880000)
+  from space 74688K, 32% used [0x00000000faf00000,0x00000000fc6a1d88,0x00000000ff7f0000)
+  to   space 72192K, 0% used [0x00000000f6880000,0x00000000f6880000,0x00000000faf00000)
+ PSOldGen        total 349568K, used 175293K [0x00000000b4400000, 0x00000000c9960000, 0x00000000e6c00000)
+  object space 349568K, 50% used [0x00000000b4400000,0x00000000bef2f648,0x00000000c9960000)
+ PSPermGen       total 85952K, used 85925K [0x00000000a4400000, 0x00000000a97f0000, 0x00000000b4400000)
+  object space 85952K, 99% used [0x00000000a4400000,0x00000000a97e9568,0x00000000a97f0000)
+
+

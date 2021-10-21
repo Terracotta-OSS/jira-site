@@ -1,0 +1,210 @@
+Index: src/main/java/net/sf/ehcache/management/CacheStatistics.java
+===================================================================
+--- src/main/java/net/sf/ehcache/management/CacheStatistics.java	(revision 2926)
++++ src/main/java/net/sf/ehcache/management/CacheStatistics.java	(working copy)
+@@ -181,7 +181,24 @@
+     public long getCacheMisses() {
+         updateIfNeeded();
+         return statistics.getCacheMisses();
++    }
++
++    /** {@inheritDoc} */
++    public long getInMemoryMisses() {
++        updateIfNeeded();
++        return statistics.getInMemoryMisses();
++    }
+ 
++    /** {@inheritDoc} */
++    public long getOffHeapMisses() {
++        updateIfNeeded();
++        return statistics.getOffHeapMisses();
++    }
++
++    /** {@inheritDoc} */
++    public long getOnDiskMisses() {
++        updateIfNeeded();
++        return statistics.getOnDiskMisses();
+     }
+ 
+     /**
+@@ -232,6 +249,14 @@
+     }
+ 
+     /**
++     * {@inheritDoc}
++     */
++    public long getOffHeapStoreObjectCount() {
++        updateIfNeeded();
++        return statistics.getOffHeapStoreObjectCount();
++    }
++
++    /**
+      * Gets the number of objects in the DiskStore
+      * @return the DiskStore size which is always a count unadjusted for duplicates or expiries
+      */
+@@ -257,6 +282,14 @@
+         return ehcache;
+     }
+ 
++    private static long getPercentage(long number, long total) {
++        if (total == 0) {
++            return 0;
++        } else {
++            return (number * ONE_HUNDRED) / total;
++        }
++    }
++
+     /**
+      * {@inheritDoc}
+      */
+@@ -265,12 +298,8 @@
+         long hits = statistics.getCacheHits();
+         long misses = statistics.getCacheMisses();
+ 
+-        long denominator = hits + misses;
+-        if (denominator == 0) {
+-            return 0;
+-        } else {
+-            return hits * ONE_HUNDRED / (hits + misses);
+-        }
++        long total = hits + misses;
++        return getPercentage(hits, total);
+     }
+ 
+     /**
+@@ -281,13 +310,8 @@
+         long hits = statistics.getCacheHits();
+         long misses = statistics.getCacheMisses();
+ 
+-        long denominator = hits + misses;
+-        if (denominator == 0) {
+-            return 0;
+-        } else {
+-            return misses * ONE_HUNDRED / (denominator);
+-        }
+-
++        long total = hits + misses;
++        return getPercentage(misses, total);
+     }
+ 
+     /**
+@@ -295,17 +319,23 @@
+      */
+     public long getInMemoryHitPercentage() {
+         updateIfNeeded();
+-        long memoryHits = statistics.getInMemoryHits();
+-        long hits = statistics.getCacheHits();
+-        long misses = statistics.getCacheMisses();
++        long hits = statistics.getInMemoryHits();
++        long misses = statistics.getInMemoryMisses();
+ 
+-        long denominator = hits + misses;
+-        if (denominator == 0) {
+-            return 0;
+-        } else {
+-            return memoryHits * ONE_HUNDRED / (denominator);
+-        }
++        long total = hits + misses;
++        return getPercentage(hits, total);
++    }
+ 
++    /**
++     * {@inheritDoc}
++     */
++    public long getOffHeapHitPercentage() {
++        updateIfNeeded();
++        long hits = statistics.getOffHeapHits();
++        long misses = statistics.getOffHeapMisses();
++
++        long total = hits + misses;
++        return getPercentage(hits, total);
+     }
+ 
+     /**
+@@ -313,15 +343,10 @@
+      */
+     public long getOnDiskHitPercentage() {
+         updateIfNeeded();
+-        long diskHits = statistics.getOnDiskHits();
+-        long hits = statistics.getCacheHits();
+-        long misses = statistics.getCacheMisses();
++        long hits = statistics.getOnDiskHits();
++        long misses = statistics.getOnDiskMisses();
+ 
+-        long denominator = hits + misses;
+-        if (denominator == 0) {
+-            return 0;
+-        } else {
+-            return diskHits * ONE_HUNDRED / (denominator);
+-        }
++        long total = hits + misses;
++        return getPercentage(hits, total);
+     }
+ }
+Index: src/main/java/net/sf/ehcache/management/CacheStatisticsMBean.java
+===================================================================
+--- src/main/java/net/sf/ehcache/management/CacheStatisticsMBean.java	(revision 2926)
++++ src/main/java/net/sf/ehcache/management/CacheStatisticsMBean.java	(working copy)
+@@ -43,6 +43,13 @@
+     public long getInMemoryHits();
+ 
+     /**
++     * Number of times a requested item was found in the off-heap store.
++     *
++     * @return the number of times a requested item was found off-heap, or 0 if there is no BigMemory storage configured.
++     */
++    public long getOffHeapHits();
++
++    /**
+      * Number of times a requested item was found in the Disk Store.
+      *
+      * @return the number of times a requested item was found on Disk, or 0 if there is no disk storage configured.
+@@ -55,6 +62,21 @@
+     public long getCacheMisses();
+ 
+     /**
++     * @return the number of times a requested element was not found in the memory cache
++     */
++    public long getInMemoryMisses();
++
++    /**
++     * @return the number of times a requested element was not found in the off-heap cache
++     */
++    public long getOffHeapMisses();
++
++    /**
++     * @return the number of times a requested element was not found in the disk cache
++     */
++    public long getOnDiskMisses();
++
++    /**
+      * Gets the number of elements stored in the cache. Caclulating this can be expensive. Accordingly,
+      * this method will return three different values, depending on the statistics accuracy setting.
+      * <h3>Best Effort Size</h3>
+@@ -97,6 +119,12 @@
+     public long getMemoryStoreObjectCount();
+ 
+     /**
++     * Gets the number of objects in the OffHeapStore
++     * @return the OffHeapStore size which is always a count unadjusted for duplicates or expiries
++     */
++    public long getOffHeapStoreObjectCount();
++
++    /**
+      * Gets the number of objects in the DiskStore
+      * @return the DiskStore size which is always a count unadjusted for duplicates or expiries
+      */
+@@ -145,6 +173,13 @@
+     public long getInMemoryHitPercentage();
+ 
+     /**
++     * Returns the percentage of cache accesses that found a requested item cached off-heap.
++     *
++     * @return the percentage of successful hits from the OffHeapStore
++     */
++    public long getOffHeapHitPercentage();
++
++    /**
+      * Returns the percentage of cache accesses that found a requested item cached on disk.
+      *
+      * @return the percentage of successful hits from the DiskStore.

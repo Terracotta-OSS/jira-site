@@ -1,0 +1,12 @@
+Index: SessionTimeoutTest.java
+===================================================================
+--- SessionTimeoutTest.java	(revision 10775)
++++ SessionTimeoutTest.java	(working copy)
+@@ -78,7 +78,6 @@
+ 
+   public void testResetTimeoutToLowerValue() throws Exception {
+     // CDV-634
+-    if (true) return;
+ 
+     init();
+     int timeoutValue = 30;

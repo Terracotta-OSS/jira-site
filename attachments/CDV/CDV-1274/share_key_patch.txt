@@ -1,0 +1,116 @@
+Index: tim-map-evictor/src/main/java/org/terracotta/modules/dmap/impl/ClusteredDistributedMap.java
+===================================================================
+--- tim-map-evictor/src/main/java/org/terracotta/modules/dmap/impl/ClusteredDistributedMap.java	(revision 15826)
++++ tim-map-evictor/src/main/java/org/terracotta/modules/dmap/impl/ClusteredDistributedMap.java	(working copy)
+@@ -36,7 +36,7 @@
+                                                                                   .getName());
+ 
+   // Provided configuration
+-  private final Config                                  config;
++  protected final Config                                config;
+ 
+   // The actual data
+   protected final ConcurrentMap<K, TimestampedEntry<V>> data;
+@@ -131,7 +131,7 @@
+     return getValueSafe(getNonExpiredEntry(key, true));
+   }
+ 
+-  private TimestampedEntry<V> getNonExpiredEntry(final K key, final boolean markUsed) {
++  protected TimestampedEntry<V> getNonExpiredEntry(final K key, final boolean markUsed) {
+     TimestampedEntry<V> entry = this.data.get(key);
+     if (null == entry) return null;
+ 
+@@ -277,7 +277,7 @@
+    * This is provided for testing purposes - it lets you override the source of System.currentTimeMillis() so that you
+    * can control it yourself in the test. If it's not called, SystemTimeSource is used which just calls
+    * System.currentTimeMillis(). Method public for tests in other projects
+-   *
++   * 
+    * @param timeSource The alternate TimeSource implementation
+    */
+   public void setTimeSource(final TimeSource timeSource) {
+@@ -287,10 +287,10 @@
+   /**
+    * This method should always be called instead of System.currentTimeMillis() so that time can be controlled by the
+    * TimeSource.
+-   *
++   * 
+    * @return The current time according to the TimeSource
+    */
+-  private long getTime() {
++  protected long getTime() {
+     return this.timeSource.now();
+   }
+ 
+Index: tim-map-evictor/src/main/java/org/terracotta/modules/dmap/TimestampedEntry.java
+===================================================================
+--- tim-map-evictor/src/main/java/org/terracotta/modules/dmap/TimestampedEntry.java	(revision 15826)
++++ tim-map-evictor/src/main/java/org/terracotta/modules/dmap/TimestampedEntry.java	(working copy)
+@@ -3,6 +3,9 @@
+  */
+ package org.terracotta.modules.dmap;
+ 
++import com.tc.object.bytecode.Manager;
++import com.tc.object.bytecode.ManagerUtil;
++
+ import java.util.Date;
+ 
+ /**
+@@ -53,18 +56,35 @@
+    */
+   public void markUsed(long usedAtTime) {
+     if (shouldUpdateIdleTimer(usedAtTime)) {
+-      setLastAccessedTime(usedAtTime);
++      setLastAccessedTime(toString(), usedAtTime);
+     }
+   }
+ 
++  /**
++   * Mark this timestamp as being used and reset the idle timer (if in use).
++   * 
++   * @param usedAtTime Mark used at this time
++   */
++  public void markUsed(String lock, long usedAtTime) {
++    if (shouldUpdateIdleTimer(usedAtTime)) {
++      setLastAccessedTime(lock, usedAtTime);
++    }
++  }
++
+   // terracotta READ auto locked
+   private synchronized long getLastAccessedTime() {
+     return lastAccessedTime;
+   }
+ 
+   // terracotta CONCURRENT auto locked
+-  private synchronized void setLastAccessedTime(long usedAtTime) {
+-    lastAccessedTime = usedAtTime;
++  private synchronized void setLastAccessedTime(String lock, long usedAtTime) {
++    ManagerUtil.beginLock(lock, Manager.LOCK_TYPE_CONCURRENT);
++    try {
++      lastAccessedTime = usedAtTime;
++    } finally {
++      ManagerUtil.commitLock(lock);
++    }
++
+   }
+ 
+   /**
+Index: tim-map-evictor/src/main/resources/terracotta.xml
+===================================================================
+--- tim-map-evictor/src/main/resources/terracotta.xml	(revision 15826)
++++ tim-map-evictor/src/main/resources/terracotta.xml	(working copy)
+@@ -27,12 +27,12 @@
+       <honor-transient>true</honor-transient>
+     </include>
+   </instrumented-classes>
+-
++<!-- 
+   <locks>
+     <autolock>
+       <method-expression>* org.terracotta.modules.dmap.TimestampedEntry.setLastAccessedTime(..)</method-expression>
+       <lock-level>concurrent</lock-level>
+     </autolock>
+   </locks>
+-
++ -->
+ </xml-fragment>

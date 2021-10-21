@@ -1,0 +1,441 @@
+Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException
+        at com.tc.admin.AggregateServerRuntimeStatsPanel.handleDSOStats(AggregateServerRuntimeStatsPanel.java:212)
+        at com.tc.admin.AggregateServerRuntimeStatsPanel.access$100(AggregateServerRuntimeStatsPanel.java:56)
+        at com.tc.admin.AggregateServerRuntimeStatsPanel$1.run(AggregateServerRuntimeStatsPanel.java:180)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.setup(AggregateVuMeterPanel.java:102)
+        at org.terracotta.modules.ehcache.presentation.VuMeterPanel.init(VuMeterPanel.java:43)
+        at org.terracotta.modules.ehcache.presentation.BaseClusterModelPanel.resume(BaseClusterModelPanel.java:121)
+        at org.terracotta.modules.ehcache.presentation.BaseClusterModelPanel$ClusterListener.handleReady(BaseClusterM
+odelPanel.java:100)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.setup(AggregateVuMeterPanel.java:102)
+        at org.terracotta.modules.ehcache.presentation.VuMeterPanel.init(VuMeterPanel.java:43)
+        at org.terracotta.modules.ehcache.presentation.BaseClusterModelPanel.resume(BaseClusterModelPanel.java:121)
+        at org.terracotta.modules.ehcache.presentation.BaseClusterModelPanel$ClusterListener.handleReady(BaseClusterM
+odelPanel.java:100)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.BaseEhcacheStatsChartPanel.init(BaseEhcacheStatsChartPanel.jav
+a:123)
+        at org.terracotta.modules.ehcache.presentation.AggregateEhcacheStatsChartPanel.init(AggregateEhcacheStatsChar
+tPanel.java:58)
+        at org.terracotta.modules.ehcache.presentation.BaseEhcacheStatsChartPanel$ClusterListener.handleReady(BaseEhc
+acheStatsChartPanel.java:114)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.setup(AggregateVuMeterPanel.java:102)
+        at org.terracotta.modules.ehcache.presentation.VuMeterPanel.init(VuMeterPanel.java:43)
+        at org.terracotta.modules.ehcache.presentation.BaseClusterModelPanel.resume(BaseClusterModelPanel.java:121)
+        at org.terracotta.modules.ehcache.presentation.BaseClusterModelPanel$ClusterListener.handleReady(BaseClusterM
+odelPanel.java:100)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.setup(AggregateVuMeterPanel.java:102)
+        at org.terracotta.modules.ehcache.presentation.VuMeterPanel.init(VuMeterPanel.java:43)
+        at org.terracotta.modules.ehcache.presentation.BaseClusterModelPanel.resume(BaseClusterModelPanel.java:121)
+        at org.terracotta.modules.ehcache.presentation.BaseClusterModelPanel$ClusterListener.handleReady(BaseClusterM
+odelPanel.java:100)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.BaseEhcacheStatsChartPanel.init(BaseEhcacheStatsChartPanel.jav
+a:123)
+        at org.terracotta.modules.ehcache.presentation.AggregateEhcacheStatsChartPanel.init(AggregateEhcacheStatsChar
+tPanel.java:58)
+        at org.terracotta.modules.ehcache.presentation.BaseEhcacheStatsChartPanel$ClusterListener.handleReady(BaseEhc
+acheStatsChartPanel.java:114)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.setup(AggregateVuMeterPanel.java:102)
+        at org.terracotta.modules.ehcache.presentation.VuMeterPanel.init(VuMeterPanel.java:43)
+        at org.terracotta.modules.ehcache.presentation.BaseClusterModelPanel.resume(BaseClusterModelPanel.java:121)
+        at org.terracotta.modules.ehcache.presentation.BaseClusterModelPanel$ClusterListener.handleReady(BaseClusterM
+odelPanel.java:100)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.setup(AggregateVuMeterPanel.java:102)
+        at org.terracotta.modules.ehcache.presentation.VuMeterPanel.init(VuMeterPanel.java:43)
+        at org.terracotta.modules.ehcache.presentation.BaseClusterModelPanel.resume(BaseClusterModelPanel.java:121)
+        at org.terracotta.modules.ehcache.presentation.BaseClusterModelPanel$ClusterListener.handleReady(BaseClusterM
+odelPanel.java:100)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.BaseEhcacheStatsChartPanel.init(BaseEhcacheStatsChartPanel.jav
+a:123)
+        at org.terracotta.modules.ehcache.presentation.AggregateEhcacheStatsChartPanel.init(AggregateEhcacheStatsChar
+tPanel.java:58)
+        at org.terracotta.modules.ehcache.presentation.BaseEhcacheStatsChartPanel$ClusterListener.handleReady(BaseEhc
+acheStatsChartPanel.java:114)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.BaseEhcacheStatsChartPanel.init(BaseEhcacheStatsChartPanel.jav
+a:123)
+        at org.terracotta.modules.ehcache.presentation.AggregateEhcacheStatsChartPanel.init(AggregateEhcacheStatsChar
+tPanel.java:58)
+        at org.terracotta.modules.ehcache.presentation.BaseEhcacheStatsChartPanel$ClusterListener.handleReady(BaseEhc
+acheStatsChartPanel.java:114)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.BaseEhcacheStatsChartPanel.init(BaseEhcacheStatsChartPanel.jav
+a:123)
+        at org.terracotta.modules.ehcache.presentation.AggregateEhcacheStatsChartPanel.init(AggregateEhcacheStatsChar
+tPanel.java:58)
+        at org.terracotta.modules.ehcache.presentation.BaseEhcacheStatsChartPanel$ClusterListener.handleReady(BaseEhc
+acheStatsChartPanel.java:114)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.addPolledAttributeListener(AggregateVuMe
+terPanel.java:137)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel.init(AggregateVuMeterPanel.java:127)
+        at org.terracotta.modules.ehcache.presentation.AggregateVuMeterPanel$ClusterListener.handleReady(AggregateVuM
+eterPanel.java:118)
+        at com.tc.admin.AbstractClusterListener$PropertyChangeRunnable.run(AbstractClusterListener.java:52)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException
+        at org.terracotta.modules.ehcache.presentation.BaseEhcacheStatsChartPanel.setup(BaseEhcacheStatsChartPanel.ja
+va:89)
+        at org.terracotta.modules.ehcache.presentation.ClientEhcacheStatsChartPanel.setup(ClientEhcacheStatsChartPane
+l.java:57)
+        at org.terracotta.modules.ehcache.presentation.EhcacheRuntimeStatsPanel.createClientEhcacheStatsChartPanel(Eh
+cacheRuntimeStatsPanel.java:285)
+        at org.terracotta.modules.ehcache.presentation.EhcacheRuntimeStatsPanel.access$300(EhcacheRuntimeStatsPanel.j
+ava:50)
+        at org.terracotta.modules.ehcache.presentation.EhcacheRuntimeStatsPanel$1.run(EhcacheRuntimeStatsPanel.java:1
+78)
+        at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:209)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:461)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+Thanks!

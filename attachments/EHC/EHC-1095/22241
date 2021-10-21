@@ -1,0 +1,102 @@
+Index: src/main/java/net/sf/ehcache/store/MemoryStore.java
+===================================================================
+--- src/main/java/net/sf/ehcache/store/MemoryStore.java	(revision 9547)
++++ src/main/java/net/sf/ehcache/store/MemoryStore.java	(working copy)
+@@ -240,7 +240,7 @@
+                 cacheConfiguration.isCopyOnWrite(),
+                 cacheConfiguration.getCopyStrategy(), cacheConfiguration.getClassLoader());
+         if (cacheConfiguration.getTransactionalMode().isTransactional()) {
+-            source = new TransactionalBruteForceSource(source, copyStrategyHandler);
++            source = new TransactionalBruteForceSource(source, copyStrategyHandler, memoryStore.cache.getCacheManager().getTransactionController());
+         } else if (cacheConfiguration.isCopyOnRead() || cacheConfiguration.isCopyOnWrite()) {
+             source = new CopyingBruteForceSource(source, copyStrategyHandler);
+         }
+Index: src/main/java/net/sf/ehcache/store/TransactionalBruteForceSource.java
+===================================================================
+--- src/main/java/net/sf/ehcache/store/TransactionalBruteForceSource.java	(revision 9547)
++++ src/main/java/net/sf/ehcache/store/TransactionalBruteForceSource.java	(working copy)
+@@ -17,6 +17,7 @@
+ package net.sf.ehcache.store;
+ 
+ import net.sf.ehcache.Element;
++import net.sf.ehcache.TransactionController;
+ import net.sf.ehcache.config.Searchable;
+ import net.sf.ehcache.transaction.SoftLockID;
+ 
+@@ -30,21 +31,24 @@
+ class TransactionalBruteForceSource implements BruteForceSource {
+     private final BruteForceSource delegate;
+     private final CopyStrategyHandler copyStrategyHandler;
++    private TransactionController transactionController;
+ 
+     /**
+      * A wrapping {@link BruteForceSource} that deals with transactional elements
+      *
+-     * @param delegate the delegate source
+-     * @param copyStrategyHandler the {@link CopyStrategyHandler} to use
++     * @param delegate              the delegate source
++     * @param copyStrategyHandler   the {@link net.sf.ehcache.store.CopyStrategyHandler} to use
++     * @param transactionController
+      */
+-    TransactionalBruteForceSource(BruteForceSource delegate, CopyStrategyHandler copyStrategyHandler) {
++    TransactionalBruteForceSource(BruteForceSource delegate, CopyStrategyHandler copyStrategyHandler, TransactionController transactionController) {
+         this.delegate = delegate;
+         this.copyStrategyHandler = copyStrategyHandler;
++        this.transactionController = transactionController;
+     }
+ 
+     @Override
+     public Iterable<Element> elements() {
+-        return new TransactionalIterable(delegate.elements(), copyStrategyHandler);
++        return new TransactionalIterable(delegate.elements(), copyStrategyHandler, transactionController);
+     }
+ 
+     @Override
+@@ -63,15 +67,17 @@
+     private static class TransactionalIterable implements Iterable<Element> {
+         private final Iterable<Element> elements;
+         private final CopyStrategyHandler copyStrategyHandler;
++        private TransactionController transactionController;
+ 
+-        public TransactionalIterable(Iterable<Element> elements, CopyStrategyHandler copyStrategyHandler) {
++        public TransactionalIterable(Iterable<Element> elements, CopyStrategyHandler copyStrategyHandler, TransactionController transactionController) {
+             this.elements = elements;
+             this.copyStrategyHandler = copyStrategyHandler;
++            this.transactionController = transactionController;
+         }
+ 
+         @Override
+         public Iterator<Element> iterator() {
+-            return new TransactionalIterator(elements.iterator());
++            return new TransactionalIterator(elements.iterator(), transactionController);
+         }
+ 
+         /**
+@@ -79,10 +85,12 @@
+          */
+         private class TransactionalIterator implements Iterator<Element> {
+             private final Iterator<Element> delegate;
++            private TransactionController transactionController;
+             private Element next = null;
+ 
+-            public TransactionalIterator(Iterator<Element> delegate) {
++            public TransactionalIterator(Iterator<Element> delegate, TransactionController transactionController) {
+                 this.delegate = delegate;
++                this.transactionController = transactionController;
+                 next = getNextElement();
+             }
+ 
+@@ -90,7 +98,12 @@
+                 while (delegate.hasNext()) {
+                     Element candidate = delegate.next();
+                     if (candidate.getObjectValue() instanceof SoftLockID) {
+-                        candidate = ((SoftLockID)candidate.getObjectValue()).getOldElement();
++                        SoftLockID softLockID = ((SoftLockID) candidate.getObjectValue());
++                        if (softLockID.getTransactionID().equals(transactionController.getCurrentTransactionContext().getTransactionId())) {
++                            candidate = softLockID.getNewElement();
++                        } else {
++                            candidate = ((SoftLockID) candidate.getObjectValue()).getOldElement();
++                        }
+                     }
+                     if (candidate != null) {
+                         return candidate;

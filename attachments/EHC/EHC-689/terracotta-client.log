@@ -1,0 +1,186 @@
+2010-04-20 15:57:41,109 [15218962@qtp-27379847-1] INFO com.terracottatech.general - New logging session started.
+2010-04-20 15:57:41,296 [15218962@qtp-27379847-1] INFO com.terracottatech.console - Terracotta 3.2.1, as of 20100304-100300 (Revision 14673 by cruise@su10mo5 from 3.2)
+2010-04-20 15:57:41,921 [15218962@qtp-27379847-1] INFO com.terracottatech.console - Configuration loaded from the server at 'localhost:9510'.
+2010-04-20 15:57:42,031 [15218962@qtp-27379847-1] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Attempting to load configuration from the file at 'E:\Documents and Settings\kkannaiy\tc-config3822810978939949385.xml'...
+2010-04-20 15:57:42,031 [15218962@qtp-27379847-1] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Successfully loaded configuration from the file at 'E:\Documents and Settings\kkannaiy\tc-config3822810978939949385.xml'. Config is:
+
+<tc-config xmlns="http://www.terracotta.org/config">
+  <clients xmlns:tc="http://www.terracotta.org/config" xmlns:con="http://www.terracotta.org/config" xmlns="">
+    <logs>%(user.home)/terracotta/client-logs</logs>
+    <statistics>%(user.home)/terracotta/client-statistics</statistics>
+    <modules>
+      <module name="tim-ehcache-2.0"/>
+      <module name="tim-async-processing"/>
+    </modules>
+  </clients>
+  <servers xmlns:tc="http://www.terracotta.org/config" xmlns:con="http://www.terracotta.org/config" xmlns="">
+    <server host="10.0.0.173" name="10.0.0.173:9510" bind="0.0.0.0">
+      <data>%(user.home)/terracotta/server-data</data>
+      <logs>%(user.home)/terracotta/server-logs</logs>
+      <statistics>%(user.home)/terracotta/server-statistics</statistics>
+    </server>
+    <mirror-groups>
+      <mirror-group>
+        <ha>
+          <mode>disk-based-active-passive</mode>
+          <networked-active-passive>
+            <election-time>5</election-time>
+          </networked-active-passive>
+        </ha>
+        <members>
+          <member>10.0.0.173:9510</member>
+        </members>
+      </mirror-group>
+    </mirror-groups>
+    <update-check>
+      <enabled>true</enabled>
+      <period-days>7</period-days>
+    </update-check>
+  </servers>
+</tc-config>
+2010-04-20 15:57:42,031 [15218962@qtp-27379847-1] INFO com.terracottatech.console - Configuration loaded from the file at 'E:\Documents and Settings\kkannaiy\tc-config3822810978939949385.xml'.
+2010-04-20 15:57:42,093 [15218962@qtp-27379847-1] INFO com.tc.properties.TCProperties - Loading default properties from tc.properties
+2010-04-20 15:57:42,093 [15218962@qtp-27379847-1] INFO com.tc.properties.TCProperties - The property "tc.config.getFromSource.timeout" was read before initialization completed. "tc.config.getFromSource.timeout" = 30000
+2010-04-20 15:57:42,093 [15218962@qtp-27379847-1] INFO com.tc.properties.TCProperties - tc-config doesn't have any tc-property. No tc-property will be overridden
+2010-04-20 15:57:42,093 [15218962@qtp-27379847-1] INFO com.tc.properties.TCProperties - Loaded TCProperties : TCProperties = { cvt.buffer.randomsuffix.enabled = false, cvt.client.fail.buffer.open = false, cvt.rest.interface.enabled = true, cvt.retriever.notification.interval = 60, cvt.statistics.logging.interval = 900, cvt.store.randomsuffix.enabled = false, ehcache.clusterAllCacheManagers = true, ehcache.concurrency = 128, ehcache.evictor.logging.enabled = false, ehcache.evictor.pool.size = 1, ehcache.global.eviction.enable = true, ehcache.global.eviction.frequency = 10, ehcache.global.eviction.rest.timeMillis = 10, ehcache.global.eviction.segments = 2, ehcache.lock.readLevel = READ, ehcache.lock.writeLevel = WRITE, ehcache.logging.enabled = false, http.defaultservlet.attribute.aliases = false;, http.defaultservlet.attribute.dirallowed = false;, http.defaultservlet.enabled = false;, instrumentation.finalField.fastRead = true, l1.cachemanager.criticalObjectThreshold = -1, l1.cachemanager.criticalThreshold = 90, l1.cachemanager.enabled = true, l1.cachemanager.leastCount = 2, l1.cachemanager.logging.enabled = false, l1.cachemanager.monitorOldGenOnly = true, l1.cachemanager.percentageToEvict = 10, l1.cachemanager.sleepInterval = 3000, l1.cachemanager.threshold = 70, l1.connect.versionMatchCheck.enabled = true, l1.healthcheck.l2.bindAddress = 0.0.0.0, l1.healthcheck.l2.bindPort = 0, l1.healthcheck.l2.ping.enabled = true, l1.healthcheck.l2.ping.idletime = 5000, l1.healthcheck.l2.ping.interval = 1000, l1.healthcheck.l2.ping.probes = 3, l1.healthcheck.l2.socketConnect = true, l1.healthcheck.l2.socketConnectCount = 13, l1.healthcheck.l2.socketConnectTimeout = 5, l1.jvm.check.compatibility = true, l1.l2.config.validation.enabled = true, l1.lock.statistics.gatherInterval = 1, l1.lock.statistics.traceDepth = 0, l1.lockmanager.striped.count = 128, l1.lockmanager.timeout.interval = 60000, l1.max.connect.retries = -1, l1.modules.additional = , l1.modules.default = org.terracotta.modules.excludes-config;bundle-version:=3.2.1,org.terracotta.modules.guimodels-config;bundle-version:=3.2.1,org.terracotta.modules.jdk15-preinst-config;bundle-version:=3.2.1,org.terracotta.modules.standard-config;bundle-version:=3.2.1, l1.modules.repositories = , l1.modules.tc-version-check = , l1.objectmanager.fault.logging.enabled = false, l1.objectmanager.flush.logging.enabled = false, l1.objectmanager.objectid.request.size = 50000, l1.objectmanager.remote.batchLookupTimePeriod = 1, l1.objectmanager.remote.logging.enabled = false, l1.objectmanager.remote.maxDNALRUSize = 60, l1.objectmanager.remote.maxRequestSentImmediately = 4, l1.seda.stage.sink.capacity = -1, l1.serverarray.objectCreationStrategy = round-robin, l1.serverarray.objectCreationStrategy.groupAffinity.groupName = mirror-group1, l1.serverarray.objectCreationStrategy.roundRobin.startIndex = sequential, l1.socket.connect.timeout = 10000, l1.socket.reconnect.waitInterval = 1000, l1.transactionmanager.completedAckFlushTimeout = 5000, l1.transactionmanager.folding.debug = false, l1.transactionmanager.folding.enabled = true, l1.transactionmanager.folding.lock.limit = 0, l1.transactionmanager.folding.object.limit = 0, l1.transactionmanager.logging.enabled = false, l1.transactionmanager.maxBatchSizeInKiloBytes = 128, l1.transactionmanager.maxOutstandingBatchSize = 4, l1.transactionmanager.maxPendingBatches = 88, l1.transactionmanager.maxSleepTimeBeforeHalt = 1024, l1.transactionmanager.strings.compress.enabled = true, l1.transactionmanager.strings.compress.logging.enabled = false, l1.transactionmanager.strings.compress.minSize = 512, l1.transactionmanager.timeoutForAckOnExit = 300, l2.beanshell.enabled = false, l2.beanshell.port = 9929, l2.berkeleydb.je.checkpointer.bytesInterval = 100000000, l2.berkeleydb.je.cleaner.bytesInterval = 20000000, l2.berkeleydb.je.cleaner.detailMaxMemoryPercentage = 5, l2.berkeleydb.je.cleaner.lookAheadCacheSize = 32768, l2.berkeleydb.je.cleaner.minAge = 5, l2.berkeleydb.je.lock.nLockTables = 7, l2.berkeleydb.je.lock.timeout = 180000000, l2.berkeleydb.je.maxMemoryPercent = 25, l2.cachemanager.criticalObjectThreshold = -1, l2.cachemanager.criticalThreshold = 90, l2.cachemanager.enabled = true, l2.cachemanager.leastCount = 2, l2.cachemanager.logging.enabled = false, l2.cachemanager.monitorOldGenOnly = true, l2.cachemanager.percentageToEvict = 10, l2.cachemanager.sleepInterval = 3000, l2.cachemanager.threshold = 70, l2.data.backup.throttle.timeInMillis = 0, l2.healthcheck.l1.ping.enabled = true, l2.healthcheck.l1.ping.idletime = 5000, l2.healthcheck.l1.ping.interval = 1000, l2.healthcheck.l1.ping.probes = 3, l2.healthcheck.l1.socketConnect = true, l2.healthcheck.l1.socketConnectCount = 10, l2.healthcheck.l1.socketConnectTimeout = 5, l2.healthcheck.l2.ping.enabled = true, l2.healthcheck.l2.ping.idletime = 5000, l2.healthcheck.l2.ping.interval = 1000, l2.healthcheck.l2.ping.probes = 3, l2.healthcheck.l2.socketConnect = true, l2.healthcheck.l2.socketConnectCount = 10, l2.healthcheck.l2.socketConnectTimeout = 5, l2.l1reconnect.enabled = false, l2.l1reconnect.maxDelayedAcks = 16, l2.l1reconnect.sendWindow = 32, l2.l1reconnect.sendqueue.cap = 5000, l2.l1reconnect.timeout.millis = 5000, l2.lfu.agingFactor = 1, l2.lfu.debug.enabled = false, l2.lfu.recentlyAccessedIgnorePercentage = 20, l2.lockmanager.greedy.lease.enabled = true, l2.lockmanager.greedy.lease.leaseTimeInMillis = 50, l2.lockmanager.greedy.locks.enabled = true, l2.nha.autoRestart = true, l2.nha.dirtydb.autoDelete = true, l2.nha.dirtydb.rolling = 0, l2.nha.send.timeout.millis = 16000, l2.nha.tcgroupcomm.discovery.interval = 1000, l2.nha.tcgroupcomm.handshake.timeout = 5000, l2.nha.tcgroupcomm.reconnect.enabled = false, l2.nha.tcgroupcomm.reconnect.maxDelayedAcks = 16, l2.nha.tcgroupcomm.reconnect.sendWindow = 32, l2.nha.tcgroupcomm.reconnect.sendqueue.cap = 5000, l2.nha.tcgroupcomm.reconnect.timeout = 5000, l2.objectmanager.cachePolicy = lfu, l2.objectmanager.deleteBatchSize = 5000, l2.objectmanager.dgc.faulting.optimization = true, l2.objectmanager.dgc.throttle.requestsPerThrottle = 1000, l2.objectmanager.dgc.throttle.timeInMillis = 0, l2.objectmanager.dgc.young.enabled = false, l2.objectmanager.dgc.young.frequencyInMillis = 180000, l2.objectmanager.fault.logging.enabled = false, l2.objectmanager.flush.logging.enabled = false, l2.objectmanager.loadObjectID.checkpoint.maxlimit = -1, l2.objectmanager.loadObjectID.checkpoint.maxsleep = 10000, l2.objectmanager.loadObjectID.fastLoad = true, l2.objectmanager.loadObjectID.longsPerDiskEntry = 8, l2.objectmanager.loadObjectID.mapsdatabase.longsPerDiskEntry = 1, l2.objectmanager.maxObjectsInTxnObjGrouping = 5000, l2.objectmanager.maxObjectsToCommit = 5000, l2.objectmanager.maxTxnsInTxnObjectGrouping = 500, l2.objectmanager.objectrequest.logging.enabled = false, l2.objectmanager.objectrequest.split.size = 5, l2.objectmanager.passive.sync.batch.size = 500, l2.objectmanager.passive.sync.throttle.timeInMillis = 0, l2.objectmanager.persistor.logging.enabled = false, l2.objectmanager.persistor.measure.performance = false, l2.objectmanager.request.logging.enabled = false, l2.remotejmx.idletime = 5, l2.remotejmx.maxthreads = 50, l2.seda.commitstage.threads = 4, l2.seda.faultstage.threads = 4, l2.seda.flushstage.threads = 4, l2.seda.gcdeletestage.threads = 1, l2.seda.managedobjectrequeststage.threads = 4, l2.seda.managedobjectresponsestage.threads = 4, l2.seda.stage.sink.capacity = -1, l2.serverarray.2pc.enabled = true, l2.startuplock.retries.enabled = false, l2.transactionmanager.logging.enabled = false, l2.transactionmanager.logging.printBroadcastStats = false, l2.transactionmanager.logging.printCommits = false, l2.transactionmanager.logging.printStats = true, l2.transactionmanager.logging.verbose = false, l2.transactionmanager.passive.throttle.enabled = true, l2.transactionmanager.passive.throttle.maxSleepSeconds = 5, l2.transactionmanager.passive.throttle.threshold = 20000, lock.statistics.enabled = false, logging.longgc.threshold = 8000, logging.maxBackups = 20, logging.maxLogFileSize = 512, memory.monitor.forcebasic = false, net.core.keepalive = false, net.core.tcpnodelay = true, session.debug.hops = false, session.debug.hops.interval = 100, session.debug.invalidate = false, session.debug.sessions = false, session.invalidator.bench.enabled = true, session.invalidator.sleep = 300, session.request.bench.enabled = false, session.request.tracking = false, session.request.tracking.dump = false, session.request.tracking.interval = 2500, session.request.tracking.threshold = 15000, session.vhosts.excluded = , stats.printer.intervalInMillis = 5000, tc.bytebuffer.common.pool.maxcount = 3000, tc.bytebuffer.pooling.enabled = true, tc.bytebuffer.threadlocal.pool.maxcount = 2000, tc.config.getFromSource.timeout = 30000, tc.management.mbeans.enabled = true, tc.management.test.mbeans.enabled = false, tc.stage.monitor.delay = 5000, tc.stage.monitor.enabled = false, tc.transport.handshake.timeout = 10000, tcm.monitor.delay = 5, tcm.monitor.enabled = false }
+2010-04-20 15:57:42,187 [15218962@qtp-27379847-1] INFO com.terracottatech.console - Log file: 'E:\Documents and Settings\kkannaiy\terracotta\client-logs\terracotta-client.log'.
+2010-04-20 15:57:42,187 [15218962@qtp-27379847-1] INFO com.tc.logging.TCLogging - All Java System Properties for this Terracotta instance:
+========================================================================
+STOP.KEY                            : secret
+STOP.PORT                           : 9084
+awt.toolkit                         : sun.awt.windows.WToolkit
+config.home                         : E:\Dubbo\ehcache-2.1.0-beta\samples\colorcache\bin\..\jetty6.1\9082
+file.encoding                       : Cp1252
+file.encoding.pkg                   : sun.io
+file.separator                      : \
+java.awt.graphicsenv                : sun.awt.Win32GraphicsEnvironment
+java.awt.printerjob                 : sun.awt.windows.WPrinterJob
+java.class.path                     : E:\Dubbo\ehcache-2.1.0-beta\terracotta\vendors\jetty-6.1.15\lib\jetty-6.1.15.jar;E:\Dubbo\ehcache-2.1.0-beta\terracotta\vendors\jetty-6.1.15\lib\jetty-util-6.1.15.jar;E:\Dubbo\ehcache-2.1.0-beta\terracotta\vendors\jetty-6.1.15\lib\servlet-api-2.5-20081211.jar;E:\Dubbo\ehcache-2.1.0-beta\terracotta\vendors\jetty-6.1.15\lib\jsp-2.1\ant-1.6.5.jar;E:\Dubbo\ehcache-2.1.0-beta\terracotta\vendors\jetty-6.1.15\lib\jsp-2.1\core-3.1.1.jar;E:\Dubbo\ehcache-2.1.0-beta\terracotta\vendors\jetty-6.1.15\lib\jsp-2.1\jsp-2.1-glassfish-9.1.1.B51.25.p1.jar;E:\Dubbo\ehcache-2.1.0-beta\terracotta\vendors\jetty-6.1.15\lib\jsp-2.1\jsp-2.1-jetty-6.1.15.jar;E:\Dubbo\ehcache-2.1.0-beta\terracotta\vendors\jetty-6.1.15\lib\jsp-2.1\jsp-api-2.1-glassfish-9.1.1.B51.25.p1.jar;E:\Dubbo\ehcache-2.1.0-beta\terracotta\vendors\jetty-6.1.15\resources
+java.class.version                  : 50.0
+java.endorsed.dirs                  : E:\Program Files\JAVA\jdk1.6.0_17\jre\lib\endorsed
+java.ext.dirs                       : E:\Program Files\JAVA\jdk1.6.0_17\jre\lib\ext;E:\WINDOWS\Sun\Java\lib\ext
+java.home                           : E:\Program Files\JAVA\jdk1.6.0_17\jre
+java.io.tmpdir                      : E:\Documents and Settings\kkannaiy\
+java.library.path                   : E:\Program Files\JAVA\jdk1.6.0_17\bin;.;E:\WINDOWS\Sun\Java\bin;E:\WINDOWS\system32;E:\WINDOWS;E:\usr\local\bin;E:\bin;E:\bin;E:\WINDOWS\system32;E:\WINDOWS;E:\WINDOWS\System32\Wbem;E:\Program Files\ATI Technologies\ATI Control Panel;E:\Program Files\TortoiseSVN\bin;C:\Program Files\SSH Communications Security\SSH Secure Shell;E:\Program Files\SSH Communications Security\SSH Secure Shell
+java.runtime.name                   : Java(TM) SE Runtime Environment
+java.runtime.version                : 1.6.0_17-b04
+java.specification.name             : Java Platform API Specification
+java.specification.vendor           : Sun Microsystems Inc.
+java.specification.version          : 1.6
+java.vendor                         : Sun Microsystems Inc.
+java.vendor.url                     : http://java.sun.com/
+java.vendor.url.bug                 : http://java.sun.com/cgi-bin/bugreport.cgi
+java.version                        : 1.6.0_17
+java.vm.info                        : mixed mode, sharing
+java.vm.name                        : Java HotSpot(TM) Client VM
+java.vm.specification.name          : Java Virtual Machine Specification
+java.vm.specification.vendor        : Sun Microsystems Inc.
+java.vm.specification.version       : 1.0
+java.vm.vendor                      : Sun Microsystems Inc.
+java.vm.version                     : 14.3-b01
+jetty.home                          : E:\Dubbo\ehcache-2.1.0-beta\terracotta\vendors\jetty-6.1.15
+line.separator                      : 
+
+org.hyperic.sigar.path              : E:\Documents and Settings\kkannaiy\tmpSigarJars5162151101056945063563839516380619
+os.arch                             : x86
+os.name                             : Windows XP
+os.version                          : 5.1
+path.separator                      : ;
+sun.arch.data.model                 : 32
+sun.boot.class.path                 : E:\Program Files\JAVA\jdk1.6.0_17\jre\lib\resources.jar;E:\Program Files\JAVA\jdk1.6.0_17\jre\lib\rt.jar;E:\Program Files\JAVA\jdk1.6.0_17\jre\lib\sunrsasign.jar;E:\Program Files\JAVA\jdk1.6.0_17\jre\lib\jsse.jar;E:\Program Files\JAVA\jdk1.6.0_17\jre\lib\jce.jar;E:\Program Files\JAVA\jdk1.6.0_17\jre\lib\charsets.jar;E:\Program Files\JAVA\jdk1.6.0_17\jre\classes
+sun.boot.library.path               : E:\Program Files\JAVA\jdk1.6.0_17\jre\bin
+sun.cpu.endian                      : little
+sun.cpu.isalist                     : 
+sun.desktop                         : windows
+sun.io.unicode.encoding             : UnicodeLittle
+sun.java.launcher                   : SUN_STANDARD
+sun.jnu.encoding                    : Cp1252
+sun.management.compiler             : HotSpot Client Compiler
+sun.net.client.defaultConnectTimeout: 30000
+sun.net.client.defaultReadTimeout   : 30000
+sun.os.patch.level                  : Service Pack 2
+tc.active                           : true
+tc.dso.globalmode                   : false
+tc.install-root                     : E:\Dubbo\ehcache-2.1.0-beta\terracotta
+user.country                        : US
+user.dir                            : E:\Dubbo\ehcache-2.1.0-beta\samples\colorcache\jetty6.1\9082
+user.home                           : E:\Documents and Settings\kkannaiy
+user.language                       : en
+user.name                           : kkannaiy
+user.timezone                       : America/Los_Angeles
+user.variant                        : 
+========================================================================
+2010-04-20 15:57:42,890 [15218962@qtp-27379847-1] WARN com.terracottatech.console - Skipping repository location: 'E:\Dubbo\ehcache-2.1.0-beta\terracotta\platform\modules', it either does not exist or is not a directory; make sure that the path 'E:\Dubbo\ehcache-2.1.0-beta\terracotta\platform\modules' actually exists.
+2010-04-20 15:57:42,890 [15218962@qtp-27379847-1] FATAL com.terracottatech.console - The default TIM repository does not exist.
+
+   You should set the value of the com.tc.l1.modules.repositories system property to declare a valid default TIM repository.
+   Or, make sure that the following path resolves to a directory:
+
+      E:\Dubbo\ehcache-2.1.0-beta\terracotta\platform\modules
+
+   
+2010-04-20 15:57:42,906 [15218962@qtp-27379847-1] FATAL com.tc.object.bytecode.hook.impl.DSOContextImpl - Exception thrown
+org.osgi.framework.BundleException: The default TIM repository does not exist.
+
+   You should set the value of the com.tc.l1.modules.repositories system property to declare a valid default TIM repository.
+   Or, make sure that the following path resolves to a directory:
+
+      E:\Dubbo\ehcache-2.1.0-beta\terracotta\platform\modules
+
+   
+	at com.tc.plugins.ModulesLoader.initModules(ModulesLoader.java:137)
+	at com.tc.object.bytecode.hook.impl.DSOContextImpl.<init>(DSOContextImpl.java:171)
+	at com.tc.object.bytecode.hook.impl.DSOContextImpl.createContext(DSOContextImpl.java:156)
+	at com.tc.object.bytecode.hook.impl.DSOContextImpl.createStandaloneContext(DSOContextImpl.java:141)
+	at net.sf.ehcache.terracotta.StandaloneL1Boot.call(StandaloneL1Boot.java:221)
+	at net.sf.ehcache.terracotta.StandaloneL1Boot.call(StandaloneL1Boot.java:40)
+	at net.sf.ehcache.terracotta.StandaloneTerracottaClusteredInstanceFactory.<init>(StandaloneTerracottaClusteredInstanceFactory.java:137)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at net.sf.ehcache.util.ClassLoaderUtil.createNewInstance(ClassLoaderUtil.java:92)
+	at net.sf.ehcache.TerracottaClusteredInstanceHelper.newClusteredInstanceFactory(TerracottaClusteredInstanceHelper.java:103)
+	at net.sf.ehcache.CacheManager.init(CacheManager.java:310)
+	at net.sf.ehcache.CacheManager.<init>(CacheManager.java:280)
+	at org.terracotta.ColorCache.<clinit>(ColorCache.java:15)
+	at org.apache.jsp.index_jsp.<init>(org.apache.jsp.index_jsp:11)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+	at java.lang.Class.newInstance0(Class.java:355)
+	at java.lang.Class.newInstance(Class.java:308)
+	at org.apache.jasper.servlet.JspServletWrapper.getServlet(JspServletWrapper.java:193)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:372)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:486)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:380)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:502)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:380)
+	at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+	at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:181)
+	at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:765)
+	at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:417)
+	at org.mortbay.jetty.servlet.Dispatcher.forward(Dispatcher.java:334)
+	at org.mortbay.jetty.servlet.Dispatcher.forward(Dispatcher.java:126)
+	at org.mortbay.jetty.servlet.DefaultServlet.doGet(DefaultServlet.java:465)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
+	at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:502)
+	at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:380)
+	at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+	at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:181)
+	at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:765)
+	at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:417)
+	at org.mortbay.jetty.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:230)
+	at org.mortbay.jetty.handler.HandlerCollection.handle(HandlerCollection.java:114)
+	at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+	at org.mortbay.jetty.Server.handle(Server.java:324)
+	at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:535)
+	at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:865)
+	at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:539)
+	at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
+	at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
+	at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:409)
+	at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:520)

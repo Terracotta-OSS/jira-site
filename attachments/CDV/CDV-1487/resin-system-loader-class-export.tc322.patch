@@ -1,0 +1,363 @@
+Index: code/base/common/src.resources/com/tc/properties/tc.properties
+===================================================================
+--- code/base/common/src.resources/com/tc/properties/tc.properties	(revision 15529)
++++ code/base/common/src.resources/com/tc/properties/tc.properties	(working copy)
+@@ -303,10 +303,10 @@
+ ###########################################################################################
+ l1.modules.repositories =
+ l1.modules.default = \
+-  org.terracotta.modules.excludes-config;bundle-version:=3.2.3.SNAPSHOT,\
+-  org.terracotta.modules.guimodels-config;bundle-version:=3.2.3.SNAPSHOT,\
+-  org.terracotta.modules.jdk15-preinst-config;bundle-version:=3.2.3.SNAPSHOT,\
+-  org.terracotta.modules.standard-config;bundle-version:=3.2.3.SNAPSHOT
++  org.terracotta.modules.excludes-config;bundle-version:=3.2.2,\
++  org.terracotta.modules.guimodels-config;bundle-version:=3.2.2,\
++  org.terracotta.modules.jdk15-preinst-config;bundle-version:=3.2.2,\
++  org.terracotta.modules.standard-config;bundle-version:=3.2.2
+ l1.modules.additional =
+ l1.modules.tc-version-check =
+ 
+Index: code/base/dso-l1/src/com/tc/object/bytecode/ClassLoaderTransformer.java
+===================================================================
+--- code/base/dso-l1/src/com/tc/object/bytecode/ClassLoaderTransformer.java	(revision 0)
++++ code/base/dso-l1/src/com/tc/object/bytecode/ClassLoaderTransformer.java	(revision 0)
+@@ -0,0 +1,55 @@
++/*
++ * All content copyright Terracotta, Inc., unless otherwise indicated. All rights reserved.
++ */
++package com.tc.object.bytecode;
++
++import com.tc.asm.ClassReader;
++import com.tc.asm.ClassVisitor;
++import com.tc.asm.ClassWriter;
++import com.tc.aspectwerkz.reflect.ClassInfo;
++import com.tc.aspectwerkz.reflect.MethodInfo;
++import com.tc.aspectwerkz.reflect.impl.asm.AsmClassInfo;
++
++import java.lang.instrument.ClassFileTransformer;
++import java.security.ProtectionDomain;
++
++/**
++ * NOTE: This isn't a "real" ClassFileTransformer used by a java agent. We're merely hijacking the interface out of
++ * convenience since it is called from code in the boot jar
++ */
++public class ClassLoaderTransformer implements ClassFileTransformer {
++
++  public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined,
++                          ProtectionDomain protectionDomain, byte[] classfileBuffer) {
++    ClassInfo classInfo = AsmClassInfo.getClassInfo(classfileBuffer, loader);
++
++    // classloader subclass that overrides loadClass(String)
++    final boolean needsClassLoaderInstrumentation = needsClassLoaderInstrumentation(classInfo);
++
++    if (needsClassLoaderInstrumentation) {
++      final ClassReader clReader = new ClassReader(classfileBuffer);
++      final ClassWriter clWriter = new ClassWriter(clReader, ClassWriter.COMPUTE_MAXS);
++      ClassVisitor clVisitor = new ClassLoaderSubclassAdapter(clWriter);
++      clReader.accept(clVisitor, ClassReader.SKIP_FRAMES);
++      classfileBuffer = clWriter.toByteArray();
++    }
++
++    return classfileBuffer;
++
++  }
++
++  private static boolean needsClassLoaderInstrumentation(final ClassInfo classInfo) {
++    for (ClassInfo c = classInfo; c != null; c = c.getSuperclass()) {
++      if ("java.lang.ClassLoader".equals(c.getName())) {
++        // found ClassLoader in the heirarchy of subclasses, now check for a definition of loadClass in this class
++        for (MethodInfo m : classInfo.getMethods()) {
++          if ("loadClass".equals(m.getName()) && "(Ljava/lang/String;)Ljava/lang/Class;".equals(m.getSignature())) { return true; }
++        }
++        return false;
++
++      }
++    }
++    return false;
++  }
++
++}
+
+Property changes on: code\base\dso-l1\src\com\tc\object\bytecode\ClassLoaderTransformer.java
+___________________________________________________________________
+Added: svn:mime-type
+   + text/x-java
+Added: svn:keywords
+   + Date Revision Author HeadURL Id
+Added: svn:eol-style
+   + native
+
+Index: code/base/dso-l1/src/com/tc/object/bytecode/hook/impl/DefaultWeavingStrategy.java
+===================================================================
+--- code/base/dso-l1/src/com/tc/object/bytecode/hook/impl/DefaultWeavingStrategy.java	(revision 15529)
++++ code/base/dso-l1/src/com/tc/object/bytecode/hook/impl/DefaultWeavingStrategy.java	(working copy)
+@@ -15,7 +15,6 @@
+ import com.tc.aspectwerkz.expression.PointcutType;
+ import com.tc.aspectwerkz.reflect.ClassInfo;
+ import com.tc.aspectwerkz.reflect.ClassInfoHelper;
+-import com.tc.aspectwerkz.reflect.MethodInfo;
+ import com.tc.aspectwerkz.reflect.impl.asm.AsmClassInfo;
+ import com.tc.aspectwerkz.transform.InstrumentationContext;
+ import com.tc.aspectwerkz.transform.WeavingStrategy;
+@@ -42,7 +41,6 @@
+ import com.tc.logging.TCLogging;
+ import com.tc.object.bytecode.ByteCodeUtil;
+ import com.tc.object.bytecode.ClassAdapterFactory;
+-import com.tc.object.bytecode.ClassLoaderSubclassAdapter;
+ import com.tc.object.bytecode.RenameClassesAdapter;
+ import com.tc.object.bytecode.SafeSerialVersionUIDAdder;
+ import com.tc.object.config.ClassReplacementMapping;
+@@ -190,10 +188,7 @@
+       // has AW aspects?
+       final boolean isAdvisable = isAdvisable(classInfo, definitions);
+ 
+-      // classloader subclass that overrides loadClass(String)
+-      final boolean needsClassLoaderInstrumentation = needsClassLoaderInstrumentation(classInfo);
+-
+-      if (!isAdvisable && !isDsoAdaptable && !hasCustomAdapters && !needsClassLoaderInstrumentation) {
++      if (!isAdvisable && !isDsoAdaptable && !hasCustomAdapters) {
+         context.setCurrentBytecode(context.getInitialBytecode());
+         return;
+       }
+@@ -202,14 +197,6 @@
+         m_instrumentationLogger.classIncluded(className);
+       }
+ 
+-      if (needsClassLoaderInstrumentation) {
+-        final ClassReader clReader = new ClassReader(context.getCurrentBytecode());
+-        final ClassWriter clWriter = new ClassWriter(clReader, ClassWriter.COMPUTE_MAXS);
+-        ClassVisitor clVisitor = new ClassLoaderSubclassAdapter(clWriter);
+-        clReader.accept(clVisitor, ClassReader.SKIP_FRAMES);
+-        context.setCurrentBytecode(clWriter.toByteArray());
+-      }
+-
+       // handle replacement classes
+       ClassReplacementMapping mapping = m_configHelper.getClassReplacementMapping();
+       final Replacement replacement = mapping.getReplacement(className, loader);
+@@ -423,20 +410,6 @@
+     }
+   }
+ 
+-  private static boolean needsClassLoaderInstrumentation(final ClassInfo classInfo) {
+-    for (ClassInfo c = classInfo; c != null; c = c.getSuperclass()) {
+-      if ("java.lang.ClassLoader".equals(c.getName())) {
+-        // found ClassLoader in the heirarchy of subclasses, now check for a definition of loadClass in this class
+-        for (MethodInfo m : classInfo.getMethods()) {
+-          if ("loadClass".equals(m.getName()) && "(Ljava/lang/String;)Ljava/lang/Class;".equals(m.getSignature())) { return true; }
+-        }
+-        return false;
+-
+-      }
+-    }
+-    return false;
+-  }
+-
+   public static boolean isAdvisable(final ClassInfo classInfo, final Set definitions) {
+     return !classFilter(definitions, getDefaultExpressionContexts(classInfo), classInfo);
+   }
+Index: code/base/dso-l1/src/com/tc/object/bytecode/hook/impl/DSOContextImpl.java
+===================================================================
+--- code/base/dso-l1/src/com/tc/object/bytecode/hook/impl/DSOContextImpl.java	(revision 15529)
++++ code/base/dso-l1/src/com/tc/object/bytecode/hook/impl/DSOContextImpl.java	(working copy)
+@@ -18,6 +18,7 @@
+ import com.tc.logging.CustomerLogging;
+ import com.tc.logging.TCLogger;
+ import com.tc.logging.TCLogging;
++import com.tc.object.bytecode.ClassLoaderTransformer;
+ import com.tc.object.bytecode.Manageable;
+ import com.tc.object.bytecode.Manager;
+ import com.tc.object.bytecode.ManagerImpl;
+@@ -40,6 +41,7 @@
+ import java.io.ByteArrayOutputStream;
+ import java.io.IOException;
+ import java.io.InputStream;
++import java.lang.instrument.ClassFileTransformer;
+ import java.net.ConnectException;
+ import java.net.MalformedURLException;
+ import java.net.URL;
+@@ -135,7 +137,8 @@
+     // XXX: what should the appGroup and loaderDesc be? In theory we might want "regular" clients to access this shared
+     // state too
+     ClassProvider classProvider = new SingleLoaderClassProvider(null, "standalone", loader);
+-    Manager manager = new ManagerImpl(true, null, null, null, configHelper, l2Connection, true, runtimeLogger, classProvider);
++    Manager manager = new ManagerImpl(true, null, null, null, configHelper, l2Connection, true, runtimeLogger,
++                                      classProvider);
+ 
+     Collection<Repository> repos = new ArrayList<Repository>();
+     repos.add(new VirtualTimRepository(virtualTimJars));
+@@ -178,10 +181,12 @@
+       System.exit(1);
+     }
+ 
+-    //do a pre-emptive class load since this path gets nested inside other classloads...
++    // do a pre-emptive class load since this path gets nested inside other classloads...
+     if (configHelper instanceof StandardDSOClientConfigHelper) {
+       try {
+-	  ((StandardDSOClientConfigHelper) configHelper).addClassResource("non.existent.Class", new URL("file:///not/a/real/file"), false, false);
++        ((StandardDSOClientConfigHelper) configHelper).addClassResource("non.existent.Class",
++                                                                        new URL("file:///not/a/real/file"), false,
++                                                                        false);
+       } catch (MalformedURLException e) {
+         e.printStackTrace();
+       }
+@@ -331,4 +336,8 @@
+     return preProcess(className, classfileBuffer, 0, classfileBuffer.length, loader);
+   }
+ 
++  public static ClassFileTransformer getClassLoaderTransformer() {
++    return new ClassLoaderTransformer();
++  }
++
+ }
+Index: code/base/build-config.global
+===================================================================
+--- code/base/build-config.global	(revision 15529)
++++ code/base/build-config.global	(working copy)
+@@ -37,7 +37,7 @@
+ 
+ #tc.tests.configuration.appserver.home=C:/tomcat-5.5.23
+ 
+-maven.version=3.2.3-SNAPSHOT
++maven.version=3.2.2
+ maven.snapshot=true
+ 
+ # the API version is specified for our -api Maven artifacts 
+@@ -47,5 +47,5 @@
+ #   - 1st - breaking change in the API, coincident with change in 1st digit of maven.version
+ #   - 2nd - breaking change in the API, coincident with change in 2nd or 3rd digit of maven.version
+ #   - 3rd - major or minor Terracotta release without breaking change
+-api.version=1.2.3-SNAPSHOT
++api.version=1.2.2
+ 
+Index: code/base/dso-l1-api/src/com/tc/object/bytecode/hook/impl/ClassProcessorHelper.java
+===================================================================
+--- code/base/dso-l1-api/src/com/tc/object/bytecode/hook/impl/ClassProcessorHelper.java	(revision 15529)
++++ code/base/dso-l1-api/src/com/tc/object/bytecode/hook/impl/ClassProcessorHelper.java	(working copy)
+@@ -21,6 +21,8 @@
+ import java.io.IOException;
+ import java.io.InputStream;
+ import java.io.PrintStream;
++import java.lang.instrument.ClassFileTransformer;
++import java.lang.instrument.IllegalClassFormatException;
+ import java.lang.reflect.InvocationTargetException;
+ import java.lang.reflect.Method;
+ import java.net.MalformedURLException;
+@@ -38,48 +40,49 @@
+ public class ClassProcessorHelper {
+ 
+   /** Name reserved for apps running as root web app in a container */
+-  private static final String      ROOT_WEB_APP_NAME         = "ROOT";
++  private static final String               ROOT_WEB_APP_NAME         = "ROOT";
+ 
+   // Directory where Terracotta jars (and dependencies) can be found
+-  private static final String      TC_INSTALL_ROOT_SYSPROP   = "tc.install-root";
++  private static final String               TC_INSTALL_ROOT_SYSPROP   = "tc.install-root";
+ 
+   // Property to indicate whether the Terracotta classloader is active
+-  private static final String      TC_ACTIVE_SYSPROP         = "tc.active";
++  private static final String               TC_ACTIVE_SYSPROP         = "tc.active";
+ 
+   // NOTE: This is not intended to be a public/documented system property,
+   // it is for dev use only. It is NOT for QA or customer use
+-  private static final String      TC_CLASSPATH_SYSPROP      = "tc.classpath";
++  private static final String               TC_CLASSPATH_SYSPROP      = "tc.classpath";
+ 
+-  private static final String      TC_DSO_GLOBALMODE_SYSPROP = "tc.dso.globalmode";
++  private static final String               TC_DSO_GLOBALMODE_SYSPROP = "tc.dso.globalmode";
+ 
+   // Used for converting resource names into class names
+-  private static final String      CLASS_SUFFIX              = ".class";
+-  private static final int         CLASS_SUFFIX_LENGTH       = CLASS_SUFFIX.length();
++  private static final String               CLASS_SUFFIX              = ".class";
++  private static final int                  CLASS_SUFFIX_LENGTH       = CLASS_SUFFIX.length();
+ 
+-  private static final boolean     GLOBAL_MODE_DEFAULT       = true;
++  private static final boolean              GLOBAL_MODE_DEFAULT       = true;
+ 
+-  public static final boolean      USE_GLOBAL_CONTEXT;
++  public static final boolean               USE_GLOBAL_CONTEXT;
+ 
+-  private static final State       initState                 = new State();
++  private static final State                initState                 = new State();
+ 
+-  private static final String      tcInstallRootSysProp      = System.getProperty(TC_INSTALL_ROOT_SYSPROP);
++  private static final String               tcInstallRootSysProp      = System.getProperty(TC_INSTALL_ROOT_SYSPROP);
+ 
+   // This map should only hold a weak reference to the loader (key).
+   // If we didn't we'd prevent loaders from being GC'd
+-  private static final Map         contextMap                = new WeakHashMap();
++  private static final Map                  contextMap                = new WeakHashMap();
+ 
+-  private static URLClassLoader    tcLoader;
+-  private static DSOContext        globalContext;
++  private static final URLClassLoader       tcLoader;
++  private static volatile DSOContext        globalContext;
+ 
+-  private static final boolean     TRACE;
+-  private static final PrintStream TRACE_STREAM;
++  private static final boolean              TRACE;
++  private static final PrintStream          TRACE_STREAM;
+ 
+-  private static volatile boolean  systemLoaderInitialized   = false;
++  private static volatile boolean           systemLoaderInitialized   = false;
+ 
++  private final static ClassFileTransformer classLoaderTransformer;
++
+   static {
+ 
+     try {
+-
+       // Make sure that the DSOContext class is loaded before using the
+       // TC functionalities. This is needed for the IBM JDK when Hashtable is
+       // instrumented for auto-locking in the bootjar.
+@@ -106,6 +109,10 @@
+       TRACE_STREAM = ts;
+       TRACE = TRACE_STREAM != null;
+ 
++      tcLoader = createTCLoader();
++      classLoaderTransformer = (ClassFileTransformer) tcLoader
++          .loadClass("com.tc.object.bytecode.ClassLoaderTransformer").newInstance();
++
+     } catch (Throwable t) {
+       Util.exit(t);
+       throw new AssertionError(); // this has to be here to make the compiler happy
+@@ -340,8 +347,6 @@
+   public static void initialize() {
+     if (initState.attemptInit()) {
+       try {
+-        tcLoader = createTCLoader();
+-
+         // do this before doing anything with the TC loader
+         initTCLogging();
+ 
+@@ -505,6 +510,17 @@
+ 
+     if (TRACE) traceLookup(caller, name);
+ 
++    try {
++      if (len != b.length) {
++        byte[] copy = new byte[len];
++        System.arraycopy(b, off, copy, 0, len);
++        b = copy;
++      }
++      b = classLoaderTransformer.transform(caller, name, null, pd, b);
++    } catch (IllegalClassFormatException e) {
++      throw new RuntimeException(e);
++    }
++
+     if (isAWDependency(name)) { return b; }
+ 
+     /*
+@@ -579,8 +595,10 @@
+            || className.startsWith("com.tc.aspectwerkz.") || className.startsWith("com.tc.asm.")
+            || className.startsWith("com.tc.backport175.") || className.startsWith("com.tc.jrexx.")
+            || className.startsWith("org.dom4j.") || className.startsWith("org.xml.sax.")
+-           || className.startsWith("javax.xml.parsers.")
+-           || className.startsWith("sun.reflect.Generated"); // issue on J2SE 5 reflection - AW-245
++           || className.startsWith("javax.xml.parsers.") || className.startsWith("sun.reflect.Generated"); // issue on
++    // J2SE 5
++    // reflection
++    // - AW-245
+   }
+ 
+   private static void traceNamedLoader(final NamedClassLoader ncl) {

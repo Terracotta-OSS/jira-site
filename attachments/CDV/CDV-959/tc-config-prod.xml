@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.terracotta.org/config http://www.terracotta.org/schema/terracotta-4.xsd">
+  <servers>
+    <server name="lasstc1" host="lasstc1">
+      <data>/export1/terracotta-data/data</data>
+      <logs>/var/log/terracotta</logs>
+      <statistics>/export1/terracotta-data/statistics</statistics>
+      <dso>
+        <persistence>
+          <mode>permanent-store</mode>
+        </persistence>
+      </dso>
+    </server>
+
+    <server name="lasstc2" host="lasstc2">
+      <data>/export1/terracotta-data/data</data>
+      <logs>/var/log/terracotta</logs>
+      <statistics>/export1/terracotta-data/statistics</statistics>
+      <dso>
+        <persistence>
+          <mode>permanent-store</mode>
+        </persistence>
+      </dso>
+    </server>
+  </servers>
+
+  <!-- ********************************************* -->
+  <!-- * Any app-level config changes made must be * -->
+  <!-- * be mirrored in tc-config.xml as well      * -->
+  <!-- ********************************************* -->
+  
+  <clients>
+    <logs>/var/log/terracotta</logs>
+    <statistics>/export1/terracotta-data/statistics</statistics>
+    
+    <modules>
+      <module name="tim-jetty-6.1" version="1.1.1-SNAPSHOT"/>
+      <module name="tim-hibernate-3.2.5" version="1.2.1-SNAPSHOT"/>
+      <module name="tim-ehcache-1.3" version="1.2.1-SNAPSHOT"/>
+      <module name="tim-annotations" version="1.2.1-SNAPSHOT"/>
+      <module name="tim-spring-security-2.0" version="1.0.0-SNAPSHOT"/>
+      <module name="tim-async-processing" version="1.0.0-SNAPSHOT"/>
+    </modules>
+  </clients>
+
+  <application>
+    <spring>
+      <jee-application name="webapp">
+        <session-support>true</session-support>
+        <fast-proxy>true</fast-proxy>
+        <application-contexts>
+          <application-context>
+            <paths>
+              <path>/WEB-INF/config/application-context.xml</path>
+            </paths>
+          </application-context>
+        </application-contexts>
+      </jee-application>
+    </spring>
+    <dso>
+      <web-applications>
+        <web-application>webapp</web-application>
+      </web-applications>
+    </dso>
+  </application>
+</tc:tc-config>

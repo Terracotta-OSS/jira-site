@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-4.xsd">
+
+  <servers>
+         <server host="localhost">
+           <dso-port>9510</dso-port>
+         </server>
+
+
+  <!-- The <update-check> element helps ensure that you're using the latest version of Terracotta DSO.
+    Out-of-date versions trigger a message to log and standard output. -->
+
+       <update-check>
+         <enabled>true</enabled>
+       </update-check>
+
+  </servers>
+ 
+ <!-- <modules> is a section in <clients> that specifies the TIMs to be used by your Terracotta installation.
+      In this example, the TIM for an application server called "my-app-sever", version 1.0.1, is included.
+      The version of the TIM, 1.2.3, is also specified. This configuration assumes that the default repository,
+      the modules directory in the Terracotta installation directory, is being used to store the TIM files. 
+      For more on TIM repositories, see the Terracotta Configuration Guide and Reference. -->
+       
+  <clients>
+    <modules>
+          <module name="tim-tomcat-6.0" version="1.0.0"/>         
+    </modules>
+  </clients>
+
+  <application>
+    <dso>
+      <web-applications>
+        <web-application>gziptest</web-application>
+      </web-applications>
+    </dso>
+   </application>
+</tc:tc-config>

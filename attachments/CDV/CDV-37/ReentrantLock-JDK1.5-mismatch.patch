@@ -1,0 +1,110 @@
+Index: code/base/dso-l1-jdk15/src/com/tc/util/concurrent/locks/ReentrantLock.java
+===================================================================
+--- code/base/dso-l1-jdk15/src/com/tc/util/concurrent/locks/ReentrantLock.java	(revision 716)
++++ code/base/dso-l1-jdk15/src/com/tc/util/concurrent/locks/ReentrantLock.java	(working copy)
+@@ -60,19 +60,31 @@
+ 
+   public void lock() {
+     synchronized (lock) {
+-      while (owner != null && owner != Thread.currentThread() && lockInUnShared.contains(Boolean.TRUE)) {
+-        try {
+-          lock.wait();
+-        } catch (InterruptedException e) {
+-          throw new TCRuntimeException(e);
+-        }
+-      }
++      //No need of waiting here as threads anyway will block at monitorEnter, if it can not acquire the lock
++//      while (owner != null && owner != Thread.currentThread() && lockInUnShared.contains(Boolean.TRUE)) {
++//        try {
++//          lock.wait();
++//        } catch (InterruptedException e) {
++//          throw new TCRuntimeException(e);
++//        }
++//      }
+ 
+       waitingQueue.add(Thread.currentThread());
+       numQueued++;
+     }
+ 
++    boolean interrupted = false;
++    //If thread is interrupted while waiting, ignore Interrupted Exception and set the interrupted status before returning
++    while(true){
++      try {
+     ManagerUtil.monitorEnter(this, LockLevel.WRITE);
++        break;
++      }catch(TCRuntimeException e) {
++        if(!(isInterruptedException(e)))
++          throw e;
++        interrupted = true;
++      }
++    }
+     UnsafeUtil.monitorEnter(this);
+ 
+     synchronized (lock) {
+@@ -80,6 +92,8 @@
+       waitingQueue.remove(Thread.currentThread());
+       numQueued--;
+     }
++    if(interrupted)
++      Thread.currentThread().interrupt();
+   }
+ 
+   public void lockInterruptibly() throws InterruptedException {
+@@ -316,6 +330,12 @@
+     s.writeBoolean(isFair);
+   }
+ 
++  private static boolean isInterruptedException(TCRuntimeException e) {
++    if(e.getCause() instanceof InterruptedException)
++      return true;
++    return false;
++  }
++
+   private static class SyncCondition implements java.io.Serializable {
+     public SyncCondition() {
+       super();
+@@ -432,14 +452,15 @@
+       } finally {
+         reacquireLock(numOfHolds);
+       }
+-
+-      if (Thread.interrupted()) { throw new InterruptedException(); }
++      //Not required as JDK implementation does not throw exception if thread is interrupted after wait
++//      if (Thread.interrupted()) { throw new InterruptedException(); }
+     }
+ 
+     public void awaitUninterruptibly() {
+       if (!originalLock.isHeldByCurrentThread()) { throw new IllegalMonitorStateException(); }
+ 
+       int numOfHolds = originalLock.getHoldCount();
++      boolean interrupted = false;
+       try {
+         ManagerUtil.monitorEnter(realCondition, LockLevel.WRITE);
+         UnsafeUtil.monitorEnter(realCondition);
+@@ -455,9 +476,11 @@
+             try {
+               ManagerUtil.objectWait0(realCondition);
+             } catch (TCRuntimeException e) {
+-              checkCauseAndIgnoreInterruptedException(e);
++              if(!(isInterruptedException(e)))
++                throw e;
++              interrupted = true;
+             } catch (InterruptedException e) {
+-              // ignoring interrupt;
++              interrupted = true;
+             } finally {
+               waitOnUnshared.remove(Thread.currentThread());
+               waitingThreads.remove(Thread.currentThread());
+@@ -473,8 +496,10 @@
+       } finally {
+         reacquireLock(numOfHolds);
+       }
+-
+-      Thread.interrupted(); // Clear interrupted flag if the thread is interrupted during wait.
++      if(interrupted)
++        Thread.currentThread().interrupt();
++      // Not required, as JDK implementation maintains the interrupted status
++//      Thread.interrupted();
+     }
+ 
+     public long awaitNanos(long nanosTimeout) throws InterruptedException {

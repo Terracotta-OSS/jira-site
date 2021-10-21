@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config">
+
+	<servers>
+		<server>
+			<data>c:/bigmemory-max-4.0.0/server/data</data>
+			<index>c:/bigmemory-max-4.0.0/server/index</index>
+			<logs>c:/bigmemory-max-4.0.0/server/logs</logs>
+			<offheap>
+				<enabled>true</enabled>
+				<maxDataSize>512M</maxDataSize>
+			</offheap>
+		</server>
+		<restartable enabled="false" />
+	</servers>
+
+</tc:tc-config>

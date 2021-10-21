@@ -1,0 +1,13 @@
+Index: core/src/main/java/net/sf/ehcache/Element.java
+===================================================================
+--- core/src/main/java/net/sf/ehcache/Element.java	(revision 2154)
++++ core/src/main/java/net/sf/ehcache/Element.java	(revision )
+@@ -270,7 +270,7 @@
+             valueAsSerializable = (Serializable) value;
+         } catch (Exception e) {
+             throw new CacheException("The value " + value + " for key " + key +
+-                    " is not Serializable. Consider using Element#getObjectKey()");
++                    " is not Serializable. Consider using Element#getObjectValue()");
+         }
+         return valueAsSerializable;
+     }

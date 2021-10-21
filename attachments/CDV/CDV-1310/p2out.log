@@ -1,0 +1,1322 @@
+02:48:56.371 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:49:26.380 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:49:56.391 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:50:26.401 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:50:56.411 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:51:26.425 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:51:56.439 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:52:26.449 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:52:56.462 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:53:26.475 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:53:56.484 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:54:26.493 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:54:56.506 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:55:26.515 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:55:56.523 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:56:26.536 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:56:56.548 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:57:26.557 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:57:56.567 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:58:26.579 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:58:56.592 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:59:26.600 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+02:59:56.613 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:00:26.624 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:00:56.636 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:01:26.644 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:01:56.656 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:02:26.663 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:02:56.676 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:03:26.684 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:03:56.696 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:04:26.709 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:04:56.719 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:05:26.728 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:05:56.737 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:06:26.747 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:06:56.757 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:07:26.769 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:07:56.781 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:08:26.791 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:08:56.800 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:09:26.812 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:09:56.821 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:10:26.830 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:10:56.839 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:11:26.851 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:11:56.861 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:12:26.870 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:12:56.879 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:13:26.892 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:13:56.906 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:14:26.917 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:14:56.926 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:15:26.937 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:15:56.949 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:16:26.963 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:16:56.975 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+2009-07-13 03:17:15
+Full thread dump Java HotSpot(TM) Server VM (11.3-b02 mixed mode):
+
+"Job_Executor2" daemon prio=10 tid=0x904d1400 nid=0x4b71 in Object.wait() [0x8ef83000..0x8ef83e50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb2273b38> (a com.sun.jmx.remote.opt.internal.ArrayNotificationBuffer)
+	at com.sun.jmx.remote.opt.internal.ArrayNotificationBuffer.fetchNotifications(ArrayNotificationBuffer.java:344)
+	- locked <0xb2273b38> (a com.sun.jmx.remote.opt.internal.ArrayNotificationBuffer)
+	at com.sun.jmx.remote.opt.internal.ArrayNotificationBuffer$ShareBuffer.fetchNotifications(ArrayNotificationBuffer.java:123)
+	at com.sun.jmx.remote.opt.internal.ServerNotifForwarder.fetchNotifs(ServerNotifForwarder.java:169)
+	at javax.management.remote.generic.ServerIntermediary$RequestHandler.handleNotifReqMessage(ServerIntermediary.java:679)
+	at javax.management.remote.generic.ServerIntermediary$RequestHandler.execute(ServerIntermediary.java:626)
+	at com.sun.jmx.remote.generic.ServerSynchroMessageConnectionImpl$RemoteJob.run(ServerSynchroMessageConnectionImpl.java:266)
+	at com.sun.jmx.remote.opt.util.ThreadService$ThreadServiceJob.run(ThreadService.java:208)
+	at com.sun.jmx.remote.opt.util.JobExecutor.run(JobExecutor.java:59)
+
+"Job_Executor1" daemon prio=10 tid=0x904bcc00 nid=0x4b70 in Object.wait() [0x8f16e000..0x8f16f1d0]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb1636d40> (a com.tc.management.remote.protocol.terracotta.TunnelingMessageConnection)
+	at java.lang.Object.wait(Object.java:485)
+	at com.tc.management.remote.protocol.terracotta.TunnelingMessageConnection.readMessage(TunnelingMessageConnection.java:64)
+	- locked <0xb1636d40> (a com.tc.management.remote.protocol.terracotta.TunnelingMessageConnection)
+	at com.sun.jmx.remote.generic.ServerSynchroMessageConnectionImpl$MessageReader.run(ServerSynchroMessageConnectionImpl.java:185)
+	at com.sun.jmx.remote.opt.util.ThreadService$ThreadServiceJob.run(ThreadService.java:208)
+	at com.sun.jmx.remote.opt.util.JobExecutor.run(JobExecutor.java:59)
+
+"Thread-10" daemon prio=10 tid=0x9023d800 nid=0x4b6a runnable [0x8f608000..0x8f609150]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:129)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+	- locked <0xb1ed5b90> (a java.io.InputStreamReader)
+	at java.io.InputStreamReader.read(InputStreamReader.java:167)
+	at java.io.BufferedReader.fill(BufferedReader.java:136)
+	at java.io.BufferedReader.readLine(BufferedReader.java:299)
+	- locked <0xb1ed5b90> (a java.io.InputStreamReader)
+	at java.io.BufferedReader.readLine(BufferedReader.java:362)
+	at com.tc.lcp.HeartBeatClient.run(HeartBeatClient.java:53)
+
+"Thread-9" daemon prio=10 tid=0x08527400 nid=0x4b68 in Object.wait() [0x8f659000..0x8f65a050]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d8590> (a com.tc.management.remote.protocol.terracotta.TunnelingEventHandler)
+	at java.lang.Object.wait(Object.java:485)
+	at com.tc.management.remote.protocol.terracotta.TunnelingEventHandler.accept(TunnelingEventHandler.java:84)
+	- locked <0xb44d8590> (a com.tc.management.remote.protocol.terracotta.TunnelingEventHandler)
+	at com.tc.management.remote.protocol.terracotta.TunnelingMessageConnectionServer.accept(TunnelingMessageConnectionServer.java:32)
+	at com.sun.jmx.remote.generic.SynchroMessageConnectionServerImpl.accept(SynchroMessageConnectionServerImpl.java:47)
+	at javax.management.remote.generic.GenericConnectorServer$Receiver.run(GenericConnectorServer.java:340)
+
+"Timer-0" daemon prio=10 tid=0x086b6800 nid=0x4b67 in Object.wait() [0x8f6aa000..0x8f6aafd0]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d4720> (a java.util.TaskQueue)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	- locked <0xb44d4720> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"WorkerThread(client_coordination_stage,0)" daemon prio=10 tid=0x905a6800 nid=0x4b66 in Object.wait() [0x8f6fb000..0x8f6fbf50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d8af0> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44d8af0> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(lock_response_stage,0)" daemon prio=10 tid=0x905a5400 nid=0x4b65 in Object.wait() [0x8f74c000..0x8f74ced0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d8ed8> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44d8ed8> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(hydrate_message_stage,0)" daemon prio=10 tid=0x905a3c00 nid=0x4b64 in Object.wait() [0x8f79d000..0x8f79de50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d9260> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44d9260> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(receive_transaction_complete_stage,0)" daemon prio=10 tid=0x9020f800 nid=0x4b63 in Object.wait() [0x8f7ee000..0x8f7ef1d0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d95e8> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44d95e8> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(dmi_stage,0)" daemon prio=10 tid=0x9020e000 nid=0x4b62 in Object.wait() [0x8f83f000..0x8f840150]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44dfaf8> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44dfaf8> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(batch_txn_ack_stage,0)" daemon prio=10 tid=0x9020cc00 nid=0x4b61 in Object.wait() [0x8f890000..0x8f8910d0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44dfec0> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44dfec0> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(lock_statistics_response_stage,0)" daemon prio=10 tid=0x9020b400 nid=0x4b60 in Object.wait() [0x8f8e1000..0x8f8e2050]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e0270> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e0270> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(jmxremote_tunnel_stage,0)" daemon prio=10 tid=0x9020a000 nid=0x4b5f in Object.wait() [0x8f932000..0x8f932fd0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e0640> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e0640> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(receive_object_stage,0)" daemon prio=10 tid=0x90243400 nid=0x4b5e in Object.wait() [0x8f983000..0x8f983f50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e09a8> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e09a8> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(cluster_metadata_stage,0)" daemon prio=10 tid=0x90241c00 nid=0x4b5d in Object.wait() [0x8f9d4000..0x8f9d4ed0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e0d80> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e0d80> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(receive_root_id_stage,0)" daemon prio=10 tid=0x90240800 nid=0x4b5c in Object.wait() [0x8fa25000..0x8fa25e50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e1138> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e1138> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(object_id_request_response_stage,0)" daemon prio=10 tid=0x90244800 nid=0x4b5b waiting for monitor entry [0x8fa77000..0x8fa771d0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at com.tc.util.sequence.BatchSequence.setNextBatch(BatchSequence.java:69)
+	- waiting to lock <0xb43beff0> (a com.tc.util.sequence.BatchSequence)
+	at com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider.handleEvent(RemoteObjectIDBatchSequenceProvider.java:40)
+	- locked <0xb43bf028> (a com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:142)
+
+"WorkerThread(lock_statistics_enable_disable_stage,0)" daemon prio=10 tid=0x90247000 nid=0x4b5a in Object.wait() [0x8fac7000..0x8fac8150]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e1888> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e1888> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(receive_transaction_stage,0)" daemon prio=10 tid=0x90246000 nid=0x4b59 in Object.wait() [0x8fb18000..0x8fb190d0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e1c80> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e1c80> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"TC Memory Monitor" daemon prio=10 tid=0x08343800 nid=0x4b57 waiting on condition [0x8fbba000..0x8fbbafd0]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at com.tc.runtime.TCMemoryManagerImpl$MemoryMonitor.run(TCMemoryManagerImpl.java:132)
+	at java.lang.Thread.run(Thread.java:619)
+
+"Reaper" daemon prio=10 tid=0x0846c000 nid=0x4b56 in Object.wait() [0x8fc0b000..0x8fc0bf50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e2380> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+	- locked <0xb44e2380> (a java.lang.ref.ReferenceQueue$Lock)
+	at com.tc.object.ClientObjectManagerImpl$2.run(ClientObjectManagerImpl.java:1198)
+
+"Statistics Logger" daemon prio=10 tid=0x0829b000 nid=0x4b55 in Object.wait() [0x8fc5c000..0x8fc5ced0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e24e8> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0xb44e24e8> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"DSO Lock Object.wait() timer" daemon prio=10 tid=0x0847a800 nid=0x4b54 in Object.wait() [0x8fcad000..0x8fcade50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e2c68> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0xb44e2c68> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"RemoteTransactionManager Flusher" daemon prio=10 tid=0x0876f400 nid=0x4b53 in Object.wait() [0x8fcff000..0x8fcff1d0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb43c2b10> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0xb43c2b10> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"HealthChecker" daemon prio=10 tid=0x08770800 nid=0x4b52 sleeping[0x8fe58000..0x8fe59150]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at java.lang.Thread.sleep(Thread.java:298)
+	at com.tc.util.concurrent.ThreadUtil.reallySleep(ThreadUtil.java:24)
+	at com.tc.util.concurrent.ThreadUtil.reallySleep(ThreadUtil.java:16)
+	at com.tc.net.protocol.transport.ConnectionHealthCheckerImpl$HealthCheckerMonitorThreadEngine.run(ConnectionHealthCheckerImpl.java:196)
+	at java.lang.Thread.run(Thread.java:619)
+
+"TCComm Main Selector Thread (listen 0:0:0:0:0:0:0:0:40455)" daemon prio=10 tid=0x08727800 nid=0x4b51 runnable [0x8fea9000..0x8feaa0d0]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0xb454c788> (a sun.nio.ch.Util$1)
+	- locked <0xb454c778> (a java.util.Collections$UnmodifiableSet)
+	- locked <0xb454af10> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices.selectLoop(CoreNIOServices.java:343)
+	at com.tc.net.core.CoreNIOServices.run(CoreNIOServices.java:70)
+
+"SampledCounterManager Timer" daemon prio=10 tid=0x08728800 nid=0x4b50 in Object.wait() [0x8fefa000..0x8fefb050]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb454cea0> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0xb454cea0> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"startlevel job thread" daemon prio=10 tid=0x083e3c00 nid=0x4b4d in Object.wait() [0x8ff50000..0x8ff50fd0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44aa368> (a org.knopflerfish.framework.Queue)
+	at org.knopflerfish.framework.Queue.removeWait(Queue.java:108)
+	- locked <0xb44aa368> (a org.knopflerfish.framework.Queue)
+	at org.knopflerfish.framework.StartLevelImpl.run(StartLevelImpl.java:170)
+	at java.lang.Thread.run(Thread.java:619)
+
+"Low Memory Detector" daemon prio=10 tid=0x0813fc00 nid=0x4b48 runnable [0x00000000..0x00000000]
+   java.lang.Thread.State: RUNNABLE
+
+"CompilerThread1" daemon prio=10 tid=0x0813e000 nid=0x4b47 waiting on condition [0x00000000..0x9096c688]
+   java.lang.Thread.State: RUNNABLE
+
+"CompilerThread0" daemon prio=10 tid=0x0813b800 nid=0x4b46 waiting on condition [0x00000000..0x909ed608]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" daemon prio=10 tid=0x08138000 nid=0x4b45 waiting on condition [0x00000000..0x00000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" daemon prio=10 tid=0x080e6000 nid=0x4b3f in Object.wait() [0x90aa0000..0x90aa1050]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x952d1f48> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+	- locked <0x952d1f48> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:132)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+"Reference Handler" daemon prio=10 tid=0x080e4c00 nid=0x4b3e in Object.wait() [0x90af1000..0x90af1fd0]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x9529f4f0> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:485)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+	- locked <0x9529f4f0> (a java.lang.ref.Reference$Lock)
+
+"main" prio=10 tid=0x0805b800 nid=0x4b3a waiting for monitor entry [0xb7e1e000..0xb7e1f298]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider.requestBatch(RemoteObjectIDBatchSequenceProvider.java:32)
+	- waiting to lock <0xb43bf028> (a com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider)
+	at com.tc.util.sequence.BatchSequence.requestNextBatch(BatchSequence.java:64)
+	at com.tc.util.sequence.BatchSequence.requestMoreIDsIfNecessary(BatchSequence.java:44)
+	at com.tc.util.sequence.BatchSequence.next(BatchSequence.java:31)
+	- locked <0xb43beff0> (a com.tc.util.sequence.BatchSequence)
+	at com.tc.object.idprovider.impl.ObjectIDProviderImpl.next(ObjectIDProviderImpl.java:21)
+	at com.tc.object.ClientObjectManagerImpl.nextObjectID(ClientObjectManagerImpl.java:1140)
+	at com.tc.object.ClientObjectManagerImpl.basicCreateIfNecessary(ClientObjectManagerImpl.java:1084)
+	at com.tc.object.ClientObjectManagerImpl.basicCreateIfNecessary(ClientObjectManagerImpl.java:1099)
+	- locked <0xb43c34f0> (a com.tc.object.ClientObjectManagerImpl)
+	at com.tc.object.ClientObjectManagerImpl.access$600(ClientObjectManagerImpl.java:79)
+	at com.tc.object.ClientObjectManagerImpl$AddManagedObjectAction.basicVisit(ClientObjectManagerImpl.java:1047)
+	at com.tc.object.ClientObjectManagerImpl$BaseAction.visit(ClientObjectManagerImpl.java:1033)
+	at com.tc.object.Traverser.traverse(Traverser.java:93)
+	at com.tc.object.ClientObjectManagerImpl.traverse(ClientObjectManagerImpl.java:950)
+	at com.tc.object.ClientObjectManagerImpl.create(ClientObjectManagerImpl.java:296)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateIfNecesary(ClientObjectManagerImpl.java:356)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreate(ClientObjectManagerImpl.java:334)
+	at com.tc.object.ClientObjectManagerImpl.lookupRootOptionallyCreateOrReplace(ClientObjectManagerImpl.java:875)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateRoot(ClientObjectManagerImpl.java:664)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateRoot(ClientObjectManagerImpl.java:647)
+	at com.tc.object.bytecode.ManagerImpl.lookupOrCreateRoot(ManagerImpl.java:332)
+	at com.tc.object.bytecode.ManagerImpl.lookupOrCreateRoot(ManagerImpl.java:311)
+	at com.tc.object.bytecode.ManagerUtil.lookupOrCreateRoot(ManagerUtil.java:92)
+	at com.tcverify.DSOVerifier.__tc_setverifierMap(DSOVerifier.java)
+	at com.tcverify.DSOVerifier.<init>(DSOVerifier.java:26)
+	at com.tcverify.DSOVerifier.main(DSOVerifier.java:92)
+	at com.tcverify.DSOVerifierReplaceSystemLoaderTest$Client.main(DSOVerifierReplaceSystemLoaderTest.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.tc.lcp.LinkedJavaProcessStarter.main(LinkedJavaProcessStarter.java:34)
+
+"VM Thread" prio=10 tid=0x080dfc00 nid=0x4b3d runnable 
+
+"GC task thread#0 (ParallelGC)" prio=10 tid=0x08062c00 nid=0x4b3b runnable 
+
+"GC task thread#1 (ParallelGC)" prio=10 tid=0x08064400 nid=0x4b3c runnable 
+
+"VM Periodic Task Thread" prio=10 tid=0x0816dc00 nid=0x4b49 waiting on condition 
+
+JNI global references: 645
+
+
+Found one Java-level deadlock:
+=============================
+"WorkerThread(object_id_request_response_stage,0)":
+  waiting to lock monitor 0x08480428 (object 0xb43beff0, a com.tc.util.sequence.BatchSequence),
+  which is held by "main"
+"main":
+  waiting to lock monitor 0x080e9548 (object 0xb43bf028, a com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider),
+  which is held by "WorkerThread(object_id_request_response_stage,0)"
+
+Java stack information for the threads listed above:
+===================================================
+"WorkerThread(object_id_request_response_stage,0)":
+	at com.tc.util.sequence.BatchSequence.setNextBatch(BatchSequence.java:69)
+	- waiting to lock <0xb43beff0> (a com.tc.util.sequence.BatchSequence)
+	at com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider.handleEvent(RemoteObjectIDBatchSequenceProvider.java:40)
+	- locked <0xb43bf028> (a com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:142)
+"main":
+	at com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider.requestBatch(RemoteObjectIDBatchSequenceProvider.java:32)
+	- waiting to lock <0xb43bf028> (a com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider)
+	at com.tc.util.sequence.BatchSequence.requestNextBatch(BatchSequence.java:64)
+	at com.tc.util.sequence.BatchSequence.requestMoreIDsIfNecessary(BatchSequence.java:44)
+	at com.tc.util.sequence.BatchSequence.next(BatchSequence.java:31)
+	- locked <0xb43beff0> (a com.tc.util.sequence.BatchSequence)
+	at com.tc.object.idprovider.impl.ObjectIDProviderImpl.next(ObjectIDProviderImpl.java:21)
+	at com.tc.object.ClientObjectManagerImpl.nextObjectID(ClientObjectManagerImpl.java:1140)
+	at com.tc.object.ClientObjectManagerImpl.basicCreateIfNecessary(ClientObjectManagerImpl.java:1084)
+	at com.tc.object.ClientObjectManagerImpl.basicCreateIfNecessary(ClientObjectManagerImpl.java:1099)
+	- locked <0xb43c34f0> (a com.tc.object.ClientObjectManagerImpl)
+	at com.tc.object.ClientObjectManagerImpl.access$600(ClientObjectManagerImpl.java:79)
+	at com.tc.object.ClientObjectManagerImpl$AddManagedObjectAction.basicVisit(ClientObjectManagerImpl.java:1047)
+	at com.tc.object.ClientObjectManagerImpl$BaseAction.visit(ClientObjectManagerImpl.java:1033)
+	at com.tc.object.Traverser.traverse(Traverser.java:93)
+	at com.tc.object.ClientObjectManagerImpl.traverse(ClientObjectManagerImpl.java:950)
+	at com.tc.object.ClientObjectManagerImpl.create(ClientObjectManagerImpl.java:296)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateIfNecesary(ClientObjectManagerImpl.java:356)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreate(ClientObjectManagerImpl.java:334)
+	at com.tc.object.ClientObjectManagerImpl.lookupRootOptionallyCreateOrReplace(ClientObjectManagerImpl.java:875)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateRoot(ClientObjectManagerImpl.java:664)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateRoot(ClientObjectManagerImpl.java:647)
+	at com.tc.object.bytecode.ManagerImpl.lookupOrCreateRoot(ManagerImpl.java:332)
+	at com.tc.object.bytecode.ManagerImpl.lookupOrCreateRoot(ManagerImpl.java:311)
+	at com.tc.object.bytecode.ManagerUtil.lookupOrCreateRoot(ManagerUtil.java:92)
+	at com.tcverify.DSOVerifier.__tc_setverifierMap(DSOVerifier.java)
+	at com.tcverify.DSOVerifier.<init>(DSOVerifier.java:26)
+	at com.tcverify.DSOVerifier.main(DSOVerifier.java:92)
+	at com.tcverify.DSOVerifierReplaceSystemLoaderTest$Client.main(DSOVerifierReplaceSystemLoaderTest.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.tc.lcp.LinkedJavaProcessStarter.main(LinkedJavaProcessStarter.java:34)
+
+Found 1 deadlock.
+
+Heap
+ PSYoungGen      total 51200K, used 39989K [0xb1400000, 0xb4c70000, 0xb4c70000)
+  eden space 48704K, 77% used [0xb1400000,0xb38f08d0,0xb4390000)
+  from space 2496K, 86% used [0xb4390000,0xb45acc28,0xb4600000)
+  to   space 2688K, 0% used [0xb49d0000,0xb49d0000,0xb4c70000)
+ PSOldGen        total 28864K, used 3580K [0x95070000, 0x96ca0000, 0xb1400000)
+  object space 28864K, 12% used [0x95070000,0x953ef1a0,0x96ca0000)
+ PSPermGen       total 17536K, used 17486K [0x91070000, 0x92190000, 0x95070000)
+  object space 17536K, 99% used [0x91070000,0x92183b00,0x92190000)
+
+2009-07-13 03:17:15
+Full thread dump Java HotSpot(TM) Server VM (11.3-b02 mixed mode):
+
+"Job_Executor2" daemon prio=10 tid=0x904d1400 nid=0x4b71 in Object.wait() [0x8ef83000..0x8ef83e50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb2273b38> (a com.sun.jmx.remote.opt.internal.ArrayNotificationBuffer)
+	at com.sun.jmx.remote.opt.internal.ArrayNotificationBuffer.fetchNotifications(ArrayNotificationBuffer.java:344)
+	- locked <0xb2273b38> (a com.sun.jmx.remote.opt.internal.ArrayNotificationBuffer)
+	at com.sun.jmx.remote.opt.internal.ArrayNotificationBuffer$ShareBuffer.fetchNotifications(ArrayNotificationBuffer.java:123)
+	at com.sun.jmx.remote.opt.internal.ServerNotifForwarder.fetchNotifs(ServerNotifForwarder.java:169)
+	at javax.management.remote.generic.ServerIntermediary$RequestHandler.handleNotifReqMessage(ServerIntermediary.java:679)
+	at javax.management.remote.generic.ServerIntermediary$RequestHandler.execute(ServerIntermediary.java:626)
+	at com.sun.jmx.remote.generic.ServerSynchroMessageConnectionImpl$RemoteJob.run(ServerSynchroMessageConnectionImpl.java:266)
+	at com.sun.jmx.remote.opt.util.ThreadService$ThreadServiceJob.run(ThreadService.java:208)
+	at com.sun.jmx.remote.opt.util.JobExecutor.run(JobExecutor.java:59)
+
+"Job_Executor1" daemon prio=10 tid=0x904bcc00 nid=0x4b70 in Object.wait() [0x8f16e000..0x8f16f1d0]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb1636d40> (a com.tc.management.remote.protocol.terracotta.TunnelingMessageConnection)
+	at java.lang.Object.wait(Object.java:485)
+	at com.tc.management.remote.protocol.terracotta.TunnelingMessageConnection.readMessage(TunnelingMessageConnection.java:64)
+	- locked <0xb1636d40> (a com.tc.management.remote.protocol.terracotta.TunnelingMessageConnection)
+	at com.sun.jmx.remote.generic.ServerSynchroMessageConnectionImpl$MessageReader.run(ServerSynchroMessageConnectionImpl.java:185)
+	at com.sun.jmx.remote.opt.util.ThreadService$ThreadServiceJob.run(ThreadService.java:208)
+	at com.sun.jmx.remote.opt.util.JobExecutor.run(JobExecutor.java:59)
+
+"Thread-10" daemon prio=10 tid=0x9023d800 nid=0x4b6a runnable [0x8f608000..0x8f609150]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:129)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+	- locked <0xb1ed5b90> (a java.io.InputStreamReader)
+	at java.io.InputStreamReader.read(InputStreamReader.java:167)
+	at java.io.BufferedReader.fill(BufferedReader.java:136)
+	at java.io.BufferedReader.readLine(BufferedReader.java:299)
+	- locked <0xb1ed5b90> (a java.io.InputStreamReader)
+	at java.io.BufferedReader.readLine(BufferedReader.java:362)
+	at com.tc.lcp.HeartBeatClient.run(HeartBeatClient.java:53)
+
+"Thread-9" daemon prio=10 tid=0x08527400 nid=0x4b68 in Object.wait() [0x8f659000..0x8f65a050]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d8590> (a com.tc.management.remote.protocol.terracotta.TunnelingEventHandler)
+	at java.lang.Object.wait(Object.java:485)
+	at com.tc.management.remote.protocol.terracotta.TunnelingEventHandler.accept(TunnelingEventHandler.java:84)
+	- locked <0xb44d8590> (a com.tc.management.remote.protocol.terracotta.TunnelingEventHandler)
+	at com.tc.management.remote.protocol.terracotta.TunnelingMessageConnectionServer.accept(TunnelingMessageConnectionServer.java:32)
+	at com.sun.jmx.remote.generic.SynchroMessageConnectionServerImpl.accept(SynchroMessageConnectionServerImpl.java:47)
+	at javax.management.remote.generic.GenericConnectorServer$Receiver.run(GenericConnectorServer.java:340)
+
+"Timer-0" daemon prio=10 tid=0x086b6800 nid=0x4b67 in Object.wait() [0x8f6aa000..0x8f6aafd0]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d4720> (a java.util.TaskQueue)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	- locked <0xb44d4720> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"WorkerThread(client_coordination_stage,0)" daemon prio=10 tid=0x905a6800 nid=0x4b66 in Object.wait() [0x8f6fb000..0x8f6fbf50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d8af0> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44d8af0> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(lock_response_stage,0)" daemon prio=10 tid=0x905a5400 nid=0x4b65 in Object.wait() [0x8f74c000..0x8f74ced0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d8ed8> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44d8ed8> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(hydrate_message_stage,0)" daemon prio=10 tid=0x905a3c00 nid=0x4b64 in Object.wait() [0x8f79d000..0x8f79de50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d9260> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44d9260> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(receive_transaction_complete_stage,0)" daemon prio=10 tid=0x9020f800 nid=0x4b63 in Object.wait() [0x8f7ee000..0x8f7ef1d0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d95e8> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44d95e8> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(dmi_stage,0)" daemon prio=10 tid=0x9020e000 nid=0x4b62 in Object.wait() [0x8f83f000..0x8f840150]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44dfaf8> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44dfaf8> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(batch_txn_ack_stage,0)" daemon prio=10 tid=0x9020cc00 nid=0x4b61 in Object.wait() [0x8f890000..0x8f8910d0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44dfec0> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44dfec0> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(lock_statistics_response_stage,0)" daemon prio=10 tid=0x9020b400 nid=0x4b60 in Object.wait() [0x8f8e1000..0x8f8e2050]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e0270> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e0270> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(jmxremote_tunnel_stage,0)" daemon prio=10 tid=0x9020a000 nid=0x4b5f in Object.wait() [0x8f932000..0x8f932fd0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e0640> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e0640> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(receive_object_stage,0)" daemon prio=10 tid=0x90243400 nid=0x4b5e in Object.wait() [0x8f983000..0x8f983f50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e09a8> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e09a8> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(cluster_metadata_stage,0)" daemon prio=10 tid=0x90241c00 nid=0x4b5d in Object.wait() [0x8f9d4000..0x8f9d4ed0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e0d80> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e0d80> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(receive_root_id_stage,0)" daemon prio=10 tid=0x90240800 nid=0x4b5c in Object.wait() [0x8fa25000..0x8fa25e50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e1138> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e1138> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(object_id_request_response_stage,0)" daemon prio=10 tid=0x90244800 nid=0x4b5b waiting for monitor entry [0x8fa77000..0x8fa771d0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at com.tc.util.sequence.BatchSequence.setNextBatch(BatchSequence.java:69)
+	- waiting to lock <0xb43beff0> (a com.tc.util.sequence.BatchSequence)
+	at com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider.handleEvent(RemoteObjectIDBatchSequenceProvider.java:40)
+	- locked <0xb43bf028> (a com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:142)
+
+"WorkerThread(lock_statistics_enable_disable_stage,0)" daemon prio=10 tid=0x90247000 nid=0x4b5a in Object.wait() [0x8fac7000..0x8fac8150]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e1888> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e1888> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(receive_transaction_stage,0)" daemon prio=10 tid=0x90246000 nid=0x4b59 in Object.wait() [0x8fb18000..0x8fb190d0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e1c80> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e1c80> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"TC Memory Monitor" daemon prio=10 tid=0x08343800 nid=0x4b57 waiting on condition [0x8fbba000..0x8fbbafd0]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at com.tc.runtime.TCMemoryManagerImpl$MemoryMonitor.run(TCMemoryManagerImpl.java:132)
+	at java.lang.Thread.run(Thread.java:619)
+
+"Reaper" daemon prio=10 tid=0x0846c000 nid=0x4b56 in Object.wait() [0x8fc0b000..0x8fc0bf50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e2380> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+	- locked <0xb44e2380> (a java.lang.ref.ReferenceQueue$Lock)
+	at com.tc.object.ClientObjectManagerImpl$2.run(ClientObjectManagerImpl.java:1198)
+
+"Statistics Logger" daemon prio=10 tid=0x0829b000 nid=0x4b55 in Object.wait() [0x8fc5c000..0x8fc5ced0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e24e8> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0xb44e24e8> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"DSO Lock Object.wait() timer" daemon prio=10 tid=0x0847a800 nid=0x4b54 in Object.wait() [0x8fcad000..0x8fcade50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e2c68> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0xb44e2c68> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"RemoteTransactionManager Flusher" daemon prio=10 tid=0x0876f400 nid=0x4b53 in Object.wait() [0x8fcff000..0x8fcff1d0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb43c2b10> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0xb43c2b10> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"HealthChecker" daemon prio=10 tid=0x08770800 nid=0x4b52 waiting on condition [0x8fe58000..0x8fe59150]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at java.lang.Thread.sleep(Thread.java:298)
+	at com.tc.util.concurrent.ThreadUtil.reallySleep(ThreadUtil.java:24)
+	at com.tc.util.concurrent.ThreadUtil.reallySleep(ThreadUtil.java:16)
+	at com.tc.net.protocol.transport.ConnectionHealthCheckerImpl$HealthCheckerMonitorThreadEngine.run(ConnectionHealthCheckerImpl.java:196)
+	at java.lang.Thread.run(Thread.java:619)
+
+"TCComm Main Selector Thread (listen 0:0:0:0:0:0:0:0:40455)" daemon prio=10 tid=0x08727800 nid=0x4b51 runnable [0x8fea9000..0x8feaa0d0]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0xb454c788> (a sun.nio.ch.Util$1)
+	- locked <0xb454c778> (a java.util.Collections$UnmodifiableSet)
+	- locked <0xb454af10> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices.selectLoop(CoreNIOServices.java:343)
+	at com.tc.net.core.CoreNIOServices.run(CoreNIOServices.java:70)
+
+"SampledCounterManager Timer" daemon prio=10 tid=0x08728800 nid=0x4b50 in Object.wait() [0x8fefa000..0x8fefb050]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb454cea0> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0xb454cea0> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"startlevel job thread" daemon prio=10 tid=0x083e3c00 nid=0x4b4d in Object.wait() [0x8ff50000..0x8ff50fd0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44aa368> (a org.knopflerfish.framework.Queue)
+	at org.knopflerfish.framework.Queue.removeWait(Queue.java:108)
+	- locked <0xb44aa368> (a org.knopflerfish.framework.Queue)
+	at org.knopflerfish.framework.StartLevelImpl.run(StartLevelImpl.java:170)
+	at java.lang.Thread.run(Thread.java:619)
+
+"Low Memory Detector" daemon prio=10 tid=0x0813fc00 nid=0x4b48 runnable [0x00000000..0x00000000]
+   java.lang.Thread.State: RUNNABLE
+
+"CompilerThread1" daemon prio=10 tid=0x0813e000 nid=0x4b47 waiting on condition [0x00000000..0x9096c688]
+   java.lang.Thread.State: RUNNABLE
+
+"CompilerThread0" daemon prio=10 tid=0x0813b800 nid=0x4b46 waiting on condition [0x00000000..0x909ed608]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" daemon prio=10 tid=0x08138000 nid=0x4b45 waiting on condition [0x00000000..0x00000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" daemon prio=10 tid=0x080e6000 nid=0x4b3f in Object.wait() [0x90aa0000..0x90aa1050]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x952d1f48> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+	- locked <0x952d1f48> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:132)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+"Reference Handler" daemon prio=10 tid=0x080e4c00 nid=0x4b3e in Object.wait() [0x90af1000..0x90af1fd0]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x9529f4f0> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:485)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+	- locked <0x9529f4f0> (a java.lang.ref.Reference$Lock)
+
+"main" prio=10 tid=0x0805b800 nid=0x4b3a waiting for monitor entry [0xb7e1e000..0xb7e1f298]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider.requestBatch(RemoteObjectIDBatchSequenceProvider.java:32)
+	- waiting to lock <0xb43bf028> (a com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider)
+	at com.tc.util.sequence.BatchSequence.requestNextBatch(BatchSequence.java:64)
+	at com.tc.util.sequence.BatchSequence.requestMoreIDsIfNecessary(BatchSequence.java:44)
+	at com.tc.util.sequence.BatchSequence.next(BatchSequence.java:31)
+	- locked <0xb43beff0> (a com.tc.util.sequence.BatchSequence)
+	at com.tc.object.idprovider.impl.ObjectIDProviderImpl.next(ObjectIDProviderImpl.java:21)
+	at com.tc.object.ClientObjectManagerImpl.nextObjectID(ClientObjectManagerImpl.java:1140)
+	at com.tc.object.ClientObjectManagerImpl.basicCreateIfNecessary(ClientObjectManagerImpl.java:1084)
+	at com.tc.object.ClientObjectManagerImpl.basicCreateIfNecessary(ClientObjectManagerImpl.java:1099)
+	- locked <0xb43c34f0> (a com.tc.object.ClientObjectManagerImpl)
+	at com.tc.object.ClientObjectManagerImpl.access$600(ClientObjectManagerImpl.java:79)
+	at com.tc.object.ClientObjectManagerImpl$AddManagedObjectAction.basicVisit(ClientObjectManagerImpl.java:1047)
+	at com.tc.object.ClientObjectManagerImpl$BaseAction.visit(ClientObjectManagerImpl.java:1033)
+	at com.tc.object.Traverser.traverse(Traverser.java:93)
+	at com.tc.object.ClientObjectManagerImpl.traverse(ClientObjectManagerImpl.java:950)
+	at com.tc.object.ClientObjectManagerImpl.create(ClientObjectManagerImpl.java:296)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateIfNecesary(ClientObjectManagerImpl.java:356)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreate(ClientObjectManagerImpl.java:334)
+	at com.tc.object.ClientObjectManagerImpl.lookupRootOptionallyCreateOrReplace(ClientObjectManagerImpl.java:875)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateRoot(ClientObjectManagerImpl.java:664)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateRoot(ClientObjectManagerImpl.java:647)
+	at com.tc.object.bytecode.ManagerImpl.lookupOrCreateRoot(ManagerImpl.java:332)
+	at com.tc.object.bytecode.ManagerImpl.lookupOrCreateRoot(ManagerImpl.java:311)
+	at com.tc.object.bytecode.ManagerUtil.lookupOrCreateRoot(ManagerUtil.java:92)
+	at com.tcverify.DSOVerifier.__tc_setverifierMap(DSOVerifier.java)
+	at com.tcverify.DSOVerifier.<init>(DSOVerifier.java:26)
+	at com.tcverify.DSOVerifier.main(DSOVerifier.java:92)
+	at com.tcverify.DSOVerifierReplaceSystemLoaderTest$Client.main(DSOVerifierReplaceSystemLoaderTest.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.tc.lcp.LinkedJavaProcessStarter.main(LinkedJavaProcessStarter.java:34)
+
+"VM Thread" prio=10 tid=0x080dfc00 nid=0x4b3d runnable 
+
+"GC task thread#0 (ParallelGC)" prio=10 tid=0x08062c00 nid=0x4b3b runnable 
+
+"GC task thread#1 (ParallelGC)" prio=10 tid=0x08064400 nid=0x4b3c runnable 
+
+"VM Periodic Task Thread" prio=10 tid=0x0816dc00 nid=0x4b49 waiting on condition 
+
+JNI global references: 645
+
+
+Found one Java-level deadlock:
+=============================
+"WorkerThread(object_id_request_response_stage,0)":
+  waiting to lock monitor 0x08480428 (object 0xb43beff0, a com.tc.util.sequence.BatchSequence),
+  which is held by "main"
+"main":
+  waiting to lock monitor 0x080e9548 (object 0xb43bf028, a com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider),
+  which is held by "WorkerThread(object_id_request_response_stage,0)"
+
+Java stack information for the threads listed above:
+===================================================
+"WorkerThread(object_id_request_response_stage,0)":
+	at com.tc.util.sequence.BatchSequence.setNextBatch(BatchSequence.java:69)
+	- waiting to lock <0xb43beff0> (a com.tc.util.sequence.BatchSequence)
+	at com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider.handleEvent(RemoteObjectIDBatchSequenceProvider.java:40)
+	- locked <0xb43bf028> (a com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:142)
+"main":
+	at com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider.requestBatch(RemoteObjectIDBatchSequenceProvider.java:32)
+	- waiting to lock <0xb43bf028> (a com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider)
+	at com.tc.util.sequence.BatchSequence.requestNextBatch(BatchSequence.java:64)
+	at com.tc.util.sequence.BatchSequence.requestMoreIDsIfNecessary(BatchSequence.java:44)
+	at com.tc.util.sequence.BatchSequence.next(BatchSequence.java:31)
+	- locked <0xb43beff0> (a com.tc.util.sequence.BatchSequence)
+	at com.tc.object.idprovider.impl.ObjectIDProviderImpl.next(ObjectIDProviderImpl.java:21)
+	at com.tc.object.ClientObjectManagerImpl.nextObjectID(ClientObjectManagerImpl.java:1140)
+	at com.tc.object.ClientObjectManagerImpl.basicCreateIfNecessary(ClientObjectManagerImpl.java:1084)
+	at com.tc.object.ClientObjectManagerImpl.basicCreateIfNecessary(ClientObjectManagerImpl.java:1099)
+	- locked <0xb43c34f0> (a com.tc.object.ClientObjectManagerImpl)
+	at com.tc.object.ClientObjectManagerImpl.access$600(ClientObjectManagerImpl.java:79)
+	at com.tc.object.ClientObjectManagerImpl$AddManagedObjectAction.basicVisit(ClientObjectManagerImpl.java:1047)
+	at com.tc.object.ClientObjectManagerImpl$BaseAction.visit(ClientObjectManagerImpl.java:1033)
+	at com.tc.object.Traverser.traverse(Traverser.java:93)
+	at com.tc.object.ClientObjectManagerImpl.traverse(ClientObjectManagerImpl.java:950)
+	at com.tc.object.ClientObjectManagerImpl.create(ClientObjectManagerImpl.java:296)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateIfNecesary(ClientObjectManagerImpl.java:356)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreate(ClientObjectManagerImpl.java:334)
+	at com.tc.object.ClientObjectManagerImpl.lookupRootOptionallyCreateOrReplace(ClientObjectManagerImpl.java:875)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateRoot(ClientObjectManagerImpl.java:664)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateRoot(ClientObjectManagerImpl.java:647)
+	at com.tc.object.bytecode.ManagerImpl.lookupOrCreateRoot(ManagerImpl.java:332)
+	at com.tc.object.bytecode.ManagerImpl.lookupOrCreateRoot(ManagerImpl.java:311)
+	at com.tc.object.bytecode.ManagerUtil.lookupOrCreateRoot(ManagerUtil.java:92)
+	at com.tcverify.DSOVerifier.__tc_setverifierMap(DSOVerifier.java)
+	at com.tcverify.DSOVerifier.<init>(DSOVerifier.java:26)
+	at com.tcverify.DSOVerifier.main(DSOVerifier.java:92)
+	at com.tcverify.DSOVerifierReplaceSystemLoaderTest$Client.main(DSOVerifierReplaceSystemLoaderTest.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.tc.lcp.LinkedJavaProcessStarter.main(LinkedJavaProcessStarter.java:34)
+
+Found 1 deadlock.
+
+Heap
+ PSYoungGen      total 51200K, used 39989K [0xb1400000, 0xb4c70000, 0xb4c70000)
+  eden space 48704K, 77% used [0xb1400000,0xb38f08e8,0xb4390000)
+  from space 2496K, 86% used [0xb4390000,0xb45acc28,0xb4600000)
+  to   space 2688K, 0% used [0xb49d0000,0xb49d0000,0xb4c70000)
+ PSOldGen        total 28864K, used 3580K [0x95070000, 0x96ca0000, 0xb1400000)
+  object space 28864K, 12% used [0x95070000,0x953ef1a0,0x96ca0000)
+ PSPermGen       total 17536K, used 17486K [0x91070000, 0x92190000, 0x95070000)
+  object space 17536K, 99% used [0x91070000,0x92183b00,0x92190000)
+
+2009-07-13 03:17:16
+Full thread dump Java HotSpot(TM) Server VM (11.3-b02 mixed mode):
+
+"Job_Executor2" daemon prio=10 tid=0x904d1400 nid=0x4b71 in Object.wait() [0x8ef83000..0x8ef83e50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb2273b38> (a com.sun.jmx.remote.opt.internal.ArrayNotificationBuffer)
+	at com.sun.jmx.remote.opt.internal.ArrayNotificationBuffer.fetchNotifications(ArrayNotificationBuffer.java:344)
+	- locked <0xb2273b38> (a com.sun.jmx.remote.opt.internal.ArrayNotificationBuffer)
+	at com.sun.jmx.remote.opt.internal.ArrayNotificationBuffer$ShareBuffer.fetchNotifications(ArrayNotificationBuffer.java:123)
+	at com.sun.jmx.remote.opt.internal.ServerNotifForwarder.fetchNotifs(ServerNotifForwarder.java:169)
+	at javax.management.remote.generic.ServerIntermediary$RequestHandler.handleNotifReqMessage(ServerIntermediary.java:679)
+	at javax.management.remote.generic.ServerIntermediary$RequestHandler.execute(ServerIntermediary.java:626)
+	at com.sun.jmx.remote.generic.ServerSynchroMessageConnectionImpl$RemoteJob.run(ServerSynchroMessageConnectionImpl.java:266)
+	at com.sun.jmx.remote.opt.util.ThreadService$ThreadServiceJob.run(ThreadService.java:208)
+	at com.sun.jmx.remote.opt.util.JobExecutor.run(JobExecutor.java:59)
+
+"Job_Executor1" daemon prio=10 tid=0x904bcc00 nid=0x4b70 in Object.wait() [0x8f16e000..0x8f16f1d0]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb1636d40> (a com.tc.management.remote.protocol.terracotta.TunnelingMessageConnection)
+	at java.lang.Object.wait(Object.java:485)
+	at com.tc.management.remote.protocol.terracotta.TunnelingMessageConnection.readMessage(TunnelingMessageConnection.java:64)
+	- locked <0xb1636d40> (a com.tc.management.remote.protocol.terracotta.TunnelingMessageConnection)
+	at com.sun.jmx.remote.generic.ServerSynchroMessageConnectionImpl$MessageReader.run(ServerSynchroMessageConnectionImpl.java:185)
+	at com.sun.jmx.remote.opt.util.ThreadService$ThreadServiceJob.run(ThreadService.java:208)
+	at com.sun.jmx.remote.opt.util.JobExecutor.run(JobExecutor.java:59)
+
+"Thread-10" daemon prio=10 tid=0x9023d800 nid=0x4b6a runnable [0x8f608000..0x8f609150]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:129)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+	- locked <0xb1ed5b90> (a java.io.InputStreamReader)
+	at java.io.InputStreamReader.read(InputStreamReader.java:167)
+	at java.io.BufferedReader.fill(BufferedReader.java:136)
+	at java.io.BufferedReader.readLine(BufferedReader.java:299)
+	- locked <0xb1ed5b90> (a java.io.InputStreamReader)
+	at java.io.BufferedReader.readLine(BufferedReader.java:362)
+	at com.tc.lcp.HeartBeatClient.run(HeartBeatClient.java:53)
+
+"Thread-9" daemon prio=10 tid=0x08527400 nid=0x4b68 in Object.wait() [0x8f659000..0x8f65a050]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d8590> (a com.tc.management.remote.protocol.terracotta.TunnelingEventHandler)
+	at java.lang.Object.wait(Object.java:485)
+	at com.tc.management.remote.protocol.terracotta.TunnelingEventHandler.accept(TunnelingEventHandler.java:84)
+	- locked <0xb44d8590> (a com.tc.management.remote.protocol.terracotta.TunnelingEventHandler)
+	at com.tc.management.remote.protocol.terracotta.TunnelingMessageConnectionServer.accept(TunnelingMessageConnectionServer.java:32)
+	at com.sun.jmx.remote.generic.SynchroMessageConnectionServerImpl.accept(SynchroMessageConnectionServerImpl.java:47)
+	at javax.management.remote.generic.GenericConnectorServer$Receiver.run(GenericConnectorServer.java:340)
+
+"Timer-0" daemon prio=10 tid=0x086b6800 nid=0x4b67 in Object.wait() [0x8f6aa000..0x8f6aafd0]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d4720> (a java.util.TaskQueue)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	- locked <0xb44d4720> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"WorkerThread(client_coordination_stage,0)" daemon prio=10 tid=0x905a6800 nid=0x4b66 in Object.wait() [0x8f6fb000..0x8f6fbf50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d8af0> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44d8af0> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(lock_response_stage,0)" daemon prio=10 tid=0x905a5400 nid=0x4b65 in Object.wait() [0x8f74c000..0x8f74ced0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d8ed8> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44d8ed8> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(hydrate_message_stage,0)" daemon prio=10 tid=0x905a3c00 nid=0x4b64 in Object.wait() [0x8f79d000..0x8f79de50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d9260> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44d9260> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(receive_transaction_complete_stage,0)" daemon prio=10 tid=0x9020f800 nid=0x4b63 in Object.wait() [0x8f7ee000..0x8f7ef1d0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44d95e8> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44d95e8> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(dmi_stage,0)" daemon prio=10 tid=0x9020e000 nid=0x4b62 in Object.wait() [0x8f83f000..0x8f840150]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44dfaf8> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44dfaf8> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(batch_txn_ack_stage,0)" daemon prio=10 tid=0x9020cc00 nid=0x4b61 in Object.wait() [0x8f890000..0x8f8910d0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44dfec0> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44dfec0> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(lock_statistics_response_stage,0)" daemon prio=10 tid=0x9020b400 nid=0x4b60 in Object.wait() [0x8f8e1000..0x8f8e2050]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e0270> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e0270> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(jmxremote_tunnel_stage,0)" daemon prio=10 tid=0x9020a000 nid=0x4b5f in Object.wait() [0x8f932000..0x8f932fd0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e0640> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e0640> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(receive_object_stage,0)" daemon prio=10 tid=0x90243400 nid=0x4b5e in Object.wait() [0x8f983000..0x8f983f50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e09a8> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e09a8> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(cluster_metadata_stage,0)" daemon prio=10 tid=0x90241c00 nid=0x4b5d in Object.wait() [0x8f9d4000..0x8f9d4ed0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e0d80> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e0d80> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(receive_root_id_stage,0)" daemon prio=10 tid=0x90240800 nid=0x4b5c in Object.wait() [0x8fa25000..0x8fa25e50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e1138> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e1138> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(object_id_request_response_stage,0)" daemon prio=10 tid=0x90244800 nid=0x4b5b waiting for monitor entry [0x8fa77000..0x8fa771d0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at com.tc.util.sequence.BatchSequence.setNextBatch(BatchSequence.java:69)
+	- waiting to lock <0xb43beff0> (a com.tc.util.sequence.BatchSequence)
+	at com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider.handleEvent(RemoteObjectIDBatchSequenceProvider.java:40)
+	- locked <0xb43bf028> (a com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:142)
+
+"WorkerThread(lock_statistics_enable_disable_stage,0)" daemon prio=10 tid=0x90247000 nid=0x4b5a in Object.wait() [0x8fac7000..0x8fac8150]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e1888> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e1888> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"WorkerThread(receive_transaction_stage,0)" daemon prio=10 tid=0x90246000 nid=0x4b59 in Object.wait() [0x8fb18000..0x8fb190d0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e1c80> (a java.lang.Object)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	- locked <0xb44e1c80> (a java.lang.Object)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl.poll(StageQueueImpl.java:103)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:129)
+
+"TC Memory Monitor" daemon prio=10 tid=0x08343800 nid=0x4b57 waiting on condition [0x8fbba000..0x8fbbafd0]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at com.tc.runtime.TCMemoryManagerImpl$MemoryMonitor.run(TCMemoryManagerImpl.java:132)
+	at java.lang.Thread.run(Thread.java:619)
+
+"Reaper" daemon prio=10 tid=0x0846c000 nid=0x4b56 in Object.wait() [0x8fc0b000..0x8fc0bf50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e2380> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+	- locked <0xb44e2380> (a java.lang.ref.ReferenceQueue$Lock)
+	at com.tc.object.ClientObjectManagerImpl$2.run(ClientObjectManagerImpl.java:1198)
+
+"Statistics Logger" daemon prio=10 tid=0x0829b000 nid=0x4b55 in Object.wait() [0x8fc5c000..0x8fc5ced0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e24e8> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0xb44e24e8> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"DSO Lock Object.wait() timer" daemon prio=10 tid=0x0847a800 nid=0x4b54 in Object.wait() [0x8fcad000..0x8fcade50]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44e2c68> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0xb44e2c68> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"RemoteTransactionManager Flusher" daemon prio=10 tid=0x0876f400 nid=0x4b53 in Object.wait() [0x8fcff000..0x8fcff1d0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb43c2b10> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0xb43c2b10> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"HealthChecker" daemon prio=10 tid=0x08770800 nid=0x4b52 waiting on condition [0x8fe58000..0x8fe59150]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at java.lang.Thread.sleep(Thread.java:298)
+	at com.tc.util.concurrent.ThreadUtil.reallySleep(ThreadUtil.java:24)
+	at com.tc.util.concurrent.ThreadUtil.reallySleep(ThreadUtil.java:16)
+	at com.tc.net.protocol.transport.ConnectionHealthCheckerImpl$HealthCheckerMonitorThreadEngine.run(ConnectionHealthCheckerImpl.java:196)
+	at java.lang.Thread.run(Thread.java:619)
+
+"TCComm Main Selector Thread (listen 0:0:0:0:0:0:0:0:40455)" daemon prio=10 tid=0x08727800 nid=0x4b51 runnable [0x8fea9000..0x8feaa0d0]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0xb454c788> (a sun.nio.ch.Util$1)
+	- locked <0xb454c778> (a java.util.Collections$UnmodifiableSet)
+	- locked <0xb454af10> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices.selectLoop(CoreNIOServices.java:343)
+	at com.tc.net.core.CoreNIOServices.run(CoreNIOServices.java:70)
+
+"SampledCounterManager Timer" daemon prio=10 tid=0x08728800 nid=0x4b50 in Object.wait() [0x8fefa000..0x8fefb050]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb454cea0> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0xb454cea0> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"startlevel job thread" daemon prio=10 tid=0x083e3c00 nid=0x4b4d in Object.wait() [0x8ff50000..0x8ff50fd0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xb44aa368> (a org.knopflerfish.framework.Queue)
+	at org.knopflerfish.framework.Queue.removeWait(Queue.java:108)
+	- locked <0xb44aa368> (a org.knopflerfish.framework.Queue)
+	at org.knopflerfish.framework.StartLevelImpl.run(StartLevelImpl.java:170)
+	at java.lang.Thread.run(Thread.java:619)
+
+"Low Memory Detector" daemon prio=10 tid=0x0813fc00 nid=0x4b48 runnable [0x00000000..0x00000000]
+   java.lang.Thread.State: RUNNABLE
+
+"CompilerThread1" daemon prio=10 tid=0x0813e000 nid=0x4b47 waiting on condition [0x00000000..0x9096c688]
+   java.lang.Thread.State: RUNNABLE
+
+"CompilerThread0" daemon prio=10 tid=0x0813b800 nid=0x4b46 waiting on condition [0x00000000..0x909ed608]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" daemon prio=10 tid=0x08138000 nid=0x4b45 waiting on condition [0x00000000..0x00000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" daemon prio=10 tid=0x080e6000 nid=0x4b3f in Object.wait() [0x90aa0000..0x90aa1050]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x952d1f48> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+	- locked <0x952d1f48> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:132)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+"Reference Handler" daemon prio=10 tid=0x080e4c00 nid=0x4b3e in Object.wait() [0x90af1000..0x90af1fd0]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x9529f4f0> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:485)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+	- locked <0x9529f4f0> (a java.lang.ref.Reference$Lock)
+
+"main" prio=10 tid=0x0805b800 nid=0x4b3a waiting for monitor entry [0xb7e1e000..0xb7e1f298]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider.requestBatch(RemoteObjectIDBatchSequenceProvider.java:32)
+	- waiting to lock <0xb43bf028> (a com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider)
+	at com.tc.util.sequence.BatchSequence.requestNextBatch(BatchSequence.java:64)
+	at com.tc.util.sequence.BatchSequence.requestMoreIDsIfNecessary(BatchSequence.java:44)
+	at com.tc.util.sequence.BatchSequence.next(BatchSequence.java:31)
+	- locked <0xb43beff0> (a com.tc.util.sequence.BatchSequence)
+	at com.tc.object.idprovider.impl.ObjectIDProviderImpl.next(ObjectIDProviderImpl.java:21)
+	at com.tc.object.ClientObjectManagerImpl.nextObjectID(ClientObjectManagerImpl.java:1140)
+	at com.tc.object.ClientObjectManagerImpl.basicCreateIfNecessary(ClientObjectManagerImpl.java:1084)
+	at com.tc.object.ClientObjectManagerImpl.basicCreateIfNecessary(ClientObjectManagerImpl.java:1099)
+	- locked <0xb43c34f0> (a com.tc.object.ClientObjectManagerImpl)
+	at com.tc.object.ClientObjectManagerImpl.access$600(ClientObjectManagerImpl.java:79)
+	at com.tc.object.ClientObjectManagerImpl$AddManagedObjectAction.basicVisit(ClientObjectManagerImpl.java:1047)
+	at com.tc.object.ClientObjectManagerImpl$BaseAction.visit(ClientObjectManagerImpl.java:1033)
+	at com.tc.object.Traverser.traverse(Traverser.java:93)
+	at com.tc.object.ClientObjectManagerImpl.traverse(ClientObjectManagerImpl.java:950)
+	at com.tc.object.ClientObjectManagerImpl.create(ClientObjectManagerImpl.java:296)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateIfNecesary(ClientObjectManagerImpl.java:356)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreate(ClientObjectManagerImpl.java:334)
+	at com.tc.object.ClientObjectManagerImpl.lookupRootOptionallyCreateOrReplace(ClientObjectManagerImpl.java:875)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateRoot(ClientObjectManagerImpl.java:664)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateRoot(ClientObjectManagerImpl.java:647)
+	at com.tc.object.bytecode.ManagerImpl.lookupOrCreateRoot(ManagerImpl.java:332)
+	at com.tc.object.bytecode.ManagerImpl.lookupOrCreateRoot(ManagerImpl.java:311)
+	at com.tc.object.bytecode.ManagerUtil.lookupOrCreateRoot(ManagerUtil.java:92)
+	at com.tcverify.DSOVerifier.__tc_setverifierMap(DSOVerifier.java)
+	at com.tcverify.DSOVerifier.<init>(DSOVerifier.java:26)
+	at com.tcverify.DSOVerifier.main(DSOVerifier.java:92)
+	at com.tcverify.DSOVerifierReplaceSystemLoaderTest$Client.main(DSOVerifierReplaceSystemLoaderTest.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.tc.lcp.LinkedJavaProcessStarter.main(LinkedJavaProcessStarter.java:34)
+
+"VM Thread" prio=10 tid=0x080dfc00 nid=0x4b3d runnable 
+
+"GC task thread#0 (ParallelGC)" prio=10 tid=0x08062c00 nid=0x4b3b runnable 
+
+"GC task thread#1 (ParallelGC)" prio=10 tid=0x08064400 nid=0x4b3c runnable 
+
+"VM Periodic Task Thread" prio=10 tid=0x0816dc00 nid=0x4b49 waiting on condition 
+
+JNI global references: 645
+
+
+Found one Java-level deadlock:
+=============================
+"WorkerThread(object_id_request_response_stage,0)":
+  waiting to lock monitor 0x08480428 (object 0xb43beff0, a com.tc.util.sequence.BatchSequence),
+  which is held by "main"
+"main":
+  waiting to lock monitor 0x080e9548 (object 0xb43bf028, a com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider),
+  which is held by "WorkerThread(object_id_request_response_stage,0)"
+
+Java stack information for the threads listed above:
+===================================================
+"WorkerThread(object_id_request_response_stage,0)":
+	at com.tc.util.sequence.BatchSequence.setNextBatch(BatchSequence.java:69)
+	- waiting to lock <0xb43beff0> (a com.tc.util.sequence.BatchSequence)
+	at com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider.handleEvent(RemoteObjectIDBatchSequenceProvider.java:40)
+	- locked <0xb43bf028> (a com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:142)
+"main":
+	at com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider.requestBatch(RemoteObjectIDBatchSequenceProvider.java:32)
+	- waiting to lock <0xb43bf028> (a com.tc.object.idprovider.impl.RemoteObjectIDBatchSequenceProvider)
+	at com.tc.util.sequence.BatchSequence.requestNextBatch(BatchSequence.java:64)
+	at com.tc.util.sequence.BatchSequence.requestMoreIDsIfNecessary(BatchSequence.java:44)
+	at com.tc.util.sequence.BatchSequence.next(BatchSequence.java:31)
+	- locked <0xb43beff0> (a com.tc.util.sequence.BatchSequence)
+	at com.tc.object.idprovider.impl.ObjectIDProviderImpl.next(ObjectIDProviderImpl.java:21)
+	at com.tc.object.ClientObjectManagerImpl.nextObjectID(ClientObjectManagerImpl.java:1140)
+	at com.tc.object.ClientObjectManagerImpl.basicCreateIfNecessary(ClientObjectManagerImpl.java:1084)
+	at com.tc.object.ClientObjectManagerImpl.basicCreateIfNecessary(ClientObjectManagerImpl.java:1099)
+	- locked <0xb43c34f0> (a com.tc.object.ClientObjectManagerImpl)
+	at com.tc.object.ClientObjectManagerImpl.access$600(ClientObjectManagerImpl.java:79)
+	at com.tc.object.ClientObjectManagerImpl$AddManagedObjectAction.basicVisit(ClientObjectManagerImpl.java:1047)
+	at com.tc.object.ClientObjectManagerImpl$BaseAction.visit(ClientObjectManagerImpl.java:1033)
+	at com.tc.object.Traverser.traverse(Traverser.java:93)
+	at com.tc.object.ClientObjectManagerImpl.traverse(ClientObjectManagerImpl.java:950)
+	at com.tc.object.ClientObjectManagerImpl.create(ClientObjectManagerImpl.java:296)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateIfNecesary(ClientObjectManagerImpl.java:356)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreate(ClientObjectManagerImpl.java:334)
+	at com.tc.object.ClientObjectManagerImpl.lookupRootOptionallyCreateOrReplace(ClientObjectManagerImpl.java:875)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateRoot(ClientObjectManagerImpl.java:664)
+	at com.tc.object.ClientObjectManagerImpl.lookupOrCreateRoot(ClientObjectManagerImpl.java:647)
+	at com.tc.object.bytecode.ManagerImpl.lookupOrCreateRoot(ManagerImpl.java:332)
+	at com.tc.object.bytecode.ManagerImpl.lookupOrCreateRoot(ManagerImpl.java:311)
+	at com.tc.object.bytecode.ManagerUtil.lookupOrCreateRoot(ManagerUtil.java:92)
+	at com.tcverify.DSOVerifier.__tc_setverifierMap(DSOVerifier.java)
+	at com.tcverify.DSOVerifier.<init>(DSOVerifier.java:26)
+	at com.tcverify.DSOVerifier.main(DSOVerifier.java:92)
+	at com.tcverify.DSOVerifierReplaceSystemLoaderTest$Client.main(DSOVerifierReplaceSystemLoaderTest.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.tc.lcp.LinkedJavaProcessStarter.main(LinkedJavaProcessStarter.java:34)
+
+Found 1 deadlock.
+
+Heap
+ PSYoungGen      total 51200K, used 39989K [0xb1400000, 0xb4c70000, 0xb4c70000)
+  eden space 48704K, 77% used [0xb1400000,0xb38f0918,0xb4390000)
+  from space 2496K, 86% used [0xb4390000,0xb45acc28,0xb4600000)
+  to   space 2688K, 0% used [0xb49d0000,0xb49d0000,0xb4c70000)
+ PSOldGen        total 28864K, used 3580K [0x95070000, 0x96ca0000, 0xb1400000)
+  object space 28864K, 12% used [0x95070000,0x953ef1a0,0x96ca0000)
+ PSPermGen       total 17536K, used 17486K [0x91070000, 0x92190000, 0x95070000)
+  object space 17536K, 99% used [0x91070000,0x92183b00,0x92190000)
+
+03:17:26.983 - HeartBeatClient: Received pulse from heartbeat server, port 42098
+03:17:56.996 - HeartBeatClient: Received pulse from heartbeat server, port 42098

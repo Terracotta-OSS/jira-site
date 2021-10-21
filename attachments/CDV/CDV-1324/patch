@@ -1,0 +1,395 @@
+Index: tim-distributed-cache/src/test/java/org/terracotta/cache/evictor/EvictorTest.java
+===================================================================
+--- tim-distributed-cache/src/test/java/org/terracotta/cache/evictor/EvictorTest.java	(revision 20781)
++++ tim-distributed-cache/src/test/java/org/terracotta/cache/evictor/EvictorTest.java	(working copy)
+@@ -4,17 +4,12 @@
+  */
+ package org.terracotta.cache.evictor;
+ 
+-import org.terracotta.cache.evictor.EvictorLock;
+-import org.terracotta.cache.evictor.OrphanEvictionListener;
+-import org.terracotta.cache.evictor.Evictable;
+-import org.terracotta.cache.evictor.Evictor;
+-import org.terracotta.cache.impl.MutableConfig;
+-
+ import static org.mockito.Mockito.mock;
+ import static org.mockito.Mockito.times;
+ import static org.mockito.Mockito.verify;
+ 
+ import org.terracotta.cache.CacheConfig;
++import org.terracotta.cache.impl.MutableConfig;
+ 
+ import java.util.ArrayList;
+ import java.util.List;
+@@ -42,7 +37,7 @@
+     config.setOrphanEvictionPeriod(2);
+     final EvictorLock orphanEvictorLock = new EvictorLock();
+     final OrphanEvictionListener<String> orphanEvictor = new OrphanEvictionListener<String>(config, store,
+-                                                                                            orphanEvictorLock);
++                                                                                            orphanEvictorLock, null);
+     final Evictor<String> evictor = new Evictor<String>(store, orphanEvictor);
+ 
+     // run eviction - this should grab the orphan eviction lock and hold it
+@@ -107,7 +102,7 @@
+     config.setOrphanEvictionPeriod(2);
+     final EvictorLock orphanEvictorLock = new EvictorLock();
+     final OrphanEvictionListener<String> orphanEvictor = new OrphanEvictionListener<String>(config, store,
+-                                                                                            orphanEvictorLock);
++                                                                                            orphanEvictorLock, null);
+     final Evictor<String> evictor = new Evictor<String>(store, orphanEvictor);
+ 
+     // Evictor 1st run - local only
+Index: tim-distributed-cache/src/main/java/org/terracotta/cache/impl/DistributedCacheImpl.java
+===================================================================
+--- tim-distributed-cache/src/main/java/org/terracotta/cache/impl/DistributedCacheImpl.java	(revision 20781)
++++ tim-distributed-cache/src/main/java/org/terracotta/cache/impl/DistributedCacheImpl.java	(working copy)
+@@ -49,8 +49,8 @@
+   // Boolean indicating whether statistics are enabled
+   private boolean                                                  statisticsEnabled = false;
+ 
+-  // Shared orphan eviction listener
+-  private OrphanEvictionListener<K>                                orphanEvictor;
++  // orphan eviction listener
++  private transient OrphanEvictionListener<K>                      orphanEvictor;
+ 
+   // Eviction thread
+   private transient EvictionScheduler                              evictionScheduler;
+@@ -88,7 +88,8 @@
+ 
+     this.timeSource = new SystemTimeSource();
+ 
+-    this.orphanEvictor = new OrphanEvictionListener<K>(config, this, orphanEvictorLock);
++    this.orphanEvictor = new OrphanEvictionListener<K>(config, this, orphanEvictorLock, ManagerUtil.getManager()
++        .getDsoCluster());
+     this.evictionScheduler = new EvictionScheduler(config, new Evictor<K>(this, orphanEvictor));
+     this.statistics = new EvictionStatistics();
+ 
+@@ -114,7 +115,7 @@
+   private TimestampedValue<V> getNonExpiredEntryCoherent(K key, boolean markUsed) {
+     return getNonExpiredEntry(key, markUsed, true);
+   }
+-  
++
+   private TimestampedValue<V> getNonExpiredEntryUnlocked(K key, boolean markUsed) {
+     return getNonExpiredEntry(key, markUsed, false);
+   }
+@@ -123,7 +124,7 @@
+    * Take an entry (which may be null) and return that entry only if not expired. If expired, return a null. If the
+    * entry is expired, it is NOT evicted from the map. This method is suitable for calling by methods that return an old
+    * version of an entry being modified (put, replace, remove) - these methods should not return an old expired entry.
+-   *
++   * 
+    * @param entry A possibly null, possibly expired entry
+    * @return A possibly null, never expired entry
+    */
+@@ -137,7 +138,7 @@
+ 
+   /**
+    * Return the value from a possibly null entry.
+-   *
++   * 
+    * @param entry An entry, which may be null
+    * @return The value for entry or null if the entry is null
+    */
+@@ -162,10 +163,10 @@
+   }
+ 
+   /**
+-   * Get an entry for the specified key. If the entry is expired, it will be evicted from the cache,
+-   * except if a read lock is currently held by the current thread on the key (otherwise, get may
+-   * incur a write lock during removal). If markUsed is set, the entry's last accessed timestamp will be updated.
+-   *
++   * Get an entry for the specified key. If the entry is expired, it will be evicted from the cache, except if a read
++   * lock is currently held by the current thread on the key (otherwise, get may incur a write lock during removal). If
++   * markUsed is set, the entry's last accessed timestamp will be updated.
++   * 
+    * @param key The key for the entry to get
+    * @param markUsed True to mark this entry as "used" at the current time
+    * @return The entry, or null if not in the map or in the map but expired
+@@ -345,10 +346,9 @@
+ 
+     }
+   }
+-  
++
+   /**
+-   * Used by notify listeners of eviction
+-   * By the time this function is called, the item has already been evicted
++   * Used by notify listeners of eviction By the time this function is called, the item has already been evicted
+    */
+   protected void onEvict(final K key, final V value) {
+     // to be overridden
+@@ -358,7 +358,7 @@
+    * This is provided for testing purposes - it lets you override the source of System.currentTimeMillis() so that you
+    * can control it yourself in the test. If it's not called, SystemTimeSource is used which just calls
+    * System.currentTimeMillis(). Method public for tests in other projects
+-   *
++   * 
+    * @param timeSource The alternate TimeSource implementation
+    */
+   public void setTimeSource(final TimeSource timeSource) {
+@@ -372,7 +372,7 @@
+   /**
+    * This method should always be called instead of System.currentTimeMillis() so that time can be controlled by the
+    * TimeSource.
+-   *
++   * 
+    * @return The current time according to the TimeSource
+    */
+   private int getTime() {
+@@ -386,23 +386,23 @@
+   public void putNoReturn(final K key, final V value) {
+     data.putNoReturn(key, wrapValue(value));
+   }
+-  
++
+   public void unlockedPutNoReturn(final K key, final V value) {
+     data.unlockedPutNoReturn(key, wrapValue(value));
+   }
+-  
++
+   public V unlockedGet(final K key) {
+     return getValueSafe(getNonExpiredEntryUnlocked(key, true));
+   }
+-  
++
+   public TimestampedValue<V> unlockedGetTimestampedValue(final K key) {
+     return getNonExpiredEntryUnlocked(key, true);
+   }
+-  
++
+   public TimestampedValue unlockedGetTimestampedValueQuite(final K key) {
+     return getNonExpiredEntryUnlocked(key, false);
+   }
+-  
++
+   public boolean unlockedContainsKey(final Object key) {
+     TimestampedValue<V> entry = getNonExpiredEntryUnlocked((K) key, false);
+     return entry != null;
+@@ -411,7 +411,7 @@
+   public void removeNoReturn(final Object key) {
+     data.removeNoReturn((K) key);
+   }
+-  
++
+   public void unlockedRemoveNoReturn(final Object key) {
+     data.unlockedRemoveNoReturn((K) key);
+   }
+@@ -452,7 +452,7 @@
+   protected boolean isCapacityEvictionEnabled() {
+     return config.getTargetMaxInMemoryCount() > 0 || config.getTargetMaxTotalCount() > 0;
+   }
+-  
++
+   public boolean remove(final Object key, final Object value) {
+     return this.data.remove(key, wrapValue((V) value));
+   }
+Index: tim-distributed-cache/src/main/java/org/terracotta/cache/evictor/Evictor.java
+===================================================================
+--- tim-distributed-cache/src/main/java/org/terracotta/cache/evictor/Evictor.java	(revision 20781)
++++ tim-distributed-cache/src/main/java/org/terracotta/cache/evictor/Evictor.java	(working copy)
+@@ -4,6 +4,8 @@
+  */
+ package org.terracotta.cache.evictor;
+ 
++import java.lang.ref.WeakReference;
++
+ /**
+  * <p>
+  * The evictor watches the {@link Evictable} and is run in a loop, periodically running an eviction of all keys existent
+@@ -13,10 +15,10 @@
+ public class Evictor<K> {
+ 
+   // The evictable store
+-  private final Evictable<K>     store;
++  private final WeakReference<Evictable<K>> store;
+ 
+   // Eviction lifecycle listener
+-  private final EvictionListener evictionListener;
++  private final EvictionListener            evictionListener;
+ 
+   /**
+    * Construct evictor with the evictable store to evict on. No EvictionListener is specified so the
+@@ -36,7 +38,7 @@
+    * @param evictionListener The eviction listener
+    */
+   public Evictor(Evictable<K> store, EvictionListener evictionListener) {
+-    this.store = store;
++    this.store = new WeakReference<Evictable<K>>(store);
+     this.evictionListener = evictionListener;
+   }
+ 
+@@ -47,7 +49,11 @@
+    */
+   public void run() {
+     evictionListener.startLocalEviction();
+-    store.evictExpiredLocalElements();
++
++    Evictable<K> evictable = store.get();
++    if (evictable != null) {
++      evictable.evictExpiredLocalElements();
++    }
+     evictionListener.endLocalEviction();
+   }
+ 
+Index: tim-distributed-cache/src/main/java/org/terracotta/cache/evictor/OrphanEvictionListener.java
+===================================================================
+--- tim-distributed-cache/src/main/java/org/terracotta/cache/evictor/OrphanEvictionListener.java	(revision 20781)
++++ tim-distributed-cache/src/main/java/org/terracotta/cache/evictor/OrphanEvictionListener.java	(working copy)
+@@ -7,11 +7,12 @@
+ import org.terracotta.cache.CacheConfig;
+ 
+ import com.tc.cluster.DsoCluster;
+-import com.tc.injection.annotations.InjectedDsoInstance;
+ import com.tc.logging.TCLogger;
+ import com.tc.object.bytecode.ManagerUtil;
+ import com.tc.util.Assert;
+ 
++import java.lang.ref.WeakReference;
++
+ /**
+  * <p>
+  * At the beginning of each run, the cache attempts to become the "orphan evictor". For each chunk of the cache, only
+@@ -24,23 +25,22 @@
+ public class OrphanEvictionListener<K> implements EvictionListener {
+ 
+   // Local cached resources
+-  private static volatile TCLogger logger;
++  private static volatile TCLogger          logger;
+ 
+   // Configuration
+-  private final CacheConfig             config;
++  private final CacheConfig                 config;
+ 
+   // Clustered resources
+-  private final Evictable<K>       store;
+-  private final EvictorLock        orphanEvictorLock;
++  private final WeakReference<Evictable<K>> store;
++  private final EvictorLock                 orphanEvictorLock;
+ 
+   // Orphan eviction state
+-  private transient boolean        isOrphanEvictor;
++  private boolean                           isOrphanEvictor;
+   // when this == orphanEvictionPeriod, do orphan eviction
+-  private transient int            evictionCount;
++  private int                               evictionCount;
+ 
+-  // Injected access to DSO cluster topology and locality information
+-  @InjectedDsoInstance
+-  private DsoCluster               clusterInfo;
++  // DSO cluster topology and locality information
++  private final DsoCluster                  clusterInfo;
+ 
+   /**
+    * Construct an orphan eviction listener with clustered state
+@@ -49,16 +49,18 @@
+    * @param store The clustered store to evict
+    * @param orphanEvictorLock The clustered lock that is used as a token to indicate the elected orphan evictor
+    */
+-  public OrphanEvictionListener(CacheConfig config, Evictable<K> store, EvictorLock orphanEvictorLock) {
+-
++  public OrphanEvictionListener(CacheConfig config, Evictable<K> store, EvictorLock orphanEvictorLock,
++                                DsoCluster clusterInfo) {
+     // Copy configuration
+     this.config = config;
+     if (config.isOrphanEvictionEnabled()) {
+       Assert.eval(config.getOrphanEvictionPeriod() > 0);
+     }
+ 
++    this.clusterInfo = clusterInfo;
++
+     // Copy clustered resources
+-    this.store = store;
++    this.store = new WeakReference<Evictable<K>>(store);
+     this.orphanEvictorLock = orphanEvictorLock;
+   }
+ 
+@@ -97,7 +99,8 @@
+   public void endLocalEviction() {
+     log("Local eviction finished");
+ 
+-    if (!config.isOrphanEvictionEnabled() || !isOrphanEvictor || !(config.getMaxTTISeconds() > 0 || config.getMaxTTLSeconds() > 0)) { return; }
++    if (!config.isOrphanEvictionEnabled() || !isOrphanEvictor
++        || !(config.getMaxTTISeconds() > 0 || config.getMaxTTLSeconds() > 0)) { return; }
+ 
+     boolean isTimeForOrphanEviction = incrementEvictionCounter();
+     if (isTimeForOrphanEviction) {
+@@ -105,7 +108,10 @@
+           + config.getOrphanEvictionPeriod() + ")");
+       // when the cluster information has been injected, there's also no sense to evict
+       if (clusterInfo != null) {
+-        store.evictOrphanElements(clusterInfo);
++        Evictable<K> evictable = store.get();
++        if (evictable != null) {
++          evictable.evictOrphanElements(clusterInfo);
++        }
+       }
+     } else {
+       log("Not running orphan eviction (evictionCount = " + evictionCount + ", orphanEvictionPeriod = "
+Index: tim-distributed-cache/src/main/resources/terracotta.xml
+===================================================================
+--- tim-distributed-cache/src/main/resources/terracotta.xml	(revision 20781)
++++ tim-distributed-cache/src/main/resources/terracotta.xml	(working copy)
+@@ -34,10 +34,6 @@
+       <class-expression>org.terracotta.cache.value.DefaultTimestampedValue</class-expression>
+     </include>
+     <include>
+-      <class-expression>org.terracotta.cache.evictor.OrphanEvictionListener</class-expression>
+-      <honor-transient>true</honor-transient>
+-    </include>
+-    <include>
+       <class-expression>org.terracotta.cache.evictor.EvictorLock</class-expression>
+     </include>
+     <include>
+Index: tim-distributed-cache-system-tests/src/test/java/org/terracotta/cache/DistributedCacheGCTest.java
+===================================================================
+--- tim-distributed-cache-system-tests/src/test/java/org/terracotta/cache/DistributedCacheGCTest.java	(revision 20781)
++++ tim-distributed-cache-system-tests/src/test/java/org/terracotta/cache/DistributedCacheGCTest.java	(working copy)
+@@ -20,7 +20,6 @@
+ import com.tctest.runner.AbstractErrorCatchingTransparentApp;
+ 
+ import java.lang.ref.WeakReference;
+-import java.util.Date;
+ import java.util.concurrent.atomic.AtomicReference;
+ 
+ import junit.framework.Assert;
+@@ -32,7 +31,7 @@
+   public static final int NODE_COUNT = 1;
+ 
+   public DistributedCacheGCTest() {
+-    disableAllUntil(new Date(Long.MAX_VALUE));
++    // disableAllUntil(new Date(Long.MAX_VALUE));
+   }
+ 
+   @Override
+@@ -48,14 +47,21 @@
+ 
+   public static class App extends AbstractErrorCatchingTransparentApp {
+     private final AtomicReference root;
++    private final int             beginThreadNum;
+ 
+     public App(String appId, ApplicationConfig cfg, ListenerProvider listenerProvider) {
+       super(appId, cfg, listenerProvider);
++
++      beginThreadNum = Thread.getAllStackTraces().size();
+       DistributedCache cache = CacheConfigFactory.newConfig().newCache();
+       Assert.assertTrue(cache instanceof DistributedCacheImpl);
++      assertEquals(beginThreadNum + 1, Thread.getAllStackTraces().size());
+ 
+       root = new AtomicReference<DistributedCache<String, Integer>>(cache);
+       Assert.assertTrue(((Manageable) cache).__tc_isManaged());
++
++      // evictor thread should have started
++      assertEquals(beginThreadNum + 2, Thread.getAllStackTraces().size());
+     }
+ 
+     @Override
+@@ -89,6 +95,8 @@
+       }
+ 
+       Assert.assertNull(weakRef.get());
++
++      assertEquals(beginThreadNum, Thread.getAllStackTraces().size());
+     }
+ 
+     public static void visitL1DSOConfig(final ConfigVisitor visitor, final DSOClientConfigHelper config) {

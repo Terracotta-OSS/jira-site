@@ -1,0 +1,31 @@
+Index: core/src/main/java/net/sf/ehcache/constructs/blocking/BlockingCache.java
+===================================================================
+--- core/src/main/java/net/sf/ehcache/constructs/blocking/BlockingCache.java	(revision 1498)
++++ core/src/main/java/net/sf/ehcache/constructs/blocking/BlockingCache.java	(working copy)
+@@ -440,21 +440,16 @@
+ 
+         Sync lock = getLockForKey(key);
+         Element element;
+-//        boolean tcClustered = cache.getCacheConfiguration().isTerracottaClustered();
+-//        if (!tcClustered) {
+-//            acquiredLockForKey(key, lock, LockType.READ);
+-//        }
+-//        element = cache.get(key);
+-//        if (!tcClustered) {
+-//            lock.unlock(LockType.READ);
+-//        }
+-//        if (element == null) {
++        acquiredLockForKey(key, lock, LockType.READ);
++        element = cache.get(key);
++        lock.unlock(LockType.READ);
++        if (element == null) {
+             acquiredLockForKey(key, lock, LockType.WRITE);
+             element = cache.get(key);
+             if (element != null) {
+                 lock.unlock(LockType.WRITE);
+             }
+-//        }
++        }
+         return element;
+     }
+ 

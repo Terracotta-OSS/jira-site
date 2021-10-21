@@ -1,0 +1,580 @@
+2014-09-19 16:01:33,024 [main] INFO com.terracottatech.general - New logging session started.
+2014-09-19 16:01:33,049 [main] INFO com.terracottatech.console - Terracotta 3.7.5, as of 20130319-163151 (Revision 22474 by cruise@su10vmo117.terracotta.lan from 3.7.5)
+2014-09-19 16:01:33,088 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Attempting to load configuration from the server at 'platform-cache.x.com:9510'...
+2014-09-19 16:01:33,793 [main] INFO com.terracottatech.console - Successfully loaded base configuration from server at 'platform-cache.x.com:9510'.
+2014-09-19 16:01:33,809 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - The configuration specified by 'base configuration from server at 'platform-cache.x.com:9510'':
+
+<con:tc-config xmlns:con="http://www.terracotta.org/config">
+  <system xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <configuration-model>development</configuration-model>
+  </system>
+  <clients xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <logs>%(user.home)/terracotta/client-logs</logs>
+    <!--Names the Terracotta Integration Modules (TIM) needed for clustering specific technologies.-->
+    <modules>
+      <!--Add TIMs here using <module name="tim-foo-<foo version>" /> elements.-->
+      <module name="tim-ehcache-2.x"/>
+      <module name="tim-quartz-2.0-ee"/>
+      <module name="tim-async-processing"/>
+    </modules>
+  </clients>
+  <servers secure="false" xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <!--Shows where the Terracotta server can be found.-->
+    <server host="localhost" name="sdpServer" bind="0.0.0.0">
+      <data>/usr/local/terracotta-3.7.5/terracotta/server-data</data>
+      <logs>/usr/local/terracotta-3.7.5/terracotta/server-logs</logs>
+      <index>/usr/local/terracotta-3.7.5/terracotta/server-index</index>
+      <statistics>/usr/local/terracotta-3.7.5/terracotta/server-statistics</statistics>
+      <dso-port bind="0.0.0.0">9510</dso-port>
+      <jmx-port bind="0.0.0.0">9520</jmx-port>
+      <l2-group-port bind="0.0.0.0">9530</l2-group-port>
+      <data-backup>/usr/local/terracotta/data-backup</data-backup>
+      <dso>
+        <client-reconnect-window>120</client-reconnect-window>
+        <persistence>
+          <mode>temporary-swap-only</mode>
+        </persistence>
+        <garbage-collection>
+          <enabled>true</enabled>
+          <verbose>false</verbose>
+          <interval>3600</interval>
+        </garbage-collection>
+      </dso>
+    </server>
+    <mirror-groups>
+      <mirror-group>
+        <ha>
+          <mode>networked-active-passive</mode>
+          <networked-active-passive>
+            <election-time>5</election-time>
+          </networked-active-passive>
+        </ha>
+        <members>
+          <member>sdpServer</member>
+        </members>
+      </mirror-group>
+    </mirror-groups>
+    <ha>
+      <mode>networked-active-passive</mode>
+      <networked-active-passive>
+        <election-time>5</election-time>
+      </networked-active-passive>
+    </ha>
+    <update-check>
+      <enabled>true</enabled>
+      <period-days>7</period-days>
+    </update-check>
+  </servers>
+  <application xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dso>
+      <dso-reflection-enabled>true</dso-reflection-enabled>
+    </dso>
+  </application>
+</con:tc-config>
+2014-09-19 16:01:33,857 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Attempting to load configuration from the file at '/tmp/tc-config9183883192894630653.xml'...
+2014-09-19 16:01:33,871 [main] INFO com.terracottatech.console - Successfully loaded base configuration from file at '/tmp/tc-config9183883192894630653.xml'.
+2014-09-19 16:01:33,876 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - The configuration specified by 'base configuration from file at '/tmp/tc-config9183883192894630653.xml'':
+
+<tc-config xmlns="http://www.terracotta.org/config">
+  <clients xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.terracotta.org/config" xmlns="">
+    <logs>%(user.home)/terracotta/client-logs</logs>
+    <!--Names the Terracotta Integration Modules (TIM) needed for clustering specific technologies.-->
+    <modules>
+      <module name="terracotta-toolkit-1.6" group-id="org.terracotta.toolkit"/>
+    </modules>
+  </clients>
+  <servers secure="false" xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.terracotta.org/config" xmlns="">
+    <!--Shows where the Terracotta server can be found.-->
+    <server host="localhost" name="sdpServer" bind="0.0.0.0">
+      <data>/usr/local/terracotta-3.7.5/terracotta/server-data</data>
+      <logs>/usr/local/terracotta-3.7.5/terracotta/server-logs</logs>
+      <index>/usr/local/terracotta-3.7.5/terracotta/server-index</index>
+      <statistics>/usr/local/terracotta-3.7.5/terracotta/server-statistics</statistics>
+      <dso-port bind="0.0.0.0">9510</dso-port>
+      <jmx-port bind="0.0.0.0">9520</jmx-port>
+      <l2-group-port bind="0.0.0.0">9530</l2-group-port>
+      <data-backup>/usr/local/terracotta/data-backup</data-backup>
+      <dso>
+        <client-reconnect-window>120</client-reconnect-window>
+        <persistence>
+          <mode>temporary-swap-only</mode>
+        </persistence>
+        <garbage-collection>
+          <enabled>true</enabled>
+          <verbose>false</verbose>
+          <interval>3600</interval>
+        </garbage-collection>
+      </dso>
+    </server>
+    <mirror-groups>
+      <mirror-group>
+        <ha>
+          <mode>networked-active-passive</mode>
+          <networked-active-passive>
+            <election-time>5</election-time>
+          </networked-active-passive>
+        </ha>
+        <members>
+          <member>sdpServer</member>
+        </members>
+      </mirror-group>
+    </mirror-groups>
+    <ha>
+      <mode>networked-active-passive</mode>
+      <networked-active-passive>
+        <election-time>5</election-time>
+      </networked-active-passive>
+    </ha>
+    <update-check>
+      <enabled>true</enabled>
+      <period-days>7</period-days>
+    </update-check>
+  </servers>
+  <system xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.terracotta.org/config" xmlns="">
+    <configuration-model>development</configuration-model>
+  </system>
+</tc-config>
+2014-09-19 16:01:33,881 [main] INFO com.tc.properties.TCProperties - Loading default properties from tc.properties
+2014-09-19 16:01:33,881 [main] INFO com.tc.properties.TCProperties - The property "tc.config.total.timeout" was read before initialization completed. "tc.config.total.timeout" = 300000
+2014-09-19 16:01:33,881 [main] INFO com.tc.properties.TCProperties - The property "tc.config.getFromSource.timeout" was read before initialization completed. "tc.config.getFromSource.timeout" = 30000
+2014-09-19 16:01:33,881 [main] INFO com.tc.properties.TCProperties - tc-config doesn't have any tc-property. No tc-property will be overridden
+2014-09-19 16:01:33,882 [main] INFO com.tc.properties.TCProperties - Loaded TCProperties : TCProperties = { appgroups.debug = false, aw.asmclassinfo.ignore.errors = com.jinspired., cvt.buffer.randomsuffix.enabled = false, cvt.client.fail.buffer.open = false, cvt.rest.interface.enabled = false, cvt.retriever.notification.interval = 60, cvt.statistics.logging.interval = 900, cvt.store.randomsuffix.enabled = false, dev.console.max.operator.events = 5000, ehcache.clusterAllCacheManagers = true, ehcache.concurrency = 128, ehcache.evictor.logging.enabled = false, ehcache.evictor.pool.size = 1, ehcache.global.eviction.enable = true, ehcache.global.eviction.frequency = 10, ehcache.global.eviction.rest.timeMillis = 10, ehcache.global.eviction.segments = 2, ehcache.lock.readLevel = READ, ehcache.lock.writeLevel = WRITE, ehcache.logging.enabled = false, ehcache.storageStrategy.dcv2.evictUnexpiredEntries.enabled = true, ehcache.storageStrategy.dcv2.eviction.overshoot = 15, ehcache.storageStrategy.dcv2.localcache.enabled = true, ehcache.storageStrategy.dcv2.perElementTTITTL.enabled = false, ehcache.storageStrategy.dcv2.periodicEviction.enabled = true, ehcache.storageStrategy.dcv2.pinSegments.enabled = true, http.defaultservlet.attribute.aliases = false;, http.defaultservlet.attribute.dirallowed = false;, http.defaultservlet.enabled = false;, instrumentation.finalField.fastRead = true, l1.cachemanager.criticalObjectThreshold = -1, l1.cachemanager.criticalThreshold = 70, l1.cachemanager.enabled = true, l1.cachemanager.leastCount = 2, l1.cachemanager.logging.enabled = false, l1.cachemanager.monitorOldGenOnly = true, l1.cachemanager.percentageToEvict = 10, l1.cachemanager.sleepInterval = 3000, l1.cachemanager.threshold = 50, l1.clusterevents.outofbandnotifier.jointime.millis = 100, l1.connect.versionMatchCheck.enabled = true, l1.healthcheck.l2.bindAddress = 0.0.0.0, l1.healthcheck.l2.bindPort = 0, l1.healthcheck.l2.ping.enabled = true, l1.healthcheck.l2.ping.idletime = 5000, l1.healthcheck.l2.ping.interval = 1000, l1.healthcheck.l2.ping.probes = 3, l1.healthcheck.l2.socketConnect = true, l1.healthcheck.l2.socketConnectCount = 13, l1.healthcheck.l2.socketConnectTimeout = 5, l1.jvm.check.compatibility = true, l1.l2.config.validation.enabled = true, l1.lock.statistics.gatherInterval = 1, l1.lock.statistics.traceDepth = 0, l1.lockmanager.pinning.enabled = true, l1.lockmanager.striped.count = 128, l1.lockmanager.timeout.interval = 60000, l1.max.connect.retries = -1, l1.modules.additional = , l1.modules.default = , l1.modules.repositories = , l1.modules.tc-version-check = , l1.modules.toolkitSearchRange = 100, l1.objectmanager.fault.logging.enabled = false, l1.objectmanager.flush.logging.enabled = false, l1.objectmanager.objectid.request.size = 50000, l1.objectmanager.remote.batchLookupTimePeriod = 1, l1.objectmanager.remote.logging.enabled = false, l1.objectmanager.remote.maxDNALRUSize = 60, l1.objectmanager.remote.maxRequestSentImmediately = 4, l1.seda.pinned.entry.fault.stage.threads = 8, l1.seda.stage.sink.capacity = -1, l1.serverarray.objectCreationStrategy = round-robin, l1.serverarray.objectCreationStrategy.groupAffinity.groupName = mirror-group1, l1.serverarray.objectCreationStrategy.roundRobin.startIndex = sequential, l1.servermapmanager.remote.batchLookupTimePeriod = 1, l1.servermapmanager.remote.maxRequestSentImmediately = 4, l1.shutdown.threadgroup.gracetime = 30000, l1.socket.connect.timeout = 10000, l1.socket.reconnect.waitInterval = 1000, l1.transactionmanager.completedAckFlushTimeout = 5000, l1.transactionmanager.folding.debug = false, l1.transactionmanager.folding.enabled = true, l1.transactionmanager.folding.lock.limit = 0, l1.transactionmanager.folding.object.limit = 0, l1.transactionmanager.logging.enabled = false, l1.transactionmanager.maxBatchSizeInKiloBytes = 128, l1.transactionmanager.maxOutstandingBatchSize = 4, l1.transactionmanager.maxPendingBatches = 88, l1.transactionmanager.maxSleepTimeBeforeHalt = 1024, l1.transactionmanager.strings.compress.enabled = true, l1.transactionmanager.strings.compress.logging.enabled = false, l1.transactionmanager.strings.compress.minSize = 512, l1.transactionmanager.timeoutForAckOnExit = 300, l2.beanshell.enabled = false, l2.beanshell.port = 9929, l2.berkeleydb.je.checkpointer.bytesInterval = 100000000, l2.berkeleydb.je.cleaner.bytesInterval = 20000000, l2.berkeleydb.je.cleaner.detailMaxMemoryPercentage = 5, l2.berkeleydb.je.cleaner.lookAheadCacheSize = 32768, l2.berkeleydb.je.cleaner.minAge = 5, l2.berkeleydb.je.lock.nLockTables = 7, l2.berkeleydb.je.lock.timeout = 180000000, l2.berkeleydb.je.maxMemoryPercent = 25, l2.cachemanager.criticalObjectThreshold = -1, l2.cachemanager.enabled = true, l2.cachemanager.leastCount = 2, l2.cachemanager.logging.enabled = false, l2.cachemanager.monitorOldGenOnly = true, l2.cachemanager.percentageToEvict = 10, l2.cachemanager.sleepInterval = 3000, l2.data.backup.throttle.timeInMillis = 0, l2.db.factory.name = com.tc.objectserver.storage.berkeleydb.BerkeleyDBFactory, l2.derbydb.derby.locks.deadlockTimeout = 170, l2.derbydb.derby.locks.deadlockTrace = true, l2.derbydb.derby.locks.escalationThreshold = 100000, l2.derbydb.derby.locks.waitTimeout = 180, l2.derbydb.derby.maxMemoryPercent = 25, l2.derbydb.derby.storage.checkpointInterval = 134217728, l2.derbydb.derby.storage.logSwitchInterval = 134217728, l2.derbydb.derby.storage.pageSize = 32768, l2.dump.on.exception.timeout = 30, l2.healthcheck.l1.ping.enabled = true, l2.healthcheck.l1.ping.idletime = 5000, l2.healthcheck.l1.ping.interval = 1000, l2.healthcheck.l1.ping.probes = 3, l2.healthcheck.l1.socketConnect = true, l2.healthcheck.l1.socketConnectCount = 10, l2.healthcheck.l1.socketConnectTimeout = 5, l2.healthcheck.l2.ping.enabled = true, l2.healthcheck.l2.ping.idletime = 5000, l2.healthcheck.l2.ping.interval = 1000, l2.healthcheck.l2.ping.probes = 3, l2.healthcheck.l2.socketConnect = true, l2.healthcheck.l2.socketConnectCount = 10, l2.healthcheck.l2.socketConnectTimeout = 5, l2.l1reconnect.enabled = true, l2.l1reconnect.maxDelayedAcks = 16, l2.l1reconnect.sendWindow = 32, l2.l1reconnect.sendqueue.cap = 5000, l2.l1reconnect.timeout.millis = 5000, l2.lfu.agingFactor = 1, l2.lfu.recentlyAccessedIgnorePercentage = 20, l2.lockmanager.greedy.lease.enabled = true, l2.lockmanager.greedy.lease.leaseTimeInMillis = 50, l2.lockmanager.greedy.locks.enabled = true, l2.nha.autoRestart = true, l2.nha.dirtydb.autoDelete = true, l2.nha.dirtydb.backup.enabled = true, l2.nha.dirtydb.rolling = 0, l2.nha.send.timeout.millis = 16000, l2.nha.tcgroupcomm.discovery.interval = 1000, l2.nha.tcgroupcomm.handshake.timeout = 5000, l2.nha.tcgroupcomm.reconnect.enabled = true, l2.nha.tcgroupcomm.reconnect.maxDelayedAcks = 16, l2.nha.tcgroupcomm.reconnect.sendWindow = 32, l2.nha.tcgroupcomm.reconnect.sendqueue.cap = 5000, l2.nha.tcgroupcomm.reconnect.timeout = 5000, l2.objectmanager.cachePolicy = lfu, l2.objectmanager.deleteBatchSize = 5000, l2.objectmanager.dgc.enterpriseMarkStageInterval = 1000, l2.objectmanager.dgc.faulting.optimization = true, l2.objectmanager.dgc.inline.intervalInSeconds = 10, l2.objectmanager.dgc.inline.maxObjects = 10000, l2.objectmanager.dgc.throttle.requestsPerThrottle = 1000, l2.objectmanager.dgc.throttle.timeInMillis = 0, l2.objectmanager.dgc.young.enabled = false, l2.objectmanager.dgc.young.frequencyInMillis = 180000, l2.objectmanager.fault.logging.enabled = false, l2.objectmanager.flush.logging.enabled = false, l2.objectmanager.loadObjectID.checkpoint.maxlimit = -1, l2.objectmanager.loadObjectID.checkpoint.maxsleep = 10000, l2.objectmanager.loadObjectID.longsPerDiskEntry = 8, l2.objectmanager.loadObjectID.mapsdatabase.longsPerDiskEntry = 1, l2.objectmanager.maxObjectsInTxnObjGrouping = 5000, l2.objectmanager.maxObjectsToCommit = 5000, l2.objectmanager.maxTxnsInTxnObjectGrouping = 500, l2.objectmanager.objectrequest.logging.enabled = false, l2.objectmanager.objectrequest.split.size = 500, l2.objectmanager.passive.sync.batch.size = 500, l2.objectmanager.passive.sync.message.maxSizeInMegaBytes = 10, l2.objectmanager.passive.sync.throttle.maxPendingMessages = 10, l2.objectmanager.passive.sync.throttle.timeInMillis = 0, l2.objectmanager.persistor.logging.enabled = false, l2.objectmanager.request.logging.enabled = false, l2.offHeapCache.allocation.critical = 15000, l2.offHeapCache.allocation.critical.halt = true, l2.offHeapCache.allocation.slow = 1500, l2.offHeapCache.map.concurrency = 1, l2.offHeapCache.map.max.page.size = 8m, l2.offHeapCache.map.min.page.size = 4k, l2.offHeapCache.map.tableSize = 128, l2.offHeapCache.operator.event.generator.sleepInterval = 60000, l2.offHeapCache.operator.event.generator.threshold = 80, l2.offHeapCache.temp.swap.flush.to.disk.count = 5000, l2.offHeapCache.temp.swap.throttle.megaBytes = 100, l2.operator.events.store = 1500, l2.remotejmx.idletime = 5, l2.remotejmx.maxthreads = 50, l2.seda.commitstage.threads = 4, l2.seda.evictionprocessorstage.sink.capacity = 1000, l2.seda.gcdeletestage.threads = 1, l2.seda.local.cache.invalidations.sink.capacity = 5000, l2.seda.local.cache.transaction.complete.sink.capacity = -1, l2.seda.local.cache.transaction.complete.threads = 8, l2.seda.query.threads = 4, l2.seda.search.threads = 16, l2.seda.stage.sink.capacity = -1, l2.serverarray.2pc.enabled = true, l2.servermap.eviction.broadcast.maxkeys = 10000, l2.servermap.eviction.clientObjectReferences.refresh.interval = 60000, l2.startuplock.retries.enabled = false, l2.transactionmanager.logging.enabled = false, l2.transactionmanager.logging.printBroadcastStats = false, l2.transactionmanager.logging.printCommits = false, l2.transactionmanager.logging.printStats = true, l2.transactionmanager.logging.verbose = false, l2.transactionmanager.passive.throttle.enabled = true, l2.transactionmanager.passive.throttle.maxSleepSeconds = 5, l2.transactionmanager.passive.throttle.threshold = 20000, lock.statistics.enabled = false, logging.longgc.threshold = 8000, logging.maxBackups = 20, logging.maxLogFileSize = 512, memory.monitor.forcebasic = false, net.core.keepalive = false, net.core.tcpnodelay = true, offHeapFileSystem.file.maxDataPageSize = 262144, offHeapFilesystem.chm.segments = 4, offHeapFilesystem.file.blockSize = 8192, search.lucene.indexes.per.cache = 4, search.lucene.max.boolean.clauses = 1024, search.lucene.max.buffer = 16.0, search.lucene.use.offHeap.directory = false, search.lucene.use.ram.directory = false, search.passive.max.chunk = 2097152, search.passive.max.pending = 8, session.debug.hops = false, session.debug.hops.interval = 100, session.debug.invalidate = false, session.debug.sessions = false, session.invalidator.bench.enabled = true, session.invalidator.sleep = 300, session.request.bench.enabled = false, session.request.tracking = false, session.request.tracking.dump = false, session.request.tracking.interval = 2500, session.request.tracking.threshold = 15000, session.statistics.enabled = false, session.verify.set.attribute = false, session.vhosts.excluded = , sigar.enabled = false, stats.printer.intervalInMillis = 5000, tc.bytebuffer.common.pool.maxcount = 3000, tc.bytebuffer.pooling.enabled = true, tc.bytebuffer.threadlocal.pool.maxcount = 2000, tc.config.getFromSource.timeout = 30000, tc.config.total.timeout = 300000, tc.management.mbeans.enabled = true, tc.management.test.mbeans.enabled = false, tc.messages.grouping.enabled = true, tc.messages.grouping.maxSizeKiloBytes = 1024, tc.messages.packup.enabled = true, tc.stage.monitor.delay = 5000, tc.stage.monitor.enabled = false, tc.time.sync.threshold = 30, tc.transport.handshake.timeout = 10000, tcm.monitor.delay = 5, tcm.monitor.enabled = false }
+2014-09-19 16:01:33,896 [main] INFO com.terracottatech.console - Log file: '/root/terracotta/client-logs/terracotta-client.log'.
+2014-09-19 16:01:33,898 [main] INFO com.tc.logging.TCLogging - All Java System Properties for this Terracotta instance:
+========================================================================
+JVM arguments: [-Dhttp.proxyHost=10.105.152.18, -Dhttps.proxyHost=10.105.152.18, -Dhttp.proxyPort=8080, -Dhttps.proxyPort=8080, -Dhttp.nonProxyHosts=localhost|127.0.0.1|*.x.com, -Xms512m, -Xmx512m, -XX:NewRatio=3, -XX:MaxPermSize=128M, -Xloggc:/usr/local/cirrus/logs/alarm-service-2014-09-19_16-01-29.gc, -XX:+PrintGCDetails, -Dcom.sun.management.jmxremote.port=19051, -Dcom.sun.management.jmxremote.authenticate=false, -Dcom.sun.management.jmxremote.ssl=false, -Djava.rmi.server.hostname=10.101.62.217, -Duser.timezone=UTC]
+com.sun.management.jmxremote.authenticate: false
+com.sun.management.jmxremote.port        : 19051
+com.sun.management.jmxremote.ssl         : false
+file.encoding                            : UTF-8
+file.encoding.pkg                        : sun.io
+file.separator                           : /
+http.nonProxyHosts                       : localhost|127.0.0.1|*.x.com
+http.proxyHost                           : 10.105.152.18
+http.proxyPort                           : 8080
+https.proxyHost                          : 10.105.152.18
+https.proxyPort                          : 8080
+java.awt.graphicsenv                     : sun.awt.X11GraphicsEnvironment
+java.awt.printerjob                      : sun.print.PSPrinterJob
+java.class.path                          : /usr/local/cirrus/alarm-service/alarm-service-5.0.1_build.36_DEV.jar
+java.class.version                       : 50.0
+java.endorsed.dirs                       : /usr/java/jdk1.6.0_27/jre/lib/endorsed
+java.ext.dirs                            : /usr/java/jdk1.6.0_27/jre/lib/ext:/usr/java/packages/lib/ext
+java.home                                : /usr/java/jdk1.6.0_27/jre
+java.io.tmpdir                           : /tmp
+java.library.path                        : /usr/java/jdk1.6.0_27/jre/lib/amd64/server:/usr/java/jdk1.6.0_27/jre/lib/amd64:/usr/java/jdk1.6.0_27/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+java.rmi.server.hostname                 : 10.101.62.217
+java.rmi.server.randomIDs                : true
+java.runtime.name                        : Java(TM) SE Runtime Environment
+java.runtime.version                     : 1.6.0_27-b07
+java.specification.name                  : Java Platform API Specification
+java.specification.vendor                : Sun Microsystems Inc.
+java.specification.version               : 1.6
+java.vendor                              : Sun Microsystems Inc.
+java.vendor.url                          : http://java.sun.com/
+java.vendor.url.bug                      : http://java.sun.com/cgi-bin/bugreport.cgi
+java.version                             : 1.6.0_27
+java.vm.info                             : mixed mode
+java.vm.name                             : Java HotSpot(TM) 64-Bit Server VM
+java.vm.specification.name               : Java Virtual Machine Specification
+java.vm.specification.vendor             : Sun Microsystems Inc.
+java.vm.specification.version            : 1.0
+java.vm.vendor                           : Sun Microsystems Inc.
+java.vm.version                          : 20.2-b06
+line.separator                           : 
+
+org.hyperic.sigar.path                   : /tmp/tmpSigarJars5399000394956265095933309519259064
+os.arch                                  : amd64
+os.name                                  : Linux
+os.version                               : 2.6.32-220.el6.x86_64
+path.separator                           : :
+sun.arch.data.model                      : 64
+sun.boot.class.path                      : /usr/java/jdk1.6.0_27/jre/lib/resources.jar:/usr/java/jdk1.6.0_27/jre/lib/rt.jar:/usr/java/jdk1.6.0_27/jre/lib/sunrsasign.jar:/usr/java/jdk1.6.0_27/jre/lib/jsse.jar:/usr/java/jdk1.6.0_27/jre/lib/jce.jar:/usr/java/jdk1.6.0_27/jre/lib/charsets.jar:/usr/java/jdk1.6.0_27/jre/lib/modules/jdk.boot.jar:/usr/java/jdk1.6.0_27/jre/classes
+sun.boot.library.path                    : /usr/java/jdk1.6.0_27/jre/lib/amd64
+sun.cpu.endian                           : little
+sun.cpu.isalist                          : 
+sun.io.unicode.encoding                  : UnicodeLittle
+sun.java.command                         : /usr/local/cirrus/alarm-service/alarm-service-5.0.1_build.36_DEV.jar conf/beans.xml
+sun.java.launcher                        : SUN_STANDARD
+sun.jnu.encoding                         : UTF-8
+sun.management.compiler                  : HotSpot 64-Bit Tiered Compilers
+sun.os.patch.level                       : unknown
+tc.active                                : true
+tc.dso.globalmode                        : false
+user.country                             : US
+user.dir                                 : /usr/local/cirrus/alarm-service-5.0.1_build.36_DEV
+user.home                                : /root
+user.language                            : en
+user.name                                : root
+user.timezone                            : UTC
+========================================================================
+2014-09-19 16:01:33,908 [main] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://localhost:9510/groupidmap
+2014-09-19 16:01:33,957 [main] INFO com.terracottatech.dso - Trying to get Cluster topology from http://localhost:9510/groupinfo
+2014-09-19 16:01:34,854 [main] INFO com.tc.bundles.Resolver - First toolkit reference found: ToolkitVersion(1.6)
+2014-09-19 16:01:34,854 [main] INFO com.tc.bundles.Resolver - Freezing toolkit major version from: ToolkitVersion(1.6)
+2014-09-19 16:01:34,856 [main] INFO com.tc.bundles.Resolver - Looking for latest version of org.terracotta.toolkit.terracotta-toolkit-1.6
+2014-09-19 16:01:34,864 [main] INFO com.tc.bundles.Resolver - new version = 5.5.0
+2014-09-19 16:01:34,867 [main] INFO com.tc.bundles.Resolver - Resolved TIM org.terracotta.toolkit:terracotta-toolkit-1.6:5.5.0 from tcjar:__TC__jar:file:/usr/local/cirrus/alarm-service-5.0.1_build.36_DEV/lib/terracotta-toolkit_runtime.jar!/TIMs/terracotta-toolkit-1.6-5.5.0.jar__TC__/
+2014-09-19 16:01:34,869 [main] INFO com.tc.bundles.Resolver - Actual toolkit API version resolved: ToolkitVersion(1.6) <xml-fragment group-id="org.terracotta.toolkit" name="terracotta-toolkit-1.6" version="5.5.0"/>
+2014-09-19 16:01:34,870 [main] INFO com.tc.bundles.Resolver - new version = 5.5.0
+2014-09-19 16:01:34,871 [main] INFO com.tc.bundles.Resolver - Resolved TIM org.terracotta.toolkit:terracotta-toolkit-1.6:5.5.0 from tcjar:__TC__jar:file:/usr/local/cirrus/alarm-service-5.0.1_build.36_DEV/lib/terracotta-toolkit_runtime.jar!/TIMs/terracotta-toolkit-1.6-5.5.0.jar__TC__/
+2014-09-19 16:01:34,912 [main] INFO org.terracotta.modules.configuration.TerracottaConfiguratorModule - CDM change applicator is class com.terracotta.toolkit.collections.ConcurrentDistributedMapDsoApplicator
+2014-09-19 16:01:35,040 [main] WARN com.tc.plugins.ModulesLoader - org.terracotta.toolkit.terracotta-toolkit-1.6 does not declare a TIM API version requirement
+2014-09-19 16:01:35,041 [main] INFO com.tc.plugins.ModulesLoader - BuildInfo for module: org.terracotta.toolkit.terracotta-toolkit-1.6
+  BuildInfo-User: cruise
+  BuildInfo-Revision: 39043
+  BuildInfo-Timestamp: 20130319-164440
+  BuildInfo-URL: https://svn.terracotta.org/repo/forge/projects/terracotta-toolkit/tags/release-5.5.0
+  BuildInfo-Host: rh5vmo135.terracotta.lan
+
+2014-09-19 16:01:35,056 [main] INFO com.tc.plugins.ModulesLoader - Config loaded from module: org.terracotta.toolkit.terracotta-toolkit-1.6 (terracotta_api.xml)
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment>
+  <instrumented-classes>
+    <include>
+      <class-expression>@org.terracotta.annotations.InstrumentedClass *</class-expression>
+    </include>
+    <include>
+      <class-expression>@org.terracotta.annotations.InstrumentedClass @org.terracotta.annotations.HonorTransient *</class-expression>
+      <honor-transient>true</honor-transient>
+    </include>
+  </instrumented-classes>
+
+  <locks>
+    <!-- annotation locking expressions -->
+    <autolock>
+      <method-expression>@org.terracotta.annotations.AutolockWrite * *(..)</method-expression>
+      <lock-level>write</lock-level>
+    </autolock>
+    <autolock auto-synchronized="true">
+      <method-expression>@org.terracotta.annotations.AutolockWriteAutoSync * *(..)</method-expression>
+      <lock-level>write</lock-level>
+    </autolock>    
+    <autolock>
+      <method-expression>@org.terracotta.annotations.AutolockRead * *(..)</method-expression>
+      <lock-level>read</lock-level>
+    </autolock>
+    <autolock auto-synchronized="true">
+      <method-expression>@org.terracotta.annotations.AutolockReadAutoSync * *(..)</method-expression>
+      <lock-level>read</lock-level>
+    </autolock>    
+    <autolock>
+      <method-expression>@org.terracotta.annotations.AutolockSynchronousWrite * *(..)</method-expression>
+      <lock-level>synchronous-write</lock-level>
+    </autolock>
+    <autolock auto-synchronized="true">
+      <method-expression>@org.terracotta.annotations.AutolockSynchronousWriteAutoSync * *(..)</method-expression>
+      <lock-level>synchronous-write</lock-level>
+    </autolock>    
+    <autolock>
+      <method-expression>@org.terracotta.annotations.AutolockConcurrent * *(..)</method-expression>
+      <lock-level>concurrent</lock-level>
+    </autolock>
+  </locks>
+
+  <distributed-methods>
+    <method-expression>@org.terracotta.annotations.DMI * *(..)</method-expression>
+  </distributed-methods>
+
+  <roots>
+    <root>
+      <field-expression>@org.terracotta.annotations.Root * *</field-expression>
+    </root>
+  </roots>
+
+</xml-fragment>
+2014-09-19 16:01:35,105 [main] INFO com.tc.object.bytecode.hook.impl.DSOContextImpl - DSOContext created with expressRejoinClient=false
+2014-09-19 16:01:35,171 [main] INFO com.tc.plugins.ModulesLoader - Installing TIMByteProvider for bundle 'org.terracotta.modules.tim-ehcache-2.x-hibernate-ui'
+2014-09-19 16:01:35,189 [main] INFO com.tc.plugins.ModulesLoader - BuildInfo for module: org.terracotta.modules.tim-ehcache-2.x-hibernate-ui
+  BuildInfo-User: cruise
+  BuildInfo-Revision: 39048
+  BuildInfo-Timestamp: 20130318-145220
+  BuildInfo-URL: https://svn.terracotta.org/repo/forge/projects/tim-ehcache/tags/release-1.9.5
+  BuildInfo-Host: su10mo128
+
+2014-09-19 16:01:35,200 [main] INFO com.tc.plugins.ModulesLoader - Installing TIMByteProvider for bundle 'org.terracotta.modules.tim-ehcache-2.x-ui'
+2014-09-19 16:01:35,230 [main] INFO com.tc.plugins.ModulesLoader - BuildInfo for module: org.terracotta.modules.tim-ehcache-2.x-ui
+  BuildInfo-User: cruise
+  BuildInfo-Revision: 39048
+  BuildInfo-Timestamp: 20130318-145307
+  BuildInfo-URL: https://svn.terracotta.org/repo/forge/projects/tim-ehcache/tags/release-1.9.5
+  BuildInfo-Host: su10mo128
+
+2014-09-19 16:01:35,253 [main] INFO com.tc.plugins.ModulesLoader - Installing tunneled MBean domains for bundle 'org.terracotta.modules.tim-ehcache-2.x'
+2014-09-19 16:01:35,254 [main] INFO com.tc.plugins.ModulesLoader - BuildInfo for module: org.terracotta.modules.tim-ehcache-2.x
+  BuildInfo-User: cruise
+  BuildInfo-Revision: 39048
+  BuildInfo-Timestamp: 20130318-145357
+  BuildInfo-URL: https://svn.terracotta.org/repo/forge/projects/tim-ehcache/tags/release-1.9.5
+  BuildInfo-Host: su10mo128
+
+2014-09-19 16:01:35,272 [main] INFO com.tc.plugins.ModulesLoader - Config loaded from module: org.terracotta.modules.tim-ehcache-2.x (terracotta.xml)
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment>
+
+    <instrumented-classes>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.store.ElementSerializationStrategy</class-expression>
+        </include>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.store.HibernateElementSerializationStrategy
+            </class-expression>
+        </include>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.store.ClusteredStore</class-expression>
+            <honor-transient>true</honor-transient>
+        </include>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.store.ClusteredStoreBackendImpl</class-expression>
+            <honor-transient>true</honor-transient>
+        </include>
+
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.store.SearchAttributeTypes</class-expression>
+            <honor-transient>true</honor-transient>
+        </include>
+
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.store.EnterpriseClusteredStore</class-expression>
+            <honor-transient>true</honor-transient>
+        </include>
+
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.store.ValueModeHandlerIdentity</class-expression>
+        </include>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.store.ValueModeHandlerSoftLockAwareSerialization</class-expression>
+        </include>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.store.ValueModeHandlerSerialization</class-expression>
+            <honor-transient>true</honor-transient>
+            <on-load>
+                <method>init</method>
+            </on-load>
+        </include>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.store.ValueModeHandlerHibernate</class-expression>
+        </include>
+        <include>
+            <class-expression>net.sf.ehcache.AbstractElementData</class-expression>
+        </include>
+        <include>
+            <class-expression>net.sf.ehcache.SerializationModeElementData</class-expression>
+        </include>
+        <include>
+            <class-expression>net.sf.ehcache.IdentityModeElementData</class-expression>
+            <honor-transient>true</honor-transient>
+        </include>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.coherence.IncoherentNodesSet</class-expression>
+            <honor-transient>true</honor-transient>
+            <on-load>
+                <method>init</method>
+            </on-load>
+        </include>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.event.ClusteredEventReplicator</class-expression>
+            <honor-transient>true</honor-transient>
+            <on-load>
+                <method>initializeOnLoad</method>
+            </on-load>
+        </include>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.transaction.ClusteredTransactionID</class-expression>
+            <honor-transient>true</honor-transient>
+        </include>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.transaction.ReadCommittedClusteredSoftLock</class-expression>
+            <honor-transient>true</honor-transient>
+        </include>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.transaction.ReadCommittedClusteredSoftLockFactory</class-expression>
+            <honor-transient>true</honor-transient>
+        </include>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.transaction.ClusteredSoftLockID</class-expression>
+            <honor-transient>true</honor-transient>
+        </include>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.transaction.xa.XidClustered</class-expression>
+            <honor-transient>true</honor-transient>
+        </include>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.transaction.xa.ClusteredXidTransactionID</class-expression>
+            <honor-transient>true</honor-transient>
+        </include>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.store.servermap.ServerMapLocalStoreFactoryImpl</class-expression>
+            <honor-transient>true</honor-transient>
+        </include>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.writebehind.snapshots.SerializationKeySnapshot</class-expression>
+            <honor-transient>true</honor-transient>
+        </include>
+        <include>
+            <class-expression>org.terracotta.modules.ehcache.writebehind.snapshots.SerializationElementSnapshot</class-expression>
+            <honor-transient>true</honor-transient>
+        </include>           
+    </instrumented-classes>
+
+    <locks>
+        <autolock>
+            <method-expression>* org.terracotta.modules.ehcache.coherence.IncoherentNodesSet.removeIncoherentNode*(..)
+            </method-expression>
+            <lock-level>write</lock-level>
+        </autolock>
+        <autolock>
+            <method-expression>* org.terracotta.modules.ehcache.coherence.IncoherentNodesSet.gotoIncoherentMode*(..)
+            </method-expression>
+            <lock-level>write</lock-level>
+        </autolock>
+        <autolock>
+            <method-expression>* org.terracotta.modules.ehcache.coherence.IncoherentNodesSet.cleanIncoherentNodes*(..)
+            </method-expression>
+            <lock-level>write</lock-level>
+        </autolock>
+        <autolock>
+            <method-expression>* org.terracotta.modules.ehcache.coherence.IncoherentNodesSet.queryIsNodeCoherent*(..)
+            </method-expression>
+            <lock-level>write</lock-level>
+        </autolock>
+        <autolock>
+            <method-expression>*
+                org.terracotta.modules.ehcache.coherence.IncoherentNodesSet.waitUntilClusterCoherent*(..)
+            </method-expression>
+            <lock-level>write</lock-level>
+        </autolock>
+        <autolock>
+            <method-expression>* org.terracotta.modules.ehcache.coherence.IncoherentNodesSet.isClusterCoherent*(..)
+            </method-expression>
+            <lock-level>read</lock-level>
+        </autolock>
+        <autolock>
+            <method-expression>* org.terracotta.modules.ehcache.coherence.IncoherentNodesSet.isFirstIncoherent*(..)
+            </method-expression>
+            <lock-level>read</lock-level>
+        </autolock>
+
+        <autolock>
+            <method-expression>* org.terracotta.modules.ehcache.transaction.ReadCommittedClusteredSoftLock.isExpired*(..)
+            </method-expression>
+            <lock-level>write</lock-level>
+        </autolock>
+        <autolock>
+            <method-expression>* org.terracotta.modules.ehcache.transaction.ReadCommittedClusteredSoftLockFactory.collectExpiredTransactionIDs*(..)
+            </method-expression>
+            <lock-level>write</lock-level>
+        </autolock>
+    </locks>
+
+    <distributed-methods>
+        <method-expression run-on-all-nodes="false">
+            void org.terracotta.modules.ehcache.event.ClusteredEventReplicator.dmiNotify*(..)
+        </method-expression>
+        <method-expression run-on-all-nodes="false">
+            void org.terracotta.modules.ehcache.store.ClusteredStore.fireClusterCoherent*(..)
+        </method-expression>
+        <method-expression run-on-all-nodes="false">
+            void org.terracotta.modules.ehcache.store.ClusteredStore.configChanged*(..)
+        </method-expression>
+    </distributed-methods>
+
+</xml-fragment>
+2014-09-19 16:01:35,414 [main] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://localhost:9510/groupidmap
+2014-09-19 16:01:35,423 [main] INFO com.terracottatech.dso - Trying to get Cluster topology from http://localhost:9510/groupinfo
+2014-09-19 16:01:35,432 [main] INFO com.terracottatech.dso - Trying to get Cluster topology from http://localhost:9510/groupinfo
+2014-09-19 16:01:35,451 [main] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://localhost:9510/l1reconnectproperties
+2014-09-19 16:01:35,497 [main] INFO com.tc.object.ApplicatorDNAEncodingImpl - Compressed String constructor not present
+2014-09-19 16:01:35,581 [main] INFO com.tc.net.core.TCCommImpl - Comm Worker Threads NOT requested
+2014-09-19 16:01:35,613 [main] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl: DSO Client - HealthChecker Started
+2014-09-19 16:01:35,703 [main] INFO com.tc.net.protocol.tcm.CommunicationsManager - HealthCheck CallbackPort Listener started at /0:0:0:0:0:0:0:0:42332
+2014-09-19 16:01:35,817 [main] INFO com.terracottatech.dso - Statistics buffer opened
+2014-09-19 16:01:35,840 [Statistics Logger] INFO com.terracottatech.dso - memory free : 374.844307 MB
+2014-09-19 16:01:35,847 [Statistics Logger] INFO com.terracottatech.dso - memory used : 121.155693 MB
+2014-09-19 16:01:35,847 [Statistics Logger] INFO com.terracottatech.dso - memory max : 496.000000 MB
+2014-09-19 16:01:35,858 [main] INFO com.tc.statistics.StatisticRetrievalAction - "message monitor" statistic is not enabled. Please enable the property "tcm.monitor.delay" to collect this statistics.
+2014-09-19 16:01:36,068 [main] INFO com.tc.runtime.TCMemoryManagerImpl - GarbageCollector: PS Scavenge
+2014-09-19 16:01:36,068 [main] INFO com.tc.runtime.TCMemoryManagerImpl - GarbageCollector: PS MarkSweep
+2014-09-19 16:01:36,166 [L1Management JMX registration] INFO com.tc.management.L1Management - Terracotta JMX connector available at[service:jmx:terracotta://localhost]
+2014-09-19 16:01:36,276 [main] INFO com.tc.net.core.TCConnection - Comms Message Batching enabled
+2014-09-19 16:01:36,289 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - ConnectionID(-1.ffffffffffffffffffffffffffffffff.3fac0c22-99a8-4914-a216-06050b958f9f-1488ea59b2e)[]: Attaching new connection: com.tc.net.core.TCConnectionImpl@781189897: connected: true, closed: false local=127.0.0.1:37312 remote=127.0.0.1:9510 connect=[Fri Sep 19 16:01:36 UTC 2014] idle=12ms [0 read, 0 write]
+2014-09-19 16:01:36,344 [main] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl. DSO Client - Health monitoring agent started for localhost:9510
+2014-09-19 16:01:36,354 [L1_L2:TCComm Main Selector Thread_R (listen 0:0:0:0:0:0:0:0:42332)] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl. DSO Client - HealthCheckCallbackPort verification PASSED for localhost:9510(callbackport: 9510)
+2014-09-19 16:01:36,401 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.object.handshakemanager.ClientHandshakeManagerImpl - ClientID[0]: Connected: Unpausing from State[ PAUSED ] RemoteNode : GroupID[0]. Disconnect count : 1
+2014-09-19 16:01:36,435 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.object.handshakemanager.ClientHandshakeManagerImpl - ClientID[0]: Received Handshake ack for this node :GroupID[0]
+2014-09-19 16:01:36,436 [main] INFO com.terracottatech.console - Connection successfully established to server at 127.0.0.1:9510
+2014-09-19 16:01:36,436 [main] INFO com.terracottatech.dso - Connection successfully established to server at 127.0.0.1:9510
+2014-09-19 16:01:36,436 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.management.remote.protocol.terracotta.TunnelingEventHandler - Client JMX server ready; sending notification to L2 server
+2014-09-19 16:01:36,641 [main] INFO org.terracotta.api.org.terracotta.modules.ehcache.store.TerracottaClusteredInstanceFactory - Ehcache Core version 2.6.6 was built on 20130318-1446, at revision 7305, with jdk 1.6.0_35 by cruise@rh5vmo140.terracotta.lan
+2014-09-19 16:01:37,217 [main] INFO org.terracotta.api.org.terracotta.modules.ehcache.store.TerracottaClusteredInstanceFactory - Ehcache Core version 2.6.6 was built on 20130318-1446, at revision 7305, with jdk 1.6.0_35 by cruise@rh5vmo140.terracotta.lan
+2014-09-19 16:01:40,208 [main] INFO org.terracotta.api.org.terracotta.modules.ehcache.store.TerracottaClusteredInstanceFactory - Ehcache Core version 2.6.6 was built on 20130318-1446, at revision 7305, with jdk 1.6.0_35 by cruise@rh5vmo140.terracotta.lan
+2014-09-19 16:01:41,472 [main] INFO org.terracotta.cache.logging.TCLoggerConfigChangeListener - Changed cache [Distributed Cache]  maxTTISeconds from 0 to 86400
+2014-09-19 16:01:41,472 [main] INFO org.terracotta.cache.logging.TCLoggerConfigChangeListener - Changed cache [EventReportCallbackCache|EventReportCallbackCache]  name from Distributed Cache to EventReportCallbackCache|EventReportCallbackCache
+2014-09-19 16:01:41,472 [main] INFO org.terracotta.cache.logging.TCLoggerConfigChangeListener - Changed cache [EventReportCallbackCache|EventReportCallbackCache]  capacityEvictionPolicyDataFactory from org.terracotta.cache.evictor.LFUCapacityEvictionPolicyData$Factory@588b28e0 to org.terracotta.cache.evictor.LFUCapacityEvictionPolicyData$Factory@1828b78a
+2014-09-19 16:01:41,472 [main] INFO org.terracotta.cache.logging.TCLoggerConfigChangeListener - Changed cache [EventReportCallbackCache|EventReportCallbackCache]  targetMaxInMemoryCount from 0 to 100
+2014-09-19 16:01:41,473 [main] INFO org.terracotta.cache.logging.TCLoggerConfigChangeListener - Changed cache [EventReportCallbackCache|EventReportCallbackCache]  targetMaxTotalCount from 0 to 10000
+2014-09-19 16:01:42,539 [main] INFO org.terracotta.api.org.terracotta.modules.ehcache.store.ClusteredStore - Clustered Store [cache=EventReportCallbackCache] with checkContainsKeyOnPut: false
+2014-09-19 16:04:36,137 [ClientLockManager LockGC] INFO com.tc.object.locks.ClientLockManager - ClientID[0]: Lock GC collected 2 garbage locks
+2014-09-19 16:16:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory free : 392.743111 MB
+2014-09-19 16:16:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory used : 88.256889 MB
+2014-09-19 16:16:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory max : 481.000000 MB
+2014-09-19 16:31:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory free : 392.777283 MB
+2014-09-19 16:31:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory used : 76.597717 MB
+2014-09-19 16:31:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory max : 469.375000 MB
+2014-09-19 16:44:36,143 [ClientLockManager LockGC] INFO com.tc.object.locks.ClientLockManager - ClientID[0]: Lock GC collected 2 garbage locks
+2014-09-19 16:46:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory free : 384.293892 MB
+2014-09-19 16:46:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory used : 96.893608 MB
+2014-09-19 16:46:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory max : 481.187500 MB
+2014-09-19 17:01:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory free : 393.350296 MB
+2014-09-19 17:01:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory used : 88.524704 MB
+2014-09-19 17:01:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory max : 481.875000 MB
+2014-09-19 17:16:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory free : 421.987961 MB
+2014-09-19 17:16:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory used : 65.137039 MB
+2014-09-19 17:16:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory max : 487.125000 MB
+2014-09-19 17:31:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory free : 387.402046 MB
+2014-09-19 17:31:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory used : 102.222954 MB
+2014-09-19 17:31:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory max : 489.625000 MB
+2014-09-19 17:46:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory free : 363.357285 MB
+2014-09-19 17:46:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory used : 128.642715 MB
+2014-09-19 17:46:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory max : 492.000000 MB
+2014-09-19 18:01:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory free : 438.176064 MB
+2014-09-19 18:01:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory used : 54.948936 MB
+2014-09-19 18:01:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory max : 493.125000 MB
+2014-09-19 18:16:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory free : 438.370804 MB
+2014-09-19 18:16:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory used : 57.004196 MB
+2014-09-19 18:16:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory max : 495.375000 MB
+2014-09-19 18:31:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory free : 347.536499 MB
+2014-09-19 18:31:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory used : 150.838501 MB
+2014-09-19 18:31:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory max : 498.375000 MB
+2014-09-19 18:46:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory free : 357.624008 MB
+2014-09-19 18:46:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory used : 142.500992 MB
+2014-09-19 18:46:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory max : 500.125000 MB
+2014-09-19 19:01:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory free : 375.745682 MB
+2014-09-19 19:01:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory used : 125.941818 MB
+2014-09-19 19:01:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory max : 501.687500 MB
+2014-09-19 19:11:36,172 [ClientLockManager LockGC] INFO com.tc.object.locks.ClientLockManager - ClientID[0]: Lock GC collected 2 garbage locks
+2014-09-19 19:16:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory free : 399.342094 MB
+2014-09-19 19:16:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory used : 103.782906 MB
+2014-09-19 19:16:35,816 [Statistics Logger] INFO com.terracottatech.dso - memory max : 503.125000 MB
+2014-09-19 19:31:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory free : 428.451202 MB
+2014-09-19 19:31:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory used : 75.861298 MB
+2014-09-19 19:31:35,817 [Statistics Logger] INFO com.terracottatech.dso - memory max : 504.312500 MB
+2014-09-19 19:41:55,945 [L1_L2:TCComm Main Selector Thread_R (listen 0:0:0:0:0:0:0:0:42332)] WARN com.tc.net.protocol.transport.ClientMessageTransport - ConnectionID(0.436cc15d49144167b76c61487f1609cb.3fac0c22-99a8-4914-a216-06050b958f9f-1488ea59b2e)[]: CLOSE EVENT : com.tc.net.core.TCConnectionImpl@781189897: connected: false, closed: true local=127.0.0.1:37312 remote=127.0.0.1:9510 connect=[Fri Sep 19 16:01:36 UTC 2014] idle=534ms [777429 read, 620280 write]. STATUS : ESTABLISHED
+2014-09-19 19:41:55,946 [L1_L2:TCComm Main Selector Thread_R (listen 0:0:0:0:0:0:0:0:42332)] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl: DSO Client - Connection to [localhost:9510] DISCONNECTED. Health Monitoring for this node is now disabled.
+2014-09-19 19:41:56,220 [ConnectionEstablisher] INFO com.tc.net.protocol.transport.ClientConnectionEstablisher$AsyncReconnect - Handling connection request: RestoreConnectionRequest [type=RESTORE_CONNECTION, clientMessageTransport=com.tc.net.protocol.transport.ClientMessageTransport@1c686b7e, callback=com.tc.net.protocol.delivery.OOOConnectionWatcher@b692bc4, timeoutMillis=5000, sa=127.0.0.1:9510]
+2014-09-19 19:41:56,223 [ConnectionEstablisher] WARN com.tc.net.protocol.transport.ClientMessageTransport - ConnectionID(0.436cc15d49144167b76c61487f1609cb.3fac0c22-99a8-4914-a216-06050b958f9f-1488ea59b2e)[]: Connection refused
+2014-09-19 19:41:57,223 [ConnectionEstablisher] WARN com.tc.net.protocol.transport.ClientMessageTransport - ConnectionID(0.436cc15d49144167b76c61487f1609cb.3fac0c22-99a8-4914-a216-06050b958f9f-1488ea59b2e)[]: Connection refused
+2014-09-19 19:41:58,224 [ConnectionEstablisher] WARN com.tc.net.protocol.transport.ClientMessageTransport - ConnectionID(0.436cc15d49144167b76c61487f1609cb.3fac0c22-99a8-4914-a216-06050b958f9f-1488ea59b2e)[]: Connection refused
+2014-09-19 19:41:59,225 [ConnectionEstablisher] WARN com.tc.net.protocol.transport.ClientMessageTransport - ConnectionID(0.436cc15d49144167b76c61487f1609cb.3fac0c22-99a8-4914-a216-06050b958f9f-1488ea59b2e)[]: Connection refused
+2014-09-19 19:42:00,225 [ConnectionEstablisher] WARN com.tc.net.protocol.transport.ClientMessageTransport - ConnectionID(0.436cc15d49144167b76c61487f1609cb.3fac0c22-99a8-4914-a216-06050b958f9f-1488ea59b2e)[]: Connection refused
+2014-09-19 19:42:01,227 [ConnectionEstablisher] INFO com.tc.net.protocol.tcm.ClientMessageChannel - ClientMessageChannel moves to SessionID=[1]
+2014-09-19 19:42:01,227 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.object.handshakemanager.ClientHandshakeManagerImpl - ClientID[0]: Disconnected: Pausing from State[ RUNNING ] RemoteNode : GroupID[0]. Disconnect count: 0
+2014-09-19 19:42:01,227 [ConnectionEstablisher] INFO com.tc.net.protocol.transport.ClientConnectionEstablisher$AsyncReconnect - Handling connection request: ConnectionRequest [type=RECONNECT, cmt=com.tc.net.protocol.transport.ClientMessageTransport@1c686b7e]
+2014-09-19 19:42:01,227 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.object.handshakemanager.ClientHandshakeManagerImpl - ClientID[0]: ClientHandshakeManager moves to SessionID=[1]
+2014-09-19 19:42:01,231 [ConnectionEstablisher] WARN com.tc.net.protocol.transport.ClientMessageTransport - ConnectionID(0.436cc15d49144167b76c61487f1609cb.3fac0c22-99a8-4914-a216-06050b958f9f-1488ea59b2e)[]: Reconnect attempt 0 of unlimited reconnect tries to localhost:9510:Tc-Group-0, timeout=10000
+2014-09-19 19:42:01,231 [ConnectionEstablisher] WARN com.tc.net.protocol.transport.ClientMessageTransport - ConnectionID(0.436cc15d49144167b76c61487f1609cb.3fac0c22-99a8-4914-a216-06050b958f9f-1488ea59b2e)[]: Connection refused [lossy interval: 10000ms]
+2014-09-19 19:42:11,237 [ConnectionEstablisher] WARN com.tc.net.protocol.transport.ClientMessageTransport - ConnectionID(0.436cc15d49144167b76c61487f1609cb.3fac0c22-99a8-4914-a216-06050b958f9f-1488ea59b2e)[]: Connection refused [lossy interval: 10000ms]
+2014-09-19 19:42:12,129 [CommonShutDownHook] INFO com.terracottatech.dso - L1 Exiting...
+2014-09-19 19:42:13,094 [Thread-2] WARN com.tc.object.ClientShutdownManager - DSO Client exiting without flushing local work
+2014-09-19 19:42:13,094 [RemoteTransactionManager Flusher] INFO com.tc.object.tx.RemoteTransactionManagerImpl - ClientID[0]: Ignoring TCNotRunningException while sending Low water mark : 
+2014-09-19 19:42:13,096 [Thread-2] WARN com.tc.object.handshakemanager.ClientHandshakeManagerImpl - ClientID[0]: Drop handshaking due to client shutting down...

@@ -1,0 +1,552 @@
+Index: src/main/java/net/sf/ehcache/Cache.java
+===================================================================
+--- src/main/java/net/sf/ehcache/Cache.java	(revision 3199)
++++ src/main/java/net/sf/ehcache/Cache.java	(working copy)
+@@ -251,6 +251,8 @@
+ 
+     private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+ 
++    private final String masterGroupKey = GroupElement.MASTER_GROUP_KEY;
++
+     private volatile ElementValueComparator elementValueComparator;
+ 
+     /**
+@@ -1119,6 +1121,8 @@
+ 
+         compoundStore.addStoreListener(this);
+ 
++        registerGroupElement();
++
+         if (LOG.isDebugEnabled()) {
+             LOG.debug("Initialised cache: " + configuration.getName());
+         }
+@@ -1311,6 +1315,8 @@
+ 
+         backOffIfDiskSpoolFull();
+ 
++        addToGroups(element, false, doNotNotifyCacheReplicators);
++
+         if (useCacheWriter) {
+             boolean elementExists = false;
+             try {
+@@ -1398,6 +1404,8 @@
+ 
+         applyDefaultsToElementWithoutLifespanSet(element);
+ 
++        addToGroups(element, true, false);
++
+         compoundStore.put(element);
+     }
+ 
+@@ -1908,7 +1916,7 @@
+      */
+     public final boolean remove(Object key) throws IllegalStateException {
+         return remove(key, false);
+-    }                               
++    }
+ 
+ 
+     /**
+@@ -2040,6 +2048,8 @@
+             elementFromStore = compoundStore.remove(key);
+         }
+ 
++        removeFromGroups(elementFromStore, notifyListeners, doNotNotifyCacheReplicators);
++
+         return notifyRemoveInternalListeners(key, expiry, notifyListeners, doNotNotifyCacheReplicators,
+                 elementFromStore);
+     }
+@@ -2095,8 +2105,11 @@
+      */
+     public void removeAll(boolean doNotNotifyCacheReplicators) throws IllegalStateException, CacheException {
+         checkStatus();
++        getGroupElement().getGroups().clear();
+         compoundStore.removeAll();
+         registeredEventListeners.notifyRemoveAll(doNotNotifyCacheReplicators);
++        // re-create groups, since it is not supposed to be null
++        registerGroupElement();
+     }
+ 
+     /**
+@@ -3287,7 +3300,7 @@
+      */
+     public boolean isNodeCoherent() {
+         return compoundStore.isNodeCoherent();
+-    }                     
++    }
+ 
+     /**
+      * {@inheritDoc}
+@@ -3471,6 +3484,77 @@
+     }
+ 
+ 
++    private void registerGroupElement() {
++        GroupElement group = (GroupElement) getQuiet(masterGroupKey);
++        if (group == null) {
++            group = new GroupElement(masterGroupKey);
++            putQuiet(group);
++        }
++    }
++
++    private GroupElement getGroupElement() {
++        return (GroupElement) getQuiet(masterGroupKey);
++    }
++
++    private void addToGroups(Element element, boolean quiet,
++    		boolean doNotNotifyCacheReplicators) throws CacheException {
++
++    	//does this element have group membership?
++    	if(!element.hasGroupKeys())
++    		return;
++
++    	//loop through group keys, look for them in the cache and create/update them
++    	GroupElement groupElement = getGroupElement();
++    	for(String groupKey : element.getGroupKeys()) {
++    	    groupElement.addMemberToGroup(groupKey, element.getObjectKey());
++    	}
++    }
++
++    private void removeFromGroups(Element element, boolean quiet,
++    		boolean doNotNotifyCacheReplicators) throws CacheException {
++
++    	//does this element have group membership?
++    	if(!element.hasGroupKeys())
++    		return;
++
++    	//loop through group keys, look for them in the cache and modify/remove them
++        GroupElement groupElement = getGroupElement();
++    	for(String groupKey : element.getGroupKeys()) {
++    	    groupElement.removeMemberFromGroup(groupKey, element.getObjectKey());
++    	}
++    }
++
++    /**
++     * {@inheritDoc}
++     */
++    public final Set<Object> getElementKeysForGroup(String groupKey) throws IllegalStateException, CacheException {
++        return getGroupElement().getGroupMembers(groupKey);
++    }
++
++    /**
++     * {@inheritDoc}
++     */
++    public final Set<Object> removeByGroup(String groupKey, boolean doNotNotifyCacheReplicators) throws IllegalStateException, CacheException {
++    	//TODO: do we need an overload for this which takes only groupKey and defaults the boolean?
++        //TODO: do we need a removeQuiet and removeWithWriter too?
++    	//for the given groupKey, get its Set of members
++    	Set proposedRemovals = getElementKeysForGroup(groupKey);
++    	if (proposedRemovals == null || proposedRemovals.isEmpty()) {
++    		return null;
++    	}
++    	//make a copy as we will be modifying the underlying set as we iterate through it
++    	proposedRemovals = new HashSet(proposedRemovals);
++    	Set actualRemovals = new HashSet();
++    	for(Object key : proposedRemovals) {
++    		boolean removed = remove(key, doNotNotifyCacheReplicators);
++    		if(removed) {
++    			actualRemovals.add(key);
++    		}
++    	}
++    	return actualRemovals;
++    }
++
++
+     /**
+      * {@inheritDoc}
+      */
+Index: src/main/java/net/sf/ehcache/Ehcache.java
+===================================================================
+--- src/main/java/net/sf/ehcache/Ehcache.java	(revision 3199)
++++ src/main/java/net/sf/ehcache/Ehcache.java	(working copy)
+@@ -21,6 +21,7 @@
+ import java.util.Collection;
+ import java.util.List;
+ import java.util.Map;
++import java.util.Set;
+ 
+ import net.sf.ehcache.bootstrap.BootstrapCacheLoader;
+ import net.sf.ehcache.config.CacheConfiguration;
+@@ -363,7 +364,7 @@
+      * Removes an {@link net.sf.ehcache.Element} from the Cache and any stores it might be in. This also removes through
+      * to a CacheWriter. If no CacheWriter has been registered for the cache, then this method throws an exception.
+      * <p/>
+-     * Also notifies the CacheEventListener after the element was removed, but only if an El ement
++     * Also notifies the CacheEventListener after the element was removed, but only if an Element
+      * with the key actually existed.
+      *
+      * @param key
+@@ -1086,6 +1087,42 @@
+     public void removePropertyChangeListener(PropertyChangeListener listener);
+ 
+     /**
++     * Returns a list of all element keys in the cache, whether or not they are expired,
++     * whose elements are members are members of the specificed group
++     * <p/>
++     * The Set returned is not live. It is a copy, and may be out of date since
++     * an Element expiry does not necessarily cause a cleanup of the group membership
++     * <p/>
++     * The group element's statistics are update by this access.
++     *
++     * @param groupKey the group identifier
++     * @return a set of {@link Object} keys, or null if the group is not present in the cache
++     * @throws IllegalStateException if the cache is not {@link Status#STATUS_ALIVE}
++     * @throws CacheException if the key does not identify a Group but a regular Element
++     * @since 2.4
++     */
++    public Set getElementKeysForGroup(String groupKey) throws IllegalStateException, CacheException;
++
++    /**
++     * Removes all elements which participate in the given group.
++     * <p/>
++     * The Set returned is the set of Elements that were removed, this may be a
++     * subset of the set returned by {@link #getElementKeysForGroup(String)}; since this
++     * method only includes in the set the keys that were actually removed.
++     * <p/>
++     * The group element's statistics are update by this access.
++     *
++     * @param groupKey the group identifier
++     * @param doNotNotifyCacheReplicators whether the put is coming from a doNotNotifyCacheReplicators cache peer, in which case this put should not initiate a
++     *                                    further notification to doNotNotifyCacheReplicators cache peers
++     * @return a set of {@link Object} keys removed, or null if the group is not present in the cache
++     * @throws IllegalStateException if the cache is not {@link Status#STATUS_ALIVE}
++     * @throws CacheException if the key does not identify a Group but a regular Element
++     * @since 2.4
++     */
++    public Set removeByGroup(String groupKey, boolean doNotNotifyCacheReplicators) throws IllegalStateException, CacheException;
++
++    /**
+      * Retrieve the given named search attribute
+      *
+      * @param <T>
+Index: src/main/java/net/sf/ehcache/Element.java
+===================================================================
+--- src/main/java/net/sf/ehcache/Element.java	(revision 3199)
++++ src/main/java/net/sf/ehcache/Element.java	(working copy)
+@@ -28,6 +28,8 @@
+ import java.io.ObjectInputStream;
+ import java.io.ObjectOutputStream;
+ import java.io.Serializable;
++import java.util.Set;
++import java.util.concurrent.CopyOnWriteArraySet;
+ import java.util.concurrent.atomic.AtomicLongFieldUpdater;
+ 
+ import org.slf4j.Logger;
+@@ -48,14 +50,14 @@
+ 
+     /**
+      * serial version
+-     * Updated for version 1.2, 1.2.1 and 1.7
++     * Updated for version 1.2, 1.2.1, 1.7 and 2.4
+      */
+-    private static final long serialVersionUID = 1098572221246444544L;
++    private static final long serialVersionUID = 318529397738968753L;
+ 
+     private static final Logger LOG = LoggerFactory.getLogger(Element.class.getName());
+ 
+     private static final AtomicLongFieldUpdater<Element> HIT_COUNT_UPDATER = AtomicLongFieldUpdater.newUpdater(Element.class, "hitCount");
+-    
++
+     /**
+      * the cache key.
+      */
+@@ -86,7 +88,7 @@
+      * The amount of time for the element to idle, in seconds. 0 indicates unlimited.
+      */
+     private volatile int timeToIdle = Integer.MIN_VALUE;
+-    
++
+     /**
+      * Pluggable element eviction data instance
+      */
+@@ -102,6 +104,12 @@
+     private volatile boolean cacheDefaultLifespan = true;
+ 
+     /**
++     * The set of cache groups that this cache entry belongs to, if any.
++     * @since 2.4
++     */
++    private volatile Set<String> groupKeys;
++
++    /**
+      * A full constructor.
+      * <p/>
+      * Creation time is set to the current time. Last Access Time is not set.
+@@ -131,7 +139,7 @@
+ 
+     /**
+      * Constructor.
+-     * 
++     *
+      * @deprecated The {@code nextToLastAccessTime} field is unused since
+      *             version 1.7, setting it will have no effect. Use
+      *             #Element(Object, Object, long, long, long, long, long)
+@@ -161,7 +169,7 @@
+         HIT_COUNT_UPDATER.set(this, hitCount);
+         this.elementEvictionData = new DefaultElementEvictionData(creationTime, lastAccessTime);
+     }
+-    
++
+     /**
+      * Constructor used by ElementData. Needs to be public since ElementData might be in another classloader
+      *
+@@ -354,7 +362,7 @@
+      * <p>
+      * Note that in a Terracotta clustered environment, resetting the creation
+      * time will not have any effect.
+-     * 
++     *
+      * @deprecated Resetting the creation time is not recommended as of version
+      *             1.7
+      */
+@@ -404,7 +412,7 @@
+ 
+     /**
+      * Gets the next to last access time.
+-     * 
++     *
+      * @deprecated The {@code nextToLastAccessTime} field is unused since
+      *             version 1.7, retrieving it will return the {@code
+      *             lastAccessTime}. Use #getLastAccessTime() instead.
+@@ -421,10 +429,10 @@
+     public final long getHitCount() {
+         return hitCount;
+     }
+-    
+-    /** 
++
++    /**
+      * Retrieves this element's eviction data instance.
+-     * 
++     *
+      * @return this element's eviction data instance
+      */
+     public ElementEvictionData getElementEvictionData() {
+@@ -433,7 +441,7 @@
+ 
+     /**
+      * Sets this element's eviction data instance.
+-     * 
++     *
+      * @param elementEvictionData this element's eviction data
+      */
+     public void setElementEvictionData(ElementEvictionData elementEvictionData) {
+@@ -477,8 +485,12 @@
+                 .append(", version=").append(version)
+                 .append(", hitCount=").append(hitCount)
+                 .append(", CreationTime = ").append(this.getCreationTime())
+-                .append(", LastAccessTime = ").append(this.getLastAccessTime())
+-                .append(" ]");
++                .append(", LastAccessTime = ").append(this.getLastAccessTime());
++        if (this.hasGroupKeys())
++            sb.append(", groupKeys = ").append(this.getGroupKeys());
++        else
++            sb.append(", groupKeys = null");
++        sb.append(" ]");
+ 
+         return sb.toString();
+     }
+@@ -503,6 +515,9 @@
+         try {
+             Element element = new Element(deepCopy(key), deepCopy(value), version);
+             element.elementEvictionData = elementEvictionData.clone();
++            if (hasGroupKeys()) {
++                element.groupKeys = new CopyOnWriteArraySet(groupKeys);//TODO Java 6: Collections.newSetFromMap(new ConcurrentHashMap<Object,Boolean>())
++            }
+             HIT_COUNT_UPDATER.set(element, hitCount);
+             return element;
+         } catch (IOException e) {
+@@ -596,7 +611,7 @@
+      * @since 1.2
+      */
+     public final boolean isSerializable() {
+-        return isKeySerializable() 
++        return isKeySerializable()
+             && (value instanceof Serializable || value == null)
+             && elementEvictionData.canParticipateInSerialization();
+     }
+@@ -776,7 +791,61 @@
+             timeToLive = ttl;
+         }
+     }
+-    
++
++    /**
++     * @since 2.4
++     */
++	public Set<String> getGroupKeys() {
++        if (groupKeys == null) {
++            groupKeys = new CopyOnWriteArraySet();//TODO Java 6: Collections.newSetFromMap(new ConcurrentHashMap<Object,Boolean>())
++        }
++		return groupKeys;
++	}
++
++    /**
++     * @since 2.4
++     */
++	public void setGroupKeys(Set<String> groupKeys) {
++		this.groupKeys = new CopyOnWriteArraySet(groupKeys);
++	}
++
++    /**
++     * @since 2.4
++     */
++	public boolean hasGroupKeys() {
++		return (groupKeys != null) && (! groupKeys.isEmpty());
++	}
++
++	/**
++	 *
++	 * @param groupKey groupKey to be added to the Elements group keys set
++     * @return <tt>true</tt> if this set did not already contain the specified
++     *         element
++     * @since 2.4
++     */
++	public boolean addGroupKey(String groupKey) {
++		Set<String> groupKeys = getGroupKeys();
++		boolean added = groupKeys.add(groupKey);
++		return added;
++	}
++
++	/**
++	 *
++	 * @param groupKey groupKey to be removed from the Elements group keys set, if present
++     * @return <tt>true</tt> if this set contained the specified element
++     * @since 2.4
++	 */
++	public boolean removeGroupKey(String groupKey) {
++		if (groupKeys == null) {
++			return false;
++		}
++		boolean removed = groupKeys.remove(groupKey);
++		if (groupKeys.isEmpty()) {
++            groupKeys = null;
++        }
++		return removed;
++	}
++
+     /**
+      * Custom serialization write logic
+      */
+@@ -788,7 +857,7 @@
+         out.writeInt(TimeUtil.toSecs(elementEvictionData.getCreationTime()));
+         out.writeInt(TimeUtil.toSecs(elementEvictionData.getLastAccessTime()));
+     }
+-    
++
+     /**
+      * Custom serialization read logic
+      */
+Index: src/main/java/net/sf/ehcache/GroupElement.java
+===================================================================
+--- src/main/java/net/sf/ehcache/GroupElement.java	(revision 0)
++++ src/main/java/net/sf/ehcache/GroupElement.java	(revision 0)
+@@ -0,0 +1,79 @@
++package net.sf.ehcache;
++
++import java.util.Map;
++import java.util.Set;
++import java.util.concurrent.ConcurrentHashMap;
++import java.util.concurrent.CopyOnWriteArraySet;
++
++
++/**
++ * A special cache Element that holds references to group elements via
++ * its value which can always relied on being a Map of Set of object keys.
++ * This class is intended for use only by Ehcache internally.
++ * @author Andrew Liles
++ * @author C&eacute;drik LIME
++ * @since 2.4
++ */
++class GroupElement extends Element {
++
++	public static final String MASTER_GROUP_KEY = "net.sf.ehcache.groups.master";
++
++    private static final long serialVersionUID = 66172327024702L;
++
++	GroupElement(Object key) {
++		super(key,
++		        new ConcurrentHashMap<String, Set<Object>>(), //Object value,
++				Boolean.TRUE, //Boolean eternal,
++				null, //Integer timeToIdleSeconds,
++				null); //Integer timeToLiveSeconds);
++	}
++
++//	/**
++//	 * Use with care, GroupElements should only be created by Ehcache
++//	 * @param key
++//	 * @param value
++//	 * @param version
++//	 * @param creationTime
++//	 * @param lastAccessTime
++//	 * @param lastUpdateTime
++//	 * @param hitCount
++//	 */
++//	GroupElement(Object key, Object value, long version,
++//			long creationTime, long lastAccessTime,
++//			long lastUpdateTime, long hitCount) {
++//		super(key, value, version, creationTime, lastAccessTime,
++//				lastUpdateTime, hitCount);
++//	}
++
++	/**
++	 * @return all known groups; key == group key, value == Set of element keys
++	 */
++	public Map<String, Set<Object>> getGroups() {
++		return (Map<String, Set<Object>>) getObjectValue();
++	}
++
++	public synchronized Set<Object> getGroupMembers(String groupKey) {
++	    Set<Object> groupMembers = getGroups().get(groupKey);
++	    if (groupMembers == null) {
++	        groupMembers = new CopyOnWriteArraySet();//TODO Java 6: Collections.newSetFromMap(new ConcurrentHashMap<Object,Boolean>())
++	        getGroups().put(groupKey, groupMembers);
++        }
++	    return groupMembers;
++	}
++
++	public boolean addMemberToGroup(String groupKey, Object memberKey) {
++	    return getGroupMembers(groupKey).add(memberKey);
++	}
++
++    public boolean removeMemberFromGroup(String groupKey, Object memberKey) {
++        Set<Object> groupMembers = getGroups().get(groupKey);
++        if (groupMembers == null) {
++            return false;
++        }
++        boolean result = groupMembers.remove(memberKey);
++        if (groupMembers.isEmpty()) {
++            getGroups().remove(groupKey);
++        }
++        return result;
++    }
++}
+Index: src/main/java/net/sf/ehcache/constructs/EhcacheDecoratorAdapter.java
+===================================================================
+--- src/main/java/net/sf/ehcache/constructs/EhcacheDecoratorAdapter.java	(revision 3199)
++++ src/main/java/net/sf/ehcache/constructs/EhcacheDecoratorAdapter.java	(working copy)
+@@ -21,6 +21,7 @@
+ import java.util.Collection;
+ import java.util.List;
+ import java.util.Map;
++import java.util.Set;
+ 
+ import net.sf.ehcache.CacheException;
+ import net.sf.ehcache.CacheManager;
+@@ -738,6 +739,16 @@
+         underlyingCache.addPropertyChangeListener(listener);
+     }
+ 
++    /** {@inheritDoc} */
++    public Set getElementKeysForGroup(String groupKey) throws IllegalStateException, CacheException {
++        return underlyingCache.getElementKeysForGroup(groupKey);
++    }
++
++    /** {@inheritDoc} */
++    public Set removeByGroup(String groupKey, boolean doNotNotifyCacheReplicators) throws IllegalStateException, CacheException {
++        return underlyingCache.removeByGroup(groupKey, doNotNotifyCacheReplicators);
++    }
++
+     /**
+      * {@inheritDoc}
+      */

@@ -1,0 +1,4163 @@
+Index: src/main/java/net/sf/ehcache/distribution/jms/JMSCacheReplicatorFactory.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/jms/JMSCacheReplicatorFactory.java	(revision 1608)
++++ src/main/java/net/sf/ehcache/distribution/jms/JMSCacheReplicatorFactory.java	(working copy)
+@@ -21,8 +21,10 @@
+ import net.sf.ehcache.util.PropertyUtil;
+ 
+ import java.util.Properties;
+-import java.util.logging.Level;
+-import java.util.logging.Logger;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ /**
+  * A factory for creating JMSCacheReplicators.
+@@ -32,7 +34,7 @@
+  */
+ public class JMSCacheReplicatorFactory extends CacheEventListenerFactory {
+ 
+-    private static final Logger LOG = Logger.getLogger(JMSCacheReplicatorFactory.class.getName());
++    private static final Logger LOG = LoggerFactory.getLogger(JMSCacheReplicatorFactory.class.getName());
+ 
+     private static final String REPLICATE_PUTS = "replicatePuts";
+ 
+@@ -56,8 +58,8 @@
+     @Override
+     public CacheEventListener createCacheEventListener(Properties properties) {
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("createCacheEventListener ( properties = " + properties + " ) called ");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("createCacheEventListener ( properties = " + properties + " ) called ");
+         }
+ 
+         boolean replicatePuts = extractBooleanProperty(properties,
+@@ -94,7 +96,7 @@
+                 Long longValue = new Long(parsedString);
+                 return longValue.longValue();
+             } catch (NumberFormatException e) {
+-                LOG.warning("Number format exception trying to set asynchronousReplicationIntervalMillis. "
++                LOG.warn("Number format exception trying to set asynchronousReplicationIntervalMillis. "
+                         + "Using the default instead. String value was: '"
+                         + parsedString + "'");
+             }
+Index: src/main/java/net/sf/ehcache/distribution/jms/JMSUtil.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/jms/JMSUtil.java	(revision 1608)
++++ src/main/java/net/sf/ehcache/distribution/jms/JMSUtil.java	(working copy)
+@@ -1,225 +1,181 @@
+-/**
+- *  Copyright 2003-2008 Luck Consulting Pty Ltd
+- *
+- *  Licensed under the Apache License, Version 2.0 (the "License");
+- *  you may not use this file except in compliance with the License.
+- *  You may obtain a copy of the License at
+- *
+- *      http://www.apache.org/licenses/LICENSE-2.0
+- *
+- *  Unless required by applicable law or agreed to in writing, software
+- *  distributed under the License is distributed on an "AS IS" BASIS,
+- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- *  See the License for the specific language governing permissions and
+- *  limitations under the License.
+- */
+-
+-package net.sf.ehcache.distribution.jms;
+-
+-import net.sf.ehcache.CacheException;
+-import net.sf.ehcache.Ehcache;
+-import net.sf.ehcache.CacheManager;
+-
+-import javax.naming.Context;
+-import javax.naming.InitialContext;
+-import javax.naming.NamingException;
+-import javax.naming.NameNotFoundException;
+-import java.util.Properties;
+-import java.util.logging.Logger;
+-import java.util.logging.Level;
+-
+-/**
+- * Configuration file strings used by both the JMS replication and loader.
+- *
+- * @author Greg Luck
+- */
+-public final class JMSUtil {
+-
+-    /***/
+-    public static final String PROVIDER_URL = "providerURL";
+-
+-    /***/
+-    public static final String REPLICATION_TOPIC_BINDING_NAME = "replicationTopicBindingName";
+-
+-    /***/
+-    public static final String GET_QUEUE_BINDING_NAME = "getQueueBindingName";
+-
+-    /***/
+-    public static final String TOPIC_CONNECTION_FACTORY_BINDING_NAME = "replicationTopicConnectionFactoryBindingName";
+-
+-    /***/
+-    public static final String GET_QUEUE_CONNECTION_FACTORY_BINDING_NAME = "getQueueConnectionFactoryBindingName";
+-
+-    /***/
+-    public static final String USERNAME = "userName";
+-
+-    /***/
+-    public static final String PASSWORD = "password";
+-
+-    /***/
+-    public static final String SECURITY_PRINCIPAL_NAME = "securityPrincipalName";
+-
+-    /***/
+-    public static final String SECURITY_CREDENTIALS = "securityCredentials";
+-
+-    /***/
+-    public static final String INITIAL_CONTEXT_FACTORY_NAME = "initialContextFactoryName";
+-
+-    /***/
+-    public static final String URL_PKG_PREFIXES = "urlPkgPrefixes";
+-
+-    /***/
+-    public static final String ACKNOWLEDGEMENT_MODE = "acknowledgementMode";
+-
+-    /***/
+-    public static final String TIMEOUT_MILLIS = "timeoutMillis";
+-
+-    /***/
+-    public static final String DEFAULT_LOADER_ARGUMENT = "defaultLoaderArgument";
+-
+-    /***/
+-    public static final int MAX_PRIORITY = 9;
+-
+-    /***/
+-    public static final String CACHE_MANAGER_UID = "cacheManagerUniqueId";
+-
+-    /***/
+-    public static final String LISTEN_TO_TOPIC = "listenToTopic";
+-
+-
+-    private static final Logger LOG = Logger.getLogger(JMSUtil.class.getName());
+-
+-    private JMSUtil() {
+-        //Utility class
+-    }
+-
+-    /**
+-     * Creates a JNDI initial context.
+-     *
+-     * @param initialContextFactoryName   (mandatory) - the name of the factory used to create the message queue initial context.
+-     * @param providerURL                 (mandatory) - the JNDI configuration information for the service provider to use.
+-     * @param getQueueConnectionFactoryBindingName
+-     *                                    (mandatory) - the JNDI binding name for the QueueConnectionFactory
+-     * @param replicationTopicBindingName (mandatory) - the JNDI binding name for the topic name used for replication
+-     * @param replicationTopicConnectionFactoryBindingName
+-     *                                    (mandatory) - the JNDI binding name for the replication TopicConnectionFactory
+-     * @param getQueueBindingName         (mandatory) - the JNDI binding name for the queue name used to do make requests.
+-     * @param securityPrincipalName       the JNDI java.naming.security.principal
+-     * @param securityCredentials         the JNDI java.naming.security.credentials
+-     * @param urlPkgPrefixes              the JNDI java.naming.factory.url.pkgs
+-     *                                    AUTO_ACKNOWLEDGE, DUPS_OK_ACKNOWLEDGE and SESSION_TRANSACTED.
+-     *                                    The default is AUTO_ACKNOWLEDGE.
+-     * @return a context, ready for lookups
+-     */
+-    public static Context createInitialContext(String securityPrincipalName,
+-                                               String securityCredentials,
+-                                               String initialContextFactoryName,
+-                                               String urlPkgPrefixes,
+-                                               String providerURL,
+-                                               String replicationTopicBindingName,
+-                                               String replicationTopicConnectionFactoryBindingName,
+-                                               String getQueueBindingName,
+-                                               String getQueueConnectionFactoryBindingName) {
+-        Context context;
+-
+-        Properties env = new Properties();
+-
+-        if (replicationTopicConnectionFactoryBindingName != null) {
+-            env.put(TOPIC_CONNECTION_FACTORY_BINDING_NAME, replicationTopicConnectionFactoryBindingName);
+-        }
+-        if (replicationTopicBindingName != null) {
+-            env.put(REPLICATION_TOPIC_BINDING_NAME, replicationTopicBindingName);
+-        }
+-
+-
+-        if (getQueueConnectionFactoryBindingName != null) {
+-            env.put(GET_QUEUE_CONNECTION_FACTORY_BINDING_NAME, getQueueConnectionFactoryBindingName);
+-        }
+-        if (getQueueBindingName != null) {
+-            env.put(GET_QUEUE_BINDING_NAME, getQueueBindingName);
+-        }
+-
+-        env.put(Context.PROVIDER_URL, providerURL);
+-
+-        if (initialContextFactoryName != null) {
+-            env.put(Context.INITIAL_CONTEXT_FACTORY, initialContextFactoryName);
+-            if (urlPkgPrefixes != null) {
+-                env.put(Context.URL_PKG_PREFIXES, urlPkgPrefixes);
+-            }
+-        }
+-
+-        if (securityPrincipalName != null) {
+-            env.put(Context.SECURITY_PRINCIPAL, securityPrincipalName);
+-            if (securityCredentials != null) {
+-                env.put(Context.SECURITY_CREDENTIALS,
+-                        securityCredentials);
+-            } else {
+-                LOG.warning("You have set SecurityPrincipalName option but not the "
+-                        + "SecurityCredentials. This is likely to cause problems.");
+-            }
+-        }
+-        try {
+-            context = new InitialContext(env);
+-        } catch (NamingException ne) {
+-
+-            throw new CacheException("NamingException " + ne.getMessage(), ne);
+-        }
+-        return context;
+-    }
+-
+-    /**
+-     * Looks up an object in a JNDI Context
+-     *
+-     * @param ctx  the context to check
+-     * @param name the object name
+-     * @return the object or null if not found
+-     * @throws javax.naming.NamingException if an exception happens on lookup
+-     */
+-    public static Object lookup(Context ctx, String name) throws NamingException {
+-        try {
+-            LOG.fine("Looking up " + name);
+-            return ctx.lookup(name);
+-        } catch (NameNotFoundException e) {
+-            LOG.log(Level.SEVERE, "Could not find name [" + name + "].");
+-            throw e;
+-        }
+-    }
+-
+-    /**
+-     * Closes the JNDI context.
+-     *
+-     * @param context the context to cose
+-     */
+-    public static void closeContext(Context context) {
+-        try {
+-            if (context != null) {
+-                context.close();
+-            }
+-        } catch (NamingException e) {
+-            throw new CacheException("Exception while closing context", e);
+-        }
+-    }
+-
+-    /**
+-     * Returns a unique ID for a CacheManager. This method always returns the same value
+-     * for the life of a CacheManager instance.
+-     *
+-     * @param cache the CacheManager is discovered through a cache
+-     * @return an identifier for the local CacheManager
+-     */
+-    public static int localCacheManagerUid(Ehcache cache) {
+-        return localCacheManagerUid(cache.getCacheManager());
+-    }
+-
+-
+-    /**
+-     * Returns a unique ID for a CacheManager. This method always returns the same value
+-     * for the life of a CacheManager instance.
+-     *
+-     * @param cacheManager the CacheManager of interest
+-     * @return an identifier for the local CacheManager
+-     */
+-    public static int localCacheManagerUid(CacheManager cacheManager) {
+-        return cacheManager.hashCode();
+-    }
+-}
++/**
++ *  Copyright 2003-2008 Luck Consulting Pty Ltd
++ *
++ *  Licensed under the Apache License, Version 2.0 (the "License");
++ *  you may not use this file except in compliance with the License.
++ *  You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *  Unless required by applicable law or agreed to in writing, software
++ *  distributed under the License is distributed on an "AS IS" BASIS,
++ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *  See the License for the specific language governing permissions and
++ *  limitations under the License.
++ */
++
++package net.sf.ehcache.distribution.jms;
++
++import net.sf.ehcache.CacheException;
++import net.sf.ehcache.Ehcache;
++import net.sf.ehcache.CacheManager;
++
++import javax.naming.Context;
++import javax.naming.InitialContext;
++import javax.naming.NamingException;
++import javax.naming.NameNotFoundException;
++import java.util.Properties;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
++/**
++ * Configuration file strings used by both the JMS replication and loader.
++ *
++ * @author Greg Luck
++ */
++public final class JMSUtil {
++
++    /***/
++    public static final String PROVIDER_URL = "providerURL";
++
++    /***/
++    public static final String REPLICATION_TOPIC_BINDING_NAME = "replicationTopicBindingName";
++
++    /***/
++    public static final String GET_QUEUE_BINDING_NAME = "getQueueBindingName";
++
++    /***/
++    public static final String TOPIC_CONNECTION_FACTORY_BINDING_NAME = "replicationTopicConnectionFactoryBindingName";
++
++    /***/
++    public static final String GET_QUEUE_CONNECTION_FACTORY_BINDING_NAME = "getQueueConnectionFactoryBindingName";
++
++    /***/
++    public static final String USERNAME = "userName";
++
++    /***/
++    public static final String PASSWORD = "password";
++
++    /***/
++    public static final String SECURITY_PRINCIPAL_NAME = "securityPrincipalName";
++
++    /***/
++    public static final String SECURITY_CREDENTIALS = "securityCredentials";
++
++    /***/
++    public static final String INITIAL_CONTEXT_FACTORY_NAME = "initialContextFactoryName";
++
++    /***/
++    public static final String URL_PKG_PREFIXES = "urlPkgPrefixes";
++
++    /***/
++    public static final String ACKNOWLEDGEMENT_MODE = "acknowledgementMode";
++
++    /***/
++    public static final String TIMEOUT_MILLIS = "timeoutMillis";
++
++    /***/
++    public static final String DEFAULT_LOADER_ARGUMENT = "defaultLoaderArgument";
++
++    /***/
++    public static final int MAX_PRIORITY = 9;
++
++    /***/
++    public static final String CACHE_MANAGER_UID = "cacheManagerUniqueId";
++
++    /***/
++    public static final String LISTEN_TO_TOPIC = "listenToTopic";
++
++
++    private static final Logger LOG = LoggerFactory.getLogger(JMSUtil.class.getName());
++
++    private JMSUtil() {
++        //Utility class
++    }
++
++    /**
++     * Creates a JNDI initial context.
++     *
++     * @param initialContextFactoryName   (mandatory) - the name of the factory used to create the message queue initial context.
++     * @param providerURL                 (mandatory) - the JNDI configuration information for the service provider to use.
++     * @param getQueueConnectionFactoryBindingName
++     *                                    (mandatory) - the JNDI binding name for the QueueConnectionFactory
++     * @param replicationTopicBindingName (mandatory) - the JNDI binding name for the topic name used for replication
++     * @param replicationTopicConnectionFactoryBindingName
++     *                                    (mandatory) - the JNDI binding name for the replication TopicConnectionFactory
++     * @param getQueueBindingName         (mandatory) - the JNDI binding name for the queue name used to do make requests.
++     * @param securityPrincipalName       the JNDI java.naming.security.principal
++     * @param securityCredentials         the JNDI java.naming.security.credentials
++     * @param urlPkgPrefixes              the JNDI java.naming.factory.url.pkgs
++     *                                    AUTO_ACKNOWLEDGE, DUPS_OK_ACKNOWLEDGE and SESSION_TRANSACTED.
++     *                                    The default is AUTO_ACKNOWLEDGE.
++     * @return a context, ready for lookups
++     */
++    public static Context createInitialContext(Configuration configuration) {
++        Context context;
++        try {
++            context = new InitialContext(configuration.getEnvironment());
++        } catch (NamingException ne) {
++            throw new CacheException("NamingException " + ne.getMessage(), ne);
++        }
++        return context;
++    }
++
++    /**
++     * Looks up an object in a JNDI Context
++     *
++     * @param ctx  the context to check
++     * @param name the object name
++     * @return the object or null if not found
++     * @throws javax.naming.NamingException if an exception happens on lookup
++     */
++    public static Object lookup(Context ctx, String name) throws NamingException {
++        try {
++            LOG.info("Looking up " + name);
++            return ctx.lookup(name);
++        } catch (NameNotFoundException e) {
++            LOG.error("Could not find name [" + name + "].");
++            throw e;
++        }
++    }
++
++    /**
++     * Closes the JNDI context.
++     *
++     * @param context the context to cose
++     */
++    public static void closeContext(Context context) {
++        try {
++            if (context != null) {
++                context.close();
++            }
++        } catch (NamingException e) {
++            throw new CacheException("Exception while closing context", e);
++        }
++    }
++
++    /**
++     * Returns a unique ID for a CacheManager. This method always returns the same value
++     * for the life of a CacheManager instance.
++     *
++     * @param cache the CacheManager is discovered through a cache
++     * @return an identifier for the local CacheManager
++     */
++    public static int localCacheManagerUid(Ehcache cache) {
++        return localCacheManagerUid(cache.getCacheManager());
++    }
++
++
++    /**
++     * Returns a unique ID for a CacheManager. This method always returns the same value
++     * for the life of a CacheManager instance.
++     *
++     * @param cacheManager the CacheManager of interest
++     * @return an identifier for the local CacheManager
++     */
++    public static int localCacheManagerUid(CacheManager cacheManager) {
++        return cacheManager.hashCode();
++    }
++}
+Index: src/main/java/net/sf/ehcache/distribution/jms/JMSCacheManagerPeerProvider.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/jms/JMSCacheManagerPeerProvider.java	(revision 1608)
++++ src/main/java/net/sf/ehcache/distribution/jms/JMSCacheManagerPeerProvider.java	(working copy)
+@@ -16,14 +16,13 @@
+ 
+ package net.sf.ehcache.distribution.jms;
+ 
+-import net.sf.ehcache.CacheException;
+-import net.sf.ehcache.CacheManager;
+-import net.sf.ehcache.Ehcache;
+-import net.sf.ehcache.distribution.CacheManagerPeerProvider;
+-import net.sf.ehcache.distribution.CachePeer;
+ import static net.sf.ehcache.distribution.jms.JMSUtil.CACHE_MANAGER_UID;
+ import static net.sf.ehcache.distribution.jms.JMSUtil.localCacheManagerUid;
+ 
++import java.util.ArrayList;
++import java.util.List;
++import java.util.logging.Level;
++
+ import javax.jms.ExceptionListener;
+ import javax.jms.JMSException;
+ import javax.jms.Queue;
+@@ -35,11 +34,16 @@
+ import javax.jms.TopicPublisher;
+ import javax.jms.TopicSession;
+ import javax.jms.TopicSubscriber;
+-import java.util.ArrayList;
+-import java.util.List;
+-import java.util.logging.Level;
+-import java.util.logging.Logger;
+ 
++import net.sf.ehcache.CacheException;
++import net.sf.ehcache.CacheManager;
++import net.sf.ehcache.Ehcache;
++import net.sf.ehcache.distribution.CacheManagerPeerProvider;
++import net.sf.ehcache.distribution.CachePeer;
++
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
+ /**
+  * Creates a single instance of JMSCachePeer which does not publishing and subscribing to a single topic
+  * for the CacheManager
+@@ -49,7 +53,7 @@
+  */
+ public class JMSCacheManagerPeerProvider implements CacheManagerPeerProvider {
+ 
+-    private static final Logger LOG = Logger.getLogger(JMSCacheManagerPeerProvider.class.getName());
++    private static final Logger LOG = LoggerFactory.getLogger(JMSCacheManagerPeerProvider.class.getName());
+ 
+     /***/
+     protected CacheManager cacheManager;
+@@ -131,8 +135,8 @@
+      */
+     public long getTimeForClusterToForm() {
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("getTimeForClusterToForm ( ) called ");
++        if (LOG.isTraceEnabled()) {
++            LOG.trace("getTimeForClusterToForm ( ) called ");
+         }
+ 
+         return 0;
+@@ -157,12 +161,10 @@
+     public void init() {
+ 
+         try {
+-
+             topicPublisherSession = replicationTopicConnection.createTopicSession(false, acknowledgementMode.toInt());
+             replicationTopicConnection.setExceptionListener(new ExceptionListener() {
+-
+                 public void onException(JMSException e) {
+-                    LOG.log(Level.SEVERE, "Exception on replication Connection: " + e.getMessage(), e);
++                    LOG.error("Exception on replication Connection: " + e.getMessage(), e);
+                 }
+             });
+ 
+@@ -170,11 +172,12 @@
+ 
+             if (listenToTopic) {
+ 
+-                LOG.fine("Listening for message on topic " + replicationTopic.getTopicName());
++                LOG.info("Listening for message on topic " + replicationTopic.getTopicName());
+                 //ignore messages we have sent. The third parameter is noLocal, which means do not deliver back to the sender
+                 //on the same connection
+                 TopicSession topicSubscriberSession = replicationTopicConnection.createTopicSession(false, acknowledgementMode.toInt());
+                 topicSubscriber = topicSubscriberSession.createSubscriber(replicationTopic, null, true);
++                
+                 replicationTopicConnection.start();
+             }
+ 
+@@ -182,10 +185,8 @@
+             //noLocal is only supported in the JMS spec for topics. We need to use a message selector
+             //on the queue to achieve the same effect.
+             getQueueSession = getQueueConnection.createQueueSession(false, acknowledgementMode.toInt());
+-            String messageSelector = CACHE_MANAGER_UID + " <> " + localCacheManagerUid(cacheManager);
++            final String messageSelector = CACHE_MANAGER_UID + " <> " + localCacheManagerUid(cacheManager);
+             getQueueRequestReceiver = getQueueSession.createReceiver(getQueue, messageSelector);
+-
+-
+             getQueueConnection.start();
+ 
+ 
+@@ -203,10 +204,8 @@
+             }
+             getQueueRequestReceiver.setMessageListener(cachePeer);
+         } catch (JMSException e) {
+-            LOG.log(Level.SEVERE, "Cannot register " + cachePeer + " as messageListener", e);
++            LOG.error("Cannot register " + cachePeer + " as messageListener", e);
+         }
+-
+-
+     }
+ 
+ 
+@@ -217,7 +216,7 @@
+      */
+     public void dispose() throws CacheException {
+ 
+-        LOG.fine("JMSCacheManagerPeerProvider for CacheManager " + cacheManager.getName() + " being disposed.");
++        LOG.info("JMSCacheManagerPeerProvider for CacheManager " + cacheManager.getName() + " being disposed.");
+ 
+         try {
+ 
+@@ -236,7 +235,7 @@
+             getQueueConnection.close();
+ 
+         } catch (JMSException e) {
+-            LOG.severe(e.getMessage());
++            LOG.error(e.getMessage());
+             throw new CacheException(e.getMessage(), e);
+         }
+ 
+Index: src/main/java/net/sf/ehcache/distribution/jms/JMSCacheLoaderFactory.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/jms/JMSCacheLoaderFactory.java	(revision 1608)
++++ src/main/java/net/sf/ehcache/distribution/jms/JMSCacheLoaderFactory.java	(working copy)
+@@ -1,161 +1,140 @@
+-/**
+- *  Copyright 2003-2008 Luck Consulting Pty Ltd
+- *
+- *  Licensed under the Apache License, Version 2.0 (the "License");
+- *  you may not use this file except in compliance with the License.
+- *  You may obtain a copy of the License at
+- *
+- *      http://www.apache.org/licenses/LICENSE-2.0
+- *
+- *  Unless required by applicable law or agreed to in writing, software
+- *  distributed under the License is distributed on an "AS IS" BASIS,
+- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- *  See the License for the specific language governing permissions and
+- *  limitations under the License.
+- */
+-
+-package net.sf.ehcache.distribution.jms;
+-
+-import net.sf.ehcache.CacheException;
+-import net.sf.ehcache.Ehcache;
+-import static net.sf.ehcache.distribution.jms.JMSUtil.ACKNOWLEDGEMENT_MODE;
+-import static net.sf.ehcache.distribution.jms.JMSUtil.DEFAULT_LOADER_ARGUMENT;
+-import static net.sf.ehcache.distribution.jms.JMSUtil.GET_QUEUE_BINDING_NAME;
+-import static net.sf.ehcache.distribution.jms.JMSUtil.GET_QUEUE_CONNECTION_FACTORY_BINDING_NAME;
+-import static net.sf.ehcache.distribution.jms.JMSUtil.INITIAL_CONTEXT_FACTORY_NAME;
+-import static net.sf.ehcache.distribution.jms.JMSUtil.PASSWORD;
+-import static net.sf.ehcache.distribution.jms.JMSUtil.PROVIDER_URL;
+-import static net.sf.ehcache.distribution.jms.JMSUtil.SECURITY_CREDENTIALS;
+-import static net.sf.ehcache.distribution.jms.JMSUtil.SECURITY_PRINCIPAL_NAME;
+-import static net.sf.ehcache.distribution.jms.JMSUtil.TIMEOUT_MILLIS;
+-import static net.sf.ehcache.distribution.jms.JMSUtil.URL_PKG_PREFIXES;
+-import static net.sf.ehcache.distribution.jms.JMSUtil.USERNAME;
+-import net.sf.ehcache.loader.CacheLoaderFactory;
+-import net.sf.ehcache.util.PropertyUtil;
+-
+-import javax.jms.JMSException;
+-import javax.jms.Queue;
+-import javax.jms.QueueConnection;
+-import javax.jms.QueueConnectionFactory;
+-import javax.naming.Context;
+-import javax.naming.NamingException;
+-import java.util.Properties;
+-import java.util.logging.Logger;
+-
+-/**
+- * A factory to create JMSCacheLoaders.
+- *
+- * @author Greg Luck
+- */
+-public class JMSCacheLoaderFactory extends CacheLoaderFactory {
+-
+-    /**
+-     * The default timeoutMillis - time in milliseconds to wait for a reply from a JMS Cache Loader. 
+-     */
+-    protected static final int DEFAULT_TIMEOUT_INTERVAL_MILLIS = 30000;
+-
+-    private static final Logger LOG = Logger.getLogger(JMSCacheLoaderFactory.class.getName());
+-
+-    /**
+-     * Creates a CacheLoader using the Ehcache configuration mechanism at the time the associated cache
+-     * is created.
+-     *
+-     * @param properties implementation specific properties. These are configured as comma
+-     *                   separated name value pairs in ehcache.xml
+-     * @return a constructed CacheLoader
+-     */
+-    public net.sf.ehcache.loader.CacheLoader createCacheLoader(Ehcache cache, Properties properties) {
+-
+-        String securityPrincipalName = PropertyUtil.extractAndLogProperty(SECURITY_PRINCIPAL_NAME, properties);
+-        String securityCredentials = PropertyUtil.extractAndLogProperty(SECURITY_CREDENTIALS, properties);
+-        String initialContextFactoryName = PropertyUtil.extractAndLogProperty(INITIAL_CONTEXT_FACTORY_NAME, properties);
+-        String urlPkgPrefixes = PropertyUtil.extractAndLogProperty(URL_PKG_PREFIXES, properties);
+-        String providerURL = PropertyUtil.extractAndLogProperty(PROVIDER_URL, properties);
+-        String getQueueConnectionFactoryBindingName =
+-                PropertyUtil.extractAndLogProperty(GET_QUEUE_CONNECTION_FACTORY_BINDING_NAME, properties);
+-        if (getQueueConnectionFactoryBindingName == null) {
+-            throw new CacheException("getQueueConnectionFactoryBindingName is not configured.");
+-        }
+-        String getQueueBindingName = PropertyUtil.extractAndLogProperty(GET_QUEUE_BINDING_NAME, properties);
+-        if (getQueueBindingName == null) {
+-            throw new CacheException("getQueueBindingName is not configured.");
+-        }
+-
+-        String defaultLoaderArgument = PropertyUtil.extractAndLogProperty(DEFAULT_LOADER_ARGUMENT, properties);
+-
+-        String userName = PropertyUtil.extractAndLogProperty(USERNAME, properties);
+-        String password = PropertyUtil.extractAndLogProperty(PASSWORD, properties);
+-        String acknowledgementMode = PropertyUtil.extractAndLogProperty(ACKNOWLEDGEMENT_MODE, properties);
+-
+-        int timeoutMillis = extractTimeoutMillis(properties);
+-
+-        AcknowledgementMode effectiveAcknowledgementMode = AcknowledgementMode.forString(acknowledgementMode);
+-
+-        Context context = null;
+-
+-        QueueConnection getQueueConnection;
+-        QueueConnectionFactory queueConnectionFactory;
+-        Queue getQueue;
+-
+-        try {
+-
+-            context = JMSUtil.createInitialContext(securityPrincipalName, securityCredentials, initialContextFactoryName,
+-                    urlPkgPrefixes, providerURL, null, null,
+-                    getQueueBindingName, getQueueConnectionFactoryBindingName);
+-
+-            queueConnectionFactory = (QueueConnectionFactory) JMSUtil.lookup(context, getQueueConnectionFactoryBindingName);
+-            getQueue = (Queue) JMSUtil.lookup(context, getQueueBindingName);
+-
+-            JMSUtil.closeContext(context);
+-        } catch (NamingException ne) {
+-            throw new CacheException("NamingException " + ne.getMessage(), ne);
+-        }
+-
+-        try {
+-            getQueueConnection = createQueueConnection(userName, password, queueConnectionFactory);
+-        } catch (JMSException e) {
+-            throw new CacheException("Problem creating connections: " + e.getMessage(), e);
+-        }
+-
+-        return new JMSCacheLoader(cache, defaultLoaderArgument, getQueueConnection, getQueue,
+-                effectiveAcknowledgementMode, timeoutMillis);
+-    }
+-
+-
+-    private QueueConnection createQueueConnection(String userName, String password,
+-                                                  QueueConnectionFactory queueConnectionFactory) throws JMSException {
+-        QueueConnection queueConnection;
+-        if (userName != null) {
+-            queueConnection = queueConnectionFactory.createQueueConnection(userName, password);
+-        } else {
+-            queueConnection = queueConnectionFactory.createQueueConnection();
+-        }
+-        return queueConnection;
+-    }
+-
+-
+-    /**
+-     * Extracts the value of timeoutMillis. Sets it to 30000ms if
+-     * either not set or there is a problem parsing the number
+-     *
+-     * @param properties
+-     */
+-    protected int extractTimeoutMillis(Properties properties) {
+-        int timeoutMillis = 0;
+-        String timeoutMillisString =
+-                PropertyUtil.extractAndLogProperty(TIMEOUT_MILLIS, properties);
+-        if (timeoutMillisString != null) {
+-            try {
+-                timeoutMillis = Integer.parseInt(timeoutMillisString);
+-            } catch (NumberFormatException e) {
+-                LOG.warning("Number format exception trying to set timeoutMillis. " +
+-                        "Using the default instead. String value was: '" + timeoutMillisString + "'");
+-                timeoutMillis = DEFAULT_TIMEOUT_INTERVAL_MILLIS;
+-            }
+-        } else {
+-            timeoutMillis = DEFAULT_TIMEOUT_INTERVAL_MILLIS;
+-        }
+-        return timeoutMillis;
+-    }
+-
+-}
++/**
++ *  Copyright 2003-2008 Luck Consulting Pty Ltd
++ *
++ *  Licensed under the Apache License, Version 2.0 (the "License");
++ *  you may not use this file except in compliance with the License.
++ *  You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *  Unless required by applicable law or agreed to in writing, software
++ *  distributed under the License is distributed on an "AS IS" BASIS,
++ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *  See the License for the specific language governing permissions and
++ *  limitations under the License.
++ */
++
++package net.sf.ehcache.distribution.jms;
++
++import static net.sf.ehcache.distribution.jms.JMSUtil.TIMEOUT_MILLIS;
++
++import java.util.Properties;
++
++import javax.jms.JMSException;
++import javax.jms.Queue;
++import javax.jms.QueueConnection;
++import javax.jms.QueueConnectionFactory;
++import javax.naming.Context;
++import javax.naming.NamingException;
++
++import net.sf.ehcache.CacheException;
++import net.sf.ehcache.Ehcache;
++import net.sf.ehcache.loader.CacheLoaderFactory;
++import net.sf.ehcache.util.PropertyUtil;
++
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
++/**
++ * A factory to create JMSCacheLoaders.
++ *
++ * @author Greg Luck
++ */
++public class JMSCacheLoaderFactory extends CacheLoaderFactory {
++
++    /**
++     * The default timeoutMillis - time in milliseconds to wait for a reply from a JMS Cache Loader. 
++     */
++    protected static final int DEFAULT_TIMEOUT_INTERVAL_MILLIS = 30000;
++
++    private static final Logger LOG = LoggerFactory.getLogger(JMSCacheLoaderFactory.class.getName());
++
++    /**
++     * Creates a CacheLoader using the Ehcache configuration mechanism at the time the associated cache
++     * is created.
++     *
++     * @param properties implementation specific properties. These are configured as comma
++     *                   separated name value pairs in ehcache.xml
++     * @return a constructed CacheLoader
++     */
++    public net.sf.ehcache.loader.CacheLoader createCacheLoader(Ehcache cache, Properties properties) {
++      Configuration conf = new Configuration(properties);
++      
++        if (conf.getGetQueueConnectionFactoryBindingName() == null) {
++            throw new CacheException("getQueueConnectionFactoryBindingName is not configured.");
++        }
++        if (conf.getGetQueueBindingName() == null) {
++            throw new CacheException("getQueueBindingName is not configured.");
++        }
++
++
++
++
++        int timeoutMillis = extractTimeoutMillis(properties);
++
++       
++        Context context = null;
++
++        QueueConnection getQueueConnection;
++        QueueConnectionFactory queueConnectionFactory;
++        Queue getQueue;
++
++        try {
++            context = JMSUtil.createInitialContext(conf);
++
++            queueConnectionFactory = (QueueConnectionFactory) JMSUtil.lookup(context, conf.getGetQueueConnectionFactoryBindingName());
++            getQueue = (Queue) JMSUtil.lookup(context, conf.getGetQueueBindingName());
++
++            JMSUtil.closeContext(context);
++        } catch (NamingException ne) {
++            throw new CacheException("NamingException " + ne.getMessage(), ne);
++        }
++
++        try {
++            getQueueConnection = createQueueConnection(conf.getUserName(), conf.getPassword(), queueConnectionFactory);
++        } catch (JMSException e) {
++            throw new CacheException("Problem creating connections: " + e.getMessage(), e);
++        }
++
++        return new JMSCacheLoader(cache, conf.getDefaultLoaderArgument(), getQueueConnection, getQueue,
++                conf.getEffectiveAcknowledgementMode(), timeoutMillis);
++    }
++
++
++    private QueueConnection createQueueConnection(String userName, String password,
++                                                  QueueConnectionFactory queueConnectionFactory) throws JMSException {
++        QueueConnection queueConnection;
++        if (userName != null) {
++            queueConnection = queueConnectionFactory.createQueueConnection(userName, password);
++        } else {
++            queueConnection = queueConnectionFactory.createQueueConnection();
++        }
++        return queueConnection;
++    }
++
++
++    /**
++     * Extracts the value of timeoutMillis. Sets it to 30000ms if
++     * either not set or there is a problem parsing the number
++     *
++     * @param properties
++     */
++    protected int extractTimeoutMillis(Properties properties) {
++        int timeoutMillis = 0;
++        String timeoutMillisString =
++                PropertyUtil.extractAndLogProperty(TIMEOUT_MILLIS, properties);
++        if (timeoutMillisString != null) {
++            try {
++                timeoutMillis = Integer.parseInt(timeoutMillisString);
++            } catch (NumberFormatException e) {
++                LOG.warn("Number format exception trying to set timeoutMillis. " +
++                        "Using the default instead. String value was: '" + timeoutMillisString + "'");
++                timeoutMillis = DEFAULT_TIMEOUT_INTERVAL_MILLIS;
++            }
++        } else {
++            timeoutMillis = DEFAULT_TIMEOUT_INTERVAL_MILLIS;
++        }
++        return timeoutMillis;
++    }
++
++}
+Index: src/main/java/net/sf/ehcache/distribution/jms/JMSCacheManagerPeerProviderFactory.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/jms/JMSCacheManagerPeerProviderFactory.java	(revision 1608)
++++ src/main/java/net/sf/ehcache/distribution/jms/JMSCacheManagerPeerProviderFactory.java	(working copy)
+@@ -36,8 +36,10 @@
+ import javax.naming.Context;
+ import javax.naming.NamingException;
+ import java.util.Properties;
+-import java.util.logging.Logger;
+-import java.util.logging.Level;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ /**
+  * @author benoit.perroud@elca.ch
+@@ -46,7 +48,7 @@
+ public class JMSCacheManagerPeerProviderFactory extends CacheManagerPeerProviderFactory {
+ 
+ 
+-    private static final Logger LOG = Logger.getLogger(JMSCacheManagerPeerProviderFactory.class.getName());
++    private static final Logger LOG = LoggerFactory.getLogger(JMSCacheManagerPeerProviderFactory.class.getName());
+ 
+ 
+     /**
+@@ -58,36 +60,21 @@
+     @Override
+     public CacheManagerPeerProvider createCachePeerProvider(CacheManager cacheManager, Properties properties) {
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("createCachePeerProvider ( cacheManager = " + cacheManager
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("createCachePeerProvider ( cacheManager = " + cacheManager
+                     + ", properties = " + properties + " ) called ");
+         }
++        Configuration configuration = new Configuration(properties);
+ 
++    
++        LOG.info("Creating TopicSession in " + configuration.getEffectiveAcknowledgementMode().name() + " mode.");
+ 
+-        String securityPrincipalName = PropertyUtil.extractAndLogProperty(SECURITY_PRINCIPAL_NAME, properties);
+-        String securityCredentials = PropertyUtil.extractAndLogProperty(SECURITY_CREDENTIALS, properties);
+-        String initialContextFactoryName = PropertyUtil.extractAndLogProperty(INITIAL_CONTEXT_FACTORY_NAME, properties);
+-        String urlPkgPrefixes = PropertyUtil.extractAndLogProperty(URL_PKG_PREFIXES, properties);
+-        String providerURL = PropertyUtil.extractAndLogProperty(PROVIDER_URL, properties);
+-        String replicationTopicBindingName = PropertyUtil.extractAndLogProperty(REPLICATION_TOPIC_BINDING_NAME, properties);
+-        String getQueueBindingName = PropertyUtil.extractAndLogProperty(GET_QUEUE_BINDING_NAME, properties);
+-        String getQueueConnectionFactoryBindingName =
+-                PropertyUtil.extractAndLogProperty(GET_QUEUE_CONNECTION_FACTORY_BINDING_NAME, properties);
+-        String replicationTopicConnectionFactoryBindingName =
+-                PropertyUtil.extractAndLogProperty(TOPIC_CONNECTION_FACTORY_BINDING_NAME, properties);
+-        String userName = PropertyUtil.extractAndLogProperty(USERNAME, properties);
+-        String password = PropertyUtil.extractAndLogProperty(PASSWORD, properties);
+-
+-        String acknowledgementMode = PropertyUtil.extractAndLogProperty(ACKNOWLEDGEMENT_MODE, properties);
+-        AcknowledgementMode effectiveAcknowledgementMode = AcknowledgementMode.forString(acknowledgementMode);
+-        LOG.fine("Creating TopicSession in " + effectiveAcknowledgementMode.name() + " mode.");
+-
+         String listenToTopicString = PropertyUtil.extractAndLogProperty(LISTEN_TO_TOPIC, properties);
+         boolean listenToTopic;
+         listenToTopic = listenToTopicString == null || PropertyUtil.parseBoolean(listenToTopicString);
+ 
+ 
+-        validateJMSCacheLoaderConfiguration(getQueueBindingName, getQueueConnectionFactoryBindingName);
++        validateJMSCacheLoaderConfiguration(configuration.getGetQueueBindingName(), configuration.getGetQueueConnectionFactoryBindingName());
+ 
+         Context context = null;
+ 
+@@ -101,16 +88,14 @@
+ 
+         try {
+ 
+-            context = createInitialContext(securityPrincipalName, securityCredentials, initialContextFactoryName,
+-                    urlPkgPrefixes, providerURL, replicationTopicBindingName, replicationTopicConnectionFactoryBindingName,
+-                    getQueueBindingName, getQueueConnectionFactoryBindingName);
++            context = createInitialContext(configuration);
+ 
+ 
+-            topicConnectionFactory = (TopicConnectionFactory) lookup(context, replicationTopicConnectionFactoryBindingName);
+-            replicationTopic = (Topic) lookup(context, replicationTopicBindingName);
++            topicConnectionFactory = (TopicConnectionFactory) lookup(context, configuration.getReplicationTopicConnectionFactoryBindingName());
++            replicationTopic = (Topic) lookup(context, configuration.getReplicationTopicBindingName());
+ 
+-            queueConnectionFactory = (QueueConnectionFactory) lookup(context, getQueueConnectionFactoryBindingName);
+-            getQueue = (Queue) lookup(context, getQueueBindingName);
++            queueConnectionFactory = (QueueConnectionFactory) lookup(context, configuration.getGetQueueConnectionFactoryBindingName());
++            getQueue = (Queue) lookup(context, configuration.getGetQueueBindingName());
+ 
+             closeContext(context);
+         } catch (NamingException ne) {
+@@ -118,14 +103,14 @@
+         }
+ 
+         try {
+-            replicationTopicConnection = createTopicConnection(userName, password, topicConnectionFactory);
+-            getQueueConnection = createQueueConnection(userName, password, queueConnectionFactory);
++            replicationTopicConnection = createTopicConnection(configuration.getUserName(), configuration.getPassword(), topicConnectionFactory);
++            getQueueConnection = createQueueConnection(configuration.getUserName(), configuration.getPassword(), queueConnectionFactory);
+         } catch (JMSException e) {
+             throw new CacheException("Problem creating connections: " + e.getMessage(), e);
+         }
+ 
+         return new JMSCacheManagerPeerProvider(cacheManager, replicationTopicConnection, replicationTopic,
+-                getQueueConnection, getQueue, effectiveAcknowledgementMode, listenToTopic);
++                getQueueConnection, getQueue, configuration.getEffectiveAcknowledgementMode(), listenToTopic);
+     }
+ 
+     private void validateJMSCacheLoaderConfiguration(String getQueueBindingName, String getQueueConnectionFactoryBindingName) {
+Index: src/main/java/net/sf/ehcache/distribution/jms/JMSCacheLoader.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/jms/JMSCacheLoader.java	(revision 1608)
++++ src/main/java/net/sf/ehcache/distribution/jms/JMSCacheLoader.java	(working copy)
+@@ -1,331 +1,366 @@
+-/**
+- *  Copyright 2003-2008 Luck Consulting Pty Ltd
+- *
+- *  Licensed under the Apache License, Version 2.0 (the "License");
+- *  you may not use this file except in compliance with the License.
+- *  You may obtain a copy of the License at
+- *
+- *      http://www.apache.org/licenses/LICENSE-2.0
+- *
+- *  Unless required by applicable law or agreed to in writing, software
+- *  distributed under the License is distributed on an "AS IS" BASIS,
+- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- *  See the License for the specific language governing permissions and
+- *  limitations under the License.
+- */
+-
+-package net.sf.ehcache.distribution.jms;
+-
+-import net.sf.ehcache.Ehcache;
+-import net.sf.ehcache.Status;
+-import static net.sf.ehcache.distribution.jms.JMSUtil.CACHE_MANAGER_UID;
+-import static net.sf.ehcache.distribution.jms.JMSUtil.localCacheManagerUid;
+-import net.sf.ehcache.loader.CacheLoader;
+-import net.sf.ehcache.CacheException;
+-
+-import javax.jms.DeliveryMode;
+-import javax.jms.ExceptionListener;
+-import javax.jms.JMSException;
+-import javax.jms.MessageConsumer;
+-import javax.jms.ObjectMessage;
+-import javax.jms.Queue;
+-import javax.jms.QueueConnection;
+-import javax.jms.QueueSender;
+-import javax.jms.QueueSession;
+-import javax.jms.TemporaryQueue;
+-import java.io.Serializable;
+-import java.util.ArrayList;
+-import java.util.Collection;
+-import java.util.Map;
+-import java.util.logging.Level;
+-import java.util.logging.Logger;
+-
+-/**
+- * @author Greg Luck
+- */
+-public class JMSCacheLoader implements CacheLoader {
+-
+-    /**
+-     * The highest JMS priority
+-     */
+-    protected static final int HIGHEST_JMS_PRORITY = 9;
+-
+-    private static final Logger LOG = Logger.getLogger(JMSCacheLoader.class.getName());
+-
+-    /***/
+-    protected QueueSender getQueueSender;
+-
+-    /***/
+-    protected QueueSession getQueueSession;
+-
+-    /***/
+-    protected int timeoutMillis;
+-
+-    /***/
+-    protected Ehcache cache;
+-
+-
+-    private AcknowledgementMode acknowledgementMode;
+-    private Status status;
+-    private QueueConnection getQueueConnection;
+-    private String defaultLoaderArgument;
+-    private Queue getQueue;
+-
+-
+-    /**
+-     * Constructor.
+-     *
+-     * @param cache
+-     * @param defaultLoaderArgument
+-     * @param getQueueConnection
+-     * @param getQueue
+-     * @param acknowledgementMode
+-     * @param timeoutMillis
+-     */
+-    public JMSCacheLoader(Ehcache cache, String defaultLoaderArgument,
+-                          QueueConnection getQueueConnection,
+-                          Queue getQueue,
+-                          AcknowledgementMode acknowledgementMode,
+-                          int timeoutMillis) {
+-
+-        this.cache = cache;
+-        this.defaultLoaderArgument = defaultLoaderArgument;
+-        this.getQueueConnection = getQueueConnection;
+-        this.acknowledgementMode = acknowledgementMode;
+-        this.getQueue = getQueue;
+-        this.timeoutMillis = timeoutMillis;
+-        status = Status.STATUS_UNINITIALISED;
+-    }
+-
+-
+-    /**
+-     * loads an object. Application writers should implement this
+-     * method to customize the loading of cache object. This method is called
+-     * by the caching service when the requested object is not in the cache.
+-     * <p/>
+-     *
+-     * @param key the key identifying the object being loaded
+-     * @return The object that is to be stored in the cache.
+-     * @throws net.sf.jsr107cache.CacheException
+-     *
+-     */
+-    public Object load(Object key) throws CacheException {
+-        return load(key, null);
+-    }
+-
+-
+-    /**
+-     * Load using both a key and an argument.
+-     * <p/>
+-     * JCache will call through to the load(key) method, rather than this method, where the argument is null.
+-     *
+-     * @param key      the key to load the object for.
+-     * @param argument can be anything that makes sense to the loader.
+-     *                 The argument is converted to a String with toString()
+-     *                 to use for the JMS StringProperty loaderArgument
+-     * @return the Object loaded
+-     * @throws net.sf.jsr107cache.CacheException
+-     *
+-     */
+-    public Object load(Object key, Object argument) throws CacheException {
+-        Serializable keyAsSerializable = (Serializable) key;
+-        Serializable effectiveLoaderArgument = effectiveLoaderArgument(argument);
+-
+-        JMSEventMessage jmsEventMessage = new JMSEventMessage(Action.GET,
+-                keyAsSerializable, null, cache.getName(), effectiveLoaderArgument);
+-
+-        return loadFromJMS(jmsEventMessage);
+-    }
+-
+-    /**
+-     * A common loader which handles the JMS interactions.
+-     *
+-     * @param jmsEventMessage
+-     * @return the object loaded from JMS.
+-     * @throws CacheException
+-     */
+-    protected Object loadFromJMS(JMSEventMessage jmsEventMessage) throws CacheException {
+-        Object value;
+-        MessageConsumer replyReceiver = null;
+-        TemporaryQueue temporaryReplyQueue = null;
+-        try {
+-
+-            ObjectMessage loadRequest = getQueueSession.createObjectMessage(jmsEventMessage);
+-            temporaryReplyQueue = getQueueSession.createTemporaryQueue();
+-
+-            replyReceiver = getQueueSession.createConsumer(temporaryReplyQueue);
+-            loadRequest.setJMSReplyTo(temporaryReplyQueue);
+-            loadRequest.setIntProperty(CACHE_MANAGER_UID, localCacheManagerUid(cache));
+-            getQueueSender.send(loadRequest, DeliveryMode.NON_PERSISTENT, HIGHEST_JMS_PRORITY, timeoutMillis);
+-
+-            //must send first before getting id
+-            String initialMessageId = loadRequest.getJMSMessageID();
+-
+-
+-            ObjectMessage reply = (ObjectMessage) replyReceiver.receive(timeoutMillis);
+-            if (reply == null) {
+-                return null;
+-            }
+-            String messageId = reply.getJMSCorrelationID();
+-            if (LOG.isLoggable(Level.FINE)) {
+-                LOG.fine("Initial ID: " + initialMessageId + ". Reply Correlation ID. " + messageId);
+-            }
+-
+-            String responder = reply.getStringProperty("responder");
+-            if (LOG.isLoggable(Level.FINE)) {
+-                LOG.fine("Responder: " + responder);
+-            }
+-            assert initialMessageId.equals(messageId) : "The load request received an uncorrelated request. " +
+-                    "Request ID was " + messageId;
+-            value = reply.getObject();
+-        } catch (JMSException e) {
+-            throw new CacheException("Problem loading: " + e.getMessage(), e);
+-        } finally {
+-            try {
+-                replyReceiver.close();
+-                temporaryReplyQueue.delete();
+-            } catch (JMSException e) {
+-                LOG.log(Level.SEVERE, "Problem closing JMS Resources: " + e.getMessage(), e);
+-            }
+-        }
+-        return value;
+-    }
+-
+-
+-    /**
+-     * loads multiple object. Application writers should implement this
+-     * method to customize the loading of cache object. This method is called
+-     * by the caching service when the requested object is not in the cache.
+-     * <p/>
+-     *
+-     * @param keys a Collection of keys identifying the objects to be loaded
+-     * @return A Map of objects that are to be stored in the cache.
+-     * @throws net.sf.jsr107cache.CacheException
+-     *
+-     */
+-    public Map loadAll(Collection keys) throws CacheException {
+-        return loadAll(keys, null);
+-    }
+-
+-    /**
+-     * Load using both a key and an argument.
+-     * <p/>
+-     * JCache will use the loadAll(key) method where the argument is null.
+-     *
+-     * @param keys     a <code>Collection</code> of keys to load objects for. Each key must be <code>Serializable</code>.
+-     * @param argument can be anything that makes sense to the loader. It must be <code>Serializable</code>.
+-     * @return a map of Objects keyed by the collection of keys passed in.
+-     * @throws net.sf.jsr107cache.CacheException
+-     *
+-     */
+-    public Map loadAll(Collection keys, Object argument) throws CacheException {
+-
+-        Serializable effectiveLoaderArgument;
+-        effectiveLoaderArgument = effectiveLoaderArgument(argument);
+-
+-        ArrayList<Serializable> requestList = new ArrayList<Serializable>();
+-        for (Object key : keys) {
+-            Serializable keyAsSerializable = (Serializable) key;
+-            requestList.add(keyAsSerializable);
+-        }
+-
+-        Map responseMap;
+-        JMSEventMessage jmsEventMessage = new JMSEventMessage(Action.GET,
+-                requestList, null, cache.getName(), effectiveLoaderArgument);
+-        responseMap = (Map) loadFromJMS(jmsEventMessage);
+-        return responseMap;
+-    }
+-
+-    private Serializable effectiveLoaderArgument(Object argument) {
+-        Serializable effectiveLoaderArgument;
+-        if (argument == null) {
+-            effectiveLoaderArgument = defaultLoaderArgument;
+-        } else {
+-            effectiveLoaderArgument = (Serializable) argument;
+-        }
+-        return effectiveLoaderArgument;
+-    }
+-
+-    /**
+-     * Gets the name of a CacheLoader
+-     *
+-     * @return the name of this CacheLoader
+-     */
+-    public String getName() {
+-        return "JMSCacheLoader with default loaderArgument: " + defaultLoaderArgument;
+-    }
+-
+-    /**
+-     * Creates a clone of this extension. This method will only be called by ehcache before a
+-     * cache is initialized.
+-     * <p/>
+-     * Implementations should throw CloneNotSupportedException if they do not support clone
+-     * but that will stop them from being used with defaultCache.
+-     *
+-     * @return a clone
+-     * @throws CloneNotSupportedException if the extension could not be cloned.
+-     */
+-    public CacheLoader clone(Ehcache cache) throws CloneNotSupportedException {
+-        throw new CloneNotSupportedException("not supported");
+-    }
+-
+-    /**
+-     * Notifies providers to initialise themselves.
+-     * <p/>
+-     * This method is called during the Cache's initialise method after it has changed it's
+-     * status to alive. Cache operations are legal in this method.
+-     *
+-     * @throws net.sf.ehcache.CacheException
+-     */
+-    public void init() {
+-
+-        try {
+-            getQueueConnection.setExceptionListener(new ExceptionListener() {
+-
+-                public void onException(JMSException e) {
+-                    LOG.log(Level.SEVERE, "Exception on getQueue Connection: " + e.getMessage(), e);
+-                }
+-            });
+-
+-            getQueueSession = getQueueConnection.createQueueSession(false, acknowledgementMode.toInt());
+-            getQueueSender = getQueueSession.createSender(getQueue);
+-
+-
+-            getQueueConnection.start();
+-
+-            status = Status.STATUS_ALIVE;
+-        } catch (JMSException e) {
+-            throw new net.sf.ehcache.CacheException("Exception while creating JMS connections: " + e.getMessage(), e);
+-        }
+-    }
+-
+-    /**
+-     * Providers may be doing all sorts of exotic things and need to be able to clean up on
+-     * dispose.
+-     * <p/>
+-     * Cache operations are illegal when this method is called. The cache itself is partly
+-     * disposed when this method is called.
+-     *
+-     * @throws net.sf.ehcache.CacheException
+-     */
+-    public void dispose() throws net.sf.ehcache.CacheException {
+-        try {
+-            getQueueConnection.stop();
+-            getQueueSession.close();
+-            getQueueSender.close();
+-            getQueueConnection.close();
+-
+-        } catch (JMSException e) {
+-            throw new net.sf.ehcache.CacheException("Problem stopping queue connection: " + e.getMessage(), e);
+-        }
+-        status = Status.STATUS_SHUTDOWN;
+-    }
+-
+-    /**
+-     * @return the status of the extension
+-     */
+-    public Status getStatus() {
+-        return status;
+-    }
+-
+-}
++/**
++ *  Copyright 2003-2008 Luck Consulting Pty Ltd
++ *
++ *  Licensed under the Apache License, Version 2.0 (the "License");
++ *  you may not use this file except in compliance with the License.
++ *  You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *  Unless required by applicable law or agreed to in writing, software
++ *  distributed under the License is distributed on an "AS IS" BASIS,
++ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *  See the License for the specific language governing permissions and
++ *  limitations under the License.
++ */
++
++package net.sf.ehcache.distribution.jms;
++
++import static net.sf.ehcache.distribution.jms.JMSUtil.CACHE_MANAGER_UID;
++import static net.sf.ehcache.distribution.jms.JMSUtil.localCacheManagerUid;
++
++import java.io.Serializable;
++import java.util.ArrayList;
++import java.util.Collection;
++import java.util.Map;
++import java.util.logging.Level;
++
++import javax.jms.DeliveryMode;
++import javax.jms.ExceptionListener;
++import javax.jms.JMSException;
++import javax.jms.MessageConsumer;
++import javax.jms.ObjectMessage;
++import javax.jms.Queue;
++import javax.jms.QueueConnection;
++import javax.jms.QueueSender;
++import javax.jms.QueueSession;
++import javax.jms.TemporaryQueue;
++
++import net.sf.ehcache.CacheException;
++import net.sf.ehcache.Ehcache;
++import net.sf.ehcache.Status;
++import net.sf.ehcache.loader.CacheLoader;
++
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
++/**
++ * @author Greg Luck
++ */
++public class JMSCacheLoader implements CacheLoader {
++
++    /**
++     * The highest JMS priority
++     */
++    protected static final int HIGHEST_JMS_PRORITY = 9;
++
++    private static final Logger LOG = LoggerFactory.getLogger(JMSCacheLoader.class.getName());
++
++    /***/
++    protected QueueSender getQueueSender;
++
++    /***/
++    protected QueueSession getQueueSession;
++
++    /***/
++    protected int timeoutMillis;
++
++    /***/
++    protected Ehcache cache;
++
++
++    private AcknowledgementMode acknowledgementMode;
++    private Status status;
++    private QueueConnection getQueueConnection;
++    private String defaultLoaderArgument;
++    private Queue getQueue;
++
++
++    /**
++     * Constructor.
++     *
++     * @param cache
++     * @param defaultLoaderArgument
++     * @param getQueueConnection
++     * @param getQueue
++     * @param acknowledgementMode
++     * @param timeoutMillis
++     */
++    public JMSCacheLoader(Ehcache cache, String defaultLoaderArgument,
++                          QueueConnection getQueueConnection,
++                          Queue getQueue,
++                          AcknowledgementMode acknowledgementMode,
++                          int timeoutMillis) {
++
++        this.cache = cache;
++        this.defaultLoaderArgument = defaultLoaderArgument;
++        this.getQueueConnection = getQueueConnection;
++        this.acknowledgementMode = acknowledgementMode;
++        this.getQueue = getQueue;
++        this.timeoutMillis = timeoutMillis;
++        status = Status.STATUS_UNINITIALISED;
++    }
++
++
++    /**
++     * loads an object. Application writers should implement this
++     * method to customize the loading of cache object. This method is called
++     * by the caching service when the requested object is not in the cache.
++     * <p/>
++     *
++     * @param key the key identifying the object being loaded
++     * @return The object that is to be stored in the cache.
++     * @throws net.sf.jsr107cache.CacheException
++     *
++     */
++    public Object load(Object key) throws CacheException {
++        return load(key, null);
++    }
++
++
++    /**
++     * Load using both a key and an argument.
++     * <p/>
++     * JCache will call through to the load(key) method, rather than this method, where the argument is null.
++     *
++     * @param key      the key to load the object for.
++     * @param argument can be anything that makes sense to the loader.
++     *                 The argument is converted to a String with toString()
++     *                 to use for the JMS StringProperty loaderArgument
++     * @return the Object loaded
++     * @throws net.sf.jsr107cache.CacheException
++     *
++     */
++    public Object load(Object key, Object argument) throws CacheException {
++        Serializable keyAsSerializable = (Serializable) key;
++        Serializable effectiveLoaderArgument = effectiveLoaderArgument(argument);
++
++        JMSEventMessage jmsEventMessage = new JMSEventMessage(Action.GET,
++                keyAsSerializable, null, cache.getName(), effectiveLoaderArgument);
++
++        return loadFromJMS(jmsEventMessage);
++    }
++
++    /**
++     * A common loader which handles the JMS interactions.
++     *
++     * @param jmsEventMessage
++     * @return the object loaded from JMS.
++     * @throws CacheException
++     */
++    protected Object loadFromJMS(JMSEventMessage jmsEventMessage) throws CacheException {
++        MessageConsumer replyReceiver = null;
++        TemporaryQueue temporaryReplyQueue = null;
++        try {
++            ObjectMessage loadRequest = getQueueSession.createObjectMessage(jmsEventMessage);
++            temporaryReplyQueue = getQueueSession.createTemporaryQueue();
++
++            replyReceiver = getQueueSession.createConsumer(temporaryReplyQueue);
++            loadRequest.setJMSReplyTo(temporaryReplyQueue);
++            loadRequest.setIntProperty(CACHE_MANAGER_UID, localCacheManagerUid(cache));
++            getQueueSender.send(loadRequest, DeliveryMode.NON_PERSISTENT, HIGHEST_JMS_PRORITY, timeoutMillis);
++
++            //must send first before getting id
++            final String initialMessageId = loadRequest.getJMSMessageID();
++
++
++            Reply reply = getReply(replyReceiver, timeoutMillis);
++            if (!reply.isValid()) {
++                return null;
++            }
++            logReplyIfNeeded(initialMessageId, reply);
++            return reply.getValue();
++        } catch (JMSException e) {
++            throw new CacheException("Problem loading: " + e.getMessage(), e);
++        } finally {
++            try {
++                replyReceiver.close();
++                temporaryReplyQueue.delete();
++            } catch (JMSException e) {
++                LOG.error( "Problem closing JMS Resources: " + e.getMessage(), e);
++            }
++        }
++    }
++
++
++    private Reply getReply(MessageConsumer replyReceiver, int timeout) throws JMSException {
++      ObjectMessage om = (ObjectMessage) replyReceiver.receive(timeout);
++      return new Reply(om);
++    }
++
++
++    private void logReplyIfNeeded(String initialMessageId, Reply reply) {
++      if (LOG.isDebugEnabled()) {
++          LOG.debug("Initial ID: " + reply.getMessageId() + ". Reply Correlation ID. " + reply.getMessageId());
++      }
++
++      if (LOG.isDebugEnabled()) {
++          LOG.debug("Responder: " + reply.getResponder());
++      }
++      assert initialMessageId.equals(reply.getMessageId()) : "The load request received an uncorrelated request. " +
++              "Request ID was " + reply.getMessageId();
++    }
++  
++    /**
++     * loads multiple object. Application writers should implement this
++     * method to customize the loading of cache object. This method is called
++     * by the caching service when the requested object is not in the cache.
++     * <p/>
++     *
++     * @param keys a Collection of keys identifying the objects to be loaded
++     * @return A Map of objects that are to be stored in the cache.
++     * @throws net.sf.jsr107cache.CacheException
++     *
++     */
++    public Map loadAll(Collection keys) throws CacheException {
++        return loadAll(keys, null);
++    }
++
++    /**
++     * Load using both a key and an argument.
++     * <p/>
++     * JCache will use the loadAll(key) method where the argument is null.
++     *
++     * @param keys     a <code>Collection</code> of keys to load objects for. Each key must be <code>Serializable</code>.
++     * @param argument can be anything that makes sense to the loader. It must be <code>Serializable</code>.
++     * @return a map of Objects keyed by the collection of keys passed in.
++     * @throws net.sf.jsr107cache.CacheException
++     *
++     */
++    public Map loadAll(Collection keys, Object argument) throws CacheException {
++        Serializable effectiveLoaderArgument= effectiveLoaderArgument(argument);
++
++        JMSEventMessage jmsEventMessage = new JMSEventMessage(Action.GET,
++            asSerializableList(keys), null, cache.getName(), effectiveLoaderArgument);
++        return (Map) loadFromJMS(jmsEventMessage);
++    }
++
++
++    private ArrayList<Serializable> asSerializableList(Collection keys) {
++      ArrayList<Serializable> requestList = new ArrayList<Serializable>();
++      for (Object key : keys) {
++          Serializable keyAsSerializable = (Serializable) key;
++          requestList.add(keyAsSerializable);
++      }
++      return requestList;
++    }
++
++    private Serializable effectiveLoaderArgument(Object argument) {
++        Serializable effectiveLoaderArgument;
++        if (argument == null) {
++            effectiveLoaderArgument = defaultLoaderArgument;
++        } else {
++            effectiveLoaderArgument = (Serializable) argument;
++        }
++        return effectiveLoaderArgument;
++    }
++
++    /**
++     * Gets the name of a CacheLoader
++     *
++     * @return the name of this CacheLoader
++     */
++    public String getName() {
++        return "JMSCacheLoader with default loaderArgument: " + defaultLoaderArgument;
++    }
++
++    /**
++     * Creates a clone of this extension. This method will only be called by ehcache before a
++     * cache is initialized.
++     * <p/>
++     * Implementations should throw CloneNotSupportedException if they do not support clone
++     * but that will stop them from being used with defaultCache.
++     *
++     * @return a clone
++     * @throws CloneNotSupportedException if the extension could not be cloned.
++     */
++    public CacheLoader clone(Ehcache cache) throws CloneNotSupportedException {
++        throw new CloneNotSupportedException("not supported");
++    }
++
++    /**
++     * Notifies providers to initialise themselves.
++     * <p/>
++     * This method is called during the Cache's initialise method after it has changed it's
++     * status to alive. Cache operations are legal in this method.
++     *
++     * @throws net.sf.ehcache.CacheException
++     */
++    public void init() {
++
++        try {
++            getQueueConnection.setExceptionListener(new ExceptionListener() {
++
++                public void onException(JMSException e) {
++                    LOG.error("Exception on getQueue Connection: " + e.getMessage(), e);
++                }
++            });
++
++            getQueueSession = getQueueConnection.createQueueSession(false, acknowledgementMode.toInt());
++            getQueueSender = getQueueSession.createSender(getQueue);
++
++
++            getQueueConnection.start();
++
++            status = Status.STATUS_ALIVE;
++        } catch (JMSException e) {
++            throw new net.sf.ehcache.CacheException("Exception while creating JMS connections: " + e.getMessage(), e);
++        }
++    }
++
++    /**
++     * Providers may be doing all sorts of exotic things and need to be able to clean up on
++     * dispose.
++     * <p/>
++     * Cache operations are illegal when this method is called. The cache itself is partly
++     * disposed when this method is called.
++     *
++     * @throws net.sf.ehcache.CacheException
++     */
++    public void dispose() throws net.sf.ehcache.CacheException {
++        try {
++            getQueueConnection.stop();
++            getQueueSession.close();
++            getQueueSender.close();
++            getQueueConnection.close();
++
++        } catch (JMSException e) {
++            throw new net.sf.ehcache.CacheException("Problem stopping queue connection: " + e.getMessage(), e);
++        }
++        status = Status.STATUS_SHUTDOWN;
++    }
++
++    /**
++     * @return the status of the extension
++     */
++    public Status getStatus() {
++        return status;
++    }
++    private class Reply{
++      private Object value;
++      private String messageId;
++      private String responder;
++      private boolean valid;
++      Reply(ObjectMessage message) throws JMSException{
++        valid = message != null;
++        if(valid){
++          value = message.getObject();
++          messageId = message.getJMSCorrelationID();
++          responder = message.getStringProperty("responder");
++        }
++      }
++      Object getValue() {
++        return value;
++      }
++      String getMessageId() {
++        return messageId;
++      }
++      String getResponder() {
++        return responder;
++      }
++      boolean isValid() {
++        return valid;
++      }
++      
++    }
++}
+Index: src/main/java/net/sf/ehcache/distribution/jms/JMSCacheReplicator.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/jms/JMSCacheReplicator.java	(revision 1608)
++++ src/main/java/net/sf/ehcache/distribution/jms/JMSCacheReplicator.java	(working copy)
+@@ -16,6 +16,12 @@
+ 
+ package net.sf.ehcache.distribution.jms;
+ 
++import java.rmi.RemoteException;
++import java.util.ArrayList;
++import java.util.LinkedList;
++import java.util.List;
++import java.util.logging.Level;
++
+ import net.sf.ehcache.CacheException;
+ import net.sf.ehcache.Ehcache;
+ import net.sf.ehcache.Element;
+@@ -25,12 +31,8 @@
+ import net.sf.ehcache.distribution.CacheReplicator;
+ import net.sf.ehcache.distribution.EventMessage;
+ 
+-import java.rmi.RemoteException;
+-import java.util.ArrayList;
+-import java.util.LinkedList;
+-import java.util.List;
+-import java.util.logging.Level;
+-import java.util.logging.Logger;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ /**
+  * @author benoit.perroud@elca.ch
+@@ -43,7 +45,7 @@
+      */
+     public static final long DEFAULT_ASYNC_INTERVAL = 1000;
+ 
+-    private static final Logger LOG = Logger.getLogger(JMSCacheReplicator.class.getName());
++    private static final Logger LOG = LoggerFactory.getLogger(JMSCacheReplicator.class.getName());
+ 
+     private long asynchronousReplicationInterval = DEFAULT_ASYNC_INTERVAL;
+ 
+@@ -72,8 +74,8 @@
+                               boolean replicateUpdatesViaCopy, boolean replicateRemovals,
+                               boolean replicateAsync, long asynchronousReplicationInterval) {
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("JMSCacheReplicator constructor ( replicatePuts = "
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("JMSCacheReplicator constructor ( replicatePuts = "
+                     + replicatePuts + ", replicateUpdates = " + replicateUpdates + ", " +
+                     "replicateUpdatesViaCopy = " + replicateUpdatesViaCopy + ", replicateRemovals = "
+                     + replicateRemovals + ", replicateAsync = " + replicateAsync + " ) called");
+@@ -102,8 +104,8 @@
+      */
+     public boolean alive() {
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("alive ( ) called ");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("alive ( ) called ");
+         }
+ 
+         return status == Status.STATUS_ALIVE;
+@@ -116,8 +118,8 @@
+      */
+     public boolean isReplicateUpdatesViaCopy() {
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("isReplicateUpdatesViaCopy ( ) called ");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("isReplicateUpdatesViaCopy ( ) called ");
+         }
+ 
+         return replicateUpdatesViaCopy;
+@@ -130,8 +132,8 @@
+      */
+     public boolean notAlive() {
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("notAlive ( ) called ");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("notAlive ( ) called ");
+         }
+ 
+         return !alive();
+@@ -149,8 +151,8 @@
+      */
+     public void dispose() {
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("dispose ( ) called ");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("dispose ( ) called ");
+         }
+ 
+         status = Status.STATUS_SHUTDOWN;
+@@ -231,16 +233,16 @@
+             return;
+         }
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("notifyElementPut ( cache = " + cache + ", element = " + element + ") called ");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("notifyElementPut ( cache = " + cache + ", element = " + element + ") called ");
+         }
+ 
+         if (!element.isKeySerializable()) {
+-            LOG.warning("Key " + element.getObjectKey() + " is not Serializable and cannot be replicated.");
++            LOG.warn("Key " + element.getObjectKey() + " is not Serializable and cannot be replicated.");
+             return;
+         }
+         if (!element.isSerializable()) {
+-            LOG.warning("Object with key " + element.getObjectKey() + " is not Serializable and cannot be replicated");
++            LOG.warn("Object with key " + element.getObjectKey() + " is not Serializable and cannot be replicated");
+             return;
+         }
+         replicatePut(cache, element);
+@@ -273,16 +275,16 @@
+             return;
+         }
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("notifyElementUpdated ( cache = " + cache + ", element = " + element + ") called ");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("notifyElementUpdated ( cache = " + cache + ", element = " + element + ") called ");
+         }
+ 
+         if (!element.isKeySerializable()) {
+-            LOG.warning("Key " + element.getObjectKey() + " is not Serializable and cannot be replicated.");
++            LOG.warn("Key " + element.getObjectKey() + " is not Serializable and cannot be replicated.");
+             return;
+         }
+         if (!element.isSerializable()) {
+-            LOG.warning("Object with key " + element.getObjectKey() + " is not Serializable and cannot be replicated");
++            LOG.warn("Object with key " + element.getObjectKey() + " is not Serializable and cannot be replicated");
+             return;
+         }
+ 
+@@ -322,8 +324,8 @@
+      */
+     public void notifyElementRemoved(Ehcache cache, Element element) throws CacheException {
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("notifyElementRemoved ( cache = " + cache + ", element = " + element + ")");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("notifyElementRemoved ( cache = " + cache + ", element = " + element + ")");
+         }
+ 
+         if (notAlive()) {
+@@ -334,12 +336,12 @@
+             return;
+         }
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("notifyElementRemoved ( cache = " + cache + ", element = " + element + ")");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("notifyElementRemoved ( cache = " + cache + ", element = " + element + ")");
+         }
+ 
+         if (!element.isKeySerializable()) {
+-            LOG.warning("Key " + element.getObjectKey() + " is not Serializable and cannot be replicated.");
++            LOG.warn("Key " + element.getObjectKey() + " is not Serializable and cannot be replicated.");
+             return;
+         }
+         replicateRemoval(cache, element);
+@@ -378,8 +380,8 @@
+             return;
+         }
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("notifyRemoveAll ( cache = " + cache + ") ");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("notifyRemoveAll ( cache = " + cache + ") ");
+         }
+ 
+         JMSEventMessage message = new JMSEventMessage(Action.REMOVE_ALL, null, null, cache.getName(), null);
+@@ -411,8 +413,8 @@
+      */
+     protected void sendNotification(Ehcache cache, JMSEventMessage message) {
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("sendNotification ( " + message.toString() + " )");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("sendNotification ( " + message.toString() + " )");
+         }
+ 
+         if (replicateAsync) {
+@@ -501,7 +503,7 @@
+                 try {
+                     Thread.sleep(getAsynchronousReplicationInterval());
+                 } catch (InterruptedException e) {
+-                    LOG.fine("Spool Thread interrupted.");
++                    LOG.info("Spool Thread interrupted.");
+                     return;
+                 }
+             }
+@@ -511,7 +513,7 @@
+             try {
+                 flushReplicationQueue();
+             } catch (Throwable e) {
+-                LOG.log(Level.WARNING, "Exception on flushing of replication queue: "
++                LOG.warn("Exception on flushing of replication queue: "
+                         + e.getMessage() + ". Continuing...", e);
+             }
+         }
+@@ -525,8 +527,8 @@
+ 
+     private void flushReplicationQueue() {
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("flushReplicationQueue ( ) called ");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("flushReplicationQueue ( ) called ");
+         }
+ 
+         List<AsyncJMSEventMessage> replicationQueueCopy;
+@@ -551,7 +553,7 @@
+                 try {
+                     peer.send(messages);
+                 } catch (RemoteException e) {
+-                    LOG.warning("Unable to send message to remote peer. Message was: " + e.getMessage() + " continuing to send" +
++                    LOG.warn("Unable to send message to remote peer. Message was: " + e.getMessage() + " continuing to send" +
+                             "remaining messages.");
+                 }
+             }
+Index: src/main/java/net/sf/ehcache/distribution/jms/JMSCachePeer.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/jms/JMSCachePeer.java	(revision 1608)
++++ src/main/java/net/sf/ehcache/distribution/jms/JMSCachePeer.java	(working copy)
+@@ -16,16 +16,18 @@
+ 
+ package net.sf.ehcache.distribution.jms;
+ 
+-import net.sf.ehcache.CacheManager;
+-import net.sf.ehcache.Ehcache;
+-import net.sf.ehcache.Element;
+-import net.sf.ehcache.MimeTypeByteArray;
+-import net.sf.ehcache.distribution.CachePeer;
+ import static net.sf.ehcache.distribution.jms.JMSEventMessage.ACTION_PROPERTY;
+ import static net.sf.ehcache.distribution.jms.JMSEventMessage.CACHE_NAME_PROPERTY;
+ import static net.sf.ehcache.distribution.jms.JMSEventMessage.KEY_PROPERTY;
+ import static net.sf.ehcache.distribution.jms.JMSUtil.CACHE_MANAGER_UID;
+ 
++import java.io.Serializable;
++import java.rmi.RemoteException;
++import java.util.ArrayList;
++import java.util.HashMap;
++import java.util.List;
++import java.util.logging.Level;
++
+ import javax.jms.BytesMessage;
+ import javax.jms.JMSException;
+ import javax.jms.Message;
+@@ -37,14 +39,16 @@
+ import javax.jms.QueueSession;
+ import javax.jms.Session;
+ import javax.jms.TextMessage;
+-import java.io.Serializable;
+-import java.rmi.RemoteException;
+-import java.util.ArrayList;
+-import java.util.HashMap;
+-import java.util.List;
+-import java.util.logging.Level;
+-import java.util.logging.Logger;
+ 
++import net.sf.ehcache.CacheManager;
++import net.sf.ehcache.Ehcache;
++import net.sf.ehcache.Element;
++import net.sf.ehcache.MimeTypeByteArray;
++import net.sf.ehcache.distribution.CachePeer;
++
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
+ /**
+  * A JMS Cache Peer subscribes to JMS messages, both from the replication topic and the get queue.
+  *
+@@ -53,7 +57,7 @@
+  */
+ public class JMSCachePeer implements CachePeer, MessageListener {
+ 
+-    private static final Logger LOG = Logger.getLogger(JMSCachePeer.class.getName());
++    private static final Logger LOG = LoggerFactory.getLogger(JMSCachePeer.class.getName());
+ 
+     /**
+      * Used only in testing
+@@ -82,8 +86,8 @@
+                         QueueSession getQueueSession) {
+ 
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("JMSCachePeer constructor ( cacheManager = "
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("JMSCachePeer constructor ( cacheManager = "
+                     + cacheManager
+                     + ", messageProducer = " + messageProducer + " ) called");
+         }
+@@ -120,8 +124,8 @@
+      */
+     private void handleNotification(JMSEventMessage message, Ehcache cache) {
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("handleNotification ( message = " + message + " ) called ");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("handleNotification ( message = " + message + " ) called ");
+         }
+ 
+         int event = message.getEvent();
+@@ -137,9 +141,7 @@
+                 removeAll(cache);
+                 break;
+             default:
+-                if (LOG.isLoggable(Level.FINE)) {
+-                    LOG.severe(" Undefined action " + event);
+-                }
++                LOG.error(" Undefined action " + event);
+         }
+     }
+ 
+@@ -155,8 +157,8 @@
+      */
+     private void handleNotification(Element element, Serializable key, Ehcache cache, Action action) {
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("handleNotification ( element = " + element + " ) called ");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("handleNotification ( element = " + element + " ) called ");
+         }
+ 
+         if (action.equals(Action.PUT)) {
+@@ -189,22 +191,22 @@
+     }
+ 
+     private void removeAll(Ehcache cache) {
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("removeAll ");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("removeAll ");
+         }
+         cache.removeAll(true);
+     }
+ 
+     private void remove(Ehcache cache, Serializable key) {
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("remove ( key = " + key + " ) ");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("remove ( key = " + key + " ) ");
+         }
+         cache.remove(key, true);
+     }
+ 
+     private void put(Ehcache cache, Element element) {
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("put ( element = " + element + " ) ");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("put ( element = " + element + " ) ");
+         }
+         cache.put(element, true);
+     }
+@@ -218,8 +220,8 @@
+      */
+     public void send(List eventMessages) throws RemoteException {
+ 
+-        if (LOG.isLoggable(Level.FINEST)) {
+-            LOG.finest("send ( eventMessages = " + eventMessages + " ) called ");
++        if (LOG.isDebugEnabled()) {
++            LOG.debug("send ( eventMessages = " + eventMessages + " ) called ");
+         }
+ 
+         for (Object eventMessage : eventMessages) {
+@@ -227,7 +229,7 @@
+                 ObjectMessage message = producerSession.createObjectMessage((JMSEventMessage) eventMessage);
+                 messageProducer.send(message);
+             } catch (JMSException e) {
+-                LOG.log(Level.SEVERE, e.getMessage(), e);
++                LOG.error( e.getMessage(), e);
+                 throw new RemoteException(e.getMessage());
+             }
+         }
+@@ -252,7 +254,7 @@
+                         + "). Notification ignored.");
+             }
+         } catch (Exception e) {
+-            LOG.log(Level.WARNING, "Unable to handle JMS Notification: " + e.getMessage(), e);
++            LOG.warn("Unable to handle JMS Notification: " + e.getMessage(), e);
+         }
+     }
+ 
+@@ -263,8 +265,8 @@
+ 
+         //If a non-cache publisher sends an Element
+         if (object instanceof Element) {
+-            if (LOG.isLoggable(Level.FINE)) {
+-                LOG.fine(getName() + ": Element message received - " + object);
++            if (LOG.isDebugEnabled()) {
++                LOG.debug(getName() + ": Element message received - " + object);
+             }
+ 
+ 
+@@ -277,15 +279,15 @@
+             handleNotification(element, key, cache, action);
+ 
+         } else if (object instanceof JMSEventMessage) {
+-            if (LOG.isLoggable(Level.FINE)) {
+-                LOG.fine(getName() + ": JMSEventMessage message received - " + object);
++            if (LOG.isDebugEnabled()) {
++                LOG.debug(getName() + ": JMSEventMessage message received - " + object);
+             }
+ 
+ 
+             //no need for cacheName, mimeType, key or action properties as all are in message.
+             JMSEventMessage jmsEventMessage = (JMSEventMessage) object;
+-            if (LOG.isLoggable(Level.FINE)) {
+-                LOG.fine(jmsEventMessage.toString());
++            if (LOG.isDebugEnabled()) {
++                LOG.debug(jmsEventMessage.toString());
+             }
+ 
+             Ehcache cache;
+@@ -300,7 +302,7 @@
+                     throw new InvalidJMSMessageException("No cache named " + cacheName + "exists in the target CacheManager.");
+                 }
+             } catch (Exception e) {
+-                LOG.log(Level.SEVERE, e.getMessage(), e);
++                LOG.error( e.getMessage(), e);
+                 return;
+             }
+             if (jmsEventMessage.getEvent() == Action.GET.toInt()) {
+@@ -310,7 +312,7 @@
+             }
+ 
+         } else {
+-            LOG.fine(getName() + ": Other ObjectMessage received - " + object);
++            LOG.info(getName() + ": Other ObjectMessage received - " + object);
+ 
+ 
+             //no need for mimeType. An object has a type
+@@ -323,8 +325,8 @@
+ 
+     private void handleTextMessage(Message message) throws RemoteException, JMSException {
+         TextMessage textMessage = (TextMessage) message;
+-        if (LOG.isLoggable(Level.FINE)) {
+-            LOG.fine(getName() + ": Other ObjectMessage received - " + textMessage);
++        if (LOG.isDebugEnabled()) {
++            LOG.debug(getName() + ": Other ObjectMessage received - " + textMessage);
+         }
+ 
+         Ehcache cache = extractAndValidateCache(message);
+@@ -341,8 +343,8 @@
+ 
+     private void handleBytesMessage(Message message) throws RemoteException, JMSException {
+         BytesMessage bytesMessage = (BytesMessage) message;
+-        if (LOG.isLoggable(Level.FINE)) {
+-            LOG.fine(getName() + ": Other ObjectMessage received - " + bytesMessage);
++        if (LOG.isDebugEnabled()) {
++            LOG.debug(getName() + ": Other ObjectMessage received - " + bytesMessage);
+         }
+ 
+         Ehcache cache = extractAndValidateCache(message);
+@@ -357,8 +359,8 @@
+ 
+     private void handleGetRequest(ObjectMessage objectMessage, JMSEventMessage jmsEventMessage, Ehcache cache)
+             throws JMSException {
+-        if (LOG.isLoggable(Level.FINE)) {
+-            LOG.fine(cacheManager.getName() + ": JMSEventMessage message received - " + objectMessage.getJMSMessageID());
++        if (LOG.isDebugEnabled()) {
++            LOG.debug(cacheManager.getName() + ": JMSEventMessage message received - " + objectMessage.getJMSMessageID());
+         }
+         Serializable keyOrKeys = jmsEventMessage.getSerializableKey();
+         boolean collectionLoad = false;
+@@ -372,7 +374,7 @@
+             Serializable value = loadKeyOrKeys(cache, keyOrKeys, collectionLoad);
+ 
+             int localCacheManagerUid = JMSUtil.localCacheManagerUid(cache);
+-            LOG.log(Level.FINE, "Receiver CacheManager UID: {}", localCacheManagerUid);
++            LOG.info("Receiver CacheManager UID: {}", localCacheManagerUid);
+ 
+             assert (objectMessage.getIntProperty(CACHE_MANAGER_UID) != localCacheManagerUid) :
+                     "The JMSCachePeer received a getQueue request sent by a JMSCacheLoader belonging to the same" +
+@@ -461,8 +463,8 @@
+             } else if (message instanceof BytesMessage) {
+                 mimeType = "application/octet-stream";
+             }
+-            if (LOG.isLoggable(Level.FINE)) {
+-                LOG.fine("mimeType property not set. Auto setting MIME Type for message " + message.getJMSMessageID() + " to " + mimeType);
++            if (LOG.isDebugEnabled()) {
++                LOG.debug("mimeType property not set. Auto setting MIME Type for message " + message.getJMSMessageID() + " to " + mimeType);
+             }
+         }
+         return mimeType;
+Index: src/main/java/net/sf/ehcache/distribution/jms/Configuration.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/jms/Configuration.java	(revision 0)
++++ src/main/java/net/sf/ehcache/distribution/jms/Configuration.java	(revision 0)
+@@ -0,0 +1,147 @@
++package net.sf.ehcache.distribution.jms;
++
++import static net.sf.ehcache.distribution.jms.JMSUtil.ACKNOWLEDGEMENT_MODE;
++import static net.sf.ehcache.distribution.jms.JMSUtil.DEFAULT_LOADER_ARGUMENT;
++import static net.sf.ehcache.distribution.jms.JMSUtil.GET_QUEUE_BINDING_NAME;
++import static net.sf.ehcache.distribution.jms.JMSUtil.GET_QUEUE_CONNECTION_FACTORY_BINDING_NAME;
++import static net.sf.ehcache.distribution.jms.JMSUtil.INITIAL_CONTEXT_FACTORY_NAME;
++import static net.sf.ehcache.distribution.jms.JMSUtil.PASSWORD;
++import static net.sf.ehcache.distribution.jms.JMSUtil.PROVIDER_URL;
++import static net.sf.ehcache.distribution.jms.JMSUtil.REPLICATION_TOPIC_BINDING_NAME;
++import static net.sf.ehcache.distribution.jms.JMSUtil.SECURITY_CREDENTIALS;
++import static net.sf.ehcache.distribution.jms.JMSUtil.SECURITY_PRINCIPAL_NAME;
++import static net.sf.ehcache.distribution.jms.JMSUtil.TOPIC_CONNECTION_FACTORY_BINDING_NAME;
++import static net.sf.ehcache.distribution.jms.JMSUtil.URL_PKG_PREFIXES;
++import static net.sf.ehcache.distribution.jms.JMSUtil.USERNAME;
++
++import java.util.Properties;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
++import javax.naming.Context;
++
++import net.sf.ehcache.util.PropertyUtil;
++
++public class Configuration {
++  private static final Logger LOG = LoggerFactory.getLogger(Configuration.class.getName());
++  private String securityPrincipalName;
++  private String securityCredentials;
++  private String initialContextFactoryName;
++  private String urlPkgPrefixes;
++  private String providerURL;
++  private String replicationTopicBindingName;
++  private String getQueueBindingName;
++  private String getQueueConnectionFactoryBindingName;
++  private String replicationTopicConnectionFactoryBindingName;
++  private String userName;
++  private String password;
++  private AcknowledgementMode effectiveAcknowledgementMode;
++  private String defaultLoaderArgument;
++
++  String getSecurityPrincipalName() {
++    return securityPrincipalName;
++  }
++
++  String getSecurityCredentials() {
++    return securityCredentials;
++  }
++
++  String getInitialContextFactoryName() {
++    return initialContextFactoryName;
++  }
++
++  String getUrlPkgPrefixes() {
++    return urlPkgPrefixes;
++  }
++
++  String getProviderURL() {
++    return providerURL;
++  }
++
++  String getReplicationTopicBindingName() {
++    return replicationTopicBindingName;
++  }
++
++  String getGetQueueBindingName() {
++    return getQueueBindingName;
++  }
++
++  String getGetQueueConnectionFactoryBindingName() {
++    return getQueueConnectionFactoryBindingName;
++  }
++
++  String getReplicationTopicConnectionFactoryBindingName() {
++    return replicationTopicConnectionFactoryBindingName;
++  }
++
++  String getUserName() {
++    return userName;
++  }
++
++  String getPassword() {
++    return password;
++  }
++
++  AcknowledgementMode getEffectiveAcknowledgementMode() {
++    return effectiveAcknowledgementMode;
++  }
++
++  public Configuration(Properties properties) {
++    securityPrincipalName = PropertyUtil.extractAndLogProperty(SECURITY_PRINCIPAL_NAME, properties);
++    securityCredentials = PropertyUtil.extractAndLogProperty(SECURITY_CREDENTIALS, properties);
++    initialContextFactoryName = PropertyUtil.extractAndLogProperty(INITIAL_CONTEXT_FACTORY_NAME, properties);
++    urlPkgPrefixes = PropertyUtil.extractAndLogProperty(URL_PKG_PREFIXES, properties);
++    providerURL = PropertyUtil.extractAndLogProperty(PROVIDER_URL, properties);
++    replicationTopicBindingName = PropertyUtil.extractAndLogProperty(REPLICATION_TOPIC_BINDING_NAME, properties);
++    getQueueBindingName = PropertyUtil.extractAndLogProperty(GET_QUEUE_BINDING_NAME, properties);
++    getQueueConnectionFactoryBindingName = PropertyUtil.extractAndLogProperty(GET_QUEUE_CONNECTION_FACTORY_BINDING_NAME, properties);
++    replicationTopicConnectionFactoryBindingName = PropertyUtil.extractAndLogProperty(TOPIC_CONNECTION_FACTORY_BINDING_NAME, properties);
++    userName = PropertyUtil.extractAndLogProperty(USERNAME, properties);
++    password = PropertyUtil.extractAndLogProperty(PASSWORD, properties);
++    defaultLoaderArgument = PropertyUtil.extractAndLogProperty(DEFAULT_LOADER_ARGUMENT, properties);
++    String acknowledgementMode = PropertyUtil.extractAndLogProperty(ACKNOWLEDGEMENT_MODE, properties);
++    effectiveAcknowledgementMode = AcknowledgementMode.forString(acknowledgementMode);
++    
++  }
++
++  String getDefaultLoaderArgument() {
++    return defaultLoaderArgument;
++  }
++
++  public Properties getEnvironment() {
++    Properties env = new Properties();
++    if (replicationTopicConnectionFactoryBindingName != null) {
++      env.put(TOPIC_CONNECTION_FACTORY_BINDING_NAME, replicationTopicConnectionFactoryBindingName);
++    }
++    if (replicationTopicBindingName != null) {
++      env.put(REPLICATION_TOPIC_BINDING_NAME, replicationTopicBindingName);
++    }
++
++    if (getQueueConnectionFactoryBindingName != null) {
++      env.put(GET_QUEUE_CONNECTION_FACTORY_BINDING_NAME, getQueueConnectionFactoryBindingName);
++    }
++    if (getQueueBindingName != null) {
++      env.put(GET_QUEUE_BINDING_NAME, getQueueBindingName);
++    }
++    if (providerURL != null && !"".equals(providerURL)) {
++      env.put(Context.PROVIDER_URL, providerURL);
++    }
++
++    if (initialContextFactoryName != null) {
++      env.put(Context.INITIAL_CONTEXT_FACTORY, initialContextFactoryName);
++      if (urlPkgPrefixes != null) {
++        env.put(Context.URL_PKG_PREFIXES, urlPkgPrefixes);
++      }
++    }
++
++    if (securityPrincipalName != null) {
++      env.put(Context.SECURITY_PRINCIPAL, securityPrincipalName);
++      if (securityCredentials != null) {
++        env.put(Context.SECURITY_CREDENTIALS, securityCredentials);
++      } else {
++        LOG.warn("You have set SecurityPrincipalName option but not the " + "SecurityCredentials. This is likely to cause problems.");
++      }
++    }
++    return env;
++  }
++}
+Index: src/test/java/net/sf/ehcache/distribution/jms/TestUtil.java
+===================================================================
+--- src/test/java/net/sf/ehcache/distribution/jms/TestUtil.java	(revision 1608)
++++ src/test/java/net/sf/ehcache/distribution/jms/TestUtil.java	(working copy)
+@@ -1,214 +1,215 @@
+-/**
+- *  Copyright 2003-2008 Luck Consulting Pty Ltd
+- *
+- *  Licensed under the Apache License, Version 2.0 (the "License");
+- *  you may not use this file except in compliance with the License.
+- *  You may obtain a copy of the License at
+- *
+- *      http://www.apache.org/licenses/LICENSE-2.0
+- *
+- *  Unless required by applicable law or agreed to in writing, software
+- *  distributed under the License is distributed on an "AS IS" BASIS,
+- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- *  See the License for the specific language governing permissions and
+- *  limitations under the License.
+- */
+-
+-package net.sf.ehcache.distribution.jms;
+-
+-import java.io.File;
+-import java.io.IOException;
+-import java.util.ArrayList;
+-import java.util.List;
+-import java.util.logging.Level;
+-import java.util.logging.Logger;
+-
+-
+-/**
+- * Common fields and methods required by most test cases
+- *
+- * @author <a href="mailto:gluck@thoughtworks.com">Greg Luck</a>
+- * @version $Id$
+- */
+-public class TestUtil {
+-
+-    /**
+-     * Where the config is
+-     */
+-    public static final String SRC_CONFIG_DIR = "src/main/config/";
+-
+-    /**
+-     * Where the test config is
+-     */
+-    public static final String TEST_CONFIG_DIR = "src/test/resources/";
+-    /**
+-     * Where the test classes are compiled.
+-     */
+-    public static final String TEST_CLASSES_DIR = "target/test-classes/";
+-
+-
+-    private static final Logger LOG = Logger.getLogger(TestUtil.class.getName());
+-
+-
+-    /**
+-     * Force the VM to grow to its full size. This stops SoftReferences from being reclaimed in favour of
+-     * Heap growth. Only an issue when a VM is cold.
+-     */
+-    public static void forceVMGrowth() {
+-        allocateFiftyMegabytes();
+-        System.gc();
+-        try {
+-            Thread.sleep(200);
+-        } catch (InterruptedException e) {
+-            //
+-        }
+-        System.gc();
+-    }
+-
+-    public static void allocateFiftyMegabytes() {
+-        byte[] forceVMGrowth = new byte[40000000];
+-    }
+-
+-    /**
+-     * @param name
+-     * @throws java.io.IOException
+-     */
+-    public static void deleteFile(String name) throws IOException {
+-        String diskPath = System.getProperty("java.io.tmpdir");
+-        final File diskDir = new File(diskPath);
+-        File dataFile = new File(diskDir, name + ".data");
+-        if (dataFile.exists()) {
+-            dataFile.delete();
+-        }
+-        File indexFile = new File(diskDir, name + ".index");
+-        if (indexFile.exists()) {
+-            indexFile.delete();
+-        }
+-    }
+-
+-    /**
+-     * Measure memory used by the VM.
+-     *
+-     * @return
+-     * @throws InterruptedException
+-     */
+-    public static long measureMemoryUse() throws InterruptedException {
+-        System.gc();
+-        Thread.sleep(2000);
+-        System.gc();
+-        return Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+-    }
+-
+-    /**
+-     * Runs a set of threads, for a fixed amount of time.
+-     */
+-    public static void runThreads(final List executables) throws Exception {
+-
+-        final long endTime = System.currentTimeMillis() + 10000;
+-        final List<Throwable> errors = new ArrayList<Throwable>();
+-
+-        // Spin up the threads
+-        final Thread[] threads = new Thread[executables.size()];
+-        for (int i = 0; i < threads.length; i++) {
+-            final Executable executable = (Executable) executables.get(i);
+-            threads[i] = new Thread() {
+-                public void run() {
+-                    try {
+-                        // Run the thread until the given end time
+-                        while (System.currentTimeMillis() < endTime) {
+-                            executable.execute();
+-                        }
+-                    } catch (Throwable t) {
+-                        // Hang on to any errors
+-                        errors.add(t);
+-                        LOG.info(t.getMessage());
+-                    }
+-                }
+-            };
+-            threads[i].start();
+-        }
+-
+-        // Wait for the threads to finish
+-        for (Thread thread : threads) {
+-            thread.join();
+-        }
+-
+-        // Throw any error that happened
+-        if (errors.size() != 0) {
+-            for (Throwable error : errors) {
+-                LOG.log(Level.SEVERE, error.getMessage(), error);
+-            }
+-            throw new Exception("Test thread failed with " + errors.size() + " exceptions.");
+-        }
+-    }
+-
+-    /**
+-     * A runnable, that can throw an exception.
+-     */
+-    public interface Executable {
+-        /**
+-         * Executes this object.
+-         *
+-         * @throws Exception
+-         */
+-        void execute() throws Exception;
+-    }
+-
+-    /**
+-     * A timer service used to check performance of tests.
+-     * <p/>
+-     * To enable this to work for different machines the following is done:
+-     * <ul>
+-     * <li>SimpleLog is used for logging with a known logging level controlled by <code>simplelog.properties</code>
+-     * which is copied to the test classpath. This removes logging as a source of differences.
+-     * Messages are sent to stderr which also makes it easy to see messages on remote continuous integration
+-     * machines.
+-     * <li>A speedAdjustmentFactor is used to equalize machines. It is supplied as a the System Property
+-     * 'net.sf.ehcache.speedAdjustmentFactor=n', where n is the number of times the machine is slower
+-     * than the reference machine e.g. 1.1. This factor is then used to adjust "elapsedTime"
+-     * as returned by this class. Elapsed Time is therefore not true time, but notional time equalized with the reference
+-     * machine. If you get performance tests failing add this property.
+-     * </ul>
+-     *
+-     * @author Greg Luck
+-     * @version $Id$
+-     *          A stop watch that can be useful for instrumenting for performance
+-     */
+-    public static class StopWatch {
+-
+-
+-        private static final String SUFFIX = "ms";
+-
+-
+-        /**
+-         * Used for performance benchmarking
+-         */
+-        private long timeStamp = System.currentTimeMillis();
+-
+-
+-        /**
+-         * Gets the time elapsed between now and for the first time, the creation
+-         * time of the class, and after that, between each call to this method
+-         * <p/>
+-         * Note this method returns notional time elapsed. See class description
+-         */
+-        public long getElapsedTime() {
+-            long now = System.currentTimeMillis();
+-            long elapsed = now - timeStamp;
+-            timeStamp = now;
+-            return elapsed;
+-        }
+-
+-        /**
+-         * @return formatted elapsed Time
+-         */
+-        public String getElapsedTimeString() {
+-            return String.valueOf(getElapsedTime()) + SUFFIX;
+-        }
+-
+-    }
+-
+-
+-}
+-
+-
++/**
++ *  Copyright 2003-2008 Luck Consulting Pty Ltd
++ *
++ *  Licensed under the Apache License, Version 2.0 (the "License");
++ *  you may not use this file except in compliance with the License.
++ *  You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *  Unless required by applicable law or agreed to in writing, software
++ *  distributed under the License is distributed on an "AS IS" BASIS,
++ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *  See the License for the specific language governing permissions and
++ *  limitations under the License.
++ */
++
++package net.sf.ehcache.distribution.jms;
++
++import java.io.File;
++import java.io.IOException;
++import java.util.ArrayList;
++import java.util.List;
++
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
++
++/**
++ * Common fields and methods required by most test cases
++ *
++ * @author <a href="mailto:gluck@thoughtworks.com">Greg Luck</a>
++ * @version $Id$
++ */
++public class TestUtil {
++
++    /**
++     * Where the config is
++     */
++    public static final String SRC_CONFIG_DIR = "src/main/config/";
++
++    /**
++     * Where the test config is
++     */
++    public static final String TEST_CONFIG_DIR = "src/test/resources/";
++    /**
++     * Where the test classes are compiled.
++     */
++    public static final String TEST_CLASSES_DIR = "target/test-classes/";
++
++
++    private static final Logger LOG = LoggerFactory.getLogger(TestUtil.class.getName());
++
++
++    /**
++     * Force the VM to grow to its full size. This stops SoftReferences from being reclaimed in favour of
++     * Heap growth. Only an issue when a VM is cold.
++     */
++    public static void forceVMGrowth() {
++        allocateFiftyMegabytes();
++        System.gc();
++        try {
++            Thread.sleep(200);
++        } catch (InterruptedException e) {
++            //
++        }
++        System.gc();
++    }
++
++    public static void allocateFiftyMegabytes() {
++        byte[] forceVMGrowth = new byte[40000000];
++    }
++
++    /**
++     * @param name
++     * @throws java.io.IOException
++     */
++    public static void deleteFile(String name) throws IOException {
++        String diskPath = System.getProperty("java.io.tmpdir");
++        final File diskDir = new File(diskPath);
++        File dataFile = new File(diskDir, name + ".data");
++        if (dataFile.exists()) {
++            dataFile.delete();
++        }
++        File indexFile = new File(diskDir, name + ".index");
++        if (indexFile.exists()) {
++            indexFile.delete();
++        }
++    }
++
++    /**
++     * Measure memory used by the VM.
++     *
++     * @return
++     * @throws InterruptedException
++     */
++    public static long measureMemoryUse() throws InterruptedException {
++        System.gc();
++        Thread.sleep(2000);
++        System.gc();
++        return Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
++    }
++
++    /**
++     * Runs a set of threads, for a fixed amount of time.
++     */
++    public static void runThreads(final List executables) throws Exception {
++
++        final long endTime = System.currentTimeMillis() + 10000;
++        final List<Throwable> errors = new ArrayList<Throwable>();
++
++        // Spin up the threads
++        final Thread[] threads = new Thread[executables.size()];
++        for (int i = 0; i < threads.length; i++) {
++            final Executable executable = (Executable) executables.get(i);
++            threads[i] = new Thread() {
++                public void run() {
++                    try {
++                        // Run the thread until the given end time
++                        while (System.currentTimeMillis() < endTime) {
++                            executable.execute();
++                        }
++                    } catch (Throwable t) {
++                        // Hang on to any errors
++                        errors.add(t);
++                        LOG.info(t.getMessage());
++                    }
++                }
++            };
++            threads[i].start();
++        }
++
++        // Wait for the threads to finish
++        for (Thread thread : threads) {
++            thread.join();
++        }
++
++        // Throw any error that happened
++        if (errors.size() != 0) {
++            for (Throwable error : errors) {
++                LOG.error(error.getMessage(), error);
++            }
++            throw new Exception("Test thread failed with " + errors.size() + " exceptions.");
++        }
++    }
++
++    /**
++     * A runnable, that can throw an exception.
++     */
++    public interface Executable {
++        /**
++         * Executes this object.
++         *
++         * @throws Exception
++         */
++        void execute() throws Exception;
++    }
++
++    /**
++     * A timer service used to check performance of tests.
++     * <p/>
++     * To enable this to work for different machines the following is done:
++     * <ul>
++     * <li>SimpleLog is used for logging with a known logging level controlled by <code>simplelog.properties</code>
++     * which is copied to the test classpath. This removes logging as a source of differences.
++     * Messages are sent to stderr which also makes it easy to see messages on remote continuous integration
++     * machines.
++     * <li>A speedAdjustmentFactor is used to equalize machines. It is supplied as a the System Property
++     * 'net.sf.ehcache.speedAdjustmentFactor=n', where n is the number of times the machine is slower
++     * than the reference machine e.g. 1.1. This factor is then used to adjust "elapsedTime"
++     * as returned by this class. Elapsed Time is therefore not true time, but notional time equalized with the reference
++     * machine. If you get performance tests failing add this property.
++     * </ul>
++     *
++     * @author Greg Luck
++     * @version $Id$
++     *          A stop watch that can be useful for instrumenting for performance
++     */
++    public static class StopWatch {
++
++
++        private static final String SUFFIX = "ms";
++
++
++        /**
++         * Used for performance benchmarking
++         */
++        private long timeStamp = System.currentTimeMillis();
++
++
++        /**
++         * Gets the time elapsed between now and for the first time, the creation
++         * time of the class, and after that, between each call to this method
++         * <p/>
++         * Note this method returns notional time elapsed. See class description
++         */
++        public long getElapsedTime() {
++            long now = System.currentTimeMillis();
++            long elapsed = now - timeStamp;
++            timeStamp = now;
++            return elapsed;
++        }
++
++        /**
++         * @return formatted elapsed Time
++         */
++        public String getElapsedTimeString() {
++            return String.valueOf(getElapsedTime()) + SUFFIX;
++        }
++
++    }
++
++
++}
++
++
+Index: src/test/java/net/sf/ehcache/distribution/jms/ActiveMQJMSReplicationTest.java
+===================================================================
+--- src/test/java/net/sf/ehcache/distribution/jms/ActiveMQJMSReplicationTest.java	(revision 1608)
++++ src/test/java/net/sf/ehcache/distribution/jms/ActiveMQJMSReplicationTest.java	(working copy)
+@@ -1,685 +1,689 @@
+-/**
+- *  Licensed under the Apache License, Version 2.0 (the "License");
+- *  you may not use this file except in compliance with the License.
+- *  You may obtain a copy of the License at
+- *
+- *      http://www.apache.org/licenses/LICENSE-2.0
+- *
+- *  Unless required by applicable law or agreed to in writing, software
+- *  distributed under the License is distributed on an "AS IS" BASIS,
+- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- *  See the License for the specific language governing permissions and
+- *  limitations under the License.
+- *
+- * @author Pierre Monestie (pmonestie__REMOVE__THIS__@gmail.com)
+- * @author <a href="mailto:gluck@gregluck.com">Greg Luck</a>
+- * @version $Id: ActiveMQJMSReplicationTest.java 816 2008-10-17 12:34:50Z gregluck $
+- */
+-
+-package net.sf.ehcache.distribution.jms;
+-
+-import net.sf.ehcache.CacheManager;
+-import net.sf.ehcache.Ehcache;
+-import net.sf.ehcache.Element;
+-import net.sf.ehcache.Status;
+-import net.sf.ehcache.CacheException;
+-import static net.sf.ehcache.distribution.jms.TestUtil.forceVMGrowth;
+-import org.junit.After;
+-import static org.junit.Assert.assertEquals;
+-import static org.junit.Assert.assertNotNull;
+-import static org.junit.Assert.assertNull;
+-import static org.junit.Assert.assertTrue;
+-import org.junit.Before;
+-import org.junit.Test;
+-
+-import java.io.Serializable;
+-import java.util.Date;
+-import java.util.ArrayList;
+-import java.util.Map;
+-import java.util.List;
+-import java.util.Random;
+-import java.util.logging.Level;
+-import java.util.logging.Logger;
+-
+-/**
+- * ActiveMQ seems to have a bug in 5.1 where it does not cleanup temporary queues, even though they have been
+- * deleted. That bug appears to be long standing. 5.2 as of 10/08 was not released.
+- * http://www.nabble.com/Memory-Leak-Using-Temporary-Queues-td11218217.html#a11218217
+- * http://issues.apache.org/activemq/browse/AMQ-1255
+- */
+-public class ActiveMQJMSReplicationTest {
+-
+-
+-    static final int NBR_ELEMENTS = 100;
+-
+-    static final String SAMPLE_CACHE_ASYNC = "sampleCacheAsync";
+-    static final String SAMPLE_CACHE_SYNC = "sampleCacheSync";
+-    static final String SAMPLE_CACHE_NOREP = "sampleCacheNorep";
+-    static final String SAMPLE_CACHE_JMS_REPLICATION_BOOTSTRAP = "sampleJMSReplicateRMIBootstrap";
+-
+-    String cacheName;
+-
+-    private static final Logger LOG = Logger.getLogger(ActiveMQJMSReplicationTest.class.getName());
+-
+-    protected CacheManager manager1, manager2, manager3, manager4;
+-
+-    protected String getConfigurationFile() {
+-        return "distribution/jms/ehcache-distributed-jms-activemq.xml";
+-    }
+-
+-    @Before
+-    public void setUp() throws Exception {
+-
+-        manager1 = new CacheManager(TestUtil.TEST_CONFIG_DIR + getConfigurationFile());
+-        manager1.setName("manager1");
+-        manager2 = new CacheManager(TestUtil.TEST_CONFIG_DIR + getConfigurationFile());
+-        manager2.setName("manager2");
+-        manager3 = new CacheManager(TestUtil.TEST_CONFIG_DIR + getConfigurationFile());
+-        manager3.setName("manager3");
+-        manager4 = new CacheManager(TestUtil.TEST_CONFIG_DIR + getConfigurationFile());
+-        manager4.setName("manager4");
+-        cacheName = SAMPLE_CACHE_ASYNC;
+-        Thread.sleep(200);
+-    }
+-
+-    @After
+-    public void tearDown() throws Exception {
+-        if (manager1 != null) {
+-            manager1.shutdown();
+-        }
+-        if (manager2 != null) {
+-            manager2.shutdown();
+-        }
+-        if (manager3 != null) {
+-            manager3.shutdown();
+-        }
+-        if (manager4 != null) {
+-            manager4.shutdown();
+-        }
+-        Thread.sleep(20);
+-    }
+-
+-
+-    @Test
+-    public void testBasicReplicationAsynchronous() throws Exception {
+-        cacheName = SAMPLE_CACHE_ASYNC;
+-        basicReplicationTest();
+-    }
+-
+-    @Test
+-    public void testBasicReplicationSynchronous() throws Exception {
+-        cacheName = SAMPLE_CACHE_SYNC;
+-        basicReplicationTest();
+-    }
+-
+-    @Test
+-    public void testStartupAndShutdown() {
+-        //noop
+-    }
+-
+-
+-    public void basicReplicationTest() throws Exception {
+-
+-        //put
+-        for (int i = 0; i < NBR_ELEMENTS; i++) {
+-            manager1.getCache(cacheName).put(new Element(i, "testdat"));
+-        }
+-        Thread.sleep(3000);
+-
+-        LOG.info(manager1.getCache(cacheName).getKeys().size() + "  " + manager2.getCache(cacheName).getKeys().size()
+-                + " " + manager3.getCache(cacheName).getKeys().size()
+-                + " " + manager4.getCache(cacheName).getKeys().size());
+-
+-        assertTrue(manager1.getCache(cacheName).getKeys().size() == manager2.getCache(cacheName).getKeys().size() &&
+-                manager1.getCache(cacheName).getKeys().size() == manager3.getCache(cacheName).getKeys().size() &&
+-                manager1.getCache(cacheName).getKeys().size() == manager4.getCache(cacheName).getKeys().size() &&
+-                manager1.getCache(cacheName).getKeys().size() == NBR_ELEMENTS);
+-
+-        //update via copy
+-        for (int i = 0; i < NBR_ELEMENTS; i++) {
+-            manager1.getCache(cacheName).put(new Element(i, "testdat"));
+-        }
+-        Thread.sleep(3000);
+-
+-        LOG.info(manager1.getCache(cacheName).getKeys().size() + "  " + manager2.getCache(cacheName).getKeys().size()
+-                + " " + manager3.getCache(cacheName).getKeys().size()
+-                + " " + manager4.getCache(cacheName).getKeys().size());
+-
+-        assertTrue(manager1.getCache(cacheName).getKeys().size() == manager2.getCache(cacheName).getKeys().size() &&
+-                manager1.getCache(cacheName).getKeys().size() == manager3.getCache(cacheName).getKeys().size() &&
+-                manager1.getCache(cacheName).getKeys().size() == manager4.getCache(cacheName).getKeys().size() &&
+-                manager1.getCache(cacheName).getKeys().size() == NBR_ELEMENTS);
+-
+-
+-        //remove
+-        manager1.getCache(cacheName).remove(0);
+-        Thread.sleep(1010);
+-
+-        LOG.info(manager1.getCache(cacheName).getKeys().size() + "  " + manager2.getCache(cacheName).getKeys().size()
+-                + " " + manager3.getCache(cacheName).getKeys().size()
+-                + " " + manager4.getCache(cacheName).getKeys().size());
+-
+-        assertTrue(manager1.getCache(cacheName).getKeys().size() == manager2.getCache(cacheName).getKeys().size() &&
+-                manager1.getCache(cacheName).getKeys().size() == manager3.getCache(cacheName).getKeys().size() &&
+-                manager1.getCache(cacheName).getKeys().size() == manager4.getCache(cacheName).getKeys().size() &&
+-                manager1.getCache(cacheName).getKeys().size() == NBR_ELEMENTS - 1);
+-
+-        //removeall
+-        manager1.getCache(cacheName).removeAll();
+-        Thread.sleep(1010);
+-
+-        LOG.info(manager1.getCache(cacheName).getKeys().size() + "  " + manager2.getCache(cacheName).getKeys().size()
+-                + " " + manager3.getCache(cacheName).getKeys().size()
+-                + " " + manager4.getCache(cacheName).getKeys().size());
+-
+-        assertTrue(manager1.getCache(cacheName).getKeys().size() == manager2.getCache(cacheName).getKeys().size() &&
+-                manager1.getCache(cacheName).getKeys().size() == manager3.getCache(cacheName).getKeys().size() &&
+-                manager1.getCache(cacheName).getKeys().size() == manager4.getCache(cacheName).getKeys().size() &&
+-                manager1.getCache(cacheName).getKeys().size() == 0);
+-
+-    }
+-
+-
+-//    @Test
+-//    public void testShutdownManager() throws Exception {
+-//        cacheName = SAMPLE_CACHE_ASYNC;
+-//        manager1.getCache(cacheName).removeAll();
+-//        Thread.currentThread().sleep(1000);
+-//
+-//        CacheManagerPeerProvider provider = manager1.getCachePeerProvider();
+-//        JGroupManager jg = (JGroupManager) provider;
+-//        assertEquals(Status.STATUS_ALIVE, jg.getStatus());
+-//        manager1.shutdown();
+-//        assertEquals(Status.STATUS_SHUTDOWN, jg.getStatus());
+-//        //Lets see if the other still replicate
+-//        manager2.getCache(cacheName).put(new Element(new Integer(1), new Date()));
+-//        Thread.currentThread().sleep(2000);
+-//
+-//
+-//        assertTrue(manager2.getCache(cacheName).getKeys().size() == manager3.getCache(cacheName).getKeys().size() &&
+-//                manager2.getCache(cacheName).getKeys().size() == manager4.getCache(cacheName).getKeys().size() &&
+-//                manager2.getCache(cacheName).getKeys().size() == 1);
+-//
+-//
+-//    }
+-
+-    @Test
+-    public void testAddManager() throws Exception {
+-        cacheName = SAMPLE_CACHE_ASYNC;
+-        if (manager1.getStatus() != Status.STATUS_SHUTDOWN)
+-            manager1.shutdown();
+-
+-
+-        Thread.sleep(1000);
+-        manager1 = new CacheManager(TestUtil.TEST_CONFIG_DIR + getConfigurationFile());
+-        Thread.sleep(3000);
+-        manager2.clearAll();
+-
+-        Thread.sleep(1000);
+-
+-        manager2.getCache(cacheName).put(new Element(2, new Date()));
+-        manager1.getCache(cacheName).put(new Element(3, new Date()));
+-        Thread.sleep(2000);
+-
+-        assertTrue(manager1.getCache(cacheName).getKeys().size() == manager2.getCache(cacheName).getKeys().size() &&
+-                manager1.getCache(cacheName).getKeys().size() == manager3.getCache(cacheName).getKeys().size() &&
+-                manager1.getCache(cacheName).getKeys().size() == manager4.getCache(cacheName).getKeys().size() &&
+-                manager1.getCache(cacheName).getKeys().size() == 2);
+-
+-    }
+-
+-
+-    @Test
+-    public void testNoreplication() throws InterruptedException {
+-        cacheName = SAMPLE_CACHE_NOREP;
+-        Ehcache cache1 = manager1.getCache(cacheName);
+-        Ehcache cache2 = manager2.getCache(cacheName);
+-        Element element = new Element(1, new Date());
+-
+-        //put
+-        cache2.put(element);
+-        Thread.sleep(1000);
+-        assertTrue(cache1.getKeys().size() == 0 && cache2.getKeys().size() == 1);
+-
+-        //update
+-        cache2.put(element);
+-        Thread.sleep(1000);
+-        assertTrue(cache1.getKeys().size() == 0 && cache2.getKeys().size() == 1);
+-
+-        //remove
+-        cache1.put(element);
+-        cache1.remove(1);
+-        Thread.sleep(1000);
+-        assertTrue(cache1.getKeys().size() == 0 && cache2.getKeys().size() == 1);
+-
+-        //removeAll
+-        cache1.removeAll();
+-        Thread.sleep(1000);
+-        assertTrue(cache1.getKeys().size() == 0 && cache2.getKeys().size() == 1);
+-
+-    }
+-
+-    /**
+-     * What happens when two cache instances replicate to each other and a change is initiated
+-     *
+-     * @throws InterruptedException -
+-     */
+-    @Test
+-    public void testVariousPuts() throws InterruptedException {
+-        cacheName = SAMPLE_CACHE_ASYNC;
+-        Ehcache cache1 = manager1.getCache(cacheName);
+-        Ehcache cache2 = manager2.getCache(cacheName);
+-
+-        Serializable key = "1";
+-        Serializable value = new Date();
+-        Element element = new Element(key, value);
+-
+-        //Put
+-        cache1.put(element);
+-        Thread.sleep(1000);
+-
+-        //Should have been replicated to cache2.
+-        Element element2 = cache2.get(key);
+-        assertEquals(element, element2);
+-
+-
+-        //Remove
+-        cache1.remove(key);
+-        assertNull(cache1.get(key));
+-
+-        //Should have been replicated to cache2.
+-        Thread.sleep(1000);
+-        element2 = cache2.get(key);
+-        assertNull(element2);
+-
+-        //Put into 2
+-        Element element3 = new Element("3", "ddsfds");
+-        cache2.put(element3);
+-        Thread.sleep(1000);
+-        Element element4 = cache2.get("3");
+-        assertEquals(element3, element4);
+-
+-        manager1.clearAll();
+-        Thread.sleep(1000);
+-
+-    }
+-
+-
+-    /**
+-     * What happens when two cache instances replicate to each other and a change is initiated
+-     *
+-     * @throws InterruptedException -
+-     */
+-    @Test
+-    public void testPutAndRemove() throws InterruptedException {
+-
+-        cacheName = SAMPLE_CACHE_SYNC;
+-        Ehcache cache1 = manager1.getCache(cacheName);
+-        Ehcache cache2 = manager2.getCache(cacheName);
+-
+-        Serializable key = "1";
+-        Serializable value = new Date();
+-        Element element = new Element(key, value);
+-
+-        //Put
+-        cache1.put(element);
+-        long version = element.getVersion();
+-        Thread.sleep(100);
+-        //make sure we are not getting our own circular update back
+-        assertEquals(version, cache1.get(key).getVersion());
+-
+-        //Should have been replicated to cache2.
+-        Element element2 = cache2.get(key);
+-        assertEquals(element, element2);
+-
+-
+-        //Remove
+-        cache1.remove(key);
+-        assertNull(cache1.get(key));
+-
+-        //Should have been replicated to cache2.
+-        Thread.sleep(100);
+-        element2 = cache2.get(key);
+-        assertNull(element2);
+-
+-    }
+-
+-
+-    /**
+-     * Same as testPutandRemove but this one does:
+-     */
+-    @Test
+-    public void testPutAndRemoveStability() throws InterruptedException {
+-        for (int i = 0; i < 120; i++) {
+-            testPutAndRemove();
+-        }
+-    }
+-
+-
+-    /**
+-     * This is a manual test.
+-     * Start the test running and observe the output. You should see no exceptions.
+-     * Then kill the message queue.
+-     * <p/>
+-     * You will see errors like these if using Open MQ.
+-     * <p/>
+-     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ExceptionHandler logCaughtException
+-     * WARNING: [I500]: Caught JVM Exception: java.io.EOFException
+-     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ExceptionHandler logCaughtException
+-     * WARNING: [I500]: Caught JVM Exception: java.io.EOFException
+-     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
+-     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(49990)
+-     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
+-     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(49990)
+-     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ExceptionHandler logCaughtException
+-     * WARNING: [I500]: Caught JVM Exception: java.io.EOFException
+-     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
+-     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(49990)
+-     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
+-     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(49990)
+-     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
+-     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(49990)
+-     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
+-     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(49990)
+-     * Oct 11, 2008 10:11:13 PM com.sun.messaging.jmq.jmsclient.ExceptionHandler throwConnectionException
+-     * WARNING: [C4003]: Error occurred on connection creation [localhost:7676]. - cause: java.net.ConnectException: Connection refused
+-     * <p/>
+-     * Then restart the message queue.
+-     * <p/>
+-     * You will see recover messages such as:
+-     * <p/>
+-     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(50206)
+-     * Oct 11, 2008 10:13:46 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
+-     * INFO: [I107]: Connection recover state: RECOVER_SUCCEEDED, broker: localhost:7676(50206)
+-     * Oct 11, 2008 10:13:46 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
+-     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(50206)
+-     * Oct 11, 2008 10:13:46 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
+-     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(50206)
+-     * Oct 11, 2008 10:13:46 PM com.sun.messaging.jmq.jmsclient.ConsumerReader run
+-     * WARNING: [C4001]: Write packet failed., packet type = ACKNOWLEDGE(24)
+-     * com.sun.messaging.jms.JMSException: [C4001]: Write packet failed., packet type = ACKNOWLEDGE(24)
+-     * at com.sun.messaging.jmq.jmsclient.ConnectionImpl.checkPacketType(ConnectionImpl.java:654)
+-     * at com.sun.messaging.jmq.jmsclient.ConnectionImpl.checkReconnecting(ConnectionImpl.java:641)
+-     * at com.sun.messaging.jmq.jmsclient.ProtocolHandler.checkConnectionState(ProtocolHandler.java:766)
+-     * at com.sun.messaging.jmq.jmsclient.ProtocolHandler.writePacketNoAck(ProtocolHandler.java:360)
+-     * at com.sun.messaging.jmq.jmsclient.ProtocolHandler.acknowledge(ProtocolHandler.java:2608)
+-     * at com.sun.messaging.jmq.jmsclient.SessionImpl.doAcknowledge(SessionImpl.java:1382)
+-     * at com.sun.messaging.jmq.jmsclient.SessionImpl.dupsOkCommitAcknowledge(SessionImpl.java:1427)
+-     * at com.sun.messaging.jmq.jmsclient.SessionImpl.syncedDupsOkCommitAcknowledge(SessionImpl.java:1450)
+-     * at com.sun.messaging.jmq.jmsclient.SessionReader.deliver(SessionReader.java:141)
+-     * at com.sun.messaging.jmq.jmsclient.ConsumerReader.run(ConsumerReader.java:190)
+-     * at java.lang.Thread.run(Thread.java:613)
+-     * Oct 11, 2008 10:13:46 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
+-     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(50206)
+-     * Oct 11, 2008 10:13:46 PM com.sun.messaging.jmq.jmsclient.ConsumerReader run
+-     * WARNING: [C4001]: Write packet failed., packet type = ACKNOWLEDGE(24)
+-     * com.sun.messaging.jms.JMSException: [C4001]: Write packet failed., packet type = ACKNOWLEDGE(24)
+-     * at com.sun.messaging.jmq.jmsclient.ConnectionImpl.checkPacketType(ConnectionImpl.java:654)
+-     * at com.sun.messaging.jmq.jmsclient.ConnectionImpl.checkReconnecting(ConnectionImpl.java:641)
+-     * at com.sun.messaging.jmq.jmsclient.ProtocolHandler.checkConnectionState(ProtocolHandler.java:766)
+-     * at com.sun.messaging.jmq.jmsclient.ProtocolHandler.writePacketNoAck(ProtocolHandler.java:360)
+-     * at com.sun.messaging.jmq.jmsclient.ProtocolHandler.acknowledge(ProtocolHandler.java:2608)
+-     * at com.sun.messaging.jmq.jmsclient.SessionImpl.doAcknowledge(SessionImpl.java:1382)
+-     * at com.sun.messaging.jmq.jmsclient.SessionImpl.dupsOkCommitAcknowledge(SessionImpl.java:1427)
+-     * at com.sun.messaging.jmq.jmsclient.SessionImpl.syncedDupsOkCommitAcknowledge(SessionImpl.java:1450)
+-     * at com.sun.messaging.jmq.jmsclient.SessionReader.deliver(SessionReader.java:141)
+-     * at com.sun.messaging.jmq.jmsclient.ConsumerReader.run(ConsumerReader.java:190)
+-     * at java.lang.Thread.run(Thread.java:613)
+-     * Oct 11, 2008 10:13:46 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
+-     * <p/>
+-     * Normal processing will then resume. i.e. the ehcache cluster reforms once the message queue is back.
+-     * <p/>
+-     * To enable this behaviour the following must be set on the connection factory configuration.
+-     * <p/>
+-     * Open MQ
+-     * imqReconnect='true' - without this reconnect will not happen
+-     * imqPingInterval='5' - Consumers will not reconnect until they notice the connection is down. The ping interval
+-     * does this. The default is 30. Set it lower if you want the ehcache cluster to reform more quickly.
+-     * Finally, unlimited retry attempts are recommended. This is the default.
+-     */
+-    //@Test
+-    public void testPutAndRemoveMessageQueueFailure() throws InterruptedException {
+-        for (int i = 0; i < 1000; i++) {
+-            try {
+-                testPutAndRemove();
+-                Thread.sleep(5000);
+-            } catch (Exception e) {
+-                LOG.log(Level.SEVERE, e.getMessage(), e);
+-            }
+-        }
+-    }
+-
+-    @Test
+-    public void testSimultaneousPutRemove() throws InterruptedException {
+-        cacheName = SAMPLE_CACHE_SYNC; //Synced one
+-        Ehcache cache1 = manager1.getCache(cacheName);
+-        Ehcache cache2 = manager2.getCache(cacheName);
+-
+-
+-        Serializable key = "1";
+-        Serializable value = new Date();
+-        Element element = new Element(key, value);
+-
+-        //Put
+-        cache1.put(element);
+-        Thread.sleep(1000);
+-        cache2.remove(element.getKey());
+-        Thread.sleep(1000);
+-
+-
+-        assertNull(cache1.get(element.getKey()));
+-        manager1.clearAll();
+-        Thread.sleep(1000);
+-
+-        cache2.put(element);
+-        cache2.remove(element.getKey());
+-        Thread.sleep(1000);
+-        cache1.put(element);
+-        Thread.sleep(1000);
+-        assertNotNull(cache2.get(element.getKey()));
+-
+-        manager1.clearAll();
+-        Thread.sleep(1000);
+-
+-    }
+-
+-
+-    /**
+-     * Tests the JMSCacheLoader.
+-     * <p/>
+-     * We put an item in cache1, which does not replicate.
+-     * <p/>
+-     * We then do a get on cache2, which has a JMSCacheLoader which should ask the cluster for the answer.
+-     * If a cache does not have an element it should leave the message on the queue for the next node to process.
+-     */
+-    @Test
+-    public void testGet() throws InterruptedException {
+-        cacheName = SAMPLE_CACHE_SYNC;
+-        manager3.shutdown();
+-        manager4.shutdown();
+-        Thread.sleep(20);
+-        Ehcache cache1 = manager1.getCache("sampleCacheNorep");
+-        Ehcache cache2 = manager2.getCache("sampleCacheNorep");
+-
+-        Serializable key = "1";
+-        Serializable value = new Date();
+-        Element element = new Element(key, value);
+-
+-        //Put
+-        cache1.put(element);
+-        long version = element.getVersion();
+-        Thread.sleep(1050);
+-
+-
+-        //Should not have been replicated to cache2.
+-        Element element2 = cache2.get(key);
+-        assertEquals(null, element2);
+-
+-        //Should load from cache1
+-        for (int i = 0; i < 120; i++) {
+-            element2 = cache2.getWithLoader(key, null, null);
+-            assertEquals(value, element2.getValue());
+-            cache2.remove(key);
+-        }
+-
+-        //Should load from cache1
+-        element2 = cache2.getWithLoader(key, null, null);
+-        assertEquals(value, element2.getValue());
+-        cache2.remove(key);
+-    }
+-
+-
+-    /**
+-     * Tests the JMSCacheLoader.
+-     * <p/>
+-     * We put an item in cache1, which does not replicate.
+-     * <p/>
+-     * We then do a get on cache2, which has a JMSCacheLoader which should ask the cluster for the answer.
+-     * If a cache does not have an element it should leave the message on the queue for the next node to process.
+-     */
+-    @Test
+-    public void testGetAll() throws InterruptedException {
+-        cacheName = SAMPLE_CACHE_SYNC;
+-        manager3.shutdown();
+-        manager4.shutdown();
+-        Thread.sleep(1000);
+-        Ehcache cache1 = manager1.getCache("sampleCacheNorep");
+-        Ehcache cache2 = manager2.getCache("sampleCacheNorep");
+-
+-        Serializable key = "1";
+-        Serializable value = new Date();
+-        Element element = new Element(key, value);
+-        Element element2 = new Element(2, "dog");
+-        Element element3 = new Element(3, "cat");
+-
+-        ArrayList keys = new ArrayList();
+-        keys.add("1");
+-        keys.add(2);
+-
+-        //Put
+-        cache1.put(element);
+-        cache1.put(element2);
+-        cache1.put(element3);
+-        Thread.sleep(2050);
+-
+-
+-        //Should not have been replicated to cache2.
+-        Element element1Retrieved = cache2.get(key);
+-        assertEquals(null, element1Retrieved);
+-
+-        //Should load from cache2
+-        for (int i = 0; i < 120; i++) {
+-            Map received = cache2.getAllWithLoader(keys, null);
+-            assertEquals(2, received.size());
+-            assertEquals(value, received.get("1"));
+-            assertEquals("dog", received.get(2));
+-            cache2.remove(key);
+-            cache2.remove(2);
+-        }
+-    }
+-
+-
+-    /**
+-     * Tests the JMSCacheLoader.
+-     * <p/>
+-     * We put an item in cache1, which does not replicate.
+-     * <p/>
+-     * We then do a get on cache2, which has a JMSCacheLoader which should ask the cluster for the answer.
+-     * If a cache does not have an element it should leave the message on the queue for the next node to process.
+-     *
+-     * @throws InterruptedException -
+-     */
+-    @Test
+-    public void testGetTimeout() throws InterruptedException {
+-        cacheName = SAMPLE_CACHE_SYNC;
+-        manager3.shutdown();
+-        manager4.shutdown();
+-        Thread.sleep(20);
+-        Ehcache cache1 = manager1.getCache("sampleCacheNorep");
+-        Ehcache cache2 = manager2.getCache("sampleCacheNorep");
+-
+-        Serializable key = "net.sf.ehcache.distribution.jms.Delay";
+-        Serializable value = new Date();
+-        Element element = new Element(key, value);
+-
+-        //Put
+-        cache1.put(element);
+-        Thread.sleep(1050);
+-
+-        //Should not have been replicated to cache2.
+-        Element element2 = cache2.get(key);
+-        assertEquals(null, element2);
+-
+-        //Should timeout loading from cache2
+-        element2 = cache2.getWithLoader(key, null, null);
+-        assertNull(element2);
+-        cache2.remove(key);
+-    }
+-
+-    @Test
+-    public void testOneWayReplicate() throws Exception {
+-
+-        CacheManager managerA, managerB, managerC;
+-
+-        String nonListeningConfigurationFile = "distribution/jms/ehcache-distributed-nonlistening-jms-activemq.xml";
+-        String listeningConfigurationFile = "distribution/jms/ehcache-distributed-jms-activemq.xml";
+-
+-        managerA = new CacheManager(TestUtil.TEST_CONFIG_DIR + nonListeningConfigurationFile);
+-        managerA.setName("managerA");
+-        managerB = new CacheManager(TestUtil.TEST_CONFIG_DIR + listeningConfigurationFile);
+-        managerB.setName("managerB");
+-        managerC = new CacheManager(TestUtil.TEST_CONFIG_DIR + nonListeningConfigurationFile);
+-        managerC.setName("managerC");
+-
+-        Element element = new Element("1", "value");
+-        managerA.getCache(SAMPLE_CACHE_ASYNC).put(element);
+-
+-        Thread.sleep(1000);
+-
+-        assertNotNull(managerB.getCache(SAMPLE_CACHE_ASYNC).get("1"));
+-        assertNull(managerC.getCache(SAMPLE_CACHE_ASYNC).get("1"));
+-
+-        managerA.shutdown();
+-        managerB.shutdown();
+-        managerC.shutdown();
+-    }
+-
+-
+-    /**
+-     * Tests loading from bootstrap for a cache which is configured to load using RMI and replicate using JMS
+-     */
+-    @Test
+-    public void testBootstrapFromClusterWithAsyncLoader() throws CacheException, InterruptedException {
+-
+-        cacheName = SAMPLE_CACHE_JMS_REPLICATION_BOOTSTRAP;
+-        Ehcache cache1 = manager1.getCache(cacheName);
+-        Ehcache cache2 = manager2.getCache(cacheName);
+-
+-
+-        Integer index = null;
+-        for (int j = 0; j < 1000; j++) {
+-            index = new Integer(j);
+-            cache1.put(new Element(index,
+-                    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+-                            + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+-                            + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+-                            + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+-                            + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"));
+-
+-        }
+-
+-        //verify was replicated as usualy using JMS
+-        Thread.sleep(3000);
+-        assertEquals(1000, cache2.getSize());
+-
+-        forceVMGrowth();
+-
+-        //Now fire up a new CacheManager and see if bootstrapping using RMI works
+-        CacheManager manager5 = new CacheManager(TestUtil.TEST_CONFIG_DIR + getConfigurationFile());
+-        manager5.setName("manager5");
+-        Thread.sleep(5000);
+-        assertEquals(1000, manager5.getCache(SAMPLE_CACHE_JMS_REPLICATION_BOOTSTRAP).getSize());
+-    }
+-
+-
+-}
++/**
++ *  Licensed under the Apache License, Version 2.0 (the "License");
++ *  you may not use this file except in compliance with the License.
++ *  You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *  Unless required by applicable law or agreed to in writing, software
++ *  distributed under the License is distributed on an "AS IS" BASIS,
++ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *  See the License for the specific language governing permissions and
++ *  limitations under the License.
++ *
++ * @author Pierre Monestie (pmonestie__REMOVE__THIS__@gmail.com)
++ * @author <a href="mailto:gluck@gregluck.com">Greg Luck</a>
++ * @version $Id: ActiveMQJMSReplicationTest.java 816 2008-10-17 12:34:50Z gregluck $
++ */
++
++package net.sf.ehcache.distribution.jms;
++
++import static net.sf.ehcache.distribution.jms.TestUtil.forceVMGrowth;
++import static org.junit.Assert.assertEquals;
++import static org.junit.Assert.assertNotNull;
++import static org.junit.Assert.assertNull;
++import static org.junit.Assert.assertTrue;
++
++import java.io.Serializable;
++import java.util.ArrayList;
++import java.util.Date;
++import java.util.Map;
++import java.util.logging.Level;
++
++import net.sf.ehcache.CacheException;
++import net.sf.ehcache.CacheManager;
++import net.sf.ehcache.Ehcache;
++import net.sf.ehcache.Element;
++import net.sf.ehcache.Status;
++
++import org.junit.After;
++import org.junit.Before;
++import org.junit.Test;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
++/**
++ * ActiveMQ seems to have a bug in 5.1 where it does not cleanup temporary queues, even though they have been
++ * deleted. That bug appears to be long standing. 5.2 as of 10/08 was not released.
++ * http://www.nabble.com/Memory-Leak-Using-Temporary-Queues-td11218217.html#a11218217
++ * http://issues.apache.org/activemq/browse/AMQ-1255
++ */
++public class ActiveMQJMSReplicationTest {
++
++
++    static final int NBR_ELEMENTS = 100;
++
++    static final String SAMPLE_CACHE_ASYNC = "sampleCacheAsync";
++    static final String SAMPLE_CACHE_SYNC = "sampleCacheSync";
++    static final String SAMPLE_CACHE_NOREP = "sampleCacheNorep";
++    static final String SAMPLE_CACHE_JMS_REPLICATION_BOOTSTRAP = "sampleJMSReplicateRMIBootstrap";
++
++    String cacheName;
++
++    private static final Logger LOG = LoggerFactory.getLogger(ActiveMQJMSReplicationTest.class.getName());
++
++    protected CacheManager manager1, manager2, manager3, manager4;
++
++    protected String getConfigurationFile() {
++        return "distribution/jms/ehcache-distributed-jms-activemq.xml";
++    }
++
++    @Before
++    public void setUp() throws Exception {
++
++        manager1 = new CacheManager(TestUtil.TEST_CONFIG_DIR + getConfigurationFile());
++        manager1.setName("manager1");
++        manager2 = new CacheManager(TestUtil.TEST_CONFIG_DIR + getConfigurationFile());
++        manager2.setName("manager2");
++        manager3 = new CacheManager(TestUtil.TEST_CONFIG_DIR + getConfigurationFile());
++        manager3.setName("manager3");
++        manager4 = new CacheManager(TestUtil.TEST_CONFIG_DIR + getConfigurationFile());
++        manager4.setName("manager4");
++        cacheName = SAMPLE_CACHE_ASYNC;
++        Thread.sleep(200);
++    }
++
++    @After
++    public void tearDown() throws Exception {
++        if (manager1 != null) {
++            manager1.shutdown();
++        }
++        if (manager2 != null) {
++            manager2.shutdown();
++        }
++        if (manager3 != null) {
++            manager3.shutdown();
++        }
++        if (manager4 != null) {
++            manager4.shutdown();
++        }
++        Thread.sleep(20);
++    }
++
++
++    @Test
++    public void testBasicReplicationAsynchronous() throws Exception {
++        cacheName = SAMPLE_CACHE_ASYNC;
++        basicReplicationTest();
++    }
++
++    @Test
++    public void testBasicReplicationSynchronous() throws Exception {
++        cacheName = SAMPLE_CACHE_SYNC;
++        basicReplicationTest();
++    }
++
++    @Test
++    public void testStartupAndShutdown() {
++        //noop
++    }
++
++
++    public void basicReplicationTest() throws Exception {
++
++        //put
++        for (int i = 0; i < NBR_ELEMENTS; i++) {
++            manager1.getCache(cacheName).put(new Element(i, "testdat"));
++        }
++        Thread.sleep(3000);
++
++        LOG.info(manager1.getCache(cacheName).getKeys().size() + "  " + manager2.getCache(cacheName).getKeys().size()
++                + " " + manager3.getCache(cacheName).getKeys().size()
++                + " " + manager4.getCache(cacheName).getKeys().size());
++
++        assertTrue(manager1.getCache(cacheName).getKeys().size() == manager2.getCache(cacheName).getKeys().size() &&
++                manager1.getCache(cacheName).getKeys().size() == manager3.getCache(cacheName).getKeys().size() &&
++                manager1.getCache(cacheName).getKeys().size() == manager4.getCache(cacheName).getKeys().size() &&
++                manager1.getCache(cacheName).getKeys().size() == NBR_ELEMENTS);
++
++        //update via copy
++        for (int i = 0; i < NBR_ELEMENTS; i++) {
++            manager1.getCache(cacheName).put(new Element(i, "testdat"));
++        }
++        Thread.sleep(3000);
++
++        LOG.info(manager1.getCache(cacheName).getKeys().size() + "  " + manager2.getCache(cacheName).getKeys().size()
++                + " " + manager3.getCache(cacheName).getKeys().size()
++                + " " + manager4.getCache(cacheName).getKeys().size());
++
++        assertTrue(manager1.getCache(cacheName).getKeys().size() == manager2.getCache(cacheName).getKeys().size() &&
++                manager1.getCache(cacheName).getKeys().size() == manager3.getCache(cacheName).getKeys().size() &&
++                manager1.getCache(cacheName).getKeys().size() == manager4.getCache(cacheName).getKeys().size() &&
++                manager1.getCache(cacheName).getKeys().size() == NBR_ELEMENTS);
++
++
++        //remove
++        manager1.getCache(cacheName).remove(0);
++        Thread.sleep(1010);
++
++        LOG.info(manager1.getCache(cacheName).getKeys().size() + "  " + manager2.getCache(cacheName).getKeys().size()
++                + " " + manager3.getCache(cacheName).getKeys().size()
++                + " " + manager4.getCache(cacheName).getKeys().size());
++
++        assertTrue(manager1.getCache(cacheName).getKeys().size() == manager2.getCache(cacheName).getKeys().size() &&
++                manager1.getCache(cacheName).getKeys().size() == manager3.getCache(cacheName).getKeys().size() &&
++                manager1.getCache(cacheName).getKeys().size() == manager4.getCache(cacheName).getKeys().size() &&
++                manager1.getCache(cacheName).getKeys().size() == NBR_ELEMENTS - 1);
++
++        //removeall
++        manager1.getCache(cacheName).removeAll();
++        Thread.sleep(1010);
++
++        LOG.info(manager1.getCache(cacheName).getKeys().size() + "  " + manager2.getCache(cacheName).getKeys().size()
++                + " " + manager3.getCache(cacheName).getKeys().size()
++                + " " + manager4.getCache(cacheName).getKeys().size());
++
++        assertTrue(manager1.getCache(cacheName).getKeys().size() == manager2.getCache(cacheName).getKeys().size() &&
++                manager1.getCache(cacheName).getKeys().size() == manager3.getCache(cacheName).getKeys().size() &&
++                manager1.getCache(cacheName).getKeys().size() == manager4.getCache(cacheName).getKeys().size() &&
++                manager1.getCache(cacheName).getKeys().size() == 0);
++
++    }
++
++
++//    @Test
++//    public void testShutdownManager() throws Exception {
++//        cacheName = SAMPLE_CACHE_ASYNC;
++//        manager1.getCache(cacheName).removeAll();
++//        Thread.currentThread().sleep(1000);
++//
++//        CacheManagerPeerProvider provider = manager1.getCachePeerProvider();
++//        JGroupManager jg = (JGroupManager) provider;
++//        assertEquals(Status.STATUS_ALIVE, jg.getStatus());
++//        manager1.shutdown();
++//        assertEquals(Status.STATUS_SHUTDOWN, jg.getStatus());
++//        //Lets see if the other still replicate
++//        manager2.getCache(cacheName).put(new Element(new Integer(1), new Date()));
++//        Thread.currentThread().sleep(2000);
++//
++//
++//        assertTrue(manager2.getCache(cacheName).getKeys().size() == manager3.getCache(cacheName).getKeys().size() &&
++//                manager2.getCache(cacheName).getKeys().size() == manager4.getCache(cacheName).getKeys().size() &&
++//                manager2.getCache(cacheName).getKeys().size() == 1);
++//
++//
++//    }
++
++    @Test
++    public void testAddManager() throws Exception {
++        cacheName = SAMPLE_CACHE_ASYNC;
++        if (manager1.getStatus() != Status.STATUS_SHUTDOWN)
++            manager1.shutdown();
++
++
++        Thread.sleep(1000);
++        manager1 = new CacheManager(TestUtil.TEST_CONFIG_DIR + getConfigurationFile());
++        Thread.sleep(3000);
++        manager2.clearAll();
++
++        Thread.sleep(1000);
++
++        manager2.getCache(cacheName).put(new Element(2, new Date()));
++        manager1.getCache(cacheName).put(new Element(3, new Date()));
++        Thread.sleep(2000);
++
++        assertTrue(manager1.getCache(cacheName).getKeys().size() == manager2.getCache(cacheName).getKeys().size() &&
++                manager1.getCache(cacheName).getKeys().size() == manager3.getCache(cacheName).getKeys().size() &&
++                manager1.getCache(cacheName).getKeys().size() == manager4.getCache(cacheName).getKeys().size() &&
++                manager1.getCache(cacheName).getKeys().size() == 2);
++
++    }
++
++
++    @Test
++    public void testNoreplication() throws InterruptedException {
++        cacheName = SAMPLE_CACHE_NOREP;
++        Ehcache cache1 = manager1.getCache(cacheName);
++        Ehcache cache2 = manager2.getCache(cacheName);
++        Element element = new Element(1, new Date());
++
++        //put
++        cache2.put(element);
++        Thread.sleep(1000);
++        assertTrue(cache1.getKeys().size() == 0 && cache2.getKeys().size() == 1);
++
++        //update
++        cache2.put(element);
++        Thread.sleep(1000);
++        assertTrue(cache1.getKeys().size() == 0 && cache2.getKeys().size() == 1);
++
++        //remove
++        cache1.put(element);
++        cache1.remove(1);
++        Thread.sleep(1000);
++        assertTrue(cache1.getKeys().size() == 0 && cache2.getKeys().size() == 1);
++
++        //removeAll
++        cache1.removeAll();
++        Thread.sleep(1000);
++        assertTrue(cache1.getKeys().size() == 0 && cache2.getKeys().size() == 1);
++
++    }
++
++    /**
++     * What happens when two cache instances replicate to each other and a change is initiated
++     *
++     * @throws InterruptedException -
++     */
++    @Test
++    public void testVariousPuts() throws InterruptedException {
++        cacheName = SAMPLE_CACHE_ASYNC;
++        Ehcache cache1 = manager1.getCache(cacheName);
++        Ehcache cache2 = manager2.getCache(cacheName);
++
++        Serializable key = "1";
++        Serializable value = new Date();
++        Element element = new Element(key, value);
++
++        //Put
++        cache1.put(element);
++        Thread.sleep(1000);
++
++        //Should have been replicated to cache2.
++        Element element2 = cache2.get(key);
++        assertEquals(element, element2);
++
++
++        //Remove
++        cache1.remove(key);
++        assertNull(cache1.get(key));
++
++        //Should have been replicated to cache2.
++        Thread.sleep(1000);
++        element2 = cache2.get(key);
++        assertNull(element2);
++
++        //Put into 2
++        Element element3 = new Element("3", "ddsfds");
++        cache2.put(element3);
++        Thread.sleep(1000);
++        Element element4 = cache2.get("3");
++        assertEquals(element3, element4);
++
++        manager1.clearAll();
++        Thread.sleep(1000);
++
++    }
++
++
++    /**
++     * What happens when two cache instances replicate to each other and a change is initiated
++     *
++     * @throws InterruptedException -
++     */
++    @Test
++    public void testPutAndRemove() throws InterruptedException {
++
++        cacheName = SAMPLE_CACHE_SYNC;
++        Ehcache cache1 = manager1.getCache(cacheName);
++        Ehcache cache2 = manager2.getCache(cacheName);
++
++        Serializable key = "1";
++        Serializable value = new Date();
++        Element element = new Element(key, value);
++
++        //Put
++        cache1.put(element);
++        long version = element.getVersion();
++        Thread.sleep(100);
++        //make sure we are not getting our own circular update back
++        assertEquals(version, cache1.get(key).getVersion());
++
++        //Should have been replicated to cache2.
++        Element element2 = cache2.get(key);
++        assertEquals(element, element2);
++
++
++        //Remove
++        cache1.remove(key);
++        assertNull(cache1.get(key));
++
++        //Should have been replicated to cache2.
++        Thread.sleep(100);
++        element2 = cache2.get(key);
++        assertNull(element2);
++
++    }
++
++
++    /**
++     * Same as testPutandRemove but this one does:
++     */
++    @Test
++    public void testPutAndRemoveStability() throws InterruptedException {
++        for (int i = 0; i < 120; i++) {
++            testPutAndRemove();
++        }
++    }
++
++
++    /**
++     * This is a manual test.
++     * Start the test running and observe the output. You should see no exceptions.
++     * Then kill the message queue.
++     * <p/>
++     * You will see errors like these if using Open MQ.
++     * <p/>
++     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ExceptionHandler logCaughtException
++     * WARNING: [I500]: Caught JVM Exception: java.io.EOFException
++     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ExceptionHandler logCaughtException
++     * WARNING: [I500]: Caught JVM Exception: java.io.EOFException
++     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
++     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(49990)
++     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
++     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(49990)
++     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ExceptionHandler logCaughtException
++     * WARNING: [I500]: Caught JVM Exception: java.io.EOFException
++     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
++     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(49990)
++     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
++     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(49990)
++     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
++     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(49990)
++     * Oct 11, 2008 10:11:10 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
++     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(49990)
++     * Oct 11, 2008 10:11:13 PM com.sun.messaging.jmq.jmsclient.ExceptionHandler throwConnectionException
++     * WARNING: [C4003]: Error occurred on connection creation [localhost:7676]. - cause: java.net.ConnectException: Connection refused
++     * <p/>
++     * Then restart the message queue.
++     * <p/>
++     * You will see recover messages such as:
++     * <p/>
++     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(50206)
++     * Oct 11, 2008 10:13:46 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
++     * INFO: [I107]: Connection recover state: RECOVER_SUCCEEDED, broker: localhost:7676(50206)
++     * Oct 11, 2008 10:13:46 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
++     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(50206)
++     * Oct 11, 2008 10:13:46 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
++     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(50206)
++     * Oct 11, 2008 10:13:46 PM com.sun.messaging.jmq.jmsclient.ConsumerReader run
++     * WARNING: [C4001]: Write packet failed., packet type = ACKNOWLEDGE(24)
++     * com.sun.messaging.jms.JMSException: [C4001]: Write packet failed., packet type = ACKNOWLEDGE(24)
++     * at com.sun.messaging.jmq.jmsclient.ConnectionImpl.checkPacketType(ConnectionImpl.java:654)
++     * at com.sun.messaging.jmq.jmsclient.ConnectionImpl.checkReconnecting(ConnectionImpl.java:641)
++     * at com.sun.messaging.jmq.jmsclient.ProtocolHandler.checkConnectionState(ProtocolHandler.java:766)
++     * at com.sun.messaging.jmq.jmsclient.ProtocolHandler.writePacketNoAck(ProtocolHandler.java:360)
++     * at com.sun.messaging.jmq.jmsclient.ProtocolHandler.acknowledge(ProtocolHandler.java:2608)
++     * at com.sun.messaging.jmq.jmsclient.SessionImpl.doAcknowledge(SessionImpl.java:1382)
++     * at com.sun.messaging.jmq.jmsclient.SessionImpl.dupsOkCommitAcknowledge(SessionImpl.java:1427)
++     * at com.sun.messaging.jmq.jmsclient.SessionImpl.syncedDupsOkCommitAcknowledge(SessionImpl.java:1450)
++     * at com.sun.messaging.jmq.jmsclient.SessionReader.deliver(SessionReader.java:141)
++     * at com.sun.messaging.jmq.jmsclient.ConsumerReader.run(ConsumerReader.java:190)
++     * at java.lang.Thread.run(Thread.java:613)
++     * Oct 11, 2008 10:13:46 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
++     * INFO: [I107]: Connection recover state: RECOVER_INACTIVE, broker: localhost:7676(50206)
++     * Oct 11, 2008 10:13:46 PM com.sun.messaging.jmq.jmsclient.ConsumerReader run
++     * WARNING: [C4001]: Write packet failed., packet type = ACKNOWLEDGE(24)
++     * com.sun.messaging.jms.JMSException: [C4001]: Write packet failed., packet type = ACKNOWLEDGE(24)
++     * at com.sun.messaging.jmq.jmsclient.ConnectionImpl.checkPacketType(ConnectionImpl.java:654)
++     * at com.sun.messaging.jmq.jmsclient.ConnectionImpl.checkReconnecting(ConnectionImpl.java:641)
++     * at com.sun.messaging.jmq.jmsclient.ProtocolHandler.checkConnectionState(ProtocolHandler.java:766)
++     * at com.sun.messaging.jmq.jmsclient.ProtocolHandler.writePacketNoAck(ProtocolHandler.java:360)
++     * at com.sun.messaging.jmq.jmsclient.ProtocolHandler.acknowledge(ProtocolHandler.java:2608)
++     * at com.sun.messaging.jmq.jmsclient.SessionImpl.doAcknowledge(SessionImpl.java:1382)
++     * at com.sun.messaging.jmq.jmsclient.SessionImpl.dupsOkCommitAcknowledge(SessionImpl.java:1427)
++     * at com.sun.messaging.jmq.jmsclient.SessionImpl.syncedDupsOkCommitAcknowledge(SessionImpl.java:1450)
++     * at com.sun.messaging.jmq.jmsclient.SessionReader.deliver(SessionReader.java:141)
++     * at com.sun.messaging.jmq.jmsclient.ConsumerReader.run(ConsumerReader.java:190)
++     * at java.lang.Thread.run(Thread.java:613)
++     * Oct 11, 2008 10:13:46 PM com.sun.messaging.jmq.jmsclient.ConnectionRecover logRecoverState
++     * <p/>
++     * Normal processing will then resume. i.e. the ehcache cluster reforms once the message queue is back.
++     * <p/>
++     * To enable this behaviour the following must be set on the connection factory configuration.
++     * <p/>
++     * Open MQ
++     * imqReconnect='true' - without this reconnect will not happen
++     * imqPingInterval='5' - Consumers will not reconnect until they notice the connection is down. The ping interval
++     * does this. The default is 30. Set it lower if you want the ehcache cluster to reform more quickly.
++     * Finally, unlimited retry attempts are recommended. This is the default.
++     */
++    //@Test
++    public void testPutAndRemoveMessageQueueFailure() throws InterruptedException {
++        for (int i = 0; i < 1000; i++) {
++            try {
++                testPutAndRemove();
++                Thread.sleep(5000);
++            } catch (Exception e) {
++                LOG.error(e.getMessage(), e);
++            }
++        }
++    }
++
++    @Test
++    public void testSimultaneousPutRemove() throws InterruptedException {
++        cacheName = SAMPLE_CACHE_SYNC; //Synced one
++        Ehcache cache1 = manager1.getCache(cacheName);
++        Ehcache cache2 = manager2.getCache(cacheName);
++
++
++        Serializable key = "1";
++        Serializable value = new Date();
++        Element element = new Element(key, value);
++
++        //Put
++        cache1.put(element);
++        Thread.sleep(1000);
++        cache2.remove(element.getKey());
++        Thread.sleep(1000);
++
++
++        assertNull(cache1.get(element.getKey()));
++        manager1.clearAll();
++        Thread.sleep(1000);
++
++        cache2.put(element);
++        cache2.remove(element.getKey());
++        Thread.sleep(1000);
++        cache1.put(element);
++        Thread.sleep(1000);
++        assertNotNull(cache2.get(element.getKey()));
++
++        manager1.clearAll();
++        Thread.sleep(1000);
++
++    }
++
++
++    /**
++     * Tests the JMSCacheLoader.
++     * <p/>
++     * We put an item in cache1, which does not replicate.
++     * <p/>
++     * We then do a get on cache2, which has a JMSCacheLoader which should ask the cluster for the answer.
++     * If a cache does not have an element it should leave the message on the queue for the next node to process.
++     */
++    @Test
++    public void testGet() throws InterruptedException {
++        cacheName = SAMPLE_CACHE_SYNC;
++        manager3.shutdown();
++        manager4.shutdown();
++        Thread.sleep(20);
++        Ehcache cache1 = manager1.getCache("sampleCacheNorep");
++        Ehcache cache2 = manager2.getCache("sampleCacheNorep");
++
++        Serializable key = "1";
++        Serializable value = new Date();
++        Element element = new Element(key, value);
++
++        //Put
++        cache1.put(element);
++        long version = element.getVersion();
++        Thread.sleep(1050);
++
++
++        //Should not have been replicated to cache2.
++        Element element2 = cache2.get(key);
++        assertEquals(null, element2);
++
++        //Should load from cache1
++        for (int i = 0; i < 120; i++) {
++            element2 = cache2.getWithLoader(key, null, null);
++            assertEquals(value, element2.getValue());
++            cache2.remove(key);
++        }
++
++        //Should load from cache1
++        element2 = cache2.getWithLoader(key, null, null);
++        assertEquals(value, element2.getValue());
++        cache2.remove(key);
++    }
++
++
++    /**
++     * Tests the JMSCacheLoader.
++     * <p/>
++     * We put an item in cache1, which does not replicate.
++     * <p/>
++     * We then do a get on cache2, which has a JMSCacheLoader which should ask the cluster for the answer.
++     * If a cache does not have an element it should leave the message on the queue for the next node to process.
++     */
++    @Test
++    public void testGetAll() throws InterruptedException {
++        cacheName = SAMPLE_CACHE_SYNC;
++        manager3.shutdown();
++        manager4.shutdown();
++        Thread.sleep(1000);
++        Ehcache cache1 = manager1.getCache("sampleCacheNorep");
++        Ehcache cache2 = manager2.getCache("sampleCacheNorep");
++
++        Serializable key = "1";
++        Serializable value = new Date();
++        Element element = new Element(key, value);
++        Element element2 = new Element(2, "dog");
++        Element element3 = new Element(3, "cat");
++
++        ArrayList keys = new ArrayList();
++        keys.add("1");
++        keys.add(2);
++
++        //Put
++        cache1.put(element);
++        cache1.put(element2);
++        cache1.put(element3);
++        Thread.sleep(2050);
++
++
++        //Should not have been replicated to cache2.
++        Element element1Retrieved = cache2.get(key);
++        assertEquals(null, element1Retrieved);
++
++        //Should load from cache2
++        for (int i = 0; i < 120; i++) {
++            Map received = cache2.getAllWithLoader(keys, null);
++            assertEquals(2, received.size());
++            assertEquals(value, received.get("1"));
++            assertEquals("dog", received.get(2));
++            cache2.remove(key);
++            cache2.remove(2);
++        }
++    }
++
++
++    /**
++     * Tests the JMSCacheLoader.
++     * <p/>
++     * We put an item in cache1, which does not replicate.
++     * <p/>
++     * We then do a get on cache2, which has a JMSCacheLoader which should ask the cluster for the answer.
++     * If a cache does not have an element it should leave the message on the queue for the next node to process.
++     *
++     * @throws InterruptedException -
++     */
++    @Test
++    public void testGetTimeout() throws InterruptedException {
++        cacheName = SAMPLE_CACHE_SYNC;
++        manager3.shutdown();
++        manager4.shutdown();
++        Thread.sleep(20);
++        Ehcache cache1 = manager1.getCache("sampleCacheNorep");
++        Ehcache cache2 = manager2.getCache("sampleCacheNorep");
++
++        Serializable key = "net.sf.ehcache.distribution.jms.Delay";
++        Serializable value = new Date();
++        Element element = new Element(key, value);
++
++        //Put
++        cache1.put(element);
++        Thread.sleep(1050);
++
++        //Should not have been replicated to cache2.
++        Element element2 = cache2.get(key);
++        assertEquals(null, element2);
++
++        //Should timeout loading from cache2
++        element2 = cache2.getWithLoader(key, null, null);
++        assertNull(element2);
++        cache2.remove(key);
++    }
++
++    @Test
++    public void testOneWayReplicate() throws Exception {
++
++        CacheManager managerA, managerB, managerC;
++
++        String nonListeningConfigurationFile = "distribution/jms/ehcache-distributed-nonlistening-jms-activemq.xml";
++        String listeningConfigurationFile = "distribution/jms/ehcache-distributed-jms-activemq.xml";
++
++        managerA = new CacheManager(TestUtil.TEST_CONFIG_DIR + nonListeningConfigurationFile);
++        managerA.setName("managerA");
++        managerB = new CacheManager(TestUtil.TEST_CONFIG_DIR + listeningConfigurationFile);
++        managerB.setName("managerB");
++        managerC = new CacheManager(TestUtil.TEST_CONFIG_DIR + nonListeningConfigurationFile);
++        managerC.setName("managerC");
++
++        Element element = new Element("1", "value");
++        managerA.getCache(SAMPLE_CACHE_ASYNC).put(element);
++
++        Thread.sleep(1000);
++
++        assertNotNull(managerB.getCache(SAMPLE_CACHE_ASYNC).get("1"));
++        assertNull(managerC.getCache(SAMPLE_CACHE_ASYNC).get("1"));
++
++        managerA.shutdown();
++        managerB.shutdown();
++        managerC.shutdown();
++    }
++
++
++    /**
++     * Tests loading from bootstrap for a cache which is configured to load using RMI and replicate using JMS
++     */
++    @Test
++    public void testBootstrapFromClusterWithAsyncLoader() throws CacheException, InterruptedException {
++
++        cacheName = SAMPLE_CACHE_JMS_REPLICATION_BOOTSTRAP;
++        Ehcache cache1 = manager1.getCache(cacheName);
++        Ehcache cache2 = manager2.getCache(cacheName);
++
++
++        Integer index = null;
++        for (int j = 0; j < 1000; j++) {
++            index = new Integer(j);
++            cache1.put(new Element(index,
++                    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
++                            + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
++                            + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
++                            + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
++                            + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"));
++
++        }
++
++        //verify was replicated as usualy using JMS
++        Thread.sleep(3000);
++        assertEquals(1000, cache2.getSize());
++
++        forceVMGrowth();
++
++        //Now fire up a new CacheManager and see if bootstrapping using RMI works
++        String config = TestUtil.TEST_CONFIG_DIR + getConfigurationFile();
++        System.out.println(config);
++        CacheManager manager5 = new CacheManager(config);
++        
++        manager5.setName("manager5");
++        Thread.sleep(5000);
++        assertEquals(1000, manager5.getCache(SAMPLE_CACHE_JMS_REPLICATION_BOOTSTRAP).getSize());
++    }
++
++
++}

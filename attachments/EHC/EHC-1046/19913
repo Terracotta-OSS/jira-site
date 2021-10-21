@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ehcache
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="ehcache.xsd"
+        name="CoherencyTest"
+        updateCheck="false"
+        monitoring="on"
+        dynamicConfig="true">
+    <terracottaConfig
+            rejoin="true"
+            url="tcserver01.local-paymo.net:9510,tcserver02.local-paymo.net:9510"/>
+    <cache  name="Locked"
+            maxElementsInMemory="2000"
+            maxElementsOnDisk="10000"
+            eternal="true"
+            timeToIdleSeconds="0"
+            timeToLiveSeconds="0"
+            overflowToDisk="false"
+            memoryStoreEvictionPolicy="LRU"
+            clearOnFlush="false"
+            statistics="true"
+            logging="true">
+        <cacheDecoratorFactory
+                class="net.sf.ehcache.constructs.unlockedreadsview.UnlockedReadsViewDecoratorFactory"
+                properties="name=Unlocked"/>
+        <terracotta
+                consistency="strong">
+            <nonstop
+                    enabled="true"
+                    immediateTimeout="false"
+                    timeoutMillis="10000">
+                <timeoutBehavior type="exception"/>
+            </nonstop>
+        </terracotta>
+        <persistence strategy="distributed"/>
+    </cache>
+</ehcache>

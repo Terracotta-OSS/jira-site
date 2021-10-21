@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- All content copyright Terracotta, Inc., unless otherwise indicated.      All rights reserved. -->
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-6.xsd">
+
+    <system>
+        <configuration-model>production</configuration-model>
+    </system>
+
+<!--
+    <tc-properties>
+        <property name="l1.healthcheck.l2.ping.enabled" value="true"/>
+        <property name="l1.healthcheck.l2.ping.idletime" value="5000"/>
+        <property name="l1.healthcheck.l2.ping.interval" value="1000"/>
+        <property name="l1.healthcheck.l2.ping.probes" value="3"/>
+        <property name="l1.healthcheck.l2.socketConnect" value="true"/>
+        <property name="l1.healthcheck.l2.socketConnectTimeout" value="5"/>
+        <property name="l1.healthcheck.l2.socketConnectCount" value="10"/>
+	<property name="l2.nha.dirtydb.rolling" value="2" />
+    </tc-properties>
+-->
+
+    <tc-properties>
+        <property name="l1.healthcheck.l2.ping.enabled" value="true"/>
+        <property name="l1.healthcheck.l2.ping.idletime" value="5000"/>
+        <property name="l1.healthcheck.l2.ping.interval" value="1000"/>
+        <property name="l1.healthcheck.l2.ping.probes" value="3"/>
+        <property name="l1.healthcheck.l2.socketConnect" value="true"/>
+        <property name="l1.healthcheck.l2.socketConnectTimeout" value="5"/>
+        <property name="l1.healthcheck.l2.socketConnectCount" value="10"/>
+        <property name="l2.nha.dirtydb.rolling" value="2" />
+        <property name="l2.berkeleydb.je.cleaner.bytesInterval" value="20000000" />
+        <property name="l2.berkeleydb.je.checkpointer.bytesInterval" value="20000000" />
+        <property name="l2.berkeleydb.je.cleaner.lookAheadCacheSize" value="65536" />
+        <property name="l2.berkeleydb.je.cleaner.minAge" value="1" />
+        <property name="l2.berkeleydb.je.cleaner.maxBatchFiles" value="100" />
+        <property name="l2.berkeleydb.je.cleaner.rmwFix" value="false" />
+        <property name="l2.berkeleydb.je.cleaner.threads" value="8" />
+        <property name="l2.objectmanager.deleteBatchSize" value="40000" />
+        <property name="l2.objectmanager.loadObjectID.checkpoint.maxlimit" value="4000000" />
+        <property name="l2.objectmanager.dgc.young.enabled" value="true" />
+        <property name="l2.l1reconnect.enabled" value="true"/>
+    </tc-properties>
+
+
+
+
+
+    <servers>
+
+	<!-- hostnames for both values should work -->
+        <server host="lt-mobses01.sb.com.au" name="lt-mobses01.sb.com.au">
+            <data>/opt/mobenga/terracotta/server-data/</data>
+            <logs>/opt/mobenga/terracotta/server-logs/</logs>
+            <l2-group-port>9530</l2-group-port>
+
+            <dso>
+                <client-reconnect-window>600</client-reconnect-window>
+                <persistence>
+                    <mode>temporary-swap-only</mode>
+                </persistence>
+            </dso>
+
+        </server>
+
+	
+        <server host="lt-mobses02.sb.com.au" name="lt-mobses02.sb.com.au">
+
+            <data>/apps/terracotta/server-data</data>
+            <logs>/apps/terracotta/server-logs</logs>
+            <l2-group-port>9530</l2-group-port>
+
+            <dso>
+                <client-reconnect-window>30</client-reconnect-window>
+                <persistence>
+                    <mode>temporary-swap-only</mode>
+                </persistence>
+            </dso>
+
+        </server>
+        
+        <ha>
+            <mode>networked-active-passive</mode>
+            <networked-active-passive>
+                <election-time>5</election-time>
+            </networked-active-passive>
+        </ha>
+	
+
+
+
+    </servers>
+    
+    
+    <!-- Sets where the generated client logs are saved on clients. -->
+    <clients>
+        <logs>/opt/mobenga/terracotta/client-logs</logs>
+    </clients>
+
+
+<!-- The following declarations tells DSO which classes should be instrumented to
+allow sharing. When the app runs under DSO, shared instances of these classes will
+broadcast changes in their state -->
+<!-- Exclude tomcat internals to improve performance of webapp loading -->
+
+<application>
+<dso> 
+<instrumented-classes> 
+<include>
+<class-expression>*..*</class-expression>
+</include> 
+<exclude>org.apache.coyote..*</exclude>
+<exclude>org.apache.catalina..*</exclude>
+<exclude>org.apache.jasper..*</exclude>
+<exclude>org.apache.tomcat..*</exclude>
+</instrumented-classes> 
+</dso>
+</application> 
+
+</tc:tc-config>

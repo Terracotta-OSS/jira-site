@@ -1,0 +1,158 @@
+2007-06-14 13:33:55,055 [main] INFO com.tc.properties.TCProperties - Loading default properties from tc.properties
+2007-06-14 13:33:55,055 [main] INFO com.tc.properties.TCProperties - Loaded TCProperties : TCProperties={l1.reconnect.enabled=true, tc.management.mbeans.enabled=true, l2.berkeleydb.je.lock.nLockTables=7, l2.beanshell.port=9929, l1.cachemanager.monitorOldGenOnly=true, l1.transactionmanager.maxOutstandingBatchSize=8, tc.management.test.mbeans.enabled=false, l2.objectmanager.cachePolicy=lfu, l1.transactionmanager.logging.enabled=false, session.request.tracking=false, l2.cachemanager.percentageToEvict=10, l2.nha.tribes.mcast.mcastAddress=228.0.0.4, l2.cachemanager.logging.enabled=false, l1.transactionmanager.maxBatchSizeInKiloBytes=128, l2.objectmanager.fault.logging.enabled=false, l1.cachemanager.leastCount=2, l1.cachemanager.sleepInterval=3000, tc.stage.monitor.enabled=false, l1.transactionmanager.maxPendingBatches=32, l1.cachemanager.logging.enabled=false, l2.nha.tribes.mcast.mcastPort=7777, l1.cachemanager.percentageToEvict=10, l2.nha.tribes.mcast.mcastFrequency=500, l2.cachemanager.criticalThreshold=90, l2.objectmanager.maxObjectsToCommit=5000, l2.lfu.debug.enabled=false, l2.nha.tribes.mcast.tcpListenPort=4000, l2.berkeleydb.je.maxMemoryPercent=25, session.request.bench.enabled=false, l2.nha.send.timeout.millis=4000, session.invalidator.bench.enabled=true, l2.berkeleydb.je.cleaner.lookAheadCacheSize=32768, l2.berkeleydb.je.cleaner.minAge=5, tc.stage.monitor.delay=5000, l1.cachemanager.threshold=70, l2.nha.mcast.enabled=false, l2.cachemanager.sleepInterval=3000, l1.transactionmanager.maxSleepTimeBeforeHalt=1024, l1.cachemanager.criticalThreshold=90, l1.objectmanager.remote.maxDNALRUSize=60, l2.berkeleydb.je.checkpointer.bytesInterval=100000000, l1.cachemanager.enabled=true, l2.objectmanager.maxObjectsInTxnObjGrouping=5000, session.request.tracking.threshold=15000, l1.reconnect.timeout.millis=5000, session.request.tracking.dump=false, session.debug.hops.interval=100, l2.cachemanager.enabled=true, l2.beanshell.enabled=false, l2.berkeleydb.je.cleaner.detailMaxMemoryPercentage=5, l2.lfu.agingFactor=1, l2.objectmanager.maxTxnsInTxnObjectGrouping=500, l2.cachemanager.leastCount=2, l2.cachemanager.threshold=70, session.request.tracking.interval=2500, l2.lfu.recentlyAccessedIgnorePercentage=20, l2.transactionmanager.logging.enabled=false, l2.nha.tribes.mcast.memberDropTime=3000, l2.cachemanager.monitorOldGenOnly=true, l2.berkeleydb.je.cleaner.bytesInterval=20000000, l2.nha.tribes.mcast.tcpListenHost=127.0.0.1, l2.objectmanager.deleteBatchSize=5000, session.invalidator.sleep=300, l2.berkeleydb.je.lock.timeout=180000000, session.debug.hops=false}
+2007-06-14 13:33:55,070 [main] INFO com.tc.management.beans.logging.TCLoggingBroadcasterMBean - No resource bundle exists for MBean com.tc.management.beans.logging.TCLoggingBroadcasterMBean
+2007-06-14 13:33:55,070 [main] INFO com.terracottatech.general - New logging session started.
+2007-06-14 13:33:55,102 [main] INFO com.terracottatech.console - Terracotta 2.4-nightly-rev3684, as of 20070613-190600 (Revision 3684 by cruise@WXPMO0 from 2.4)
+2007-06-14 13:33:55,102 [main] INFO com.terracottatech.console - Terracotta 2.4-nightly-rev3684, as of 20070613-190600 (Revision 3684 by cruise@WXPMO0 from 2.4)
+2007-06-14 13:33:55,102 [main] INFO com.tc.logging.TCLogging - Terracotta 2.4-nightly-rev3684, as of 20070613-190600 (Revision 3684 by cruise@WXPMO0 from 2.4)
+2007-06-14 13:33:55,461 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Attempting to load configuration from the server at 'localhost:9510'...
+2007-06-14 13:33:55,508 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Successfully loaded configuration from the server at 'localhost:9510'. Config is:
+
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<con:tc-config xmlns:con="http://www.terracotta.org/config">
+    <clients xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <logs>%(tc.home)/terracotta/client-logs</logs>
+    </clients>
+    <servers xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <!--Tell DSO where the Terracotta server can be found.-->
+        <server host="localhost" name="localhost:9510">
+            <data>%(tc.home)/terracotta/server-data</data>
+            <logs>%(tc.home)/terracotta/server-logs</logs>
+        </server>
+    </servers>
+    <application xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <dso>
+            <!--Start by including all classes for instrumentation.
+           It's more efficient to instrument only those classes that
+           hold shared roots or are part of a shared root's graph.-->
+            <instrumented-classes>
+                <include>
+                    <class-expression>com.sample.apps.stateful.pojo.*</class-expression>
+                </include>
+                <include>
+                    <class-expression>com.sample.common.util.*</class-expression>
+                </include>
+                <include>
+                    <class-expression>com.sample.*.dto.*</class-expression>
+                </include>
+                <include>
+                    <class-expression>com.sample.apps.factory.*</class-expression>
+                </include>
+            </instrumented-classes>
+            <!--Apply write level autolocks for all instrumented methods.
+           It's more efficient to create finer-grain locks as dictated
+           by your application needs.-->
+            <locks>
+                <autolock>
+                    <lock-level>write</lock-level>
+                    <method-expression>* *..*.*(..)</method-expression>
+                </autolock>
+            </locks>
+            <roots>
+                <root>
+                    <field-name>com.sample.apps.stateful.pojo.Carts.globalCarts</field-name>
+                </root>
+            </roots>
+        </dso>
+    </application>
+</con:tc-config>
+2007-06-14 13:33:55,774 [main] INFO com.terracottatech.console - Configuration loaded from the server at 'localhost:9510'.
+2007-06-14 13:33:55,774 [main] INFO com.terracottatech.console - Configuration loaded from the server at 'localhost:9510'.
+2007-06-14 13:33:56,290 [main] INFO com.terracottatech.console - Log file: 'C:\terracotta\client-logs\terracotta-client.log'.
+2007-06-14 13:33:56,290 [main] INFO com.terracottatech.console - Log file: 'C:\terracotta\client-logs\terracotta-client.log'.
+2007-06-14 13:33:56,290 [main] INFO com.tc.logging.TCLogging - ========================================================================
+All Java System Properties for this Terracotta instance:
+awt.toolkit                         : sun.awt.windows.WToolkit
+file.encoding                       : Cp1252
+file.encoding.pkg                   : sun.io
+file.separator                      : \
+java.awt.graphicsenv                : sun.awt.Win32GraphicsEnvironment
+java.awt.printerjob                 : sun.awt.windows.WPrinterJob
+java.class.path                     : C:\programFiles\Java\jdk1.6.0_01\lib\tools.jar;C:\programFiles\jboss-4.0.5.GA\bin\\run.jar
+java.class.version                  : 50.0
+java.endorsed.dirs                  : C:\programFiles\jboss-4.0.5.GA\bin\\..\lib\endorsed
+java.ext.dirs                       : C:\programFiles\Java\jdk1.6.0_01\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext
+java.home                           : C:\programFiles\Java\jdk1.6.0_01\jre
+java.io.tmpdir                      : C:\DOCUME~1\sHawk\LOCALS~1\Temp\
+java.library.path                   : C:\programFiles\Java\jdk1.6.0_01\bin;.;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\BES\bin;%JAVAHOME%;%JAVAHOME%\bin;C:\programFiles\Ant\apache-ant-1.6.5\bin
+java.runtime.name                   : Java(TM) SE Runtime Environment
+java.runtime.version                : 1.6.0_01-b06
+java.specification.name             : Java Platform API Specification
+java.specification.vendor           : Sun Microsystems Inc.
+java.specification.version          : 1.6
+java.vendor                         : Sun Microsystems Inc.
+java.vendor.url                     : http://java.sun.com/
+java.vendor.url.bug                 : http://java.sun.com/cgi-bin/bugreport.cgi
+java.version                        : 1.6.0_01
+java.vm.info                        : mixed mode
+java.vm.name                        : Java HotSpot(TM) Server VM
+java.vm.specification.name          : Java Virtual Machine Specification
+java.vm.specification.vendor        : Sun Microsystems Inc.
+java.vm.specification.version       : 1.0
+java.vm.vendor                      : Sun Microsystems Inc.
+java.vm.version                     : 1.6.0_01-b06
+line.separator                      : 
+
+os.arch                             : x86
+os.name                             : Windows XP
+os.version                          : 5.1
+path.separator                      : ;
+program.name                        : run.bat
+sun.arch.data.model                 : 32
+sun.boot.class.path                 : C:\programFiles\Terracotta\terracotta-2.4-nightly-rev3684\bin\..\lib\dso-boot\dso-boot-hotspot_win32_160_01.jar;C:\programFiles\jboss-4.0.5.GA\bin\\..\lib\endorsed\resolver.jar;C:\programFiles\jboss-4.0.5.GA\bin\\..\lib\endorsed\serializer.jar;C:\programFiles\jboss-4.0.5.GA\bin\\..\lib\endorsed\xalan.jar;C:\programFiles\jboss-4.0.5.GA\bin\\..\lib\endorsed\xercesImpl.jar;C:\programFiles\jboss-4.0.5.GA\bin\\..\lib\endorsed\xml-apis.jar;C:\programFiles\Java\jdk1.6.0_01\jre\lib\resources.jar;C:\programFiles\Java\jdk1.6.0_01\jre\lib\rt.jar;C:\programFiles\Java\jdk1.6.0_01\jre\lib\sunrsasign.jar;C:\programFiles\Java\jdk1.6.0_01\jre\lib\jsse.jar;C:\programFiles\Java\jdk1.6.0_01\jre\lib\jce.jar;C:\programFiles\Java\jdk1.6.0_01\jre\lib\charsets.jar;C:\programFiles\Java\jdk1.6.0_01\jre\classes
+sun.boot.library.path               : C:\programFiles\Java\jdk1.6.0_01\jre\bin
+sun.cpu.endian                      : little
+sun.cpu.isalist                     : 
+sun.desktop                         : windows
+sun.io.unicode.encoding             : UnicodeLittle
+sun.java.launcher                   : SUN_STANDARD
+sun.jnu.encoding                    : Cp1252
+sun.management.compiler             : HotSpot Server Compiler
+sun.net.client.defaultConnectTimeout: 30000
+sun.net.client.defaultReadTimeout   : 30000
+sun.os.patch.level                  : Service Pack 2
+sun.rmi.dgc.client.gcInterval       : 3600000
+sun.rmi.dgc.server.gcInterval       : 3600000
+tc.config                           : localhost:9510
+tc.install-root                     : C:\programFiles\Terracotta\terracotta-2.4-nightly-rev3684\bin\..
+tc.server                           : localhost
+user.country                        : US
+user.dir                            : C:\programFiles\jboss-4.0.5.GA\bin
+user.home                           : C:\Documents and Settings\sHawk
+user.language                       : en
+user.name                           : sHawk
+user.timezone                       : America/Chicago
+user.variant                        : 
+========================================================================
+
+2007-06-14 13:33:57,775 [main] INFO com.terracottatech.dso - Verifying boot jar contents...
+2007-06-14 13:33:57,978 [main] INFO com.terracottatech.console - tc.server: localhost
+2007-06-14 13:33:57,978 [main] INFO com.terracottatech.console - tc.server: localhost
+2007-06-14 13:33:57,994 [main] ERROR com.tc.object.DistributedObjectClient - Thread:Thread[main,5,main] got an uncaught exception.  About to sleep then exit.
+com.tc.util.TCAssertionError: Assertion failed
+	at com.tc.util.Assert.failure(Assert.java:42)
+	at com.tc.util.Assert.eval(Assert.java:46)
+	at com.tc.object.config.ConnectionInfoConfigItem.createValueFrom(ConnectionInfoConfigItem.java:40)
+	at com.tc.config.schema.dynamic.DerivedConfigItem.<init>(DerivedConfigItem.java:27)
+	at com.tc.object.config.ConnectionInfoConfigItem.<init>(ConnectionInfoConfigItem.java:24)
+	at com.tc.object.bytecode.hook.impl.PreparedComponentsFromL2Connection.createConnectionInfoConfigItem(PreparedComponentsFromL2Connection.java:25)
+	at com.tc.object.DistributedObjectClient.start(DistributedObjectClient.java:190)
+	at com.tc.object.bytecode.ManagerImpl$2.execute(ManagerImpl.java:156)
+	at com.tc.lang.StartupHelper.startUp(StartupHelper.java:39)
+	at com.tc.object.bytecode.ManagerImpl.startClient(ManagerImpl.java:172)
+	at com.tc.object.bytecode.ManagerImpl.init(ManagerImpl.java:114)
+	at com.tc.object.bytecode.hook.impl.ClassProcessorHelper.createGlobalContext(ClassProcessorHelper.java:392)
+	at com.tc.object.bytecode.hook.impl.ClassProcessorHelper.init(ClassProcessorHelper.java:284)
+	at com.tc.object.bytecode.hook.impl.ClassProcessorHelper.defineClass0Pre(ClassProcessorHelper.java:421)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:620)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:124)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:260)
+	at java.net.URLClassLoader.access$000(URLClassLoader.java:56)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:195)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:188)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:276)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:251)
+	at java.lang.ClassLoader.loadClassInternal(ClassLoader.java:319)

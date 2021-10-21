@@ -1,0 +1,56 @@
+Index: src/main/java/net/sf/ehcache/management/provider/MBeanRegistrationProviderImpl.java
+===================================================================
+--- src/main/java/net/sf/ehcache/management/provider/MBeanRegistrationProviderImpl.java	(revision 1459)
++++ src/main/java/net/sf/ehcache/management/provider/MBeanRegistrationProviderImpl.java	(working copy)
+@@ -32,10 +32,10 @@
+  */
+ public class MBeanRegistrationProviderImpl implements MBeanRegistrationProvider {
+ 
+-    private final SampledMBeanRegistrationProvider sampledProvider;
+ 
+     private final Monitoring monitoring;
+     private final AtomicBoolean initialized = new AtomicBoolean(false);
++    private SampledMBeanRegistrationProvider sampledProvider;
+     private CacheManager cachedCacheManager;
+     private StoreFactory storeFactory;
+ 
+@@ -45,9 +45,15 @@
+      * @param configuration
+      */
+     public MBeanRegistrationProviderImpl(Configuration configuration) {
+-        sampledProvider = new SampledMBeanRegistrationProvider();
+         this.monitoring = configuration.getMonitoring();
+     }
++    
++    private synchronized SampledMBeanRegistrationProvider getSampledMBeanRegistrationProvider() {
++        if (sampledProvider == null) {
++            sampledProvider = new SampledMBeanRegistrationProvider();
++        }
++        return sampledProvider;
++    }
+ 
+     /**
+      * {@inheritDoc}
+@@ -55,7 +61,7 @@
+     public void initialize(CacheManager cacheManager, StoreFactory storeFactory) throws MBeanRegistrationProviderException {
+         if (!initialized.getAndSet(true)) {
+             if (shouldRegisterMBeans()) {
+-                sampledProvider.initialize(cacheManager, storeFactory);
++                getSampledMBeanRegistrationProvider().initialize(cacheManager, storeFactory);
+             }
+             this.cachedCacheManager = cacheManager;
+             this.storeFactory = storeFactory;
+@@ -69,10 +75,10 @@
+      */
+     public void reinitialize() throws MBeanRegistrationProviderException {
+         if (shouldRegisterMBeans()) {
+-            if (sampledProvider.isAlive()) {
+-                sampledProvider.reinitialize();
++            if (getSampledMBeanRegistrationProvider().isAlive()) {
++                getSampledMBeanRegistrationProvider().reinitialize();
+             } else {
+-                sampledProvider.initialize(cachedCacheManager, storeFactory);
++                getSampledMBeanRegistrationProvider().initialize(cachedCacheManager, storeFactory);
+             }
+         }
+     }

@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd"
+         updateCheck="true" monitoring="autodetect"
+         dynamicConfig="true"
+         maxBytesLocalHeap="512M" name="coreServicesCacheMgr">
+
+    <terracottaConfig url="${terracotta.config.location}" rejoin="true" />
+
+	<cache name="product" maxEntriesInCache="1000000"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="sourcingRule" maxEntriesInCache="1000"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="sourcingRuleFilter" maxEntriesInCache="4000"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="sourcingRuleFilter_SourcingRuleId" maxEntriesInCache="1000"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="zipLatLong" maxEntriesInCache="100000"
+		timeToLiveSeconds="604800">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="categoryTree" maxEntriesInCache="50"
+		timeToLiveSeconds="604800">
+		<pinning store="localMemory" />
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="productCategory" maxEntriesInCache="500000"
+		timeToLiveSeconds="604800">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="productDrop" maxEntriesInCache="1000000"
+		timeToLiveSeconds="86400" copyOnRead="true">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="pricebookCostView" maxEntriesInCache="5000000"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="pricebookMultiplier" maxEntriesInCache="150000"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="productComposite" maxEntriesInCache="1000000"
+		timeToLiveSeconds="86400" copyOnRead="true">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="productCompositeInternal" maxEntriesInCache="1000000"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache> 
+	
+	<cache name="productCompositeSiteSpecific" maxEntriesInCache="1000000"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="productMostUsedVendor" maxEntriesInCache="1000000"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="manufacturerMostUsedVendor" maxEntriesInCache="1000000"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="vendorLeadTimeOverride" maxEntriesInCache="1000000"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="manufacturerLeadTimeOverride" maxEntriesInCache="1000000"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="vendorLeadTimeMessage" maxEntriesInCache="1000000"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="vendorEta"	timeToLiveSeconds="86400" maxEntriesInCache="100000">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+<!-- 	<cache name="allVendorEtas" maxEntriesInCache="5000" -->
+<!-- 		timeToLiveSeconds="86400"> -->
+<!-- 		<terracotta> -->
+<!-- 			<nonstop immediateTimeout="true"> -->
+<!-- 				<timeoutBehavior type="noop" /> -->
+<!-- 			</nonstop> -->
+<!-- 		</terracotta> -->
+<!-- 	</cache> -->
+	
+	<cache name="site" maxEntriesInCache="50"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="siteDatabaseLookup" maxEntriesInCache="50"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="storeShippingCategory" maxEntriesInCache="20"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="uniqueIdShippingCategory" maxEntriesInCache="2000000"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="shippingCalculationNameView" maxEntriesInCache="50"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="shippingCalculationView" maxEntriesInCache="500"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="productQuestions" maxEntriesInCache="500000" timeToLiveSeconds="604800">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="productSpecAttribute" maxEntriesInCache="6000"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="productSpecValue" maxEntriesInCache="10000000"
+		timeToLiveSeconds="86400">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+	<cache name="mostPopularCategoryProduct" maxEntriesInCache="1000000"
+		timeToLiveSeconds="3600">
+		<terracotta>
+			<nonstop immediateTimeout="true">
+				<timeoutBehavior type="noop" />
+			</nonstop>
+		</terracotta>
+	</cache>
+	
+</ehcache>

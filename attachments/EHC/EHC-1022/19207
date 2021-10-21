@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-6.xsd">
+
+  <servers>
+    <server host="devbox5.build.internal" name="tc1">
+      <logs>/var/bigmemory/tc1/logs</logs>
+      <data>/opt/extraspace/bigmemory/tc1/data</data>
+      <data-backup>/opt/extraspace/bigmemory/tc1/data-backup</data-backup>
+      <index>/opt/extraspace/bigmemory/tc1/index</index>
+      <offheap>
+        <enabled>true</enabled>
+        <maxDataSize>6g</maxDataSize>
+      </offheap>
+    </server>
+    <restartable enabled="true" />
+  </servers>
+
+</tc:tc-config>

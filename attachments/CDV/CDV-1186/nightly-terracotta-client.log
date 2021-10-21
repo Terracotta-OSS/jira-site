@@ -1,0 +1,105 @@
+2009-03-10 11:34:20,353 [main] INFO com.terracottatech.general - New logging session started.
+2009-03-10 11:34:20,404 [main] INFO com.terracottatech.console - Terracotta trunk-nightly, as of 20090309-110315 (Revision 12046 by cruise@su10mo5 from trunk)
+2009-03-10 11:34:20,436 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Attempting to load configuration from the file at '/home/mruddy/jboss-4.2.3.GA/server/tc-config.xml'...
+2009-03-10 11:34:20,441 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Successfully loaded configuration from the file at '/home/mruddy/jboss-4.2.3.GA/server/tc-config.xml'. Config is:
+
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-4.xsd">
+	<servers>
+		<server host="localhost">
+			<dso-port>9510</dso-port>
+		</server>
+	</servers>
+	<application>
+		<dso>
+			<web-applications>
+				<web-application>test</web-application>
+			</web-applications>
+		</dso>
+	</application>
+</tc:tc-config>
+
+2009-03-10 11:34:20,832 [main] INFO com.terracottatech.console - Configuration loaded from the file at '/home/mruddy/jboss-4.2.3.GA/server/tc-config.xml'.
+2009-03-10 11:34:20,914 [main] INFO com.tc.properties.TCProperties - Loading default properties from tc.properties
+2009-03-10 11:34:20,914 [main] INFO com.tc.properties.TCProperties - tc-config doesn't have any tc-property. No tc-property will be overridden
+2009-03-10 11:34:20,922 [main] INFO com.tc.properties.TCProperties - Loaded TCProperties : TCProperties = { console.showObjectID = true, cvt.buffer.randomsuffix.enabled = false, cvt.rest.interface.enabled = true, cvt.retriever.notification.interval = 60, cvt.statistics.logging.interval = 900, cvt.store.randomsuffix.enabled = false, ehcache.clusterAllCacheManagers = true, ehcache.concurrency = 127, ehcache.evictor.logging.enabled = false, ehcache.evictor.pool.size = 1, ehcache.global.eviction.enable = true, ehcache.global.eviction.frequency = 10, ehcache.global.eviction.rest.timeMillis = 10, ehcache.global.eviction.segments = 2, ehcache.lock.readLevel = READ, ehcache.lock.writeLevel = WRITE, ehcache.logging.enabled = false, http.defaultservlet.attribute.aliases = false;, http.defaultservlet.attribute.dirallowed = false;, http.defaultservlet.enabled = false;, l1.cachemanager.criticalObjectThreshold = -1, l1.cachemanager.criticalThreshold = 90, l1.cachemanager.enabled = true, l1.cachemanager.leastCount = 2, l1.cachemanager.logging.enabled = false, l1.cachemanager.monitorOldGenOnly = true, l1.cachemanager.percentageToEvict = 10, l1.cachemanager.sleepInterval = 3000, l1.cachemanager.threshold = 70, l1.connect.versionMatchCheck.enabled = true, l1.healthcheck.l2.bindAddress = 0.0.0.0, l1.healthcheck.l2.bindPort = 0, l1.healthcheck.l2.ping.enabled = true, l1.healthcheck.l2.ping.idletime = 5000, l1.healthcheck.l2.ping.interval = 1000, l1.healthcheck.l2.ping.probes = 3, l1.healthcheck.l2.socketConnect = true, l1.healthcheck.l2.socketConnectCount = 13, l1.healthcheck.l2.socketConnectTimeout = 5, l1.jvm.check.compatibility = true, l1.l2.config.validation.enabled = true, l1.lock.statistics.gatherInterval = 1, l1.lock.statistics.traceDepth = 0, l1.lockmanager.striped.count = 16, l1.lockmanager.timeout.interval = 60000, l1.max.connect.retries = -1, l1.modules.additional = , l1.modules.default = org.terracotta.modules.excludes-config;bundle-version:=3.1.0.SNAPSHOT,org.terracotta.modules.guimodels-config;bundle-version:=3.1.0.SNAPSHOT,org.terracotta.modules.jdk15-preinst-config;bundle-version:=3.1.0.SNAPSHOT,org.terracotta.modules.spring-config;bundle-version:=3.1.0.SNAPSHOT,org.terracotta.modules.standard-config;bundle-version:=3.1.0.SNAPSHOT, l1.modules.repositories = , l1.modules.tc-version-check = , l1.objectmanager.fault.logging.enabled = false, l1.objectmanager.flush.logging.enabled = false, l1.objectmanager.objectid.request.size = 50000, l1.objectmanager.remote.logging.enabled = false, l1.objectmanager.remote.maxDNALRUSize = 60, l1.seda.stage.sink.capacity = -1, l1.serverarray.objectCreationStrategy = round-robin, l1.serverarray.objectCreationStrategy.groupAffinity.groupName = mirror-group1, l1.serverarray.objectCreationStrategy.roundRobin.coordinatorLoad = 100, l1.serverarray.objectCreationStrategy.roundRobin.startIndex = sequential, l1.socket.connect.timeout = 10000, l1.socket.reconnect.waitInterval = 1000, l1.transactionmanager.completedAckFlushTimeout = 5000, l1.transactionmanager.folding.debug = false, l1.transactionmanager.folding.enabled = true, l1.transactionmanager.folding.lock.limit = 0, l1.transactionmanager.folding.object.limit = 0, l1.transactionmanager.logging.enabled = false, l1.transactionmanager.maxBatchSizeInKiloBytes = 128, l1.transactionmanager.maxOutstandingBatchSize = 4, l1.transactionmanager.maxPendingBatches = 88, l1.transactionmanager.maxSleepTimeBeforeHalt = 1024, l1.transactionmanager.strings.compress.enabled = true, l1.transactionmanager.strings.compress.logging.enabled = false, l1.transactionmanager.strings.compress.minSize = 512, l1.transactionmanager.timeoutForAckOnExit = 300, l2.bdb.je.stats.logging.enabled = false, l2.beanshell.enabled = false, l2.beanshell.port = 9929, l2.berkeleydb.je.checkpointer.bytesInterval = 100000000, l2.berkeleydb.je.cleaner.bytesInterval = 20000000, l2.berkeleydb.je.cleaner.detailMaxMemoryPercentage = 5, l2.berkeleydb.je.cleaner.lookAheadCacheSize = 32768, l2.berkeleydb.je.cleaner.minAge = 5, l2.berkeleydb.je.lock.nLockTables = 7, l2.berkeleydb.je.lock.timeout = 180000000, l2.berkeleydb.je.maxMemoryPercent = 25, l2.cachemanager.criticalObjectThreshold = -1, l2.cachemanager.criticalThreshold = 90, l2.cachemanager.enabled = true, l2.cachemanager.leastCount = 2, l2.cachemanager.logging.enabled = false, l2.cachemanager.monitorOldGenOnly = true, l2.cachemanager.percentageToEvict = 10, l2.cachemanager.sleepInterval = 3000, l2.cachemanager.threshold = 70, l2.healthcheck.l1.ping.enabled = true, l2.healthcheck.l1.ping.idletime = 5000, l2.healthcheck.l1.ping.interval = 1000, l2.healthcheck.l1.ping.probes = 3, l2.healthcheck.l1.socketConnect = true, l2.healthcheck.l1.socketConnectCount = 10, l2.healthcheck.l1.socketConnectTimeout = 5, l2.healthcheck.l2.ping.enabled = true, l2.healthcheck.l2.ping.idletime = 5000, l2.healthcheck.l2.ping.interval = 1000, l2.healthcheck.l2.ping.probes = 3, l2.healthcheck.l2.socketConnect = true, l2.healthcheck.l2.socketConnectCount = 10, l2.healthcheck.l2.socketConnectTimeout = 5, l2.l1reconnect.enabled = false, l2.l1reconnect.maxDelayedAcks = 16, l2.l1reconnect.sendWindow = 32, l2.l1reconnect.sendqueue.cap = 5000, l2.l1reconnect.timeout.millis = 5000, l2.lfu.agingFactor = 1, l2.lfu.debug.enabled = false, l2.lfu.recentlyAccessedIgnorePercentage = 20, l2.lockmanager.greedy.lease.enabled = true, l2.lockmanager.greedy.lease.leaseTimeInMillis = 50, l2.nha.autoRestart = true, l2.nha.dirtydb.autoDelete = true, l2.nha.dirtydb.rolling = 0, l2.nha.send.timeout.millis = 16000, l2.nha.tcgroupcomm.discovery.interval = 1000, l2.nha.tcgroupcomm.handshake.timeout = 5000, l2.nha.tcgroupcomm.reconnect.enabled = false, l2.nha.tcgroupcomm.reconnect.maxDelayedAcks = 16, l2.nha.tcgroupcomm.reconnect.sendWindow = 32, l2.nha.tcgroupcomm.reconnect.sendqueue.cap = 5000, l2.nha.tcgroupcomm.reconnect.timeout = 5000, l2.objectmanager.cachePolicy = lfu, l2.objectmanager.deleteBatchSize = 5000, l2.objectmanager.dgc.throttle.requestsPerThrottle = 1000, l2.objectmanager.dgc.throttle.timeInMillis = 0, l2.objectmanager.dgc.young.enabled = false, l2.objectmanager.dgc.young.frequencyInMillis = 180000, l2.objectmanager.fault.logging.enabled = false, l2.objectmanager.flush.logging.enabled = false, l2.objectmanager.loadObjectID.checkpoint.maxlimit = -1, l2.objectmanager.loadObjectID.checkpoint.maxsleep = 10000, l2.objectmanager.loadObjectID.fastLoad = true, l2.objectmanager.loadObjectID.longsPerDiskEntry = 8, l2.objectmanager.loadObjectID.mapsdatabase.longsPerDiskEntry = 1, l2.objectmanager.maxObjectsInTxnObjGrouping = 5000, l2.objectmanager.maxObjectsToCommit = 5000, l2.objectmanager.maxTxnsInTxnObjectGrouping = 500, l2.objectmanager.objectrequest.logging.enabled = false, l2.objectmanager.objectrequest.split.size = 5, l2.objectmanager.passive.sync.batch.size = 500, l2.objectmanager.passive.sync.throttle.timeInMillis = 0, l2.objectmanager.persistor.logging.enabled = false, l2.objectmanager.request.logging.enabled = false, l2.remotejmx.idletime = 5, l2.remotejmx.maxthreads = 50, l2.seda.commitstage.threads = 4, l2.seda.faultstage.threads = 4, l2.seda.flushstage.threads = 4, l2.seda.gcdeletestage.threads = 1, l2.seda.stage.sink.capacity = -1, l2.serverarray.2pc.enabled = true, l2.startuplock.retries.enabled = false, l2.transactionmanager.logging.enabled = false, l2.transactionmanager.logging.printBroadcastStats = false, l2.transactionmanager.logging.printCommits = false, l2.transactionmanager.logging.printStats = true, l2.transactionmanager.logging.verbose = false, l2.transactionmanager.passive.throttle.enabled = true, l2.transactionmanager.passive.throttle.maxSleepSeconds = 5, l2.transactionmanager.passive.throttle.threshold = 20000, lock.statistics.enabled = false, logging.longgc.threshold = 8000, logging.maxBackups = 20, logging.maxLogFileSize = 512, memory.monitor.forcebasic = false, net.core.keepalive = false, net.core.recv.buffer = 65536, net.core.send.buffer = 65536, net.core.tcpnodelay = true, session.debug.hops = false, session.debug.hops.interval = 100, session.debug.invalidate = false, session.debug.sessions = false, session.invalidator.bench.enabled = true, session.invalidator.sleep = 300, session.request.bench.enabled = false, session.request.tracking = false, session.request.tracking.dump = false, session.request.tracking.interval = 2500, session.request.tracking.threshold = 15000, session.vhosts.excluded = , stats.printer.intervalInMillis = 5000, tc.bytebuffer.common.pool.maxcount = 3000, tc.bytebuffer.pooling.enabled = true, tc.bytebuffer.threadlocal.pool.maxcount = 2000, tc.management.mbeans.enabled = true, tc.management.test.mbeans.enabled = false, tc.stage.monitor.delay = 5000, tc.stage.monitor.enabled = false, tcm.monitor.delay = 5, tcm.monitor.enabled = false }
+2009-03-10 11:34:20,950 [main] INFO com.terracottatech.console - Log file: '/home/mruddy/jboss-4.2.3.GA/bin/logs-192.168.103.73/terracotta-client.log'.
+2009-03-10 11:34:20,953 [main] INFO com.tc.logging.TCLogging - All Java System Properties for this Terracotta instance:
+========================================================================
+file.encoding                : ISO646-US
+file.encoding.pkg            : sun.io
+file.separator               : /
+java.awt.graphicsenv         : sun.awt.X11GraphicsEnvironment
+java.awt.printerjob          : sun.print.PSPrinterJob
+java.class.path              : /home/mruddy/jboss-4.2.3.GA/bin/run.jar:/usr/java/lib/tools.jar
+java.class.version           : 49.0
+java.endorsed.dirs           : /home/mruddy/jboss-4.2.3.GA/lib/endorsed
+java.ext.dirs                : /usr/jdk/instances/jdk1.5.0/jre/lib/ext
+java.home                    : /usr/jdk/instances/jdk1.5.0/jre
+java.io.tmpdir               : /var/tmp/
+java.library.path            : /usr/jdk/instances/jdk1.5.0/jre/lib/i386/server:/usr/jdk/instances/jdk1.5.0/jre/lib/i386:/usr/jdk/instances/jdk1.5.0/jre/../lib/i386:/usr/lib
+java.runtime.name            : Java(TM) Platform, Standard Edition for Business
+java.runtime.version         : 1.5.0_16-b02
+java.specification.name      : Java Platform API Specification
+java.specification.vendor    : Sun Microsystems Inc.
+java.specification.version   : 1.5
+java.vendor                  : Sun Microsystems Inc.
+java.vendor.url              : http://java.sun.com/
+java.vendor.url.bug          : http://java.sun.com/cgi-bin/bugreport.cgi
+java.version                 : 1.5.0_16
+java.vm.info                 : mixed mode
+java.vm.name                 : Java HotSpot(TM) Server VM
+java.vm.specification.name   : Java Virtual Machine Specification
+java.vm.specification.vendor : Sun Microsystems Inc.
+java.vm.specification.version: 1.0
+java.vm.vendor               : Sun Microsystems Inc.
+java.vm.version              : 1.5.0_16-b02
+line.separator               : 
+
+os.arch                      : x86
+os.name                      : SunOS
+os.version                   : 5.10
+path.separator               : :
+program.name                 : run.sh
+sun.arch.data.model          : 32
+sun.boot.class.path          : /home/mruddy/terracotta-trunk-nightly-rev12046/lib/dso-boot/dso-boot-hotspot_solaris-x86_150_16.jar:/home/mruddy/jboss-4.2.3.GA/lib/endorsed/serializer.jar:/home/mruddy/jboss-4.2.3.GA/lib/endorsed/xalan.jar:/home/mruddy/jboss-4.2.3.GA/lib/endorsed/xercesImpl.jar:/usr/jdk/instances/jdk1.5.0/jre/lib/rt.jar:/usr/jdk/instances/jdk1.5.0/jre/lib/i18n.jar:/usr/jdk/instances/jdk1.5.0/jre/lib/sunrsasign.jar:/usr/jdk/instances/jdk1.5.0/jre/lib/jsse.jar:/usr/jdk/instances/jdk1.5.0/jre/lib/jce.jar:/usr/jdk/instances/jdk1.5.0/jre/lib/charsets.jar:/usr/jdk/instances/jdk1.5.0/jre/classes
+sun.boot.library.path        : /usr/jdk/instances/jdk1.5.0/jre/lib/i386
+sun.cpu.endian               : little
+sun.cpu.isalist              : amd64 pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86
+sun.io.unicode.encoding      : UnicodeBig
+sun.java.launcher            : SUN_STANDARD
+sun.jnu.encoding             : ISO646-US
+sun.management.compiler      : HotSpot Server Compiler
+sun.os.patch.level           : unknown
+tc.config                    : /home/mruddy/jboss-4.2.3.GA/server/tc-config.xml
+tc.install-root              : /home/mruddy/terracotta-trunk-nightly-rev12046
+user.dir                     : /home/mruddy/jboss-4.2.3.GA/bin
+user.home                    : /home/mruddy
+user.language                : en
+user.name                    : mruddy
+user.timezone                : US/Eastern
+========================================================================
+2009-03-10 11:34:22,195 [main] WARN com.terracottatech.dso - One or more web applications are listed in the Terracotta configuration file, but no container TIMs have been loaded.
+See http://www.terracotta.org/tim-warning for more information. 
+2009-03-10 11:34:22,268 [main] INFO com.terracottatech.dso - Trying to get Cluster topology from http://localhost:9510/groupinfo
+2009-03-10 11:34:22,307 [main] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://localhost:9510/l1reconnectproperties
+2009-03-10 11:34:22,344 [main] INFO com.tc.net.core.TCComm - Comm Worker Threads NOT requested
+2009-03-10 11:34:22,368 [main] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl: DSO Client - HealthChecker Started
+2009-03-10 11:34:22,404 [main] INFO com.tc.net.protocol.tcm.CommunicationsManager - HealthCheck CallbackPort Listener started at /0.0.0.0:34263
+2009-03-10 11:34:22,505 [Statistics Logger] INFO com.terracottatech.dso - memory free : 1026441392
+2009-03-10 11:34:22,506 [Statistics Logger] INFO com.terracottatech.dso - memory used : 9551696
+2009-03-10 11:34:22,506 [Statistics Logger] INFO com.terracottatech.dso - memory max : 1035993088
+2009-03-10 11:34:22,861 [main] INFO com.terracottatech.console - Statistics buffer: '/home/mruddy/jboss-4.2.3.GA/bin/statistics-192.168.103.73'.
+2009-03-10 11:34:22,861 [main] INFO com.terracottatech.dso - Statistics buffer: '/home/mruddy/jboss-4.2.3.GA/bin/statistics-192.168.103.73'.
+2009-03-10 11:34:22,899 [main] INFO com.tc.statistics.StatisticRetrievalAction - "message monitor" statistic is not enabled. Please enable the property "tcm.monitor.delay" to collect this statistics.
+2009-03-10 11:34:23,024 [L1Management JMX registration] INFO com.tc.management.L1Management - Terracotta JMX connector available at[service:jmx:terracotta://localhost]
+2009-03-10 11:34:23,086 [main] INFO com.tc.net.protocol.transport.ClientMessageTransport - ConnectionID(-1.ffffffffffffffffffffffffffffffff): Attaching new connection: com.tc.net.core.TCConnectionJDK14@1781554: connected: true, closed: false local=127.0.0.1:34264 remote=127.0.0.1:9510 connect=[Tue Mar 10 11:34:23 EDT 2009] idle=4ms [0 read, 0 write]
+2009-03-10 11:34:23,104 [main] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl. DSO Client - Health monitoring agent started for localhost:9510
+2009-03-10 11:34:23,107 [main] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl. DSO Client - HealthCheckCallbackPort verification PASSED for localhost:9510(callbackport: 9510)
+2009-03-10 11:34:23,109 [main] INFO com.tc.management.remote.protocol.terracotta.TunnelingEventHandler - Client JMX server ready; sending notification to L2 server
+2009-03-10 11:34:23,113 [WorkerThread(client_coordination_stage,0)] INFO com.tc.object.handshakemanager.ClientHandshakeManagerImpl - ClientID[3]: Connected: Unpausing from State[ PAUSED ] RemoteNode : GroupID[0] Disconnected : 1
+2009-03-10 11:34:23,120 [WorkerThread(client_coordination_stage,0)] INFO com.tc.object.handshakemanager.ClientHandshakeManagerImpl - ClientID[3]: Received Handshake ack for this node :GroupID[0]
+2009-03-10 11:34:23,122 [main] INFO com.terracottatech.console - Connection successfully established to server at 127.0.0.1:9510
+2009-03-10 11:34:23,122 [main] INFO com.terracottatech.dso - Connection successfully established to server at 127.0.0.1:9510
+2009-03-10 11:34:23,197 [Job_Executor2] ERROR com.tc.management.exposed.TerracottaCluster - JMX Cluster Events have been deprecated. You can now use DsoCluster instance injection and DsoClusterListener in plain Java from within your application.
+2009-03-10 11:35:11,950 [CommonShutDownHook] INFO com.terracottatech.dso - L1 Exiting...
+2009-03-10 11:35:11,966 [Thread-1] INFO com.tc.object.tx.RemoteTransactionManagerImpl - ClientID[3]: stop(): took 0 millis to complete

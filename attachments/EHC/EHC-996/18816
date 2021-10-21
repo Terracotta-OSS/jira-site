@@ -1,0 +1,67 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+             version="1.0">
+
+    <!--
+    required for ejb3. add all jar files with annotations that should be scanned
+    http://docs.jboss.org/ejb3/app-server/reference/build/reference/en/html_single/index.html#d0e88
+
+    hibernate configuration properties see
+    http://docs.jboss.org/hibernate/core/3.3/reference/en/html/session-configuration.html#configuration-optional
+
+    for debugging:
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+
+            batch size 0 makes the sql execute directly
+
+            <property name="hibernate.jdbc.batch_size" value="0"/>
+
+    -->
+
+    <persistence-unit name="core-organization">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <jta-data-source>java:/MTS_DS</jta-data-source>
+        <jar-file>core-organization-${project.version}.jar</jar-file>
+        <properties>
+            <property name="jboss.entity.manager.factory.jndi.name" value="persistence-units/coreOrganizationPersistence"/>
+            <property name="hibernate.dialect" value="${jboss.static.hibernate.dbDialect}"/>
+            <property name="hibernate.jdbc.batch_size" value="${jboss.static.hibernate.batch_size}"/>
+
+            <!-- cache settings -->
+            <property name="hibernate.cache.use_second_level_cache" value="${jboss.static.hibernate.cache.use_second_level_cache}"/>
+            <property name="hibernate.cache.use_query_cache" value="${jboss.static.hibernate.cache.use_query_cache}"/>
+
+            <!-- ehcache settings -->
+            <property name="hibernate.cache.region.factory_class"
+                      value="org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory"/>
+            <property name="hibernate.cache.default_cache_concurrency_strategy" value="NONSTRICT_READ_WRITE"/>
+            <!--property name="hibernate.cache.region_prefix" value="core-organization"/-->
+            <!-- search from root classpath, have to use the same setting config file-->
+            <property name="net.sf.ehcache.configurationResourceName" value="/ehcache/ehcache_ejb3-organization.xml"/>
+
+            <!-- this should never be update in prod -->
+            <property name="hibernate.hbm2ddl.auto" value="${jboss.static.hibernate.hbm2ddl.auto}"/>
+
+            <!-- for development, should the false in prod -->
+            <property name="hibernate.show_sql" value="${jboss.static.hibernate.show_sql}"/>
+            <property name="hibernate.format_sql" value="${jboss.static.hibernate.format_sql}"/>
+            <property name="hibernate.use_sql_comments" value="${jboss.static.hibernate.use_sql_comments}"/>
+
+            <!--
+
+                        Collection of cache statistics is not entirely free of overhead. In production systems where monitoring is not required
+                        statistics can be disabled. This can be done either programatically by calling setStatisticsEnabled(false) on the cache
+                        instance, or in configuration by setting the statistics="false" attribute of the relevant cache configuration element.
+
+                        From Ehcache 2.1.0 statistics are off by default.
+            -->
+            <property name="hibernate.cache.use_structured_entries" value="${jboss.static.hibernate.cache.use_structured_entries}"/>
+            <property name="hibernate.generate_statistics" value="${jboss.static.hibernate.generate_statistics}"/>
+
+
+        </properties>
+    </persistence-unit>
+</persistence>

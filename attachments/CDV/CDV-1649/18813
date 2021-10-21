@@ -1,0 +1,1041 @@
+2013-02-14 16:22:38,676 [localhost-startStop-1] INFO com.terracottatech.general - New logging session started.
+2013-02-14 16:22:38,694 [localhost-startStop-1] INFO com.terracottatech.console - Terracotta 3.7.4, as of 20130209-151856 (Revision 24404-22216 by cruise@su10vmo144 from 3.7.4)
+2013-02-14 16:22:38,695 [localhost-startStop-1] INFO com.terracotta.express.URLConfigUtil - Found system property value of /usr/local/terracotta/conf/tc-config-staging.xml for the ${terracotta.config} token specified in the configuration.
+2013-02-14 16:22:38,702 [localhost-startStop-1] INFO com.terracotta.express.URLConfigUtil - Found system property value of /usr/local/terracotta/conf/tc-config-staging.xml for the ${terracotta.config} token specified in the configuration.
+2013-02-14 16:22:38,737 [localhost-startStop-1] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Attempting to load configuration from the file at '/usr/local/terracotta/conf/tc-config-staging.xml'...
+2013-02-14 16:22:39,610 [localhost-startStop-1] INFO com.terracottatech.console - Successfully loaded base configuration from file at '/usr/local/terracotta/conf/tc-config-staging.xml'.
+2013-02-14 16:22:39,629 [localhost-startStop-1] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - The configuration specified by 'base configuration from file at '/usr/local/terracotta/conf/tc-config-staging.xml'':
+
+<tc:tc-config xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-7.xsd" xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <tc-properties>
+    <property name="logging.maxLogFileSize" value="10"/>
+  </tc-properties>
+  <system>
+    <configuration-model>production</configuration-model>
+  </system>
+  <servers>
+    <server host="stg.tc1" name="terracotta-1">
+      <data>/usr/local/terracotta/data</data>
+      <logs>/usr/local/terracotta/logs</logs>
+      <index>/usr/local/terracotta/index</index>
+      <statistics>/usr/local/terracotta/statistics</statistics>
+      <dso-port bind="0.0.0.0">9510</dso-port>
+      <jmx-port bind="0.0.0.0">65531</jmx-port>
+      <l2-group-port bind="0.0.0.0">9530</l2-group-port>
+      <dso>
+        <client-reconnect-window>120</client-reconnect-window>
+        <garbage-collection>
+          <enabled>true</enabled>
+          <verbose>false</verbose>
+          <interval>3600</interval>
+        </garbage-collection>
+      </dso>
+    </server>
+    <server host="stg.tc2" name="terracotta-2">
+      <data>/usr/local/terracotta/data</data>
+      <logs>/usr/local/terracotta/logs</logs>
+      <index>/usr/local/terracotta/index</index>
+      <statistics>/usr/local/terracotta/statistics</statistics>
+      <dso-port bind="0.0.0.0">9510</dso-port>
+      <jmx-port bind="0.0.0.0">65532</jmx-port>
+      <l2-group-port bind="0.0.0.0">9530</l2-group-port>
+      <dso>
+        <client-reconnect-window>120</client-reconnect-window>
+        <garbage-collection>
+          <enabled>true</enabled>
+          <verbose>false</verbose>
+          <interval>3600</interval>
+        </garbage-collection>
+      </dso>
+    </server>
+    <ha>
+      <mode>networked-active-passive</mode>
+      <networked-active-passive>
+        <election-time>5</election-time>
+      </networked-active-passive>
+    </ha>
+  </servers>
+  <clients>
+    <logs>%(catalina.home)/logs</logs>
+  </clients>
+</tc:tc-config>
+2013-02-14 16:22:39,689 [localhost-startStop-1] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Attempting to load configuration from the file at '/usr/local/imageproxy/temp/tc-config34942151959011365.xml'...
+2013-02-14 16:22:39,713 [localhost-startStop-1] INFO com.terracottatech.console - Successfully loaded base configuration from file at '/usr/local/imageproxy/temp/tc-config34942151959011365.xml'.
+2013-02-14 16:22:39,719 [localhost-startStop-1] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - The configuration specified by 'base configuration from file at '/usr/local/imageproxy/temp/tc-config34942151959011365.xml'':
+
+<tc-config xmlns="http://www.terracotta.org/config">
+  <clients xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="">
+    <logs>%(catalina.home)/logs</logs>
+    <modules>
+      <module name="terracotta-toolkit-1.6" group-id="org.terracotta.toolkit"/>
+    </modules>
+  </clients>
+  <servers xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="">
+    <server host="stg.tc1" name="terracotta-1">
+      <data>/usr/local/terracotta/data</data>
+      <logs>/usr/local/terracotta/logs</logs>
+      <index>/usr/local/terracotta/index</index>
+      <statistics>/usr/local/terracotta/statistics</statistics>
+      <dso-port bind="0.0.0.0">9510</dso-port>
+      <jmx-port bind="0.0.0.0">65531</jmx-port>
+      <l2-group-port bind="0.0.0.0">9530</l2-group-port>
+      <dso>
+        <client-reconnect-window>120</client-reconnect-window>
+        <garbage-collection>
+          <enabled>true</enabled>
+          <verbose>false</verbose>
+          <interval>3600</interval>
+        </garbage-collection>
+      </dso>
+    </server>
+    <server host="stg.tc2" name="terracotta-2">
+      <data>/usr/local/terracotta/data</data>
+      <logs>/usr/local/terracotta/logs</logs>
+      <index>/usr/local/terracotta/index</index>
+      <statistics>/usr/local/terracotta/statistics</statistics>
+      <dso-port bind="0.0.0.0">9510</dso-port>
+      <jmx-port bind="0.0.0.0">65532</jmx-port>
+      <l2-group-port bind="0.0.0.0">9530</l2-group-port>
+      <dso>
+        <client-reconnect-window>120</client-reconnect-window>
+        <garbage-collection>
+          <enabled>true</enabled>
+          <verbose>false</verbose>
+          <interval>3600</interval>
+        </garbage-collection>
+      </dso>
+    </server>
+    <ha>
+      <mode>networked-active-passive</mode>
+      <networked-active-passive>
+        <election-time>5</election-time>
+      </networked-active-passive>
+    </ha>
+  </servers>
+  <system xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="">
+    <configuration-model>production</configuration-model>
+  </system>
+  <tc-properties xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="">
+    <property name="logging.maxLogFileSize" value="10"/>
+  </tc-properties>
+</tc-config>
+2013-02-14 16:22:39,729 [localhost-startStop-1] INFO com.tc.properties.TCProperties - Loading default properties from tc.properties
+2013-02-14 16:22:39,729 [localhost-startStop-1] INFO com.tc.properties.TCProperties - The property "tc.config.total.timeout" was read before initialization completed. "tc.config.total.timeout" = 300000
+2013-02-14 16:22:39,729 [localhost-startStop-1] INFO com.tc.properties.TCProperties - The property "tc.config.getFromSource.timeout" was read before initialization completed. "tc.config.getFromSource.timeout" = 30000
+2013-02-14 16:22:39,729 [localhost-startStop-1] INFO com.tc.properties.TCProperties - The property "logging.maxLogFileSize" was overridden to 10 from 512 by the tc-config file
+2013-02-14 16:22:39,730 [localhost-startStop-1] INFO com.tc.properties.TCProperties - Loaded TCProperties : TCProperties = { appgroups.debug = false, aw.asmclassinfo.ignore.errors = com.jinspired., cvt.buffer.randomsuffix.enabled = false, cvt.client.fail.buffer.open = false, cvt.rest.interface.enabled = false, cvt.retriever.notification.interval = 60, cvt.statistics.logging.interval = 900, cvt.store.randomsuffix.enabled = false, dev.console.max.operator.events = 5000, ehcache.clusterAllCacheManagers = true, ehcache.concurrency = 128, ehcache.evictor.logging.enabled = false, ehcache.evictor.pool.size = 1, ehcache.global.eviction.enable = true, ehcache.global.eviction.frequency = 10, ehcache.global.eviction.rest.timeMillis = 10, ehcache.global.eviction.segments = 2, ehcache.lock.readLevel = READ, ehcache.lock.writeLevel = WRITE, ehcache.logging.enabled = false, ehcache.storageStrategy.dcv2.evictUnexpiredEntries.enabled = true, ehcache.storageStrategy.dcv2.eviction.overshoot = 15, ehcache.storageStrategy.dcv2.localcache.enabled = true, ehcache.storageStrategy.dcv2.perElementTTITTL.enabled = false, ehcache.storageStrategy.dcv2.periodicEviction.enabled = true, ehcache.storageStrategy.dcv2.pinSegments.enabled = true, http.defaultservlet.attribute.aliases = false;, http.defaultservlet.attribute.dirallowed = false;, http.defaultservlet.enabled = false;, instrumentation.finalField.fastRead = true, l1.cachemanager.criticalObjectThreshold = -1, l1.cachemanager.criticalThreshold = 70, l1.cachemanager.enabled = true, l1.cachemanager.leastCount = 2, l1.cachemanager.logging.enabled = false, l1.cachemanager.monitorOldGenOnly = true, l1.cachemanager.percentageToEvict = 10, l1.cachemanager.sleepInterval = 3000, l1.cachemanager.threshold = 50, l1.clusterevents.outofbandnotifier.jointime.millis = 100, l1.connect.versionMatchCheck.enabled = true, l1.healthcheck.l2.bindAddress = 0.0.0.0, l1.healthcheck.l2.bindPort = 0, l1.healthcheck.l2.ping.enabled = true, l1.healthcheck.l2.ping.idletime = 5000, l1.healthcheck.l2.ping.interval = 1000, l1.healthcheck.l2.ping.probes = 3, l1.healthcheck.l2.socketConnect = true, l1.healthcheck.l2.socketConnectCount = 13, l1.healthcheck.l2.socketConnectTimeout = 5, l1.jvm.check.compatibility = true, l1.l2.config.validation.enabled = true, l1.lock.statistics.gatherInterval = 1, l1.lock.statistics.traceDepth = 0, l1.lockmanager.pinning.enabled = true, l1.lockmanager.striped.count = 128, l1.lockmanager.timeout.interval = 60000, l1.max.connect.retries = -1, l1.modules.additional = , l1.modules.default = , l1.modules.repositories = , l1.modules.tc-version-check = , l1.modules.toolkitSearchRange = 100, l1.objectmanager.fault.logging.enabled = false, l1.objectmanager.flush.logging.enabled = false, l1.objectmanager.objectid.request.size = 50000, l1.objectmanager.remote.batchLookupTimePeriod = 1, l1.objectmanager.remote.logging.enabled = false, l1.objectmanager.remote.maxDNALRUSize = 60, l1.objectmanager.remote.maxRequestSentImmediately = 4, l1.seda.pinned.entry.fault.stage.threads = 8, l1.seda.stage.sink.capacity = -1, l1.serverarray.objectCreationStrategy = round-robin, l1.serverarray.objectCreationStrategy.groupAffinity.groupName = mirror-group1, l1.serverarray.objectCreationStrategy.roundRobin.startIndex = sequential, l1.servermapmanager.remote.batchLookupTimePeriod = 1, l1.servermapmanager.remote.maxRequestSentImmediately = 4, l1.shutdown.threadgroup.gracetime = 30000, l1.socket.connect.timeout = 10000, l1.socket.reconnect.waitInterval = 1000, l1.transactionmanager.completedAckFlushTimeout = 5000, l1.transactionmanager.folding.debug = false, l1.transactionmanager.folding.enabled = true, l1.transactionmanager.folding.lock.limit = 0, l1.transactionmanager.folding.object.limit = 0, l1.transactionmanager.logging.enabled = false, l1.transactionmanager.maxBatchSizeInKiloBytes = 128, l1.transactionmanager.maxOutstandingBatchSize = 4, l1.transactionmanager.maxPendingBatches = 88, l1.transactionmanager.maxSleepTimeBeforeHalt = 1024, l1.transactionmanager.strings.compress.enabled = true, l1.transactionmanager.strings.compress.logging.enabled = false, l1.transactionmanager.strings.compress.minSize = 512, l1.transactionmanager.timeoutForAckOnExit = 300, l2.beanshell.enabled = false, l2.beanshell.port = 9929, l2.berkeleydb.je.checkpointer.bytesInterval = 100000000, l2.berkeleydb.je.cleaner.bytesInterval = 20000000, l2.berkeleydb.je.cleaner.detailMaxMemoryPercentage = 5, l2.berkeleydb.je.cleaner.lookAheadCacheSize = 32768, l2.berkeleydb.je.cleaner.minAge = 5, l2.berkeleydb.je.lock.nLockTables = 7, l2.berkeleydb.je.lock.timeout = 180000000, l2.berkeleydb.je.maxMemoryPercent = 25, l2.cachemanager.criticalObjectThreshold = -1, l2.cachemanager.enabled = true, l2.cachemanager.leastCount = 2, l2.cachemanager.logging.enabled = false, l2.cachemanager.monitorOldGenOnly = true, l2.cachemanager.percentageToEvict = 10, l2.cachemanager.sleepInterval = 3000, l2.data.backup.throttle.timeInMillis = 0, l2.db.factory.name = com.tc.objectserver.storage.berkeleydb.BerkeleyDBFactory, l2.derbydb.derby.locks.deadlockTimeout = 170, l2.derbydb.derby.locks.deadlockTrace = true, l2.derbydb.derby.locks.escalationThreshold = 100000, l2.derbydb.derby.locks.waitTimeout = 180, l2.derbydb.derby.maxMemoryPercent = 25, l2.derbydb.derby.storage.checkpointInterval = 134217728, l2.derbydb.derby.storage.logSwitchInterval = 134217728, l2.derbydb.derby.storage.pageSize = 32768, l2.dump.on.exception.timeout = 30, l2.healthcheck.l1.ping.enabled = true, l2.healthcheck.l1.ping.idletime = 5000, l2.healthcheck.l1.ping.interval = 1000, l2.healthcheck.l1.ping.probes = 3, l2.healthcheck.l1.socketConnect = true, l2.healthcheck.l1.socketConnectCount = 10, l2.healthcheck.l1.socketConnectTimeout = 5, l2.healthcheck.l2.ping.enabled = true, l2.healthcheck.l2.ping.idletime = 5000, l2.healthcheck.l2.ping.interval = 1000, l2.healthcheck.l2.ping.probes = 3, l2.healthcheck.l2.socketConnect = true, l2.healthcheck.l2.socketConnectCount = 10, l2.healthcheck.l2.socketConnectTimeout = 5, l2.l1reconnect.enabled = true, l2.l1reconnect.maxDelayedAcks = 16, l2.l1reconnect.sendWindow = 32, l2.l1reconnect.sendqueue.cap = 5000, l2.l1reconnect.timeout.millis = 5000, l2.lfu.agingFactor = 1, l2.lfu.recentlyAccessedIgnorePercentage = 20, l2.lockmanager.greedy.lease.enabled = true, l2.lockmanager.greedy.lease.leaseTimeInMillis = 50, l2.lockmanager.greedy.locks.enabled = true, l2.nha.autoRestart = true, l2.nha.dirtydb.autoDelete = true, l2.nha.dirtydb.backup.enabled = true, l2.nha.dirtydb.rolling = 0, l2.nha.send.timeout.millis = 16000, l2.nha.tcgroupcomm.discovery.interval = 1000, l2.nha.tcgroupcomm.handshake.timeout = 5000, l2.nha.tcgroupcomm.reconnect.enabled = true, l2.nha.tcgroupcomm.reconnect.maxDelayedAcks = 16, l2.nha.tcgroupcomm.reconnect.sendWindow = 32, l2.nha.tcgroupcomm.reconnect.sendqueue.cap = 5000, l2.nha.tcgroupcomm.reconnect.timeout = 5000, l2.objectmanager.cachePolicy = lfu, l2.objectmanager.deleteBatchSize = 5000, l2.objectmanager.dgc.enterpriseMarkStageInterval = 1000, l2.objectmanager.dgc.faulting.optimization = true, l2.objectmanager.dgc.inline.intervalInSeconds = 10, l2.objectmanager.dgc.inline.maxObjects = 10000, l2.objectmanager.dgc.throttle.requestsPerThrottle = 1000, l2.objectmanager.dgc.throttle.timeInMillis = 0, l2.objectmanager.dgc.young.enabled = false, l2.objectmanager.dgc.young.frequencyInMillis = 180000, l2.objectmanager.fault.logging.enabled = false, l2.objectmanager.flush.logging.enabled = false, l2.objectmanager.loadObjectID.checkpoint.maxlimit = -1, l2.objectmanager.loadObjectID.checkpoint.maxsleep = 10000, l2.objectmanager.loadObjectID.longsPerDiskEntry = 8, l2.objectmanager.loadObjectID.mapsdatabase.longsPerDiskEntry = 1, l2.objectmanager.maxObjectsInTxnObjGrouping = 5000, l2.objectmanager.maxObjectsToCommit = 5000, l2.objectmanager.maxTxnsInTxnObjectGrouping = 500, l2.objectmanager.objectrequest.logging.enabled = false, l2.objectmanager.objectrequest.split.size = 500, l2.objectmanager.passive.sync.batch.size = 500, l2.objectmanager.passive.sync.message.maxSizeInMegaBytes = 10, l2.objectmanager.passive.sync.throttle.maxPendingMessages = 10, l2.objectmanager.passive.sync.throttle.timeInMillis = 0, l2.objectmanager.persistor.logging.enabled = false, l2.objectmanager.request.logging.enabled = false, l2.offHeapCache.allocation.critical = 15000, l2.offHeapCache.allocation.critical.halt = true, l2.offHeapCache.allocation.slow = 1500, l2.offHeapCache.map.concurrency = 1, l2.offHeapCache.map.max.page.size = 8m, l2.offHeapCache.map.min.page.size = 4k, l2.offHeapCache.map.tableSize = 128, l2.offHeapCache.operator.event.generator.sleepInterval = 60000, l2.offHeapCache.operator.event.generator.threshold = 80, l2.offHeapCache.temp.swap.flush.to.disk.count = 5000, l2.offHeapCache.temp.swap.throttle.megaBytes = 100, l2.operator.events.store = 1500, l2.remotejmx.idletime = 5, l2.remotejmx.maxthreads = 50, l2.seda.commitstage.threads = 4, l2.seda.evictionprocessorstage.sink.capacity = 1000, l2.seda.gcdeletestage.threads = 1, l2.seda.local.cache.invalidations.sink.capacity = 5000, l2.seda.local.cache.transaction.complete.sink.capacity = -1, l2.seda.local.cache.transaction.complete.threads = 8, l2.seda.query.threads = 4, l2.seda.search.threads = 16, l2.seda.stage.sink.capacity = -1, l2.serverarray.2pc.enabled = true, l2.servermap.eviction.broadcast.maxkeys = 10000, l2.servermap.eviction.clientObjectReferences.refresh.interval = 60000, l2.startuplock.retries.enabled = false, l2.transactionmanager.logging.enabled = false, l2.transactionmanager.logging.printBroadcastStats = false, l2.transactionmanager.logging.printCommits = false, l2.transactionmanager.logging.printStats = true, l2.transactionmanager.logging.verbose = false, l2.transactionmanager.passive.throttle.enabled = true, l2.transactionmanager.passive.throttle.maxSleepSeconds = 5, l2.transactionmanager.passive.throttle.threshold = 20000, lock.statistics.enabled = false, logging.longgc.threshold = 8000, logging.maxBackups = 20, logging.maxLogFileSize = 10, memory.monitor.forcebasic = false, net.core.keepalive = false, net.core.tcpnodelay = true, offHeapFileSystem.file.maxDataPageSize = 262144, offHeapFilesystem.chm.segments = 4, offHeapFilesystem.file.blockSize = 8192, search.lucene.indexes.per.cache = 4, search.lucene.max.boolean.clauses = 1024, search.lucene.max.buffer = 16.0, search.lucene.use.offHeap.directory = false, search.lucene.use.ram.directory = false, search.passive.max.chunk = 2097152, search.passive.max.pending = 8, session.debug.hops = false, session.debug.hops.interval = 100, session.debug.invalidate = false, session.debug.sessions = false, session.invalidator.bench.enabled = true, session.invalidator.sleep = 300, session.request.bench.enabled = false, session.request.tracking = false, session.request.tracking.dump = false, session.request.tracking.interval = 2500, session.request.tracking.threshold = 15000, session.statistics.enabled = false, session.verify.set.attribute = false, session.vhosts.excluded = , sigar.enabled = false, stats.printer.intervalInMillis = 5000, tc.bytebuffer.common.pool.maxcount = 3000, tc.bytebuffer.pooling.enabled = true, tc.bytebuffer.threadlocal.pool.maxcount = 2000, tc.config.getFromSource.timeout = 30000, tc.config.total.timeout = 300000, tc.management.mbeans.enabled = true, tc.management.test.mbeans.enabled = false, tc.messages.grouping.enabled = true, tc.messages.grouping.maxSizeKiloBytes = 1024, tc.messages.packup.enabled = true, tc.stage.monitor.delay = 5000, tc.stage.monitor.enabled = false, tc.time.sync.threshold = 30, tc.transport.handshake.timeout = 10000, tcm.monitor.delay = 5, tcm.monitor.enabled = false }
+2013-02-14 16:22:39,740 [localhost-startStop-1] INFO com.terracottatech.console - Log file: '/usr/local/imageproxy/logs/terracotta-client.log'.
+2013-02-14 16:22:39,741 [localhost-startStop-1] INFO com.tc.logging.TCLogging - All Java System Properties for this Terracotta instance:
+========================================================================
+JVM arguments: [-Djava.util.logging.config.file=/usr/local/imageproxy/conf/logging.properties, -Dfile.encoding=UTF8, -Duser.timezone=America/Toronto, -Dnewrelic.config.app_name=dorothy-frontend-staging, -javaagent:/usr/local/newrelic/newrelic.jar, -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager, -Djava.net.preferIPv4Stack=true, -Dcom.sun.management.jmxremote, -Dcom.sun.management.jmxremote.port=27586, -Dcom.sun.management.jmxremote.ssl=false, -Dcom.sun.management.jmxremote.authenticate=false, -Djava.rmi.server.hostname=localhost, -Dhttp.pool.max.total.connections=200, -Dhttp.pool.max.connections.per.route=20, -Dhttp.connection.default.timeout=2000, -Dhttp.socket.default.timeout=500, -Dhttp.pool.timeout=1000, -Dhttp.pool.log.interval=60, -Denv.modifier=-staging, -Dterracotta.config=/usr/local/terracotta/conf/tc-config-staging.xml, -Xms6485071k, -Xmx6485071k, -XX:NewSize=2161690k, -XX:MaxNewSize=2161690k, -XX:PermSize=128m, -XX:MaxPermSize=128m, -XX:+UseParallelGC, -verbose:gc, -XX:+PrintGCTimeStamps, -XX:+PrintGCDetails, -Xloggc:/usr/local/imageproxy/logs/gc.log, -Djava.endorsed.dirs=/usr/local/imageproxy/endorsed, -Dcatalina.base=/usr/local/imageproxy, -Dcatalina.home=/usr/local/imageproxy, -Djava.io.tmpdir=/usr/local/imageproxy/temp]
+___terracotta_jvm_uuid                              : a8a7734d-1c60-4009-a38f-d5d662591e1f
+awt.toolkit                                         : sun.awt.X11.XToolkit
+catalina.base                                       : /usr/local/imageproxy
+catalina.home                                       : /usr/local/imageproxy
+catalina.useNaming                                  : true
+com.sun.management.jmxremote                        : 
+com.sun.management.jmxremote.authenticate           : false
+com.sun.management.jmxremote.port                   : 27586
+com.sun.management.jmxremote.ssl                    : false
+common.loader                                       : ${catalina.base}/lib,${catalina.base}/lib/*.jar,${catalina.home}/lib,${catalina.home}/lib/*.jar
+ehcache.disk.store.dir                              : /usr/local/imageproxy/data/ehcache
+env.modifier                                        : -staging
+file.encoding                                       : UTF8
+file.encoding.pkg                                   : sun.io
+file.separator                                      : /
+http.connection.default.timeout                     : 2000
+http.pool.log.interval                              : 60
+http.pool.max.connections.per.route                 : 20
+http.pool.max.total.connections                     : 200
+http.pool.timeout                                   : 1000
+http.socket.default.timeout                         : 500
+java.awt.graphicsenv                                : sun.awt.X11GraphicsEnvironment
+java.awt.printerjob                                 : sun.print.PSPrinterJob
+java.class.path                                     : /usr/local/imageproxy/bin/bootstrap.jar:/usr/local/imageproxy/bin/tomcat-juli.jar:/usr/local/newrelic/newrelic.jar
+java.class.version                                  : 51.0
+java.endorsed.dirs                                  : /usr/local/imageproxy/endorsed
+java.ext.dirs                                       : /opt/jdk1.7.0_13/jre/lib/ext:/usr/java/packages/lib/ext
+java.home                                           : /opt/jdk1.7.0_13/jre
+java.io.tmpdir                                      : /usr/local/imageproxy/temp
+java.library.path                                   : /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+java.naming.factory.initial                         : org.apache.naming.java.javaURLContextFactory
+java.naming.factory.url.pkgs                        : org.apache.naming
+java.net.preferIPv4Stack                            : true
+java.rmi.server.hostname                            : localhost
+java.rmi.server.randomIDs                           : true
+java.runtime.name                                   : Java(TM) SE Runtime Environment
+java.runtime.version                                : 1.7.0_13-b20
+java.specification.name                             : Java Platform API Specification
+java.specification.vendor                           : Oracle Corporation
+java.specification.version                          : 1.7
+java.util.logging.config.file                       : /usr/local/imageproxy/conf/logging.properties
+java.util.logging.manager                           : org.apache.juli.ClassLoaderLogManager
+java.vendor                                         : Oracle Corporation
+java.vendor.url                                     : http://java.oracle.com/
+java.vendor.url.bug                                 : http://bugreport.sun.com/bugreport/
+java.version                                        : 1.7.0_13
+java.vm.info                                        : mixed mode
+java.vm.name                                        : Java HotSpot(TM) 64-Bit Server VM
+java.vm.specification.name                          : Java Virtual Machine Specification
+java.vm.specification.vendor                        : Oracle Corporation
+java.vm.specification.version                       : 1.7
+java.vm.vendor                                      : Oracle Corporation
+java.vm.version                                     : 23.7-b01
+line.separator                                      : 
+
+newrelic.config.app_name                            : dorothy-frontend-staging
+org.apache.catalina.startup.ContextConfig.jarsToSkip: 
+org.apache.catalina.startup.TldConfig.jarsToSkip    : 
+org.hyperic.sigar.path                              : /usr/local/imageproxy/temp/tmpSigarJars26597153420016651378809640753204
+org.knopflerfish.framework.bundlestorage            : memory
+org.knopflerfish.osgi.registerserviceurlhandler     : false
+org.osgi.framework.bootdelegation                   : *
+os.arch                                             : amd64
+os.name                                             : Linux
+os.version                                          : 3.2.0-32-virtual
+package.access                                      : sun.,org.apache.catalina.,org.apache.coyote.,org.apache.tomcat.,org.apache.jasper.
+package.definition                                  : sun.,java.,org.apache.catalina.,org.apache.coyote.,org.apache.tomcat.,org.apache.jasper.
+path.separator                                      : :
+server.loader                                       : 
+shared.loader                                       : 
+sun.arch.data.model                                 : 64
+sun.boot.class.path                                 : /opt/jdk1.7.0_13/jre/lib/resources.jar:/opt/jdk1.7.0_13/jre/lib/rt.jar:/opt/jdk1.7.0_13/jre/lib/sunrsasign.jar:/opt/jdk1.7.0_13/jre/lib/jsse.jar:/opt/jdk1.7.0_13/jre/lib/jce.jar:/opt/jdk1.7.0_13/jre/lib/charsets.jar:/opt/jdk1.7.0_13/jre/lib/jfr.jar:/opt/jdk1.7.0_13/jre/classes
+sun.boot.library.path                               : /opt/jdk1.7.0_13/jre/lib/amd64
+sun.cpu.endian                                      : little
+sun.cpu.isalist                                     : 
+sun.io.unicode.encoding                             : UnicodeLittle
+sun.java.command                                    : org.apache.catalina.startup.Bootstrap start
+sun.java.launcher                                   : SUN_STANDARD
+sun.jnu.encoding                                    : UTF-8
+sun.management.compiler                             : HotSpot 64-Bit Tiered Compilers
+sun.os.patch.level                                  : unknown
+tc.active                                           : true
+tc.dso.globalmode                                   : false
+terracotta.config                                   : /usr/local/terracotta/conf/tc-config-staging.xml
+tomcat.util.buf.StringCache.byte.enabled            : true
+tomcat.util.scan.DefaultJarScanner.jarsToSkip       : bootstrap.jar,commons-daemon.jar,tomcat-juli.jar,annotations-api.jar,el-api.jar,jsp-api.jar,servlet-api.jar,catalina.jar,catalina-ant.jar,catalina-ha.jar,catalina-tribes.jar,jasper.jar,jasper-el.jar,ecj-*.jar,tomcat-api.jar,tomcat-util.jar,tomcat-coyote.jar,tomcat-dbcp.jar,tomcat-jni.jar,tomcat-spdy.jar,tomcat-i18n-en.jar,tomcat-i18n-es.jar,tomcat-i18n-fr.jar,tomcat-i18n-ja.jar,tomcat-juli-adapters.jar,catalina-jmx-remote.jar,catalina-ws.jar,tomcat-jdbc.jar,commons-beanutils*.jar,commons-codec*.jar,commons-collections*.jar,commons-dbcp*.jar,commons-digester*.jar,commons-fileupload*.jar,commons-httpclient*.jar,commons-io*.jar,commons-lang*.jar,commons-logging*.jar,commons-math*.jar,commons-pool*.jar,jstl.jar,geronimo-spec-jaxrpc*.jar,wsdl4j*.jar,ant.jar,ant-junit*.jar,aspectj*.jar,jmx.jar,h2*.jar,hibernate*.jar,httpclient*.jar,jmx-tools.jar,jta*.jar,log4j*.jar,mail*.jar,slf4j*.jar,xercesImpl.jar,xmlParserAPIs.jar,xml-apis.jar,access-bridge.jar,access-bridge-64.jar,dnsns.jar,jaccess.jar,ldapsec.jar,localedata.jar,sunjce_provider.jar,sunmscapi.jar,sunpkcs11.jar,jhall.jar,tools.jar,sunec.jar,zipfs.jar,gnome-java-bridge.jar,pulse-java.jar,apple_provider.jar,AppleScriptEngine.jar,CoreAudio.jar,dns_sd.jar,j3daudio.jar,j3dcore.jar,j3dutils.jar,jai_core.jar,jai_codec.jar,mlibwrapper_jai.jar,MRJToolkit.jar,vecmath.jar,junit.jar,junit-*.jar,ant-launcher.jar
+user.country                                        : US
+user.dir                                            : /home/ubuntu
+user.home                                           : /home/ubuntu
+user.language                                       : en
+user.name                                           : ubuntu
+user.timezone                                       : America/Toronto
+========================================================================
+2013-02-14 16:22:39,756 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:39,761 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:39,761 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:22:39,762 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:39,763 [localhost-startStop-1] WARN com.terracottatech.console - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:39,763 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:40,764 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:40,769 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:40,772 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:22:40,773 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:40,773 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:41,773 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:41,779 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:41,779 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:22:41,780 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:41,780 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:42,781 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:42,787 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:42,787 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:22:42,788 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:42,788 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:43,789 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:43,810 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:22:43,814 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:43,815 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:22:43,816 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:43,816 [localhost-startStop-1] WARN com.terracottatech.console - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:43,816 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:44,816 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:22:44,823 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:44,824 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:22:44,825 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:44,825 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:45,825 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:22:46,910 [localhost-startStop-1] INFO com.tc.bundles.Resolver - First toolkit reference found: ToolkitVersion(1.6)
+2013-02-14 16:22:46,911 [localhost-startStop-1] INFO com.tc.bundles.Resolver - Freezing toolkit major version from: ToolkitVersion(1.6)
+2013-02-14 16:22:46,914 [localhost-startStop-1] INFO com.tc.bundles.Resolver - Looking for latest version of org.terracotta.toolkit.terracotta-toolkit-1.6
+2013-02-14 16:22:46,921 [localhost-startStop-1] INFO com.tc.bundles.Resolver - new version = 5.4.0
+2013-02-14 16:22:46,926 [localhost-startStop-1] INFO com.tc.bundles.Resolver - Resolved TIM org.terracotta.toolkit:terracotta-toolkit-1.6:5.4.0 from tcjar:__TC__jar:file:/opt/apache-tomcat-7.0.33/webapps/imageproxy/WEB-INF/lib/terracotta-toolkit-1.6-runtime-5.4.0.jar!/TIMs/terracotta-toolkit-1.6-5.4.0.jar__TC__/
+2013-02-14 16:22:46,928 [localhost-startStop-1] INFO com.tc.bundles.Resolver - Actual toolkit API version resolved: ToolkitVersion(1.6) <xml-fragment group-id="org.terracotta.toolkit" name="terracotta-toolkit-1.6" version="5.4.0"/>
+2013-02-14 16:22:46,929 [localhost-startStop-1] INFO com.tc.bundles.Resolver - new version = 5.4.0
+2013-02-14 16:22:46,930 [localhost-startStop-1] INFO com.tc.bundles.Resolver - Resolved TIM org.terracotta.toolkit:terracotta-toolkit-1.6:5.4.0 from tcjar:__TC__jar:file:/opt/apache-tomcat-7.0.33/webapps/imageproxy/WEB-INF/lib/terracotta-toolkit-1.6-runtime-5.4.0.jar!/TIMs/terracotta-toolkit-1.6-5.4.0.jar__TC__/
+2013-02-14 16:22:46,968 [localhost-startStop-1] INFO org.terracotta.modules.configuration.TerracottaConfiguratorModule - CDM change applicator is class com.terracotta.toolkit.collections.ConcurrentDistributedMapDsoApplicator
+2013-02-14 16:22:47,099 [localhost-startStop-1] WARN com.tc.plugins.ModulesLoader - org.terracotta.toolkit.terracotta-toolkit-1.6 does not declare a TIM API version requirement
+2013-02-14 16:22:47,100 [localhost-startStop-1] INFO com.tc.plugins.ModulesLoader - BuildInfo for module: org.terracotta.toolkit.terracotta-toolkit-1.6
+  BuildInfo-User: cruise
+  BuildInfo-Revision: 38389
+  BuildInfo-Timestamp: 20130212-072415
+  BuildInfo-URL: http://svn-mirror.terracotta.lan/svn/forge/projects/terracotta-toolkit/branches/tc-3.7.4
+  BuildInfo-Host: su10vmo148
+
+2013-02-14 16:22:47,115 [localhost-startStop-1] INFO com.tc.plugins.ModulesLoader - Config loaded from module: org.terracotta.toolkit.terracotta-toolkit-1.6 (terracotta_api.xml)
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment>
+  <instrumented-classes>
+    <include>
+      <class-expression>@org.terracotta.annotations.InstrumentedClass *</class-expression>
+    </include>
+    <include>
+      <class-expression>@org.terracotta.annotations.InstrumentedClass @org.terracotta.annotations.HonorTransient *</class-expression>
+      <honor-transient>true</honor-transient>
+    </include>
+  </instrumented-classes>
+
+  <locks>
+    <!-- annotation locking expressions -->
+    <autolock>
+      <method-expression>@org.terracotta.annotations.AutolockWrite * *(..)</method-expression>
+      <lock-level>write</lock-level>
+    </autolock>
+    <autolock auto-synchronized="true">
+      <method-expression>@org.terracotta.annotations.AutolockWriteAutoSync * *(..)</method-expression>
+      <lock-level>write</lock-level>
+    </autolock>    
+    <autolock>
+      <method-expression>@org.terracotta.annotations.AutolockRead * *(..)</method-expression>
+      <lock-level>read</lock-level>
+    </autolock>
+    <autolock auto-synchronized="true">
+      <method-expression>@org.terracotta.annotations.AutolockReadAutoSync * *(..)</method-expression>
+      <lock-level>read</lock-level>
+    </autolock>    
+    <autolock>
+      <method-expression>@org.terracotta.annotations.AutolockSynchronousWrite * *(..)</method-expression>
+      <lock-level>synchronous-write</lock-level>
+    </autolock>
+    <autolock auto-synchronized="true">
+      <method-expression>@org.terracotta.annotations.AutolockSynchronousWriteAutoSync * *(..)</method-expression>
+      <lock-level>synchronous-write</lock-level>
+    </autolock>    
+    <autolock>
+      <method-expression>@org.terracotta.annotations.AutolockConcurrent * *(..)</method-expression>
+      <lock-level>concurrent</lock-level>
+    </autolock>
+  </locks>
+
+  <distributed-methods>
+    <method-expression>@org.terracotta.annotations.DMI * *(..)</method-expression>
+  </distributed-methods>
+
+  <roots>
+    <root>
+      <field-expression>@org.terracotta.annotations.Root * *</field-expression>
+    </root>
+  </roots>
+
+</xml-fragment>
+2013-02-14 16:22:47,164 [localhost-startStop-1] INFO com.tc.object.bytecode.hook.impl.DSOContextImpl - DSOContext created with expressRejoinClient=false
+2013-02-14 16:22:47,182 [localhost-startStop-1] INFO com.tc.plugins.ModulesLoader - Installing tunneled MBean domains for bundle 'org.terracotta.modules.tim-quartz-2.0'
+2013-02-14 16:22:47,182 [localhost-startStop-1] INFO com.tc.plugins.ModulesLoader - BuildInfo for module: org.terracotta.modules.tim-quartz-2.0
+  BuildInfo-User: cruise
+  BuildInfo-Revision: 38460
+  BuildInfo-Timestamp: 20130209-160233
+  BuildInfo-URL: https://svn.terracotta.org/repo/forge/projects/tim-quartz/tags/release-2.3.3
+  BuildInfo-Host: rh5mo126.terracotta.lan
+
+2013-02-14 16:22:47,186 [localhost-startStop-1] INFO com.tc.plugins.ModulesLoader - Config loaded from module: org.terracotta.modules.tim-quartz-2.0 (terracotta.xml)
+<?xml version="1.0" encoding="UTF-8"?>
+
+  <instrumented-classes>
+    <include>
+      <class-expression>org.terracotta.quartz.DefaultClusteredJobStore</class-expression>
+      <honor-transient>true</honor-transient>
+    </include>
+
+    <include>
+      <class-expression>org.terracotta.quartz.JobWrapper</class-expression>
+      <honor-transient>true</honor-transient>
+    </include>
+
+    <include>
+      <class-expression>org.terracotta.quartz.TriggerWrapper</class-expression>
+      <honor-transient>true</honor-transient>
+    </include>
+
+    <include>
+      <class-expression>org.terracotta.quartz.TimeTriggerSet</class-expression>
+      <honor-transient>true</honor-transient>
+    </include>
+
+    <include>
+      <class-expression>org.terracotta.quartz.TimeTriggerSet$TimeTrigger</class-expression>
+      <honor-transient>true</honor-transient>
+    </include>
+
+    <include>
+      <class-expression>org.terracotta.quartz.CalendarWrapper</class-expression>
+      <honor-transient>true</honor-transient>
+    </include>
+
+    <include>
+      <class-expression>org.terracotta.quartz.ClusteredTriggerKey</class-expression>
+    </include>
+
+    <include>
+      <class-expression>org.terracotta.quartz.ClusteredJobKey</class-expression>
+    </include>
+
+    <include>
+      <class-expression>org.terracotta.quartz.ClusteredKey</class-expression>
+    </include>
+
+    <include>
+      <class-expression>org.terracotta.quartz.FiredTrigger</class-expression>
+    </include>
+
+    <include>
+      <class-expression>org.terracotta.quartz.Serializer</class-expression>
+      <honor-transient>true</honor-transient>
+    </include>
+
+  </instrumented-classes>
+
+
+
+2013-02-14 16:22:47,201 [localhost-startStop-1] INFO com.tc.plugins.ModulesLoader - Installing TIMByteProvider for bundle 'org.terracotta.modules.tim-quartz-2.x-ui'
+2013-02-14 16:22:47,213 [localhost-startStop-1] INFO com.tc.plugins.ModulesLoader - BuildInfo for module: org.terracotta.modules.tim-quartz-2.x-ui
+  BuildInfo-User: cruise
+  BuildInfo-Revision: 38460
+  BuildInfo-Timestamp: 20130209-160158
+  BuildInfo-URL: https://svn.terracotta.org/repo/forge/projects/tim-quartz/tags/release-2.3.3
+  BuildInfo-Host: rh5mo126.terracotta.lan
+
+2013-02-14 16:22:47,337 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:47,341 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:47,341 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:22:47,342 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:47,342 [localhost-startStop-1] WARN com.terracottatech.console - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:47,342 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:48,342 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:48,347 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:48,347 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:22:48,349 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:48,349 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:49,349 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:49,353 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:49,353 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:22:49,354 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:49,354 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:50,354 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:50,359 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:50,359 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:22:50,360 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:50,361 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:51,361 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:51,366 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:51,366 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:22:51,367 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:51,367 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:52,367 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:52,371 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:52,372 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:22:52,373 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:52,373 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:53,373 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:53,377 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:53,377 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:22:53,382 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:53,382 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:54,382 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:54,390 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:54,390 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:22:54,391 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:54,391 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:55,391 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:55,396 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:55,396 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:22:55,397 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:55,397 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:56,397 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:56,402 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:56,402 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:22:56,403 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:56,403 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:57,404 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:57,408 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:57,408 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:22:57,409 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:57,409 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:58,409 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:58,413 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:58,413 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:22:58,414 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:58,414 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:22:59,415 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:22:59,419 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:22:59,419 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:22:59,420 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:22:59,420 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:00,420 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:00,424 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:00,424 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:00,425 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:00,425 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:01,426 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:01,489 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:01,489 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:01,490 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:01,490 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:02,491 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:02,496 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:02,497 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:02,498 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:02,498 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:03,498 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:03,502 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:03,502 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:03,503 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:03,503 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:04,503 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:04,507 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:04,507 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:04,508 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:04,508 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:05,508 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:05,512 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:05,512 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:05,513 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:05,513 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:06,514 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:06,517 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:06,518 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:06,519 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:06,519 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:07,519 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:07,522 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:07,523 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:07,524 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:07,524 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:08,524 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:08,528 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:08,528 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:08,529 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:08,529 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:09,529 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:09,533 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:09,533 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:09,534 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:09,534 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:10,534 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:10,538 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:10,538 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:10,539 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:10,539 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:11,539 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:11,543 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:11,543 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:11,544 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:11,544 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:12,544 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:12,548 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:12,548 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:12,549 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:12,549 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:13,550 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:13,553 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:13,554 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:13,555 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:13,555 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:14,555 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:14,559 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:14,559 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:14,560 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:14,560 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:15,560 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:15,564 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:15,564 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:15,565 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:15,565 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:16,565 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:16,569 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:16,569 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:16,570 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:16,570 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:17,570 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:17,574 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:17,575 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:17,576 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:17,576 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:18,576 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:18,582 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:18,582 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:18,584 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:18,584 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:19,584 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:19,588 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:19,588 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:19,589 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:19,589 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:20,589 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:20,593 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:20,593 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:20,595 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:20,595 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:21,595 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:21,599 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:21,599 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:21,600 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:21,600 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:22,600 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:22,604 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:22,604 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:22,605 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:22,605 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:23,606 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:23,609 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:23,610 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc2:9510/groupidmap
+2013-02-14 16:23:23,611 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:23,611 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:24,612 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://stg.tc1:9510/groupidmap
+2013-02-14 16:23:24,617 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:24,621 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:24,621 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:24,622 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:24,622 [localhost-startStop-1] WARN com.terracottatech.console - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:24,623 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:25,623 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:25,651 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:25,652 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:25,653 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:25,653 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:26,653 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:26,657 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:26,657 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:26,658 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:26,658 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:27,658 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:27,663 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:27,663 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:27,664 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:27,664 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:28,664 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:28,669 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:28,669 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:28,670 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:28,670 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:29,670 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:29,674 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:29,674 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:29,675 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:29,675 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:30,676 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:30,680 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:30,680 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:30,681 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:30,681 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:31,681 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:31,685 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:31,686 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:31,687 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:31,687 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:32,687 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:32,691 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:32,692 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:32,693 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:32,693 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:33,693 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:33,697 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:33,697 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:33,698 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:33,698 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:34,698 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:34,703 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:34,703 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:34,704 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:34,704 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:35,704 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:35,709 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:35,709 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:35,710 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:35,710 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:36,710 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:36,743 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:36,743 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:36,744 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:36,744 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:37,744 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:37,752 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:37,752 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:37,753 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:37,753 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:38,754 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:38,758 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:38,758 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:38,759 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:38,759 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:39,759 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:39,763 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:39,763 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:39,764 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:39,764 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:40,765 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:40,769 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:40,769 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:40,770 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:40,770 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:41,770 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:41,774 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:41,774 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:41,775 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:41,775 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:42,775 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:42,780 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:42,781 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:42,782 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:42,782 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:43,782 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:43,786 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:43,786 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:43,787 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:43,787 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:44,787 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:44,791 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:44,791 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:44,792 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:44,793 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:45,793 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:45,797 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:45,797 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:45,798 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:45,798 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:46,798 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:46,804 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:46,808 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:46,808 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:46,809 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:46,809 [localhost-startStop-1] WARN com.terracottatech.console - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:46,809 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:47,809 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:47,813 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:47,813 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:47,814 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:47,814 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:48,814 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:48,819 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:48,819 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:48,821 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:48,821 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:49,821 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:49,825 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:49,825 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:49,826 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:49,826 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:50,826 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:50,831 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:50,831 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:50,832 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:50,832 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:51,832 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:51,837 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:51,837 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:51,838 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:51,838 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:52,838 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:52,856 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:52,857 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:52,858 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:52,858 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:53,858 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:53,862 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:53,862 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:53,863 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:53,863 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:54,864 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:54,868 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:54,868 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:54,869 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:54,869 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:55,869 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:55,873 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:55,873 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:55,874 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:55,874 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:56,874 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:56,879 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:56,879 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:56,880 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:56,880 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:57,880 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:57,884 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:57,884 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:57,885 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:57,885 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:58,886 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:23:58,890 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:23:58,890 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:23:58,891 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:23:58,891 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:23:59,891 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:24:00,007 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:00,008 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:24:00,009 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:00,009 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:01,009 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:24:01,013 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:01,013 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:24:01,014 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:01,014 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:02,015 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:24:02,044 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:02,044 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:24:02,045 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:02,045 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:03,045 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:24:03,050 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:03,053 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:24:03,054 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:03,054 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:04,054 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:24:04,067 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:04,067 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:24:04,068 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:04,068 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:05,069 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:24:05,100 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:05,100 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:24:05,101 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:05,101 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:06,102 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:24:06,131 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:06,131 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:24:06,132 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:06,132 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:07,133 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:24:07,137 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:07,137 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:24:07,138 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:07,138 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:08,138 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:24:08,142 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:08,142 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:24:08,143 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:08,143 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:09,143 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:24:09,148 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:09,148 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:24:09,149 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:09,149 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:10,149 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:24:10,172 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:10,172 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:24:10,174 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:10,174 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:11,174 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:24:11,178 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:11,178 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc2:9510/groupinfo
+2013-02-14 16:24:11,179 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:11,179 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:12,179 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get Cluster topology from http://stg.tc1:9510/groupinfo
+2013-02-14 16:24:12,408 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc1:9510/l1reconnectproperties
+2013-02-14 16:24:12,411 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:12,411 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc2:9510/l1reconnectproperties
+2013-02-14 16:24:12,412 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:12,412 [localhost-startStop-1] WARN com.terracottatech.console - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:12,412 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:13,413 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc1:9510/l1reconnectproperties
+2013-02-14 16:24:13,416 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:13,416 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc2:9510/l1reconnectproperties
+2013-02-14 16:24:13,419 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:13,419 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:14,419 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc1:9510/l1reconnectproperties
+2013-02-14 16:24:14,423 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:14,423 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc2:9510/l1reconnectproperties
+2013-02-14 16:24:14,424 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:14,424 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:15,424 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc1:9510/l1reconnectproperties
+2013-02-14 16:24:15,428 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:15,428 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc2:9510/l1reconnectproperties
+2013-02-14 16:24:15,429 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:15,429 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:16,429 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc1:9510/l1reconnectproperties
+2013-02-14 16:24:16,433 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:16,433 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc2:9510/l1reconnectproperties
+2013-02-14 16:24:16,434 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:16,434 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:17,434 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc1:9510/l1reconnectproperties
+2013-02-14 16:24:17,438 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:17,438 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc2:9510/l1reconnectproperties
+2013-02-14 16:24:17,439 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:17,439 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:18,439 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc1:9510/l1reconnectproperties
+2013-02-14 16:24:18,443 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:18,443 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc2:9510/l1reconnectproperties
+2013-02-14 16:24:18,444 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:18,444 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:19,445 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc1:9510/l1reconnectproperties
+2013-02-14 16:24:19,454 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:19,454 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc2:9510/l1reconnectproperties
+2013-02-14 16:24:19,456 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:19,456 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:20,457 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc1:9510/l1reconnectproperties
+2013-02-14 16:24:20,460 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:20,460 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc2:9510/l1reconnectproperties
+2013-02-14 16:24:20,461 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:20,462 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:21,462 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc1:9510/l1reconnectproperties
+2013-02-14 16:24:21,465 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:21,466 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc2:9510/l1reconnectproperties
+2013-02-14 16:24:21,467 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:21,467 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:22,467 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc1:9510/l1reconnectproperties
+2013-02-14 16:24:22,470 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:22,470 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc2:9510/l1reconnectproperties
+2013-02-14 16:24:22,471 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:22,472 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:23,472 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc1:9510/l1reconnectproperties
+2013-02-14 16:24:23,475 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:23,476 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc2:9510/l1reconnectproperties
+2013-02-14 16:24:23,477 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:23,477 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:24,477 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc1:9510/l1reconnectproperties
+2013-02-14 16:24:24,482 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:24,482 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc2:9510/l1reconnectproperties
+2013-02-14 16:24:24,483 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:24,483 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:25,483 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc1:9510/l1reconnectproperties
+2013-02-14 16:24:25,487 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:25,487 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc2:9510/l1reconnectproperties
+2013-02-14 16:24:25,488 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:25,488 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:26,488 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc1:9510/l1reconnectproperties
+2013-02-14 16:24:26,492 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc1:9510:Tc-Group-0]. Will retry next server.
+2013-02-14 16:24:26,492 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc2:9510/l1reconnectproperties
+2013-02-14 16:24:26,493 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to [stg.tc2:9510:Tc-Group-0].
+2013-02-14 16:24:26,493 [localhost-startStop-1] WARN com.terracottatech.dso - Can't connect to any of the servers [stg.tc1:9510:Tc-Group-0, stg.tc2:9510:Tc-Group-0].Retrying... 
+
+2013-02-14 16:24:27,493 [localhost-startStop-1] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://stg.tc1:9510/l1reconnectproperties
+2013-02-14 16:24:27,752 [localhost-startStop-1] INFO com.tc.object.ApplicatorDNAEncodingImpl - Compressed String constructor not present
+2013-02-14 16:24:27,929 [localhost-startStop-1] INFO com.tc.net.core.TCCommImpl - Comm Worker Threads NOT requested
+2013-02-14 16:24:27,953 [localhost-startStop-1] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl: DSO Client - HealthChecker Started
+2013-02-14 16:24:28,035 [localhost-startStop-1] INFO com.tc.net.protocol.tcm.CommunicationsManager - HealthCheck CallbackPort Listener started at /0.0.0.0:58220
+2013-02-14 16:24:28,232 [Statistics Logger] INFO com.terracottatech.dso - memory free : 4804.089302 MB
+2013-02-14 16:24:28,235 [localhost-startStop-1] INFO com.terracottatech.dso - Statistics buffer opened
+2013-02-14 16:24:28,243 [Statistics Logger] INFO com.terracottatech.dso - memory used : 1265.160698 MB
+2013-02-14 16:24:28,243 [Statistics Logger] INFO com.terracottatech.dso - memory max : 6069.250000 MB
+2013-02-14 16:24:28,261 [localhost-startStop-1] INFO com.tc.statistics.StatisticRetrievalAction - "message monitor" statistic is not enabled. Please enable the property "tcm.monitor.delay" to collect this statistics.
+2013-02-14 16:24:28,450 [localhost-startStop-1] INFO com.tc.runtime.TCMemoryManagerImpl - GarbageCollector: PS Scavenge
+2013-02-14 16:24:28,450 [localhost-startStop-1] INFO com.tc.runtime.TCMemoryManagerImpl - GarbageCollector: PS MarkSweep
+2013-02-14 16:24:28,624 [L1Management JMX registration] INFO com.tc.management.L1Management - Terracotta JMX connector available at[service:jmx:terracotta://localhost]
+2013-02-14 16:24:28,700 [localhost-startStop-1] INFO com.tc.net.core.TCConnection - Comms Message Batching enabled
+2013-02-14 16:24:28,708 [localhost-startStop-1] INFO com.tc.net.protocol.transport.ClientMessageTransport - ConnectionID(-1.ffffffffffffffffffffffffffffffff.a8a7734d-1c60-4009-a38f-d5d662591e1f-13cda95ab48)[]: Attaching new connection: com.tc.net.core.TCConnectionImpl@131332331: connected: true, closed: false local=10.190.151.166:56380 remote=10.149.9.6:9510 connect=[Thu Feb 14 16:24:28 EST 2013] idle=6ms [0 read, 0 write]
+2013-02-14 16:24:28,749 [localhost-startStop-1] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl. DSO Client - Health monitoring agent started for ip-10-149-9-6.ec2.internal:9510
+2013-02-14 16:24:28,767 [L1_L2:TCComm Main Selector Thread_R (listen 0.0.0.0:58220)] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl. DSO Client - HealthCheckCallbackPort verification PASSED for ip-10-149-9-6.ec2.internal:9510(callbackport: 9510)
+2013-02-14 16:24:28,775 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.object.handshakemanager.ClientHandshakeManagerImpl - ClientID[1]: Connected: Unpausing from State[ PAUSED ] RemoteNode : GroupID[0]. Disconnect count : 1
+2013-02-14 16:24:28,799 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.object.handshakemanager.ClientHandshakeManagerImpl - ClientID[1]: Received Handshake ack for this node :GroupID[0]
+2013-02-14 16:24:28,803 [localhost-startStop-1] INFO com.terracottatech.console - Connection successfully established to server at 10.149.9.6:9510
+2013-02-14 16:24:28,803 [localhost-startStop-1] INFO com.terracottatech.dso - Connection successfully established to server at 10.149.9.6:9510
+2013-02-14 16:24:28,811 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.management.remote.protocol.terracotta.TunnelingEventHandler - Client JMX server ready; sending notification to L2 server

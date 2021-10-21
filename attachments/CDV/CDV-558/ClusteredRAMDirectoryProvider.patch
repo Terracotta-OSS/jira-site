@@ -1,0 +1,59 @@
+--- RAMDirectoryProvider.java	2008-04-28 11:07:26.000000000 +0200
++++ ClusteredRAMDirectoryProvider.java	2008-04-28 11:19:29.000000000 +0200
+@@ -2,6 +2,7 @@
+ package org.hibernate.search.store;
+ 
+ import java.io.IOException;
++import java.util.HashMap;
+ import java.util.Properties;
+ 
+ import org.apache.lucene.analysis.standard.StandardAnalyzer;
+@@ -16,23 +17,29 @@
+  * @author Emmanuel Bernard
+  * @author Sylvain Vieujot
+  */
+-public class RAMDirectoryProvider implements DirectoryProvider<RAMDirectory> {
++public class ClusteredRAMDirectoryProvider implements DirectoryProvider<RAMDirectory> {
+ 
+ 	private RAMDirectory directory;
+ 	private String indexName;
++	private final HashMap<String, RAMDirectory> directories = new HashMap<String, RAMDirectory>();
+ 
+ 	public void initialize(String directoryProviderName, Properties properties, SearchFactoryImplementor searchFactoryImplementor) {
+ 		indexName = directoryProviderName;
+ 	}
+ 
+ 	public void start() {
+-		directory = new RAMDirectory();
+-		try {
+-			IndexWriter iw = new IndexWriter( directory, new StandardAnalyzer(), true );
+-			iw.close();
+-		}
+-		catch (IOException e) {
+-			throw new HibernateException( "Unable to initialize index: " + indexName, e );
++		synchronized (directories) {
++			directory = directories.get(indexName);
++			if (directory == null) {
++				directory = new RAMDirectory();
++				try {
++					IndexWriter iw = new IndexWriter(directory, new StandardAnalyzer(), true);
++					iw.close();
++					directories.put(indexName, directory);
++				} catch (IOException e) {
++					throw new HibernateException("Unable to initialize index: " + indexName, e);
++				}
++			}
+ 		}
+ 	}
+ 
+@@ -47,8 +54,8 @@
+ 		// but from a practical POV this is fine since we only call this method
+ 		// after initialize call
+ 		if ( obj == this ) return true;
+-		if ( obj == null || !( obj instanceof RAMDirectoryProvider ) ) return false;
+-		return indexName.equals( ( (RAMDirectoryProvider) obj ).indexName );
++		if ( obj == null || !( obj instanceof ClusteredRAMDirectoryProvider ) ) return false;
++		return indexName.equals( ( (ClusteredRAMDirectoryProvider) obj ).indexName );
+ 	}
+ 
+ 	@Override

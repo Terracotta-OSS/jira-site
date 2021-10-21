@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-6.xsd">
+
+  <clients>
+    <logs>%(user.home)/terracotta/client-logs</logs>
+    <statistics>%(user.home)/terracotta/client-statistics</statistics>
+  </clients>
+
+  <servers>
+    <server host="localhost" name="server1" bind="0.0.0.0">
+      <data>%(user.home)/terracotta/server-data</data>
+      <logs>%(user.home)/terracotta/server-logs</logs>
+      <statistics>%(user.home)/terracotta/server-statistics</statistics>
+      <dso-port>9510</dso-port>
+      <jmx-port>9520</jmx-port>
+      <l2-group-port>9530</l2-group-port>
+    </server>
+
+    <server host="localhost" name="server2" bind="0.0.0.0">
+      <data>%(user.home)/terracotta/server2-data</data>
+      <logs>%(user.home)/terracotta/server2-logs</logs>
+      <statistics>%(user.home)/terracotta/server2-statistics</statistics>
+      <dso-port>19510</dso-port>
+      <jmx-port>19520</jmx-port>
+      <l2-group-port>19530</l2-group-port>
+    </server>
+    
+    <mirror-groups>
+      <mirror-group group-name="0">
+        <ha>
+          <mode>networked-active-passive</mode>
+          
+          <networked-active-passive>
+            <election-time>5</election-time>
+          </networked-active-passive>
+        </ha>
+        
+        <members>
+          <member>server1</member>
+        </members>
+      </mirror-group>
+      <mirror-group group-name="1">        
+        <ha>
+          <mode>networked-active-passive</mode>
+          
+          <networked-active-passive>
+            <election-time>5</election-time>
+          </networked-active-passive>
+        </ha>
+        
+        <members>
+          <member>server2</member>
+        </members>
+      </mirror-group>
+    </mirror-groups>
+
+    <update-check>
+      <enabled>true</enabled>
+      <period-days>7</period-days>
+    </update-check>
+  </servers>
+</tc:tc-config>

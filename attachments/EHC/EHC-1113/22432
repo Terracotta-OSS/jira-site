@@ -1,0 +1,18 @@
+<ehcache>
+        <diskStore path="java.io.tmpdir"/>
+
+ <cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.jgroups.JGroupsCacheManagerPeerProviderFactory"
+         properties="file=config/${spring.profiles.active}/tcp.xml" />
+
+        <cache name="tokenCache" maxEntriesLocalHeap="500" overflowToDisk="false" eternal="false" 
+                timeToIdleSeconds="1000" timeToLiveSeconds="1000" memoryStoreEvictionPolicy="LRU">
+                
+			<cacheEventListenerFactory class="net.sf.ehcache.distribution.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicatePuts=true, replicateUpdates=true,
+				replicateUpdatesViaCopy=false, replicateRemovals=true, asynchronousReplicationIntervalMillis=10"/>
+				
+			<bootstrapCacheLoaderFactory class="net.sf.ehcache.distribution.jgroups.JGroupsBootstrapCacheLoaderFactory"
+				properties="bootstrapAsynchronously=true" propertySeparator=","/>
+        </cache>
+
+</ehcache>

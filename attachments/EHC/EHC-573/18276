@@ -1,0 +1,43 @@
+							sun.misc.Unsafe.park(Native Method)
+          
+            	java.util.concurrent.locks.LockSupport.park(LockSupport.java:158)
+          
+            	java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:811)
+          
+            	java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:842)
+          
+            	java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1178)
+          
+            	java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:807)
+          
+            	net.sf.ehcache.store.compound.CompoundStore$ReadWriteLockSync.lock(CompoundStore.java:894)
+          
+            	net.sf.ehcache.hibernate.regions.EhcacheTransactionalDataRegion.writeLock(EhcacheTransactionalDataRegion.java:182)
+          
+            	net.sf.ehcache.hibernate.strategy.AbstractReadWriteEhcacheAccessStrategy.lockItem(AbstractReadWriteEhcacheAccessStrategy.java:110)
+          
+            	net.sf.ehcache.hibernate.nonstop.NonstopAwareCollectionRegionAccessStrategy.lockItem(NonstopAwareCollectionRegionAccessStrategy.java:106)
+          
+            	org.hibernate.action.CollectionAction.beforeExecutions(CollectionAction.java:88)
+          
+            	org.hibernate.engine.ActionQueue.prepareActions(ActionQueue.java:293)
+          
+            	org.hibernate.engine.ActionQueue.prepareActions(ActionQueue.java:200)
+          
+            	org.hibernate.event.def.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:320)
+          
+            	org.hibernate.event.def.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:51)
+          
+            	org.hibernate.impl.SessionImpl.flush(SessionImpl.java:1216)
+          
+            	org.springframework.orm.hibernate3.HibernateTemplate$28.doInHibernate(HibernateTemplate.java:883)
+          
+            	org.springframework.orm.hibernate3.HibernateTemplate.doExecute(HibernateTemplate.java:406)
+          
+            	org.springframework.orm.hibernate3.HibernateTemplate.executeWithNativeSession(HibernateTemplate.java:374)
+          
+            	org.springframework.orm.hibernate3.HibernateTemplate.flush(HibernateTemplate.java:881)
+          
+            	com.amdocs.pc.backend.dao.hibernate.BaseDAOHibernate.flush(BaseDAOHibernate.java:566)
+          
+            	com.amdocs.pc.backend.dao.hibernate.ElementCacheDAOHibernate.saveElementCache(ElementCacheDAOHibernate.java:48)

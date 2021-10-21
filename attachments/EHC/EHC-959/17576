@@ -1,0 +1,85 @@
+// code: cache.getElement(wantedKey);
+// Here we have a cache hit.  We have just called cache.get("market.Cumulative Return 2010-12-14")
+150037 DEBUG 09-Jul-2012 21:52:45 [RA.RMM-CAAxiomaMH-STest@2012-7-9.21:52] net.sf.ehcache.Cache  - Cache: attribute store hit for market.Cumulative Return 2010-12-14
+
+// At this point, we call cache.getKeys() for some post-get processing.  We don't even get that far though, because this troubleshooting logic emits the
+// following log entry, indicating that there are no keys in the cache (ie, getKeys() returned an empty list).
+// code: cache.getKeys();
+//       currentKey = loop through the keys calling .equals(wantedKey)
+1772351 ERROR 11-Jul-2012 12:51:56 [RA.RMM-EU21AxiomaMHTest@2012-7-11.12:51] - ERROR---------------------------------------------------------------------------------
+1772351 ERROR 11-Jul-2012 12:51:56 [RA.RMM-EU21AxiomaMHTest@2012-7-11.12:51] - Element was not null but currentKey WAS null!!  wantedKey is 'RMM-EU21AxiomaMHTest.Pharmaceuticals, Biotechnology & Life Sciences 2010-12-28'
+1772351 ERROR 11-Jul-2012 12:51:56 [RA.RMM-EU21AxiomaMHTest@2012-7-11.12:51] - wantedKey's hashcode is 1653385558  wantedKey's object id is 303faf4a
+1772351 ERROR 11-Jul-2012 12:51:56 [RA.RMM-EU21AxiomaMHTest@2012-7-11.12:51] - Could not find wantedKey in the list from getKeys()!
+
+// Is the key still in the cache?  Yes
+1772351 ERROR 11-Jul-2012 12:51:56 [RA.RMM-EU21AxiomaMHTest@2012-7-11.12:51] - cache.isKeyInCache() says the key is in the cache
+
+// Could we get the element again?  Yes
+1772351 ERROR 11-Jul-2012 12:51:56 [RA.RMM-EU21AxiomaMHTest@2012-7-11.12:51] - Second attempt to find RMM-EU21AxiomaMHTest.Pharmaceuticals, Biotechnology & Life Sciences 2010-12-28...it is still in the cache
+
+// Does element.getKey() work?  Yes
+1772368 ERROR 11-Jul-2012 12:51:56 [RA.RMM-EU21AxiomaMHTest@2012-7-11.12:51] - element.getObjectKey() returned a key! hashcode is 1653385558
+1772368 ERROR 11-Jul-2012 12:51:56 [RA.RMM-EU21AxiomaMHTest@2012-7-11.12:51] - elemKey's object id is 3010136c
+
+Now the call to .equals only works if our key's equals() implementation is correct.
+
+public class CacheKey implements Serializable {
+   private static final long serialVersionUID = 1L;
+   private final String name;
+   private final LocalDate date;
+
+   /*
+    * This boolean is here to determine whether this key refers to an object that was retrieved using all the assets
+    * or only a small subset of them.
+    * The reason this is stored in the key and not in some wrapper object for the cached object is that we didn't want to duplicate
+    * the amount of objects in memory using a wrapper (because we are expecting lots of those).
+    *
+    * We may change this in the future to store all the assets used in the retrieve query or maybe eventually move it to a wrapper object,
+    * but performance and memory should be taken into account before doing that.
+    */
+   private final boolean containsAllAssets;
+
+   private CacheKey(final String name, final LocalDate date, final boolean containsAllAssets) {
+      this.name = name;
+      this.date = date;
+      this.containsAllAssets = containsAllAssets;
+   }
+
+   @Override
+   public int hashCode() {
+      final int prime = 31;
+      int result = 1;
+      result = prime * result + ((this.date == null) ? 0 : this.date.hashCode());
+      result = prime * result + ((this.name == null) ? 0 : this.name.toUpperCase().hashCode());
+      return result;
+   }
+
+   @Override
+   public boolean equals(final Object obj) {
+      if (this == obj) {
+         return true;
+      }
+      if (obj == null) {
+         return false;
+      }
+      if (!(obj instanceof CacheKey)) {
+         return false;
+      }
+      final CacheKey other = (CacheKey) obj;
+      if (this.date == null) {
+         if (other.date != null) {
+            return false;
+         }
+      } else if (!this.date.equals(other.date)) {
+         return false;
+      }
+      if (this.name == null) {
+         if (other.name != null) {
+            return false;
+         }
+      } else if (!this.name.equalsIgnoreCase(other.name)) {
+         return false;
+      }
+      return true;
+   }
+}

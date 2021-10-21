@@ -1,0 +1,1616 @@
+2010-11-16 21:31:50,591 INFO - Terracotta 3.4.0, as of 20101104-141154 (Revision 16614 by cruise@su10mo4 from 3.4)
+2010-11-16 21:31:51,289 INFO - Successfully loaded base configuration from file at '/home/jatone/workspace/Submission-System-Prototype/tc-config.xml'.
+2010-11-16 21:31:51,579 INFO - Log file: '/home/jatone/workspace/Submission-System-Prototype/terracotta/server-logs/terracotta-server.log'.
+2010-11-16 21:31:54,173 INFO - Available Max Runtime Memory: 448MB
+2010-11-16 21:31:56,760 INFO - JMX Server started. Available at URL[service:jmx:jmxmp://0.0.0.0:9520]
+2010-11-16 21:32:02,938 INFO - Becoming State[ ACTIVE-COORDINATOR ]
+2010-11-16 21:32:02,999 INFO - Terracotta Server instance has started up as ACTIVE node on 0.0.0.0:9510 successfully, and is now ready for work.
+2010-11-16 21:32:23
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (14.2-b01 mixed mode):
+
+"Update Checker" daemon prio=10 tid=0x000000004128f800 nid=0xcad in Object.wait() [0x00007f4ca007f000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00007f4cc87b5088> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0x00007f4cc87b5088> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"DGC-Thread" daemon prio=10 tid=0x00007f4ca843e800 nid=0xcac in Object.wait() [0x00007f4ca0180000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00007f4ccaf4c560> (a java.lang.Object)
+	at com.tc.objectserver.dgc.impl.GarbageCollectorThread.doFullGC(GarbageCollectorThread.java:103)
+	- locked <0x00007f4ccaf4c560> (a java.lang.Object)
+	at com.tc.objectserver.dgc.impl.GarbageCollectorThread.run(GarbageCollectorThread.java:68)
+
+"Static Member discovery" daemon prio=10 tid=0x00007f4ca8440000 nid=0xcab in Object.wait() [0x00007f4ca0281000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00007f4ccadae078> (a com.tc.net.groups.TCGroupMemberDiscoveryStatic)
+	at java.lang.Object.wait(Object.java:485)
+	at com.tc.net.groups.TCGroupMemberDiscoveryStatic.pauseDiscovery(TCGroupMemberDiscoveryStatic.java:250)
+	- locked <0x00007f4ccadae078> (a com.tc.net.groups.TCGroupMemberDiscoveryStatic)
+	at com.tc.net.groups.TCGroupMemberDiscoveryStatic$1.run(TCGroupMemberDiscoveryStatic.java:164)
+	at java.lang.Thread.run(Thread.java:619)
+
+"WorkerThread(receive_group_message_stage, 0)" daemon prio=10 tid=0x00007f4ca8437000 nid=0xcaa waiting on condition [0x00007f4ca0382000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadb83b0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(request_batch_global_transaction_id_sequence_stage, 0)" daemon prio=10 tid=0x00007f4ca8435000 nid=0xca9 waiting on condition [0x00007f4ca0483000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadad9e8> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(managed_object_fault_stage, 3, 0)" daemon prio=10 tid=0x00007f4ca8433000 nid=0xca8 waiting on condition [0x00007f4ca0584000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae274f0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(managed_object_fault_stage, 2, 0)" daemon prio=10 tid=0x00007f4ca8431000 nid=0xca7 waiting on condition [0x00007f4ca0685000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae274f0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(managed_object_fault_stage, 1, 0)" daemon prio=10 tid=0x00007f4ca842f000 nid=0xca6 waiting on condition [0x00007f4ca0786000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae274f0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(managed_object_fault_stage, 0, 0)" daemon prio=10 tid=0x00007f4ca842d000 nid=0xca5 waiting on condition [0x00007f4ca0887000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae274f0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(transaction_lookup_stage, 0)" daemon prio=10 tid=0x00007f4ca842b000 nid=0xca4 waiting on condition [0x00007f4ca0988000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadc4560> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(channel_life_cycle_stage, 0)" daemon prio=10 tid=0x00007f4ca8429800 nid=0xca3 waiting on condition [0x00007f4ca0a89000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadc3990> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(jmxremote_tunnel_stage, 0)" daemon prio=10 tid=0x00007f4ca8427800 nid=0xca2 waiting on condition [0x00007f4ca0b8a000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae28690> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(group_discovery_stage, 3, 0)" daemon prio=10 tid=0x00007f4ca8425800 nid=0xca1 waiting on condition [0x00007f4ca0c8b000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadc1c00> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(group_discovery_stage, 2, 0)" daemon prio=10 tid=0x00007f4ca8423800 nid=0xca0 waiting on condition [0x00007f4ca0d8c000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadc1c00> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(group_discovery_stage, 1, 0)" daemon prio=10 tid=0x00007f4ca8421800 nid=0xc9f waiting on condition [0x00007f4ca0e8d000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadc1c00> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(group_discovery_stage, 0, 0)" daemon prio=10 tid=0x00007f4ca841f800 nid=0xc9e waiting on condition [0x00007f4ca0f8e000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadc1c00> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(sync_write_transaction_recvd_stage, 3, 0)" daemon prio=10 tid=0x00007f4ca841d800 nid=0xc9d waiting on condition [0x00007f4ca108f000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadcf128> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(sync_write_transaction_recvd_stage, 2, 0)" daemon prio=10 tid=0x00007f4ca841b800 nid=0xc9c waiting on condition [0x00007f4ca1190000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadcf128> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(sync_write_transaction_recvd_stage, 1, 0)" daemon prio=10 tid=0x00007f4ca8419800 nid=0xc9b waiting on condition [0x00007f4ca1291000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadcf128> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(sync_write_transaction_recvd_stage, 0, 0)" daemon prio=10 tid=0x00007f4ca8417800 nid=0xc9a waiting on condition [0x00007f4ca1392000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadcf128> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_transaction_ack_processing_stage, 0)" daemon prio=10 tid=0x00007f4ca8415800 nid=0xc99 waiting on condition [0x00007f4ca1493000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadb3e80> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_eviction_broadcast_stage, 0)" daemon prio=10 tid=0x00007f4ca8413800 nid=0xc98 waiting on condition [0x00007f4ca1594000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadcc7b0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_capacity_eviction_stage, 0)" daemon prio=10 tid=0x00007f4ca8412000 nid=0xc97 waiting on condition [0x00007f4ca1695000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadc9d10> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(client_lock_statistics_respond_stage, 0)" daemon prio=10 tid=0x00007f4ca8410000 nid=0xc96 waiting on condition [0x00007f4ca1796000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae29050> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(jmxremote_disconnect_stage, 0)" daemon prio=10 tid=0x00007f4ca840e000 nid=0xc95 waiting on condition [0x00007f4ca1897000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccade0b88> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(apply_changes_stage, 0)" daemon prio=10 tid=0x00007f4ca840c000 nid=0xc94 waiting on condition [0x00007f4ca1998000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadc4b98> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(jmx_events_stage, 0)" daemon prio=10 tid=0x00007f4ca840a000 nid=0xc93 waiting on condition [0x00007f4ca1a99000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae2a858> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(group_hydrate_message_stage, 0)" daemon prio=10 tid=0x00007f4ca8408000 nid=0xc92 waiting on condition [0x00007f4ca1b9a000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadb7bf8> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(objects_sync_stage, 0)" daemon prio=10 tid=0x00007f4ca8406000 nid=0xc91 waiting on condition [0x00007f4ca1c9b000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadaf8b0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(transaction_relay_stage, 0)" daemon prio=10 tid=0x00007f4ca8404000 nid=0xc90 waiting on condition [0x00007f4ca1d9c000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadcea20> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(managed_object_request_stage, 3, 3)" daemon prio=10 tid=0x00007f4ca8402000 nid=0xc8f waiting on condition [0x00007f4ca1e9d000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadac550> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(managed_object_request_stage, 2, 2)" daemon prio=10 tid=0x00007f4ca8400000 nid=0xc8e waiting on condition [0x00007f4ca1f9e000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae2b0c0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(managed_object_request_stage, 1, 1)" daemon prio=10 tid=0x00007f4ca83fe000 nid=0xc8d waiting on condition [0x00007f4ca209f000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae2b658> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(managed_object_request_stage, 0, 0)" daemon prio=10 tid=0x00007f4ca83fc000 nid=0xc8c waiting on condition [0x00007f4ca21a0000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae2bb40> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(object_id_batch_request_stage, 0)" daemon prio=10 tid=0x00007f4ca83fa800 nid=0xc8b waiting on condition [0x00007f4ca22a1000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae2c0e0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(l2_state_message_handler_stage, 0)" daemon prio=10 tid=0x00007f4ca83f8800 nid=0xc8a waiting on condition [0x00007f4ca23a2000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadb3768> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(transaction_acknowledgement_stage, 0)" daemon prio=10 tid=0x00007f4ca83f6800 nid=0xc89 waiting on condition [0x00007f4ca24a3000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae2c870> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(apply_complete_stage, 0)" daemon prio=10 tid=0x00007f4ca83f4800 nid=0xc88 waiting on condition [0x00007f4ca25a4000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadcd9a8> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(object_sync_send_stage, 0)" daemon prio=10 tid=0x00007f4ca83f2800 nid=0xc87 waiting on condition [0x00007f4ca26a5000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadb0ae8> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(process_transaction_stage, 0)" daemon prio=10 tid=0x00007f4ca83f0800 nid=0xc86 waiting on condition [0x00007f4ca27a6000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadd9578> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(group_events_dispatch_stage, 0)" daemon prio=10 tid=0x00007f4ca83ee800 nid=0xc85 waiting on condition [0x00007f4ca28a7000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadae7d0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(hydrate_message_stage, 3, 3)" daemon prio=10 tid=0x00007f4ca83ec800 nid=0xc84 waiting on condition [0x00007f4ca29a8000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadd8088> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(hydrate_message_stage, 2, 2)" daemon prio=10 tid=0x00007f4ca83ea800 nid=0xc83 waiting on condition [0x00007f4ca2aa9000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadd8650> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(hydrate_message_stage, 1, 1)" daemon prio=10 tid=0x00007f4ca83e8800 nid=0xc82 waiting on condition [0x00007f4ca2baa000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadd8b30> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(hydrate_message_stage, 0, 0)" daemon prio=10 tid=0x00007f4ca83e6800 nid=0xc81 waiting on condition [0x00007f4ca2cab000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadd9030> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(commit_changes_stage, 0)" daemon prio=10 tid=0x00007f4ca83e5000 nid=0xc80 waiting on condition [0x00007f4ca2dac000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadcd368> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(respond_to_lock_request_stage, 3, 3)" daemon prio=10 tid=0x00007f4ca83e3000 nid=0xc7f waiting on condition [0x00007f4ca2ead000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadc7f00> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(respond_to_lock_request_stage, 2, 2)" daemon prio=10 tid=0x00007f4ca83e1000 nid=0xc7e waiting on condition [0x00007f4ca2fae000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadc8500> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(respond_to_lock_request_stage, 1, 1)" daemon prio=10 tid=0x00007f4ca83df000 nid=0xc7d waiting on condition [0x00007f4ca30af000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadc89f0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(respond_to_lock_request_stage, 0, 0)" daemon prio=10 tid=0x00007f4ca83dd000 nid=0xc7c waiting on condition [0x00007f4ca31b0000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadc8ee0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(gc_delete_from_disk_stage, 0)" daemon prio=10 tid=0x00007f4ca83db000 nid=0xc7b waiting on condition [0x00007f4ca32b1000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadaaf88> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(transaction_lowwatermark_stage, 0)" daemon prio=10 tid=0x00007f4ca83d9000 nid=0xc7a waiting on condition [0x00007f4ca33b2000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae2d518> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(request_lock_stage, 3, 3)" daemon prio=10 tid=0x00007f4ca83d7000 nid=0xc79 waiting on condition [0x00007f4ca34b3000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae2dc18> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(request_lock_stage, 2, 2)" daemon prio=10 tid=0x00007f4ca83d5000 nid=0xc78 waiting on condition [0x00007f4ca35b4000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae2e1a0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(request_lock_stage, 1, 1)" daemon prio=10 tid=0x00007f4ca83d3000 nid=0xc77 waiting on condition [0x00007f4ca36b5000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae2e678> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(request_lock_stage, 0, 0)" daemon prio=10 tid=0x00007f4ca83d1000 nid=0xc76 waiting on condition [0x00007f4ca37b6000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae2eb50> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(objects_sync_dehydrate_stage, 0)" daemon prio=10 tid=0x00007f4ca83cf000 nid=0xc75 waiting on condition [0x00007f4ca38b7000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadb1510> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_request_stage, 7, 0)" daemon prio=10 tid=0x00007f4ca83cd800 nid=0xc74 waiting on condition [0x00007f4ca39b8000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccade1d30> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_request_stage, 6, 0)" daemon prio=10 tid=0x00007f4ca83cb800 nid=0xc73 waiting on condition [0x00007f4ca3ab9000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccade1d30> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_request_stage, 5, 0)" daemon prio=10 tid=0x00007f4ca83c9800 nid=0xc72 waiting on condition [0x00007f4ca3bba000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccade1d30> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_request_stage, 4, 0)" daemon prio=10 tid=0x00007f4ca83c7800 nid=0xc71 waiting on condition [0x00007f4ca3cbb000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccade1d30> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_request_stage, 3, 0)" daemon prio=10 tid=0x00007f4ca83c5800 nid=0xc70 waiting on condition [0x00007f4ca3dbc000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccade1d30> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_request_stage, 2, 0)" daemon prio=10 tid=0x00007f4ca83c3800 nid=0xc6f waiting on condition [0x00007f4ca3ebd000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccade1d30> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_request_stage, 1, 0)" daemon prio=10 tid=0x00007f4ca83c1800 nid=0xc6e waiting on condition [0x00007f4ca3fbe000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccade1d30> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_request_stage, 0, 0)" daemon prio=10 tid=0x00007f4ca83bf800 nid=0xc6d waiting on condition [0x00007f4ca40bf000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccade1d30> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(recall_objects_stage, 0)" daemon prio=10 tid=0x00007f4ca83bd800 nid=0xc6c waiting on condition [0x00007f4ca41c0000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadcdfd8> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(managed_object_flush_stage, 3, 0)" daemon prio=10 tid=0x00007f4ca83bb800 nid=0xc6b waiting on condition [0x00007f4ca42c1000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae2f4a0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(managed_object_flush_stage, 2, 0)" daemon prio=10 tid=0x00007f4ca83b9800 nid=0xc6a waiting on condition [0x00007f4ca43c2000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae2f4a0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(managed_object_flush_stage, 1, 0)" daemon prio=10 tid=0x00007f4ca83b7800 nid=0xc69 waiting on condition [0x00007f4ca44c3000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae2f4a0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(managed_object_flush_stage, 0, 0)" daemon prio=10 tid=0x00007f4ca83b6000 nid=0xc68 waiting on condition [0x00007f4ca45c4000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae2f4a0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(respond_to_request_stage, 3, 0)" daemon prio=10 tid=0x00007f4ca83b4000 nid=0xc67 waiting on condition [0x00007f4ca46c5000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadab588> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(respond_to_request_stage, 2, 0)" daemon prio=10 tid=0x00007f4ca83b2000 nid=0xc66 waiting on condition [0x00007f4ca47c6000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadab588> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(respond_to_request_stage, 1, 0)" daemon prio=10 tid=0x00007f4ca83b0000 nid=0xc65 waiting on condition [0x00007f4ca48c7000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadab588> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(respond_to_request_stage, 0, 0)" daemon prio=10 tid=0x00007f4ca83ae000 nid=0xc64 waiting on condition [0x00007f4ca49c8000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadab588> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(gc_result_processing_stage, 0)" daemon prio=10 tid=0x00007f4ca83ac000 nid=0xc63 waiting on condition [0x00007f4ca4ac9000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadb2dd0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(cluster_metadata_stage, 0)" daemon prio=10 tid=0x00007f4ca83aa000 nid=0xc62 waiting on condition [0x00007f4ca4bca000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae30560> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(dso-http-bridge, 0)" daemon prio=10 tid=0x00007f4ca83a8000 nid=0xc61 waiting on condition [0x00007f4ca4ccb000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4cb39369e8> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(client_handshake_stage, 0)" daemon prio=10 tid=0x00007f4ca83a6000 nid=0xc60 waiting on condition [0x00007f4ca4dcc000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae31698> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(broadcast_changes_stage, 0)" daemon prio=10 tid=0x00007f4ca83a4000 nid=0xc5f waiting on condition [0x00007f4ca4ecd000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadc96b0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(send_managed_object_stage, 0)" daemon prio=10 tid=0x00007f4ca83a2000 nid=0xc5e waiting on condition [0x00007f4ca4fce000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccae31e40> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(l2_state_change_stage, 0)" daemon prio=10 tid=0x00007f4ca83a0800 nid=0xc5d waiting on condition [0x00007f4ca50cf000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadaef40> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(object_sync_request_stage, 0)" daemon prio=10 tid=0x00007f4ca839e800 nid=0xc5c waiting on condition [0x00007f4ca51d0000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadb1030> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_response_stage, 7, 0)" daemon prio=10 tid=0x00007f4ca839c800 nid=0xc5b waiting on condition [0x00007f4ca52d1000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccade23d0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_response_stage, 6, 0)" daemon prio=10 tid=0x00007f4ca839a800 nid=0xc5a waiting on condition [0x00007f4ca53d2000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccade23d0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_response_stage, 5, 0)" daemon prio=10 tid=0x00007f4ca8398800 nid=0xc59 waiting on condition [0x00007f4ca54d3000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccade23d0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_response_stage, 4, 0)" daemon prio=10 tid=0x00007f4ca8396800 nid=0xc58 waiting on condition [0x00007f4ca55d4000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccade23d0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_response_stage, 3, 0)" daemon prio=10 tid=0x00007f4ca8394800 nid=0xc57 waiting on condition [0x00007f4ca56d5000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccade23d0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_response_stage, 2, 0)" daemon prio=10 tid=0x00007f4ca8392800 nid=0xc56 waiting on condition [0x00007f4ca57d6000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccade23d0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_response_stage, 1, 0)" daemon prio=10 tid=0x00007f4ca8390800 nid=0xc55 waiting on condition [0x00007f4ca58d7000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccade23d0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_response_stage, 0, 0)" daemon prio=10 tid=0x00007f4ca838e800 nid=0xc54 waiting on condition [0x00007f4ca59d8000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccade23d0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(jmxremote_connect_stage, 0)" daemon prio=10 tid=0x00007f4ca838c800 nid=0xc53 waiting on condition [0x00007f4ca5ad9000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccaddade8> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(group_handshake_message_stage, 0)" daemon prio=10 tid=0x00007f4ca838a800 nid=0xc52 waiting on condition [0x00007f4ca5bda000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadb75b8> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_eviction_processor_stage, 7, 0)" daemon prio=10 tid=0x00007f4ca8387000 nid=0xc51 waiting on condition [0x00007f4ca5cdb000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadcaaa0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_eviction_processor_stage, 6, 0)" daemon prio=10 tid=0x00007f4ca8385000 nid=0xc50 waiting on condition [0x00007f4ca5ddc000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadcaaa0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_eviction_processor_stage, 5, 0)" daemon prio=10 tid=0x00007f4ca8380800 nid=0xc4f waiting on condition [0x00007f4ca5edd000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadcaaa0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_eviction_processor_stage, 4, 0)" daemon prio=10 tid=0x00007f4ca837e800 nid=0xc4e waiting on condition [0x00007f4ca5fde000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadcaaa0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_eviction_processor_stage, 3, 0)" daemon prio=10 tid=0x00007f4ca837c800 nid=0xc4d waiting on condition [0x00007f4ca60df000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadcaaa0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_eviction_processor_stage, 2, 0)" daemon prio=10 tid=0x00007f4ca837b000 nid=0xc4c waiting on condition [0x00007f4ca61e0000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadcaaa0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_eviction_processor_stage, 1, 0)" daemon prio=10 tid=0x00007f4ca8383000 nid=0xc4b waiting on condition [0x00007f4ca62e1000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadcaaa0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"WorkerThread(server_map_eviction_processor_stage, 0, 0)" daemon prio=10 tid=0x00007f4ca8382000 nid=0xc4a waiting on condition [0x00007f4ca63e2000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4ccadcaaa0> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"HealthChecker" daemon prio=10 tid=0x00007f4ca8214800 nid=0xc49 waiting on condition [0x00007f4ca64e3000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at java.lang.Thread.sleep(Thread.java:298)
+	at com.tc.util.concurrent.ThreadUtil.reallySleep(ThreadUtil.java:24)
+	at com.tc.util.concurrent.ThreadUtil.reallySleep(ThreadUtil.java:14)
+	at com.tc.net.protocol.transport.ConnectionHealthCheckerImpl$HealthCheckerMonitorThreadEngine.run(ConnectionHealthCheckerImpl.java:197)
+	at java.lang.Thread.run(Thread.java:619)
+
+"L2_L2:TCComm Main Selector Thread_W (listen 0.0.0.0:9530)" daemon prio=10 tid=0x00007f4ca80e3000 nid=0xc48 runnable [0x00007f4ca65e4000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadbfad0> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadbfab8> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadbf740> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L2:TCComm Main Selector Thread_R (listen 0.0.0.0:9530)" daemon prio=10 tid=0x00007f4ca81dc000 nid=0xc47 runnable [0x00007f4ca66e5000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadb9110> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadb90f8> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadb8cc8> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L2:TCWorkerComm # 3_W" daemon prio=10 tid=0x00007f4ca830f800 nid=0xc46 runnable [0x00007f4ca67e6000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadba810> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadba7f8> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadba480> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L2:TCWorkerComm # 3_R" daemon prio=10 tid=0x00007f4ca819c800 nid=0xc45 runnable [0x00007f4ca68e7000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadb9e18> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadb9e00> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadb9a88> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L2:TCWorkerComm # 2_W" daemon prio=10 tid=0x00007f4ca8027000 nid=0xc44 runnable [0x00007f4ca69e8000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadbbe30> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadbbe18> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadbbaa0> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L2:TCWorkerComm # 2_R" daemon prio=10 tid=0x00007f4ca81a3800 nid=0xc43 runnable [0x00007f4ca6ae9000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadbb458> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadbb440> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadbb0c8> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L2:TCWorkerComm # 1_W" daemon prio=10 tid=0x00007f4ca81e2000 nid=0xc42 runnable [0x00007f4ca6bea000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadbd430> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadbd418> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadbd0a0> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L2:TCWorkerComm # 1_R" daemon prio=10 tid=0x00007f4ca821e800 nid=0xc41 runnable [0x00007f4ca6ceb000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadbca58> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadbca40> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadbc6c8> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L2:TCWorkerComm # 0_W" daemon prio=10 tid=0x00007f4ca8340000 nid=0xc40 runnable [0x00007f4ca6dec000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadbea30> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadbea18> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadbe6a0> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L2:TCWorkerComm # 0_R" daemon prio=10 tid=0x00007f4ca8008000 nid=0xc3f runnable [0x00007f4ca6eed000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadbe058> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadbe040> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadbdcc8> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"TC Group Manager Handshake timer" daemon prio=10 tid=0x00007f4ca8007000 nid=0xc3e in Object.wait() [0x00007f4ca6fee000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00007f4ccadb67e0> (a java.util.TaskQueue)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	- locked <0x00007f4ccadb67e0> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"Reconnect timer" daemon prio=10 tid=0x00007f4ca8244800 nid=0xc3d in Object.wait() [0x00007f4ca70ef000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00007f4ccae30c08> (a java.util.TaskQueue)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	- locked <0x00007f4ccae30c08> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"Server Map Periodic Evictor" daemon prio=10 tid=0x00007f4ca81fd000 nid=0xc3c in Object.wait() [0x00007f4ca71f0000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00007f4ccadca210> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0x00007f4ccadca210> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"DSO Lock Object.wait() timer" daemon prio=10 tid=0x00007f4ca81fc800 nid=0xc3b in Object.wait() [0x00007f4ca72f1000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00007f4ccadc7640> (a java.util.TaskQueue)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	- locked <0x00007f4ccadc7640> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"TC Memory Monitor" daemon prio=10 tid=0x00007f4ca80c0800 nid=0xc3a waiting on condition [0x00007f4ca73f2000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at com.tc.runtime.TCMemoryManagerImpl$MemoryMonitor.run(TCMemoryManagerImpl.java:142)
+	at java.lang.Thread.run(Thread.java:619)
+
+"HealthChecker" daemon prio=10 tid=0x00007f4ca8180800 nid=0xc39 waiting on condition [0x00007f4ca74f3000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at java.lang.Thread.sleep(Thread.java:298)
+	at com.tc.util.concurrent.ThreadUtil.reallySleep(ThreadUtil.java:24)
+	at com.tc.util.concurrent.ThreadUtil.reallySleep(ThreadUtil.java:14)
+	at com.tc.net.protocol.transport.ConnectionHealthCheckerImpl$HealthCheckerMonitorThreadEngine.run(ConnectionHealthCheckerImpl.java:197)
+	at java.lang.Thread.run(Thread.java:619)
+
+"L2_L1:TCComm Main Selector Thread_W (listen 0.0.0.0:9510)" daemon prio=10 tid=0x00007f4ca8368000 nid=0xc38 runnable [0x00007f4ca75f4000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadd6bd8> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadd6bc0> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadd6848> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L1:TCComm Main Selector Thread_R (listen 0.0.0.0:9510)" daemon prio=10 tid=0x00007f4ca81d4800 nid=0xc37 runnable [0x00007f4ca76f5000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadd61d0> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadd61b8> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadd5e40> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L1:TCWorkerComm # 3_W" daemon prio=10 tid=0x00007f4ca834e000 nid=0xc36 runnable [0x00007f4ca77f6000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadd1348> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadd1330> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadd0f90> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L1:TCWorkerComm # 3_R" daemon prio=10 tid=0x00007f4ca8254800 nid=0xc35 runnable [0x00007f4ca78f7000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadd0948> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadd0930> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadd05b8> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L1:TCWorkerComm # 2_W" daemon prio=10 tid=0x00007f4ca81e6000 nid=0xc34 runnable [0x00007f4ca79f8000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadd2948> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadd2930> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadd25b8> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L1:TCWorkerComm # 2_R" daemon prio=10 tid=0x00007f4ca8307800 nid=0xc33 runnable [0x00007f4ca7af9000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadd1f70> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadd1f58> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadd1be0> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L1:TCWorkerComm # 1_W" daemon prio=10 tid=0x00007f4ca8160800 nid=0xc32 runnable [0x00007f4ca7bfa000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadd3f48> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadd3f30> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadd3bb8> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L1:TCWorkerComm # 1_R" daemon prio=10 tid=0x00007f4ca81ab000 nid=0xc31 runnable [0x00007f4ca7efd000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadd3570> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadd3558> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadd31e0> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L1:TCWorkerComm # 0_W" daemon prio=10 tid=0x00007f4ca8208000 nid=0xc30 runnable [0x00007f4ca7dfc000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadd5548> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadd5530> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadd51b8> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"L2_L1:TCWorkerComm # 0_R" daemon prio=10 tid=0x00007f4ca81ed000 nid=0xc2f runnable [0x00007f4ca7cfb000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:215)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked <0x00007f4ccadd4b70> (a sun.nio.ch.Util$1)
+	- locked <0x00007f4ccadd4b58> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00007f4ccadd47e0> (a sun.nio.ch.EPollSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:540)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:286)
+
+"Checkpointer" daemon prio=10 tid=0x00007f4ca8163800 nid=0xc2b in Object.wait() [0x00007f4ca7ffe000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00007f4ccae35b90> (a java.lang.Object)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sleepycat.je.utilint.DaemonThread.run(DaemonThread.java:172)
+	- locked <0x00007f4ccae35b90> (a java.lang.Object)
+	at java.lang.Thread.run(Thread.java:619)
+
+"Cleaner-1" daemon prio=10 tid=0x00007f4ca820d000 nid=0xc2a in Object.wait() [0x00007f4cac143000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00007f4cb3a06e68> (a java.lang.Object)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sleepycat.je.utilint.DaemonThread.run(DaemonThread.java:172)
+	- locked <0x00007f4cb3a06e68> (a java.lang.Object)
+	at java.lang.Thread.run(Thread.java:619)
+
+"INCompressor" daemon prio=10 tid=0x00007f4ca81a0800 nid=0xc29 in Object.wait() [0x00007f4cac244000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00007f4cb3c16560> (a java.lang.Object)
+	at com.sleepycat.je.utilint.DaemonThread.run(DaemonThread.java:174)
+	- locked <0x00007f4cb3c16560> (a java.lang.Object)
+	at java.lang.Thread.run(Thread.java:619)
+
+"SampledCounterManager Timer" daemon prio=10 tid=0x00007f4ca81cc000 nid=0xc28 in Object.wait() [0x00007f4cac345000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00007f4cb39332a0> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0x00007f4cb39332a0> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"Thread-10" prio=10 tid=0x00007f4ca8129800 nid=0xc27 runnable [0x00007f4cac446000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:390)
+	- locked <0x00007f4cb3933f80> (a java.net.SocksSocketImpl)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+	at java.net.ServerSocket.accept(ServerSocket.java:421)
+	at com.sun.jmx.remote.socket.SocketConnectionServer.accept(SocketConnectionServer.java:173)
+	at com.sun.jmx.remote.generic.SynchroMessageConnectionServerImpl.accept(SynchroMessageConnectionServerImpl.java:47)
+	at com.tc.management.L2Management$TCSynchroMessageConnectionServer.accept(L2Management.java:211)
+	at javax.management.remote.generic.GenericConnectorServer$Receiver.run(GenericConnectorServer.java:340)
+
+"Timer-0" daemon prio=10 tid=0x00007f4ca8357800 nid=0xc26 in Object.wait() [0x00007f4cac547000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00007f4cb3934d10> (a java.util.TaskQueue)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	- locked <0x00007f4cb3934d10> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"H2 Log Writer STATISTICS-BUFFER" daemon prio=10 tid=0x00007f4ca82ae000 nid=0xc25 waiting on condition [0x00007f4cac648000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at org.h2.store.WriterThread.run(WriterThread.java:147)
+
+"H2 File Lock Watchdog /home/jatone/workspace/Submission-System-Prototype/terracotta/cluster-statistics/statistics-buffer.lock.db" daemon prio=10 tid=0x00007f4ca8111000 nid=0xc24 waiting on condition [0x00007f4cac749000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at org.h2.store.FileLock$1.run(FileLock.java:198)
+	at java.lang.Thread.run(Thread.java:619)
+
+"Statistics Logger" daemon prio=10 tid=0x00007f4ca82c8800 nid=0xc23 in Object.wait() [0x00007f4cac84a000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00007f4cb3936080> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0x00007f4cb3936080> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"WorkerThread(dso-http-bridge, 0)" daemon prio=10 tid=0x00007f4ca82e3800 nid=0xc22 waiting on condition [0x00007f4caca82000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00007f4cb39369e8> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:395)
+	at com.tc.util.concurrent.TCLinkedBlockingQueue.poll(TCLinkedBlockingQueue.java:30)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:264)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:122)
+
+"btpool0-0" prio=10 tid=0x00007f4ca82ce800 nid=0xc21 in Object.wait() [0x00007f4cacb83000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00007f4cb393b5c0> (a org.mortbay.thread.BoundedThreadPool$PoolThread)
+	at org.mortbay.thread.BoundedThreadPool$PoolThread.run(BoundedThreadPool.java:490)
+	- locked <0x00007f4cb393b5c0> (a org.mortbay.thread.BoundedThreadPool$PoolThread)
+
+"H2 Log Writer STATISTICS-STORE" daemon prio=10 tid=0x00007f4ca822a800 nid=0xc20 waiting on condition [0x00007f4cacc84000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at org.h2.store.WriterThread.run(WriterThread.java:147)
+
+"H2 File Lock Watchdog /home/jatone/workspace/Submission-System-Prototype/terracotta/cluster-statistics/statistics-store.lock.db" daemon prio=10 tid=0x00007f4ca81f5000 nid=0xc1f waiting on condition [0x00007f4cacd85000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at org.h2.store.FileLock$1.run(FileLock.java:198)
+	at java.lang.Thread.run(Thread.java:619)
+
+"RMI TCP Accept-0" daemon prio=10 tid=0x00007f4ca802d800 nid=0xc1c runnable [0x00007f4cad096000]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:390)
+	- locked <0x00007f4ccadea858> (a java.net.SocksSocketImpl)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+	at java.net.ServerSocket.accept(ServerSocket.java:421)
+	at sun.management.jmxremote.LocalRMIServerSocketFactory$1.accept(LocalRMIServerSocketFactory.java:34)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:369)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:341)
+	at java.lang.Thread.run(Thread.java:619)
+
+"Low Memory Detector" daemon prio=10 tid=0x0000000041205000 nid=0xc1b runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"CompilerThread1" daemon prio=10 tid=0x0000000041200000 nid=0xc1a waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"CompilerThread0" daemon prio=10 tid=0x00000000411fe000 nid=0xc19 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" daemon prio=10 tid=0x00000000411fb800 nid=0xc18 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" daemon prio=10 tid=0x00000000411d8000 nid=0xc17 in Object.wait() [0x00007f4cad96d000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00007f4ccadea848> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:118)
+	- locked <0x00007f4ccadea848> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:134)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+"Reference Handler" daemon prio=10 tid=0x00000000411d6000 nid=0xc16 in Object.wait() [0x00007f4cada6e000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00007f4cb3958a98> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:485)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+	- locked <0x00007f4cb3958a98> (a java.lang.ref.Reference$Lock)
+
+"main" prio=10 tid=0x0000000041177800 nid=0xc0d in Object.wait() [0x00007f4cd6d68000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00007f4cb3932f20> (a com.tc.server.TCServerImpl)
+	at java.lang.Object.wait(Object.java:485)
+	at com.tc.server.TCServerImpl.waitUntilShutdown(TCServerImpl.java:665)
+	- locked <0x00007f4cb3932f20> (a com.tc.server.TCServerImpl)
+	at com.tc.server.TCServerMain.main(TCServerMain.java:32)
+
+"VM Thread" prio=10 tid=0x00000000411cf800 nid=0xc14 runnable 
+
+"GC task thread#0 (ParallelGC)" prio=10 tid=0x0000000041181800 nid=0xc10 runnable 
+
+"GC task thread#1 (ParallelGC)" prio=10 tid=0x0000000041183800 nid=0xc11 runnable 
+
+"VM Periodic Task Thread" prio=10 tid=0x00007f4ca8077000 nid=0xc1d waiting on condition 
+
+JNI global references: 667
+
+Heap
+ PSYoungGen      total 38848K, used 7617K [0x00007f4cc85c0000, 0x00007f4ccb2e0000, 0x00007f4cd2dc0000)
+  eden space 32512K, 14% used [0x00007f4cc85c0000,0x00007f4cc8a6eef0,0x00007f4cca580000)
+  from space 6336K, 44% used [0x00007f4ccacb0000,0x00007f4ccaf717f8,0x00007f4ccb2e0000)
+  to   space 6848K, 0% used [0x00007f4cca580000,0x00007f4cca580000,0x00007f4ccac30000)
+ PSOldGen        total 21504K, used 11133K [0x00007f4cb35c0000, 0x00007f4cb4ac0000, 0x00007f4cc85c0000)
+  object space 21504K, 51% used [0x00007f4cb35c0000,0x00007f4cb409f4b0,0x00007f4cb4ac0000)
+ PSPermGen       total 29120K, used 29070K [0x00007f4cae1c0000, 0x00007f4cafe30000, 0x00007f4cb35c0000)
+  object space 29120K, 99% used [0x00007f4cae1c0000,0x00007f4cafe23bd8,0x00007f4cafe30000)
+
+

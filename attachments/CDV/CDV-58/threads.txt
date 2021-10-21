@@ -1,0 +1,77 @@
+Full thread dump Java HotSpot(TM) Client VM (1.5.0_10-b03 mixed mode, sharing):
+
+"AWT-EventQueue-0" prio=6 tid=0x02f52520 nid=0x164 in Object.wait() [0x035ff000..0x035ffd68]
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:474)
+	at java.awt.EventQueue.getNextEvent(EventQueue.java:345)
+	- locked <0x22fa7b88> (a java.awt.EventQueue)
+	at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:189)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+
+"Thread-3" daemon prio=2 tid=0x02c402b8 nid=0x658 in Object.wait() [0x0363f000..0x0363fa68]
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:474)
+	at com.sun.jmx.remote.generic.ClientSynchroMessageConnectionImpl.sendWithReturn(ClientSynchroMessageConnectionImpl.java:191)
+	- locked <0x235258d8> (a [I)
+	at javax.management.remote.generic.ClientIntermediary$GenericClientNotifForwarder.fetchNotifs(ClientIntermediary.java:864)
+	at com.sun.jmx.remote.opt.internal.ClientNotifForwarder$NotifFetcher.fetchNotifs(ClientNotifForwarder.java:420)
+	at com.sun.jmx.remote.opt.internal.ClientNotifForwarder$NotifFetcher.run(ClientNotifForwarder.java:318)
+	at java.lang.Thread.run(Thread.java:595)
+
+"DestroyJavaVM" prio=6 tid=0x0035ba20 nid=0x1b0 waiting on condition [0x00000000..0x0006fab4]
+
+"TimerQueue" daemon prio=6 tid=0x03125e38 nid=0x2a8 in Object.wait() [0x0356f000..0x0356fc68]
+	at java.lang.Object.wait(Native Method)
+	at javax.swing.TimerQueue.run(TimerQueue.java:236)
+	- locked <0x230f8550> (a javax.swing.TimerQueue)
+	at java.lang.Thread.run(Thread.java:595)
+
+"AWT-Shutdown" prio=6 tid=0x02c4bb60 nid=0x1cc in Object.wait() [0x032ff000..0x032ff9e8]
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x22f9a610> (a java.lang.Object)
+	at java.lang.Object.wait(Object.java:474)
+	at sun.awt.AWTAutoShutdown.run(AWTAutoShutdown.java:259)
+	- locked <0x22f9a610> (a java.lang.Object)
+	at java.lang.Thread.run(Thread.java:595)
+
+"Java2D Disposer" daemon prio=10 tid=0x030709b8 nid=0xdc in Object.wait() [0x033df000..0x033dfa68]
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x22fedeb0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+	- locked <0x22fedeb0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:132)
+	at sun.java2d.Disposer.run(Disposer.java:107)
+	at java.lang.Thread.run(Thread.java:595)
+
+"AWT-Windows" daemon prio=6 tid=0x02da2320 nid=0x304 runnable [0x0333f000..0x0333fb68]
+	at sun.awt.windows.WToolkit.eventLoop(Native Method)
+	at sun.awt.windows.WToolkit.run(WToolkit.java:269)
+	at java.lang.Thread.run(Thread.java:595)
+
+"Low Memory Detector" daemon prio=6 tid=0x00a17290 nid=0xbb0 runnable [0x00000000..0x00000000]
+
+"CompilerThread0" daemon prio=10 tid=0x00a15fa0 nid=0x498 waiting on condition [0x00000000..0x02bbfa48]
+
+"Signal Dispatcher" daemon prio=10 tid=0x00a15338 nid=0x480 waiting on condition [0x00000000..0x00000000]
+
+"Finalizer" daemon prio=8 tid=0x00a0f380 nid=0xd44 in Object.wait() [0x02b3f000..0x02b3fa68]
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x22f69508> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+	- locked <0x22f69508> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:132)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+"Reference Handler" daemon prio=10 tid=0x00a0e770 nid=0xf20 in Object.wait() [0x02aff000..0x02affae8]
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:474)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+	- locked <0x22f69588> (a java.lang.ref.Reference$Lock)
+
+"VM Thread" prio=10 tid=0x00a0ce88 nid=0xed4 runnable 
+
+"VM Periodic Task Thread" prio=10 tid=0x00a14d40 nid=0x384 waiting on condition 
+

@@ -1,0 +1,114 @@
+Index: toolkit-impl/src/main/java/org/terracotta/cache/serialization/SerializationStrategy.java
+===================================================================
+--- toolkit-impl/src/main/java/org/terracotta/cache/serialization/SerializationStrategy.java	(revision 24500)
++++ toolkit-impl/src/main/java/org/terracotta/cache/serialization/SerializationStrategy.java	(working copy)
+@@ -9,8 +9,8 @@
+ /**
+  * A cache key/value serialization strategy.
+  * <p>
+- * Implementation of this class are used to convert cache keys and values into 
+- * detached representations that are portable across the cluster.
++ * Implementation of this class are used to convert cache keys and values into detached representations that are
++ * portable across the cluster.
+  * 
+  * @param <T> value type
+  */
+@@ -26,10 +26,8 @@
+    */
+   T deserialize(byte[] data) throws IOException, ClassNotFoundException;
+ 
+-  
+   /**
+-   * Deserialize the serialized value using the specified loader, and returning
+-   * a new representation.
++   * Deserialize the serialized value using the specified loader, and returning a new representation.
+    * 
+    * @param data serialized form
+    * @param loader to use during deserialization
+@@ -50,9 +48,21 @@
+ 
+   /**
+    * Convert the given key into a portable {@code String} form.
++   * 
+    * @param key key to serialize
+    * @return a portable {@code String} key
+    * @throws IOException if serialization fails
+    */
+   String generateStringKeyFor(Object key) throws IOException;
++
++  /**
++   * Convert the given portable key into it's concreted instance.
++   * 
++   * @param pKey to deserialize
++   * @param loader to use during deserialization
++   * @return the concrete key
++   * @throws IOException
++   * @throws ClassNotFoundException
++   */
++  Object generateKeyFromString(String pKey, ClassLoader loader) throws IOException, ClassNotFoundException;
+ }
+Index: toolkit-impl/src/main/java/org/terracotta/cache/serialization/NonDsoSerializationStrategy.java
+===================================================================
+--- toolkit-impl/src/main/java/org/terracotta/cache/serialization/NonDsoSerializationStrategy.java	(revision 24500)
++++ toolkit-impl/src/main/java/org/terracotta/cache/serialization/NonDsoSerializationStrategy.java	(working copy)
+@@ -42,4 +42,8 @@
+       }
+     }.readObject();
+   }
++
++  public Object generateKeyFromString(String pKey, ClassLoader loader) throws IOException, ClassNotFoundException {
++    return deserialize(pKey.getBytes(), loader);
++  }
+ }
+Index: toolkit-impl/src/main/java/org/terracotta/cache/serialization/DsoSerializationStrategy.java
+===================================================================
+--- toolkit-impl/src/main/java/org/terracotta/cache/serialization/DsoSerializationStrategy.java	(revision 24500)
++++ toolkit-impl/src/main/java/org/terracotta/cache/serialization/DsoSerializationStrategy.java	(working copy)
+@@ -15,7 +15,7 @@
+ 
+ /**
+  * A clusterable serialization strategy.
+- *
++ * 
+  * @param <T> value type
+  */
+ public class DsoSerializationStrategy<T> implements SerializationStrategy<T> {
+@@ -35,9 +35,8 @@
+   /**
+    * Constructs an optionally locked clusterable serialization strategy.
+    * <p>
+-   * Non-locked instances can be used to provider tighter over lock scoping, and
+-   * associated transaction scoping when serialization strategies are being used
+-   * within operations that are intended to be atomic.
++   * Non-locked instances can be used to provider tighter over lock scoping, and associated transaction scoping when
++   * serialization strategies are being used within operations that are intended to be atomic.
+    * 
+    * @param internalLocking {@code true} if internal locking should be applied
+    */
+@@ -78,6 +77,26 @@
+     oos.writeObject(key);
+   }
+ 
++  public Object generateKeyFromString(final String pKey, ClassLoader loader) throws IOException, ClassNotFoundException {
++    ByteArrayInputStream bos = new ByteArrayInputStream(pKey.getBytes());
++    ObjectInputStream ois = null;
++    Object key = null;
++
++    try {
++      ois = new OIS(bos, oscSerializer, loader);
++      key = ois.readObject();
++    } finally {
++      if (ois != null) {
++        try {
++          ois.close();
++        } catch (Exception e) {/**/
++        }
++      }
++    }
++
++    return key;
++  }
++
+   void forceSlowLookup() {
+     this.oscSerializer.forceSlowLookup();
+   }

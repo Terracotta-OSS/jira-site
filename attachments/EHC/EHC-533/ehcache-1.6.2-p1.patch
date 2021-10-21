@@ -1,0 +1,12 @@
+diff -ur ehcache-1.6.2.ori/net/sf/ehcache/store/LruMemoryStore.java ehcache-1.6.2/net/sf/ehcache/store/LruMemoryStore.java
+--- ehcache-1.6.2.ori/net/sf/ehcache/store/LruMemoryStore.java	2009-10-14 13:45:50.000000000 +0200
++++ ehcache-1.6.2/net/sf/ehcache/store/LruMemoryStore.java	2009-11-16 14:44:00.176939200 +0100
+@@ -423,7 +423,7 @@
+          */
+         protected final boolean removeEldestEntry(Map.Entry eldest) {
+             Element element = (Element) eldest.getValue();
+-            return removeLeastRecentlyUsedElement(element);
++            return element != null && removeLeastRecentlyUsedElement(element);
+         }
+ 
+         /**

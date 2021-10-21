@@ -1,0 +1,23 @@
+Index: src/main/java/net/sf/ehcache/Cache.java
+===================================================================
+--- src/main/java/net/sf/ehcache/Cache.java	(revision 1862)
++++ src/main/java/net/sf/ehcache/Cache.java	(working copy)
+@@ -1181,11 +1181,13 @@
+         }
+ 
+         element.resetAccessStatistics();
+-        boolean elementExists;
+-        Object key = element.getObjectKey();
+-        elementExists = isElementInMemory(key) || isElementOnDisk(key);
+-        if (elementExists) {
+-            element.updateUpdateStatistics();
++        boolean elementExists = false;
++        if (memoryStore.isNodeCoherent()) {
++            Object key = element.getObjectKey();
++            elementExists = isElementInMemory(key) || isElementOnDisk(key);
++            if (elementExists) {
++                element.updateUpdateStatistics();
++            }
+         }
+         applyDefaultsToElementWithoutLifespanSet(element);
+ 

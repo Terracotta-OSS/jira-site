@@ -1,0 +1,150 @@
+2008-08-08 23:58:02,628 [http-8082-Processor379] DEBUG com.protrade.tapestry5.base.services.RequestLogFilter - handle( start; [] )
+2008-08-08 23:58:03,154 [http-8082-Processor379] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-HIT: TopStoryBuffer
+2008-08-08 23:58:03,156 [http-8082-Processor379] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:buffer_579649730
+2008-08-08 23:58:03,511 [http-8082-Processor377] DEBUG com.protrade.tapestry5.base.services.RequestLogFilter - handle( core/ads/gamslotiframe; [ ca-pub-6763522093593762, fanwars_fb_futbol_newcastleunited_newcastleunited_160x600 ] )
+2008-08-08 23:58:03,592 [http-8082-Processor379] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:buffer_0_579649730
+2008-08-08 23:58:03,776 [http-8082-Processor379] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:buffer_1_579649730
+2008-08-08 23:58:03,795 [http-8082-Processor376] DEBUG com.protrade.tapestry5.base.services.RequestLogFilter - handle( core/ads/gamslotiframe; [ ca-pub-6763522093593762, fanwars_fb_cheers_sponsor ] )
+2008-08-08 23:58:03,807 [http-8082-Processor379] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-HIT: core/Start:startright.buffer
+2008-08-08 23:58:03,812 [http-8082-Processor379] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-HIT: core/Start:startright.rivalrybattle.ranks.buffer
+Aug 8, 2008 11:58:05 PM org.apache.tomcat.util.threads.ThreadPool logFull
+SEVERE: All threads (400) are currently busy, waiting. Increase maxThreads (400) or check the servlet status
+2008-08-09 00:31:02,401 [http-8082-Processor100] DEBUG com.protrade.tapestry5.base.services.RequestLogFilter - handle( start; [] )
+2008-08-09 00:31:02,402 [http-8082-Processor107] DEBUG com.protrade.tapestry5.base.services.RequestLogFilter - handle( start; [] )
+2008-08-09 00:31:02,404 [http-8082-Processor98] DEBUG com.protrade.tapestry5.base.services.RequestLogFilter - handle( start; [] )
+2008-08-09 00:31:02,405 [http-8082-Processor5] DEBUG com.protrade.tapestry5.base.services.RequestLogFilter - handle( core/start; [] )
+2008-08-09 00:31:02,405 [http-8082-Processor156] DEBUG com.protrade.tapestry5.base.services.RequestLogFilter - handle( core/cheers; [] )
+2008-08-09 00:31:02,421 [http-8082-Processor156] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Cheers:buffer
+2008-08-09 00:31:02,981 [http-8082-Processor156] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-HIT: core/Cheers:startright.buffer
+2008-08-09 00:31:02,988 [http-8082-Processor156] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Cheers:startright.rivalrybattle.ranks.buffer
+2008-08-09 00:31:03,179 [http-8082-Processor107] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: TopStoryBuffer
+2008-08-09 00:31:03,183 [http-8082-Processor98] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: TopStoryBuffer
+2008-08-09 00:31:03,189 [http-8082-Processor107] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:buffer_753710674
+2008-08-09 00:31:03,194 [http-8082-Processor98] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:buffer_753710674
+2008-08-09 00:31:03,203 [http-8082-Processor5] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-HIT: TopStoryBuffer
+2008-08-09 00:31:03,205 [http-8082-Processor100] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-HIT: TopStoryBuffer
+2008-08-09 00:31:03,205 [http-8082-Processor5] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:buffer_753710674
+2008-08-09 00:31:03,208 [http-8082-Processor100] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:buffer_753710674
+2008-08-09 00:31:03,354 [http-8082-Processor156] DEBUG com.protrade.tapestry5.base.services.RequestLogFilter - handle( core/ads/gamslotiframe; [ ca-pub-6763522093593762, fanwars_fb_rugby_italy_italy_646x80 ] )
+2008-08-09 00:31:03,508 [http-8082-Processor156] DEBUG com.protrade.tapestry5.base.services.RequestLogFilter - handle( core/ads/gamslotiframe; [ ca-pub-6763522093593762, fanwars_fb_cheers_sponsor ] )
+2008-08-09 00:31:03,527 [http-8082-Processor100] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:buffer_0_753710674
+2008-08-09 00:31:03,527 [http-8082-Processor5] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:buffer_0_753710674
+2008-08-09 00:31:03,528 [http-8082-Processor98] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:buffer_0_753710674
+2008-08-09 00:31:03,528 [http-8082-Processor107] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:buffer_0_753710674
+2008-08-09 00:31:19,929 [http-8082-Processor107] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:buffer_1_753710674
+2008-08-09 00:31:19,930 [http-8082-Processor5] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:buffer_1_753710674
+2008-08-09 00:31:19,931 [http-8082-Processor100] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:buffer_1_753710674
+2008-08-09 00:31:19,934 [http-8082-Processor98] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:buffer_1_753710674
+2008-08-09 00:31:20,145 [http-8082-Processor107] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:startright.buffer
+2008-08-09 00:31:20,148 [http-8082-Processor100] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:startright.buffer
+2008-08-09 00:31:20,154 [http-8082-Processor98] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-HIT: core/Start:startright.buffer
+2008-08-09 00:31:20,155 [http-8082-Processor107] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:startright.rivalrybattle.ranks.buffer
+2008-08-09 00:31:20,156 [http-8082-Processor100] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:startright.rivalrybattle.ranks.buffer
+2008-08-09 00:31:20,160 [http-8082-Processor98] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-MISS: core/Start:startright.rivalrybattle.ranks.buffer
+2008-08-09 00:31:20,185 [http-8082-Processor5] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-HIT: core/Start:startright.buffer
+2008-08-09 00:31:20,191 [http-8082-Processor5] DEBUG com.protrade.tapestry5.base.components.common.Buffer - BUFFER-HIT: core/Start:startright.rivalrybattle.ranks.buffer
+2008-08-09 00:31:20,194 [http-8082-Processor107] DEBUG com.protrade.tapestry5.base.services.RequestLogFilter - handle( start; [] )
+2008-08-09 00:31:20,195 [http-8082-Processor107] DEBUG com.protrade.facebook.base.services.FacebookAuthFilterImpl - REDIRECT loginUrl: http://www.facebook.com/login.php?api_key=7c2c56b57842b0d0b2294c1c0fdc6c5b&v=1.0&canvas=1&next=start%3F%3D%26_fb_fromhash%3D0ffcba97e174a933ad9d073d80077d3f
+2008-08-09 00:31:20,195 [http-8082-Processor107] DEBUG com.protrade.unifiedsocial.USSFql$FbmlResponse - sendRedirect( http://www.facebook.com/login.php?api_key=7c2c56b57842b0d0b2294c1c0fdc6c5b&v=1.0&canvas=1&next=start%3F%3D%26_fb_fromhash%3D0ffcba97e174a933ad9d073d80077d3f): <fb:redirect url="http://www.facebook.com/login.php?api_key=7c2c56b57842b0d0b2294c1c0fdc6c5b&v=1.0&canvas=1&next=start%3F%3D%26_fb_fromhash%3D0ffcba97e174a933ad9d073d80077d3f"/>
+2008-08-09 00:31:20,329 [http-8082-Processor107] DEBUG com.protrade.tapestry5.base.services.RequestLogFilter - handle( invite.canvaslayout.fanwarspage.docflex.hbxanalytics.analyticsiframe:hbx; [ ~Invite, ~Team Australia_fb, X000 ]; [] )
+2008-08-09 00:31:20,557 [http-8082-Processor5] DEBUG com.protrade.tapestry5.base.services.RequestLogFilter - handle( core/declare.canvaslayout.fanwarspage.docflex.hbxanalytics.analyticsiframe:hbx; [ ~Declare, ~Toon Army_fb, M000 ]; [ ~~newcastle_united~invite ] )
+2008-08-09 00:31:20,655 [http-8082-Processor107] DEBUG com.protrade.tapestry5.base.services.RequestLogFilter - handle( core/ads/gamslotiframe; [ ca-pub-6763522093593762, fanwars_fb_futbol_newcastleunited_newcastleunited_646x80 ] )
+Aug 9, 2008 12:38:22 AM org.apache.coyote.http11.Http11Protocol pause
+INFO: Pausing Coyote HTTP/1.1 on http-8082
+Aug 9, 2008 12:38:23 AM org.apache.catalina.core.StandardService stop
+INFO: Stopping service Catalina
+2008-08-09 00:38:23,195 [main] ERROR org.apache.catalina.session.ManagerBase - IOException while saving persisted sessions: java.io.FileNotFoundException: /home/ptfan/jakarta-tomcat/work/Catalina/localhost/_/SESSIONS.ser (No such file or directory)
+java.io.FileNotFoundException: /home/ptfan/jakarta-tomcat/work/Catalina/localhost/_/SESSIONS.ser (No such file or directory)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:179)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:70)
+	at org.apache.catalina.session.StandardManager.doUnload(StandardManager.java:488)
+	at org.apache.catalina.session.StandardManager.unload(StandardManager.java:462)
+	at org.apache.catalina.session.StandardManager.stop(StandardManager.java:664)
+	at org.apache.catalina.core.StandardContext.stop(StandardContext.java:4255)
+	at org.apache.catalina.core.ContainerBase.removeChild(ContainerBase.java:892)
+	at org.apache.catalina.startup.HostConfig.undeployApps(HostConfig.java:1143)
+	at org.apache.catalina.startup.HostConfig.stop(HostConfig.java:1115)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:313)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:119)
+	at org.apache.catalina.core.ContainerBase.stop(ContainerBase.java:1053)
+	at org.apache.catalina.core.ContainerBase.stop(ContainerBase.java:1065)
+	at org.apache.catalina.core.StandardEngine.stop(StandardEngine.java:447)
+	at org.apache.catalina.core.StandardService.stop(StandardService.java:512)
+	at org.apache.catalina.core.StandardServer.stop(StandardServer.java:717)
+	at org.apache.catalina.startup.Catalina.stop(Catalina.java:586)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:561)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:585)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:271)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:409)
+2008-08-09 00:38:23,196 [main] ERROR org.apache.catalina.session.ManagerBase - Exception unloading sessions to persistent storage
+java.io.FileNotFoundException: /home/ptfan/jakarta-tomcat/work/Catalina/localhost/_/SESSIONS.ser (No such file or directory)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:179)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:70)
+	at org.apache.catalina.session.StandardManager.doUnload(StandardManager.java:488)
+	at org.apache.catalina.session.StandardManager.unload(StandardManager.java:462)
+	at org.apache.catalina.session.StandardManager.stop(StandardManager.java:664)
+	at org.apache.catalina.core.StandardContext.stop(StandardContext.java:4255)
+	at org.apache.catalina.core.ContainerBase.removeChild(ContainerBase.java:892)
+	at org.apache.catalina.startup.HostConfig.undeployApps(HostConfig.java:1143)
+	at org.apache.catalina.startup.HostConfig.stop(HostConfig.java:1115)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:313)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:119)
+	at org.apache.catalina.core.ContainerBase.stop(ContainerBase.java:1053)
+	at org.apache.catalina.core.ContainerBase.stop(ContainerBase.java:1065)
+	at org.apache.catalina.core.StandardEngine.stop(StandardEngine.java:447)
+	at org.apache.catalina.core.StandardService.stop(StandardService.java:512)
+	at org.apache.catalina.core.StandardServer.stop(StandardServer.java:717)
+	at org.apache.catalina.startup.Catalina.stop(Catalina.java:586)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:561)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:585)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:271)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:409)
+2008-08-09 00:38:25,343 [main] INFO  org.springframework.web.context.support.XmlWebApplicationContext - Closing org.springframework.web.context.support.XmlWebApplicationContext@110ed88: display name [Root WebApplicationContext]; startup date [Fri Aug 08 18:36:50 PDT 2008]; parent: org.springframework.context.support.ClassPathXmlApplicationContext@d1511c
+2008-08-09 00:38:25,344 [main] INFO  org.springframework.beans.factory.support.DefaultListableBeanFactory - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@136157d: defining beans [commentAdmins,appAdmins]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@ad15e6
+2008-08-09 00:38:25,344 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Closing org.springframework.context.support.ClassPathXmlApplicationContext@108e31e: display name [org.springframework.context.support.ClassPathXmlApplicationContext@108e31e]; startup date [Fri Aug 08 18:36:48 PDT 2008]; root of context hierarchy
+2008-08-09 00:38:25,347 [main] INFO  org.springframework.beans.factory.support.DefaultListableBeanFactory - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1132789: defining beans [common-conf-properties,common-conf-properties-configurer,basicTestApp,schemaGenApp,sportDataTestApp,fanwarsApp,highSchoolFacebookApp,ffootballSocialApp,sportsimSocialApp,pickemSocialApp,sportsFanSocialApp,terracotta,terracotta-test]; root of factory hierarchy
+2008-08-09 00:38:25,348 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Closing org.springframework.context.support.ClassPathXmlApplicationContext@d1511c: display name [org.springframework.context.support.ClassPathXmlApplicationContext@d1511c]; startup date [Fri Aug 08 18:36:49 PDT 2008]; parent: org.springframework.context.support.ClassPathXmlApplicationContext@14ecfa4
+2008-08-09 00:38:25,349 [main] INFO  org.springframework.beans.factory.support.DefaultListableBeanFactory - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@ad15e6: defining beans [common-conf-properties,common-conf-properties-configurer,svnversion,db.base,appConfLocator,appConfLocatorKey,bindAddressLocator,bindAddress,pplist.sport,jdo.sport,db.sport,plist.sport,fbAppMode,pmf.prop.sport,db.fandom,jdo.fandom,pmf.prop.fandom,db.highschool,jdo.highschool,pmf.prop.highschool,db.ffootball,jdo.ffootball,pmf.prop.ffootball,db.sportsim,jdo.sportsim,pmf.prop.sportsim,db.pickem,jdo.pickem,pmf.prop.pickem,rssFetcher,db.sportsfan,jdo.sportsfan,pmf.prop.sportsfan,sportsProfileLinkHelper,db.sport-client-A,db.sport-client-B,db.sport-client,profanityFilter,pmf.sport,tx.sport,tx.t.sport,jt.sport,jtdsf.sport,rsdao.sport,sdao.sport,sdao.standing,sdao.standing.ncaaf,sdao.standing.ncaab,pmf.fandom,tx.fandom,tx.t.fandom,jt.fandom,jtdsf.fandom,rsdao.fandom,sdao.fandom.configs,sdao.fandom.core,sdao.fandom.invites,sdao.fandom.cheers,sdao.fandom.rally,sdao.fandom.brawls,sdao.fandom.fanwire,sdao.fandom.apptemplate,serverRootBackend-gsite,serverRootBackend-site,fanwarsAppEventExecutor,imageUrlHelper,fanwarsAppEventHandler,fandom.configs,fandom.configs.bean,fandomContextConfigMap,nav.main,oauth.client,oauth.keys,oauth.provider.myspace,oauth.provider.hi5,usspbase,ussProvider]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@1d034cf
+2008-08-09 00:38:25,479 [Thread-52] WARN  com.protrade.asynch.AsynchMessaging - Trouble receiving
+ChannelClosedException
+	at org.jgroups.JChannel.receive(JChannel.java:651)
+	at com.protrade.asynch.AsynchMessaging.read(AsynchMessaging.java:122)
+	at com.protrade.asynch.AsynchRemoteCommitProvider$Relay.run(AsynchRemoteCommitProvider.java:144)
+	at java.lang.Thread.run(Thread.java:595)
+2008-08-09 00:38:25,479 [Thread-52] ERROR com.protrade.asynch.AsynchRemoteCommitProvider - Trouble while reading commit event [10.65.65.230:3306:sportdb_protrade]
+ChannelClosedException
+	at org.jgroups.JChannel.receive(JChannel.java:651)
+	at com.protrade.asynch.AsynchMessaging.read(AsynchMessaging.java:122)
+	at com.protrade.asynch.AsynchRemoteCommitProvider$Relay.run(AsynchRemoteCommitProvider.java:144)
+	at java.lang.Thread.run(Thread.java:595)
+2008-08-09 00:38:25,554 [main] INFO  org.springframework.context.support.ClassPathXmlApplicationContext - Closing org.springframework.context.support.ClassPathXmlApplicationContext@14ecfa4: display name [org.springframework.context.support.ClassPathXmlApplicationContext@14ecfa4]; startup date [Fri Aug 08 18:36:49 PDT 2008]; root of context hierarchy
+2008-08-09 00:38:25,554 [main] INFO  org.springframework.beans.factory.support.DefaultListableBeanFactory - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1d034cf: defining beans [common-conf-properties,common-conf-properties-configurer,tc-masterRoot,tc-ehcacheManager,tc-base-ehcacheManager,tc-lockCache,tc-cache-map-factory,tc-on-lockCache-withering,tc-on-lockCache-ehcache,tc-on-cache-map-factory,tc-off-lockCache,tc-off-cache-map-factory,tc-pcached]; root of factory hierarchy
+2008-08-09 00:38:25,555 [Thread-51] WARN  com.protrade.asynch.AsynchMessaging - Trouble receiving
+ChannelClosedException
+	at org.jgroups.JChannel.receive(JChannel.java:651)
+	at com.protrade.asynch.AsynchMessaging.read(AsynchMessaging.java:122)
+	at com.protrade.asynch.AsynchRemoteCommitProvider$Relay.run(AsynchRemoteCommitProvider.java:144)
+	at java.lang.Thread.run(Thread.java:595)
+2008-08-09 00:38:25,555 [Thread-51] ERROR com.protrade.asynch.AsynchRemoteCommitProvider - Trouble while reading commit event [10.65.65.240:3306:fandomdb_protrade]
+ChannelClosedException
+	at org.jgroups.JChannel.receive(JChannel.java:651)
+	at com.protrade.asynch.AsynchMessaging.read(AsynchMessaging.java:122)
+	at com.protrade.asynch.AsynchRemoteCommitProvider$Relay.run(AsynchRemoteCommitProvider.java:144)
+	at java.lang.Thread.run(Thread.java:595)
+Aug 9, 2008 12:38:26 AM org.apache.coyote.http11.Http11Protocol destroy
+INFO: Stopping Coyote HTTP/1.1 on http-8082
+Aug 9, 2008 12:38:26 AM org.apache.tomcat.util.threads.ThreadPool$ControlRunnable run
+SEVERE: Caught exception (java.lang.IllegalStateException) executing org.apache.tomcat.util.net.LeaderFollowerWorkerThread@b688a4, terminating thread
+Aug 9, 2008 12:38:26 AM org.apache.jk.common.JkMX destroy
+INFO: Stoping JMX 
+Server stopped
+Aug 9, 2008 12:38:26 AM org.apache.jk.common.JkMX destroy
+INFO: Stoping JMX 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<terracotta-hibernate-cache-configuration>
+  <default-configuration>
+    <cache-type>transactional</cache-type>
+    <logging>true</logging>
+    <time-to-idle-seconds>2</time-to-idle-seconds>
+    <time-to-live-seconds>3</time-to-live-seconds>
+    <target-max-in-memory-count>4</target-max-in-memory-count>
+    <target-max-total-count>5</target-max-total-count>
+    <advanced>
+      <transactional-isolation>read-committed</transactional-isolation>
+      <local-key-optimization>false</local-key-optimization>
+      <orphan-eviction>
+        <enabled>false</enabled>
+        <period>7</period>
+      </orphan-eviction>
+    </advanced>
+  </default-configuration>
+ 
+  <cache>
+    <region-name>org.hibernate.tutorial.domain.Event</region-name>
+    <configuration>
+      <logging>true</logging>
+      <time-to-idle-seconds>60</time-to-idle-seconds>
+      <time-to-live-seconds>60</time-to-live-seconds>
+      <target-max-in-memory-count>1000</target-max-in-memory-count>
+      <target-max-total-count>5000</target-max-total-count>
+    </configuration>
+  </cache>
+  
+  <environment-settings>
+    <tc-config>
+      <clients>
+        <logs>myLogs/logs-%i</logs>
+      </clients>
+    </tc-config>
+  </environment-settings>
+  
+</terracotta-hibernate-cache-configuration>

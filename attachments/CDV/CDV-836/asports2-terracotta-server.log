@@ -1,0 +1,679 @@
+2008-08-05 22:05:52,140 [main] INFO com.tc.properties.TCProperties - Loading default properties from tc.properties
+2008-08-05 22:05:52,142 [main] INFO com.tc.properties.TCProperties - Loaded TCProperties : TCProperties={l2.objectmanager.maxObjectsInTxnObjGrouping=5000, l1.lock.statistics.gatherInterval=1, tc.bytebuffer.common.pool.maxcount=3000, l1.cachemanager.logging.enabled=false, l2.berkeleydb.je.cleaner.minAge=5, ehcache.evictor.pool.size=1, session.debug.hops=false, l2.nha.tribes.mcast.mcastAddress=228.0.0.4, ehcache.evictor.logging.enabled=false, l1.objectmanager.remote.maxDNALRUSize=60, session.request.bench.enabled=false, l2.transactionmanager.logging.printStats=true, l2.nha.send.timeout.millis=16000, l2.nha.tribes.orderinterceptor.enabled=false, l1.connect.versionMatchCheck.enabled=true, l1.modules.additional=, l2.berkeleydb.je.lock.timeout=180000000, l2.nha.tribes.mcast.mcastFrequency=500, l2.transactionmanager.logging.verbose=false, l2.berkeleydb.je.maxMemoryPercent=25, l2.transactionmanager.logging.enabled=false, logging.maxLogFileSize=512, l1.transactionmanager.strings.compress.enabled=true, l2.beanshell.port=9929, l2.cachemanager.logging.enabled=false, l2.cachemanager.criticalObjectThreshold=-1, l2.cachemanager.criticalThreshold=90, l1.cachemanager.criticalThreshold=90, ehcache.global.eviction.frequency=10, net.core.tcpnodelay=true, session.debug.hops.interval=100, net.core.keepalive=false, l2.nha.tribes.mcast.tcpListenHost=127.0.0.1, l2.cachemanager.enabled=true, session.request.tracking.interval=2500, tc.management.test.mbeans.enabled=false, l1.transactionmanager.completedAckFlushTimeout=5000, l1.modules.default=org.terracotta.modules.excludes_config;bundle-version:=2.5.2,org.terracotta.modules.guimodels_config;bundle-version:=2.5.2,org.terracotta.modules.jdk15_preinst_config;bundle-version:=2.5.2,org.terracotta.modules.spring_config;bundle-version:=2.5.2,org.terracotta.modules.standard_config;bundle-version:=2.5.2, ehcache.logging.enabled=false, l1.transactionmanager.maxOutstandingBatchSize=16, l1.cachemanager.sleepInterval=3000, ehcache.global.eviction.rest.timeMillis=10, session.request.tracking.threshold=15000, l2.seda.commitstage.threads=4, l1.objectmanager.remote.logging.enabled=false, l1.cachemanager.criticalObjectThreshold=-1, session.invalidator.sleep=300, l1.cachemanager.enabled=true, l1.transactionmanager.logging.enabled=false, ehcache.lock.writeLevel=WRITE, l2.nha.tribes.failuredetector.millis=5000, session.debug.sessions=false, l1.transactionmanager.maxBatchSizeInKiloBytes=128, tc.bytebuffer.pooling.enabled=true, l2.berkeleydb.je.cleaner.bytesInterval=20000000, l2.lfu.agingFactor=1, l2.objectmanager.maxObjectsToCommit=5000, logging.maxBackups=20, l2.cachemanager.leastCount=2, memory.monitor.forcebasic=false, l1.transactionmanager.maxSleepTimeBeforeHalt=1024, session.request.tracking=false, session.debug.invalidate=false, l2.cachemanager.threshold=70, l2.lfu.recentlyAccessedIgnorePercentage=20, net.core.recv.buffer=65536, l1.reconnect.timeout.millis=5000, l2.cachemanager.sleepInterval=3000, ehcache.global.eviction.segments=2, l2.beanshell.enabled=false, ehcache.concurrency=1, l1.jvm.check.compatibility=true, l2.berkeleydb.je.lock.nLockTables=7, l2.objectmanager.maxTxnsInTxnObjectGrouping=500, l2.nha.tribes.mcast.mcastPort=7777, l1.reconnect.enabled=false, l1.transactionmanager.maxPendingBatches=64, l2.berkeleydb.je.cleaner.lookAheadCacheSize=32768, ehcache.global.eviction.enable=true, l2.berkeleydb.je.checkpointer.bytesInterval=100000000, l2.nha.tribes.mcast.tcpListenPort=4000, l2.objectmanager.loadObjectID.fastLoad=false, l2.objectmanager.cachePolicy=lfu, l2.objectmanager.loadObjectID.longsPerMemoryEntry=128, l1.lock.statistics.traceDepth=1, l2.lfu.debug.enabled=false, l2.cachemanager.percentageToEvict=10, l1.cachemanager.percentageToEvict=10, session.vhosts.excluded=, tc.management.mbeans.enabled=true, l2.seda.flushstage.threads=4, net.core.send.buffer=65536, console.showObjectID=true, l1.modules.repositories=, l2.objectmanager.fault.logging.enabled=false, l2.berkeleydb.je.cleaner.detailMaxMemoryPercentage=5, l1.transactionmanager.strings.compress.minSize=512, session.request.tracking.dump=false, l2.nha.mcast.enabled=false, ehcache.lock.readLevel=READ, l2.seda.faultstage.threads=4, tc.stage.monitor.enabled=false, l2.cachemanager.monitorOldGenOnly=true, l1.cachemanager.monitorOldGenOnly=true, tc.stage.monitor.delay=5000, l2.objectmanager.deleteBatchSize=5000, l1.cachemanager.threshold=70, l2.objectmanager.loadObjectID.longsPerDiskEntry=4, lock.statistics.enabled=false, tc.bytebuffer.threadlocal.pool.maxcount=2000, session.invalidator.bench.enabled=true, l1.transactionmanager.strings.compress.logging.enabled=false, l2.nha.tribes.mcast.memberDropTime=3000, l1.cachemanager.leastCount=2, l1.max.connect.retries=-1}
+2008-08-05 22:05:52,150 [main] INFO com.terracottatech.general - New logging session started.
+2008-08-05 22:05:52,180 [main] INFO com.terracottatech.console - Terracotta 2.5.2, as of 20080218-120204 (Revision 7031 by cruise@rh4mo0 from 2.5)
+2008-08-05 22:05:52,181 [main] INFO com.tc.logging.TCLogging - Terracotta 2.5.2, as of 20080218-120204 (Revision 7031 by cruise@rh4mo0 from 2.5)
+2008-08-05 22:05:52,492 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Attempting to load configuration from the file at '/opt/terracotta-2.5.2/config/tc-config.xml'...
+2008-08-05 22:05:52,495 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Successfully loaded configuration from the file at '/opt/terracotta-2.5.2/config/tc-config.xml'. Config is:
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-4.xsd">
+
+  <!-- Tell DSO where the Terracotta server can be found. -->
+  <servers>
+    <server host="%h">
+      <data>%(user.home)/terracotta/server-data</data>
+      <logs>%(user.home)/terracotta/server-logs</logs>
+      <dso>
+        <persistence>
+          <mode>permanent-store</mode>
+        </persistence>
+      </dso>
+    </server>
+  </servers>
+
+  <!-- Tell DSO where to put the generated client logs -->  
+  <clients>
+    <logs>%(user.home)/terracotta/client-logs</logs>
+    <modules>
+      <module name="clustered-commons-collections-3.1" version="2.5.2"/>
+      <module name="clustered-jetty-6.1" version="2.5.2"/>
+      <module name="clustered-ehcache-1.3" version="2.5.2"/>
+    </modules>
+  </clients>
+
+  <application>
+    <spring>
+
+      <!-- The JEE application name is in most cases the name of the WAR, EAR
+           or JAR file in which the Spring application resides. If you are
+           using Spring in a stand-alone application then you can use "*" as
+           the name. The pattern matching supports wildcards of leading and
+           ending asterisk (*), which matches an arbitrary number of
+           characters. -->
+      <jee-application name="*">
+
+        <!-- Turns on clustering of the HTTP session. Needed for f.e. Spring
+             WebFlow clustering. -->
+        <session-support>true</session-support>
+
+        <application-contexts>
+          <application-context>
+
+            <!-- Specifies the bean definition resource patterns; The matching
+                 applys OR logic for individual path element. -->
+            <paths>
+              <path>common-conf-props.xml</path>
+              <path>terracotta-conf.xml</path>
+            </paths>
+
+            <!-- Specifies the Spring beans to cluster/share; The bean name
+                 should be the same name that the bean has in the Spring bean
+                 config file. Matching has to be exact; -->
+            <beans>
+	      <bean name="tc-masterRoot"/>
+            </beans>
+
+          </application-context>
+        </application-contexts>
+
+      </jee-application>
+    </spring>
+    <dso>
+
+        <instrumented-classes>
+<!-- master-root -->
+          <include>
+            <class-expression>com.protrade.terracotta.MasterRoot</class-expression>
+          </include>
+
+<!-- base -->
+          <include>
+            <class-expression>com.protrade.common.base.BaseObject</class-expression>
+          </include>
+          <include>
+            <class-expression>org.apache.commons.collections.map.LazyMap</class-expression>
+          </include>
+          <include>
+            <class-expression>org.apache.commons.collections.map.AbstractMapDecorator</class-expression>
+          </include>
+          <include>
+            <class-expression>org.apache.commons.collections.functors.FactoryTransformer</class-expression>
+          </include>
+          <include><!-- deprecated -->
+            <class-expression>com.protrade.common.cache.CacheFactory$1</class-expression>
+          </include>
+          <include>
+            <class-expression>com.protrade.common.cache.CacheFactory$ConcurrentMapFactory</class-expression>
+          </include>
+          <include><!-- deprecated -->
+            <class-expression>com.protrade.common.util.LockCache$1</class-expression>
+          </include>
+          <include>
+            <class-expression>com.protrade.common.util.LockCache$ReentrantLockFactory</class-expression>
+          </include>
+         <include>
+           <class-expression>com.protrade.common.cache.EhcacheMap</class-expression>
+         </include>
+          <include>
+            <class-expression>com.protrade.common.cache.WitheringMap</class-expression>
+          </include>
+          <include>
+            <class-expression>com.protrade.common.cache.SynchronizedWitheringMap</class-expression>
+          </include>
+          <include>
+            <class-expression>com.protrade.common.cache.WitheringMap$ValueLastAccess</class-expression>
+          </include>
+
+<!-- kodo -->
+          <include>
+            <class-expression>kodo.util.Id</class-expression>
+          </include>
+          <include>
+            <class-expression>kodo.datacache.DataCachePCDataImpl</class-expression>
+          </include>
+          <include>
+            <class-expression>kodo.runtime.PCDataImpl</class-expression>
+          </include>
+          <include>
+            <class-expression>kodo.runtime.AbstractPCData</class-expression>
+          </include>
+          <include><!-- deprecated -->
+            <class-expression>com.protrade.common.cache.MapDataCache$1</class-expression>
+          </include>
+          <include><!-- deprecated -->
+            <class-expression>com.protrade.common.cache.MapQueryCache$1</class-expression>
+          </include>
+  
+<!-- protrade id -->
+          <include>
+            <class-expression>com.protrade.common.persistence.ProtradeId+</class-expression>
+          </include>
+
+<!-- buffer -->
+          <include>
+            <class-expression>com.protrade.tapestry5.base.services.BufferServices$CacheValue</class-expression>
+          </include>
+          <include>
+            <class-expression>com.protrade.tapestry5.base.services.BufferServices$BufferValue</class-expression>
+          </include>
+
+<!-- uss -->
+         <include><!-- deprecated -->
+           <class-expression>com.protrade.facebook.base.USSPFacebook$FbSessionSigKeyHolder</class-expression>
+         </include>
+         <include>
+           <class-expression>com.protrade.unifiedsocial.USSPBaseConfig</class-expression>
+         </include>
+         <include>
+           <class-expression>com.protrade.hi5.base.USSPHiFiveConfig</class-expression>
+         </include>
+         <include>
+           <class-expression>com.protrade.facebook.base.USSPFacebookConfig</class-expression>
+         </include>
+
+<!-- tempMessages -->
+         <include>
+           <class-expression>com.protrade.tapestry5.base.services.AppMessages</class-expression>
+         </include>
+
+<!-- tapestry -->
+         <include>
+           <class-expression>org.apache.tapestry.ValidationTrackerImpl</class-expression>
+         </include>
+         <include>
+           <class-expression>org.apache.tapestry.ValidationTrackerImpl$FieldTracker</class-expression>
+         </include>
+
+<!-- fanwars -->
+         <include>
+           <class-expression>com.protrade.fandom.site.forms.SendEmailFormBean</class-expression>
+         </include>
+
+<!-- ffootball -->
+         <include>
+           <class-expression>com.protrade.ffootball.site.services.TeamState</class-expression>
+         </include>
+         <include>
+           <class-expression>com.protrade.ffootball.data.entities.league.FLeagueId</class-expression>
+         </include>
+         <include>
+           <class-expression>com.protrade.ffootball.data.entities.league.FTeamId</class-expression>
+         </include>
+         <include>
+           <class-expression>com.protrade.ffootball.site.services.draft.DraftTask</class-expression>
+         </include>
+         <include>
+           <class-expression>com.protrade.ffootball.site.services.draft.DraftQueue</class-expression>
+         </include>
+         <include>
+           <class-expression>com.protrade.ffootball.site.services.draft.DraftChat</class-expression>
+         </include>
+         <include>
+           <class-expression>com.protrade.ffootball.site.services.draft.ChatMessage</class-expression>
+         </include>
+         <include>
+           <class-expression>com.protrade.ffootball.site.services.draft.DraftPlayerList</class-expression>
+         </include>
+         <include>
+           <class-expression>com.protrade.ffootball.site.services.draft.FScorerDraftVO</class-expression>
+         </include>
+
+
+
+
+<!-- highschool -->
+         <include>
+           <class-expression>com.protrade.highschool.fbsite.services.CrewJoinDetailsLevelOption</class-expression>
+         </include>
+
+ 
+        </instrumented-classes>
+
+        <locks>
+          <autolock>
+            <method-expression>* com.protrade.terracotta.MasterRoot.setMaster*(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock><!-- deprecated -->
+            <method-expression>* com.protrade.common.cache.WitheringMap$ValueLastAccess.touchLastAccess()</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock><!-- deprecated -->
+            <method-expression>* com.protrade.common.cache.WitheringMap.touchLastWither()</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+
+
+<!-- ffootball -->
+          <autolock>
+            <method-expression>* com.protrade.ffootball.site.services.draft.DraftQueue.addDraftTask(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* com.protrade.ffootball.site.services.draft.DraftQueue.getScheduledDraftTask(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* com.protrade.ffootball.site.services.draft.DraftQueue.getScheduledDraftTaskForProcessing(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* com.protrade.ffootball.site.services.draft.DraftQueue.addInProgressTask(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* com.protrade.ffootball.site.services.draft.DraftQueue.removeInProgressTask(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* com.protrade.ffootball.site.services.draft.DraftQueue.setDraftProcessor(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* com.protrade.ffootball.site.services.draft.DraftQueue.reschedulePendingDraftTasks(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* com.protrade.ffootball.site.services.draft.DraftChat.addChatMessages(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* com.protrade.ffootball.site.services.draft.DraftChat.clearChatMessages(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* com.protrade.ffootball.site.services.draft.DraftChat.addMessage(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* com.protrade.ffootball.site.services.draft.DraftChat.clearMessages(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* com.protrade.ffootball.site.services.draft.DraftPlayerList.buildLeaguePlayerList(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* com.protrade.ffootball.site.services.draft.DraftPlayerList.updateLeaguePlayerList(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* com.protrade.ffootball.site.services.draft.DraftPlayerList.cleanupLeaguePlayerList(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* com.protrade.ffootball.site.services.draft.DraftPlayerList.enterDraft(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* com.protrade.ffootball.site.services.draft.DraftPlayerList.leaveDraft(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* com.protrade.ffootball.site.services.draft.DraftPlayerList.isTeamInDraft(..)</method-expression>
+            <lock-level>read</lock-level>
+          </autolock>
+
+
+
+
+
+<!-- kodo -->
+          <autolock>
+            <method-expression>* kodo.datacache.DataCachePCDataImpl.get*(..)</method-expression>
+            <lock-level>read</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* kodo.datacache.DataCachePCDataImpl.is*(..)</method-expression>
+            <lock-level>read</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* kodo.datacache.DataCachePCDataImpl.load*(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* kodo.datacache.DataCachePCDataImpl.set*(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+          <autolock>
+            <method-expression>* kodo.datacache.DataCachePCDataImpl.store*(..)</method-expression>
+            <lock-level>write</lock-level>
+          </autolock>
+        </locks>
+
+	<additional-boot-jar-classes>
+          <include>java.net.InetAddress</include>
+          <include>java.net.Inet4Address</include>
+	</additional-boot-jar-classes>
+
+    </dso>
+
+  </application>
+
+</tc:tc-config>
+
+2008-08-05 22:05:52,805 [main] INFO com.terracottatech.console - Configuration loaded from the file at '/opt/terracotta-2.5.2/config/tc-config.xml'.
+2008-08-05 22:05:52,991 [main] INFO com.terracottatech.console - Log file: '/root/terracotta/server-logs/terracotta-server.log'.
+2008-08-05 22:05:52,995 [main] INFO com.tc.logging.TCLogging - ========================================================================
+All Java System Properties for this Terracotta instance:
+com.sun.management.jmxremote : 
+file.encoding                : UTF-8
+file.encoding.pkg            : sun.io
+file.separator               : /
+java.awt.graphicsenv         : sun.awt.X11GraphicsEnvironment
+java.awt.printerjob          : sun.print.PSPrinterJob
+java.class.path              : ./bin/../lib/tc.jar
+java.class.version           : 49.0
+java.endorsed.dirs           : /usr/java/jdk1.5.0_16/jre/lib/endorsed
+java.ext.dirs                : /usr/java/jdk1.5.0_16/jre/lib/ext
+java.home                    : /usr/java/jdk1.5.0_16/jre
+java.io.tmpdir               : /tmp
+java.library.path            : /usr/java/jdk1.5.0_16/jre/lib/amd64/server:/usr/java/jdk1.5.0_16/jre/lib/amd64:/usr/java/jdk1.5.0_16/jre/../lib/amd64
+java.rmi.server.randomIDs    : true
+java.runtime.name            : Java(TM) 2 Runtime Environment, Standard Edition
+java.runtime.version         : 1.5.0_16-b02
+java.specification.name      : Java Platform API Specification
+java.specification.vendor    : Sun Microsystems Inc.
+java.specification.version   : 1.5
+java.vendor                  : Sun Microsystems Inc.
+java.vendor.url              : http://java.sun.com/
+java.vendor.url.bug          : http://java.sun.com/cgi-bin/bugreport.cgi
+java.version                 : 1.5.0_16
+java.vm.info                 : mixed mode
+java.vm.name                 : Java HotSpot(TM) 64-Bit Server VM
+java.vm.specification.name   : Java Virtual Machine Specification
+java.vm.specification.vendor : Sun Microsystems Inc.
+java.vm.specification.version: 1.0
+java.vm.vendor               : Sun Microsystems Inc.
+java.vm.version              : 1.5.0_16-b02
+line.separator               : 
+
+os.arch                      : amd64
+os.name                      : Linux
+os.version                   : 2.6.9-42.ELsmp
+path.separator               : :
+sun.arch.data.model          : 64
+sun.boot.class.path          : /usr/java/jdk1.5.0_16/jre/lib/rt.jar:/usr/java/jdk1.5.0_16/jre/lib/i18n.jar:/usr/java/jdk1.5.0_16/jre/lib/sunrsasign.jar:/usr/java/jdk1.5.0_16/jre/lib/jsse.jar:/usr/java/jdk1.5.0_16/jre/lib/jce.jar:/usr/java/jdk1.5.0_16/jre/lib/charsets.jar:/usr/java/jdk1.5.0_16/jre/classes
+sun.boot.library.path        : /usr/java/jdk1.5.0_16/jre/lib/amd64
+sun.cpu.endian               : little
+sun.cpu.isalist              : 
+sun.io.unicode.encoding      : UnicodeLittle
+sun.java.launcher            : SUN_STANDARD
+sun.jnu.encoding             : UTF-8
+sun.management.compiler      : HotSpot 64-Bit Server Compiler
+sun.os.patch.level           : unknown
+tc.install-root              : ./bin/..
+user.country                 : US
+user.dir                     : /opt/terracotta-2.5.2
+user.home                    : /root
+user.language                : en
+user.name                    : root
+user.timezone                : America/Los_Angeles
+========================================================================
+
+2008-08-05 22:05:53,496 [main] INFO com.terracottatech.console - JMX Server started. Available at URL[service:jmx:jmxmp://0.0.0.0:9520]
+2008-08-05 22:05:53,539 [main] INFO com.tc.objectserver.persistence.sleepycat.DBEnvironment - Env config = allowCreate=true
+{je.cleaner.minAge=5, je.cleaner.bytesInterval=20000000, je.env.isTransactional=true, je.cleaner.lookAheadCacheSize=32768, je.env.isReadOnly=false, je.maxMemoryPercent=25, je.lock.nLockTables=7, je.checkpointer.bytesInterval=100000000, je.cleaner.detailMaxMemoryPercentage=5, je.lock.timeout=180000000} DB Config = com.sleepycat.je.DatabaseConfig@6d7f11fb JE Properties = {je.cleaner.detailMaxMemoryPercentage=5, je.cleaner.bytesInterval=20000000, je.checkpointer.bytesInterval=100000000, je.cleaner.lookAheadCacheSize=32768, je.maxMemoryPercent=25, je.lock.nLockTables=7, je.cleaner.minAge=5, je.lock.timeout=180000000}
+2008-08-05 22:05:54,441 [main] INFO com.tc.net.core.TCWorkerCommManager - Creating 4 worker comm threads.
+2008-08-05 22:05:54,631 [main] INFO com.tc.objectserver.tx.ServerTransactionManager - Waiting for txns to complete
+2008-08-05 22:05:54,631 [main] INFO com.tc.objectserver.tx.ServerTransactionManager - No more txns in the system.
+2008-08-05 22:05:54,632 [main] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Starting DSO services...
+2008-08-05 22:05:54,632 [main] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownAllClientsExcept() : Removing txns from DB : 0
+2008-08-05 22:05:54,633 [main] INFO com.tc.objectserver.impl.ObjectRequestManagerImpl - Processing Pending Lookups = 0
+2008-08-05 22:05:54,633 [main] INFO com.tc.objectserver.tx.ResentTransactionSequencer - Unregistering ResentTransactionSequencer since no more resent Transactions : 0
+2008-08-05 22:05:54,634 [main] INFO com.tc.objectserver.gtx.GlobalTransactionIDLowWaterMarkProvider - Switching GlobalTransactionID Low Water mark provider since all resent transactions are applied
+2008-08-05 22:05:54,647 [main] INFO com.terracottatech.console - Terracotta Server has started up as ACTIVE node on 0:0:0:0:0:0:0:0:9510 successfully, and is now ready for work.
+2008-08-05 23:05:55,175 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 00:05:55,718 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 01:05:56,261 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 02:05:56,805 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 03:05:57,347 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 04:05:57,890 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 05:05:58,433 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 06:05:58,976 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 07:05:59,518 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 08:06:00,061 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 09:06:00,604 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 10:06:01,147 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 11:06:01,690 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 12:06:02,232 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 13:06:02,775 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 14:06:03,317 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 15:06:03,860 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 16:06:04,404 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 17:06:04,947 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 18:06:05,490 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 19:06:06,033 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 20:06:06,576 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 21:06:07,115 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 22:06:07,655 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 23:06:08,196 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-06 23:31:55,949 [TCWorkerComm # 1] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(0.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@1920940938: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.24:34914 connect=[Wed Aug 06 23:31:55 PDT 2008] idle=76ms
+2008-08-06 23:31:55,973 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[0]
+2008-08-06 23:31:56,057 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[0]] notified us that their JMX server is now available
+2008-08-06 23:41:58,571 [TCWorkerComm # 3] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(1.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@1461607829: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.26:56680 connect=[Wed Aug 06 23:41:58 PDT 2008] idle=52ms
+2008-08-06 23:41:58,580 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[1]
+2008-08-06 23:41:58,652 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[1]] notified us that their JMX server is now available
+2008-08-07 00:06:09,017 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 01:06:09,906 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 01:06:10,375 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 424ms.
+2008-08-07 01:06:10,731 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 351ms.
+2008-08-07 02:06:11,452 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 03:06:12,602 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 04:06:13,567 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 05:06:14,622 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 06:06:15,891 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 07:06:17,714 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 08:06:19,845 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 09:06:22,717 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 09:06:23,814 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 313ms.
+2008-08-07 10:06:25,973 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 10:06:26,374 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 314ms.
+2008-08-07 10:06:27,967 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 317ms.
+2008-08-07 10:06:28,471 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 503ms.
+2008-08-07 11:06:30,079 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 11:06:30,819 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 618ms.
+2008-08-07 11:06:31,229 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 409ms.
+2008-08-07 11:06:31,690 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 460ms.
+2008-08-07 11:06:33,248 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 1266ms.
+2008-08-07 11:06:33,583 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 334ms.
+2008-08-07 11:06:33,992 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 408ms.
+2008-08-07 11:06:36,086 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 1556ms.
+2008-08-07 12:06:37,298 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 12:06:38,430 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 302ms.
+2008-08-07 12:06:39,036 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 352ms.
+2008-08-07 12:06:39,600 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 562ms.
+2008-08-07 12:06:39,960 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 359ms.
+2008-08-07 12:06:40,337 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 375ms.
+2008-08-07 13:06:42,845 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 13:06:44,256 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 470ms.
+2008-08-07 13:06:45,090 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 832ms.
+2008-08-07 13:06:45,405 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 301ms.
+2008-08-07 13:06:46,593 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 357ms.
+2008-08-07 13:06:47,088 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 493ms.
+2008-08-07 13:06:47,572 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 4719 objects in 477ms.
+2008-08-07 14:06:48,535 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 14:06:49,250 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 315ms.
+2008-08-07 15:06:52,282 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 15:06:53,973 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 384ms.
+2008-08-07 16:06:55,736 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 16:06:56,327 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 520ms.
+2008-08-07 16:06:56,633 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 305ms.
+2008-08-07 16:06:56,960 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 316ms.
+2008-08-07 17:06:59,028 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 17:06:59,420 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 320ms.
+2008-08-07 18:07:02,123 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 18:07:02,758 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 324ms.
+2008-08-07 18:07:03,317 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 318ms.
+2008-08-07 18:07:04,367 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 321ms.
+2008-08-07 19:07:05,294 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 19:07:06,816 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 317ms.
+2008-08-07 19:42:22,375 [WorkerThread(managed_object_fault_stage,3)] WARN com.tc.objectserver.api.ObjectManager - Request for non-exisitent object : ObjectID=[707083] context = ObjectManagerLookupContext : [ processed count = 1, responseContext = ManagedObjectRequestContext@1071879504 [ ClientID[0] , ObjectRequestID=[170152] , [ObjectID=[707083]], requestingThread = CacheInvalidator - tc-lockCache invalidation thread0 ]] 
+2008-08-07 20:07:08,243 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 21:07:11,401 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 21:38:37,350 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[0]
+2008-08-07 21:38:37,366 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 0
+2008-08-07 21:38:57,132 [TCWorkerComm # 1] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(2.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@1530074002: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.24:59961 connect=[Thu Aug 07 21:38:57 PDT 2008] idle=60ms
+2008-08-07 21:38:57,144 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[2]
+2008-08-07 21:38:57,220 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[2]] notified us that their JMX server is now available
+2008-08-07 21:39:32,794 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[1]
+2008-08-07 21:39:32,798 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 0
+2008-08-07 21:39:54,558 [TCWorkerComm # 3] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(3.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@1163480368: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.26:54524 connect=[Thu Aug 07 21:39:54 PDT 2008] idle=51ms
+2008-08-07 21:39:54,567 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[3]
+2008-08-07 21:39:54,645 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[3]] notified us that their JMX server is now available
+2008-08-07 22:07:13,141 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-07 23:07:15,271 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 00:07:17,174 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 01:07:18,730 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 02:07:20,102 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 03:07:21,373 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 04:07:22,556 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 05:07:23,823 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 06:07:25,216 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 07:07:27,026 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 07:07:27,650 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 308ms.
+2008-08-08 07:07:28,003 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 352ms.
+2008-08-08 07:07:28,614 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 597ms.
+2008-08-08 08:07:29,854 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 08:07:30,710 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 303ms.
+2008-08-08 08:07:31,028 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 316ms.
+2008-08-08 08:39:46,377 [WorkerThread(managed_object_fault_stage,0)] WARN com.tc.objectserver.api.ObjectManager - Request for non-exisitent object : ObjectID=[1135016] context = ObjectManagerLookupContext : [ processed count = 1, responseContext = ManagedObjectRequestContext@999121229 [ ClientID[2] , ObjectRequestID=[93963] , [ObjectID=[1135016]], requestingThread = CacheInvalidator - tc-lockCache invalidation thread0 ]] 
+2008-08-08 09:07:33,005 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 09:07:34,545 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 417ms.
+2008-08-08 09:07:34,926 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 373ms.
+2008-08-08 09:07:35,750 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 550ms.
+2008-08-08 09:07:36,160 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 404ms.
+2008-08-08 09:36:46,349 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[2]
+2008-08-08 09:36:46,355 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 1
+2008-08-08 09:37:05,871 [TCWorkerComm # 1] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(4.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@126215590: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.24:42455 connect=[Fri Aug 08 09:37:05 PDT 2008] idle=77ms
+2008-08-08 09:37:05,878 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[4]
+2008-08-08 09:37:05,990 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[4]] notified us that their JMX server is now available
+2008-08-08 09:37:40,552 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[3]
+2008-08-08 09:37:40,553 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 0
+2008-08-08 09:38:01,927 [TCWorkerComm # 3] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(5.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@1297982888: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.26:36729 connect=[Fri Aug 08 09:38:01 PDT 2008] idle=49ms
+2008-08-08 09:38:01,936 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[5]
+2008-08-08 09:38:02,015 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[5]] notified us that their JMX server is now available
+2008-08-08 09:41:49,744 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[5]
+2008-08-08 09:41:49,745 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 0
+2008-08-08 09:41:59,296 [TCWorkerComm # 1] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(6.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@1534912508: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.26:36818 connect=[Fri Aug 08 09:41:59 PDT 2008] idle=48ms
+2008-08-08 09:41:59,304 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[6]
+2008-08-08 09:41:59,410 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[6]] notified us that their JMX server is now available
+2008-08-08 10:07:37,292 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 11:07:41,179 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 11:07:42,344 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 1059ms.
+2008-08-08 11:07:42,978 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 380ms.
+2008-08-08 11:07:44,169 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 615ms.
+2008-08-08 11:07:44,821 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 650ms.
+2008-08-08 11:07:45,529 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 453ms.
+2008-08-08 11:33:53,891 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[4]
+2008-08-08 11:33:53,896 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 24
+2008-08-08 11:34:15,935 [TCWorkerComm # 3] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(7.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@2003444744: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.24:45015 connect=[Fri Aug 08 11:34:15 PDT 2008] idle=53ms
+2008-08-08 11:34:15,943 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[7]
+2008-08-08 11:34:16,043 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[7]] notified us that their JMX server is now available
+2008-08-08 11:41:08,993 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[7]
+2008-08-08 11:41:08,996 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 0
+2008-08-08 11:41:29,317 [TCWorkerComm # 1] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(8.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@209819223: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.24:45138 connect=[Fri Aug 08 11:41:29 PDT 2008] idle=83ms
+2008-08-08 11:41:29,325 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[8]
+2008-08-08 11:41:29,448 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[8]] notified us that their JMX server is now available
+2008-08-08 11:42:31,372 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[6]
+2008-08-08 11:42:31,378 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 0
+2008-08-08 11:42:53,316 [TCWorkerComm # 3] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(9.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@1632449911: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.26:39422 connect=[Fri Aug 08 11:42:53 PDT 2008] idle=59ms
+2008-08-08 11:42:53,324 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[9]
+2008-08-08 11:42:53,396 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[9]] notified us that their JMX server is now available
+2008-08-08 12:07:46,592 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 12:07:48,542 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 333ms.
+2008-08-08 12:40:07,683 [WorkerThread(managed_object_fault_stage,2)] WARN com.tc.objectserver.api.ObjectManager - Request for non-exisitent object : ObjectID=[1397012] context = ObjectManagerLookupContext : [ processed count = 1, responseContext = WaitForLookupContext [ ObjectID=[1397012], missingOK = true]] 
+2008-08-08 12:40:07,990 [WorkerThread(managed_object_fault_stage,0)] WARN com.tc.objectserver.api.ObjectManager - Request for non-exisitent object : ObjectID=[1510094] context = ObjectManagerLookupContext : [ processed count = 1, responseContext = WaitForLookupContext [ ObjectID=[1510094], missingOK = true]] 
+2008-08-08 12:40:08,309 [WorkerThread(managed_object_fault_stage,3)] WARN com.tc.objectserver.api.ObjectManager - Request for non-exisitent object : ObjectID=[1512734] context = ObjectManagerLookupContext : [ processed count = 1, responseContext = WaitForLookupContext [ ObjectID=[1512734], missingOK = true]] 
+2008-08-08 12:40:08,642 [WorkerThread(managed_object_fault_stage,2)] WARN com.tc.objectserver.api.ObjectManager - Request for non-exisitent object : ObjectID=[1514270] context = ObjectManagerLookupContext : [ processed count = 1, responseContext = WaitForLookupContext [ ObjectID=[1514270], missingOK = true]] 
+2008-08-08 12:40:08,997 [WorkerThread(managed_object_fault_stage,1)] WARN com.tc.objectserver.api.ObjectManager - Request for non-exisitent object : ObjectID=[1397740] context = ObjectManagerLookupContext : [ processed count = 1, responseContext = WaitForLookupContext [ ObjectID=[1397740], missingOK = true]] 
+2008-08-08 12:40:09,346 [WorkerThread(managed_object_fault_stage,0)] WARN com.tc.objectserver.api.ObjectManager - Request for non-exisitent object : ObjectID=[1388449] context = ObjectManagerLookupContext : [ processed count = 1, responseContext = WaitForLookupContext [ ObjectID=[1388449], missingOK = true]] 
+2008-08-08 12:40:09,716 [WorkerThread(managed_object_fault_stage,3)] WARN com.tc.objectserver.api.ObjectManager - Request for non-exisitent object : ObjectID=[1510596] context = ObjectManagerLookupContext : [ processed count = 1, responseContext = WaitForLookupContext [ ObjectID=[1510596], missingOK = true]] 
+2008-08-08 12:40:10,109 [WorkerThread(managed_object_fault_stage,2)] WARN com.tc.objectserver.api.ObjectManager - Request for non-exisitent object : ObjectID=[1514398] context = ObjectManagerLookupContext : [ processed count = 1, responseContext = WaitForLookupContext [ ObjectID=[1514398], missingOK = true]] 
+2008-08-08 12:40:10,511 [WorkerThread(managed_object_fault_stage,1)] WARN com.tc.objectserver.api.ObjectManager - Request for non-exisitent object : ObjectID=[1396014] context = ObjectManagerLookupContext : [ processed count = 1, responseContext = WaitForLookupContext [ ObjectID=[1396014], missingOK = true]] 
+2008-08-08 12:40:10,931 [WorkerThread(managed_object_fault_stage,0)] WARN com.tc.objectserver.api.ObjectManager - Request for non-exisitent object : ObjectID=[1394704] context = ObjectManagerLookupContext : [ processed count = 1, responseContext = WaitForLookupContext [ ObjectID=[1394704], missingOK = true]] 
+2008-08-08 13:07:51,076 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 13:07:53,988 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 4666 objects in 310ms.
+2008-08-08 14:07:54,942 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 14:07:57,647 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 394ms.
+2008-08-08 15:07:58,651 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 15:08:00,514 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 316ms.
+2008-08-08 16:08:01,955 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 16:08:02,610 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 344ms.
+2008-08-08 17:06:02,901 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[8]
+2008-08-08 17:06:02,902 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 0
+2008-08-08 17:06:34,241 [TCWorkerComm # 1] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(10.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@148048001: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.24:51581 connect=[Fri Aug 08 17:06:34 PDT 2008] idle=77ms
+2008-08-08 17:06:34,249 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[10]
+2008-08-08 17:06:34,352 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[10]] notified us that their JMX server is now available
+2008-08-08 17:08:05,068 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 17:10:59,224 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[9]
+2008-08-08 17:10:59,225 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 0
+2008-08-08 17:11:31,152 [TCWorkerComm # 3] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(11.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@404037585: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.26:45694 connect=[Fri Aug 08 17:11:31 PDT 2008] idle=49ms
+2008-08-08 17:11:31,160 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[11]
+2008-08-08 17:11:31,238 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[11]] notified us that their JMX server is now available
+2008-08-08 17:28:46,489 [TCWorkerComm # 1] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(12.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@1702349681: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.20:58336 connect=[Fri Aug 08 17:28:46 PDT 2008] idle=56ms
+2008-08-08 17:28:46,497 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[12]
+2008-08-08 17:28:46,613 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[12]] notified us that their JMX server is now available
+2008-08-08 17:31:56,620 [TCWorkerComm # 3] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(13.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@549575695: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.22:51950 connect=[Fri Aug 08 17:31:56 PDT 2008] idle=91ms
+2008-08-08 17:31:56,629 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[13]
+2008-08-08 17:31:56,704 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[13]] notified us that their JMX server is now available
+2008-08-08 18:08:08,109 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 18:08:09,069 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 402ms.
+2008-08-08 19:08:11,249 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 20:08:14,447 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 20:08:16,334 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 302ms.
+2008-08-08 20:18:13,195 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[11]
+2008-08-08 20:18:13,198 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 17
+2008-08-08 20:18:44,563 [TCWorkerComm # 1] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(14.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@1560008188: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.26:49882 connect=[Fri Aug 08 20:18:44 PDT 2008] idle=47ms
+2008-08-08 20:18:44,573 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[14]
+2008-08-08 20:18:44,651 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[14]] notified us that their JMX server is now available
+2008-08-08 20:20:11,502 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[10]
+2008-08-08 20:20:11,504 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 0
+2008-08-08 20:20:43,009 [TCWorkerComm # 3] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(15.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@579987204: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.24:55698 connect=[Fri Aug 08 20:20:42 PDT 2008] idle=90ms
+2008-08-08 20:20:43,018 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[15]
+2008-08-08 20:20:43,098 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[15]] notified us that their JMX server is now available
+2008-08-08 20:22:09,262 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[13]
+2008-08-08 20:22:09,263 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 0
+2008-08-08 20:24:40,394 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[14]
+2008-08-08 20:24:40,399 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 0
+2008-08-08 20:25:12,442 [TCWorkerComm # 1] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(16.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@637399359: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.26:50099 connect=[Fri Aug 08 20:25:12 PDT 2008] idle=48ms
+2008-08-08 20:25:12,451 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[16]
+2008-08-08 20:25:12,556 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[16]] notified us that their JMX server is now available
+2008-08-08 20:26:38,722 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[15]
+2008-08-08 20:26:38,726 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 0
+2008-08-08 20:27:10,877 [TCWorkerComm # 3] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(17.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@691480576: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.24:55824 connect=[Fri Aug 08 20:27:10 PDT 2008] idle=119ms
+2008-08-08 20:27:10,885 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[17]
+2008-08-08 20:27:10,957 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[17]] notified us that their JMX server is now available
+2008-08-08 20:36:21,944 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[16]
+2008-08-08 20:36:21,945 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 0
+2008-08-08 20:36:54,046 [TCWorkerComm # 1] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(18.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@999032241: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.26:50373 connect=[Fri Aug 08 20:36:53 PDT 2008] idle=74ms
+2008-08-08 20:36:54,055 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[18]
+2008-08-08 20:36:54,152 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[18]] notified us that their JMX server is now available
+2008-08-08 20:39:47,810 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[17]
+2008-08-08 20:39:47,813 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 1
+2008-08-08 20:40:19,144 [TCWorkerComm # 3] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(19.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@631633359: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.24:56125 connect=[Fri Aug 08 20:40:19 PDT 2008] idle=64ms
+2008-08-08 20:40:19,152 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[19]
+2008-08-08 20:40:19,227 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[19]] notified us that their JMX server is now available
+2008-08-08 20:42:44,727 [TCWorkerComm # 1] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(20.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@589781031: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.22:54254 connect=[Fri Aug 08 20:42:44 PDT 2008] idle=59ms
+2008-08-08 20:42:44,735 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[20]
+2008-08-08 20:42:44,810 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[20]] notified us that their JMX server is now available
+2008-08-08 20:44:11,700 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[12]
+2008-08-08 20:44:11,701 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 1
+2008-08-08 20:44:42,988 [TCWorkerComm # 3] INFO com.tc.net.protocol.transport.ServerMessageTransport - ConnectionID(21.3743116d5dee467a80ddb6eac2cf8fd3): Attaching new connection: com.tc.net.core.TCConnectionJDK14@1573256622: connected: true, closed: false local=10.65.64.64:9510 remote=10.65.64.20:60991 connect=[Fri Aug 08 20:44:42 PDT 2008] idle=53ms
+2008-08-08 20:44:42,996 [WorkerThread(client_handshake_stage,0)] INFO com.tc.objectserver.handshakemanager.ServerClientHandshakeManager - Client connected ClientID[21]
+2008-08-08 20:44:43,100 [WorkerThread(jmxremote_tunnel_stage,0)] INFO com.tc.management.remote.protocol.terracotta.ClientTunnelingEventHandler - L1[ChannelID=[21]] notified us that their JMX server is now available
+2008-08-08 21:08:18,019 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 21:08:20,089 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 443ms.
+2008-08-08 22:08:21,504 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-08 22:08:21,888 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 306ms.
+2008-08-08 22:08:22,322 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 432ms.
+2008-08-08 22:08:23,390 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 5000 objects in 319ms.
+2008-08-08 22:08:23,712 [GC] INFO com.tc.objectserver.api.ObjectManager - Removed 3391 objects in 321ms.
+2008-08-08 23:08:24,493 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-09 00:08:27,398 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-09 01:08:29,341 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-09 01:12:30,229 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[21]
+2008-08-09 01:12:30,230 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 0
+2008-08-09 01:48:06,348 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[19]
+2008-08-09 01:48:06,349 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 0
+2008-08-09 01:51:03,397 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.handler.ChannelLifeCycleHandler - Received transport disconnect.  Shutting down client ClientID[18]
+2008-08-09 01:51:03,398 [WorkerThread(channel_life_cycle_stage,0)] INFO com.tc.objectserver.persistence.impl.TransactionStoreImpl - shutdownClient() : Removing txns from DB : 0
+2008-08-09 02:08:30,805 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-09 03:08:32,629 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-09 04:08:33,508 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-09 05:08:34,201 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-09 06:08:34,797 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-09 07:08:35,911 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-09 08:08:36,589 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0
+2008-08-09 09:08:37,190 [GC] INFO com.tc.objectserver.api.ObjectManager - Notifying GC : pending = 0 checkedOutCount = 0

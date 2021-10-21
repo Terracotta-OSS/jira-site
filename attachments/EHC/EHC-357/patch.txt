@@ -1,0 +1,50 @@
+Index: src/main/java/net/sf/ehcache/Cache.java
+===================================================================
+--- src/main/java/net/sf/ehcache/Cache.java	(revision 1022)
++++ src/main/java/net/sf/ehcache/Cache.java	(working copy)
+@@ -1836,6 +1836,13 @@
+             copy.setBootstrapCacheLoader(bootstrapCacheLoaderClone);
+         }
+ 
++        copy.hitCount = new AtomicLong();
++        copy.memoryStoreHitCount = new AtomicLong();
++        copy.diskStoreHitCount = new AtomicLong();
++        copy.missCountNotFound = new AtomicLong();
++        copy.missCountExpired = new AtomicLong();
++        copy.totalGetTime = new AtomicLong();
++
+         return copy;
+     }
+ 
+Index: src/test/java/net/sf/ehcache/CacheTest.java
+===================================================================
+--- src/test/java/net/sf/ehcache/CacheTest.java	(revision 1022)
++++ src/test/java/net/sf/ehcache/CacheTest.java	(working copy)
+@@ -2603,6 +2603,27 @@
+     }
+ 
+     /**
++     * Checks to make sure that a cloned cache's statistics are not affected by the parent cache.
++     *
++     * @throws Exception
++     */
++    @Test
++    public void testCloneCompleteness() throws Exception {
++        Cache cache = new Cache("testGetMemoryStore", 10, false, false, 100, 200);
++        Cache clone = (Cache) cache.clone();
++        clone.setName("testGetMemoryStoreClone"); 
++        manager.addCache(cache);
++        manager.addCache(clone);
++
++        assertFalse(cache.getGuid().equals(clone.getGuid()));
++
++        // validate updating the statistics of one cache does NOT affect a cloned one
++        cache.get("notFoundKey");
++        assertEquals(1, cache.getStatistics().getCacheMisses());
++        assertEquals(0, clone.getStatistics().getCacheMisses());
++    }
++
++    /**
+      * test listener
+      */
+     private static class RemoveCountingListener implements CacheEventListener {

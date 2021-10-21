@@ -1,0 +1,8 @@
+21a22
+>   private static final String OS_HP               = "HP-UX";
+26a28
+>   private static final String VM_VENDOR_HP        = "HP-UX";
+59a62
+> 	if (vendor.toLowerCase().startsWith("hewlett-packard")) { return VM_VENDOR_HP; }
+99a103
+> 	if (lowerCaseOS.startsWith("hp")) { return OS_HP; }

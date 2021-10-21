@@ -1,0 +1,203 @@
+2011-01-03 16:02:27
+Full thread dump Java HotSpot(TM) Client VM (11.0-b15 mixed mode):
+
+"d write-behind" daemon prio=6 tid=0x53565000 nid=0x1e9c runnable [0x5491f000..0x5491fb14]
+   java.lang.Thread.State: RUNNABLE
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.release(Unknown Source)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.unlock(Unknown Source)
+	at net.sf.ehcache.writer.writebehind.WriteBehindQueue$ProcessingThread.run(WriteBehindQueue.java:178)
+	at java.lang.Thread.run(Unknown Source)
+
+"p write-behind" daemon prio=6 tid=0x5354a800 nid=0x1b58 runnable [0x5487f000..0x5487fa94]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.System.currentTimeMillis(Native Method)
+	at net.sf.ehcache.writer.writebehind.WriteBehindQueue.processItems(WriteBehindQueue.java:207)
+	at net.sf.ehcache.writer.writebehind.WriteBehindQueue.access$200(WriteBehindQueue.java:47)
+	at net.sf.ehcache.writer.writebehind.WriteBehindQueue$ProcessingThread.run(WriteBehindQueue.java:147)
+	at java.lang.Thread.run(Unknown Source)
+
+"u write-behind" daemon prio=6 tid=0x53563000 nid=0x1f2c runnable [0x547df000..0x547dfd14]
+   java.lang.Thread.State: RUNNABLE
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.transferAfterCancelledWait(Unknown Source)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(Unknown Source)
+	at net.sf.ehcache.writer.writebehind.WriteBehindQueue$ProcessingThread.run(WriteBehindQueue.java:159)
+	at java.lang.Thread.run(Unknown Source)
+
+"RMI RenewClean-[10.134.5.64:4716,net.sf.ehcache.distribution.ConfigurableRMIClientSocketFactory@1d4c0]" daemon prio=6 tid=0x533d5400 nid=0x1110 in Object.wait() [0x5473f000..0x5473fa14]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x08eff7f8> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	- locked <0x08eff7f8> (a java.lang.ref.ReferenceQueue$Lock)
+	at sun.rmi.transport.DGCClient$EndpointEntry$RenewCleanThread.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+"RMI Scheduler(0)" daemon prio=6 tid=0x53549400 nid=0x1230 waiting on condition [0x546ef000..0x546efa94]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x08e892b8> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(Unknown Source)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(Unknown Source)
+	at java.util.concurrent.DelayQueue.take(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+"GC Daemon" daemon prio=2 tid=0x533d3400 nid=0xa34 in Object.wait() [0x5464f000..0x5464fb94]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x08e95148> (a sun.misc.GC$LatencyLock)
+	at sun.misc.GC$Daemon.run(Unknown Source)
+	- locked <0x08e95148> (a sun.misc.GC$LatencyLock)
+
+"RMI Reaper" prio=6 tid=0x533fac00 nid=0xa6c in Object.wait() [0x545ff000..0x545ffc14]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x08e89ef8> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	- locked <0x08e89ef8> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	at sun.rmi.transport.ObjectTable$Reaper.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+"RMI TCP Accept-0" daemon prio=6 tid=0x533f9800 nid=0x19dc runnable [0x545af000..0x545afc94]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(Unknown Source)
+	- locked <0x08e94d38> (a java.net.SocksSocketImpl)
+	at java.net.ServerSocket.implAccept(Unknown Source)
+	at java.net.ServerSocket.accept(Unknown Source)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(Unknown Source)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+"i write-behind" daemon prio=6 tid=0x52efa800 nid=0x1494 runnable [0x5450f000..0x5450fd94]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.System.currentTimeMillis(Native Method)
+	at net.sf.ehcache.writer.writebehind.WriteBehindQueue.processItems(WriteBehindQueue.java:207)
+	at net.sf.ehcache.writer.writebehind.WriteBehindQueue.access$200(WriteBehindQueue.java:47)
+	at net.sf.ehcache.writer.writebehind.WriteBehindQueue$ProcessingThread.run(WriteBehindQueue.java:147)
+	at java.lang.Thread.run(Unknown Source)
+
+"Replication Thread" daemon prio=6 tid=0x52ed5400 nid=0x1ab4 waiting on condition [0x544bf000..0x544bfa14]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at net.sf.ehcache.distribution.RMIAsynchronousCacheReplicator.replicationThreadMain(RMIAsynchronousCacheReplicator.java:108)
+	at net.sf.ehcache.distribution.RMIAsynchronousCacheReplicator.access$100(RMIAsynchronousCacheReplicator.java:56)
+	at net.sf.ehcache.distribution.RMIAsynchronousCacheReplicator$ReplicationThread.run(RMIAsynchronousCacheReplicator.java:376)
+
+"Replication Thread" daemon prio=6 tid=0x52ecf800 nid=0x1b94 waiting on condition [0x5446f000..0x5446fa94]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at net.sf.ehcache.distribution.RMIAsynchronousCacheReplicator.replicationThreadMain(RMIAsynchronousCacheReplicator.java:108)
+	at net.sf.ehcache.distribution.RMIAsynchronousCacheReplicator.access$100(RMIAsynchronousCacheReplicator.java:56)
+	at net.sf.ehcache.distribution.RMIAsynchronousCacheReplicator$ReplicationThread.run(RMIAsynchronousCacheReplicator.java:376)
+
+"Replication Thread" daemon prio=6 tid=0x52ed1000 nid=0x1d38 waiting on condition [0x5441f000..0x5441fb14]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at net.sf.ehcache.distribution.RMIAsynchronousCacheReplicator.replicationThreadMain(RMIAsynchronousCacheReplicator.java:108)
+	at net.sf.ehcache.distribution.RMIAsynchronousCacheReplicator.access$100(RMIAsynchronousCacheReplicator.java:56)
+	at net.sf.ehcache.distribution.RMIAsynchronousCacheReplicator$ReplicationThread.run(RMIAsynchronousCacheReplicator.java:376)
+
+"Replication Thread" daemon prio=6 tid=0x52e70800 nid=0x2b8 waiting on condition [0x543cf000..0x543cfb94]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at net.sf.ehcache.distribution.RMIAsynchronousCacheReplicator.replicationThreadMain(RMIAsynchronousCacheReplicator.java:108)
+	at net.sf.ehcache.distribution.RMIAsynchronousCacheReplicator.access$100(RMIAsynchronousCacheReplicator.java:56)
+	at net.sf.ehcache.distribution.RMIAsynchronousCacheReplicator$ReplicationThread.run(RMIAsynchronousCacheReplicator.java:376)
+
+"net.sf.ehcache.CacheManager@e20ef8" daemon prio=6 tid=0x53959000 nid=0x13f8 in Object.wait() [0x5437f000..0x5437fc14]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x08e8b010> (a java.util.TaskQueue)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Unknown Source)
+	- locked <0x08e8b010> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Unknown Source)
+
+"RMI TCP Accept-40001" daemon prio=6 tid=0x5356b400 nid=0x1764 runnable [0x5432f000..0x5432fc94]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(Unknown Source)
+	- locked <0x08e8a510> (a java.net.SocksSocketImpl)
+	at java.net.ServerSocket.implAccept(Unknown Source)
+	at java.net.ServerSocket.accept(Unknown Source)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(Unknown Source)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+"Multicast Heartbeat Sender Thread" daemon prio=6 tid=0x5396c400 nid=0x268 in Object.wait() [0x542df000..0x542dfd14]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x08e84aa0> (a net.sf.ehcache.distribution.MulticastKeepaliveHeartbeatSender$MulticastServerThread)
+	at net.sf.ehcache.distribution.MulticastKeepaliveHeartbeatSender$MulticastServerThread.run(MulticastKeepaliveHeartbeatSender.java:146)
+	- locked <0x08e84aa0> (a net.sf.ehcache.distribution.MulticastKeepaliveHeartbeatSender$MulticastServerThread)
+
+"Multicast Heartbeat Receiver Thread" daemon prio=6 tid=0x5370b400 nid=0x1784 runnable [0x5428f000..0x5428fd94]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainDatagramSocketImpl.receive0(Native Method)
+	- locked <0x08e842f8> (a java.net.PlainDatagramSocketImpl)
+	at java.net.PlainDatagramSocketImpl.receive(Unknown Source)
+	- locked <0x08e842f8> (a java.net.PlainDatagramSocketImpl)
+	at java.net.DatagramSocket.receive(Unknown Source)
+	- locked <0x041abfc8> (a java.net.DatagramPacket)
+	- locked <0x08e841d8> (a java.net.MulticastSocket)
+	at net.sf.ehcache.distribution.MulticastKeepaliveHeartbeatReceiver$MulticastReceiverThread.run(MulticastKeepaliveHeartbeatReceiver.java:124)
+
+"Thread-0" daemon prio=6 tid=0x538f3c00 nid=0x40c waiting on condition [0x53a1f000..0x53a1fa14]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at org.apache.commons.pool.impl.GenericObjectPool$Evictor.run(GenericObjectPool.java:1080)
+	at java.lang.Thread.run(Unknown Source)
+
+"Low Memory Detector" daemon prio=6 tid=0x52eb5c00 nid=0xfe8 runnable [0x00000000..0x00000000]
+   java.lang.Thread.State: RUNNABLE
+
+"CompilerThread0" daemon prio=10 tid=0x52eb1800 nid=0x18b8 waiting on condition [0x00000000..0x5332f83c]
+   java.lang.Thread.State: RUNNABLE
+
+"JDWP Command Reader" daemon prio=6 tid=0x52ea3c00 nid=0x14d4 runnable [0x00000000..0x00000000]
+   java.lang.Thread.State: RUNNABLE
+
+"JDWP Event Helper Thread" daemon prio=6 tid=0x52ea2000 nid=0x182c runnable [0x00000000..0x00000000]
+   java.lang.Thread.State: RUNNABLE
+
+"JDWP Transport Listener: dt_socket" daemon prio=6 tid=0x52e9f800 nid=0x18e4 runnable [0x00000000..0x5323fae0]
+   java.lang.Thread.State: RUNNABLE
+
+"Attach Listener" daemon prio=10 tid=0x52e93000 nid=0xfbc waiting on condition [0x00000000..0x00000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" daemon prio=10 tid=0x52e91c00 nid=0x19c8 runnable [0x00000000..0x00000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" daemon prio=8 tid=0x52e81400 nid=0x1b40 in Object.wait() [0x5307f000..0x5307fa94]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x08286530> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	- locked <0x08286530> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(Unknown Source)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Unknown Source)
+
+"Reference Handler" daemon prio=10 tid=0x52e7c800 nid=0x1e4c in Object.wait() [0x5302f000..0x5302fb14]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x08286550> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:485)
+	at java.lang.ref.Reference$ReferenceHandler.run(Unknown Source)
+	- locked <0x08286550> (a java.lang.ref.Reference$Lock)
+
+"main" prio=6 tid=0x003bac00 nid=0xe88 at breakpoint[0x0090f000..0x0090fe50]
+   java.lang.Thread.State: RUNNABLE
+	at cacheTests.cacheTestsMain.main(cacheTestsMain.java:59)
+
+"VM Thread" prio=10 tid=0x52e77800 nid=0xa28 runnable 
+
+"VM Periodic Task Thread" prio=10 tid=0x52ebb800 nid=0x668 waiting on condition 
+
+JNI global references: 4153
+

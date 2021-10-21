@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  All content copyright (c) 2003-2007 Terracotta, Inc.,
+  except as may otherwise be noted in a separate copyright notice.
+  All rights reserved.
+
+-->
+<!-- This is a Terracotta configuration file that has been pre-configured
+for use with Tomcat.
+
+For more information, please see the product documentation.
+ -->
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-4.xsd">
+
+  <!-- Tell DSO where the Terracotta server can be found -->
+  <servers>
+    <server host="localhost">
+      <data>/mnt/terracotta/server-data</data>
+      <logs>/mnt/terracotta/server-logs</logs>
+    </server>
+  </servers>
+
+  <!-- Tell DSO where to put the generated client logs -->
+  <clients>
+      <modules>
+        <module name="clustered-cglib-2.1.3" version="2.5.1"/>
+	      <module name="clustered-ehcache-1.2.4" version="2.5.1" />
+      </modules>
+    <logs>/mnt/terracotta/client-logs</logs>
+    <dso>
+      <debugging>
+        <instrumentation-logging>
+          <class>false</class>
+          <hierarchy>true</hierarchy>
+          <locks>true</locks>
+          <transient-root>false</transient-root>
+          <roots>false</roots>
+          <distributed-methods>false</distributed-methods>
+        </instrumentation-logging>
+        <runtime-logging>
+          <lock-debug>true</lock-debug>        
+        </runtime-logging>
+        <runtime-output-options>
+          <auto-lock-details>false</auto-lock-details>
+          <caller>true</caller>
+          <full-stack>true</full-stack>
+        </runtime-output-options>
+      </debugging>
+    </dso>
+  </clients>
+
+  <application>
+    <spring>
+      <jee-application name="*">
+       <session-support>true</session-support>
+       <application-contexts> 
+          <application-context> 
+            <paths> 
+              <path>/WEB-INF/spring/applicationContext.xml</path>
+              <path>/WEB-INF/spring/dispatch-servlet.xml</path>               
+            </paths>
+          </application-context>
+        </application-contexts>       
+      </jee-application>
+    </spring>
+  </application>
+</tc:tc-config>

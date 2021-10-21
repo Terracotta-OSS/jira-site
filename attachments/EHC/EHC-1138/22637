@@ -1,0 +1,124 @@
+17776:
+2016-11-04 09:42:23
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.111-b14 mixed mode):
+
+"Attach Listener" #18765 daemon prio=9 os_prio=0 tid=0x00007f886c28a000 nid=0x283d waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+   Locked ownable synchronizers:
+	- None
+
+"http-nio-8080-exec-125" #18448 daemon prio=5 os_prio=0 tid=0x00007f887c006000 nid=0x1a51 waiting for monitor entry [0x00007f883f3d2000]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at net.sf.ehcache.store.cachingtier.OnHeapCachingTier$Fault.get(OnHeapCachingTier.java:331)
+	- waiting to lock <0x0000000708f21468> (a net.sf.ehcache.store.cachingtier.OnHeapCachingTier$Fault)
+	at net.sf.ehcache.store.cachingtier.OnHeapCachingTier$Fault.access$200(OnHeapCachingTier.java:311)
+	at net.sf.ehcache.store.cachingtier.OnHeapCachingTier.getValue(OnHeapCachingTier.java:299)
+	at net.sf.ehcache.store.cachingtier.OnHeapCachingTier.access$000(OnHeapCachingTier.java:61)
+	at net.sf.ehcache.store.cachingtier.OnHeapCachingTier$1.evicted(OnHeapCachingTier.java:83)
+	at net.sf.ehcache.store.cachingtier.CountBasedBackEnd$1.removed(CountBasedBackEnd.java:103)
+	at net.sf.ehcache.util.concurrent.ConcurrentHashMap.internalReplace(ConcurrentHashMap.java:1346)
+	at net.sf.ehcache.util.concurrent.ConcurrentHashMap.removeAndNotify(ConcurrentHashMap.java:2647)
+	at net.sf.ehcache.store.cachingtier.CountBasedBackEnd.remove(CountBasedBackEnd.java:115)
+	at net.sf.ehcache.store.cachingtier.OnHeapCachingTier.remove(OnHeapCachingTier.java:206)
+	at net.sf.ehcache.store.CacheStore.put(CacheStore.java:134)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1617)
+	at net.sf.ehcache.Cache.put(Cache.java:1543)
+	at net.sf.ehcache.Cache.put(Cache.java:1508)
+	at org.hibernate.cache.ehcache.internal.regions.EhcacheTransactionalDataRegion.put(EhcacheTransactionalDataRegion.java:126)
+	at org.hibernate.cache.ehcache.internal.strategy.NonStrictReadWriteEhcacheEntityRegionAccessStrategy.putFromLoad(NonStrictReadWriteEhcacheEntityRegionAccessStrategy.java:57)
+	at org.hibernate.cache.ehcache.internal.nonstop.NonstopAwareEntityRegionAccessStrategy.putFromLoad(NonstopAwareEntityRegionAccessStrategy.java:139)
+	at org.hibernate.engine.internal.TwoPhaseLoad.doInitializeEntity(TwoPhaseLoad.java:205)
+	at org.hibernate.engine.internal.TwoPhaseLoad.initializeEntity(TwoPhaseLoad.java:125)
+	at org.hibernate.loader.Loader.initializeEntitiesAndCollections(Loader.java:1139)
+	at org.hibernate.loader.Loader.processResultSet(Loader.java:998)
+	at org.hibernate.loader.Loader.doQuery(Loader.java:936)
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:342)
+	at org.hibernate.loader.Loader.doList(Loader.java:2622)
+	at org.hibernate.loader.Loader.doList(Loader.java:2605)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2434)
+	at org.hibernate.loader.Loader.list(Loader.java:2429)
+	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:501)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:371)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.performList(HQLQueryPlan.java:216)
+	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1339)
+	at org.hibernate.internal.QueryImpl.list(QueryImpl.java:87)
+	...
+   Locked ownable synchronizers:
+	- <0x00000006f6977f48> (a java.util.concurrent.ThreadPoolExecutor$Worker)
+
+"http-nio-8080-exec-120" #17908 daemon prio=5 os_prio=0 tid=0x00007f887c302000 nid=0x211 waiting on condition [0x00007f884a528000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000006c1465f28> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:836)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireShared(AbstractQueuedSynchronizer.java:967)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireShared(AbstractQueuedSynchronizer.java:1283)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$ReadLock.lock(ReentrantReadWriteLock.java:727)
+	at net.sf.ehcache.store.CacheStore$3.call(CacheStore.java:141)
+	at net.sf.ehcache.store.CacheStore$3.call(CacheStore.java:137)
+	at net.sf.ehcache.store.cachingtier.OnHeapCachingTier$Fault.get(OnHeapCachingTier.java:334)
+	- locked <0x0000000708f21468> (a net.sf.ehcache.store.cachingtier.OnHeapCachingTier$Fault)
+	at net.sf.ehcache.store.cachingtier.OnHeapCachingTier$Fault.access$200(OnHeapCachingTier.java:311)
+	at net.sf.ehcache.store.cachingtier.OnHeapCachingTier.get(OnHeapCachingTier.java:175)
+	at net.sf.ehcache.store.CacheStore.put(CacheStore.java:137)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1617)
+	at net.sf.ehcache.Cache.put(Cache.java:1543)
+	at net.sf.ehcache.Cache.put(Cache.java:1508)
+	at org.hibernate.cache.ehcache.internal.regions.EhcacheTransactionalDataRegion.put(EhcacheTransactionalDataRegion.java:126)
+	at org.hibernate.cache.ehcache.internal.strategy.NonStrictReadWriteEhcacheEntityRegionAccessStrategy.putFromLoad(NonStrictReadWriteEhcacheEntityRegionAccessStrategy.java:57)
+	at org.hibernate.cache.ehcache.internal.nonstop.NonstopAwareEntityRegionAccessStrategy.putFromLoad(NonstopAwareEntityRegionAccessStrategy.java:139)
+	at org.hibernate.engine.internal.TwoPhaseLoad.doInitializeEntity(TwoPhaseLoad.java:205)
+	at org.hibernate.engine.internal.TwoPhaseLoad.initializeEntity(TwoPhaseLoad.java:125)
+	at org.hibernate.loader.Loader.initializeEntitiesAndCollections(Loader.java:1139)
+	at org.hibernate.loader.Loader.processResultSet(Loader.java:998)
+	at org.hibernate.loader.Loader.doQuery(Loader.java:936)
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:342)
+	at org.hibernate.loader.Loader.doList(Loader.java:2622)
+	at org.hibernate.loader.Loader.doList(Loader.java:2605)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2434)
+	at org.hibernate.loader.Loader.list(Loader.java:2429)
+	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:501)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:371)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.performList(HQLQueryPlan.java:216)
+	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1339)
+	at org.hibernate.internal.QueryImpl.list(QueryImpl.java:87)
+	...
+
+   Locked ownable synchronizers:
+	- <0x00000006ef897d18> (a java.util.concurrent.ThreadPoolExecutor$Worker)
+
+"http-nio-8080-exec-118" #17878 daemon prio=5 os_prio=0 tid=0x00007f8878018800 nid=0x7e67 in Object.wait() [0x00007f8870643000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:502)
+	at net.sf.ehcache.util.concurrent.ConcurrentHashMap$Node.tryAwaitLock(ConcurrentHashMap.java:687)
+	- locked <0x0000000700d84d68> (a net.sf.ehcache.util.concurrent.ConcurrentHashMap$Node)
+	at net.sf.ehcache.util.concurrent.ConcurrentHashMap.internalClear(ConcurrentHashMap.java:2014)
+	at net.sf.ehcache.util.concurrent.ConcurrentHashMap.clear(ConcurrentHashMap.java:2682)
+	at net.sf.ehcache.store.cachingtier.CountBasedBackEnd.clear(CountBasedBackEnd.java:132)
+	at net.sf.ehcache.store.cachingtier.OnHeapCachingTier.clear(OnHeapCachingTier.java:214)
+	at net.sf.ehcache.store.CacheStore.removeAll(CacheStore.java:265)
+	at net.sf.ehcache.Cache.removeAll(Cache.java:2524)
+	at net.sf.ehcache.Cache.removeAll(Cache.java:2509)
+	at org.hibernate.cache.ehcache.internal.regions.EhcacheTransactionalDataRegion.clear(EhcacheTransactionalDataRegion.java:180)
+	at org.hibernate.cache.ehcache.internal.strategy.AbstractEhcacheAccessStrategy.removeAll(AbstractEhcacheAccessStrategy.java:116)
+	at org.hibernate.cache.ehcache.internal.nonstop.NonstopAwareEntityRegionAccessStrategy.removeAll(NonstopAwareEntityRegionAccessStrategy.java:171)
+	at org.hibernate.action.internal.BulkOperationCleanupAction$EntityCleanup.<init>(BulkOperationCleanupAction.java:210)
+	at org.hibernate.action.internal.BulkOperationCleanupAction$EntityCleanup.<init>(BulkOperationCleanupAction.java:203)
+	at org.hibernate.action.internal.BulkOperationCleanupAction.<init>(BulkOperationCleanupAction.java:65)
+	at org.hibernate.hql.internal.ast.exec.BasicExecutor.doExecute(BasicExecutor.java:65)
+	at org.hibernate.hql.internal.ast.exec.BasicExecutor.execute(BasicExecutor.java:60)
+	at org.hibernate.hql.internal.ast.exec.DeleteExecutor.execute(DeleteExecutor.java:111)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.executeUpdate(QueryTranslatorImpl.java:429)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.performExecuteUpdate(HQLQueryPlan.java:374)
+	at org.hibernate.internal.SessionImpl.executeUpdate(SessionImpl.java:1361)
+	at org.hibernate.internal.QueryImpl.executeUpdate(QueryImpl.java:102)
+	...
+
+   Locked ownable synchronizers:
+	- <0x00000006c1465f28> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	- <0x00000006ebe66870> (a java.util.concurrent.ThreadPoolExecutor$Worker)
+
+

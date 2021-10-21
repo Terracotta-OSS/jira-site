@@ -1,0 +1,2114 @@
+"Thread-40" Id=147
+   java.lang.Thread.State: RUNNABLE
+	at sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at sun.management.ThreadImpl.dumpAllThreads(ThreadImpl.java:433)
+	at com.org.service.container.ServiceContainer.generateThreadDump(ServiceContainer.java:380)
+	at com.org.service.container.ServiceContainer.shutdown(ServiceContainer.java:203)
+	at com.org.service.container.ShutdownInterceptor.run(ShutdownInterceptor.java:12)
+
+"Thread-33" Id=127
+   java.lang.Thread.State: RUNNABLE
+	at org.h2.engine.Database.close(Database.java:1132)
+	  - locked org.h2.engine.Database
+	at org.h2.engine.DatabaseCloser.run(DatabaseCloser.java:64)
+
+"Thread-2" Id=15
+   java.lang.Thread.State: RUNNABLE
+	at org.terracotta.modules.ehcache.store.ClusteredStore.__tc_getcacheCoherence(ClusteredStore.java)
+	  - locked com.tc.object.ObjectID
+	at org.terracotta.modules.ehcache.store.ClusteredStore.isNodeCoherent(ClusteredStore.java:851)
+	at org.terracotta.modules.ehcache.store.ClusteredSafeStore.isNodeCoherent(ClusteredSafeStore.java:553)
+	at net.sf.ehcache.Cache.isNodeBulkLoadEnabled(Cache.java:4173)
+	at net.sf.ehcache.Cache.isNodeCoherent(Cache.java:3765)
+	at org.terracotta.modules.ehcache.coherence.CacheShutdownHook.shutdownRegisteredCaches(CacheShutdownHook.java:55)
+	  - locked org.terracotta.modules.ehcache.coherence.CacheShutdownHook
+	at org.terracotta.modules.ehcache.coherence.CacheShutdownHook.access$000(CacheShutdownHook.java:21)
+	at org.terracotta.modules.ehcache.coherence.CacheShutdownHook$1.run(CacheShutdownHook.java:40)
+	at com.tc.object.ClientShutdownManager.executeBeforeShutdownHooks(ClientShutdownManager.java:55)
+	at com.tc.object.ClientShutdownManager.execute(ClientShutdownManager.java:61)
+	at com.tc.object.bytecode.ManagerImpl.shutdownClient(ManagerImpl.java:338)
+	at com.tc.object.bytecode.ManagerImpl.shutdown(ManagerImpl.java:325)
+	at com.tc.object.bytecode.ManagerImpl.access$1700(ManagerImpl.java:94)
+	at com.tc.object.bytecode.ManagerImpl$ShutdownAction.run(ManagerImpl.java:656)
+	at java.lang.Thread.run(Thread.java:662)
+
+"Dump On Timeout Timer" Id=1436 on lock=java.util.TaskQueue@6913d429
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"JarManager idle thread" Id=1435
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at com.terracotta.express.loader.JarManager$IdleThread.run(JarManager.java:131)
+
+"ActiveMQ InactivityMonitor Worker" Id=1434 on lock=java.util.concurrent.SynchronousQueue$TransferStack@14ce05a4
+   java.lang.Thread.State: TIMED_WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:196)
+	at java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:424)
+	at java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:323)
+	at java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:874)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:945)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"JMX server connection timeout 1433" Id=1433 on lock=[I@61d45ca7
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at com.sun.jmx.remote.internal.ServerCommunicatorAdmin$Timeout.run(ServerCommunicatorAdmin.java:150)
+	at java.lang.Thread.run(Thread.java:662)
+
+"JMX server connection timeout 1432" Id=1432 on lock=[I@3d0f0a1e
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at com.sun.jmx.remote.internal.ServerCommunicatorAdmin$Timeout.run(ServerCommunicatorAdmin.java:150)
+	at java.lang.Thread.run(Thread.java:662)
+
+"RMI TCP Connection(idle)" Id=1431 on lock=java.util.concurrent.SynchronousQueue$TransferStack@266156e3
+   java.lang.Thread.State: TIMED_WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:196)
+	at java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:424)
+	at java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:323)
+	at java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:874)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:945)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"RMI TCP Connection(idle)" Id=1430 on lock=java.util.concurrent.SynchronousQueue$TransferStack@266156e3
+   java.lang.Thread.State: TIMED_WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:196)
+	at java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:424)
+	at java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:323)
+	at java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:874)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:945)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-50" Id=320 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-49" Id=319 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-48" Id=318 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-47" Id=317 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-46" Id=311 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-45" Id=310 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-44" Id=309 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-43" Id=303 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-42" Id=302 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-41" Id=301 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-40" Id=295 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-39" Id=294 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-38" Id=293 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-37" Id=287 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-36" Id=286 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-35" Id=285 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-34" Id=279 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-33" Id=278 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-32" Id=277 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-31" Id=271 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-30" Id=270 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-29" Id=269 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-28" Id=263 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-27" Id=262 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-26" Id=261 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-25" Id=255 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-24" Id=254 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-23" Id=253 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-22" Id=252 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-21" Id=246 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-20" Id=245 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-19" Id=244 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-50" Id=238 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-18" Id=237 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-17" Id=236 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-16" Id=235 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-49" Id=234 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-48" Id=233 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-47" Id=232 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-46" Id=230 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-45" Id=229 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-44" Id=224 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-15" Id=223 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-14" Id=222 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-43" Id=221 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-13" Id=220 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-42" Id=219 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-41" Id=218 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-40" Id=216 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-39" Id=215 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-38" Id=210 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-12" Id=209 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-37" Id=208 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-11" Id=207 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-10" Id=206 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-36" Id=205 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-35" Id=204 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-34" Id=202 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-33" Id=201 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"RMI Scheduler(0)" Id=197 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@48283e93
+   java.lang.Thread.State: TIMED_WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:196)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2025)
+	at java.util.concurrent.DelayQueue.take(DelayQueue.java:164)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:609)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:602)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-32" Id=195 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-31" Id=194 on lock=java.util.concurrent.Semaphore$NonfairSync@147002b8
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:811)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireSharedInterruptibly(AbstractQueuedSynchronizer.java:969)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(AbstractQueuedSynchronizer.java:1281)
+	at java.util.concurrent.Semaphore.acquire(Semaphore.java:286)
+	at com.tc.object.locks.LockStateNode$PendingLockHold.park(LockStateNode.java:184)
+	at com.tc.object.locks.ClientLockImpl.acquireQueued(ClientLockImpl.java:784)
+	at com.tc.object.locks.ClientLockImpl.acquireQueued(ClientLockImpl.java:760)
+	at com.tc.object.locks.ClientLockImpl.lock(ClientLockImpl.java:62)
+	at com.tc.object.locks.ClientLockManagerImpl.lock(ClientLockManagerImpl.java:100)
+	at com.tc.object.bytecode.ManagerImpl.lock(ManagerImpl.java:870)
+	at org.terracotta.locking.TerracottaLock.lock(TerracottaLock.java:89)
+	at org.terracotta.modules.ehcache.concurrency.TcSync.lock(TcSync.java:32)
+	at net.sf.ehcache.hibernate.regions.EhcacheTransactionalDataRegion.writeLock(EhcacheTransactionalDataRegion.java:199)
+	at net.sf.ehcache.hibernate.strategy.ReadWriteEhcacheEntityRegionAccessStrategy.afterUpdate(ReadWriteEhcacheEntityRegionAccessStrategy.java:92)
+	at net.sf.ehcache.hibernate.nonstop.NonstopAwareEntityRegionAccessStrategy.afterUpdate(NonstopAwareEntityRegionAccessStrategy.java:82)
+	at org.hibernate.action.EntityUpdateAction.afterTransactionCompletion(EntityUpdateAction.java:256)
+	at org.hibernate.engine.ActionQueue.afterTransactionCompletion(ActionQueue.java:198)
+	at org.hibernate.impl.SessionImpl.afterTransactionCompletion(SessionImpl.java:452)
+	at org.springframework.orm.hibernate3.SpringSessionSynchronization.afterCompletion(SpringSessionSynchronization.java:215)
+	at org.springframework.transaction.support.TransactionSynchronizationUtils.invokeAfterCompletion(TransactionSynchronizationUtils.java:157)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.invokeAfterCompletion(AbstractPlatformTransactionManager.java:951)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.triggerAfterCompletion(AbstractPlatformTransactionManager.java:926)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:754)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:678)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:321)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:116)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:171)
+	at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:635)
+	at com.org.device.dao.DeviceFDAO$$EnhancerByCGLIB$$1801feb8.saveAll(<generated>)
+	at com.org.device.servlet.DeviceX.createOrUpdateDeviceF(DeviceX.java:481)
+	at com.org.device.servlet.DeviceX.doGet(DeviceX.java:115)
+	at com.org.device.servlet.DeviceX.doPost(DeviceX.java:96)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:530)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:427)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:931)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:362)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:867)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:117)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:113)
+	at org.eclipse.jetty.server.Server.handle(Server.java:334)
+	at org.eclipse.jetty.server.HttpConnection.handleRequest(HttpConnection.java:559)
+	at org.eclipse.jetty.server.HttpConnection$RequestHandler.content(HttpConnection.java:1007)
+	at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:747)
+	at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:203)
+	at org.eclipse.jetty.server.HttpConnection.handle(HttpConnection.java:406)
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:462)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-9" Id=193 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-30" Id=192 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-29" Id=191 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-8" Id=190 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-7" Id=189 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-6" Id=188 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-5" Id=187 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-28" Id=186 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-27" Id=185 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-26" Id=184 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-25" Id=183 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-24" Id=182 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-23" Id=181 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-22" Id=180 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-21" Id=179 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-20" Id=178 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-19" Id=177 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-18" Id=176 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-17" Id=175 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-16" Id=174 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-15" Id=173 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-14" Id=172 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-13" Id=171 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-12" Id=170 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-11" Id=169 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-10" Id=168 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-9" Id=167 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-8" Id=166 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-7" Id=165 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-6" Id=164 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-4" Id=163 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-5" Id=162 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-3" Id=160 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-2" Id=159 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@408f64c4
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-4" Id=158 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-3" Id=157 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-2" Id=155 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@620a0f9
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-2-thread-1 - Acceptor0 SelectChannelConnector@0.0.0.0:9125" Id=153 (running in native)
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:210)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	  - locked sun.nio.ch.Util$2
+	  - locked java.util.Collections$UnmodifiableSet
+	  - locked sun.nio.ch.EPollSelectorImpl
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at org.eclipse.jetty.io.nio.SelectorManager$SelectSet.doSelect(SelectorManager.java:497)
+	at org.eclipse.jetty.io.nio.SelectorManager.doSelect(SelectorManager.java:180)
+	at org.eclipse.jetty.server.nio.SelectChannelConnector.accept(SelectChannelConnector.java:135)
+	at org.eclipse.jetty.server.AbstractConnector$Acceptor.run(AbstractConnector.java:776)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:662)
+
+"pool-1-thread-1 - Acceptor0 SelectChannelConnector@0.0.0.0:9025" Id=152 (running in native)
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:210)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	  - locked sun.nio.ch.Util$2
+	  - locked java.util.Collections$UnmodifiableSet
+	  - locked sun.nio.ch.EPollSelectorImpl
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at org.eclipse.jetty.io.nio.SelectorManager$SelectSet.doSelect(SelectorManager.java:497)
+	at org.eclipse.jetty.io.nio.SelectorManager.doSelect(SelectorManager.java:180)
+	at org.eclipse.jetty.server.nio.SelectChannelConnector.accept(SelectChannelConnector.java:135)
+	at org.eclipse.jetty.server.AbstractConnector$Acceptor.run(AbstractConnector.java:776)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:662)
+
+"Service:null" Id=150 on lock=java.lang.Object@2631fce3
+   java.lang.Thread.State: WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at org.apache.activemq.SimplePriorityMessageDispatchChannel.dequeue(SimplePriorityMessageDispatchChannel.java:90)
+	at org.apache.activemq.ActiveMQMessageConsumer.dequeue(ActiveMQMessageConsumer.java:478)
+	at org.apache.activemq.ActiveMQMessageConsumer.receive(ActiveMQMessageConsumer.java:531)
+	at com.org.service.container.queues.AbstractQueueService.run(AbstractQueueService.java:82)
+	at java.lang.Thread.run(Thread.java:662)
+
+"Service:null" Id=149 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@1bd1aeac
+   java.lang.Thread.State: TIMED_WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:196)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2025)
+	at java.util.concurrent.ThreadPoolExecutor.awaitTermination(ThreadPoolExecutor.java:1253)
+	at org.eclipse.jetty.util.thread.ExecutorThreadPool.join(ExecutorThreadPool.java:141)
+	at org.eclipse.jetty.server.Server.join(Server.java:385)
+	at com.org.service.container.servlets.WebService.run(WebService.java:41)
+	at java.lang.Thread.run(Thread.java:662)
+
+"Service:null" Id=148 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@6322ac78
+   java.lang.Thread.State: TIMED_WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:196)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2025)
+	at java.util.concurrent.ThreadPoolExecutor.awaitTermination(ThreadPoolExecutor.java:1253)
+	at org.eclipse.jetty.util.thread.ExecutorThreadPool.join(ExecutorThreadPool.java:141)
+	at org.eclipse.jetty.server.Server.join(Server.java:385)
+	at com.org.service.container.servlets.WebService.run(WebService.java:41)
+	at java.lang.Thread.run(Thread.java:662)
+
+"CounterClient-CountRequestPublishingMonitor" Id=146 on lock=com.org.counter.client.CountRequestPublishingMonitorThread@79692d20
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at com.org.counter.client.CountRequestPublishingMonitorThread.run(CountRequestPublishingMonitorThread.java:28)
+
+"H2 Console Server (http://192.168.12.13:11111)" Id=143 (running in native)
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:408)
+	  - locked java.net.SocksSocketImpl
+	at java.net.ServerSocket.implAccept(ServerSocket.java:462)
+	at java.net.ServerSocket.accept(ServerSocket.java:430)
+	at org.h2.server.web.WebServer.listen(WebServer.java:346)
+	at org.h2.tools.Server.run(Server.java:551)
+	at java.lang.Thread.run(Thread.java:662)
+
+"CancelledCampaignCache" Id=140 on lock=java.util.TaskQueue@68f51483
+   java.lang.Thread.State: WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"com%002eorg%002edevice%002eprotocol%002e%0044evice%0050rotocol.data" Id=139 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@3215da4a
+   java.lang.Thread.State: TIMED_WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:196)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2025)
+	at java.util.concurrent.DelayQueue.take(DelayQueue.java:164)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:609)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:602)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"com%002eorg%002edevice%002eprotocol%002e%0044evice%0043ommand%0050aram%004dapping.data" Id=138 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@38ae49f6
+   java.lang.Thread.State: TIMED_WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:196)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2025)
+	at java.util.concurrent.DelayQueue.take(DelayQueue.java:164)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:609)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:602)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"com%002eorg%002edevice%002evirtual%002ereport%002e%0052eport%0046ield.data" Id=137 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@3a79d28c
+   java.lang.Thread.State: TIMED_WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:196)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2025)
+	at java.util.concurrent.DelayQueue.take(DelayQueue.java:164)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:609)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:602)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"com%002eorg%002edevice%002eprotocol%002e%0044evice%0043ommand.data" Id=136 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@13ee0352
+   java.lang.Thread.State: TIMED_WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:196)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2025)
+	at java.util.concurrent.DelayQueue.take(DelayQueue.java:164)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:609)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:602)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"com%002eorg%002edevice%002evirtual%002ecore%002e%0056irtual%0043ommand.data" Id=135 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@6f1c06b6
+   java.lang.Thread.State: TIMED_WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:196)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2025)
+	at java.util.concurrent.DelayQueue.take(DelayQueue.java:164)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:609)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:602)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"com%002eorg%002edevice%002evirtual%002ereport%002e%0052eport.data" Id=134 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@18fccfb7
+   java.lang.Thread.State: TIMED_WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:196)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2025)
+	at java.util.concurrent.DelayQueue.take(DelayQueue.java:164)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:609)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:602)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"com%002eorg%002edevice%002evirtual%002egenerated%0041larm%002e%0044evice%0047enerated%0041larm.data" Id=133 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@7da90431
+   java.lang.Thread.State: TIMED_WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:196)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2025)
+	at java.util.concurrent.DelayQueue.take(DelayQueue.java:164)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:609)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:602)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"com%002eorg%002edevice%002evirtual%002edao%002e%0056irtual%0044evice%0041ttr.data" Id=132 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@63526d6a
+   java.lang.Thread.State: TIMED_WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:196)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2025)
+	at java.util.concurrent.DelayQueue.take(DelayQueue.java:164)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:609)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:602)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"com%002eorg%002edevice%002evirtual%002efeature%002e%0044evice%0046eature.data" Id=131 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@388d7d17
+   java.lang.Thread.State: TIMED_WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:196)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2025)
+	at java.util.concurrent.DelayQueue.take(DelayQueue.java:164)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:609)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:602)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"com%002eorg%002edevice%002evirtual%002edao%002e%0056irtual%0054o%0044evice%0043ommand%004dapping.data" Id=130 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@510f8e02
+   java.lang.Thread.State: TIMED_WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:196)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2025)
+	at java.util.concurrent.DelayQueue.take(DelayQueue.java:164)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:609)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:602)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"net.sf.ehcache.CacheManager@78374f9f" Id=128 on lock=java.util.TaskQueue@54344ee1
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2" Id=126 on lock=com.mchange.v2.async.ThreadPoolAsynchronousRunner@3626c0f7
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:534)
+
+"com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1" Id=125 on lock=com.mchange.v2.async.ThreadPoolAsynchronousRunner@3626c0f7
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:534)
+
+"com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0" Id=124 on lock=com.mchange.v2.async.ThreadPoolAsynchronousRunner@3626c0f7
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:534)
+
+"Timer-2" Id=123 on lock=java.util.TaskQueue@2a46b3e7
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"DeviceServiceCache" Id=112 on lock=java.util.TaskQueue@7cd1860
+   java.lang.Thread.State: WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"Abandoned connection cleanup thread" Id=111 on lock=java.lang.ref.ReferenceQueue$Lock@29fb4aa0
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:118)
+	at com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:41)
+
+"com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2" Id=110 on lock=com.mchange.v2.async.ThreadPoolAsynchronousRunner@30e063e8
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:534)
+
+"com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1" Id=109 on lock=com.mchange.v2.async.ThreadPoolAsynchronousRunner@30e063e8
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:534)
+
+"com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0" Id=108 on lock=com.mchange.v2.async.ThreadPoolAsynchronousRunner@30e063e8
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:534)
+
+"Timer-1" Id=107 on lock=java.util.TaskQueue@5bbf2d69
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"ActiveMQ InactivityMonitor WriteCheckTimer" Id=106 on lock=java.util.TaskQueue@643e778d
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"ActiveMQ InactivityMonitor ReadCheckTimer" Id=105 on lock=java.util.TaskQueue@411afd65
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"ActiveMQ Transport: tcp://platform-queue.org.com/127.0.0.1:61616@48574" Id=103 (running in native)
+   java.lang.Thread.State: RUNNABLE
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:129)
+	at org.apache.activemq.transport.tcp.TcpBufferedInputStream.fill(TcpBufferedInputStream.java:50)
+	at org.apache.activemq.transport.tcp.TcpTransport$2.fill(TcpTransport.java:604)
+	at org.apache.activemq.transport.tcp.TcpBufferedInputStream.read(TcpBufferedInputStream.java:58)
+	at org.apache.activemq.transport.tcp.TcpTransport$2.read(TcpTransport.java:589)
+	at java.io.DataInputStream.readInt(DataInputStream.java:370)
+	at org.apache.activemq.openwire.OpenWireFormat.unmarshal(OpenWireFormat.java:275)
+	at org.apache.activemq.transport.tcp.TcpTransport.readCommand(TcpTransport.java:221)
+	at org.apache.activemq.transport.tcp.TcpTransport.doRun(TcpTransport.java:213)
+	at org.apache.activemq.transport.tcp.TcpTransport.run(TcpTransport.java:196)
+	at java.lang.Thread.run(Thread.java:662)
+
+"GroupCacheManager" Id=99 on lock=java.util.TaskQueue@52f21347
+   java.lang.Thread.State: WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"Attach Listener" Id=96
+   java.lang.Thread.State: RUNNABLE
+
+"DeviceExistCacheManager" Id=94 on lock=java.util.TaskQueue@12cfc4dc
+   java.lang.Thread.State: WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"cluster-events-processor-0" Id=93 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@685512a
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:662)
+
+"Job_Executor2" Id=91 on lock=com.sun.jmx.remote.opt.internal.ArrayNotificationBuffer@1a939fbe
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at com.sun.jmx.remote.opt.internal.ArrayNotificationBuffer.fetchNotifications(ArrayNotificationBuffer.java:384)
+	at com.sun.jmx.remote.opt.internal.ArrayNotificationBuffer$ShareBuffer.fetchNotifications(ArrayNotificationBuffer.java:163)
+	at com.sun.jmx.remote.opt.internal.ServerNotifForwarder.fetchNotifs(ServerNotifForwarder.java:208)
+	at javax.management.remote.generic.ServerIntermediary$RequestHandler.handleNotifReqMessage(ServerIntermediary.java:719)
+	at javax.management.remote.generic.ServerIntermediary$RequestHandler.execute(ServerIntermediary.java:666)
+	at com.sun.jmx.remote.generic.ServerSynchroMessageConnectionImpl$RemoteJob.run(ServerSynchroMessageConnectionImpl.java:306)
+	at com.sun.jmx.remote.opt.util.ThreadService$ThreadServiceJob.run(ThreadService.java:248)
+	at com.sun.jmx.remote.opt.util.JobExecutor.run(JobExecutor.java:99)
+
+"Out of band notifier - Main" Id=90 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@51dc8093
+   java.lang.Thread.State: WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1987)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:399)
+	at com.tc.cluster.DsoClusterImpl$OutOfBandNotifier$1.run(DsoClusterImpl.java:593)
+	at java.lang.Thread.run(Thread.java:662)
+
+"Job_Executor1" Id=89 on lock=java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@637d5ce1
+   java.lang.Thread.State: TIMED_WAITING
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:196)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2025)
+	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:424)
+	at com.tc.management.remote.protocol.terracotta.TunnelingMessageConnection.readMessage(TunnelingMessageConnection.java:63)
+	at com.sun.jmx.remote.generic.ServerSynchroMessageConnectionImpl$MessageReader.run(ServerSynchroMessageConnectionImpl.java:225)
+	at com.sun.jmx.remote.opt.util.ThreadService$ThreadServiceJob.run(ThreadService.java:248)
+	at com.sun.jmx.remote.opt.util.JobExecutor.run(JobExecutor.java:99)
+
+"WorkerThread(lock_recall_stage, 7, 0)" Id=86 on lock=java.lang.Object@3b5ceace
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(lock_recall_stage, 6, 0)" Id=85 on lock=java.lang.Object@3b5ceace
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(lock_recall_stage, 5, 0)" Id=84 on lock=java.lang.Object@3b5ceace
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(lock_recall_stage, 4, 0)" Id=83 on lock=java.lang.Object@3b5ceace
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(lock_recall_stage, 3, 0)" Id=82 on lock=java.lang.Object@3b5ceace
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(lock_recall_stage, 2, 0)" Id=81 on lock=java.lang.Object@3b5ceace
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(lock_recall_stage, 1, 0)" Id=80 on lock=java.lang.Object@3b5ceace
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(lock_recall_stage, 0, 0)" Id=79 on lock=java.lang.Object@3b5ceace
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(lock_statistics_enable_disable_stage, 0)" Id=78 on lock=java.lang.Object@513b98d4
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(receive_object_stage, 0)" Id=77 on lock=java.lang.Object@1faeaff6
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(capacity_eviction_stage, 7, 0)" Id=76 on lock=java.lang.Object@5a24fba
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(capacity_eviction_stage, 6, 0)" Id=75 on lock=java.lang.Object@5a24fba
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(capacity_eviction_stage, 5, 0)" Id=74 on lock=java.lang.Object@5a24fba
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(capacity_eviction_stage, 4, 0)" Id=73 on lock=java.lang.Object@5a24fba
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(capacity_eviction_stage, 3, 0)" Id=72 on lock=java.lang.Object@5a24fba
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(capacity_eviction_stage, 2, 0)" Id=71 on lock=java.lang.Object@5a24fba
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(capacity_eviction_stage, 1, 0)" Id=70 on lock=java.lang.Object@5a24fba
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(capacity_eviction_stage, 0, 0)" Id=69 on lock=java.lang.Object@5a24fba
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(dmi_stage, 0)" Id=68 on lock=java.lang.Object@63203f39
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(lock_response_stage, 0)" Id=67 on lock=java.lang.Object@5a16ea06
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(client_coordination_stage, 0)" Id=66 on lock=java.lang.Object@165e5e1f
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(cluster_metadata_stage, 0)" Id=65 on lock=java.lang.Object@d7550b2
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(jmxremote_tunnel_stage, 0)" Id=64 on lock=java.lang.Object@1104dd05
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(receive_search_query_response_stage, 0)" Id=63 on lock=java.lang.Object@564a7bfd
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(receive_invalidate_objects_stage, 0)" Id=62 on lock=java.lang.Object@34124b4d
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(cluster_events_stage, 0)" Id=61 on lock=java.lang.Object@1d0dc6f0
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(local_cache_transaction_complete_stage, 7, 0)" Id=60 on lock=java.lang.Object@737fc576
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(local_cache_transaction_complete_stage, 6, 0)" Id=59 on lock=java.lang.Object@737fc576
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(local_cache_transaction_complete_stage, 5, 0)" Id=58 on lock=java.lang.Object@737fc576
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(local_cache_transaction_complete_stage, 4, 0)" Id=57 on lock=java.lang.Object@737fc576
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(local_cache_transaction_complete_stage, 3, 0)" Id=56 on lock=java.lang.Object@737fc576
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(local_cache_transaction_complete_stage, 2, 0)" Id=55 on lock=java.lang.Object@737fc576
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(local_cache_transaction_complete_stage, 1, 0)" Id=54 on lock=java.lang.Object@737fc576
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(local_cache_transaction_complete_stage, 0, 0)" Id=53 on lock=java.lang.Object@737fc576
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(pinned_entry_fault_stage, 7, 0)" Id=52 on lock=java.lang.Object@497d0137
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(pinned_entry_fault_stage, 6, 0)" Id=51 on lock=java.lang.Thread@2e7aacc1
+   java.lang.Thread.State: WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Thread.join(Thread.java:1186)
+	at java.lang.Thread.join(Thread.java:1239)
+	at java.lang.ApplicationShutdownHooks.runHooks(ApplicationShutdownHooks.java:79)
+	at java.lang.ApplicationShutdownHooks$1.run(ApplicationShutdownHooks.java:24)
+	at java.lang.Shutdown.runHooks(Shutdown.java:79)
+	at java.lang.Shutdown.sequence(Shutdown.java:123)
+	at java.lang.Shutdown.exit(Shutdown.java:168)
+	  - locked java.lang.Class
+	at java.lang.Runtime.exit(Runtime.java:90)
+	at java.lang.System.exit(System.java:904)
+	at com.tc.lang.ThrowableHandler.exit(ThrowableHandler.java:172)
+	  - locked com.tc.lang.ThrowableHandler
+	at com.tc.lang.ThrowableHandler.exit(ThrowableHandler.java:165)
+	at com.tc.lang.ThrowableHandler.handleThrowable(ThrowableHandler.java:114)
+	at com.tc.lang.TCThreadGroup.uncaughtException(TCThreadGroup.java:29)
+	at java.lang.Thread.dispatchUncaughtException(Thread.java:1874)
+
+"WorkerThread(pinned_entry_fault_stage, 5, 0)" Id=50 on lock=java.lang.Object@497d0137
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(pinned_entry_fault_stage, 4, 0)" Id=49 on lock=java.lang.Object@497d0137
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(pinned_entry_fault_stage, 3, 0)" Id=48 on lock=java.lang.Object@497d0137
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(pinned_entry_fault_stage, 2, 0)" Id=47 on lock=java.lang.Object@497d0137
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(pinned_entry_fault_stage, 1, 0)" Id=46 on lock=java.lang.Object@497d0137
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(pinned_entry_fault_stage, 0, 0)" Id=45 on lock=java.lang.Object@497d0137
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(receive_transaction_stage, 0)" Id=44 on lock=java.lang.Object@7e9939c2
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(receive_root_id_stage, 0)" Id=43 on lock=java.lang.Object@7d9f307c
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(batch_txn_ack_stage, 0)" Id=42 on lock=java.lang.Object@5e285d52
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(received_sync_write_transaction_ack_stage, 0)" Id=41 on lock=java.lang.Object@2c06e2c9
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(receive_server_map_response_stage, 0)" Id=40 on lock=java.lang.Object@781310b3
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(object_id_request_response_stage, 0)" Id=39 on lock=java.lang.Object@2bad955b
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(hydrate_message_stage, 0)" Id=38 on lock=java.lang.Object@11289fc4
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(cluster_membership_event_stage, 0)" Id=37 on lock=java.lang.Object@21105a9
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(lock_statistics_response_stage, 0)" Id=36 on lock=java.lang.Object@2b8a9b4e
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(receive_transaction_complete_stage, 0)" Id=35 on lock=java.lang.Object@18da3437
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"WorkerThread(receive_server_map_eviction_broadcast_stage, 0)" Id=34 on lock=java.lang.Object@1d9a13a0
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at EDU.oswego.cs.dl.util.concurrent.BoundedLinkedQueue.poll(Unknown Source)
+	at com.tc.util.concurrent.TCBoundedLinkedQueue.poll(TCBoundedLinkedQueue.java:29)
+	at com.tc.async.impl.StageQueueImpl$SourceQueueImpl.poll(StageQueueImpl.java:273)
+	at com.tc.async.impl.StageImpl$WorkerThread.run(StageImpl.java:144)
+
+"Thread-16" Id=33 on lock=com.tc.management.remote.protocol.terracotta.TunnelingEventHandler@6e7e7c8e
+   java.lang.Thread.State: WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.tc.management.remote.protocol.terracotta.TunnelingEventHandler.accept(TunnelingEventHandler.java:98)
+	at com.tc.management.remote.protocol.terracotta.TunnelingMessageConnectionServer.accept(TunnelingMessageConnectionServer.java:32)
+	at com.sun.jmx.remote.generic.SynchroMessageConnectionServerImpl.accept(SynchroMessageConnectionServerImpl.java:87)
+	at javax.management.remote.generic.GenericConnectorServer$Receiver.run(GenericConnectorServer.java:380)
+
+"ClientLockManager Lock Lease Timer" Id=32 on lock=java.util.TaskQueue@3223874e
+   java.lang.Thread.State: WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"ClientLockManager LockGC" Id=31 on lock=java.util.TaskQueue@3a882b99
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"Timer-0" Id=30 on lock=java.util.TaskQueue@41e667d4
+   java.lang.Thread.State: WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"Batch Recall Timer" Id=29 on lock=java.util.TaskQueue@7daab118
+   java.lang.Thread.State: WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"TC Memory Monitor" Id=27
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at com.tc.runtime.TCMemoryManagerImpl$MemoryMonitor.run(TCMemoryManagerImpl.java:145)
+	at java.lang.Thread.run(Thread.java:662)
+
+"Reaper" Id=26 on lock=java.lang.ref.ReferenceQueue$Lock@5150df1c
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:118)
+	at com.tc.object.ClientObjectManagerImpl$2.run(ClientObjectManagerImpl.java:1241)
+
+"Re-invalidation Timer" Id=25 on lock=java.util.TaskQueue@1467d0f9
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"RemoteServerMapManager Request Scheduler" Id=24 on lock=java.util.TaskQueue@2bc895e6
+   java.lang.Thread.State: WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"RemoteObjectManager Request Scheduler" Id=23 on lock=java.util.TaskQueue@7de9457e
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"Statistics Logger" Id=22 on lock=java.util.TaskQueue@5dd193c6
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"RemoteTransactionManager Flusher" Id=21 on lock=java.util.TaskQueue@6a3cdc48
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"HealthChecker" Id=20
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at java.lang.Thread.sleep(Thread.java:302)
+	at com.tc.util.concurrent.ThreadUtil.reallySleep(ThreadUtil.java:24)
+	at com.tc.util.concurrent.ThreadUtil.reallySleep(ThreadUtil.java:14)
+	at com.tc.net.protocol.transport.ConnectionHealthCheckerImpl$HealthCheckerMonitorThreadEngine.run(ConnectionHealthCheckerImpl.java:203)
+	at java.lang.Thread.run(Thread.java:662)
+
+"L1_L2:TCComm Main Selector Thread_W (listen 0.0.0.0:46021)" Id=19 (running in native)
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:210)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	  - locked sun.nio.ch.Util$2
+	  - locked java.util.Collections$UnmodifiableSet
+	  - locked sun.nio.ch.EPollSelectorImpl
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:543)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:290)
+
+"L1_L2:TCComm Main Selector Thread_R (listen 0.0.0.0:46021)" Id=18 (running in native)
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.EPollArrayWrapper.epollWait(Native Method)
+	at sun.nio.ch.EPollArrayWrapper.poll(EPollArrayWrapper.java:210)
+	at sun.nio.ch.EPollSelectorImpl.doSelect(EPollSelectorImpl.java:65)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	  - locked sun.nio.ch.Util$2
+	  - locked java.util.Collections$UnmodifiableSet
+	  - locked sun.nio.ch.EPollSelectorImpl
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at com.tc.net.core.CoreNIOServices$CommThread.selectLoop(CoreNIOServices.java:543)
+	at com.tc.net.core.CoreNIOServices$CommThread.run(CoreNIOServices.java:290)
+
+"SampledCounterManager Timer" Id=17 on lock=java.util.TaskQueue@f352d69
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"startlevel job thread" Id=16 on lock=org.knopflerfish.framework.Queue@6c38504b
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Object.wait(Native Method)
+	at org.knopflerfish.framework.Queue.removeWait(Queue.java:108)
+	at org.knopflerfish.framework.StartLevelImpl.run(StartLevelImpl.java:170)
+	at java.lang.Thread.run(Thread.java:662)
+
+"com.google.common.base.internal.Finalizer" Id=13 on lock=java.lang.ref.ReferenceQueue$Lock@651fa36e
+   java.lang.Thread.State: WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:118)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:134)
+	at com.google.common.base.internal.Finalizer.run(Finalizer.java:133)
+
+"RMI TCP Accept-0" Id=11 (running in native)
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:408)
+	  - locked java.net.SocksSocketImpl
+	at java.net.ServerSocket.implAccept(ServerSocket.java:462)
+	at java.net.ServerSocket.accept(ServerSocket.java:430)
+	at sun.management.jmxremote.LocalRMIServerSocketFactory$1.accept(LocalRMIServerSocketFactory.java:34)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:369)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:341)
+	at java.lang.Thread.run(Thread.java:662)
+
+"RMI TCP Accept-19025" Id=10 (running in native)
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:408)
+	  - locked java.net.SocksSocketImpl
+	at java.net.ServerSocket.implAccept(ServerSocket.java:462)
+	at java.net.ServerSocket.accept(ServerSocket.java:430)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:369)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:341)
+	at java.lang.Thread.run(Thread.java:662)
+
+"RMI TCP Accept-0" Id=9 (running in native)
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:408)
+	  - locked java.net.SocksSocketImpl
+	at java.net.ServerSocket.implAccept(ServerSocket.java:462)
+	at java.net.ServerSocket.accept(ServerSocket.java:430)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:369)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:341)
+	at java.lang.Thread.run(Thread.java:662)
+
+"Signal Dispatcher" Id=4
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" Id=3 on lock=java.lang.ref.ReferenceQueue$Lock@3a015673
+   java.lang.Thread.State: WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:118)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:134)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+"Reference Handler" Id=2 on lock=java.lang.ref.Reference$Lock@2dd2b5c5
+   java.lang.Thread.State: WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+
+"main" Id=1
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at com.org.service.container.ServiceContainer.start(ServiceContainer.java:73)
+	at com.org.service.container.ServiceContainer.main(ServiceContainer.java:146)
+

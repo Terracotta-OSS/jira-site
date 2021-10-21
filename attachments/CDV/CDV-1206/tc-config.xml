@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-4.xsd">
+
+  <clients>
+    <modules>
+      <repository>/home/teck/.m2/repository</repository>
+      <module name="tim-concurrent-collections" version="1.1.0-SNAPSHOT"/>
+    </modules>
+  </clients>
+
+</tc:tc-config>

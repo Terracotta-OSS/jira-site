@@ -1,0 +1,54 @@
+With old LRU (-Dnet.sf.ehcache.use.classic.lru=true)
+
+Cache performance test: 
+   count: 1
+   direct: 22489 ns\count 
+   transaction: 735994 ns\count
+Cache performance test: 
+   count: 10
+   direct: 14275 ns\count 
+   transaction: 187805 ns\count
+Cache performance test: 
+   count: 100
+   direct: 14133 ns\count 
+   transaction: 71032 ns\count
+Cache performance test: 
+   count: 1000
+   direct: 14783 ns\count 
+   transaction: 90398 ns\count
+Cache performance test: 
+   count: 10000
+   direct: 16552 ns\count 
+   transaction: 27817 ns\count
+Cache performance test: 
+   count: 100000
+   direct: 11032 ns\count 
+   transaction: 24288 ns\count
+
+With new LRU:
+
+Cache performance test: 
+   count: 1
+   direct: 31848 ns\count 
+   transaction: 7263347 ns\count
+Cache performance test: 
+   count: 10
+   direct: 19541 ns\count 
+   transaction: 1424048 ns\count
+Cache performance test: 
+   count: 100
+   direct: 16595 ns\count 
+   transaction: 186116 ns\count
+Cache performance test: 
+   count: 1000
+   direct: 63833 ns\count 
+   transaction: 196807 ns\count
+Cache performance test: 
+   count: 10000
+   direct: 30562 ns\count 
+   transaction: 40298 ns\count
+Cache performance test: 
+   count: 100000
+   direct: 10783 ns\count 
+   transaction: 44618 ns\count
+

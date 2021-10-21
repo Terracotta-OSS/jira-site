@@ -1,0 +1,45 @@
+Press any key to run test with new LRU ...
+
+** New LRU **
+Cache performance test: 
+   count: 1
+   direct: 70470 ns\count
+Cache performance test: 
+   count: 10
+   direct: 42345 ns\count
+Cache performance test: 
+   count: 100
+   direct: 46286 ns\count
+Cache performance test: 
+   count: 1000
+   direct: 35754 ns\count
+Cache performance test: 
+   count: 10000
+   direct: 48122 ns\count
+Cache performance test: 
+   count: 100000
+   direct: 12198 ns\count
+Press any key to run test with old LRU ...
+
+** Old LRU **
+Cache performance test: 
+   count: 1
+   direct: 123060 ns\count
+Cache performance test: 
+   count: 10
+   direct: 23522 ns\count
+Cache performance test: 
+   count: 100
+   direct: 9190 ns\count
+Cache performance test: 
+   count: 1000
+   direct: 31334 ns\count
+Cache performance test: 
+   count: 10000
+   direct: 8352 ns\count
+Cache performance test: 
+   count: 100000
+   direct: 5652 ns\count
+Press any key to shutdown ...
+
+

@@ -1,0 +1,20 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="false">
+
+	<diskStore path="java.io.tmpdir"/>
+	
+	<defaultCache
+		maxEntriesLocalHeap="10000"
+		eternal="false"
+		timeToIdleSeconds="120"
+		timeToLiveSeconds="120"
+		overflowToDisk="false"
+		maxEntriesLocalDisk="10000000"
+		diskPersistent="false"
+		diskExpiryThreadIntervalSeconds="120"
+		memoryStoreEvictionPolicy="LRU"
+	/>
+	
+	<cache name="cacheCampagnes" maxEntriesLocalHeap="200000" eternal="true" transactionalMode="local">
+		<persistence strategy="none"/>
+	</cache>
+</ehcache>

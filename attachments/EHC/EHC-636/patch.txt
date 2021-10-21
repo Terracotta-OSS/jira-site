@@ -1,0 +1,124 @@
+### Eclipse Workspace Patch 1.0
+#P ehcache-core-trunk
+Index: src/main/java/net/sf/ehcache/management/Cache.java
+===================================================================
+--- src/main/java/net/sf/ehcache/management/Cache.java	(revision 1958)
++++ src/main/java/net/sf/ehcache/management/Cache.java	(working copy)
+@@ -18,10 +18,26 @@
+ 
+ import net.sf.ehcache.CacheException;
+ import net.sf.ehcache.Ehcache;
++import net.sf.ehcache.distribution.CacheManagerPeerProvider;
++import net.sf.ehcache.distribution.CachePeer;
+ 
+ import javax.management.MalformedObjectNameException;
+ import javax.management.ObjectName;
++import javax.management.openmbean.CompositeDataSupport;
++import javax.management.openmbean.CompositeType;
++import javax.management.openmbean.OpenDataException;
++import javax.management.openmbean.OpenType;
++import javax.management.openmbean.SimpleType;
++import javax.management.openmbean.TabularData;
++import javax.management.openmbean.TabularDataSupport;
++import javax.management.openmbean.TabularType;
++
+ import java.io.Serializable;
++import java.rmi.RemoteException;
++import java.util.HashMap;
++import java.util.List;
++import java.util.Map;
++import java.util.Map.Entry;
+ 
+ /**
+  * A JMX MBean implementation for Cache
+@@ -109,8 +125,60 @@
+     public String getName() {
+         return cache.getName();
+     }
++  
++    /**
++     * 
++     * @param scheme
++     * @return
++     * @throws OpenDataException 
++     */
++    public TabularData getPeers() throws OpenDataException {
++    String typeName =        "java.util.Map<java.lang.String,  java.lang.String>";
++    String[] itemNames =       new String[] {"name", "url"};
++    OpenType[] itemTypes =        new OpenType[] {SimpleType.STRING, SimpleType.STRING};
++    CompositeType rowType =        new CompositeType(typeName, typeName, itemNames, itemNames, itemTypes);
++    TabularType tabularType =        new TabularType(typeName, typeName, rowType, new String[] {"name"});
++    TabularDataSupport support = new TabularDataSupport(tabularType);
++    Map<String,String> peers = getPeersMap();
++    for (Entry<String, String> peer : peers.entrySet()) {
++        
++        support.put( new CompositeDataSupport(rowType,
++                itemNames, new Object[]{ peer.getKey(), peer.getValue()}) );
+ 
++    }
++   
++    return support;
++    }
++    
++    
+     /**
++     * 
++     * @param scheme
++     * @return
++     * @throws OpenDataException 
++     */
++    private Map<String,String> getPeersMap() throws OpenDataException {
++
++        Map<String, String> peerList = new HashMap<String, String>();
++        CacheManagerPeerProvider cacheManagerPeerProvider = cache.getCacheManager().getCacheManagerPeerProvider("RMI");
++        List<CachePeer> peers = cacheManagerPeerProvider.listRemoteCachePeers(cache);
++        if (peers.size() == 0) {
++           // peerList.put("None present", "");
++        } else {
++            for (CachePeer cachePeer : peers) {
++                try {
++                    peerList.put(cachePeer.getName(), cachePeer.getUrl());
++                } catch (RemoteException e) {
++                   // ignore, just wont list
++                }
++            }
++        }
++
++        return peerList;
++    }
++    
++
++    /**
+      * Is the cache configured with Terracotta clustering?
+      */
+     public boolean isTerracottaClustered() {
+Index: src/main/java/net/sf/ehcache/management/CacheMBean.java
+===================================================================
+--- src/main/java/net/sf/ehcache/management/CacheMBean.java	(revision 1958)
++++ src/main/java/net/sf/ehcache/management/CacheMBean.java	(working copy)
+@@ -16,6 +16,9 @@
+ 
+ package net.sf.ehcache.management;
+ 
++import javax.management.openmbean.OpenDataException;
++import javax.management.openmbean.TabularData;
++
+ import net.sf.ehcache.CacheException;
+ 
+ /**
+@@ -43,7 +46,15 @@
+      */
+     void flush() throws IllegalStateException, CacheException;
+ 
++    /**
++     * Provide list of peers.
++     * 
++     * @return
++     * @throws OpenDataException
++     */
++    public TabularData getPeers() throws OpenDataException;
+ 
++
+     /**
+      * Gets the status attribute of the Cache.
+      *

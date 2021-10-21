@@ -1,0 +1,69 @@
+com.tc.exception.TCNonPortableObjectError: 
+*******************************************************************************
+Attempt to share an instance of a non-portable class referenced by a portable class. This
+unshareable class has not been included for sharing in the configuration.
+
+For more information on this issue, please visit our Troubleshooting Guide at:
+http://terracotta.org/kit/troubleshooting
+
+Referring class   : org.springframework.security.context.SecurityContextImpl
+Referring field   : org.springframework.security.context.SecurityContextImpl.authentication
+Thread            : http-8080-1
+JVM ID            : VM(1)
+Non-included class: org.springframework.security.providers.rememberme.RememberMeAuthenticationToken
+
+Under most circumstances, you should only be adding classes for your
+application. If you are adding classes for frameworks or code not written by
+you, then you should consider finding a Terracotta Integration Module (TIM)
+that matches the framework you are using.
+
+As an example, if the non-portable class listed below is
+net.sf.ehcache.CacheManager, you should consider using the ehcache TIM.
+
+It is also possible that some or all of the classes above are truly
+non-portable, the solution is then to mark the referring field as transient.
+For more information on non-portable classes see the Troubleshooting Guide.
+
+Action to take:
+
+1) Reconfigure to include the unshareable classes
+   * edit your tc-config.xml file
+   * locate the <dso> element
+   * add this snippet inside the <dso> element
+
+       <instrumented-classes>
+         <include>
+           <class-expression>org.springframework.security.providers.rememberme.RememberMeAuthenticationToken</class-expression>
+         </include>
+       </instrumented-classes>
+
+   * if there is already an <instrumented-classes> element present, simply add
+     the new includes inside it
+
+*******************************************************************************
+
+	com.tc.object.ClientObjectManagerImpl.throwNonPortableException(ClientObjectManagerImpl.java:755)
+	com.tc.object.ClientObjectManagerImpl.checkPortabilityOfTraversedReference(ClientObjectManagerImpl.java:647)
+	com.tc.object.ClientObjectManagerImpl.access$900(ClientObjectManagerImpl.java:75)
+	com.tc.object.ClientObjectManagerImpl$NewObjectTraverseTest.checkPortability(ClientObjectManagerImpl.java:987)
+	com.tc.object.Traverser.addReferencedObjects(Traverser.java:48)
+	com.tc.object.Traverser.traverse(Traverser.java:81)
+	com.tc.object.ClientObjectManagerImpl.addToManagedFromRoot(ClientObjectManagerImpl.java:910)
+	com.tc.object.ClientObjectManagerImpl.create(ClientObjectManagerImpl.java:267)
+	com.tc.object.ClientObjectManagerImpl.lookupOrCreateIfNecesary(ClientObjectManagerImpl.java:331)
+	com.tc.object.ClientObjectManagerImpl.lookupOrCreate(ClientObjectManagerImpl.java:304)
+	com.tc.object.tx.ClientTransactionManagerImpl.logicalInvoke(ClientTransactionManagerImpl.java:758)
+	com.tc.object.TCObjectLogical.logicalInvoke(TCObjectLogical.java:20)
+	com.tc.object.bytecode.ManagerImpl.logicalInvoke(ManagerImpl.java:229)
+	com.tc.object.bytecode.ManagerUtil.logicalInvoke(ManagerUtil.java:247)
+	java.util.HashMap.put(HashMap.java)
+	com.terracotta.session.SessionData.bindAttribute(SessionData.java:345)
+	com.terracotta.session.SessionData.setAttributeReturnOld(SessionData.java:241)
+	com.terracotta.session.SessionData.setAttribute(SessionData.java:233)
+	org.springframework.security.context.HttpSessionContextIntegrationFilter.storeSecurityContextInSession(HttpSessionContextIntegrationFilter.java:392)
+	org.springframework.security.context.HttpSessionContextIntegrationFilter.doFilterHttp(HttpSessionContextIntegrationFilter.java:250)
+	org.springframework.security.ui.SpringSecurityFilter.doFilter(SpringSecurityFilter.java:53)
+	org.springframework.security.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:371)
+	org.springframework.security.util.FilterChainProxy.doFilter(FilterChainProxy.java:174)
+	org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:236)
+	org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)

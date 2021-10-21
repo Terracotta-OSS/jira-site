@@ -1,0 +1,90 @@
+Index: SessionData.java
+===================================================================
+--- SessionData.java	(revision 10775)
++++ SessionData.java	(working copy)
+@@ -37,6 +37,7 @@
+   private transient LifecycleEventMgr eventMgr;
+   private transient ContextMgr        contextMgr;
+   private transient SessionManager    sessionManager;
++  private transient boolean           valid              = false;
+   private transient boolean           invalidated        = false;
+   private transient boolean           invalidating       = false;
+ 
+@@ -47,6 +48,7 @@
+     this.createTime = System.currentTimeMillis();
+     this.lastAccessedTime = 0;
+     this.timestamp = new Timestamp(System.currentTimeMillis());
++    this.valid = true;
+     setMaxInactiveSeconds(maxIdleSeconds);
+   }
+ 
+@@ -83,16 +85,19 @@
+   }
+ 
+   public boolean isValid() {
+-    return isValid(false, null);
++    return valid || invalidating; // isValid(false, null);
+   }
+ 
+-  public synchronized boolean isValid(boolean debug, TCLogger logger) {
++  public synchronized boolean isReallyValid(boolean debug, TCLogger logger) {
+     if (invalidating) {
+       if (debug) {
+         logger.info(sessionId.getKey() + " is in the process of being invalidated");
+       }
+       return true;
+     }
++    if ( ! valid) {
++      return false;
++    }
+     if (invalidated) {
+       if (debug) {
+         logger.info(sessionId.getKey() + " is already invalidated");
+@@ -109,14 +114,15 @@
+ 
+     final long idleMillis = getIdleMillis(debug, logger);
+     final long maxInactive = getMaxInactiveMillis();
++    if (idleMillis > maxInactive) {
++      invalidateIfNecessary();
++    }
+ 
+-    final boolean isValid = idleMillis < maxInactive;
+-
+     if (debug) {
+-      logger.info(sessionId.getKey() + " isValid=" + isValid + " (" + idleMillis + " < " + maxInactive + ")");
++      logger.info(sessionId.getKey() + " isValid=" + valid + " (" + idleMillis + " < " + maxInactive + ")");
+     }
+ 
+-    return isValid;
++    return this.valid;
+   }
+ 
+   public boolean isNew() {
+@@ -156,6 +162,7 @@
+         }
+         sessionManager.remove(this, unlock);
+       } finally {
++      valid = false;
+         invalidated = true;
+         invalidating = false;
+       }
+@@ -163,16 +170,17 @@
+   }
+ 
+   private void checkIfValid() {
+-    if (!isValid()) throw new IllegalStateException("This session is invalid");
++    if (! (this.valid || this.invalidating)) throw new IllegalStateException("This session is invalid");
+   }
+ 
+   synchronized void startRequest() {
++    isReallyValid(false, null);
+     requestStartMillis = System.currentTimeMillis();
+   }
+ 
+   public void setMaxInactiveInterval(int v) {
+     setMaxInactiveSeconds(v);
+-    if (isValid() && v == 0) {
++    if (valid && v == 0) {
+       invalidate();
+     }
+   }

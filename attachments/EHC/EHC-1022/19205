@@ -1,0 +1,17 @@
+2013-04-23 08:51:52,870 [main] INFO  lina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+2013-04-23 08:51:53,360 [main] INFO  ache.catalina.startup.Catalina - Initialization processed in 1100 ms
+2013-04-23 08:51:54,056 [main] INFO  .catalina.core.StandardService - Starting service Catalina
+2013-04-23 08:51:54,057 [main] INFO  e.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/7.0.26
+2013-04-23 08:51:54,067 [pool-4-thread-1] INFO  he.catalina.startup.HostConfig - Deploying web application archive /srv/tomcat/idstore/webapps/build-webservices-1.0.0.war
+2013-04-23 08:51:54,972 [pool-4-thread-1] INFO  st].[/build-webservices-1.0.0] - Initializing Spring FrameworkServlet 'dispatcher'
+2013-04-23 08:52:29,647 [pool-4-thread-1] INFO  he.catalina.startup.HostConfig - Deploying web application directory /srv/tomcat/idstore/webapps/manager
+2013-04-23 08:52:29,754 [main] INFO  ache.catalina.startup.Catalina - Server startup in 36394 ms
+2013-04-23 08:54:51,803 [main] INFO  lina.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+2013-04-23 08:54:52,348 [main] INFO  ache.catalina.startup.Catalina - Initialization processed in 1103 ms
+2013-04-23 08:54:53,122 [main] INFO  .catalina.core.StandardService - Starting service Catalina
+2013-04-23 08:54:53,122 [main] INFO  e.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/7.0.26
+2013-04-23 08:54:53,135 [pool-4-thread-1] INFO  he.catalina.startup.HostConfig - Deploying web application archive /srv/tomcat/idstore/webapps/build-webservices-1.0.0.war
+2013-04-23 08:55:33,128 [pool-4-thread-1] INFO  talina.util.SessionIdGenerator - Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [39,285] milliseconds.
+2013-04-23 08:55:33,319 [pool-4-thread-1] INFO  st].[/build-webservices-1.0.0] - Initializing Spring FrameworkServlet 'dispatcher'
+2013-04-23 08:56:08,260 [pool-4-thread-1] INFO  he.catalina.startup.HostConfig - Deploying web application directory /srv/tomcat/idstore/webapps/manager
+2013-04-23 08:56:08,381 [main] INFO  ache.catalina.startup.Catalina - Server startup in 76032 ms

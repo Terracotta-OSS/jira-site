@@ -1,0 +1,2041 @@
+WARN     NULL           ------------------------------------------------------------------------
+WARN     0SECTION       LOCKS subcomponent dump routine
+WARN     NULL           ===============================
+WARN     NULL
+WARN     1LKPOOLINFO    Monitor pool info:
+WARN     2LKPOOLTOTAL     Current total number of monitors: 283
+WARN     NULL
+WARN     1LKMONPOOLDUMP Monitor Pool Dump (flat & inflated object-monitors):
+WARN     2LKMONINUSE      sys_mon_t:0x00470BA0 infl_mon_t: 0x00470BE0:
+WARN     3LKMONOBJECT       java/util/TaskQueue@009A83A8/009A83B4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Timeout Thread" (0x21150100)
+WARN     2LKMONINUSE      sys_mon_t:0x00470CA8 infl_mon_t: 0x00470CE8:
+WARN     3LKMONOBJECT       java/lang/Object@00B0D5E0/00B0D5EC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Thread-7" (0x21150500)
+WARN     2LKMONINUSE      sys_mon_t:0x00470E60 infl_mon_t: 0x00470EA0:
+WARN     3LKMONOBJECT       com/tc/server/TerracottaConnector@0077E6D8/0077E6E4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "btpool0-1 - Acceptor0 TerracottaConnector @ 0.0.0.0:0" (0x21785300)
+WARN     2LKMONINUSE      sys_mon_t:0x00470F10 infl_mon_t: 0x00470F50:
+WARN     3LKMONOBJECT       java/lang/Object@0079EDC8/0079EDD4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(dso-http-bridge,0)" (0x210A4100)
+WARN     2LKMONINUSE      sys_mon_t:0x00470FC0 infl_mon_t: 0x00471000:
+WARN     3LKMONOBJECT       java/util/TaskQueue@00C47F20/00C47F2C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Timer-1" (0x210A4500)
+WARN     2LKMONINUSE      sys_mon_t:0x00471598 infl_mon_t: 0x004715D8:
+WARN     3LKMONOBJECT       java/lang/Object@00875CC0/00875CCC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Checkpointer" (0x21976500)
+WARN     2LKMONINUSE      sys_mon_t:0x004EDB58 infl_mon_t: 0x004EDB98:
+WARN     3LKMONOBJECT       java/lang/Object@00880068/00880074: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "INCompressor" (0x21975D00)
+WARN     2LKMONINUSE      sys_mon_t:0x004EDBB0 infl_mon_t: 0x004EDBF0:
+WARN     3LKMONOBJECT       java/lang/Object@0089F5E0/0089F5EC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Cleaner-1" (0x21976100)
+WARN     2LKMONINUSE      sys_mon_t:0x004EDDC0 infl_mon_t: 0x004EDE00:
+WARN     3LKMONOBJECT       java/util/TaskQueue@014CC420/014CC42C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "SampledCounterManager Timer" (0x21A04900)
+WARN     2LKMONINUSE      sys_mon_t:0x004EDF20 infl_mon_t: 0x004EDF60:
+WARN     3LKMONOBJECT       com/tcclient/util/concurrent/locks/ConditionObject$SyncCondition@016FC988/016FC994: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Thread-52" (0x23148B00)
+WARN     2LKMONINUSE      sys_mon_t:0x004EDF78 infl_mon_t: 0x004EDFB8:
+WARN     3LKMONOBJECT       java/util/TaskQueue@0103BBC0/0103BBCC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "DSO Lock Object.wait() timer" (0x21A15D00)
+WARN     2LKMONINUSE      sys_mon_t:0x004EE080 infl_mon_t: 0x004EE0C0:
+WARN     3LKMONOBJECT       java/util/TaskQueue@01579958/01579964: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Reconnect timer" (0x21A16100)
+WARN     2LKMONINUSE      sys_mon_t:0x004EE130 infl_mon_t: 0x004EE170:
+WARN     3LKMONOBJECT       java/lang/Object@015391D8/015391E4: owner "WorkerThread(jmxremote_disconnect_stage,0)" (0x21A16500), entry count 1
+WARN     2LKMONINUSE      sys_mon_t:0x004EE1E0 infl_mon_t: 0x004EE220:
+WARN     3LKMONOBJECT       java/lang/Object@01444918/01444924: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(request_batch_global_transaction_id_sequence_stage,0)" (0x21A24E00)
+WARN     2LKMONINUSE      sys_mon_t:0x004EE290 infl_mon_t: 0x004EE2D0:
+WARN     3LKMONOBJECT       java/lang/Object@010A9120/010A912C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(commit_changes_stage,0)" (0x21A25200)
+WARN     2LKMONINUSE      sys_mon_t:0x004EE340 infl_mon_t: 0x004EE380:
+WARN     3LKMONOBJECT       java/lang/Object@01098140/0109814C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(transaction_lookup_stage,0)" (0x21A25600)
+WARN     2LKMONINUSE      sys_mon_t:0x004EE3F0 infl_mon_t: 0x004EE430:
+WARN     3LKMONOBJECT       java/lang/Object@00D11568/00D11574: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(send_managed_object_stage,0)" (0x21A56D00)
+WARN     2LKMONINUSE      sys_mon_t:0x004EE4A0 infl_mon_t: 0x004EE4E0:
+WARN     3LKMONOBJECT       java/lang/Object@0111A878/0111A884: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(respond_to_request_stage,0)" (0x21A57100)
+WARN     3LKWAITNOTIFY            "WorkerThread(respond_to_request_stage,1)" (0x21A57500)
+WARN     3LKWAITNOTIFY            "WorkerThread(respond_to_request_stage,2)" (0x21A5DD00)
+WARN     3LKWAITNOTIFY            "WorkerThread(respond_to_request_stage,3)" (0x21A5E100)
+WARN     2LKMONINUSE      sys_mon_t:0x004EE658 infl_mon_t: 0x004EE698:
+WARN     3LKMONOBJECT       java/lang/Object@0109BD88/0109BD94: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(apply_changes_stage,0)" (0x21A5E500)
+WARN     2LKMONINUSE      sys_mon_t:0x004EE708 infl_mon_t: 0x004EE748:
+WARN     3LKMONOBJECT       java/lang/Object@01116540/0111654C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(managed_object_request_stage,0)" (0x21AAE100)
+WARN     2LKMONINUSE      sys_mon_t:0x004EE7B8 infl_mon_t: 0x004EE7F8:
+WARN     3LKMONOBJECT       java/lang/Object@010A0E78/010A0E84: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(apply_complete_stage,0)" (0x21AAE500)
+WARN     2LKMONINUSE      sys_mon_t:0x004EE868 infl_mon_t: 0x004EE8A8:
+WARN     3LKMONOBJECT       java/lang/Object@010A48C8/010A48D4: owner "WorkerThread(recall_objects_stage,0)" (0x21AAE900), entry count 1
+WARN     2LKMONINUSE      sys_mon_t:0x004EE918 infl_mon_t: 0x004EE958:
+WARN     3LKMONOBJECT       java/lang/Object@0111DB98/0111DBA4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(object_id_batch_request_stage,0)" (0x21B9DD00)
+WARN     2LKMONINUSE      sys_mon_t:0x004EE9C8 infl_mon_t: 0x004EEA08:
+WARN     3LKMONOBJECT       java/lang/Object@014DF180/014DF18C: owner "WorkerThread(managed_object_flush_stage,2)" (0x21B9ED00), entry count 1
+WARN     3LKWAITERQ            Waiting to enter:
+WARN     3LKWAITER                "WorkerThread(managed_object_flush_stage,1)" (0x21B9E500)
+WARN     3LKWAITER                "WorkerThread(managed_object_flush_stage,3)" (0x21B9F100)
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(managed_object_flush_stage,0)" (0x21B9E100)
+WARN     2LKMONINUSE      sys_mon_t:0x004EEC88 infl_mon_t: 0x004EECC8:
+WARN     3LKMONOBJECT       java/lang/Object@01111B30/01111B3C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(channel_life_cycle_stage,0)" (0x21B9F500)
+WARN     2LKMONINUSE      sys_mon_t:0x004EECE0 infl_mon_t: 0x004EED20:
+WARN     3LKMONOBJECT       java/lang/Object@0152F678/0152F684: owner "WorkerThread(hydrate_message_stage,0)" (0x21C9D100), entry count 1
+WARN     2LKMONINUSE      sys_mon_t:0x004EEFA0 infl_mon_t: 0x004EEFE0:
+WARN     3LKMONOBJECT       java/lang/Object@015339D8/015339E4: owner "WorkerThread(transaction_lowwatermark_stage,0)" (0x21DFB500), entry count 1
+WARN     2LKMONINUSE      sys_mon_t:0x004EEFF8 infl_mon_t: 0x004EF038:
+WARN     3LKMONOBJECT       java/lang/Object@015395F0/015395FC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(jmxremote_tunnel_stage,0)" (0x22A43100)
+WARN     2LKMONINUSE      sys_mon_t:0x004EF050 infl_mon_t: 0x004EF090:
+WARN     3LKMONOBJECT       java/lang/Object@00D16BD0/00D16BDC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(broadcast_changes_stage,0)" (0x22095D00)
+WARN     2LKMONINUSE      sys_mon_t:0x004EF100 infl_mon_t: 0x004EF140:
+WARN     3LKMONOBJECT       java/lang/Object@00D1A538/00D1A544: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(respond_to_lock_request_stage,0)" (0x21DFB100)
+WARN     2LKMONINUSE      sys_mon_t:0x00425FE8 infl_mon_t: 0x00426028:
+WARN     3LKMONOBJECT       java/lang/Object@0153D0E8/0153D0F4: owner "WorkerThread(client_lock_statistics_respond_stage,0)" (0x21C9D500), entry count 1
+WARN     2LKMONINUSE      sys_mon_t:0x00426040 infl_mon_t: 0x00426080:
+WARN     3LKMONOBJECT       java/lang/Object@00D1ED80/00D1ED8C: owner "WorkerThread(request_lock_stage,0)" (0x21C9CD00), entry count 1
+WARN     2LKMONINUSE      sys_mon_t:0x004260F0 infl_mon_t: 0x00426130:
+WARN     3LKMONOBJECT       java/lang/Object@01528B40/01528B4C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(transaction_acknowledgement_stage,0)" (0x21DFAD00)
+WARN     2LKMONINUSE      sys_mon_t:0x00426148 infl_mon_t: 0x00426188:
+WARN     3LKMONOBJECT       java/lang/Object@0152E470/0152E47C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(client_handshake_stage,0)" (0x22096100)
+WARN     2LKMONINUSE      sys_mon_t:0x004261A0 infl_mon_t: 0x004261E0:
+WARN     3LKMONOBJECT       java/lang/Object@010B8280/010B828C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(process_transaction_stage,0)" (0x22A42D00)
+WARN     2LKMONINUSE      sys_mon_t:0x00426250 infl_mon_t: 0x00426290:
+WARN     3LKMONOBJECT       java/lang/Object@01538DE8/01538DF4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(jmxremote_connect_stage,0)" (0x22A43500)
+WARN     2LKMONINUSE      sys_mon_t:0x004262A8 infl_mon_t: 0x004262E8:
+WARN     3LKMONOBJECT       java/lang/Object@014DB388/014DB394: owner "WorkerThread(managed_object_fault_stage,3)" (0x2230CF00), entry count 1
+WARN     3LKWAITERQ            Waiting to enter:
+WARN     3LKWAITER                "WorkerThread(managed_object_fault_stage,0)" (0x2209EE00)
+WARN     3LKWAITER                "WorkerThread(managed_object_fault_stage,1)" (0x2209F200)
+WARN     3LKWAITER                "WorkerThread(managed_object_fault_stage,2)" (0x2209F600)
+WARN     2LKMONINUSE      sys_mon_t:0x00426300 infl_mon_t: 0x00426340:
+WARN     3LKMONOBJECT       java/lang/Object@01536AE0/01536AEC: owner "WorkerThread(jmx_events_stage,0)" (0x22096500), entry count 1
+WARN     2LKMONINUSE      sys_mon_t:0x004264B8 infl_mon_t: 0x004264F8:
+WARN     3LKMONOBJECT       java/lang/Object@00FCFCA0/00FCFCAC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "GC" (0x2230D300)
+WARN     2LKMONINUSE      sys_mon_t:0x004266C8 infl_mon_t: 0x00426708:
+WARN     3LKMONOBJECT       EDU/oswego/cs/dl/util/concurrent/CountDown@00B0DB80/00B0DB8C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "main" (0x20D64C00)
+WARN     2LKMONINUSE      sys_mon_t:0x0042A820 infl_mon_t: 0x0042A860:
+WARN     3LKMONOBJECT       EDU/oswego/cs/dl/util/concurrent/CountDown@0076E208/0076E214: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Thread-23" (0x221EF600)
+WARN     2LKMONINUSE      sys_mon_t:0x0042A878 infl_mon_t: 0x0042A8B8:
+WARN     3LKMONOBJECT       java/util/TaskQueue@0162D210/0162D21C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "RemoteTransactionManager Flusher" (0x22A72A00)
+WARN     2LKMONINUSE      sys_mon_t:0x0042A8D0 infl_mon_t: 0x0042A910:
+WARN     3LKMONOBJECT       java/util/TaskQueue@015CA230/015CA23C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "RemoteTransactionManager Flusher" (0x22A72E00)
+WARN     2LKMONINUSE      sys_mon_t:0x0042A928 infl_mon_t: 0x0042A968:
+WARN     3LKMONOBJECT       java/util/TaskQueue@01627470/0162747C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "RemoteTransactionManager Flusher" (0x22A36900)
+WARN     2LKMONINUSE      sys_mon_t:0x0042A980 infl_mon_t: 0x0042A9C0:
+WARN     3LKMONOBJECT       java/util/TaskQueue@015FE000/015FE00C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "RemoteTransactionManager Flusher" (0x22A36500)
+WARN     2LKMONINUSE      sys_mon_t:0x0042AF00 infl_mon_t: 0x0042AF40:
+WARN     3LKMONOBJECT       com/tcclient/util/concurrent/locks/ConditionObject$SyncCondition@0196E7B8/0196E7C4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Thread-51" (0x23148700)
+WARN     2LKMONINUSE      sys_mon_t:0x0042B008 infl_mon_t: 0x0042B048:
+WARN     3LKMONOBJECT       java/util/TaskQueue@016521C8/016521D4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "DSO Lock Object.wait() timer" (0x22A36D00)
+WARN     2LKMONINUSE      sys_mon_t:0x0042B060 infl_mon_t: 0x0042B0A0:
+WARN     3LKMONOBJECT       java/util/TaskQueue@0164A7C0/0164A7CC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "DSO Lock Object.wait() timer" (0x22A41A00)
+WARN     2LKMONINUSE      sys_mon_t:0x0042B0B8 infl_mon_t: 0x0042B0F8:
+WARN     3LKMONOBJECT       java/util/TaskQueue@01635600/0163560C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "DSO Lock Object.wait() timer" (0x22A41200)
+WARN     2LKMONINUSE      sys_mon_t:0x0042B168 infl_mon_t: 0x0042B1A8:
+WARN     3LKMONOBJECT       java/util/TaskQueue@016412B8/016412C4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "DSO Lock Object.wait() timer" (0x22A41600)
+WARN     2LKMONINUSE      sys_mon_t:0x0042B6E8 infl_mon_t: 0x0042B728:
+WARN     3LKMONOBJECT       java/lang/ref/ReferenceQueue@016361E0/016361EC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "com.tc.util.ToggleableReferenceManager$QueueProcessor" (0x22B02000)
+WARN     2LKMONINUSE      sys_mon_t:0x0042B740 infl_mon_t: 0x0042B780:
+WARN     3LKMONOBJECT       java/lang/ref/ReferenceQueue@0164D028/0164D034: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "com.tc.util.ToggleableReferenceManager$QueueProcessor" (0x22B02800)
+WARN     2LKMONINUSE      sys_mon_t:0x0042B848 infl_mon_t: 0x0042B888:
+WARN     3LKMONOBJECT       java/lang/ref/ReferenceQueue@0198C9A0/0198C9AC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "com.tc.util.ToggleableReferenceManager$QueueProcessor" (0x22B02400)
+WARN     2LKMONINUSE      sys_mon_t:0x0042B8A0 infl_mon_t: 0x0042B8E0:
+WARN     3LKMONOBJECT       java/lang/ref/ReferenceQueue@01987A10/01987A1C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "com.tc.util.ToggleableReferenceManager$QueueProcessor" (0x22B2D500)
+WARN     2LKMONINUSE      sys_mon_t:0x0047F1D0 infl_mon_t: 0x0047F210:
+WARN     3LKMONOBJECT       java/lang/ref/ReferenceQueue@0198D388/0198D394: owner "Reaper" (0x22B2DD00), entry count 1
+WARN     2LKMONINUSE      sys_mon_t:0x0047F2D8 infl_mon_t: 0x0047F318:
+WARN     3LKMONOBJECT       java/lang/ref/ReferenceQueue@019BACA8/019BACB4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Reaper" (0x22B2D900)
+WARN     2LKMONINUSE      sys_mon_t:0x0047F330 infl_mon_t: 0x0047F370:
+WARN     3LKMONOBJECT       java/lang/ref/ReferenceQueue@019986B8/019986C4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Reaper" (0x22B3D600)
+WARN     2LKMONINUSE      sys_mon_t:0x0047F388 infl_mon_t: 0x0047F3C8:
+WARN     3LKMONOBJECT       java/lang/ref/ReferenceQueue@01990BE0/01990BEC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Reaper" (0x22B43E00)
+WARN     2LKMONINUSE      sys_mon_t:0x0047F9B8 infl_mon_t: 0x0047F9F8:
+WARN     3LKMONOBJECT       com/tc/management/remote/protocol/terracotta/TunnelingEventHandler@0199AD90/0199AD9C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Thread-48" (0x22B8A200)
+WARN     2LKMONINUSE      sys_mon_t:0x0047FA10 infl_mon_t: 0x0047FA50:
+WARN     3LKMONOBJECT       com/tc/management/remote/protocol/terracotta/TunnelingEventHandler@019BFC70/019BFC7C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Thread-46" (0x22B89E00)
+WARN     2LKMONINUSE      sys_mon_t:0x0047FA68 infl_mon_t: 0x0047FAA8:
+WARN     3LKMONOBJECT       com/tc/management/remote/protocol/terracotta/TunnelingEventHandler@019C7A80/019C7A8C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Thread-47" (0x22BB8F00)
+WARN     2LKMONINUSE      sys_mon_t:0x0047FB70 infl_mon_t: 0x0047FBB0:
+WARN     3LKMONOBJECT       com/tc/management/remote/protocol/terracotta/TunnelingEventHandler@019CC138/019CC144: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Thread-49" (0x22BB9300)
+WARN     2LKMONINUSE      sys_mon_t:0x0047FE30 infl_mon_t: 0x0047FE70:
+WARN     3LKMONOBJECT       java/lang/Object@01A70CD8/01A70CE4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(dmi_stage,0)" (0x22B5A400)
+WARN     2LKMONINUSE      sys_mon_t:0x0047FF90 infl_mon_t: 0x0047FFD0:
+WARN     3LKMONOBJECT       java/lang/Object@01A3E100/01A3E10C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(receive_root_id_stage,0)" (0x22BAF300)
+WARN     2LKMONINUSE      sys_mon_t:0x00480098 infl_mon_t: 0x004800D8:
+WARN     3LKMONOBJECT       java/lang/Object@01A6E6E8/01A6E6F4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(dmi_stage,0)" (0x22BAEF00)
+WARN     2LKMONINUSE      sys_mon_t:0x004801A0 infl_mon_t: 0x004801E0:
+WARN     3LKMONOBJECT       java/lang/Object@019D49C0/019D49CC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(dmi_stage,0)" (0x22BB9700)
+WARN     2LKMONINUSE      sys_mon_t:0x004801F8 infl_mon_t: 0x00480238:
+WARN     3LKMONOBJECT       java/lang/Object@019E17E8/019E17F4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(dmi_stage,0)" (0x22BAEB00)
+WARN     2LKMONINUSE      sys_mon_t:0x004802A8 infl_mon_t: 0x004802E8:
+WARN     3LKMONOBJECT       java/lang/Object@019E1348/019E1354: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(receive_root_id_stage,0)" (0x22A27D00)
+WARN     2LKMONINUSE      sys_mon_t:0x00480358 infl_mon_t: 0x00480398:
+WARN     3LKMONOBJECT       java/lang/Object@01A403E8/01A403F4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(receive_object_stage,0)" (0x22A27900)
+WARN     2LKMONINUSE      sys_mon_t:0x004804B8 infl_mon_t: 0x004804F8:
+WARN     3LKMONOBJECT       java/lang/Object@01A6E208/01A6E214: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(receive_root_id_stage,0)" (0x22A27500)
+WARN     2LKMONINUSE      sys_mon_t:0x004A5480 infl_mon_t: 0x004A54C0:
+WARN     3LKMONOBJECT       java/lang/Object@01A7CFA0/01A7CFAC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(hydrate_message_stage,0)" (0x22A2DE00)
+WARN     2LKMONINUSE      sys_mon_t:0x004A5740 infl_mon_t: 0x004A5780:
+WARN     3LKMONOBJECT       java/lang/Object@01A3DE80/01A3DE8C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(lock_response_stage,0)" (0x22A2E600)
+WARN     2LKMONINUSE      sys_mon_t:0x004A57F0 infl_mon_t: 0x004A5830:
+WARN     3LKMONOBJECT       java/lang/Object@01A816F8/01A81704: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(lock_statistics_enable_disable_stage,0)" (0x22BF0F00)
+WARN     2LKMONINUSE      sys_mon_t:0x004A5848 infl_mon_t: 0x004A5888:
+WARN     3LKMONOBJECT       java/lang/Object@019E1558/019E1564: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(receive_object_stage,0)" (0x22BD1E00)
+WARN     2LKMONINUSE      sys_mon_t:0x004A58A0 infl_mon_t: 0x004A58E0:
+WARN     3LKMONOBJECT       java/lang/Object@01A73C10/01A73C1C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(object_id_request_response_stage,0)" (0x22BC9500)
+WARN     2LKMONINUSE      sys_mon_t:0x004A58F8 infl_mon_t: 0x004A5938:
+WARN     3LKMONOBJECT       java/lang/Object@016579B0/016579BC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(lock_statistics_enable_disable_stage,0)" (0x22BD1600)
+WARN     2LKMONINUSE      sys_mon_t:0x004A5950 infl_mon_t: 0x004A5990:
+WARN     3LKMONOBJECT       java/lang/Object@01A6C4D0/01A6C4DC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(lock_response_stage,0)" (0x22BD7A00)
+WARN     2LKMONINUSE      sys_mon_t:0x004A59A8 infl_mon_t: 0x004A59E8:
+WARN     3LKMONOBJECT       java/lang/Object@01A7F3E8/01A7F3F4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(batch_txn_ack_stage,0)" (0x22BF1300)
+WARN     2LKMONINUSE      sys_mon_t:0x004A5A00 infl_mon_t: 0x004A5A40:
+WARN     3LKMONOBJECT       java/lang/Object@019E2020/019E202C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(receive_transaction_complete_stage,0)" (0x22BF0B00)
+WARN     2LKMONINUSE      sys_mon_t:0x004A5A58 infl_mon_t: 0x004A5A98:
+WARN     3LKMONOBJECT       java/lang/Object@019E0FB0/019E0FBC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(lock_response_stage,0)" (0x22C47D00)
+WARN     2LKMONINUSE      sys_mon_t:0x004A5AB0 infl_mon_t: 0x004A5AF0:
+WARN     3LKMONOBJECT       java/lang/Object@01A8C278/01A8C284: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(client_coordination_stage,0)" (0x22BF7300)
+WARN     2LKMONINUSE      sys_mon_t:0x004A5B08 infl_mon_t: 0x004A5B48:
+WARN     3LKMONOBJECT       java/lang/Object@019E1C80/019E1C8C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(object_id_request_response_stage,0)" (0x22C48500)
+WARN     2LKMONINUSE      sys_mon_t:0x004A5C10 infl_mon_t: 0x004A5C50:
+WARN     3LKMONOBJECT       java/lang/Object@019E2D28/019E2D34: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(lock_statistics_enable_disable_stage,0)" (0x22BDB600)
+WARN     2LKMONINUSE      sys_mon_t:0x004A5C68 infl_mon_t: 0x004A5CA8:
+WARN     3LKMONOBJECT       java/lang/Object@019D4560/019D456C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(receive_root_id_stage,0)" (0x22BDBA00)
+WARN     2LKMONINUSE      sys_mon_t:0x004A5CC0 infl_mon_t: 0x004A5D00:
+WARN     3LKMONOBJECT       java/lang/Object@019E27D0/019E27DC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(client_coordination_stage,0)" (0x22C57600)
+WARN     2LKMONINUSE      sys_mon_t:0x004A5D18 infl_mon_t: 0x004A5D58:
+WARN     3LKMONOBJECT       java/lang/Object@019D4770/019D477C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(receive_object_stage,0)" (0x22C57A00)
+WARN     2LKMONINUSE      sys_mon_t:0x004A5D70 infl_mon_t: 0x004A5DB0:
+WARN     3LKMONOBJECT       java/lang/Object@019E29F8/019E2A04: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(lock_statistics_response_stage,0)" (0x22C5EE00)
+WARN     2LKMONINUSE      sys_mon_t:0x004A5ED0 infl_mon_t: 0x004A5F10:
+WARN     3LKMONOBJECT       java/lang/Object@01A80FA8/01A80FB4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(batch_txn_ack_stage,0)" (0x22BF6F00)
+WARN     2LKMONINUSE      sys_mon_t:0x004A5F28 infl_mon_t: 0x004A5F68:
+WARN     3LKMONOBJECT       java/lang/Object@01A6EAD0/01A6EADC: owner "WorkerThread(object_id_request_response_stage,0)" (0x22BD8200), entry count 1
+WARN     2LKMONINUSE      sys_mon_t:0x004A5F80 infl_mon_t: 0x004A5FC0:
+WARN     3LKMONOBJECT       java/lang/Object@019E2348/019E2354: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(hydrate_message_stage,0)" (0x22BD7E00)
+WARN     2LKMONINUSE      sys_mon_t:0x004A6030 infl_mon_t: 0x004A6070:
+WARN     3LKMONOBJECT       java/lang/Object@0165BA88/0165BA94: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(jmxremote_tunnel_stage,0)" (0x22C8BE00)
+WARN     2LKMONINUSE      sys_mon_t:0x004A60E0 infl_mon_t: 0x004A6120:
+WARN     3LKMONOBJECT       java/lang/Object@01A6ECC0/01A6ECCC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(receive_transaction_complete_stage,0)" (0x22BD1A00)
+WARN     2LKMONINUSE      sys_mon_t:0x004A6138 infl_mon_t: 0x004A6178:
+WARN     3LKMONOBJECT       java/lang/Object@01A80D80/01A80D8C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(hydrate_message_stage,0)" (0x22BC9900)
+WARN     2LKMONINUSE      sys_mon_t:0x004A61E8 infl_mon_t: 0x004A6228:
+WARN     3LKMONOBJECT       java/lang/Object@019D4328/019D4334: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(lock_response_stage,0)" (0x22C8B600)
+WARN     2LKMONINUSE      sys_mon_t:0x004A64A8 infl_mon_t: 0x004A64E8:
+WARN     3LKMONOBJECT       java/lang/Object@019E1A00/019E1A0C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(receive_transaction_stage,0)" (0x22C5F200)
+WARN     2LKMONINUSE      sys_mon_t:0x004A6558 infl_mon_t: 0x004A6598:
+WARN     3LKMONOBJECT       java/lang/Object@01A75E08/01A75E14: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(lock_statistics_enable_disable_stage,0)" (0x22CCA200)
+WARN     2LKMONINUSE      sys_mon_t:0x004A65B0 infl_mon_t: 0x004A65F0:
+WARN     3LKMONOBJECT       java/lang/Object@01A75520/01A7552C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(batch_txn_ack_stage,0)" (0x22CCAA00)
+WARN     2LKMONINUSE      sys_mon_t:0x0042DFC0 infl_mon_t: 0x0042E000:
+WARN     3LKMONOBJECT       java/lang/Object@01A75748/01A75754: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(client_coordination_stage,0)" (0x22CCEB00)
+WARN     2LKMONINUSE      sys_mon_t:0x0042E018 infl_mon_t: 0x0042E058:
+WARN     3LKMONOBJECT       java/lang/Object@01A75BE8/01A75BF4: owner "WorkerThread(lock_statistics_response_stage,0)" (0x22CD9000), entry count 1
+WARN     2LKMONINUSE      sys_mon_t:0x0042E070 infl_mon_t: 0x0042E0B0:
+WARN     3LKMONOBJECT       java/lang/Object@01A7CB80/01A7CB8C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(receive_transaction_complete_stage,0)" (0x22A2E200)
+WARN     2LKMONINUSE      sys_mon_t:0x0042E0C8 infl_mon_t: 0x0042E108:
+WARN     3LKMONOBJECT       java/lang/Object@01A6E480/01A6E48C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(receive_object_stage,0)" (0x22BC9100)
+WARN     2LKMONINUSE      sys_mon_t:0x0042E120 infl_mon_t: 0x0042E160:
+WARN     3LKMONOBJECT       java/lang/Object@01A811B8/01A811C4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(client_coordination_stage,0)" (0x22BF7700)
+WARN     2LKMONINUSE      sys_mon_t:0x0042E178 infl_mon_t: 0x0042E1B8:
+WARN     3LKMONOBJECT       java/lang/Object@01A81918/01A81924: owner "WorkerThread(jmxremote_tunnel_stage,0)" (0x22C48100), entry count 1
+WARN     2LKMONINUSE      sys_mon_t:0x0042E1D0 infl_mon_t: 0x0042E210:
+WARN     3LKMONOBJECT       java/lang/Object@01A81488/01A81494: owner "WorkerThread(lock_statistics_response_stage,0)" (0x22C7D100), entry count 1
+WARN     2LKMONINUSE      sys_mon_t:0x0042E228 infl_mon_t: 0x0042E268:
+WARN     3LKMONOBJECT       java/lang/Object@019E25A0/019E25AC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(batch_txn_ack_stage,0)" (0x22BDBE00)
+WARN     2LKMONINUSE      sys_mon_t:0x0042E280 infl_mon_t: 0x0042E2C0:
+WARN     3LKMONOBJECT       java/lang/Object@019E2F20/019E2F2C: owner "WorkerThread(jmxremote_tunnel_stage,0)" (0x22C57E00), entry count 1
+WARN     2LKMONINUSE      sys_mon_t:0x0042E2D8 infl_mon_t: 0x0042E318:
+WARN     3LKMONOBJECT       java/lang/Object@01A75310/01A7531C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(hydrate_message_stage,0)" (0x22C5EA00)
+WARN     2LKMONINUSE      sys_mon_t:0x0042E330 infl_mon_t: 0x0042E370:
+WARN     3LKMONOBJECT       java/lang/Object@01A75008/01A75014: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(receive_transaction_complete_stage,0)" (0x22C7D900)
+WARN     2LKMONINUSE      sys_mon_t:0x0042E388 infl_mon_t: 0x0042E3C8:
+WARN     3LKMONOBJECT       java/lang/Object@01A6E900/01A6E90C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(receive_transaction_stage,0)" (0x22C7D500)
+WARN     2LKMONINUSE      sys_mon_t:0x0042E3E0 infl_mon_t: 0x0042E420:
+WARN     3LKMONOBJECT       java/lang/Object@01A74DF0/01A74DFC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(object_id_request_response_stage,0)" (0x22C8BA00)
+WARN     2LKMONINUSE      sys_mon_t:0x0042E438 infl_mon_t: 0x0042E478:
+WARN     3LKMONOBJECT       java/lang/Object@01A8FA78/01A8FA84: owner "WorkerThread(lock_statistics_response_stage,0)" (0x22CCA600), entry count 1
+WARN     2LKMONINUSE      sys_mon_t:0x0042E490 infl_mon_t: 0x0042E4D0:
+WARN     3LKMONOBJECT       java/lang/Object@01A76138/01A76144: owner "WorkerThread(jmxremote_tunnel_stage,0)" (0x22CCF300), entry count 1
+WARN     2LKMONINUSE      sys_mon_t:0x0042E4E8 infl_mon_t: 0x0042E528:
+WARN     3LKMONOBJECT       java/lang/Object@01A74C38/01A74C44: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(receive_transaction_stage,0)" (0x22CD9400)
+WARN     2LKMONINUSE      sys_mon_t:0x0042EE88 infl_mon_t: 0x0042EEC8:
+WARN     3LKMONOBJECT       com/tc/management/remote/protocol/terracotta/TunnelingMessageConnection@016F15E0/016F15EC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Job_Executor1" (0x22D3AB00)
+WARN     2LKMONINUSE      sys_mon_t:0x0042F040 infl_mon_t: 0x0042F080:
+WARN     3LKMONOBJECT       com/tc/management/remote/protocol/terracotta/TunnelingMessageConnection@0172E4B8/0172E4C4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Job_Executor4" (0x21988500)
+WARN     2LKMONINUSE      sys_mon_t:0x0042F1A0 infl_mon_t: 0x0042F1E0:
+WARN     3LKMONOBJECT       [I@01A9A9F0/01A9A9FC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Job_Executor2" (0x22D3AF00)
+WARN     2LKMONINUSE      sys_mon_t:0x0042F300 infl_mon_t: 0x0042F340:
+WARN     3LKMONOBJECT       [I@01ADA220/01ADA22C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Job_Executor5" (0x21988900)
+WARN     2LKMONINUSE      sys_mon_t:0x0042F460 infl_mon_t: 0x0042F4A0:
+WARN     3LKMONOBJECT       EDU/oswego/cs/dl/util/concurrent/CountDown@0076E348/0076E354: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Thread-24" (0x221EFA00)
+WARN     2LKMONINUSE      sys_mon_t:0x004861E0 infl_mon_t: 0x00486220:
+WARN     3LKMONOBJECT       org/knopflerfish/framework/Queue@01B556B8/01B556C4: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "startlevel job thread" (0x21988D00)
+WARN     2LKMONINUSE      sys_mon_t:0x004863F0 infl_mon_t: 0x00486430:
+WARN     3LKMONOBJECT       com/tc/object/ObjectID@01A11948/01A11954: Flat locked by "TC Memory Monitor" (0x22B44200), entry count 1
+WARN     3LKWAITERQ            Waiting to enter:
+WARN     3LKWAITER                "WorkerThread(receive_transaction_stage,0)" (0x22CCEF00)
+WARN     2LKMONINUSE      sys_mon_t:0x00486448 infl_mon_t: 0x00486488:
+WARN     3LKMONOBJECT       java/lang/Object@182C8488/182C8494: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Thread-54" (0x2333F100)
+WARN     2LKMONINUSE      sys_mon_t:0x004864A0 infl_mon_t: 0x004864E0:
+WARN     3LKMONOBJECT       [I@01AD1D28/01AD1D34: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Job_Executor3" (0x22D3B300)
+WARN     2LKMONINUSE      sys_mon_t:0x004864F8 infl_mon_t: 0x00486538:
+WARN     3LKMONOBJECT       [I@017618D0/017618DC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Job_Executor0" (0x22CD9800)
+WARN     2LKMONINUSE      sys_mon_t:0x00486600 infl_mon_t: 0x00486640:
+WARN     3LKMONOBJECT       java/lang/Object@18301520/1830152C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "TC Memory Monitor" (0x22B44200)
+WARN     2LKMONINUSE      sys_mon_t:0x004869C8 infl_mon_t: 0x00486A08:
+WARN     3LKMONOBJECT       org/knopflerfish/framework/Queue@01FD6550/01FD655C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "startlevel job thread" (0x22F79100)
+WARN     2LKMONINUSE      sys_mon_t:0x00486AD0 infl_mon_t: 0x00486B10:
+WARN     3LKMONOBJECT       org/knopflerfish/framework/Queue@01767D20/01767D2C: owner "startlevel job thread" (0x22F79500), entry count 1
+WARN     2LKMONINUSE      sys_mon_t:0x00486C30 infl_mon_t: 0x00486C70:
+WARN     3LKMONOBJECT       org/knopflerfish/framework/Queue@0177AB78/0177AB84: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "startlevel job thread" (0x22F79900)
+WARN     2LKMONINUSE      sys_mon_t:0x00486D90 infl_mon_t: 0x00486DD0:
+WARN     3LKMONOBJECT       EDU/oswego/cs/dl/util/concurrent/CountDown@0076E050/0076E05C: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Thread-22" (0x2230D700)
+WARN     2LKMONINUSE      sys_mon_t:0x00486EF0 infl_mon_t: 0x00486F30:
+WARN     3LKMONOBJECT       EDU/oswego/cs/dl/util/concurrent/CountDown@0076E488/0076E494: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Thread-25" (0x221EFE00)
+WARN     2LKMONINUSE      sys_mon_t:0x00486F48 infl_mon_t: 0x00486F88:
+WARN     3LKMONOBJECT       com/tcclient/util/concurrent/locks/ConditionObject$SyncCondition@01ADE5B0/01ADE5BC: <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Thread-53" (0x23148F00)
+WARN     NULL
+WARN     1LKREGMONDUMP  JVM System Monitor Dump (registered monitors):
+WARN     2LKREGMON          Thread global lock (0x0003A990): <unowned>
+WARN     2LKREGMON          Windows native console event lock lock (0x0003A9E8): <unowned>
+WARN     2LKREGMON          NLS hash table lock (0x0003AA40): <unowned>
+WARN     2LKREGMON          portLibrary_j9sig_async_monitor lock (0x0003AA98): <unowned>
+WARN     2LKREGMON          Hook Interface lock (0x0003AAF0): <unowned>
+WARN     2LKREGMON          &(vm->bytecodeTableMutex) lock (0x0003AB48): <unowned>
+WARN     2LKREGMON          MM_SublistPool lock (0x0003ABA0): <unowned>
+WARN     2LKREGMON          MM_SublistPool lock (0x0003ABF8): <unowned>
+WARN     2LKREGMON          MM_SublistPool lock (0x0003AC50): <unowned>
+WARN     2LKREGMON          MM_SublistPool lock (0x0003ACA8): <unowned>
+WARN     2LKREGMON          MM_SublistPool lock (0x0003AD00): <unowned>
+WARN     2LKREGMON          Hook Interface lock (0x0003AD58): <unowned>
+WARN     2LKREGMON          MM_ParallelDispatcher::slaveThread lock (0x0003ADB0): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Gc Slave Thread" (0x2114FD00)
+WARN     2LKREGMON          MM_ParallelDispatcher::synchronize lock (0x0003AE08): <unowned>
+WARN     2LKREGMON          MM_WorkPackets::inputList lock (0x0003AE60): <unowned>
+WARN     2LKREGMON          MM_GCExtensions::gcStats lock (0x0003AEB8): <unowned>
+WARN     2LKREGMON          &vm->verboseStateMutex lock (0x0003AF10): <unowned>
+WARN     2LKREGMON          VM thread list lock (0x0003AF68): Flat locked by "[osthread]" (0x22413FDC), entry count 1
+WARN     2LKREGMON          VM exclusive access lock (0x0003AFC0): <unowned>
+WARN     2LKREGMON          VM Runtime flags Mutex lock (0x0003B018): <unowned>
+WARN     2LKREGMON          VM Extended method block flags Mutex lock (0x0003B070): <unowned>
+WARN     2LKREGMON          VM bind native lock (0x0003B0C8): <unowned>
+WARN     2LKREGMON          VM class loader blocks lock (0x0003B120): <unowned>
+WARN     2LKREGMON          VM class table lock (0x0003B178): <unowned>
+WARN     2LKREGMON          VM string table lock (0x0003B1D0): <unowned>
+WARN     2LKREGMON          VM segment lock (0x0003B228): <unowned>
+WARN     2LKREGMON          VM JNI frame lock (0x0003B280): <unowned>
+WARN     2LKREGMON          VM GC finalize master lock (0x0003B2D8): <unowned>
+WARN     2LKREGMON          VM GC finalize run finalization lock (0x0003B330): <unowned>
+WARN     2LKREGMON          VM memory space list lock (0x0003B388): <unowned>
+WARN     2LKREGMON          VM JXE description lock (0x0003B3E0): <unowned>
+WARN     2LKREGMON          VM AOT runtime init lock (0x0003B438): <unowned>
+WARN     2LKREGMON          VM monitor table lock (0x0003B490): <unowned>
+WARN     2LKREGMON          VM volatile long lock (0x0003B4E8): <unowned>
+WARN     2LKREGMON          VM mem segment list lock (0x0003B540): <unowned>
+WARN     2LKREGMON          VM mem segment list lock (0x0003B598): <unowned>
+WARN     2LKREGMON          VM mem segment list lock (0x0003B5F0): <unowned>
+WARN     2LKREGMON          FinalizeListManager lock (0x0003B648): <unowned>
+WARN     2LKREGMON          &(jvmtiData->mutex) lock (0x0003B6A0): <unowned>
+WARN     2LKREGMON          BCVD verifier lock (0x0003B6F8): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0003B750): <unowned>
+WARN     2LKREGMON          &newSem->pfmInfo.sem lock (0x0003B7A8): <unowned>
+WARN     2LKREGMON          &newSem->pfmInfo.sem lock (0x0003B800): <unowned>
+WARN     2LKREGMON          &newSem->pfmInfo.sem lock (0x0003B858): <unowned>
+WARN     2LKREGMON          JIT-MonitorTableMonitor lock (0x0003B8B0): <unowned>
+WARN     2LKREGMON          JIT-MemoryAllocMonitor lock (0x0003B908): <unowned>
+WARN     2LKREGMON          JIT-ClassUnloadMonitor lock (0x0003B960): <unowned>
+WARN     2LKREGMON          Hook Interface lock (0x0003B9B8): <unowned>
+WARN     2LKREGMON          JIT-jitConfig->mutex lock (0x0003BA10): <unowned>
+WARN     2LKREGMON          JIT-AssumptionTableMutex lock (0x0003BA68): <unowned>
+WARN     2LKREGMON          VM mem segment list lock (0x0003BAC0): <unowned>
+WARN     2LKREGMON          VM mem segment list lock (0x0003BB18): <unowned>
+WARN     2LKREGMON          ActivationTableMutex lock (0x0003BB70): <unowned>
+WARN     2LKREGMON          JIT-CompilationQueueMonitor lock (0x0003BBC8): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "JIT Compilation Thread" (0x20D65000)
+WARN     2LKREGMON          JIT-CodeCacheListMutex lock (0x0003BC20): <unowned>
+WARN     2LKREGMON          JIT-CodeCacheMonitor-?? lock (0x0003BC78): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0003BCD0): <unowned>
+WARN     2LKREGMON          ValueProfilingMutex lock (0x0003BD28): <unowned>
+WARN     2LKREGMON          JIT sampling thread lock (0x0003BD80): <unowned>
+WARN     2LKREGMON          management fields lock lock (0x0003BDD8): <unowned>
+WARN     2LKREGMON          &vm->managementData->notificationMonitor lock (0x0003BE30): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "MemoryPoolMXBean notification dispatcher" (0x21A04D00)
+WARN     2LKREGMON          JIT-InterpreterProfilingMonitor lock (0x0003BE88): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-0 lock (0x0003BEE0): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-1 lock (0x0003BF38): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-2 lock (0x00420050): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-3 lock (0x004200A8): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-4 lock (0x00420100): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00420158): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004201B0): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420208): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420260): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-5 lock (0x004202B8): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-6 lock (0x00420310): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-7 lock (0x00420368): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-8 lock (0x004203C0): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420418): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420470): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004204C8): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420520): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420578): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004205D0): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-9 lock (0x00420628): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-10 lock (0x00420680): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-11 lock (0x004206D8): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-12 lock (0x00420730): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-13 lock (0x00420788): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-14 lock (0x004207E0): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-15 lock (0x00420838): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-16 lock (0x00420890): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004208E8): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420940): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420998): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004209F0): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420A48): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420AA0): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420AF8): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420B50): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420BA8): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420C00): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420C58): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420CB0): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420D08): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420D60): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420DB8): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420E10): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420E68): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420EC0): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420F18): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420F70): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00420FC8): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00421020): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00421078): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004210D0): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00421128): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00421180): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004211D8): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00421230): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00421288): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004212E0): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00421338): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00421390): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004213E8): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00421440): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00421498): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004214F0): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00421548): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004215A0): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004215F8): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x0046FFF0): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470048): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004700A0): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004700F8): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470150): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004701A8): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470200): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470258): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004702B0): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470308): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470360): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004703B8): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470410): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470468): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004704C0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00470518): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470570): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004705C8): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470620): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470678): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004706D0): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470728): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470780): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004707D8): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470830): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470888): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004708E0): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470938): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470990): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x004709E8): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470A40): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470A98): <unowned>
+WARN     2LKREGMON          JVM_RawMonitor lock (0x00470AF0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00470B48): <unowned>
+WARN     2LKREGMON          &(slaveData->monitor) lock (0x00470BF8): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Finalizer thread" (0x21784F00)
+WARN     2LKREGMON          Thread public flags mutex lock (0x00470C50): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00470D00): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00470DB0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00470E08): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00470EB8): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00470F68): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00471018): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-17 lock (0x004710C8): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-18 lock (0x00471120): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-19 lock (0x00471178): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-20 lock (0x004711D0): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-21 lock (0x00471228): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-22 lock (0x00471280): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-23 lock (0x004712D8): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-24 lock (0x00471330): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-25 lock (0x00471388): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-26 lock (0x004713E0): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-27 lock (0x00471438): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00471490): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004714E8): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00471540): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EDC08): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EDC60): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EDCB8): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EDD10): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EDD68): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EDE18): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EDE70): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "TC Memory Monitor" (0x21A05100)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EDEC8): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EDFD0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EE0D8): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(jmxremote_disconnect_stage,0)" (0x21A16500)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EE188): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EE238): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EE2E8): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EE398): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EE448): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EE4F8): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EE550): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EE5A8): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EE600): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EE6B0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EE760): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EE810): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(recall_objects_stage,0)" (0x21AAE900)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EE8C0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EE970): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EEA20): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EEA78): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(managed_object_flush_stage,2)" (0x21B9ED00)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EEAD0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EEB28): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(channel_life_cycle_stage,0)" (0x21B9F500)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EEB80): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(request_lock_stage,0)" (0x21C9CD00)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EEBD8): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(hydrate_message_stage,0)" (0x21C9D100)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EEC30): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(client_lock_statistics_respond_stage,0)" (0x21C9D500)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EED38): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EED90): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EEDE8): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(transaction_lowwatermark_stage,0)" (0x21DFB500)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EEE40): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EEE98): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EEEF0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EEF48): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004EF0A8): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(client_handshake_stage,0)" (0x22096100)
+WARN     2LKREGMON          Thread public flags mutex lock (0x00426098): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(jmx_events_stage,0)" (0x22096500)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004261F8): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00426358): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004263B0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00426408): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(managed_object_fault_stage,3)" (0x2230CF00)
+WARN     2LKREGMON          Thread public flags mutex lock (0x00426460): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00426568): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004265C0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00426618): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00426670): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00426B40): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00426B98): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00426C48): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00426CA0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00427590): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-79 lock (0x0042A610): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042A668): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-80 lock (0x0042A6C0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042A718): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042A770): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-81 lock (0x0042A7C8): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042AD48): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042ADA0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042ADF8): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-82 lock (0x0042AE50): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042AEA8): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042AF58): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-83 lock (0x0042AFB0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042B5E0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042B638): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042B690): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042B7F0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042BB60): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042BBB8): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "Reaper" (0x22B2DD00)
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047F018): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047F070): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "TC Memory Monitor" (0x22B3DA00)
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047F0C8): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "TC Memory Monitor" (0x22B3DE00)
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047F120): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "TC Memory Monitor" (0x22B43A00)
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047F178): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047F228): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047F648): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047F6F8): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "L1Management JMX registration" (0x22B5A800)
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047F750): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "L1Management JMX registration" (0x22B89A00)
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047F8B0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047F908): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047F960): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047FAC0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047FD80): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(dmi_stage,0)" (0x22B5A400)
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047FDD8): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(dmi_stage,0)" (0x22BB9700)
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047FE88): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(dmi_stage,0)" (0x22BAEB00)
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047FEE0): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(dmi_stage,0)" (0x22BAEF00)
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047FF38): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0047FFE8): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00480040): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004800F0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00480148): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00480250): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00480300): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004803B0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00480408): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(object_id_request_response_stage,0)" (0x22BC9500)
+WARN     2LKREGMON          Thread public flags mutex lock (0x00480460): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00480510): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(lock_statistics_enable_disable_stage,0)" (0x22BD1600)
+WARN     2LKREGMON          Thread public flags mutex lock (0x00480568): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004805C0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5008): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5060): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A50B8): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(object_id_request_response_stage,0)" (0x22BD8200)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5110): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5168): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(lock_statistics_enable_disable_stage,0)" (0x22BF0F00)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A51C0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5218): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5270): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(client_coordination_stage,0)" (0x22BF7300)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A52C8): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(client_coordination_stage,0)" (0x22BF7700)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5320): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5378): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(jmxremote_tunnel_stage,0)" (0x22C48100)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A53D0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5428): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(lock_statistics_enable_disable_stage,0)" (0x22BDB600)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A54D8): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5530): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5588): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(client_coordination_stage,0)" (0x22C57600)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A55E0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5638): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(jmxremote_tunnel_stage,0)" (0x22C57E00)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5690): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A56E8): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(lock_statistics_response_stage,0)" (0x22C5EE00)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5798): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5B60): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(lock_statistics_response_stage,0)" (0x22C7D100)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5BB8): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5DC8): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5E20): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5E78): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A5FD8): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A6088): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(lock_statistics_enable_disable_stage,0)" (0x22CCA200)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A6190): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(lock_statistics_response_stage,0)" (0x22CCA600)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A6240): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A6298): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(client_coordination_stage,0)" (0x22CCEB00)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A62F0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A63A0): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(jmxremote_tunnel_stage,0)" (0x22CCF300)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A63F8): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "WorkerThread(lock_statistics_response_stage,0)" (0x22CD9000)
+WARN     2LKREGMON          Thread public flags mutex lock (0x004A6450): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042EF38): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042F0F0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042F148): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042F1F8): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042F2A8): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-84 lock (0x0042F3B0): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042F408): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x0042F4B8): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-85 lock (0x00485FD0): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-86 lock (0x00486028): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-87 lock (0x00486080): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x004860D8): <unowned>
+WARN     2LKREGMON          JIT-CodeCacheMonitor-?? lock (0x00486290): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00486918): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00486A20): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "startlevel job thread" (0x22F79500)
+WARN     2LKREGMON          Thread public flags mutex lock (0x00486B80): <unowned>
+WARN     3LKNOTIFYQ            Waiting to be notified:
+WARN     3LKWAITNOTIFY            "startlevel job thread" (0x22F79900)
+WARN     2LKREGMON          JIT-QueueSlotMonitor-90 lock (0x00486C88): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-89 lock (0x00486CE0): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-88 lock (0x00486D38): <unowned>
+WARN     2LKREGMON          Thread public flags mutex lock (0x00486E98): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-78 lock (0x004870A8): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-77 lock (0x00487100): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-76 lock (0x00487158): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-75 lock (0x004871B0): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-74 lock (0x00487208): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-73 lock (0x004872B8): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-72 lock (0x00487310): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-71 lock (0x004873C0): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-70 lock (0x00487418): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-69 lock (0x00487470): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-68 lock (0x004874C8): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-67 lock (0x00487520): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-66 lock (0x00487578): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-65 lock (0x004D7010): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-64 lock (0x004D7068): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-63 lock (0x004D70C0): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-62 lock (0x004D7118): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-61 lock (0x004D7170): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-60 lock (0x004D71C8): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-59 lock (0x004D7220): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-58 lock (0x004D7278): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-57 lock (0x004D72D0): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-56 lock (0x004D7328): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-55 lock (0x004D7380): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-54 lock (0x004D73D8): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-53 lock (0x004D7430): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-52 lock (0x004D7488): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-51 lock (0x004D74E0): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-50 lock (0x004D7538): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-49 lock (0x004D7590): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-48 lock (0x004D7640): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-47 lock (0x004D76F0): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-46 lock (0x004D7748): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-45 lock (0x004D77A0): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-44 lock (0x004D77F8): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-43 lock (0x004D7850): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-42 lock (0x004D78A8): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-41 lock (0x004D7900): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-40 lock (0x004D7958): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-39 lock (0x004D79B0): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-38 lock (0x004D7A08): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-37 lock (0x004D7A60): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-28 lock (0x004D7AB8): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-29 lock (0x004D7B10): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-30 lock (0x004D7B68): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-31 lock (0x004D7BC0): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-32 lock (0x004D7C18): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-33 lock (0x004D7C70): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-36 lock (0x004D7CC8): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-35 lock (0x004D7D20): <unowned>
+WARN     2LKREGMON          JIT-QueueSlotMonitor-34 lock (0x004D7D78): <unowned>
+WARN     2LKREGMON          JIT-CodeCacheMonitor-?? lock (0x004D7E28): <unowned>
+WARN     NULL
+WARN     NULL           ------------------------------------------------------------------------
+WARN     0SECTION       THREADS subcomponent dump routine
+WARN     NULL           =================================
+WARN     NULL
+WARN     1XMCURTHDINFO  Current Thread Details
+WARN     NULL           ----------------------
+WARN     NULL
+WARN     1XMTHDINFO     All Thread Details
+WARN     NULL           ------------------
+WARN     NULL
+WARN     2XMFULLTHDDUMP Full thread dump J9SE VM (J2RE 5.0 IBM J9 2.3 Windows XP x86-32 build 20070322_12058_lHdSMR, native threads):
+WARN     3XMTHREADINFO      "main" (TID:0x20D64C00, sys_thread_t:0x0003BFC8, state:CW, native ID:0x00000C28) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231)
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/CountDown.attempt(Bytecode PC:61)
+WARN     4XESTACKTRACE          at com/tcsimulator/ControlImpl.waitForAllComplete(ControlImpl.java:212)
+WARN     4XESTACKTRACE          at com/tctest/runner/DistributedTestRunner.run(DistributedTestRunner.java:241)
+WARN     4XESTACKTRACE          at com/tctest/TransparentTestBase.test(TransparentTestBase.java:472)
+WARN     4XESTACKTRACE          at sun/reflect/NativeMethodAccessorImpl.invoke0(Native Method)
+WARN     4XESTACKTRACE          at sun/reflect/NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+WARN     4XESTACKTRACE          at sun/reflect/DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43(Compiled Code))
+WARN     4XESTACKTRACE          at java/lang/reflect/Method.invoke(Method.java:615(Compiled Code))
+WARN     4XESTACKTRACE          at junit/framework/TestCase.runTest(TestCase.java:154)
+WARN     4XESTACKTRACE          at junit/framework/TestCase.runBare(TestCase.java:127)
+WARN     4XESTACKTRACE          at com/tc/test/TCTestCase.runBare(TCTestCase.java:158)
+WARN     4XESTACKTRACE          at com/tc/object/BaseDSOTestCase.runBare(BaseDSOTestCase.java:37)
+WARN     4XESTACKTRACE          at junit/framework/TestResult$1.protect(TestResult.java:106)
+WARN     4XESTACKTRACE          at junit/framework/TestResult.runProtected(TestResult.java:124)
+WARN     4XESTACKTRACE          at junit/framework/TestResult.run(TestResult.java:109)
+WARN     4XESTACKTRACE          at junit/framework/TestCase.run(TestCase.java:118)
+WARN     4XESTACKTRACE          at junit/framework/TestSuite.runTest(TestSuite.java:208)
+WARN     4XESTACKTRACE          at junit/framework/TestSuite.run(TestSuite.java:203)
+WARN     4XESTACKTRACE          at org/apache/tools/ant/taskdefs/optional/junit/JUnitTestRunner.run(JUnitTestRunner.java:297)
+WARN     4XESTACKTRACE          at org/apache/tools/ant/taskdefs/optional/junit/JUnitTestRunner.launch(JUnitTestRunner.java:672)
+WARN     4XESTACKTRACE          at org/apache/tools/ant/taskdefs/optional/junit/JUnitTestRunner.main(JUnitTestRunner.java:567)
+WARN     3XMTHREADINFO      "JIT Compilation Thread" (TID:0x20D65000, sys_thread_t:0x0003C21C, state:CW, native ID:0x00000A14) prio=11
+WARN     3XMTHREADINFO      "Signal Dispatcher" (TID:0x20D65400, sys_thread_t:0x0003C6C4, state:R, native ID:0x000008A4) prio=5
+WARN     4XESTACKTRACE          at com/ibm/misc/SignalDispatcher.waitForSignal(Native Method)
+WARN     4XESTACKTRACE          at com/ibm/misc/SignalDispatcher.run(SignalDispatcher.java:84)
+WARN     3XMTHREADINFO      "Gc Slave Thread" (TID:0x2114FD00, sys_thread_t:0x004DDB08, state:CW, native ID:0x00000210) prio=5
+WARN     3XMTHREADINFO      "Timeout Thread" (TID:0x21150100, sys_thread_t:0x004DDD5C, state:CW, native ID:0x00000CCC) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231)
+WARN     4XESTACKTRACE          at java/util/TimerThread.mainLoop(Timer.java:524)
+WARN     4XESTACKTRACE          at java/util/TimerThread.run(Timer.java:477)
+WARN     3XMTHREADINFO      "Thread-7" (TID:0x21150500, sys_thread_t:0x004DDFB0, state:CW, native ID:0x00000584) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/LinkedQueue.take(Bytecode PC:74)
+WARN     4XESTACKTRACE          at com/tcsimulator/listener/QueuePrinter.run(QueuePrinter.java:31)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "btpool0-0 - Invalidator - /" (TID:0x21784B00, sys_thread_t:0x004DE204, state:CW, native ID:0x00000F58) prio=5
+WARN     4XESTACKTRACE          at java/lang/Thread.sleep(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Thread.sleep(Thread.java:929(Compiled Code))
+WARN     4XESTACKTRACE          at org/mortbay/jetty/servlet/AbstractSessionManager$SessionScavenger.run(AbstractSessionManager.java:933)
+WARN     4XESTACKTRACE          at org/mortbay/thread/BoundedThreadPool$PoolThread.run(BoundedThreadPool.java:475)
+WARN     3XMTHREADINFO      "Finalizer thread" (TID:0x21784F00, sys_thread_t:0x004DE458, state:CW, native ID:0x00000A3C) prio=5
+WARN     3XMTHREADINFO      "btpool0-1 - Acceptor0 TerracottaConnector @ 0.0.0.0:0" (TID:0x21785300, sys_thread_t:0x004DE6AC, state:CW, native ID:0x00000A54) prio=4
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at com/tc/server/TerracottaConnector.accept(TerracottaConnector.java:44)
+WARN     4XESTACKTRACE          at org/mortbay/jetty/AbstractConnector$Acceptor.run(AbstractConnector.java:630)
+WARN     4XESTACKTRACE          at org/mortbay/thread/BoundedThreadPool$PoolThread.run(BoundedThreadPool.java:475)
+WARN     3XMTHREADINFO      "WorkerThread(dso-http-bridge,0)" (TID:0x210A4100, sys_thread_t:0x004D9038, state:CW, native ID:0x00000E54) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "Timer-1" (TID:0x210A4500, sys_thread_t:0x004D928C, state:CW, native ID:0x00000E6C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at java/util/TimerThread.mainLoop(Timer.java:498)
+WARN     4XESTACKTRACE          at java/util/TimerThread.run(Timer.java:477)
+WARN     3XMTHREADINFO      "Thread-12" (TID:0x210A4900, sys_thread_t:0x004D94E0, state:R, native ID:0x00000E18) prio=5
+WARN     4XESTACKTRACE          at java/net/PlainSocketImpl.socketAccept(Native Method)
+WARN     4XESTACKTRACE          at java/net/PlainSocketImpl.accept(PlainSocketImpl.java:423)
+WARN     4XESTACKTRACE          at java/net/ServerSocket.implAccept(ServerSocket.java:462)
+WARN     4XESTACKTRACE          at java/net/ServerSocket.accept(ServerSocket.java:433)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/socket/SocketConnectionServer.accept(SocketConnectionServer.java:173)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/generic/SynchroMessageConnectionServerImpl.accept(SynchroMessageConnectionServerImpl.java:47)
+WARN     4XESTACKTRACE          at javax/management/remote/generic/GenericConnectorServer$Receiver.run(GenericConnectorServer.java:340)
+WARN     3XMTHREADINFO      "INCompressor" (TID:0x21975D00, sys_thread_t:0x004D9734, state:CW, native ID:0x00000DD8) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at com/sleepycat/je/utilint/DaemonThread.run(DaemonThread.java:165)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "Cleaner-1" (TID:0x21976100, sys_thread_t:0x004D9988, state:CW, native ID:0x000000E0) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at com/sleepycat/je/utilint/DaemonThread.run(DaemonThread.java:163)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "Checkpointer" (TID:0x21976500, sys_thread_t:0x004D9BDC, state:CW, native ID:0x00000970) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at com/sleepycat/je/utilint/DaemonThread.run(DaemonThread.java:163)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "TCWorkerComm # 0" (TID:0x21971800, sys_thread_t:0x004EF190, state:R, native ID:0x000006C4) prio=5
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.poll0(Native Method)
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.java:342(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.access$500(WindowsSelectorImpl.java:324(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:185(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.lockAndDoSelect(SelectorImpl.java:99(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.select(SelectorImpl.java:110(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.select(SelectorImpl.java:114(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/net/core/CoreNIOServices.selectLoop(CoreNIOServices.java:338)
+WARN     4XESTACKTRACE          at com/tc/net/core/CoreNIOServices.run(CoreNIOServices.java:61)
+WARN     3XMTHREADINFO      "TCWorkerComm # 1" (TID:0x21971C00, sys_thread_t:0x004EF3E4, state:R, native ID:0x00000534) prio=5
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.poll0(Native Method)
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.java:342(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.access$500(WindowsSelectorImpl.java:324(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:185(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.lockAndDoSelect(SelectorImpl.java:99(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.select(SelectorImpl.java:110(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.select(SelectorImpl.java:114(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/net/core/CoreNIOServices.selectLoop(CoreNIOServices.java:338)
+WARN     4XESTACKTRACE          at com/tc/net/core/CoreNIOServices.run(CoreNIOServices.java:61)
+WARN     3XMTHREADINFO      "TCComm Main Selector Thread (listen 0.0.0.0:65175)" (TID:0x21972000, sys_thread_t:0x004EF638, state:R, native ID:0x00000944) prio=5
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.poll0(Native Method)
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.java:342)
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.access$500(WindowsSelectorImpl.java:324)
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:205)
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.lockAndDoSelect(SelectorImpl.java:99)
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.select(SelectorImpl.java:110)
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.select(SelectorImpl.java:114)
+WARN     4XESTACKTRACE          at com/tc/net/core/CoreNIOServices.selectLoop(CoreNIOServices.java:338)
+WARN     4XESTACKTRACE          at com/tc/net/core/CoreNIOServices.run(CoreNIOServices.java:61)
+WARN     3XMTHREADINFO      "SampledCounterManager Timer" (TID:0x21A04900, sys_thread_t:0x004EF88C, state:CW, native ID:0x000007F4) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/TimerThread.mainLoop(Timer.java:524)
+WARN     4XESTACKTRACE          at java/util/TimerThread.run(Timer.java:477)
+WARN     3XMTHREADINFO      "MemoryPoolMXBean notification dispatcher" (TID:0x21A04D00, sys_thread_t:0x004EFAE0, state:CW, native ID:0x000006A0) prio=6
+WARN     4XESTACKTRACE          at com/ibm/lang/management/MemoryNotificationThread.processNotificationLoop(Native Method)
+WARN     4XESTACKTRACE          at com/ibm/lang/management/MemoryNotificationThread.run(MemoryNotificationThread.java:55)
+WARN     3XMTHREADINFO      "TC Memory Monitor" (TID:0x21A05100, sys_thread_t:0x004EFD34, state:CW, native ID:0x00000FB4) prio=5
+WARN     4XESTACKTRACE          at java/lang/Thread.sleep(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Thread.sleep(Thread.java:929(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/runtime/TCMemoryManagerImpl$MemoryMonitor.run(TCMemoryManagerImpl.java:132)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "DSO Lock Object.wait() timer" (TID:0x21A15D00, sys_thread_t:0x22415A60, state:CW, native ID:0x000008D4) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at java/util/TimerThread.mainLoop(Timer.java:498)
+WARN     4XESTACKTRACE          at java/util/TimerThread.run(Timer.java:477)
+WARN     3XMTHREADINFO      "Reconnect timer" (TID:0x21A16100, sys_thread_t:0x22415CB4, state:CW, native ID:0x00000910) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at java/util/TimerThread.mainLoop(Timer.java:498)
+WARN     4XESTACKTRACE          at java/util/TimerThread.run(Timer.java:477)
+WARN     3XMTHREADINFO      "WorkerThread(jmxremote_disconnect_stage,0)" (TID:0x21A16500, sys_thread_t:0x22415F08, state:CW, native ID:0x0000089C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(request_batch_global_transaction_id_sequence_stage,0)" (TID:0x21A24E00, sys_thread_t:0x2241615C, state:CW, native ID:0x00000908)
+ prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(commit_changes_stage,0)" (TID:0x21A25200, sys_thread_t:0x224163B0, state:CW, native ID:0x00000E70) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(transaction_lookup_stage,0)" (TID:0x21A25600, sys_thread_t:0x22416604, state:CW, native ID:0x00000730) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(send_managed_object_stage,0)" (TID:0x21A56D00, sys_thread_t:0x00499F10, state:CW, native ID:0x00000CC0) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(respond_to_request_stage,0)" (TID:0x21A57100, sys_thread_t:0x0049A164, state:CW, native ID:0x0000057C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(respond_to_request_stage,1)" (TID:0x21A57500, sys_thread_t:0x0049A3B8, state:CW, native ID:0x00000884) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(respond_to_request_stage,2)" (TID:0x21A5DD00, sys_thread_t:0x0049A60C, state:CW, native ID:0x000008CC) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(respond_to_request_stage,3)" (TID:0x21A5E100, sys_thread_t:0x0049A860, state:CW, native ID:0x00000810) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(apply_changes_stage,0)" (TID:0x21A5E500, sys_thread_t:0x0049AAB4, state:CW, native ID:0x000009C0) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/LinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(managed_object_request_stage,0)" (TID:0x21AAE100, sys_thread_t:0x0049AF18, state:CW, native ID:0x00000E3C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(apply_complete_stage,0)" (TID:0x21AAE500, sys_thread_t:0x0049B16C, state:CW, native ID:0x0000041C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(recall_objects_stage,0)" (TID:0x21AAE900, sys_thread_t:0x0049B3C0, state:CW, native ID:0x0000084C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/LinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(object_id_batch_request_stage,0)" (TID:0x21B9DD00, sys_thread_t:0x0049B614, state:CW, native ID:0x000008C0) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(managed_object_flush_stage,0)" (TID:0x21B9E100, sys_thread_t:0x0049B868, state:CW, native ID:0x0000092C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/LinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(managed_object_flush_stage,1)" (TID:0x21B9E500, sys_thread_t:0x0049BABC, state:B, native ID:0x00000550) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/LinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(managed_object_flush_stage,2)" (TID:0x21B9ED00, sys_thread_t:0x0049BF20, state:CW, native ID:0x00000834) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/LinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(managed_object_flush_stage,3)" (TID:0x21B9F100, sys_thread_t:0x0049C174, state:B, native ID:0x00000468) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/LinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(channel_life_cycle_stage,0)" (TID:0x21B9F500, sys_thread_t:0x0049C3C8, state:CW, native ID:0x00000A34) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(request_lock_stage,0)" (TID:0x21C9CD00, sys_thread_t:0x0049C61C, state:CW, native ID:0x00000F0C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(hydrate_message_stage,0)" (TID:0x21C9D100, sys_thread_t:0x0049C870, state:CW, native ID:0x00000504) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129)
+WARN     3XMTHREADINFO      "WorkerThread(client_lock_statistics_respond_stage,0)" (TID:0x21C9D500, sys_thread_t:0x0049CAC4, state:CW, native ID:0x000006FC) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(transaction_acknowledgement_stage,0)" (TID:0x21DFAD00, sys_thread_t:0x0049CF28, state:CW, native ID:0x00000E34) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(respond_to_lock_request_stage,0)" (TID:0x21DFB100, sys_thread_t:0x0049D17C, state:CW, native ID:0x000009A8) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(transaction_lowwatermark_stage,0)" (TID:0x21DFB500, sys_thread_t:0x0049D3D0, state:CW, native ID:0x00000F24) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(process_transaction_stage,0)" (TID:0x22A42D00, sys_thread_t:0x0049D624, state:CW, native ID:0x00000928) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(jmxremote_tunnel_stage,0)" (TID:0x22A43100, sys_thread_t:0x0049D878, state:CW, native ID:0x00000F70) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(jmxremote_connect_stage,0)" (TID:0x22A43500, sys_thread_t:0x0049DACC, state:CW, native ID:0x000008EC) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(broadcast_changes_stage,0)" (TID:0x22095D00, sys_thread_t:0x0049DF30, state:CW, native ID:0x00000254) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(client_handshake_stage,0)" (TID:0x22096100, sys_thread_t:0x0049E184, state:CW, native ID:0x00000FA4) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(jmx_events_stage,0)" (TID:0x22096500, sys_thread_t:0x0049E3D8, state:CW, native ID:0x00000FF8) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(managed_object_fault_stage,0)" (TID:0x2209EE00, sys_thread_t:0x0049E62C, state:B, native ID:0x00000F34) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/LinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(managed_object_fault_stage,1)" (TID:0x2209F200, sys_thread_t:0x0049E880, state:B, native ID:0x0000093C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/LinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(managed_object_fault_stage,2)" (TID:0x2209F600, sys_thread_t:0x0049EAD4, state:B, native ID:0x00000420) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/LinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(managed_object_fault_stage,3)" (TID:0x2230CF00, sys_thread_t:0x00427620, state:CW, native ID:0x00000FF4) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/LinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "GC" (TID:0x2230D300, sys_thread_t:0x00427874, state:CW, native ID:0x00000890) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231)
+WARN     4XESTACKTRACE          at com/tc/objectserver/impl/ObjectManagerImpl$1.run(ObjectManagerImpl.java:702)
+WARN     3XMTHREADINFO      "Thread-22" (TID:0x2230D700, sys_thread_t:0x00427AC8, state:CW, native ID:0x00000E40) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231)
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/CountDown.attempt(Bytecode PC:61)
+WARN     4XESTACKTRACE          at com/tcsimulator/ControlImpl.waitForAllComplete(ControlImpl.java:212)
+WARN     4XESTACKTRACE          at com/tc/simulator/container/Container.waitForAllComplete(Container.java:215)
+WARN     4XESTACKTRACE          at com/tc/simulator/container/Container.run(Container.java:104)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "Thread-23" (TID:0x221EF600, sys_thread_t:0x00427D1C, state:CW, native ID:0x000009EC) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231)
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/CountDown.attempt(Bytecode PC:61)
+WARN     4XESTACKTRACE          at com/tcsimulator/ControlImpl.waitForAllComplete(ControlImpl.java:212)
+WARN     4XESTACKTRACE          at com/tc/simulator/container/Container.waitForAllComplete(Container.java:215)
+WARN     4XESTACKTRACE          at com/tc/simulator/container/Container.run(Container.java:104)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "Thread-24" (TID:0x221EFA00, sys_thread_t:0x00427F70, state:CW, native ID:0x000008C8) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231)
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/CountDown.attempt(Bytecode PC:61)
+WARN     4XESTACKTRACE          at com/tcsimulator/ControlImpl.waitForAllComplete(ControlImpl.java:212)
+WARN     4XESTACKTRACE          at com/tc/simulator/container/Container.waitForAllComplete(Container.java:215)
+WARN     4XESTACKTRACE          at com/tc/simulator/container/Container.run(Container.java:104)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "Thread-25" (TID:0x221EFE00, sys_thread_t:0x004281C4, state:CW, native ID:0x00000974) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231)
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/CountDown.attempt(Bytecode PC:61)
+WARN     4XESTACKTRACE          at com/tcsimulator/ControlImpl.waitForAllComplete(ControlImpl.java:212)
+WARN     4XESTACKTRACE          at com/tc/simulator/container/Container.waitForAllComplete(Container.java:215)
+WARN     4XESTACKTRACE          at com/tc/simulator/container/Container.run(Container.java:104)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "TCComm Main Selector Thread" (TID:0x22A68D00, sys_thread_t:0x00428628, state:R, native ID:0x00000148) prio=5
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.poll0(Native Method)
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.java:342(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.access$500(WindowsSelectorImpl.java:324(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:185(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.lockAndDoSelect(SelectorImpl.java:99(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.select(SelectorImpl.java:110(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.select(SelectorImpl.java:114(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/net/core/CoreNIOServices.selectLoop(CoreNIOServices.java:338)
+WARN     4XESTACKTRACE          at com/tc/net/core/CoreNIOServices.run(CoreNIOServices.java:61)
+WARN     3XMTHREADINFO      "TCComm Main Selector Thread" (TID:0x22A69100, sys_thread_t:0x0042887C, state:R, native ID:0x000001B8) prio=5
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.poll0(Native Method)
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.java:342(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.access$500(WindowsSelectorImpl.java:324(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:185(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.lockAndDoSelect(SelectorImpl.java:99(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.select(SelectorImpl.java:110(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.select(SelectorImpl.java:114(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/net/core/CoreNIOServices.selectLoop(CoreNIOServices.java:338)
+WARN     4XESTACKTRACE          at com/tc/net/core/CoreNIOServices.run(CoreNIOServices.java:61)
+WARN     3XMTHREADINFO      "TCComm Main Selector Thread" (TID:0x22A69500, sys_thread_t:0x00428AD0, state:R, native ID:0x000008F8) prio=5
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.poll0(Native Method)
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.java:342(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.access$500(WindowsSelectorImpl.java:324(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:185(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.lockAndDoSelect(SelectorImpl.java:99(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.select(SelectorImpl.java:110(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.select(SelectorImpl.java:114(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/net/core/CoreNIOServices.selectLoop(CoreNIOServices.java:338)
+WARN     4XESTACKTRACE          at com/tc/net/core/CoreNIOServices.run(CoreNIOServices.java:61)
+WARN     3XMTHREADINFO      "TCComm Main Selector Thread" (TID:0x22A72600, sys_thread_t:0x00428D24, state:R, native ID:0x000008E8) prio=5
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.poll0(Native Method)
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.poll(WindowsSelectorImpl.java:342(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl$SubSelector.access$500(WindowsSelectorImpl.java:324(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/WindowsSelectorImpl.doSelect(WindowsSelectorImpl.java:185(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.lockAndDoSelect(SelectorImpl.java:99(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.select(SelectorImpl.java:110(Compiled Code))
+WARN     4XESTACKTRACE          at sun/nio/ch/SelectorImpl.select(SelectorImpl.java:114(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/net/core/CoreNIOServices.selectLoop(CoreNIOServices.java:338)
+WARN     4XESTACKTRACE          at com/tc/net/core/CoreNIOServices.run(CoreNIOServices.java:61)
+WARN     3XMTHREADINFO      "RemoteTransactionManager Flusher" (TID:0x22A72A00, sys_thread_t:0x004291CC, state:CW, native ID:0x00000ED0) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/TimerThread.mainLoop(Timer.java:524)
+WARN     4XESTACKTRACE          at java/util/TimerThread.run(Timer.java:477)
+WARN     3XMTHREADINFO      "RemoteTransactionManager Flusher" (TID:0x22A72E00, sys_thread_t:0x00429630, state:CW, native ID:0x00000C4C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/TimerThread.mainLoop(Timer.java:524)
+WARN     4XESTACKTRACE          at java/util/TimerThread.run(Timer.java:477)
+WARN     3XMTHREADINFO      "RemoteTransactionManager Flusher" (TID:0x22A36500, sys_thread_t:0x00429884, state:CW, native ID:0x00000830) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/TimerThread.mainLoop(Timer.java:524)
+WARN     4XESTACKTRACE          at java/util/TimerThread.run(Timer.java:477)
+WARN     3XMTHREADINFO      "RemoteTransactionManager Flusher" (TID:0x22A36900, sys_thread_t:0x00428F78, state:CW, native ID:0x00000934) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/TimerThread.mainLoop(Timer.java:524)
+WARN     4XESTACKTRACE          at java/util/TimerThread.run(Timer.java:477)
+WARN     3XMTHREADINFO      "DSO Lock Object.wait() timer" (TID:0x22A36D00, sys_thread_t:0x00429D2C, state:CW, native ID:0x00000D08) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/TimerThread.mainLoop(Timer.java:524)
+WARN     4XESTACKTRACE          at java/util/TimerThread.run(Timer.java:477)
+WARN     3XMTHREADINFO      "DSO Lock Object.wait() timer" (TID:0x22A41200, sys_thread_t:0x00429F80, state:CW, native ID:0x00000204) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/TimerThread.mainLoop(Timer.java:524)
+WARN     4XESTACKTRACE          at java/util/TimerThread.run(Timer.java:477)
+WARN     3XMTHREADINFO      "DSO Lock Object.wait() timer" (TID:0x22A41600, sys_thread_t:0x00429AD8, state:CW, native ID:0x0000068C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/TimerThread.mainLoop(Timer.java:524)
+WARN     4XESTACKTRACE          at java/util/TimerThread.run(Timer.java:477)
+WARN     3XMTHREADINFO      "DSO Lock Object.wait() timer" (TID:0x22A41A00, sys_thread_t:0x0042A1D4, state:CW, native ID:0x00000780) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/TimerThread.mainLoop(Timer.java:524)
+WARN     4XESTACKTRACE          at java/util/TimerThread.run(Timer.java:477)
+WARN     3XMTHREADINFO      "com.tc.util.ToggleableReferenceManager$QueueProcessor" (TID:0x22B02000, sys_thread_t:0x0042BE9C, state:CW, native ID:0x0000079C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231)
+WARN     4XESTACKTRACE          at java/lang/ref/ReferenceQueue.remove(ReferenceQueue.java:97)
+WARN     4XESTACKTRACE          at java/lang/ref/ReferenceQueue.remove(ReferenceQueue.java:69)
+WARN     4XESTACKTRACE          at com/tc/util/ToggleableReferenceManager$QueueProcessor.run(ToggleableReferenceManager.java:129)
+WARN     3XMTHREADINFO      "com.tc.util.ToggleableReferenceManager$QueueProcessor" (TID:0x22B02400, sys_thread_t:0x0042C0F0, state:CW, native ID:0x00000898) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231)
+WARN     4XESTACKTRACE          at java/lang/ref/ReferenceQueue.remove(ReferenceQueue.java:97)
+WARN     4XESTACKTRACE          at java/lang/ref/ReferenceQueue.remove(ReferenceQueue.java:69)
+WARN     4XESTACKTRACE          at com/tc/util/ToggleableReferenceManager$QueueProcessor.run(ToggleableReferenceManager.java:129)
+WARN     3XMTHREADINFO      "com.tc.util.ToggleableReferenceManager$QueueProcessor" (TID:0x22B02800, sys_thread_t:0x0042C344, state:CW, native ID:0x000008DC) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231)
+WARN     4XESTACKTRACE          at java/lang/ref/ReferenceQueue.remove(ReferenceQueue.java:97)
+WARN     4XESTACKTRACE          at java/lang/ref/ReferenceQueue.remove(ReferenceQueue.java:69)
+WARN     4XESTACKTRACE          at com/tc/util/ToggleableReferenceManager$QueueProcessor.run(ToggleableReferenceManager.java:129)
+WARN     3XMTHREADINFO      "com.tc.util.ToggleableReferenceManager$QueueProcessor" (TID:0x22B2D500, sys_thread_t:0x0042BC48, state:CW, native ID:0x00000334) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231)
+WARN     4XESTACKTRACE          at java/lang/ref/ReferenceQueue.remove(ReferenceQueue.java:97)
+WARN     4XESTACKTRACE          at java/lang/ref/ReferenceQueue.remove(ReferenceQueue.java:69)
+WARN     4XESTACKTRACE          at com/tc/util/ToggleableReferenceManager$QueueProcessor.run(ToggleableReferenceManager.java:129)
+WARN     3XMTHREADINFO      "Reaper" (TID:0x22B2D900, sys_thread_t:0x0042C598, state:CW, native ID:0x00000F48) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at java/lang/ref/ReferenceQueue.remove(ReferenceQueue.java:92(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/ClientObjectManagerImpl$1.run(ClientObjectManagerImpl.java:1122)
+WARN     3XMTHREADINFO      "Reaper" (TID:0x22B2DD00, sys_thread_t:0x0042C7EC, state:CW, native ID:0x0000058C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at java/lang/ref/ReferenceQueue.remove(ReferenceQueue.java:92(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/ClientObjectManagerImpl$1.run(ClientObjectManagerImpl.java:1122)
+WARN     3XMTHREADINFO      "Reaper" (TID:0x22B3D600, sys_thread_t:0x0047E038, state:CW, native ID:0x000001B4) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at java/lang/ref/ReferenceQueue.remove(ReferenceQueue.java:92(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/ClientObjectManagerImpl$1.run(ClientObjectManagerImpl.java:1122)
+WARN     3XMTHREADINFO      "TC Memory Monitor" (TID:0x22B3DA00, sys_thread_t:0x0047E4E0, state:CW, native ID:0x00000F68) prio=5
+WARN     4XESTACKTRACE          at java/lang/Thread.sleep(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Thread.sleep(Thread.java:929(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/runtime/TCMemoryManagerImpl$MemoryMonitor.run(TCMemoryManagerImpl.java:132)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "TC Memory Monitor" (TID:0x22B3DE00, sys_thread_t:0x0047E28C, state:CW, native ID:0x00000F98) prio=5
+WARN     4XESTACKTRACE          at java/lang/Thread.sleep(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Thread.sleep(Thread.java:929(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/runtime/TCMemoryManagerImpl$MemoryMonitor.run(TCMemoryManagerImpl.java:132)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "TC Memory Monitor" (TID:0x22B43A00, sys_thread_t:0x0047E734, state:CW, native ID:0x00000F40) prio=5
+WARN     4XESTACKTRACE          at java/lang/Thread.sleep(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Thread.sleep(Thread.java:929(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/runtime/TCMemoryManagerImpl$MemoryMonitor.run(TCMemoryManagerImpl.java:132)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "Reaper" (TID:0x22B43E00, sys_thread_t:0x0047E988, state:CW, native ID:0x00000C14) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at java/lang/ref/ReferenceQueue.remove(ReferenceQueue.java:92(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/ClientObjectManagerImpl$1.run(ClientObjectManagerImpl.java:1122)
+WARN     3XMTHREADINFO      "TC Memory Monitor" (TID:0x22B44200, sys_thread_t:0x0047EBDC, state:CW, native ID:0x00000C38) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLock.waitForLock(ClientLock.java:597)
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLock.basicLock(ClientLock.java:212(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLock.lock(ClientLock.java:117(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLock.lock(ClientLock.java:107(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLockManagerImpl.lock(ClientLockManagerImpl.java:225(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ThreadLockManagerImpl.lock(ThreadLockManagerImpl.java:46(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/tx/ClientTransactionManagerImpl.begin(ClientTransactionManagerImpl.java:181(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/bytecode/ManagerImpl.begin(ManagerImpl.java:321(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/bytecode/ManagerImpl.monitorEnter(ManagerImpl.java:491(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/bytecode/ManagerImpl.monitorEnter(ManagerImpl.java:479(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/bytecode/ManagerUtil.monitorEnter(ManagerUtil.java:482(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/concurrent/locks/ReentrantReadWriteLock$DsoLock.lock(ReentrantReadWriteLock/java:41(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/concurrent/locks/ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock/java(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/concurrent/ConcurrentHashMap$Segment.lock(ConcurrentHashMap.java(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/concurrent/ConcurrentHashMap.__tc_fullyWriteLock(Bytecode PC:17)
+WARN     4XESTACKTRACE          at java/util/concurrent/ConcurrentHashMap.__tc_clearReferences(Bytecode PC:19)
+WARN     4XESTACKTRACE          at com/tc/object/TCObjectLogical.clearReferences(TCObjectLogical.java:37)
+WARN     4XESTACKTRACE          at com/tc/object/TCObjectImpl.clearReferences(TCObjectImpl.java:225)
+WARN     4XESTACKTRACE          at com/tc/object/ClientObjectManagerImpl.evictCache(ClientObjectManagerImpl.java:1156)
+WARN     4XESTACKTRACE          at com/tc/object/cache/CacheManager.memoryUsed(CacheManager.java:50)
+WARN     4XESTACKTRACE          at com/tc/runtime/TCMemoryManagerImpl.fireMemoryEvent(TCMemoryManagerImpl.java:102)
+WARN     4XESTACKTRACE          at com/tc/runtime/TCMemoryManagerImpl.access$500(TCMemoryManagerImpl.java:17)
+WARN     4XESTACKTRACE          at com/tc/runtime/TCMemoryManagerImpl$MemoryMonitor.fire(TCMemoryManagerImpl.java:196)
+WARN     4XESTACKTRACE          at com/tc/runtime/TCMemoryManagerImpl$MemoryMonitor.reportUsage(TCMemoryManagerImpl.java:183(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/runtime/TCMemoryManagerImpl$MemoryMonitor.run(TCMemoryManagerImpl.java:137)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "L1Management JMX registration" (TID:0x22B5A000, sys_thread_t:0x00480650, state:CW, native ID:0x00000CC4) prio=5
+WARN     4XESTACKTRACE          at java/lang/Thread.sleep(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Thread.sleep(Thread.java:929(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/management/L1Management$1.run(L1Management.java:99)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "WorkerThread(dmi_stage,0)" (TID:0x22B5A400, sys_thread_t:0x00481B00, state:CW, native ID:0x000001A0) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "L1Management JMX registration" (TID:0x22B5A800, sys_thread_t:0x00480D4C, state:CW, native ID:0x0000009C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Thread.sleep(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Thread.sleep(Thread.java:929(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/management/L1Management$1.run(L1Management.java:99)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "L1Management JMX registration" (TID:0x22B89A00, sys_thread_t:0x00480AF8, state:CW, native ID:0x00000E00) prio=5
+WARN     4XESTACKTRACE          at java/lang/Thread.sleep(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Thread.sleep(Thread.java:929(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/management/L1Management$1.run(L1Management.java:99)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "Thread-46" (TID:0x22B89E00, sys_thread_t:0x004811F4, state:CW, native ID:0x00000A94) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at com/tc/management/remote/protocol/terracotta/TunnelingEventHandler.accept(TunnelingEventHandler.java:84)
+WARN     4XESTACKTRACE          at com/tc/management/remote/protocol/terracotta/TunnelingMessageConnectionServer.accept(TunnelingMessageConnectionServer.java:31)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/generic/SynchroMessageConnectionServerImpl.accept(SynchroMessageConnectionServerImpl.java:47)
+WARN     4XESTACKTRACE          at javax/management/remote/generic/GenericConnectorServer$Receiver.run(GenericConnectorServer.java:340)
+WARN     3XMTHREADINFO      "Thread-48" (TID:0x22B8A200, sys_thread_t:0x00481658, state:CW, native ID:0x00000EB0) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at com/tc/management/remote/protocol/terracotta/TunnelingEventHandler.accept(TunnelingEventHandler.java:84)
+WARN     4XESTACKTRACE          at com/tc/management/remote/protocol/terracotta/TunnelingMessageConnectionServer.accept(TunnelingMessageConnectionServer.java:31)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/generic/SynchroMessageConnectionServerImpl.accept(SynchroMessageConnectionServerImpl.java:47)
+WARN     4XESTACKTRACE          at javax/management/remote/generic/GenericConnectorServer$Receiver.run(GenericConnectorServer.java:340)
+WARN     3XMTHREADINFO      "Thread-47" (TID:0x22BB8F00, sys_thread_t:0x00480FA0, state:CW, native ID:0x00000A2C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at com/tc/management/remote/protocol/terracotta/TunnelingEventHandler.accept(TunnelingEventHandler.java:84)
+WARN     4XESTACKTRACE          at com/tc/management/remote/protocol/terracotta/TunnelingMessageConnectionServer.accept(TunnelingMessageConnectionServer.java:31)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/generic/SynchroMessageConnectionServerImpl.accept(SynchroMessageConnectionServerImpl.java:47)
+WARN     4XESTACKTRACE          at javax/management/remote/generic/GenericConnectorServer$Receiver.run(GenericConnectorServer.java:340)
+WARN     3XMTHREADINFO      "Thread-49" (TID:0x22BB9300, sys_thread_t:0x004818AC, state:CW, native ID:0x00000F60) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at com/tc/management/remote/protocol/terracotta/TunnelingEventHandler.accept(TunnelingEventHandler.java:84)
+WARN     4XESTACKTRACE          at com/tc/management/remote/protocol/terracotta/TunnelingMessageConnectionServer.accept(TunnelingMessageConnectionServer.java:31)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/generic/SynchroMessageConnectionServerImpl.accept(SynchroMessageConnectionServerImpl.java:47)
+WARN     4XESTACKTRACE          at javax/management/remote/generic/GenericConnectorServer$Receiver.run(GenericConnectorServer.java:340)
+WARN     3XMTHREADINFO      "WorkerThread(dmi_stage,0)" (TID:0x22BB9700, sys_thread_t:0x004808A4, state:CW, native ID:0x00000DB4) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(dmi_stage,0)" (TID:0x22BAEB00, sys_thread_t:0x00481D54, state:CW, native ID:0x00000FAC) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(dmi_stage,0)" (TID:0x22BAEF00, sys_thread_t:0x00482660, state:CW, native ID:0x00000C9C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(receive_root_id_stage,0)" (TID:0x22BAF300, sys_thread_t:0x00481FA8, state:CW, native ID:0x00000B48) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(receive_root_id_stage,0)" (TID:0x22A27500, sys_thread_t:0x00482B08, state:CW, native ID:0x00000E50) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(receive_object_stage,0)" (TID:0x22A27900, sys_thread_t:0x00482D5C, state:CW, native ID:0x00000C74) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(receive_root_id_stage,0)" (TID:0x22A27D00, sys_thread_t:0x004828B4, state:CW, native ID:0x00000B00) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(hydrate_message_stage,0)" (TID:0x22A2DE00, sys_thread_t:0x00483204, state:CW, native ID:0x00000AA0) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(receive_transaction_complete_stage,0)" (TID:0x22A2E200, sys_thread_t:0x004838BC, state:CW, native ID:0x00000960) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(lock_response_stage,0)" (TID:0x22A2E600, sys_thread_t:0x00483B10, state:CW, native ID:0x00000C7C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(receive_object_stage,0)" (TID:0x22BC9100, sys_thread_t:0x00482FB0, state:CW, native ID:0x00000954) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(object_id_request_response_stage,0)" (TID:0x22BC9500, sys_thread_t:0x00483D64, state:CW, native ID:0x00000D88) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(hydrate_message_stage,0)" (TID:0x22BC9900, sys_thread_t:0x00483FB8, state:CW, native ID:0x000000AC) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(lock_statistics_enable_disable_stage,0)" (TID:0x22BD1600, sys_thread_t:0x0048420C, state:CW, native ID:0x00000DE4) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(receive_transaction_complete_stage,0)" (TID:0x22BD1A00, sys_thread_t:0x004A4028, state:CW, native ID:0x00000DAC) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(receive_object_stage,0)" (TID:0x22BD1E00, sys_thread_t:0x00483668, state:CW, native ID:0x00000A88) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(lock_response_stage,0)" (TID:0x22BD7A00, sys_thread_t:0x004A44D0, state:CW, native ID:0x00000BFC) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(hydrate_message_stage,0)" (TID:0x22BD7E00, sys_thread_t:0x004A4724, state:CW, native ID:0x00000A78) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(object_id_request_response_stage,0)" (TID:0x22BD8200, sys_thread_t:0x004A4978, state:CW, native ID:0x00000A68) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(receive_transaction_complete_stage,0)" (TID:0x22BF0B00, sys_thread_t:0x004A4BCC, state:CW, native ID:0x000009D0) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(lock_statistics_enable_disable_stage,0)" (TID:0x22BF0F00, sys_thread_t:0x004A6640, state:CW, native ID:0x00000F78) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(batch_txn_ack_stage,0)" (TID:0x22BF1300, sys_thread_t:0x004A427C, state:CW, native ID:0x00000C60) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(batch_txn_ack_stage,0)" (TID:0x22BF6F00, sys_thread_t:0x004A6AE8, state:CW, native ID:0x00000E0C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(client_coordination_stage,0)" (TID:0x22BF7300, sys_thread_t:0x004A6D3C, state:CW, native ID:0x0000097C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(client_coordination_stage,0)" (TID:0x22BF7700, sys_thread_t:0x004A6F90, state:CW, native ID:0x00000DC4) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(lock_response_stage,0)" (TID:0x22C47D00, sys_thread_t:0x004A6894, state:CW, native ID:0x00000CD0) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(jmxremote_tunnel_stage,0)" (TID:0x22C48100, sys_thread_t:0x004A7648, state:CW, native ID:0x00000748) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(object_id_request_response_stage,0)" (TID:0x22C48500, sys_thread_t:0x004A789C, state:CW, native ID:0x000000D0) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(lock_statistics_enable_disable_stage,0)" (TID:0x22BDB600, sys_thread_t:0x004A7D44, state:CW, native ID:0x00000E04) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(receive_root_id_stage,0)" (TID:0x22BDBA00, sys_thread_t:0x004821FC, state:CW, native ID:0x0000049C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(batch_txn_ack_stage,0)" (TID:0x22BDBE00, sys_thread_t:0x004A7F98, state:CW, native ID:0x000006C0) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(client_coordination_stage,0)" (TID:0x22C57600, sys_thread_t:0x004A81EC, state:CW, native ID:0x00000AF4) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(receive_object_stage,0)" (TID:0x22C57A00, sys_thread_t:0x004A88A4, state:CW, native ID:0x00000B9C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(jmxremote_tunnel_stage,0)" (TID:0x22C57E00, sys_thread_t:0x004A8650, state:CW, native ID:0x00000C08) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(hydrate_message_stage,0)" (TID:0x22C5EA00, sys_thread_t:0x004A8AF8, state:CW, native ID:0x00000C88) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(lock_statistics_response_stage,0)" (TID:0x22C5EE00, sys_thread_t:0x004A8D4C, state:CW, native ID:0x00000D80) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(receive_transaction_stage,0)" (TID:0x22C5F200, sys_thread_t:0x004A91F4, state:CW, native ID:0x00000894) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(lock_statistics_response_stage,0)" (TID:0x22C7D100, sys_thread_t:0x004A7AF0, state:CW, native ID:0x00000F28) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(receive_transaction_stage,0)" (TID:0x22C7D500, sys_thread_t:0x004A9658, state:CW, native ID:0x00000B98) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(receive_transaction_complete_stage,0)" (TID:0x22C7D900, sys_thread_t:0x004A8FA0, state:CW, native ID:0x00000B5C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(lock_response_stage,0)" (TID:0x22C8B600, sys_thread_t:0x004A98AC, state:CW, native ID:0x0000013C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(object_id_request_response_stage,0)" (TID:0x22C8BA00, sys_thread_t:0x004A9B00, state:CW, native ID:0x00000FD4) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(jmxremote_tunnel_stage,0)" (TID:0x22C8BE00, sys_thread_t:0x004A71E4, state:CW, native ID:0x00000FD0) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(lock_statistics_enable_disable_stage,0)" (TID:0x22CCA200, sys_thread_t:0x004A9D54, state:CW, native ID:0x00000F00) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(lock_statistics_response_stage,0)" (TID:0x22CCA600, sys_thread_t:0x004A9FA8, state:CW, native ID:0x00000850) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(batch_txn_ack_stage,0)" (TID:0x22CCAA00, sys_thread_t:0x004AA1FC, state:CW, native ID:0x000003E0) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(client_coordination_stage,0)" (TID:0x22CCEB00, sys_thread_t:0x0042D234, state:CW, native ID:0x00000AF8) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(receive_transaction_stage,0)" (TID:0x22CCEF00, sys_thread_t:0x0042CFE0, state:B, native ID:0x00000340) prio=5
+WARN     4XESTACKTRACE          at com/tc/object/TCObjectImpl.hydrate(TCObjectImpl.java:105(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/tx/ClientTransactionManagerImpl.basicApply(ClientTransactionManagerImpl.java:475(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/tx/ClientTransactionManagerImpl.apply(ClientTransactionManagerImpl.java:503(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/handler/ReceiveTransactionHandler.handleEvent(ReceiveTransactionHandler.java:83(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:142(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(jmxremote_tunnel_stage,0)" (TID:0x22CCF300, sys_thread_t:0x0042D488, state:CW, native ID:0x00000FE0) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(lock_statistics_response_stage,0)" (TID:0x22CD9000, sys_thread_t:0x0042D6DC, state:CW, native ID:0x000009DC) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "WorkerThread(receive_transaction_stage,0)" (TID:0x22CD9400, sys_thread_t:0x0042D930, state:CW, native ID:0x00000378) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at EDU/oswego/cs/dl/util/concurrent/BoundedLinkedQueue.poll(Bytecode PC:3(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageQueueImpl.poll(StageQueueImpl.java:111(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/async/impl/StageImpl$WorkerThread.run(StageImpl.java:129(Compiled Code))
+WARN     3XMTHREADINFO      "Job_Executor0" (TID:0x22CD9800, sys_thread_t:0x0042DB84, state:CW, native ID:0x000005B8) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/opt/util/JobExecutor.run(JobExecutor.java:87)
+WARN     3XMTHREADINFO      "Job_Executor1" (TID:0x22D3AB00, sys_thread_t:0x00484FF0, state:CW, native ID:0x000001CC) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at com/tc/management/remote/protocol/terracotta/TunnelingMessageConnection.readMessage(TunnelingMessageConnection.java:64)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/generic/ClientSynchroMessageConnectionImpl$MessageReader.run(ClientSynchroMessageConnectionImpl.java:401)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/opt/util/ThreadService$ThreadServiceJob.run(ThreadService.java:208)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/opt/util/JobExecutor.run(JobExecutor.java:59)
+WARN     3XMTHREADINFO      "Job_Executor2" (TID:0x22D3AF00, sys_thread_t:0x00485244, state:CW, native ID:0x00000D84) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/opt/util/ThreadService$ThreadServiceJob.run(ThreadService.java:183)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/opt/util/JobExecutor.run(JobExecutor.java:59)
+WARN     3XMTHREADINFO      "Job_Executor3" (TID:0x22D3B300, sys_thread_t:0x00485498, state:CW, native ID:0x00000D2C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/opt/util/JobExecutor.run(JobExecutor.java:87)
+WARN     3XMTHREADINFO      "Job_Executor4" (TID:0x21988500, sys_thread_t:0x004856EC, state:CW, native ID:0x00000540) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at com/tc/management/remote/protocol/terracotta/TunnelingMessageConnection.readMessage(TunnelingMessageConnection.java:64)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/generic/ServerSynchroMessageConnectionImpl$MessageReader.run(ServerSynchroMessageConnectionImpl.java:185)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/opt/util/ThreadService$ThreadServiceJob.run(ThreadService.java:208)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/opt/util/JobExecutor.run(JobExecutor.java:59)
+WARN     3XMTHREADINFO      "Job_Executor5" (TID:0x21988900, sys_thread_t:0x00485940, state:CW, native ID:0x00000B80) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/opt/util/ThreadService$ThreadServiceJob.run(ThreadService.java:183)
+WARN     4XESTACKTRACE          at com/sun/jmx/remote/opt/util/JobExecutor.run(JobExecutor.java:59)
+WARN     3XMTHREADINFO      "startlevel job thread" (TID:0x21988D00, sys_thread_t:0x00485B94, state:CW, native ID:0x00000D24) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at org/knopflerfish/framework/Queue.removeWait(Queue.java:108)
+WARN     4XESTACKTRACE          at org/knopflerfish/framework/StartLevelImpl.run(StartLevelImpl.java:170)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "startlevel job thread" (TID:0x22F79100, sys_thread_t:0x22419D40, state:CW, native ID:0x00000F54) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at org/knopflerfish/framework/Queue.removeWait(Queue.java:108)
+WARN     4XESTACKTRACE          at org/knopflerfish/framework/StartLevelImpl.run(StartLevelImpl.java:170)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "startlevel job thread" (TID:0x22F79500, sys_thread_t:0x22419F94, state:CW, native ID:0x00000D28) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at org/knopflerfish/framework/Queue.removeWait(Queue.java:108)
+WARN     4XESTACKTRACE          at org/knopflerfish/framework/StartLevelImpl.run(StartLevelImpl.java:170)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "startlevel job thread" (TID:0x22F79900, sys_thread_t:0x2241A1E8, state:CW, native ID:0x00000B38) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:231(Compiled Code))
+WARN     4XESTACKTRACE          at org/knopflerfish/framework/Queue.removeWait(Queue.java:108)
+WARN     4XESTACKTRACE          at org/knopflerfish/framework/StartLevelImpl.run(StartLevelImpl.java:170)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "Thread-51" (TID:0x23148700, sys_thread_t:0x2241A43C, state:CW, native ID:0x000009FC) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLock.waitForLock(ClientLock.java:597)
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLock.wait(ClientLock.java:361)
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLockManagerImpl.wait(ClientLockManagerImpl.java:273)
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ThreadLockManagerImpl.wait(ThreadLockManagerImpl.java:54)
+WARN     4XESTACKTRACE          at com/tc/object/tx/ClientTransactionManagerImpl.wait(ClientTransactionManagerImpl.java:221)
+WARN     4XESTACKTRACE          at com/tc/object/bytecode/ManagerImpl.objectWait0(ManagerImpl.java:400)
+WARN     4XESTACKTRACE          at com/tc/object/bytecode/ManagerUtil.objectWait0(ManagerUtil.java:451)
+WARN     4XESTACKTRACE          at com/tcclient/util/concurrent/locks/ConditionObject.await(ConditionObject.java:111)
+WARN     4XESTACKTRACE          at java/util/concurrent/CyclicBarrier.dowait(CyclicBarrier.java:193)
+WARN     4XESTACKTRACE          at java/util/concurrent/CyclicBarrier.await(CyclicBarrier.java:316)
+WARN     4XESTACKTRACE          at com/tctest/ConcurrentHashMapSwapingTestApp.testPutMany(ConcurrentHashMapSwapingTestApp.java:89)
+WARN     4XESTACKTRACE          at com/tctest/ConcurrentHashMapSwapingTestApp.run(ConcurrentHashMapSwapingTestApp.java:60)
+WARN     4XESTACKTRACE          at com/tc/simulator/container/ApplicationRunner.run(ApplicationRunner.java:42)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "Thread-52" (TID:0x23148B00, sys_thread_t:0x2241A690, state:CW, native ID:0x00000FB8) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLock.waitForLock(ClientLock.java:597)
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLock.wait(ClientLock.java:361)
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLockManagerImpl.wait(ClientLockManagerImpl.java:273)
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ThreadLockManagerImpl.wait(ThreadLockManagerImpl.java:54)
+WARN     4XESTACKTRACE          at com/tc/object/tx/ClientTransactionManagerImpl.wait(ClientTransactionManagerImpl.java:221)
+WARN     4XESTACKTRACE          at com/tc/object/bytecode/ManagerImpl.objectWait0(ManagerImpl.java:400)
+WARN     4XESTACKTRACE          at com/tc/object/bytecode/ManagerUtil.objectWait0(ManagerUtil.java:451)
+WARN     4XESTACKTRACE          at com/tcclient/util/concurrent/locks/ConditionObject.await(ConditionObject.java:111)
+WARN     4XESTACKTRACE          at java/util/concurrent/CyclicBarrier.dowait(CyclicBarrier.java:193)
+WARN     4XESTACKTRACE          at java/util/concurrent/CyclicBarrier.await(CyclicBarrier.java:316)
+WARN     4XESTACKTRACE          at com/tctest/ConcurrentHashMapSwapingTestApp.testPutMany(ConcurrentHashMapSwapingTestApp.java:89)
+WARN     4XESTACKTRACE          at com/tctest/ConcurrentHashMapSwapingTestApp.run(ConcurrentHashMapSwapingTestApp.java:60)
+WARN     4XESTACKTRACE          at com/tc/simulator/container/ApplicationRunner.run(ApplicationRunner.java:42)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "Thread-53" (TID:0x23148F00, sys_thread_t:0x2241A8E4, state:CW, native ID:0x00000F4C) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLock.waitForLock(ClientLock.java:597)
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLock.wait(ClientLock.java:361)
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLockManagerImpl.wait(ClientLockManagerImpl.java:273)
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ThreadLockManagerImpl.wait(ThreadLockManagerImpl.java:54)
+WARN     4XESTACKTRACE          at com/tc/object/tx/ClientTransactionManagerImpl.wait(ClientTransactionManagerImpl.java:221)
+WARN     4XESTACKTRACE          at com/tc/object/bytecode/ManagerImpl.objectWait0(ManagerImpl.java:400)
+WARN     4XESTACKTRACE          at com/tc/object/bytecode/ManagerUtil.objectWait0(ManagerUtil.java:451)
+WARN     4XESTACKTRACE          at com/tcclient/util/concurrent/locks/ConditionObject.await(ConditionObject.java:111)
+WARN     4XESTACKTRACE          at java/util/concurrent/CyclicBarrier.dowait(CyclicBarrier.java:193)
+WARN     4XESTACKTRACE          at java/util/concurrent/CyclicBarrier.await(CyclicBarrier.java:316)
+WARN     4XESTACKTRACE          at com/tctest/ConcurrentHashMapSwapingTestApp.testPutMany(ConcurrentHashMapSwapingTestApp.java:89)
+WARN     4XESTACKTRACE          at com/tctest/ConcurrentHashMapSwapingTestApp.run(ConcurrentHashMapSwapingTestApp.java:60)
+WARN     4XESTACKTRACE          at com/tc/simulator/container/ApplicationRunner.run(ApplicationRunner.java:42)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)
+WARN     3XMTHREADINFO      "Thread-54" (TID:0x2333F100, sys_thread_t:0x22413D88, state:CW, native ID:0x000007A0) prio=5
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Native Method)
+WARN     4XESTACKTRACE          at java/lang/Object.wait(Object.java:199)
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLock.waitForLock(ClientLock.java:597)
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLock.basicLock(ClientLock.java:212(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLock.lock(ClientLock.java:117(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLock.lock(ClientLock.java:107(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ClientLockManagerImpl.lock(ClientLockManagerImpl.java:225(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/lockmanager/impl/ThreadLockManagerImpl.lock(ThreadLockManagerImpl.java:46(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/tx/ClientTransactionManagerImpl.begin(ClientTransactionManagerImpl.java:181(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/bytecode/ManagerImpl.begin(ManagerImpl.java:321(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/bytecode/ManagerImpl.monitorEnter(ManagerImpl.java:491(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/bytecode/ManagerImpl.monitorEnter(ManagerImpl.java:479(Compiled Code))
+WARN     4XESTACKTRACE          at com/tc/object/bytecode/ManagerUtil.monitorEnter(ManagerUtil.java:482(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/concurrent/locks/ReentrantReadWriteLock$DsoLock.lock(ReentrantReadWriteLock/java:41(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock.lock(ReentrantReadWriteLock/java(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/concurrent/ConcurrentHashMap$Segment.__tc_readLock(ConcurrentHashMap.java(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/concurrent/ConcurrentHashMap.__tc_fullyReadLock(Bytecode PC:13(Compiled Code))
+WARN     4XESTACKTRACE          at java/util/concurrent/ConcurrentHashMap.size(Bytecode PC:10(Compiled Code))
+WARN     4XESTACKTRACE          at com/tctest/ConcurrentHashMapSwapingTestApp.testPutMany(ConcurrentHashMapSwapingTestApp.java:74)
+WARN     4XESTACKTRACE          at com/tctest/ConcurrentHashMapSwapingTestApp.run(ConcurrentHashMapSwapingTestApp.java:60)
+WARN     4XESTACKTRACE          at com/tc/simulator/container/ApplicationRunner.run(ApplicationRunner.java:42)
+WARN     4XESTACKTRACE          at java/lang/Thread.run(Thread.java:803)

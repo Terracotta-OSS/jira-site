@@ -1,0 +1,313 @@
+************ Start Display Current Environment ************
+WebSphere Platform 6.1 [BASE 6.1.0.7 cf70711.17]  running with process name rh5vfm0Node01Cell\rh5vfm0Node01\server1 and process id 8495
+Host Operating System is Linux, version 2.6.18-128.4.1.el5
+Java version = J2RE 1.5.0 IBM J9 2.3 Linux x86-32 j9vmxi3223ifx-20070323 (JIT enabled)
+J9VM - 20070322_12058_lHdSMR
+JIT  - 20070109_1805ifx3_r8
+GC   - WASIFIX_2007, Java Compiler = j9jit23, Java VM name = IBM J9 VM
+was.install.root = /export1/cruise/.tc/appservers/websphere-6.1.0.7
+user.install.root = /export1/cruise/hudson/workspace/terracotta-session_trunk_tests_websphere-6.1.0.7_JDK_1.6_3.4.0-SNAPSHOT/trunk/system-tests/target/temp/MultiNodeLoadTest/sandbox/server_0
+Java Home = /export1/cruise/.tc/appservers/websphere-6.1.0.7/java/jre
+ws.ext.dirs = /export1/cruise/.tc/appservers/websphere-6.1.0.7/java/lib:/export1/cruise/hudson/workspace/terracotta-session_trunk_tests_websphere-6.1.0.7_JDK_1.6_3.4.0-SNAPSHOT/trunk/system-tests/target/temp/MultiNodeLoadTest/sandbox/server_0/classes:/export1/cruise/.tc/appservers/websphere-6.1.0.7/classes:/export1/cruise/.tc/appservers/websphere-6.1.0.7/lib:/export1/cruise/.tc/appservers/websphere-6.1.0.7/installedChannels:/export1/cruise/.tc/appservers/websphere-6.1.0.7/lib/ext:/export1/cruise/.tc/appservers/websphere-6.1.0.7/web/help:/export1/cruise/.tc/appservers/websphere-6.1.0.7/deploytool/itp/plugins/com.ibm.etools.ejbdeploy/runtime
+Classpath = /export1/cruise/hudson/workspace/terracotta-session_trunk_tests_websphere-6.1.0.7_JDK_1.6_3.4.0-SNAPSHOT/trunk/system-tests/target/temp/MultiNodeLoadTest/sandbox/server_0/properties:/export1/cruise/.tc/appservers/websphere-6.1.0.7/properties:/export1/cruise/.tc/appservers/websphere-6.1.0.7/lib/startup.jar:/export1/cruise/.tc/appservers/websphere-6.1.0.7/lib/bootstrap.jar:/export1/cruise/.tc/appservers/websphere-6.1.0.7/lib/j2ee.jar:/export1/cruise/.tc/appservers/websphere-6.1.0.7/lib/lmproxy.jar:/export1/cruise/.tc/appservers/websphere-6.1.0.7/lib/urlprotocols.jar:/export1/cruise/.tc/appservers/websphere-6.1.0.7/deploytool/itp/batchboot.jar:/export1/cruise/.tc/appservers/websphere-6.1.0.7/deploytool/itp/batch2.jar:/export1/cruise/.tc/appservers/websphere-6.1.0.7/java/lib/tools.jar
+Java Library path = /export1/cruise/.tc/appservers/websphere-6.1.0.7/java/jre/bin:/export1/cruise/.tc/appservers/websphere-6.1.0.7/java/bin:/export1/cruise/.tc/appservers/websphere-6.1.0.7/java/jre/bin/classic:/export1/cruise/.tc/appservers/websphere-6.1.0.7/java/jre/bin:/export1/cruise/.tc/appservers/websphere-6.1.0.7/bin:/shares/monkeysetup/jdk/linux/hotspot1.6.0_21/jre/lib/i386/server:/shares/monkeysetup/jdk/linux/hotspot1.6.0_21/jre/lib/i386:/shares/monkeysetup/jdk/linux/hotspot1.6.0_21/jre/../lib/i386:/usr/lib
+************* End Display Current Environment *************
+[8/10/10 7:19:33:457 PDT] 0000000a ManagerAdmin  I   TRAS0017I: The startup trace state is *=info.
+[8/10/10 7:19:33:652 PDT] 0000000a ManagerAdmin  I   TRAS0111I: The message IDs that are in use are deprecated
+[8/10/10 7:19:33:655 PDT] 0000000a ManagerAdmin  A   TRAS0007I: Logging to the service log is disabled
+[8/10/10 7:19:33:842 PDT] 0000000a AdminInitiali A   ADMN0015I: The administration service is initialized.
+[8/10/10 7:19:34:270 PDT] 0000000a PluginConfigS I   PLGC0057I: The plug-in configuration service started successfully.
+[8/10/10 7:19:34:289 PDT] 0000000a ManagedObject I   Processing extension point com.ibm.wsspi.extension.managed-object-metadata-collector
+[8/10/10 7:19:34:358 PDT] 0000000a SSLComponentI I   CWPKI0001I: SSL service is initializing the configuration
+[8/10/10 7:19:34:383 PDT] 0000000a WSKeyStore    W   CWPKI0041W: One or more key stores are using the default password.
+[8/10/10 7:19:34:394 PDT] 0000000a SSLConfigMana I   CWPKI0027I: Disabling default hostname verification for HTTPS URL connections.
+[8/10/10 7:19:36:708 PDT] 0000000a WorkSpaceMana A   WKSP0500I: Workspace configuration consistency check is false.
+[8/10/10 7:19:37:082 PDT] 0000000a FileRepositor A   ADMR0010I: Document cells/rh5vfm0Node01Cell/security.xml is modified.
+[8/10/10 7:19:37:539 PDT] 0000000a SSLDiagnostic I   CWPKI0014I: The SSL component's FFDC Diagnostic Module com.ibm.ws.ssl.core.SSLDiagnosticModule registered successfully: true.
+[8/10/10 7:19:37:810 PDT] 0000000a FileRepositor A   ADMR0010I: Document cells/rh5vfm0Node01Cell/security.xml is modified.
+[8/10/10 7:19:38:311 PDT] 0000000a SSLComponentI I   CWPKI0002I: SSL service initialization completed successfully
+[8/10/10 7:19:38:870 PDT] 0000000a SibMessage    I   [:] CWSIU0000I: Release: WAS61.SIB Level: o0711.15
+[8/10/10 7:19:38:959 PDT] 0000000a SecurityDM    I   SECJ0231I: The Security component's FFDC Diagnostic Module com.ibm.ws.security.core.SecurityDM registered successfully: true.
+[8/10/10 7:19:39:004 PDT] 0000000a AuditServiceI A   SECJ6004I: Security Auditing is disabled. 
+[8/10/10 7:19:39:006 PDT] 0000000a distSecurityC I   SECJ0309I: Java 2 Security is disabled.
+[8/10/10 7:19:39:008 PDT] 0000000a Configuration A   SECJ0215I: Successfully set JAAS login provider configuration class to com.ibm.ws.security.auth.login.Configuration.
+[8/10/10 7:19:39:017 PDT] 0000000a distSecurityC I   SECJ0212I: WCCM JAAS configuration information successfully pushed to login provider class.
+[8/10/10 7:19:39:028 PDT] 0000000a distSecurityC I   SECJ0240I: Security service initialization completed successfully
+[8/10/10 7:19:39:048 PDT] 0000000a VariableMapIm I   WSVR0241I: Undefined WebSphere variable "MQ_INSTALL_VERSION" encountered while parsing string "${MQ_INSTALL_VERSION}".
+[8/10/10 7:19:39:139 PDT] 0000000a ObjectPoolSer I   OBPL0007I: Object Pool Manager service is disabled.
+[8/10/10 7:19:39:200 PDT] 0000000a J2EEServiceMa I   ASYN0059I: Work Manager service initialized successfully.
+[8/10/10 7:19:39:252 PDT] 0000000a CScopeCompone I   CSCP0002I: Compensation service is disabled.
+[8/10/10 7:19:39:347 PDT] 0000000a SibMessage    I   [:] CWSID0006I: The SIB service was not enabled and will not be started.
+[8/10/10 7:19:39:356 PDT] 0000000a ActivitySessi I   WACS0045I: ActivitySession service is disabled.
+[8/10/10 7:19:39:393 PDT] 0000000a SOAPContainer I   WSWS1062I: The SOAP Container service has been initialized.
+[8/10/10 7:19:39:478 PDT] 0000000a SchedulerServ I   SCHD0036I: The Scheduler Service is initializing.
+[8/10/10 7:19:39:496 PDT] 0000000a SchedulerServ I   SCHD0037I: The Scheduler Service has been initialized.
+[8/10/10 7:19:39:726 PDT] 0000000a WebsphereComm I WebsphereCommonLauncher  CWSCT0332I: SIP Container was launched successfully but will only be initialized when first SIP application is loaded.
+[8/10/10 7:19:39:761 PDT] 0000000a StartUpServic I   STUP0008I: The Startup Beans service is disabled.
+[8/10/10 7:19:39:772 PDT] 0000000a I18nService   I   I18N0010I: The Internationalization service is created on server1.
+[8/10/10 7:19:39:773 PDT] 0000000a I18nServiceSe I   I18N0010I: The Internationalization service is disabled on server1.
+[8/10/10 7:19:39:860 PDT] 0000000a ThreadPoolMgr W   WSVR0626W: The ThreadPool setting on the ObjectRequestBroker service is deprecated.
+[8/10/10 7:19:39:870 PDT] 0000000a SSLComponentI I   CWPKI0003I: SSL service is starting
+[8/10/10 7:19:39:875 PDT] 0000000a SSLComponentI I   CWPKI0004I: SSL service started successfully
+[8/10/10 7:19:40:095 PDT] 0000000a CoordinatorIm I   HMGR0206I: The Coordinator is an Active Coordinator for core group DefaultCoreGroup.
+[8/10/10 7:19:40:134 PDT] 0000000a DCSPluginSing I   HMGR0005I: The Single Server DCS Core Stack transport has been started for core group DefaultCoreGroup.
+[8/10/10 7:19:40:259 PDT] 0000000a NameServerImp A   NMSV0018I: Name server available on bootstrap port 25257.
+[8/10/10 7:19:40:468 PDT] 0000000a TreeBuilder   I   INIT 33 ms. nodes:14 edges:14
+[8/10/10 7:19:40:660 PDT] 0000000a JMXSoapAdapte A   ADMC0013I: The SOAP connector is available at port 10050
+[8/10/10 7:19:40:663 PDT] 0000000a distSecurityC I   SECJ0243I: Security service started successfully
+[8/10/10 7:19:40:663 PDT] 0000000a distSecurityC I   SECJ0210I: Security enabled false
+[8/10/10 7:19:40:676 PDT] 0000000a J2EEServiceMa I   ASYN0055I: The Work Manager service started successfully.
+[8/10/10 7:19:40:740 PDT] 0000000a RecoveryDirec I   CWRLS0010I: Performing recovery processing for local WebSphere server (rh5vfm0Node01Cell\rh5vfm0Node01\server1).
+[8/10/10 7:19:40:755 PDT] 0000000a RecoveryDirec I   CWRLS0012I: All persistent services have been directed to perform recovery processing for this WebSphere server (rh5vfm0Node01Cell\rh5vfm0Node01\server1).
+[8/10/10 7:19:40:777 PDT] 00000012 LogHandle     I   CWRLS0007I: No existing recovery log files found in /export1/cruise/hudson/workspace/terracotta-session_trunk_tests_websphere-6.1.0.7_JDK_1.6_3.4.0-SNAPSHOT/trunk/system-tests/target/temp/MultiNodeLoadTest/sandbox/server_0/tranlog/rh5vfm0Node01Cell/rh5vfm0Node01/server1/transaction/tranlog. Cold starting the recovery log.
+[8/10/10 7:19:40:777 PDT] 00000012 LogFileHandle I   CWRLS0006I: Creating new recovery log file /export1/cruise/hudson/workspace/terracotta-session_trunk_tests_websphere-6.1.0.7_JDK_1.6_3.4.0-SNAPSHOT/trunk/system-tests/target/temp/MultiNodeLoadTest/sandbox/server_0/tranlog/rh5vfm0Node01Cell/rh5vfm0Node01/server1/transaction/tranlog/log1.
+[8/10/10 7:19:40:805 PDT] 00000012 LogFileHandle I   CWRLS0006I: Creating new recovery log file /export1/cruise/hudson/workspace/terracotta-session_trunk_tests_websphere-6.1.0.7_JDK_1.6_3.4.0-SNAPSHOT/trunk/system-tests/target/temp/MultiNodeLoadTest/sandbox/server_0/tranlog/rh5vfm0Node01Cell/rh5vfm0Node01/server1/transaction/tranlog/log2.
+[8/10/10 7:19:40:826 PDT] 00000012 LogHandle     I   CWRLS0007I: No existing recovery log files found in /export1/cruise/hudson/workspace/terracotta-session_trunk_tests_websphere-6.1.0.7_JDK_1.6_3.4.0-SNAPSHOT/trunk/system-tests/target/temp/MultiNodeLoadTest/sandbox/server_0/tranlog/rh5vfm0Node01Cell/rh5vfm0Node01/server1/transaction/partnerlog. Cold starting the recovery log.
+[8/10/10 7:19:40:827 PDT] 00000012 LogFileHandle I   CWRLS0006I: Creating new recovery log file /export1/cruise/hudson/workspace/terracotta-session_trunk_tests_websphere-6.1.0.7_JDK_1.6_3.4.0-SNAPSHOT/trunk/system-tests/target/temp/MultiNodeLoadTest/sandbox/server_0/tranlog/rh5vfm0Node01Cell/rh5vfm0Node01/server1/transaction/partnerlog/log1.
+[8/10/10 7:19:40:845 PDT] 00000012 LogFileHandle I   CWRLS0006I: Creating new recovery log file /export1/cruise/hudson/workspace/terracotta-session_trunk_tests_websphere-6.1.0.7_JDK_1.6_3.4.0-SNAPSHOT/trunk/system-tests/target/temp/MultiNodeLoadTest/sandbox/server_0/tranlog/rh5vfm0Node01Cell/rh5vfm0Node01/server1/transaction/partnerlog/log2.
+[8/10/10 7:19:40:877 PDT] 00000012 RecoveryManag A   WTRN0028I: Transaction service recovering 0 transactions.
+[8/10/10 7:19:40:976 PDT] 0000000a DiagnosticPro W com.ibm.ws.rasdiag.DiagnosticProviderRegistry register RASD0007W: Diagnostic Provider Registry Propagation failed because Registration of DPName: ConnMgrDP_jdbc/DefaultEJBTimerDataSource withPid:WebSphere:name=DefaultEJBTimerDataSource,process=server1,platform=dynamicproxy,node=rh5vfm0Node01,JDBCProvider=Derby JDBC Provider (XA),diagnosticProvider=true,j2eeType=JDBCDataSource,J2EEServer=server1,Server=server1,version=6.1.0.7,type=DataSource,mbeanIdentifier=cells/rh5vfm0Node01Cell/nodes/rh5vfm0Node01/servers/server1/resources.xml#DataSource_1000001,JDBCResource=Derby JDBC Provider (XA),cell=rh5vfm0Node01Cell,spec=1.0Failed w/no ref to DiagnosticService
+[8/10/10 7:19:40:981 PDT] 0000000a ResourceMgrIm I   WSVR0049I: Binding DefaultEJBTimerDataSource as jdbc/DefaultEJBTimerDataSource
+[8/10/10 7:19:41:002 PDT] 0000000a ResourceMgrIm I   WSVR0049I: Binding Default_CF as eis/DefaultDatasource_CMP
+[8/10/10 7:19:41:009 PDT] 0000000a DiagnosticPro W com.ibm.ws.rasdiag.DiagnosticProviderRegistry register RASD0007W: Diagnostic Provider Registry Propagation failed because Registration of DPName: ConnMgrDP_DefaultDatasource withPid:WebSphere:name=Default Datasource,process=server1,platform=dynamicproxy,node=rh5vfm0Node01,JDBCProvider=Derby JDBC Provider,diagnosticProvider=true,j2eeType=JDBCDataSource,J2EEServer=server1,Server=server1,version=6.1.0.7,type=DataSource,mbeanIdentifier=cells/rh5vfm0Node01Cell/nodes/rh5vfm0Node01/servers/server1/resources.xml#DataSource_1124467080076,JDBCResource=Derby JDBC Provider,cell=rh5vfm0Node01Cell,spec=1.0Failed w/no ref to DiagnosticService
+[8/10/10 7:19:41:011 PDT] 0000000a ResourceMgrIm I   WSVR0049I: Binding Default Datasource as DefaultDatasource
+[8/10/10 7:19:41:017 PDT] 0000000a ResourceMgrIm I   WSVR0049I: Binding DefaultWorkManager as wm/default
+[8/10/10 7:19:41:029 PDT] 0000000a ResourceMgrIm I   WSVR0049I: Binding DefaultTimerManager as tm/default
+[8/10/10 7:19:41:513 PDT] 0000000a AppProfileCom I   ACIN0007I: The application profiling service started successfully.
+[8/10/10 7:19:41:520 PDT] 0000000a WorkAreaServi A   ACWA0002I: WorkArea service not enabled on server1.
+[8/10/10 7:19:41:532 PDT] 0000000a SOAPAcceptorC I   WSSC1019I: The SOAP Acceptor Channel has been configured.
+[8/10/10 7:19:41:601 PDT] 0000000a CacheServiceI I   DYNA0048I: WebSphere Dynamic Cache initialized successfully.
+[8/10/10 7:19:41:701 PDT] 0000000a SchedulerServ I   SCHD0031I: The Scheduler Service is starting.
+[8/10/10 7:19:41:703 PDT] 0000000a SchedulerServ I   SCHD0001I: The Scheduler Service has started.
+[8/10/10 7:19:41:740 PDT] 0000000a RegistryConfi I   CWXRS0017I: Extension Registry objects storage: /export1/cruise/hudson/workspace/terracotta-session_trunk_tests_websphere-6.1.0.7_JDK_1.6_3.4.0-SNAPSHOT/trunk/system-tests/target/temp/MultiNodeLoadTest/sandbox/server_0/temp/rh5vfm0Node01/server1/_extensionregistry
+[8/10/10 7:19:41:763 PDT] 0000000a CacheServiceI I   DYNA1001I: WebSphere Dynamic Cache instance named ws/com.ibm.workplace/ExtensionRegistryCache1281449981751 initialized successfully.
+[8/10/10 7:19:41:767 PDT] 0000000a RegistryCache I   CWXRS0002I: DynaCache instance for Extension Registry created with CACHE_SIZE: 5000
+[8/10/10 7:19:41:956 PDT] 0000000a WebContainer  I   SRVE0239I: Extension Factory [class com.ibm.ws.jsf.extprocessor.JSFExtensionFactory] was registered successfully.
+[8/10/10 7:19:41:957 PDT] 0000000a WebContainer  I   SRVE0240I: Extension Factory [class com.ibm.ws.jsf.extprocessor.JSFExtensionFactory] has been associated with patterns [""].
+[8/10/10 7:19:41:964 PDT] 0000000a WebContainer  I   SRVE0239I: Extension Factory [class com.ibm.ws.jsp.webcontainerext.ws.WASJSPExtensionFactory] was registered successfully.
+[8/10/10 7:19:41:965 PDT] 0000000a WebContainer  I   SRVE0240I: Extension Factory [class com.ibm.ws.jsp.webcontainerext.ws.WASJSPExtensionFactory] has been associated with patterns [*.jsp *.jspx *.jsw *.jsv ].
+[8/10/10 7:19:42:056 PDT] 0000000a WebContainer  I   SRVE0239I: Extension Factory [class com.ibm.ws.portletcontainer.webextension.PortletExtensionFactory] was registered successfully.
+[8/10/10 7:19:42:057 PDT] 0000000a WebContainer  I   SRVE0240I: Extension Factory [class com.ibm.ws.portletcontainer.webextension.PortletExtensionFactory] has been associated with patterns [""].
+[8/10/10 7:19:42:057 PDT] 0000000a WebContainer  I   SRVE0239I: Extension Factory [class com.ibm.ws.portletcontainer.portletserving.PortletServingExtensionFactory] was registered successfully.
+[8/10/10 7:19:42:058 PDT] 0000000a WebContainer  I   SRVE0240I: Extension Factory [class com.ibm.ws.portletcontainer.portletserving.PortletServingExtensionFactory] has been associated with patterns [""].
+[8/10/10 7:19:42:072 PDT] 0000000a DiagnosticPro W com.ibm.ws.rasdiag.DiagnosticProviderRegistry register RASD0007W: Diagnostic Provider Registry Propagation failed because Registration of DPName: WebContainerDP withPid:WebSphere:name=WebcontainerDiagnosticProvider,process=server1,platform=dynamicproxy,node=rh5vfm0Node01,diagnosticProvider=true,version=6.1.0.7,type=WebcontainerDiagnosticProvider,mbeanIdentifier=null,cell=rh5vfm0Node01Cell,spec=1.0Failed w/no ref to DiagnosticService
+[8/10/10 7:19:42:579 PDT] 00000014 ApplicationMg A   WSVR0200I: Starting application: isclite
+[8/10/10 7:19:42:580 PDT] 00000014 ApplicationMg A   WSVR0203I: Application: isclite  Application build level: WAS61.WSC [cf70706.04]
+[8/10/10 7:19:42:583 PDT] 00000015 ApplicationMg A   WSVR0200I: Starting application: DefaultApplication
+[8/10/10 7:19:42:583 PDT] 00000015 ApplicationMg A   WSVR0204I: Application: DefaultApplication  Application build level: Unknown
+[8/10/10 7:19:42:585 PDT] 00000016 ApplicationMg A   WSVR0200I: Starting application: ivtApp
+[8/10/10 7:19:42:587 PDT] 00000016 ApplicationMg A   WSVR0203I: Application: ivtApp  Application build level: WAS61.SERV1 [cf70711.17]
+[8/10/10 7:19:42:883 PDT] 00000016 EJBContainerI I   WSVR0037I: Starting EJB jar: ivtEJB.jar
+[8/10/10 7:19:43:016 PDT] 00000015 EJBContainerI I   WSVR0037I: Starting EJB jar: Increment.jar
+[8/10/10 7:19:43:050 PDT] 00000016 EJBContainerI I   WSVR0057I: EJB jar started: ivtEJB.jar
+[8/10/10 7:19:43:136 PDT] 00000016 WebContainer  A   SRVE0161I: IBM WebSphere Application Server - Web Container.  Copyright IBM Corp. 1998-2006
+[8/10/10 7:19:43:137 PDT] 00000016 WebContainer  A   SRVE0162I: Servlet Specification Level: 2.4
+[8/10/10 7:19:43:137 PDT] 00000016 WebContainer  A   SRVE0163I: Supported JSP Specification Level: 2.0
+[8/10/10 7:19:43:191 PDT] 00000015 EJBContainerI I   WSVR0057I: EJB jar started: Increment.jar
+[8/10/10 7:19:43:268 PDT] 00000016 WebContainer  A   SRVE0239I: Extension Factory [class com.ibm.ws.webcontainer.extension.ExtHandshakeVHostExtensionFactory] was registered successfully.
+[8/10/10 7:19:43:269 PDT] 00000016 WebContainer  A   SRVE0240I: Extension Factory [class com.ibm.ws.webcontainer.extension.ExtHandshakeVHostExtensionFactory] has been associated with patterns [VH:_WS_EH* ].
+[8/10/10 7:19:43:338 PDT] 00000016 WebGroup      A   SRVE0169I: Loading Web Module: IVT Application.
+[8/10/10 7:19:43:351 PDT] 00000014 ExtensionPoin I   CWXRS0034I: Extension com.ibm.ws.isc.ibmautogeneratedidentifier1 connected with Extension Point com.ibm.ws.portletcontainer.collaborator-config
+[8/10/10 7:19:43:511 PDT] 00000016 VirtualHost   I   SRVE0250I: Web Module IVT Application has been bound to default_host[*:7399,*:80,*:13161,*:5537,*:30351,*:443].
+[8/10/10 7:19:43:512 PDT] 00000015 WebGroup      A   SRVE0169I: Loading Web Module: Default Web Application.
+[8/10/10 7:19:43:530 PDT] 00000016 ApplicationMg A   WSVR0221I: Application started: ivtApp
+[8/10/10 7:19:43:531 PDT] 00000016 ApplicationMg A   WSVR0200I: Starting application: query
+[8/10/10 7:19:43:532 PDT] 00000016 ApplicationMg A   WSVR0204I: Application: query  Application build level: Unknown
+[8/10/10 7:19:43:636 PDT] 00000015 ServletWrappe I   SRVE0242I: [DefaultApplication] [/] [Hello Pervasive Servlet]: Initialization successful.
+[8/10/10 7:19:43:644 PDT] 00000015 ServletWrappe I   SRVE0242I: [DefaultApplication] [/] [Hit Count Servlet]: Initialization successful.
+[8/10/10 7:19:43:646 PDT] 00000015 ServletWrappe I   SRVE0242I: [DefaultApplication] [/] [Snoop Servlet]: Initialization successful.
+[8/10/10 7:19:43:658 PDT] 00000015 VirtualHost   I   SRVE0250I: Web Module Default Web Application has been bound to default_host[*:7399,*:80,*:13161,*:5537,*:30351,*:443].
+[8/10/10 7:19:43:663 PDT] 00000014 WebGroup      A   SRVE0169I: Loading Web Module: isclite.
+[8/10/10 7:19:43:663 PDT] 00000015 ApplicationMg A   WSVR0221I: Application started: DefaultApplication
+[8/10/10 7:19:43:670 PDT] 00000016 EJBContainerI I   WSVR0037I: Starting EJB jar: querybean.jar
+[8/10/10 7:19:43:673 PDT] 00000015 ApplicationMg A   WSVR0200I: Starting application: MultiNodeLoadTest
+[8/10/10 7:19:43:674 PDT] 00000015 ApplicationMg A   WSVR0204I: Application: MultiNodeLoadTest  Application build level: Unknown
+[8/10/10 7:19:43:746 PDT] 00000016 EJBContainerI I   WSVR0057I: EJB jar started: querybean.jar
+[8/10/10 7:19:43:846 PDT] 00000016 ApplicationMg A   WSVR0221I: Application started: query
+[8/10/10 7:19:43:848 PDT] 00000016 ApplicationMg A   WSVR0200I: Starting application: ManagementEJB
+[8/10/10 7:19:43:849 PDT] 00000016 ApplicationMg A   WSVR0204I: Application: ManagementEJB  Application build level: Unknown
+[8/10/10 7:19:43:890 PDT] 00000016 EJBContainerI I   WSVR0037I: Starting EJB jar: mejb.jar
+[8/10/10 7:19:44:371 PDT] 00000016 EJBContainerI I   WSVR0057I: EJB jar started: mejb.jar
+[8/10/10 7:19:44:376 PDT] 00000016 ApplicationMg A   WSVR0221I: Application started: ManagementEJB
+[8/10/10 7:19:44:377 PDT] 00000016 ApplicationMg A   WSVR0200I: Starting application: filetransfer
+[8/10/10 7:19:44:377 PDT] 00000016 ApplicationMg A   WSVR0204I: Application: filetransfer  Application build level: Unknown
+[8/10/10 7:19:44:425 PDT] 00000014 ServletWrappe I   SRVE0242I: [isclite] [/ibm/console] [EventInitializer]: Initialization successful.
+[8/10/10 7:19:44:437 PDT] 00000014 VirtualHost   I   SRVE0250I: Web Module isclite has been bound to admin_host[*:61696,*:32068].
+[8/10/10 7:19:44:444 PDT] 00000015 WebGroup      A   SRVE0169I: Loading Web Module: MultiNodeLoadTest.war.
+[8/10/10 7:19:44:482 PDT] 00000015 VirtualHost   I   SRVE0250I: Web Module <null> has been bound to default_host[*:7399,*:80,*:13161,*:5537,*:30351,*:443].
+[8/10/10 7:19:44:485 PDT] 00000016 WebGroup      A   SRVE0169I: Loading Web Module: WebSphere Admin File Transfer Application.
+[8/10/10 7:19:44:492 PDT] 00000015 ApplicationMg A   WSVR0221I: Application started: MultiNodeLoadTest
+[8/10/10 7:19:44:494 PDT] 00000015 ApplicationMg A   WSVR0200I: Starting application: SchedulerCalendars
+[8/10/10 7:19:44:494 PDT] 00000015 ApplicationMg A   WSVR0204I: Application: SchedulerCalendars  Application build level: Unknown
+[8/10/10 7:19:44:507 PDT] 00000016 ServletWrappe I   SRVE0242I: [filetransfer] [/FileTransfer] [transfer]: Initialization successful.
+[8/10/10 7:19:44:507 PDT] 00000016 VirtualHost   I   SRVE0250I: Web Module WebSphere Admin File Transfer Application has been bound to admin_host[*:61696,*:32068].
+[8/10/10 7:19:44:512 PDT] 00000014 WebGroup      A   SRVE0169I: Loading Web Module: adminconsole redirector.
+[8/10/10 7:19:44:522 PDT] 00000014 VirtualHost   I   SRVE0250I: Web Module adminconsole redirector has been bound to admin_host[*:61696,*:32068].
+[8/10/10 7:19:44:527 PDT] 00000016 ApplicationMg A   WSVR0221I: Application started: filetransfer
+[8/10/10 7:19:44:528 PDT] 00000015 EJBContainerI I   WSVR0037I: Starting EJB jar: Calendars.jar
+[8/10/10 7:19:44:541 PDT] 00000015 EJBContainerI I   WSVR0057I: EJB jar started: Calendars.jar
+[8/10/10 7:19:44:542 PDT] 00000014 WebGroup      A   SRVE0169I: Loading Web Module: EHS3.01.
+[8/10/10 7:19:44:552 PDT] 00000015 ApplicationMg A   WSVR0221I: Application started: SchedulerCalendars
+[8/10/10 7:19:44:562 PDT] 00000014 VirtualHost   I   SRVE0250I: Web Module EHS3.01 has been bound to admin_host[*:61696,*:32068].
+[8/10/10 7:19:44:762 PDT] 00000014 WebGroup      A   SRVE0169I: Loading Web Module: Integrated Solutions Console.
+[8/10/10 7:19:44:801 PDT] 00000014 VirtualHost   I   SRVE0250I: Web Module Integrated Solutions Console has been bound to admin_host[*:61696,*:32068].
+[8/10/10 7:19:44:844 PDT] 00000014 WebGroup      A   SRVE0169I: Loading Web Module: WIM.
+[8/10/10 7:19:44:859 PDT] 00000014 VirtualHost   I   SRVE0250I: Web Module WIM has been bound to admin_host[*:61696,*:32068].
+[8/10/10 7:19:44:894 PDT] 00000014 WebGroup      A   SRVE0169I: Loading Web Module: WebSphere Application Server.
+[8/10/10 7:19:44:909 PDT] 00000014 VirtualHost   I   SRVE0250I: Web Module WebSphere Application Server has been bound to admin_host[*:61696,*:32068].
+[8/10/10 7:19:44:924 PDT] 00000014 ApplicationMg A   WSVR0221I: Application started: isclite
+[8/10/10 7:19:44:975 PDT] 0000000a TCPChannel    I   TCPC0001I: TCP Channel TCP_1 is listening on host *  (IPv6) port 61696. 
+[8/10/10 7:19:44:986 PDT] 0000000a WSChannelFram A   CHFW0019I: The Transport Channel Service has started chain WCInboundAdmin.
+[8/10/10 7:19:44:987 PDT] 0000000a TCPChannel    I   TCPC0001I: TCP Channel TCP_2 is listening on host *  (IPv6) port 7399. 
+[8/10/10 7:19:44:989 PDT] 0000000a WSChannelFram A   CHFW0019I: The Transport Channel Service has started chain WCInboundDefault.
+[8/10/10 7:19:44:993 PDT] 0000000a TCPChannel    I   TCPC0001I: TCP Channel TCP_3 is listening on host *  (IPv6) port 32068. 
+[8/10/10 7:19:44:996 PDT] 0000000a WSChannelFram A   CHFW0019I: The Transport Channel Service has started chain WCInboundAdminSecure.
+[8/10/10 7:19:44:997 PDT] 0000000a TCPChannel    I   TCPC0001I: TCP Channel TCP_4 is listening on host *  (IPv6) port 13161. 
+[8/10/10 7:19:44:999 PDT] 0000000a WSChannelFram A   CHFW0019I: The Transport Channel Service has started chain WCInboundDefaultSecure.
+[8/10/10 7:19:45:000 PDT] 0000000a WSChannelFram A   CHFW0019I: The Transport Channel Service has started chain SOAPAcceptorChain1.
+[8/10/10 7:19:45:001 PDT] 0000000a WSChannelFram A   CHFW0019I: The Transport Channel Service has started chain SOAPAcceptorChain2.
+[8/10/10 7:19:45:001 PDT] 0000000a WSChannelFram A   CHFW0019I: The Transport Channel Service has started chain SOAPAcceptorChain3.
+[8/10/10 7:19:45:002 PDT] 0000000a WSChannelFram A   CHFW0019I: The Transport Channel Service has started chain SOAPAcceptorChain4.
+[8/10/10 7:19:45:006 PDT] 00000016 SchedulerServ I   SCHD0077I: The Scheduler Service is starting the Schedulers.
+[8/10/10 7:19:45:009 PDT] 00000016 SchedulerServ I   SCHD0078I: The Scheduler Service has completed starting the Schedulers.
+[8/10/10 7:19:45:033 PDT] 0000000a RMIConnectorC A   ADMC0026I: The RMI Connector is available at port 25257
+[8/10/10 7:19:45:072 PDT] 0000001a DiagnosticPro W com.ibm.ws.rasdiag.DiagnosticProviderRegistry register RASD0007W: Diagnostic Provider Registry Propagation failed because Registration of DPName: AdvisorDP withPid:WebSphere:name=Runtime Advisor,process=server1,platform=dynamicproxy,node=rh5vfm0Node01,diagnosticProvider=true,reInit="Des:reinitialize the Runtime Performance Advisor.#DesLookup:perfTuningAdmin.operation.reInit.des",version=6.1.0.7,type=ServerRuleDriverMBean,mbeanIdentifier=ServerRuleDriverMBean2,cell=rh5vfm0Node01Cell,spec=1.0,perfTuningAdmin.operation.takeHeapDump="Des:Triggers IBM JDK to take a multiple heap dumps based upon downward trends in memory#DesLookup:perfTuningAdmin.operation.takeHeapDump.des"Failed w/no ref to DiagnosticService
+[8/10/10 7:19:45:136 PDT] 0000000a WsServerImpl  A   WSVR0001I: Server server1 open for e-business
+[8/10/10 7:24:16:629 PDT] 0000001e ServletWrappe I   SRVE0242I: [MultiNodeLoadTest] [/MultiNodeLoadTest] [CounterServlet]: Initialization successful.
+[8/10/10 7:24:17:076 PDT] 0000001e ClientImpl    W   Thread has no 'inheritedAccessControlContext' field - L1 shutdown will fail to unload classes - see: http://code.google.com/p/guava-libraries/issues/detail?id=92
+                                 java.lang.NoSuchFieldException: inheritedAccessControlContext
+	at java.lang.Class.getDeclaredFieldImpl(Native Method)
+	at java.lang.Class.getDeclaredField(Class.java:502)
+	at org.terracotta.express.ClientImpl.<clinit>(ClientImpl.java:47)
+	at java.lang.J9VMInternals.initializeImpl(Native Method)
+	at java.lang.J9VMInternals.initialize(J9VMInternals.java:187)
+	at org.terracotta.express.ClientFactoryImpl.newClient(ClientFactoryImpl.java:146)
+	at org.terracotta.express.ClientFactoryImpl.createClient(ClientFactoryImpl.java:140)
+	at org.terracotta.express.ClientFactoryImpl.getOrCreateClient(ClientFactoryImpl.java:116)
+	at org.terracotta.express.ClientFactory.getOrCreateClient(ClientFactory.java:28)
+	at org.terracotta.session.BootStrap.bootstrap(BootStrap.java:27)
+	at org.terracotta.session.BaseExpressSessionFilter.createAndInitRealFilter(BaseExpressSessionFilter.java:61)
+	at org.terracotta.session.WebsphereSessionFilterBase$JoinedFilters$1.call(WebsphereSessionFilterBase.java:76)
+	at org.terracotta.session.WebsphereSessionFilterBase$JoinedFilters$1.call(WebsphereSessionFilterBase.java:74)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:284)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at org.terracotta.session.WebsphereSessionFilterBase$JoinedFilters.<init>(WebsphereSessionFilterBase.java:79)
+	at org.terracotta.session.WebsphereSessionFilterBase.init(WebsphereSessionFilterBase.java:43)
+	at com.ibm.ws.webcontainer.filter.FilterInstanceWrapper.init(FilterInstanceWrapper.java:142)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager._loadFilter(WebAppFilterManager.java:465)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.loadFilter(WebAppFilterManager.java:379)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.getFilterInstanceWrapper(WebAppFilterManager.java:238)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.getFilterChain(WebAppFilterManager.java:296)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.doFilter(WebAppFilterManager.java:721)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.doFilter(WebAppFilterManager.java:673)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:498)
+	at com.ibm.ws.wswebcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:464)
+	at com.ibm.ws.webcontainer.webapp.WebApp.handleRequest(WebApp.java:3184)
+	at com.ibm.ws.webcontainer.webapp.WebGroup.handleRequest(WebGroup.java:254)
+	at com.ibm.ws.webcontainer.WebContainer.handleRequest(WebContainer.java:811)
+	at com.ibm.ws.wswebcontainer.WebContainer.handleRequest(WebContainer.java:1433)
+	at com.ibm.ws.webcontainer.channel.WCChannelLink.ready(WCChannelLink.java:111)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleDiscrimination(HttpInboundLink.java:454)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleNewInformation(HttpInboundLink.java:383)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.ready(HttpInboundLink.java:263)
+	at com.ibm.ws.tcp.channel.impl.NewConnectionInitialReadCallback.sendToDiscriminators(NewConnectionInitialReadCallback.java:214)
+	at com.ibm.ws.tcp.channel.impl.NewConnectionInitialReadCallback.complete(NewConnectionInitialReadCallback.java:113)
+	at com.ibm.ws.tcp.channel.impl.AioReadCompletionListener.futureCompleted(AioReadCompletionListener.java:165)
+	at com.ibm.io.async.AbstractAsyncFuture.invokeCallback(AbstractAsyncFuture.java:217)
+	at com.ibm.io.async.AsyncChannelFuture.fireCompletionActions(AsyncChannelFuture.java:161)
+	at com.ibm.io.async.AsyncFuture.completed(AsyncFuture.java:136)
+	at com.ibm.io.async.ResultHandler.complete(ResultHandler.java:195)
+	at com.ibm.io.async.ResultHandler.runEventProcessingLoop(ResultHandler.java:743)
+	at com.ibm.io.async.ResultHandler$2.run(ResultHandler.java:873)
+	at com.ibm.ws.util.ThreadPool$Worker.run(ThreadPool.java:1469)
+
+[8/10/10 7:24:17:083 PDT] 0000001e               W org.terracotta.express.ClientImpl <clinit> AccessControlContext has no 'context' field - L1 shutdown will fail to unload classes - see: http://code.google.com/p/guava-libraries/issues/detail?id=92
+                                 java.lang.NoSuchFieldException: context
+	at java.lang.Class.getDeclaredFieldImpl(Native Method)
+	at java.lang.Class.getDeclaredField(Class.java:502)
+	at org.terracotta.express.ClientImpl.<clinit>(ClientImpl.java:71)
+	at java.lang.J9VMInternals.initializeImpl(Native Method)
+	at java.lang.J9VMInternals.initialize(J9VMInternals.java:187)
+	at org.terracotta.express.ClientFactoryImpl.newClient(ClientFactoryImpl.java:146)
+	at org.terracotta.express.ClientFactoryImpl.createClient(ClientFactoryImpl.java:140)
+	at org.terracotta.express.ClientFactoryImpl.getOrCreateClient(ClientFactoryImpl.java:116)
+	at org.terracotta.express.ClientFactory.getOrCreateClient(ClientFactory.java:28)
+	at org.terracotta.session.BootStrap.bootstrap(BootStrap.java:27)
+	at org.terracotta.session.BaseExpressSessionFilter.createAndInitRealFilter(BaseExpressSessionFilter.java:61)
+	at org.terracotta.session.WebsphereSessionFilterBase$JoinedFilters$1.call(WebsphereSessionFilterBase.java:76)
+	at org.terracotta.session.WebsphereSessionFilterBase$JoinedFilters$1.call(WebsphereSessionFilterBase.java:74)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:284)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at org.terracotta.session.WebsphereSessionFilterBase$JoinedFilters.<init>(WebsphereSessionFilterBase.java:79)
+	at org.terracotta.session.WebsphereSessionFilterBase.init(WebsphereSessionFilterBase.java:43)
+	at com.ibm.ws.webcontainer.filter.FilterInstanceWrapper.init(FilterInstanceWrapper.java:142)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager._loadFilter(WebAppFilterManager.java:465)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.loadFilter(WebAppFilterManager.java:379)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.getFilterInstanceWrapper(WebAppFilterManager.java:238)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.getFilterChain(WebAppFilterManager.java:296)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.doFilter(WebAppFilterManager.java:721)
+	at com.ibm.ws.webcontainer.filter.WebAppFilterManager.doFilter(WebAppFilterManager.java:673)
+	at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:498)
+	at com.ibm.ws.wswebcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:464)
+	at com.ibm.ws.webcontainer.webapp.WebApp.handleRequest(WebApp.java:3184)
+	at com.ibm.ws.webcontainer.webapp.WebGroup.handleRequest(WebGroup.java:254)
+	at com.ibm.ws.webcontainer.WebContainer.handleRequest(WebContainer.java:811)
+	at com.ibm.ws.wswebcontainer.WebContainer.handleRequest(WebContainer.java:1433)
+	at com.ibm.ws.webcontainer.channel.WCChannelLink.ready(WCChannelLink.java:111)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleDiscrimination(HttpInboundLink.java:454)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleNewInformation(HttpInboundLink.java:383)
+	at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.ready(HttpInboundLink.java:263)
+	at com.ibm.ws.tcp.channel.impl.NewConnectionInitialReadCallback.sendToDiscriminators(NewConnectionInitialReadCallback.java:214)
+	at com.ibm.ws.tcp.channel.impl.NewConnectionInitialReadCallback.complete(NewConnectionInitialReadCallback.java:113)
+	at com.ibm.ws.tcp.channel.impl.AioReadCompletionListener.futureCompleted(AioReadCompletionListener.java:165)
+	at com.ibm.io.async.AbstractAsyncFuture.invokeCallback(AbstractAsyncFuture.java:217)
+	at com.ibm.io.async.AsyncChannelFuture.fireCompletionActions(AsyncChannelFuture.java:161)
+	at com.ibm.io.async.AsyncFuture.completed(AsyncFuture.java:136)
+	at com.ibm.io.async.ResultHandler.complete(ResultHandler.java:195)
+	at com.ibm.io.async.ResultHandler.runEventProcessingLoop(ResultHandler.java:743)
+	at com.ibm.io.async.ResultHandler$2.run(ResultHandler.java:873)
+	at com.ibm.ws.util.ThreadPool$Worker.run(ThreadPool.java:1469)
+
+[8/10/10 7:24:29:941 PDT] 00000022 TCPChannel    I   TCPC0002I: TCP Channel TCP_3 has stopped listening on host *  (IPv6) port 32068. 
+[8/10/10 7:24:29:943 PDT] 00000022 TCPChannel    I   TCPC0002I: TCP Channel TCP_2 has stopped listening on host *  (IPv6) port 7399. 
+[8/10/10 7:24:29:945 PDT] 00000022 TCPChannel    I   TCPC0002I: TCP Channel TCP_4 has stopped listening on host *  (IPv6) port 13161. 
+[8/10/10 7:24:29:953 PDT] 00000022 TCPChannel    I   TCPC0002I: TCP Channel TCP_1 has stopped listening on host *  (IPv6) port 61696. 
+[8/10/10 7:24:29:963 PDT] 00000022 ApplicationMg A   WSVR0217I: Stopping application: SchedulerCalendars
+[8/10/10 7:24:29:974 PDT] 00000022 EJBContainerI I   WSVR0041I: Stopping EJB jar: Calendars.jar
+[8/10/10 7:24:29:982 PDT] 00000022 EJBContainerI I   WSVR0059I: EJB jar stopped: Calendars.jar
+[8/10/10 7:24:30:070 PDT] 00000022 ApplicationMg A   WSVR0220I: Application stopped: SchedulerCalendars
+[8/10/10 7:24:30:071 PDT] 00000022 ApplicationMg A   WSVR0217I: Stopping application: filetransfer
+[8/10/10 7:24:30:265 PDT] 00000022 ServletWrappe I   SRVE0253I: [filetransfer] [/FileTransfer] [transfer]: Destroy successful.
+[8/10/10 7:24:30:310 PDT] 00000022 ApplicationMg A   WSVR0220I: Application stopped: filetransfer
+[8/10/10 7:24:30:319 PDT] 00000022 ApplicationMg A   WSVR0217I: Stopping application: ManagementEJB
+[8/10/10 7:24:30:348 PDT] 00000022 EJBContainerI I   WSVR0041I: Stopping EJB jar: mejb.jar
+[8/10/10 7:24:30:354 PDT] 00000022 EJBContainerI I   WSVR0059I: EJB jar stopped: mejb.jar
+[8/10/10 7:24:30:459 PDT] 00000022 ApplicationMg A   WSVR0220I: Application stopped: ManagementEJB
+[8/10/10 7:24:30:467 PDT] 00000022 ApplicationMg A   WSVR0217I: Stopping application: MultiNodeLoadTest
+[8/10/10 7:25:31:115 PDT] 00000022 ServletWrappe I   SRVE0253I: [MultiNodeLoadTest] [/MultiNodeLoadTest] [CounterServlet]: Destroy successful.
+[8/10/10 7:25:31:116 PDT] 00000022 FilterInstanc A   SRVE0248I: Requests are currently being processed. Waiting up to 60 seconds before forcing filter destroy.
+[8/10/10 7:26:31:775 PDT] 00000022 ApplicationMg A   WSVR0220I: Application stopped: MultiNodeLoadTest
+[8/10/10 7:26:31:776 PDT] 00000022 ApplicationMg A   WSVR0217I: Stopping application: query
+[8/10/10 7:26:31:783 PDT] 00000022 EJBContainerI I   WSVR0041I: Stopping EJB jar: querybean.jar
+[8/10/10 7:26:31:784 PDT] 00000022 EJBContainerI I   WSVR0059I: EJB jar stopped: querybean.jar
+[8/10/10 7:26:31:786 PDT] 00000022 ApplicationMg A   WSVR0220I: Application stopped: query
+[8/10/10 7:26:31:787 PDT] 00000022 ApplicationMg A   WSVR0217I: Stopping application: ivtApp
+[8/10/10 7:26:31:818 PDT] 00000022 EJBContainerI I   WSVR0041I: Stopping EJB jar: ivtEJB.jar
+[8/10/10 7:26:31:819 PDT] 00000022 EJBContainerI I   WSVR0059I: EJB jar stopped: ivtEJB.jar
+[8/10/10 7:26:31:839 PDT] 00000022 ApplicationMg A   WSVR0220I: Application stopped: ivtApp
+[8/10/10 7:26:31:839 PDT] 00000022 ApplicationMg A   WSVR0217I: Stopping application: DefaultApplication
+[8/10/10 7:26:31:866 PDT] 00000022 ServletWrappe I   SRVE0253I: [DefaultApplication] [/] [Snoop Servlet]: Destroy successful.
+[8/10/10 7:26:31:866 PDT] 00000022 ServletWrappe I   SRVE0253I: [DefaultApplication] [/] [Hello Pervasive Servlet]: Destroy successful.
+[8/10/10 7:26:31:867 PDT] 00000022 ServletWrappe I   SRVE0253I: [DefaultApplication] [/] [Hit Count Servlet]: Destroy successful.
+[8/10/10 7:26:31:870 PDT] 00000022 EJBContainerI I   WSVR0041I: Stopping EJB jar: Increment.jar
+[8/10/10 7:26:31:871 PDT] 00000022 EJBContainerI I   WSVR0059I: EJB jar stopped: Increment.jar
+[8/10/10 7:26:31:888 PDT] 00000022 ApplicationMg A   WSVR0220I: Application stopped: DefaultApplication
+[8/10/10 7:26:31:888 PDT] 00000022 ApplicationMg A   WSVR0217I: Stopping application: isclite
+[8/10/10 7:26:31:940 PDT] 00000022 ServletWrappe I   SRVE0253I: [isclite] [/ibm/console] [EventInitializer]: Destroy successful.
+[8/10/10 7:26:31:968 PDT] 00000022 ApplicationMg A   WSVR0220I: Application stopped: isclite
+[8/10/10 7:26:32:010 PDT] 00000022 SchedulerServ I   SCHD0040I: The Scheduler Service is stopping.
+[8/10/10 7:26:32:010 PDT] 00000022 SchedulerServ I   SCHD0002I: The Scheduler Service has stopped.
+[8/10/10 7:26:32:012 PDT] 00000022 AppProfileCom I   ACIN0009I: The application profiling service is stopping.
+[8/10/10 7:26:32:013 PDT] 00000022 ActivitySessi I   WACS0049I: The ActivitySession service is stopping.
+[8/10/10 7:26:32:073 PDT] 00000022 FailureScopeC A   WTRN0105I: The transaction service has shutdown successfully with no transactions requiring recovery.
+[8/10/10 7:26:32:078 PDT] 00000022 ServerCollabo A   WSVR0024I: Server server1 stopped

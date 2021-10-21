@@ -1,0 +1,24 @@
+Index: src/main/java/net/sf/ehcache/distribution/MulticastRMICacheManagerPeerProvider.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/MulticastRMICacheManagerPeerProvider.java	(revision 2192)
++++ src/main/java/net/sf/ehcache/distribution/MulticastRMICacheManagerPeerProvider.java	(working copy)
+@@ -116,6 +116,7 @@
+                 cachePeerEntry = new CachePeerEntry(cachePeer, new Date());
+                 //synchronized due to peerUrls being a synchronizedMap
+                 peerUrls.put(rmiUrl, cachePeerEntry);
++                LOG.debug("New peer: " + rmiUrl );
+             } else {
+                 cachePeerEntry.date = new Date();
+             }
+@@ -159,9 +160,8 @@
+                         remoteCachePeers.add(cachePeer);
+                     } else {
+ 
+-                            LOG.debug("rmiUrl is stale. Either the remote peer is shutdown or the " +
+-                                    "network connectivity has been interrupted. Will be removed from list of remote cache peers",
+-                                    rmiUrl);
++                            LOG.debug(rmiUrl + " is stale. Either the remote peer is shutdown or the " +
++                                    "network connectivity has been interrupted. Will be removed from list of remote cache peers");
+                         staleList.add(rmiUrl);
+                     }
+                 } catch (Exception exception) {

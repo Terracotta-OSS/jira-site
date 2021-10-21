@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+  All content copyright (c) 2003-2007 Terracotta, Inc.,
+  except as may otherwise be noted in a separate copyright notice.
+  All rights reserved.
+
+-->
+
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-4.xsd">
+
+  <!-- Tell DSO where the Terracotta server can be found; 
+       See the Terracotta DSO Guide for additional information. -->
+  <servers>
+    <server host="localhost" name="taylor">
+      <dso>
+        <persistence>
+          <mode>permanent-store</mode>
+        </persistence>
+      </dso>
+    </server>
+    <server host="10.0.0.144" name="orion">
+      <dso>
+        <persistence>
+          <mode>permanent-store</mode>
+        </persistence>
+      </dso>
+    </server>
+    <ha>
+     <mode>networked-active-passive</mode>
+     <networked-active-passive>
+       <election-time>5</election-time>
+       </networked-active-passive>
+    </ha>  
+    <update-check>
+      <enabled>false</enabled>
+    </update-check>
+  </servers>
+</tc:tc-config>

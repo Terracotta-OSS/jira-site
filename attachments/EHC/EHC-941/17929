@@ -1,0 +1,2861 @@
+[INFO] Scanning for projects...
+[WARNING] 
+	Profile with id: 'internal-repos' has not been activated.
+
+[WARNING] 
+	Profile with id: 'os' has not been activated.
+
+[WARNING] 
+	Profile with id: 'all' has not been activated.
+
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Off-Heap [Ehcache Native] Test suite
+[INFO]    task-segment: [clean, install, exec:exec]
+[INFO] ------------------------------------------------------------------------
+[INFO] [clean:clean {execution: default-clean}]
+[INFO] Deleting directory /export1/bench/code/trunk/qa/offHeap-test/branches/3.7.x/target
+[INFO] [resources:resources {execution: default-resources}]
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 3 resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Compiling 9 source files to /export1/bench/code/trunk/qa/offHeap-test/branches/3.7.x/target/classes
+[INFO] [resources:testResources {execution: default-testResources}]
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 16 resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] Not compiling test sources
+[INFO] [surefire:test {execution: default-test}]
+[INFO] Tests are skipped.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] Building jar: /export1/bench/code/trunk/qa/offHeap-test/branches/3.7.x/target/offHeap-test-1.1.0-SNAPSHOT.jar
+[INFO] [dependency:copy-dependencies {execution: copy-dependencies}]
+[INFO] Copying commons-lang-2.5.jar to /export1/bench/code/trunk/qa/offHeap-test/branches/3.7.x/target/dependency/commons-lang-2.5.jar
+[INFO] Copying log4j-1.2.14.jar to /export1/bench/code/trunk/qa/offHeap-test/branches/3.7.x/target/dependency/log4j-1.2.14.jar
+[INFO] Copying ehcache-core-ee-2.6.1-SNAPSHOT.jar to /export1/bench/code/trunk/qa/offHeap-test/branches/3.7.x/target/dependency/ehcache-core-ee-2.6.1-SNAPSHOT.jar
+[INFO] Copying ehcache-ee-rest-agent-2.6.1-SNAPSHOT.jar to /export1/bench/code/trunk/qa/offHeap-test/branches/3.7.x/target/dependency/ehcache-ee-rest-agent-2.6.1-SNAPSHOT.jar
+[INFO] Copying ehcache-terracotta-ee-2.6.1-SNAPSHOT.jar to /export1/bench/code/trunk/qa/offHeap-test/branches/3.7.x/target/dependency/ehcache-terracotta-ee-2.6.1-SNAPSHOT.jar
+[INFO] Copying opencsv-2.3.jar to /export1/bench/code/trunk/qa/offHeap-test/branches/3.7.x/target/dependency/opencsv-2.3.jar
+[INFO] Copying trove4j-3.0.1.jar to /export1/bench/code/trunk/qa/offHeap-test/branches/3.7.x/target/dependency/trove4j-3.0.1.jar
+[INFO] Copying commons-math-2.2.jar to /export1/bench/code/trunk/qa/offHeap-test/branches/3.7.x/target/dependency/commons-math-2.2.jar
+[INFO] Copying slf4j-api-1.6.0.jar to /export1/bench/code/trunk/qa/offHeap-test/branches/3.7.x/target/dependency/slf4j-api-1.6.0.jar
+[INFO] Copying slf4j-log4j12-1.6.0.jar to /export1/bench/code/trunk/qa/offHeap-test/branches/3.7.x/target/dependency/slf4j-log4j12-1.6.0.jar
+[INFO] Copying ehcache-test-loading-1.0.4-SNAPSHOT.jar to /export1/bench/code/trunk/qa/offHeap-test/branches/3.7.x/target/dependency/ehcache-test-loading-1.0.4-SNAPSHOT.jar
+[INFO] Copying terracotta-toolkit-1.6-runtime-ee-5.1.0-SNAPSHOT.jar to /export1/bench/code/trunk/qa/offHeap-test/branches/3.7.x/target/dependency/terracotta-toolkit-1.6-runtime-ee-5.1.0-SNAPSHOT.jar
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing /export1/bench/code/trunk/qa/offHeap-test/branches/3.7.x/target/offHeap-test-1.1.0-SNAPSHOT.jar to /export1/bench/.m2/repository/offHeap-test/offHeap-test/1.1.0-SNAPSHOT/offHeap-test-1.1.0-SNAPSHOT.jar
+[INFO] [exec:exec {execution: default-cli}]
+2012-09-18 03:34:13,980 [TestConfiguration] Running in LRT mode.
+2012-09-18 03:34:13,982 [TestConfiguration] Configuration : 
+	Total CacheManagers: 1
+	Total Caches per Mgr: 1
+
+	Element per Cache: 100,000,000
+	Payload Size (bytes): 40
+
+	Duration (secs): LRT
+	Test Threads: 10
+	Warmup Thread: 10
+	Read Write Percentage: 10
+	Access Pattern: null
+	Random Size: false
+	Compression Ratio: 0.0
+	Node Count: 1
+	Tc-config URL: localhost:9510
+2012-09-18 03:34:13,985 [TestRunner] Ehcache Core Enterprise version 2.6.1-SNAPSHOT was built on 20120918-033243, at revision 20375-6290, with jdk 1.6.0_30 by bench@perf07
+2012-09-18 03:34:13,999 [TestRunner] Initiailizing caches:
+2012-09-18 03:34:14,140 [CacheHandler] Time taken to initialize (ms): 117
+2012-09-18 03:34:14,149 [CacheHandler] <ehcache     
+    name="BigMemory_0">    
+    <diskStore         
+        path="fastRestartableStore/BigMemory_0"/>    
+    <defaultCache         
+        maxEntriesLocalHeap="10">        
+        <elementValueComparator             
+            class="net.sf.ehcache.store.DefaultElementValueComparator"/>    
+    </defaultCache>    
+    <cache         
+        name="BM_0_Store_0"         
+        maxEntriesLocalHeap="4000000">        
+        <elementValueComparator             
+            class="net.sf.ehcache.store.DefaultElementValueComparator"/>    
+    </cache>
+</ehcache>
+
+2012-09-18 03:34:14,149 [TestRunner] All 1 Cache Managers are instantiated.
+2012-09-18 03:34:14,165 [MemoryStatsCollector] ----------- Memory -----------
+2012-09-18 03:34:14,169 [ConsoleStatsLoggerImpl] ---------------------------- starting to log performances ----------------------------
+2012-09-18 03:34:14,170 [AnnotationSizeOfFilter] Using regular expression provided through VM argument net.sf.ehcache.pool.sizeof.ignore.pattern for IgnoreSizeOf annotation : ^.*cache\..*IgnoreSizeOf$
+2012-09-18 03:34:14,180 [AgentLoader] Located valid 'tools.jar' at '/shares/perf/java/jdk1.6.0_30_x64/jre/../lib/tools.jar'
+2012-09-18 03:34:14,326 [JvmInformation] Detected JVM data model settings of: 64-Bit HotSpot JVM with Compressed OOPs
+2012-09-18 03:34:14,650 [AgentLoader] Extracted agent jar to temporary file /tmp/ehcache-sizeof-agent3979932906484027674.jar
+2012-09-18 03:34:14,650 [AgentLoader] Trying to load agent @ /tmp/ehcache-sizeof-agent3979932906484027674.jar
+2012-09-18 03:34:14,667 [DefaultSizeOfEngine] using Agent sizeof engine
+2012-09-18 03:34:15,167 [LicenseManager] Terracotta license loaded from terracotta-license.key
+Capabilities: DCV2, authentication, ehcache, ehcache monitor, ehcache offheap, operator console, quartz, quartz manager, quartz where, roots, search, server array offheap, server striping, sessions
+Date of Issue: 2011-09-20
+Edition: FX
+Expiration Date: 2013-07-31
+License Number: 123456
+License Type: Commercial
+Licensee: QA Team
+Max Client Count: 200
+Product: Enterprise Suite
+ehcache.maxOffHeap: 2T
+terracotta.serverArray.maxOffHeap: 2T
+
+2012-09-18 03:34:18,581 [ConsoleStatsLoggerImpl] ==================================================== Period Stats =========================================
+2012-09-18 03:34:18,582 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:18,582 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:18,583 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:18,585 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES     4,577,598  1,037,768      0.006          0        450          0
+2012-09-18 03:34:18,585 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL      4,577,598  1,037,298      0.006          0        450          0
+2012-09-18 03:34:18,585 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:18,586 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:18,586 [ConsoleStatsLoggerImpl] All Caches      WRITES     4,577,598  1,037,063      0.006          0        450          0
+2012-09-18 03:34:18,587 [ConsoleStatsLoggerImpl] All Caches      TOTAL      4,577,598  1,037,063      0.006          0        450          0
+2012-09-18 03:34:18,594 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 4,577,580 percentage = 100.0
+10-50 frequency count = 3 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 0 percentage = 0.0
+200-500 frequency count = 13 percentage = 0.0
+500-1000 frequency count = 0 percentage = 0.0
+1000-5000 frequency count = 0 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:18,595 [ConsoleStatsLoggerImpl] ==================================================== Cumulative Stats =========================================
+2012-09-18 03:34:18,595 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:18,595 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:18,596 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:18,596 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES     4,577,598  1,034,719      0.006          0        450          0
+2012-09-18 03:34:18,597 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL      4,577,598  1,034,719      0.006          0        450          0
+2012-09-18 03:34:18,597 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:18,597 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:18,598 [ConsoleStatsLoggerImpl] All Caches      WRITES     4,577,598  1,034,485      0.006          0        450          0
+2012-09-18 03:34:18,598 [ConsoleStatsLoggerImpl] All Caches      TOTAL      4,577,598  1,034,251      0.006          0        450          0
+2012-09-18 03:34:18,599 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 4,577,580 percentage = 100.0
+10-50 frequency count = 3 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 0 percentage = 0.0
+200-500 frequency count = 13 percentage = 0.0
+500-1000 frequency count = 0 percentage = 0.0
+1000-5000 frequency count = 0 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:22,600 [ConsoleStatsLoggerImpl] ==================================================== Period Stats =========================================
+2012-09-18 03:34:22,600 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:22,600 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:22,601 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:22,601 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES     1,859,680    462,606      0.023          0        956          0
+2012-09-18 03:34:22,602 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL      1,859,680    462,606      0.023          0        956          0
+2012-09-18 03:34:22,602 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:22,602 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:22,603 [ConsoleStatsLoggerImpl] All Caches      WRITES     1,859,680    462,491      0.023          0        956          0
+2012-09-18 03:34:22,603 [ConsoleStatsLoggerImpl] All Caches      TOTAL      1,859,680    462,376      0.023          0        956          0
+2012-09-18 03:34:22,604 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 1,859,654 percentage = 100.0
+10-50 frequency count = 0 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 0 percentage = 0.0
+200-500 frequency count = 19 percentage = 0.0
+500-1000 frequency count = 10 percentage = 0.0
+1000-5000 frequency count = 0 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:22,605 [ConsoleStatsLoggerImpl] ==================================================== Cumulative Stats =========================================
+2012-09-18 03:34:22,605 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:22,605 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:22,605 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:22,606 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES     6,437,278    763,253      0.011          0        956          0
+2012-09-18 03:34:22,607 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL      6,437,278    763,253      0.011          0        956          0
+2012-09-18 03:34:22,607 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:22,607 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:22,608 [ConsoleStatsLoggerImpl] All Caches      WRITES     6,437,278    763,162      0.011          0        956          0
+2012-09-18 03:34:22,608 [ConsoleStatsLoggerImpl] All Caches      TOTAL      6,437,278    763,072      0.011          0        956          0
+2012-09-18 03:34:22,609 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 6,437,234 percentage = 100.0
+10-50 frequency count = 3 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 0 percentage = 0.0
+200-500 frequency count = 32 percentage = 0.0
+500-1000 frequency count = 10 percentage = 0.0
+1000-5000 frequency count = 0 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:26,612 [ConsoleStatsLoggerImpl] ==================================================== Period Stats =========================================
+2012-09-18 03:34:26,612 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:26,612 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:26,613 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:26,613 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES     1,546,310    385,325      0.025          0        400          0
+2012-09-18 03:34:26,614 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL      1,546,310    385,325      0.025          0        400          0
+2012-09-18 03:34:26,614 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:26,614 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:26,615 [ConsoleStatsLoggerImpl] All Caches      WRITES     1,546,310    385,133      0.025          0        400          0
+2012-09-18 03:34:26,616 [ConsoleStatsLoggerImpl] All Caches      TOTAL      1,546,310    385,133      0.025          0        400          0
+2012-09-18 03:34:26,616 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 1,546,257 percentage = 100.0
+10-50 frequency count = 0 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 0 percentage = 0.0
+200-500 frequency count = 49 percentage = 0.0
+500-1000 frequency count = 0 percentage = 0.0
+1000-5000 frequency count = 0 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:26,616 [ConsoleStatsLoggerImpl] ==================================================== Cumulative Stats =========================================
+2012-09-18 03:34:26,617 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:26,617 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:26,617 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:26,618 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES     7,983,588    641,509      0.014          0        956          0
+2012-09-18 03:34:26,618 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL      7,983,588    641,458      0.014          0        956          0
+2012-09-18 03:34:26,618 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:26,619 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:26,619 [ConsoleStatsLoggerImpl] All Caches      WRITES     7,983,588    641,406      0.014          0        956          0
+2012-09-18 03:34:26,620 [ConsoleStatsLoggerImpl] All Caches      TOTAL      7,983,588    641,406      0.014          0        956          0
+2012-09-18 03:34:26,621 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 7,983,491 percentage = 100.0
+10-50 frequency count = 3 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 0 percentage = 0.0
+200-500 frequency count = 81 percentage = 0.0
+500-1000 frequency count = 10 percentage = 0.0
+1000-5000 frequency count = 0 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:30,624 [ConsoleStatsLoggerImpl] ==================================================== Period Stats =========================================
+2012-09-18 03:34:30,624 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:30,624 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:30,625 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:30,625 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES     1,980,596    493,544      0.019          0        257          0
+2012-09-18 03:34:30,626 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL      1,980,596    493,544      0.019          0        257          0
+2012-09-18 03:34:30,626 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:30,626 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:30,627 [ConsoleStatsLoggerImpl] All Caches      WRITES     1,980,596    493,422      0.019          0        257          0
+2012-09-18 03:34:30,627 [ConsoleStatsLoggerImpl] All Caches      TOTAL      1,980,596    493,299      0.019          0        257          0
+2012-09-18 03:34:30,628 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 1,980,541 percentage = 100.0
+10-50 frequency count = 0 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 45 percentage = 0.0
+200-500 frequency count = 9 percentage = 0.0
+500-1000 frequency count = 0 percentage = 0.0
+1000-5000 frequency count = 0 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:30,628 [ConsoleStatsLoggerImpl] ==================================================== Cumulative Stats =========================================
+2012-09-18 03:34:30,629 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:30,629 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:30,629 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:30,630 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES     9,964,184    605,467      0.015          0        956          0
+2012-09-18 03:34:30,630 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL      9,964,184    605,431      0.015          0        956          0
+2012-09-18 03:34:30,630 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:30,631 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:30,631 [ConsoleStatsLoggerImpl] All Caches      WRITES     9,964,184    605,394      0.015          0        956          0
+2012-09-18 03:34:30,632 [ConsoleStatsLoggerImpl] All Caches      TOTAL      9,964,184    605,394      0.015          0        956          0
+2012-09-18 03:34:30,633 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 9,964,032 percentage = 100.0
+10-50 frequency count = 3 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 45 percentage = 0.0
+200-500 frequency count = 90 percentage = 0.0
+500-1000 frequency count = 10 percentage = 0.0
+1000-5000 frequency count = 0 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:33,081 [MemoryStatsCollector] Cache name = BM_0_Store_0 		 OnHeap=970867Kb 		 OffHeap=0Kb 		 OnDisk=0Kb
+2012-09-18 03:34:33,081 [MemoryStatsCollector] ------------------------------
+2012-09-18 03:34:34,903 [ConsoleStatsLoggerImpl] ==================================================== Period Stats =========================================
+2012-09-18 03:34:34,904 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:34,904 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:34,904 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:34,905 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES     2,107,381    492,378      0.018          0        305          0
+2012-09-18 03:34:34,905 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL      2,107,381    492,263      0.018          0        305          0
+2012-09-18 03:34:34,905 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:34,906 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:34,906 [ConsoleStatsLoggerImpl] All Caches      WRITES     2,107,381    492,148      0.018          0        305          0
+2012-09-18 03:34:34,906 [ConsoleStatsLoggerImpl] All Caches      TOTAL      2,107,381    492,148      0.018          0        305          0
+2012-09-18 03:34:34,907 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 2,107,327 percentage = 100.0
+10-50 frequency count = 0 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 37 percentage = 0.0
+200-500 frequency count = 13 percentage = 0.0
+500-1000 frequency count = 0 percentage = 0.0
+1000-5000 frequency count = 0 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:34,907 [ConsoleStatsLoggerImpl] ==================================================== Cumulative Stats =========================================
+2012-09-18 03:34:34,908 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:34,908 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:34,908 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:34,909 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES    12,071,565    582,154      0.015          0        956          0
+2012-09-18 03:34:34,909 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL     12,071,565    582,126      0.015          0        956          0
+2012-09-18 03:34:34,909 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:34,909 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:34,910 [ConsoleStatsLoggerImpl] All Caches      WRITES    12,071,565    582,126      0.015          0        956          0
+2012-09-18 03:34:34,910 [ConsoleStatsLoggerImpl] All Caches      TOTAL     12,071,565    582,098      0.015          0        956          0
+2012-09-18 03:34:34,911 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 12,071,359 percentage = 100.0
+10-50 frequency count = 3 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 82 percentage = 0.0
+200-500 frequency count = 103 percentage = 0.0
+500-1000 frequency count = 10 percentage = 0.0
+1000-5000 frequency count = 0 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:40,531 [ConsoleStatsLoggerImpl] ==================================================== Period Stats =========================================
+2012-09-18 03:34:40,531 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:40,531 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:40,532 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:40,532 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES     1,140,980    202,696      0.017          0        305          0
+2012-09-18 03:34:40,533 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL      1,140,980    202,696      0.017          0        305          0
+2012-09-18 03:34:40,533 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:40,533 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:40,533 [ConsoleStatsLoggerImpl] All Caches      WRITES     1,140,980    202,660      0.017          0        305          0
+2012-09-18 03:34:40,534 [ConsoleStatsLoggerImpl] All Caches      TOTAL      1,140,980    202,624      0.017          0        305          0
+2012-09-18 03:34:40,535 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 1,140,964 percentage = 100.0
+10-50 frequency count = 0 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 0 percentage = 0.0
+200-500 frequency count = 16 percentage = 0.0
+500-1000 frequency count = 0 percentage = 0.0
+1000-5000 frequency count = 0 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:40,535 [ConsoleStatsLoggerImpl] ==================================================== Cumulative Stats =========================================
+2012-09-18 03:34:40,535 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:40,535 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:40,536 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:40,536 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES    13,212,545    501,158      0.016          0        956          0
+2012-09-18 03:34:40,537 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL     13,212,545    501,158      0.016          0        956          0
+2012-09-18 03:34:40,537 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:40,537 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:40,537 [ConsoleStatsLoggerImpl] All Caches      WRITES    13,212,545    501,139      0.016          0        956          0
+2012-09-18 03:34:40,538 [ConsoleStatsLoggerImpl] All Caches      TOTAL     13,212,545    501,139      0.016          0        956          0
+2012-09-18 03:34:40,539 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 13,212,323 percentage = 100.0
+10-50 frequency count = 3 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 82 percentage = 0.0
+200-500 frequency count = 119 percentage = 0.0
+500-1000 frequency count = 10 percentage = 0.0
+1000-5000 frequency count = 0 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:41,084 [MemoryStatsCollector] ----------- Memory -----------
+2012-09-18 03:34:41,084 [DefaultSizeOfEngine] using Agent sizeof engine
+2012-09-18 03:34:42
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (20.5-b03 mixed mode):
+
+"Attach Listener" daemon prio=10 tid=0x00002aaab1097800 nid=0x3070 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Thread-4" prio=10 tid=0x00002aaab0483000 nid=0x306f runnable [0x000000004254d000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.System.identityHashCode(Native Method)
+	at java.util.IdentityHashMap.hash(IdentityHashMap.java:284)
+	at java.util.IdentityHashMap.containsKey(IdentityHashMap.java:341)
+	at net.sf.ehcache.pool.sizeof.ObjectGraphWalker.walk(ObjectGraphWalker.java:149)
+	at net.sf.ehcache.pool.sizeof.SizeOf.deepSizeOf(SizeOf.java:73)
+	at net.sf.ehcache.pool.impl.DefaultSizeOfEngine.sizeOf(DefaultSizeOfEngine.java:173)
+	at net.sf.ehcache.store.MemoryStore.getInMemorySizeInBytes(MemoryStore.java:758)
+	at net.sf.ehcache.store.FrontEndCacheTier.getInMemorySizeInBytes(FrontEndCacheTier.java:588)
+	at net.sf.ehcache.Cache.calculateInMemorySize(Cache.java:2626)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.getOnHeapSize(CacheWrapperImpl.java:123)
+	at org.terracotta.ehcache.testing.statistics.MemoryStatsCollector.run(MemoryStatsCollector.java:41)
+	at java.lang.Thread.run(Thread.java:662)
+
+"Thread-3" prio=10 tid=0x00002aaab0474000 nid=0x306e waiting on condition [0x000000004244c000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at java.lang.Thread.sleep(Thread.java:302)
+	at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:328)
+	at org.terracotta.ehcache.testing.statistics.StatsReporter$1.run(StatsReporter.java:105)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0379000 nid=0x306d runnable [0x000000004234b000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:146)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0377000 nid=0x306c runnable [0x000000004224a000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.unpark(Native Method)
+	at java.util.concurrent.locks.LockSupport.unpark(LockSupport.java:122)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.unparkSuccessor(AbstractQueuedSynchronizer.java:640)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.release(AbstractQueuedSynchronizer.java:1242)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.unlock(ReentrantReadWriteLock.java:992)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:270)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0375000 nid=0x306b runnable [0x0000000042149000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab036b000 nid=0x306a runnable [0x0000000042048000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x0000000709652fa0> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:811)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireShared(AbstractQueuedSynchronizer.java:941)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireShared(AbstractQueuedSynchronizer.java:1261)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$ReadLock.lock(ReentrantReadWriteLock.java:594)
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap$Segment.isPinned(SelectableConcurrentHashMap.java:612)
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.isPinned(SelectableConcurrentHashMap.java:457)
+	at net.sf.ehcache.store.MemoryStore.isPinned(MemoryStore.java:222)
+	at net.sf.ehcache.store.MemoryStore.isPinningEnabled(MemoryStore.java:226)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:588)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0333800 nid=0x3069 runnable [0x0000000041f47000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.unpark(Native Method)
+	at java.util.concurrent.locks.LockSupport.unpark(LockSupport.java:122)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.unparkSuccessor(AbstractQueuedSynchronizer.java:640)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.release(AbstractQueuedSynchronizer.java:1242)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.unlock(ReentrantReadWriteLock.java:992)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:270)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab02f3800 nid=0x3068 waiting on condition [0x0000000041e46000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x000000070a2ea358> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:811)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:842)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1178)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:807)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:258)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab030c800 nid=0x3067 runnable [0x0000000041d45000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0181800 nid=0x3066 runnable [0x0000000041c44000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab02b8000 nid=0x3065 waiting on condition [0x0000000041b43000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x000000070a2cfc40> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:811)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:842)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1178)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:807)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:258)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab00e5800 nid=0x3064 runnable [0x0000000041a42000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.unpark(Native Method)
+	at java.util.concurrent.locks.LockSupport.unpark(LockSupport.java:122)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.unparkSuccessor(AbstractQueuedSynchronizer.java:640)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.release(AbstractQueuedSynchronizer.java:1242)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.unlock(ReentrantReadWriteLock.java:992)
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap$Segment.put(SelectableConcurrentHashMap.java:824)
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.put(SelectableConcurrentHashMap.java:419)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:257)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-ParallelDriver" prio=10 tid=0x00002aaaaf0ea800 nid=0x3063 in Object.wait() [0x0000000041941000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2e3528> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1186)
+	- locked <0x000000070a2e3528> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1239)
+	at org.terracotta.ehcache.testing.driver.ParallelDriver.run(ParallelDriver.java:49)
+	at java.lang.Thread.run(Thread.java:662)
+
+"BigMemory_0" daemon prio=10 tid=0x00002aaab0466000 nid=0x3061 in Object.wait() [0x0000000041840000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2c3648> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0x000000070a2c3648> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"Low Memory Detector" daemon prio=10 tid=0x00002aaaaf004800 nid=0x305f runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" daemon prio=10 tid=0x00002aaaaf001800 nid=0x305e waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" daemon prio=10 tid=0x00002aaaaefb5800 nid=0x305d waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" daemon prio=10 tid=0x00002aaaaefb3000 nid=0x305c waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" daemon prio=10 tid=0x00002aaaaef96000 nid=0x305b in Object.wait() [0x000000004123a000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2b68d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:118)
+	- locked <0x000000070a2b68d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:134)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+"Reference Handler" daemon prio=10 tid=0x00002aaaaef8e800 nid=0x305a in Object.wait() [0x0000000041139000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2b6868> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:485)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+	- locked <0x000000070a2b6868> (a java.lang.ref.Reference$Lock)
+
+"main" prio=10 tid=0x0000000040112800 nid=0x304b in Object.wait() [0x000000004022a000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2d1f48> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1186)
+	- locked <0x000000070a2d1f48> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1239)
+	at org.terracotta.ehcache.testing.driver.ParallelDriver.run(ParallelDriver.java:49)
+	at org.terracotta.offheap.TestRunner.loadCache(TestRunner.java:41)
+	at org.terracotta.offheap.AbstractRunner.run(AbstractRunner.java:131)
+	at org.terracotta.offheap.TestRunner.main(TestRunner.java:73)
+
+"VM Thread" prio=10 tid=0x00002aaaaef88000 nid=0x3059 runnable 
+
+"GC task thread#0 (ParallelGC)" prio=10 tid=0x0000000040126000 nid=0x304c runnable 
+
+"GC task thread#1 (ParallelGC)" prio=10 tid=0x0000000040127800 nid=0x304d runnable 
+
+"GC task thread#2 (ParallelGC)" prio=10 tid=0x0000000040129800 nid=0x304e runnable 
+
+"GC task thread#3 (ParallelGC)" prio=10 tid=0x00002aaaaeed6800 nid=0x304f runnable 
+
+"GC task thread#4 (ParallelGC)" prio=10 tid=0x00002aaaaeed8800 nid=0x3050 runnable 
+
+"GC task thread#5 (ParallelGC)" prio=10 tid=0x00002aaaaeeda000 nid=0x3051 runnable 
+
+"GC task thread#6 (ParallelGC)" prio=10 tid=0x00002aaaaeedc000 nid=0x3052 runnable 
+
+"GC task thread#7 (ParallelGC)" prio=10 tid=0x00002aaaaeede000 nid=0x3053 runnable 
+
+"GC task thread#8 (ParallelGC)" prio=10 tid=0x00002aaaaeedf800 nid=0x3054 runnable 
+
+"GC task thread#9 (ParallelGC)" prio=10 tid=0x00002aaaaeee1800 nid=0x3055 runnable 
+
+"GC task thread#10 (ParallelGC)" prio=10 tid=0x00002aaaaeee3800 nid=0x3056 runnable 
+
+"GC task thread#11 (ParallelGC)" prio=10 tid=0x00002aaaaeee5000 nid=0x3057 runnable 
+
+"GC task thread#12 (ParallelGC)" prio=10 tid=0x00002aaaaeee7000 nid=0x3058 runnable 
+
+"VM Periodic Task Thread" prio=10 tid=0x00002aaaaefb9000 nid=0x3060 waiting on condition 
+
+JNI global references: 1001
+
+Heap
+ PSYoungGen      total 1048960K, used 182156K [0x00000007aaab0000, 0x0000000800000000, 0x0000000800000000)
+  eden space 683584K, 11% used [0x00000007aaab0000,0x00000007afaab278,0x00000007d4640000)
+  from space 365376K, 27% used [0x00000007e9b30000,0x00000007efd18000,0x0000000800000000)
+  to   space 349120K, 0% used [0x00000007d4640000,0x00000007d4640000,0x00000007e9b30000)
+ PSOldGen        total 2796224K, used 1113054K [0x0000000700000000, 0x00000007aaab0000, 0x00000007aaab0000)
+  object space 2796224K, 39% used [0x0000000700000000,0x0000000743ef7b70,0x00000007aaab0000)
+ PSPermGen       total 22912K, used 11183K [0x00000006fae00000, 0x00000006fc460000, 0x0000000700000000)
+  object space 22912K, 48% used [0x00000006fae00000,0x00000006fb8ebf60,0x00000006fc460000)
+
+2012-09-18 03:34:44
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (20.5-b03 mixed mode):
+
+"Attach Listener" daemon prio=10 tid=0x00002aaab1097800 nid=0x3070 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Thread-4" prio=10 tid=0x00002aaab0483000 nid=0x306f runnable [0x000000004254d000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.System.identityHashCode(Native Method)
+	at java.util.IdentityHashMap.hash(IdentityHashMap.java:284)
+	at java.util.IdentityHashMap.containsKey(IdentityHashMap.java:341)
+	at net.sf.ehcache.pool.sizeof.ObjectGraphWalker.walk(ObjectGraphWalker.java:149)
+	at net.sf.ehcache.pool.sizeof.SizeOf.deepSizeOf(SizeOf.java:73)
+	at net.sf.ehcache.pool.impl.DefaultSizeOfEngine.sizeOf(DefaultSizeOfEngine.java:173)
+	at net.sf.ehcache.store.MemoryStore.getInMemorySizeInBytes(MemoryStore.java:758)
+	at net.sf.ehcache.store.FrontEndCacheTier.getInMemorySizeInBytes(FrontEndCacheTier.java:588)
+	at net.sf.ehcache.Cache.calculateInMemorySize(Cache.java:2626)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.getOnHeapSize(CacheWrapperImpl.java:123)
+	at org.terracotta.ehcache.testing.statistics.MemoryStatsCollector.run(MemoryStatsCollector.java:41)
+	at java.lang.Thread.run(Thread.java:662)
+
+"Thread-3" prio=10 tid=0x00002aaab0474000 nid=0x306e runnable [0x000000004244c000]
+   java.lang.Thread.State: RUNNABLE
+	at java.util.HashMap$HashIterator.<init>(HashMap.java:779)
+	at java.util.HashMap$ValueIterator.<init>(HashMap.java:820)
+	at java.util.HashMap$ValueIterator.<init>(HashMap.java:820)
+	at java.util.HashMap.newValueIterator(HashMap.java:843)
+	at java.util.HashMap$Values.iterator(HashMap.java:910)
+	at org.terracotta.ehcache.testing.statistics.StatsReporter.doReport(StatsReporter.java:185)
+	at org.terracotta.ehcache.testing.statistics.StatsReporter.access$300(StatsReporter.java:21)
+	at org.terracotta.ehcache.testing.statistics.StatsReporter$1.run(StatsReporter.java:110)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0379000 nid=0x306d runnable [0x000000004234b000]
+   java.lang.Thread.State: RUNNABLE
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:43)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0377000 nid=0x306c runnable [0x000000004224a000]
+   java.lang.Thread.State: RUNNABLE
+	at java.util.concurrent.CopyOnWriteArrayList.iterator(CopyOnWriteArrayList.java:925)
+	at java.util.concurrent.CopyOnWriteArraySet.iterator(CopyOnWriteArraySet.java:308)
+	at net.sf.ehcache.event.RegisteredEventListeners.internalNotifyElementPut(RegisteredEventListeners.java:140)
+	at net.sf.ehcache.event.RegisteredEventListeners.notifyElementPut(RegisteredEventListeners.java:122)
+	at net.sf.ehcache.Cache.notifyPutInternalListeners(Cache.java:1485)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1460)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0375000 nid=0x306b runnable [0x0000000042149000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:169)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab036b000 nid=0x306a runnable [0x0000000042048000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:146)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0333800 nid=0x3069 runnable [0x0000000041f47000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x000000070a2e9110> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:811)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:842)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1178)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:807)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:258)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab02f3800 nid=0x3068 runnable [0x0000000041e46000]
+   java.lang.Thread.State: RUNNABLE
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:43)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab030c800 nid=0x3067 runnable [0x0000000041d45000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0181800 nid=0x3066 runnable [0x0000000041c44000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.unpark(Native Method)
+	at java.util.concurrent.locks.LockSupport.unpark(LockSupport.java:122)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.unparkSuccessor(AbstractQueuedSynchronizer.java:640)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.release(AbstractQueuedSynchronizer.java:1242)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.unlock(ReentrantReadWriteLock.java:992)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:270)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab02b8000 nid=0x3065 runnable [0x0000000041b43000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x000000070a2e9710> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:811)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:842)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1178)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:807)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:258)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab00e5800 nid=0x3064 runnable [0x0000000041a42000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.unpark(Native Method)
+	at java.util.concurrent.locks.LockSupport.unpark(LockSupport.java:122)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.unparkSuccessor(AbstractQueuedSynchronizer.java:640)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.release(AbstractQueuedSynchronizer.java:1242)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.unlock(ReentrantReadWriteLock.java:992)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:270)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-ParallelDriver" prio=10 tid=0x00002aaaaf0ea800 nid=0x3063 in Object.wait() [0x0000000041941000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2e3528> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1186)
+	- locked <0x000000070a2e3528> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1239)
+	at org.terracotta.ehcache.testing.driver.ParallelDriver.run(ParallelDriver.java:49)
+	at java.lang.Thread.run(Thread.java:662)
+
+"BigMemory_0" daemon prio=10 tid=0x00002aaab0466000 nid=0x3061 in Object.wait() [0x0000000041840000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2c3648> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0x000000070a2c3648> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"Low Memory Detector" daemon prio=10 tid=0x00002aaaaf004800 nid=0x305f runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" daemon prio=10 tid=0x00002aaaaf001800 nid=0x305e waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" daemon prio=10 tid=0x00002aaaaefb5800 nid=0x305d waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" daemon prio=10 tid=0x00002aaaaefb3000 nid=0x305c waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" daemon prio=10 tid=0x00002aaaaef96000 nid=0x305b in Object.wait() [0x000000004123a000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2b68d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:118)
+	- locked <0x000000070a2b68d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:134)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+"Reference Handler" daemon prio=10 tid=0x00002aaaaef8e800 nid=0x305a in Object.wait() [0x0000000041139000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2b6868> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:485)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+	- locked <0x000000070a2b6868> (a java.lang.ref.Reference$Lock)
+
+"main" prio=10 tid=0x0000000040112800 nid=0x304b in Object.wait() [0x000000004022a000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2d1f48> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1186)
+	- locked <0x000000070a2d1f48> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1239)
+	at org.terracotta.ehcache.testing.driver.ParallelDriver.run(ParallelDriver.java:49)
+	at org.terracotta.offheap.TestRunner.loadCache(TestRunner.java:41)
+	at org.terracotta.offheap.AbstractRunner.run(AbstractRunner.java:131)
+	at org.terracotta.offheap.TestRunner.main(TestRunner.java:73)
+
+"VM Thread" prio=10 tid=0x00002aaaaef88000 nid=0x3059 runnable 
+
+"GC task thread#0 (ParallelGC)" prio=10 tid=0x0000000040126000 nid=0x304c runnable 
+
+"GC task thread#1 (ParallelGC)" prio=10 tid=0x0000000040127800 nid=0x304d runnable 
+
+"GC task thread#2 (ParallelGC)" prio=10 tid=0x0000000040129800 nid=0x304e runnable 
+
+"GC task thread#3 (ParallelGC)" prio=10 tid=0x00002aaaaeed6800 nid=0x304f runnable 
+
+"GC task thread#4 (ParallelGC)" prio=10 tid=0x00002aaaaeed8800 nid=0x3050 runnable 
+
+"GC task thread#5 (ParallelGC)" prio=10 tid=0x00002aaaaeeda000 nid=0x3051 runnable 
+
+"GC task thread#6 (ParallelGC)" prio=10 tid=0x00002aaaaeedc000 nid=0x3052 runnable 
+
+"GC task thread#7 (ParallelGC)" prio=10 tid=0x00002aaaaeede000 nid=0x3053 runnable 
+
+"GC task thread#8 (ParallelGC)" prio=10 tid=0x00002aaaaeedf800 nid=0x3054 runnable 
+
+"GC task thread#9 (ParallelGC)" prio=10 tid=0x00002aaaaeee1800 nid=0x3055 runnable 
+
+"GC task thread#10 (ParallelGC)" prio=10 tid=0x00002aaaaeee3800 nid=0x3056 runnable 
+
+"GC task thread#11 (ParallelGC)" prio=10 tid=0x00002aaaaeee5000 nid=0x3057 runnable 
+
+"GC task thread#12 (ParallelGC)" prio=10 tid=0x00002aaaaeee7000 nid=0x3058 runnable 
+
+"VM Periodic Task Thread" prio=10 tid=0x00002aaaaefb9000 nid=0x3060 waiting on condition 
+
+JNI global references: 1001
+
+Heap
+ PSYoungGen      total 1084160K, used 125844K [0x00000007aaab0000, 0x0000000800000000, 0x0000000800000000)
+  eden space 753152K, 1% used [0x00000007aaab0000,0x00000007ab57d158,0x00000007d8a30000)
+  from space 331008K, 35% used [0x00000007ebcc0000,0x00000007f2e18000,0x0000000800000000)
+  to   space 313920K, 0% used [0x00000007d8a30000,0x00000007d8a30000,0x00000007ebcc0000)
+ PSOldGen        total 2796224K, used 1324254K [0x0000000700000000, 0x00000007aaab0000, 0x00000007aaab0000)
+  object space 2796224K, 47% used [0x0000000700000000,0x0000000750d37b70,0x00000007aaab0000)
+ PSPermGen       total 22912K, used 11183K [0x00000006fae00000, 0x00000006fc460000, 0x0000000700000000)
+  object space 22912K, 48% used [0x00000006fae00000,0x00000006fb8ebf60,0x00000006fc460000)
+
+2012-09-18 03:34:44,814 [ConsoleStatsLoggerImpl] ==================================================== Period Stats =========================================
+2012-09-18 03:34:44,815 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:44,815 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:44,816 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:44,816 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES     2,126,045    496,159      0.037          0      3,790          0
+2012-09-18 03:34:44,817 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL      2,126,045    496,159      0.037          0      3,790          0
+2012-09-18 03:34:44,817 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:44,817 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:44,817 [ConsoleStatsLoggerImpl] All Caches      WRITES     2,126,045    496,044      0.037          0      3,790          0
+2012-09-18 03:34:44,818 [ConsoleStatsLoggerImpl] All Caches      TOTAL      2,126,045    495,928      0.037          0      3,790          0
+2012-09-18 03:34:44,819 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 2,125,998 percentage = 100.0
+10-50 frequency count = 0 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 10 percentage = 0.0
+200-500 frequency count = 27 percentage = 0.0
+500-1000 frequency count = 0 percentage = 0.0
+1000-5000 frequency count = 10 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:44,819 [ConsoleStatsLoggerImpl] ==================================================== Cumulative Stats =========================================
+2012-09-18 03:34:44,819 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:44,819 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:44,820 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:44,820 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES    15,338,590    500,476      0.019          0      3,790          0
+2012-09-18 03:34:44,821 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL     15,338,590    500,476      0.019          0      3,790          0
+2012-09-18 03:34:44,821 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:44,821 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:44,821 [ConsoleStatsLoggerImpl] All Caches      WRITES    15,338,590    500,459      0.019          0      3,790          0
+2012-09-18 03:34:44,822 [ConsoleStatsLoggerImpl] All Caches      TOTAL     15,338,590    500,459      0.019          0      3,790          0
+2012-09-18 03:34:44,823 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 15,338,321 percentage = 100.0
+10-50 frequency count = 3 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 92 percentage = 0.0
+200-500 frequency count = 146 percentage = 0.0
+500-1000 frequency count = 10 percentage = 0.0
+1000-5000 frequency count = 10 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:45
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (20.5-b03 mixed mode):
+
+"Attach Listener" daemon prio=10 tid=0x00002aaab1097800 nid=0x3070 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Thread-4" prio=10 tid=0x00002aaab0483000 nid=0x306f runnable [0x000000004254d000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.System.identityHashCode(Native Method)
+	at java.util.IdentityHashMap.hash(IdentityHashMap.java:284)
+	at java.util.IdentityHashMap.containsKey(IdentityHashMap.java:341)
+	at net.sf.ehcache.pool.sizeof.ObjectGraphWalker.walk(ObjectGraphWalker.java:149)
+	at net.sf.ehcache.pool.sizeof.SizeOf.deepSizeOf(SizeOf.java:73)
+	at net.sf.ehcache.pool.impl.DefaultSizeOfEngine.sizeOf(DefaultSizeOfEngine.java:173)
+	at net.sf.ehcache.store.MemoryStore.getInMemorySizeInBytes(MemoryStore.java:758)
+	at net.sf.ehcache.store.FrontEndCacheTier.getInMemorySizeInBytes(FrontEndCacheTier.java:588)
+	at net.sf.ehcache.Cache.calculateInMemorySize(Cache.java:2626)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.getOnHeapSize(CacheWrapperImpl.java:123)
+	at org.terracotta.ehcache.testing.statistics.MemoryStatsCollector.run(MemoryStatsCollector.java:41)
+	at java.lang.Thread.run(Thread.java:662)
+
+"Thread-3" prio=10 tid=0x00002aaab0474000 nid=0x306e waiting on condition [0x000000004244c000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at java.lang.Thread.sleep(Thread.java:302)
+	at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:328)
+	at org.terracotta.ehcache.testing.statistics.StatsReporter$1.run(StatsReporter.java:105)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0379000 nid=0x306d runnable [0x000000004234b000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.unpark(Native Method)
+	at java.util.concurrent.locks.LockSupport.unpark(LockSupport.java:122)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.unparkSuccessor(AbstractQueuedSynchronizer.java:640)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.release(AbstractQueuedSynchronizer.java:1242)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.unlock(ReentrantReadWriteLock.java:992)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:270)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0377000 nid=0x306c runnable [0x000000004224a000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:146)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0375000 nid=0x306b runnable [0x0000000042149000]
+   java.lang.Thread.State: RUNNABLE
+	at java.util.concurrent.CopyOnWriteArrayList.iterator(CopyOnWriteArrayList.java:925)
+	at java.util.concurrent.CopyOnWriteArraySet.iterator(CopyOnWriteArraySet.java:308)
+	at net.sf.ehcache.event.RegisteredEventListeners.internalNotifyElementPut(RegisteredEventListeners.java:140)
+	at net.sf.ehcache.event.RegisteredEventListeners.notifyElementPut(RegisteredEventListeners.java:122)
+	at net.sf.ehcache.Cache.notifyPutInternalListeners(Cache.java:1485)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1460)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab036b000 nid=0x306a runnable [0x0000000042048000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0333800 nid=0x3069 waiting on condition [0x0000000041f47000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x000000070a2cfdc0> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:811)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:842)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1178)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:807)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:258)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab02f3800 nid=0x3068 runnable [0x0000000041e46000]
+   java.lang.Thread.State: RUNNABLE
+	at java.util.concurrent.CopyOnWriteArrayList.iterator(CopyOnWriteArrayList.java:925)
+	at java.util.concurrent.CopyOnWriteArraySet.iterator(CopyOnWriteArraySet.java:308)
+	at net.sf.ehcache.event.RegisteredEventListeners.internalNotifyElementPut(RegisteredEventListeners.java:140)
+	at net.sf.ehcache.event.RegisteredEventListeners.notifyElementPut(RegisteredEventListeners.java:122)
+	at net.sf.ehcache.Cache.notifyPutInternalListeners(Cache.java:1485)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1460)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab030c800 nid=0x3067 runnable [0x0000000041d45000]
+   java.lang.Thread.State: RUNNABLE
+	at java.util.concurrent.CopyOnWriteArrayList.iterator(CopyOnWriteArrayList.java:925)
+	at java.util.concurrent.CopyOnWriteArraySet.iterator(CopyOnWriteArraySet.java:308)
+	at net.sf.ehcache.event.RegisteredEventListeners.internalNotifyElementPut(RegisteredEventListeners.java:140)
+	at net.sf.ehcache.event.RegisteredEventListeners.notifyElementPut(RegisteredEventListeners.java:122)
+	at net.sf.ehcache.Cache.notifyPutInternalListeners(Cache.java:1485)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1460)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0181800 nid=0x3066 runnable [0x0000000041c44000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x000000070a2e8e10> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:811)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:842)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1178)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:807)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:258)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab02b8000 nid=0x3065 runnable [0x0000000041b43000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap$Segment.isPinned(SelectableConcurrentHashMap.java:622)
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.isPinned(SelectableConcurrentHashMap.java:457)
+	at net.sf.ehcache.store.MemoryStore.isPinned(MemoryStore.java:222)
+	at net.sf.ehcache.store.MemoryStore.isPinningEnabled(MemoryStore.java:226)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:255)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab00e5800 nid=0x3064 runnable [0x0000000041a42000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.unpark(Native Method)
+	at java.util.concurrent.locks.LockSupport.unpark(LockSupport.java:122)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.unparkSuccessor(AbstractQueuedSynchronizer.java:640)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.release(AbstractQueuedSynchronizer.java:1242)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.unlock(ReentrantReadWriteLock.java:992)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:270)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-ParallelDriver" prio=10 tid=0x00002aaaaf0ea800 nid=0x3063 in Object.wait() [0x0000000041941000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2e3528> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1186)
+	- locked <0x000000070a2e3528> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1239)
+	at org.terracotta.ehcache.testing.driver.ParallelDriver.run(ParallelDriver.java:49)
+	at java.lang.Thread.run(Thread.java:662)
+
+"BigMemory_0" daemon prio=10 tid=0x00002aaab0466000 nid=0x3061 in Object.wait() [0x0000000041840000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2c3648> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0x000000070a2c3648> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"Low Memory Detector" daemon prio=10 tid=0x00002aaaaf004800 nid=0x305f runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" daemon prio=10 tid=0x00002aaaaf001800 nid=0x305e waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" daemon prio=10 tid=0x00002aaaaefb5800 nid=0x305d waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" daemon prio=10 tid=0x00002aaaaefb3000 nid=0x305c waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" daemon prio=10 tid=0x00002aaaaef96000 nid=0x305b in Object.wait() [0x000000004123a000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2b68d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:118)
+	- locked <0x000000070a2b68d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:134)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+"Reference Handler" daemon prio=10 tid=0x00002aaaaef8e800 nid=0x305a in Object.wait() [0x0000000041139000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2b6868> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:485)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+	- locked <0x000000070a2b6868> (a java.lang.ref.Reference$Lock)
+
+"main" prio=10 tid=0x0000000040112800 nid=0x304b in Object.wait() [0x000000004022a000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2d1f48> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1186)
+	- locked <0x000000070a2d1f48> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1239)
+	at org.terracotta.ehcache.testing.driver.ParallelDriver.run(ParallelDriver.java:49)
+	at org.terracotta.offheap.TestRunner.loadCache(TestRunner.java:41)
+	at org.terracotta.offheap.AbstractRunner.run(AbstractRunner.java:131)
+	at org.terracotta.offheap.TestRunner.main(TestRunner.java:73)
+
+"VM Thread" prio=10 tid=0x00002aaaaef88000 nid=0x3059 runnable 
+
+"GC task thread#0 (ParallelGC)" prio=10 tid=0x0000000040126000 nid=0x304c runnable 
+
+"GC task thread#1 (ParallelGC)" prio=10 tid=0x0000000040127800 nid=0x304d runnable 
+
+"GC task thread#2 (ParallelGC)" prio=10 tid=0x0000000040129800 nid=0x304e runnable 
+
+"GC task thread#3 (ParallelGC)" prio=10 tid=0x00002aaaaeed6800 nid=0x304f runnable 
+
+"GC task thread#4 (ParallelGC)" prio=10 tid=0x00002aaaaeed8800 nid=0x3050 runnable 
+
+"GC task thread#5 (ParallelGC)" prio=10 tid=0x00002aaaaeeda000 nid=0x3051 runnable 
+
+"GC task thread#6 (ParallelGC)" prio=10 tid=0x00002aaaaeedc000 nid=0x3052 runnable 
+
+"GC task thread#7 (ParallelGC)" prio=10 tid=0x00002aaaaeede000 nid=0x3053 runnable 
+
+"GC task thread#8 (ParallelGC)" prio=10 tid=0x00002aaaaeedf800 nid=0x3054 runnable 
+
+"GC task thread#9 (ParallelGC)" prio=10 tid=0x00002aaaaeee1800 nid=0x3055 runnable 
+
+"GC task thread#10 (ParallelGC)" prio=10 tid=0x00002aaaaeee3800 nid=0x3056 runnable 
+
+"GC task thread#11 (ParallelGC)" prio=10 tid=0x00002aaaaeee5000 nid=0x3057 runnable 
+
+"GC task thread#12 (ParallelGC)" prio=10 tid=0x00002aaaaeee7000 nid=0x3058 runnable 
+
+"VM Periodic Task Thread" prio=10 tid=0x00002aaaaefb9000 nid=0x3060 waiting on condition 
+
+JNI global references: 1002
+
+Heap
+ PSYoungGen      total 1084160K, used 560047K [0x00000007aaab0000, 0x0000000800000000, 0x0000000800000000)
+  eden space 753152K, 58% used [0x00000007aaab0000,0x00000007c5c43dd0,0x00000007d8a30000)
+  from space 331008K, 35% used [0x00000007ebcc0000,0x00000007f2e18000,0x0000000800000000)
+  to   space 313920K, 0% used [0x00000007d8a30000,0x00000007d8a30000,0x00000007ebcc0000)
+ PSOldGen        total 2796224K, used 1324254K [0x0000000700000000, 0x00000007aaab0000, 0x00000007aaab0000)
+  object space 2796224K, 47% used [0x0000000700000000,0x0000000750d37b70,0x00000007aaab0000)
+ PSPermGen       total 22912K, used 11184K [0x00000006fae00000, 0x00000006fc460000, 0x0000000700000000)
+  object space 22912K, 48% used [0x00000006fae00000,0x00000006fb8ec338,0x00000006fc460000)
+
+2012-09-18 03:34:45
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (20.5-b03 mixed mode):
+
+"Attach Listener" daemon prio=10 tid=0x00002aaab1097800 nid=0x3070 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Thread-4" prio=10 tid=0x00002aaab0483000 nid=0x306f runnable [0x000000004254d000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.System.identityHashCode(Native Method)
+	at java.util.IdentityHashMap.hash(IdentityHashMap.java:284)
+	at java.util.IdentityHashMap.containsKey(IdentityHashMap.java:341)
+	at net.sf.ehcache.pool.sizeof.ObjectGraphWalker.walk(ObjectGraphWalker.java:149)
+	at net.sf.ehcache.pool.sizeof.SizeOf.deepSizeOf(SizeOf.java:73)
+	at net.sf.ehcache.pool.impl.DefaultSizeOfEngine.sizeOf(DefaultSizeOfEngine.java:173)
+	at net.sf.ehcache.store.MemoryStore.getInMemorySizeInBytes(MemoryStore.java:758)
+	at net.sf.ehcache.store.FrontEndCacheTier.getInMemorySizeInBytes(FrontEndCacheTier.java:588)
+	at net.sf.ehcache.Cache.calculateInMemorySize(Cache.java:2626)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.getOnHeapSize(CacheWrapperImpl.java:123)
+	at org.terracotta.ehcache.testing.statistics.MemoryStatsCollector.run(MemoryStatsCollector.java:41)
+	at java.lang.Thread.run(Thread.java:662)
+
+"Thread-3" prio=10 tid=0x00002aaab0474000 nid=0x306e waiting on condition [0x000000004244c000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at java.lang.Thread.sleep(Thread.java:302)
+	at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:328)
+	at org.terracotta.ehcache.testing.statistics.StatsReporter$1.run(StatsReporter.java:105)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0379000 nid=0x306d runnable [0x000000004234b000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0377000 nid=0x306c runnable [0x000000004224a000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0375000 nid=0x306b runnable [0x0000000042149000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:146)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab036b000 nid=0x306a runnable [0x0000000042048000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0333800 nid=0x3069 runnable [0x0000000041f47000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap$Segment.isPinned(SelectableConcurrentHashMap.java:622)
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.isPinned(SelectableConcurrentHashMap.java:457)
+	at net.sf.ehcache.store.MemoryStore.isPinned(MemoryStore.java:222)
+	at net.sf.ehcache.store.MemoryStore.isPinningEnabled(MemoryStore.java:226)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:255)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab02f3800 nid=0x3068 runnable [0x0000000041e46000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab030c800 nid=0x3067 runnable [0x0000000041d45000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x000000070a2cfbc0> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:811)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:842)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1178)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:807)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:258)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0181800 nid=0x3066 runnable [0x0000000041c44000]
+   java.lang.Thread.State: RUNNABLE
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireShared(AbstractQueuedSynchronizer.java:1260)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$ReadLock.lock(ReentrantReadWriteLock.java:594)
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap$Segment.isPinned(SelectableConcurrentHashMap.java:612)
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap$Segment.put(SelectableConcurrentHashMap.java:802)
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.put(SelectableConcurrentHashMap.java:419)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:257)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab02b8000 nid=0x3065 runnable [0x0000000041b43000]
+   java.lang.Thread.State: RUNNABLE
+	at java.util.concurrent.CopyOnWriteArrayList.iterator(CopyOnWriteArrayList.java:925)
+	at java.util.concurrent.CopyOnWriteArraySet.iterator(CopyOnWriteArraySet.java:308)
+	at net.sf.ehcache.event.RegisteredEventListeners.internalNotifyElementPut(RegisteredEventListeners.java:140)
+	at net.sf.ehcache.event.RegisteredEventListeners.notifyElementPut(RegisteredEventListeners.java:122)
+	at net.sf.ehcache.Cache.notifyPutInternalListeners(Cache.java:1485)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1460)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab00e5800 nid=0x3064 runnable [0x0000000041a42000]
+   java.lang.Thread.State: RUNNABLE
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:43)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-ParallelDriver" prio=10 tid=0x00002aaaaf0ea800 nid=0x3063 in Object.wait() [0x0000000041941000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2e3528> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1186)
+	- locked <0x000000070a2e3528> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1239)
+	at org.terracotta.ehcache.testing.driver.ParallelDriver.run(ParallelDriver.java:49)
+	at java.lang.Thread.run(Thread.java:662)
+
+"BigMemory_0" daemon prio=10 tid=0x00002aaab0466000 nid=0x3061 in Object.wait() [0x0000000041840000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2c3648> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0x000000070a2c3648> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"Low Memory Detector" daemon prio=10 tid=0x00002aaaaf004800 nid=0x305f runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" daemon prio=10 tid=0x00002aaaaf001800 nid=0x305e waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" daemon prio=10 tid=0x00002aaaaefb5800 nid=0x305d waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" daemon prio=10 tid=0x00002aaaaefb3000 nid=0x305c waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" daemon prio=10 tid=0x00002aaaaef96000 nid=0x305b in Object.wait() [0x000000004123a000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2b68d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:118)
+	- locked <0x000000070a2b68d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:134)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+"Reference Handler" daemon prio=10 tid=0x00002aaaaef8e800 nid=0x305a in Object.wait() [0x0000000041139000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2b6868> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:485)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+	- locked <0x000000070a2b6868> (a java.lang.ref.Reference$Lock)
+
+"main" prio=10 tid=0x0000000040112800 nid=0x304b in Object.wait() [0x000000004022a000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2d1f48> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1186)
+	- locked <0x000000070a2d1f48> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1239)
+	at org.terracotta.ehcache.testing.driver.ParallelDriver.run(ParallelDriver.java:49)
+	at org.terracotta.offheap.TestRunner.loadCache(TestRunner.java:41)
+	at org.terracotta.offheap.AbstractRunner.run(AbstractRunner.java:131)
+	at org.terracotta.offheap.TestRunner.main(TestRunner.java:73)
+
+"VM Thread" prio=10 tid=0x00002aaaaef88000 nid=0x3059 runnable 
+
+"GC task thread#0 (ParallelGC)" prio=10 tid=0x0000000040126000 nid=0x304c runnable 
+
+"GC task thread#1 (ParallelGC)" prio=10 tid=0x0000000040127800 nid=0x304d runnable 
+
+"GC task thread#2 (ParallelGC)" prio=10 tid=0x0000000040129800 nid=0x304e runnable 
+
+"GC task thread#3 (ParallelGC)" prio=10 tid=0x00002aaaaeed6800 nid=0x304f runnable 
+
+"GC task thread#4 (ParallelGC)" prio=10 tid=0x00002aaaaeed8800 nid=0x3050 runnable 
+
+"GC task thread#5 (ParallelGC)" prio=10 tid=0x00002aaaaeeda000 nid=0x3051 runnable 
+
+"GC task thread#6 (ParallelGC)" prio=10 tid=0x00002aaaaeedc000 nid=0x3052 runnable 
+
+"GC task thread#7 (ParallelGC)" prio=10 tid=0x00002aaaaeede000 nid=0x3053 runnable 
+
+"GC task thread#8 (ParallelGC)" prio=10 tid=0x00002aaaaeedf800 nid=0x3054 runnable 
+
+"GC task thread#9 (ParallelGC)" prio=10 tid=0x00002aaaaeee1800 nid=0x3055 runnable 
+
+"GC task thread#10 (ParallelGC)" prio=10 tid=0x00002aaaaeee3800 nid=0x3056 runnable 
+
+"GC task thread#11 (ParallelGC)" prio=10 tid=0x00002aaaaeee5000 nid=0x3057 runnable 
+
+"GC task thread#12 (ParallelGC)" prio=10 tid=0x00002aaaaeee7000 nid=0x3058 runnable 
+
+"VM Periodic Task Thread" prio=10 tid=0x00002aaaaefb9000 nid=0x3060 waiting on condition 
+
+JNI global references: 1002
+
+Heap
+ PSYoungGen      total 1084160K, used 813144K [0x00000007aaab0000, 0x0000000800000000, 0x0000000800000000)
+  eden space 753152K, 92% used [0x00000007aaab0000,0x00000007d536e3c8,0x00000007d8a30000)
+  from space 331008K, 35% used [0x00000007ebcc0000,0x00000007f2e18000,0x0000000800000000)
+  to   space 313920K, 0% used [0x00000007d8a30000,0x00000007d8a30000,0x00000007ebcc0000)
+ PSOldGen        total 2796224K, used 1324254K [0x0000000700000000, 0x00000007aaab0000, 0x00000007aaab0000)
+  object space 2796224K, 47% used [0x0000000700000000,0x0000000750d37b70,0x00000007aaab0000)
+ PSPermGen       total 22912K, used 11184K [0x00000006fae00000, 0x00000006fc460000, 0x0000000700000000)
+  object space 22912K, 48% used [0x00000006fae00000,0x00000006fb8ec338,0x00000006fc460000)
+
+2012-09-18 03:34:46
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (20.5-b03 mixed mode):
+
+"Attach Listener" daemon prio=10 tid=0x00002aaab1097800 nid=0x3070 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Thread-4" prio=10 tid=0x00002aaab0483000 nid=0x306f runnable [0x000000004254d000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.instrument.InstrumentationImpl.getObjectSize0(Native Method)
+	at sun.instrument.InstrumentationImpl.getObjectSize(InstrumentationImpl.java:168)
+	at net.sf.ehcache.pool.sizeof.AgentLoader.agentSizeOf(AgentLoader.java:235)
+	at net.sf.ehcache.pool.sizeof.AgentSizeOf.sizeOf(AgentSizeOf.java:76)
+	at net.sf.ehcache.pool.sizeof.SizeOf$CachingSizeOfVisitor.visit(SizeOf.java:107)
+	at net.sf.ehcache.pool.sizeof.ObjectGraphWalker.calculateSize(ObjectGraphWalker.java:198)
+	at net.sf.ehcache.pool.sizeof.ObjectGraphWalker.walk(ObjectGraphWalker.java:169)
+	at net.sf.ehcache.pool.sizeof.SizeOf.deepSizeOf(SizeOf.java:73)
+	at net.sf.ehcache.pool.impl.DefaultSizeOfEngine.sizeOf(DefaultSizeOfEngine.java:173)
+	at net.sf.ehcache.store.MemoryStore.getInMemorySizeInBytes(MemoryStore.java:758)
+	at net.sf.ehcache.store.FrontEndCacheTier.getInMemorySizeInBytes(FrontEndCacheTier.java:588)
+	at net.sf.ehcache.Cache.calculateInMemorySize(Cache.java:2626)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.getOnHeapSize(CacheWrapperImpl.java:123)
+	at org.terracotta.ehcache.testing.statistics.MemoryStatsCollector.run(MemoryStatsCollector.java:41)
+	at java.lang.Thread.run(Thread.java:662)
+
+"Thread-3" prio=10 tid=0x00002aaab0474000 nid=0x306e waiting on condition [0x000000004244c000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at java.lang.Thread.sleep(Thread.java:302)
+	at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:328)
+	at org.terracotta.ehcache.testing.statistics.StatsReporter$1.run(StatsReporter.java:105)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0379000 nid=0x306d runnable [0x000000004234b000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.unpark(Native Method)
+	at java.util.concurrent.locks.LockSupport.unpark(LockSupport.java:122)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.unparkSuccessor(AbstractQueuedSynchronizer.java:640)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.release(AbstractQueuedSynchronizer.java:1242)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.unlock(ReentrantReadWriteLock.java:992)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:270)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0377000 nid=0x306c runnable [0x000000004224a000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:169)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0375000 nid=0x306b runnable [0x0000000042149000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab036b000 nid=0x306a runnable [0x0000000042048000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0333800 nid=0x3069 runnable [0x0000000041f47000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.StringBuilder.append(StringBuilder.java:119)
+	at org.terracotta.ehcache.testing.objectgenerator.StringGenerator.generate(StringGenerator.java:27)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab02f3800 nid=0x3068 runnable [0x0000000041e46000]
+   java.lang.Thread.State: RUNNABLE
+	at java.util.concurrent.CopyOnWriteArrayList.iterator(CopyOnWriteArrayList.java:925)
+	at java.util.concurrent.CopyOnWriteArraySet.iterator(CopyOnWriteArraySet.java:308)
+	at net.sf.ehcache.event.RegisteredEventListeners.internalNotifyElementPut(RegisteredEventListeners.java:140)
+	at net.sf.ehcache.event.RegisteredEventListeners.notifyElementPut(RegisteredEventListeners.java:122)
+	at net.sf.ehcache.Cache.notifyPutInternalListeners(Cache.java:1485)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1460)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab030c800 nid=0x3067 runnable [0x0000000041d45000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:169)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0181800 nid=0x3066 runnable [0x0000000041c44000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x000000070a2d02c0> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:811)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:842)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1178)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:807)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:258)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab02b8000 nid=0x3065 runnable [0x0000000041b43000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x000000070a2d02c0> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:811)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:842)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1178)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:807)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:258)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab00e5800 nid=0x3064 runnable [0x0000000041a42000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:143)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-ParallelDriver" prio=10 tid=0x00002aaaaf0ea800 nid=0x3063 in Object.wait() [0x0000000041941000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2e3528> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1186)
+	- locked <0x000000070a2e3528> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1239)
+	at org.terracotta.ehcache.testing.driver.ParallelDriver.run(ParallelDriver.java:49)
+	at java.lang.Thread.run(Thread.java:662)
+
+"BigMemory_0" daemon prio=10 tid=0x00002aaab0466000 nid=0x3061 in Object.wait() [0x0000000041840000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2c3648> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0x000000070a2c3648> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"Low Memory Detector" daemon prio=10 tid=0x00002aaaaf004800 nid=0x305f runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" daemon prio=10 tid=0x00002aaaaf001800 nid=0x305e waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" daemon prio=10 tid=0x00002aaaaefb5800 nid=0x305d waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" daemon prio=10 tid=0x00002aaaaefb3000 nid=0x305c waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" daemon prio=10 tid=0x00002aaaaef96000 nid=0x305b in Object.wait() [0x000000004123a000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2b68d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:118)
+	- locked <0x000000070a2b68d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:134)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+"Reference Handler" daemon prio=10 tid=0x00002aaaaef8e800 nid=0x305a in Object.wait() [0x0000000041139000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2b6868> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:485)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+	- locked <0x000000070a2b6868> (a java.lang.ref.Reference$Lock)
+
+"main" prio=10 tid=0x0000000040112800 nid=0x304b in Object.wait() [0x000000004022a000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2d1f48> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1186)
+	- locked <0x000000070a2d1f48> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1239)
+	at org.terracotta.ehcache.testing.driver.ParallelDriver.run(ParallelDriver.java:49)
+	at org.terracotta.offheap.TestRunner.loadCache(TestRunner.java:41)
+	at org.terracotta.offheap.AbstractRunner.run(AbstractRunner.java:131)
+	at org.terracotta.offheap.TestRunner.main(TestRunner.java:73)
+
+"VM Thread" prio=10 tid=0x00002aaaaef88000 nid=0x3059 runnable 
+
+"GC task thread#0 (ParallelGC)" prio=10 tid=0x0000000040126000 nid=0x304c runnable 
+
+"GC task thread#1 (ParallelGC)" prio=10 tid=0x0000000040127800 nid=0x304d runnable 
+
+"GC task thread#2 (ParallelGC)" prio=10 tid=0x0000000040129800 nid=0x304e runnable 
+
+"GC task thread#3 (ParallelGC)" prio=10 tid=0x00002aaaaeed6800 nid=0x304f runnable 
+
+"GC task thread#4 (ParallelGC)" prio=10 tid=0x00002aaaaeed8800 nid=0x3050 runnable 
+
+"GC task thread#5 (ParallelGC)" prio=10 tid=0x00002aaaaeeda000 nid=0x3051 runnable 
+
+"GC task thread#6 (ParallelGC)" prio=10 tid=0x00002aaaaeedc000 nid=0x3052 runnable 
+
+"GC task thread#7 (ParallelGC)" prio=10 tid=0x00002aaaaeede000 nid=0x3053 runnable 
+
+"GC task thread#8 (ParallelGC)" prio=10 tid=0x00002aaaaeedf800 nid=0x3054 runnable 
+
+"GC task thread#9 (ParallelGC)" prio=10 tid=0x00002aaaaeee1800 nid=0x3055 runnable 
+
+"GC task thread#10 (ParallelGC)" prio=10 tid=0x00002aaaaeee3800 nid=0x3056 runnable 
+
+"GC task thread#11 (ParallelGC)" prio=10 tid=0x00002aaaaeee5000 nid=0x3057 runnable 
+
+"GC task thread#12 (ParallelGC)" prio=10 tid=0x00002aaaaeee7000 nid=0x3058 runnable 
+
+"VM Periodic Task Thread" prio=10 tid=0x00002aaaaefb9000 nid=0x3060 waiting on condition 
+
+JNI global references: 1002
+
+Heap
+ PSYoungGen      total 1067072K, used 136614K [0x00000007aaab0000, 0x0000000800000000, 0x0000000800000000)
+  eden space 753152K, 1% used [0x00000007aaab0000,0x00000007ab3f1ad8,0x00000007d8a30000)
+  from space 313920K, 40% used [0x00000007d8a30000,0x00000007e0658000,0x00000007ebcc0000)
+  to   space 296256K, 0% used [0x00000007edeb0000,0x00000007edeb0000,0x0000000800000000)
+ PSOldGen        total 2796224K, used 1438006K [0x0000000700000000, 0x00000007aaab0000, 0x00000007aaab0000)
+  object space 2796224K, 51% used [0x0000000700000000,0x0000000757c4db70,0x00000007aaab0000)
+ PSPermGen       total 22912K, used 11184K [0x00000006fae00000, 0x00000006fc460000, 0x0000000700000000)
+  object space 22912K, 48% used [0x00000006fae00000,0x00000006fb8ec338,0x00000006fc460000)
+
+2012-09-18 03:34:46
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (20.5-b03 mixed mode):
+
+"Attach Listener" daemon prio=10 tid=0x00002aaab1097800 nid=0x3070 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Thread-4" prio=10 tid=0x00002aaab0483000 nid=0x306f runnable [0x000000004254d000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.System.identityHashCode(Native Method)
+	at java.util.IdentityHashMap.hash(IdentityHashMap.java:284)
+	at java.util.IdentityHashMap.containsKey(IdentityHashMap.java:341)
+	at net.sf.ehcache.pool.sizeof.ObjectGraphWalker.walk(ObjectGraphWalker.java:149)
+	at net.sf.ehcache.pool.sizeof.SizeOf.deepSizeOf(SizeOf.java:73)
+	at net.sf.ehcache.pool.impl.DefaultSizeOfEngine.sizeOf(DefaultSizeOfEngine.java:173)
+	at net.sf.ehcache.store.MemoryStore.getInMemorySizeInBytes(MemoryStore.java:758)
+	at net.sf.ehcache.store.FrontEndCacheTier.getInMemorySizeInBytes(FrontEndCacheTier.java:588)
+	at net.sf.ehcache.Cache.calculateInMemorySize(Cache.java:2626)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.getOnHeapSize(CacheWrapperImpl.java:123)
+	at org.terracotta.ehcache.testing.statistics.MemoryStatsCollector.run(MemoryStatsCollector.java:41)
+	at java.lang.Thread.run(Thread.java:662)
+
+"Thread-3" prio=10 tid=0x00002aaab0474000 nid=0x306e waiting on condition [0x000000004244c000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at java.lang.Thread.sleep(Thread.java:302)
+	at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:328)
+	at org.terracotta.ehcache.testing.statistics.StatsReporter$1.run(StatsReporter.java:105)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0379000 nid=0x306d runnable [0x000000004234b000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0377000 nid=0x306c runnable [0x000000004224a000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0375000 nid=0x306b runnable [0x0000000042149000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab036b000 nid=0x306a runnable [0x0000000042048000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0333800 nid=0x3069 runnable [0x0000000041f47000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.NotifyingMemoryStore.evict(NotifyingMemoryStore.java:60)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:592)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab02f3800 nid=0x3068 runnable [0x0000000041e46000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab030c800 nid=0x3067 runnable [0x0000000041d45000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.isPinned(SelectableConcurrentHashMap.java:456)
+	at net.sf.ehcache.store.MemoryStore.isPinned(MemoryStore.java:222)
+	at net.sf.ehcache.store.MemoryStore.isPinningEnabled(MemoryStore.java:226)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:588)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0181800 nid=0x3066 runnable [0x0000000041c44000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab02b8000 nid=0x3065 runnable [0x0000000041b43000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab00e5800 nid=0x3064 runnable [0x0000000041a42000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:143)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-ParallelDriver" prio=10 tid=0x00002aaaaf0ea800 nid=0x3063 in Object.wait() [0x0000000041941000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2e3528> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1186)
+	- locked <0x000000070a2e3528> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1239)
+	at org.terracotta.ehcache.testing.driver.ParallelDriver.run(ParallelDriver.java:49)
+	at java.lang.Thread.run(Thread.java:662)
+
+"BigMemory_0" daemon prio=10 tid=0x00002aaab0466000 nid=0x3061 in Object.wait() [0x0000000041840000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2c3648> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0x000000070a2c3648> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"Low Memory Detector" daemon prio=10 tid=0x00002aaaaf004800 nid=0x305f runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" daemon prio=10 tid=0x00002aaaaf001800 nid=0x305e waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" daemon prio=10 tid=0x00002aaaaefb5800 nid=0x305d waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" daemon prio=10 tid=0x00002aaaaefb3000 nid=0x305c waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" daemon prio=10 tid=0x00002aaaaef96000 nid=0x305b in Object.wait() [0x000000004123a000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2b68d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:118)
+	- locked <0x000000070a2b68d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:134)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+"Reference Handler" daemon prio=10 tid=0x00002aaaaef8e800 nid=0x305a in Object.wait() [0x0000000041139000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2b6868> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:485)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+	- locked <0x000000070a2b6868> (a java.lang.ref.Reference$Lock)
+
+"main" prio=10 tid=0x0000000040112800 nid=0x304b in Object.wait() [0x000000004022a000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2d1f48> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1186)
+	- locked <0x000000070a2d1f48> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1239)
+	at org.terracotta.ehcache.testing.driver.ParallelDriver.run(ParallelDriver.java:49)
+	at org.terracotta.offheap.TestRunner.loadCache(TestRunner.java:41)
+	at org.terracotta.offheap.AbstractRunner.run(AbstractRunner.java:131)
+	at org.terracotta.offheap.TestRunner.main(TestRunner.java:73)
+
+"VM Thread" prio=10 tid=0x00002aaaaef88000 nid=0x3059 runnable 
+
+"GC task thread#0 (ParallelGC)" prio=10 tid=0x0000000040126000 nid=0x304c runnable 
+
+"GC task thread#1 (ParallelGC)" prio=10 tid=0x0000000040127800 nid=0x304d runnable 
+
+"GC task thread#2 (ParallelGC)" prio=10 tid=0x0000000040129800 nid=0x304e runnable 
+
+"GC task thread#3 (ParallelGC)" prio=10 tid=0x00002aaaaeed6800 nid=0x304f runnable 
+
+"GC task thread#4 (ParallelGC)" prio=10 tid=0x00002aaaaeed8800 nid=0x3050 runnable 
+
+"GC task thread#5 (ParallelGC)" prio=10 tid=0x00002aaaaeeda000 nid=0x3051 runnable 
+
+"GC task thread#6 (ParallelGC)" prio=10 tid=0x00002aaaaeedc000 nid=0x3052 runnable 
+
+"GC task thread#7 (ParallelGC)" prio=10 tid=0x00002aaaaeede000 nid=0x3053 runnable 
+
+"GC task thread#8 (ParallelGC)" prio=10 tid=0x00002aaaaeedf800 nid=0x3054 runnable 
+
+"GC task thread#9 (ParallelGC)" prio=10 tid=0x00002aaaaeee1800 nid=0x3055 runnable 
+
+"GC task thread#10 (ParallelGC)" prio=10 tid=0x00002aaaaeee3800 nid=0x3056 runnable 
+
+"GC task thread#11 (ParallelGC)" prio=10 tid=0x00002aaaaeee5000 nid=0x3057 runnable 
+
+"GC task thread#12 (ParallelGC)" prio=10 tid=0x00002aaaaeee7000 nid=0x3058 runnable 
+
+"VM Periodic Task Thread" prio=10 tid=0x00002aaaaefb9000 nid=0x3060 waiting on condition 
+
+JNI global references: 1002
+
+Heap
+ PSYoungGen      total 1067072K, used 142625K [0x00000007aaab0000, 0x0000000800000000, 0x0000000800000000)
+  eden space 753152K, 2% used [0x00000007aaab0000,0x00000007ab9d0688,0x00000007d8a30000)
+  from space 313920K, 40% used [0x00000007d8a30000,0x00000007e0658000,0x00000007ebcc0000)
+  to   space 296256K, 0% used [0x00000007edeb0000,0x00000007edeb0000,0x0000000800000000)
+ PSOldGen        total 2796224K, used 1438006K [0x0000000700000000, 0x00000007aaab0000, 0x00000007aaab0000)
+  object space 2796224K, 51% used [0x0000000700000000,0x0000000757c4db70,0x00000007aaab0000)
+ PSPermGen       total 22912K, used 11184K [0x00000006fae00000, 0x00000006fc460000, 0x0000000700000000)
+  object space 22912K, 48% used [0x00000006fae00000,0x00000006fb8ec338,0x00000006fc460000)
+
+2012-09-18 03:34:46
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (20.5-b03 mixed mode):
+
+"Attach Listener" daemon prio=10 tid=0x00002aaab1097800 nid=0x3070 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Thread-4" prio=10 tid=0x00002aaab0483000 nid=0x306f runnable [0x000000004254d000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.System.identityHashCode(Native Method)
+	at java.util.IdentityHashMap.hash(IdentityHashMap.java:284)
+	at java.util.IdentityHashMap.containsKey(IdentityHashMap.java:341)
+	at net.sf.ehcache.pool.sizeof.ObjectGraphWalker.walk(ObjectGraphWalker.java:149)
+	at net.sf.ehcache.pool.sizeof.SizeOf.deepSizeOf(SizeOf.java:73)
+	at net.sf.ehcache.pool.impl.DefaultSizeOfEngine.sizeOf(DefaultSizeOfEngine.java:173)
+	at net.sf.ehcache.store.MemoryStore.getInMemorySizeInBytes(MemoryStore.java:758)
+	at net.sf.ehcache.store.FrontEndCacheTier.getInMemorySizeInBytes(FrontEndCacheTier.java:588)
+	at net.sf.ehcache.Cache.calculateInMemorySize(Cache.java:2626)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.getOnHeapSize(CacheWrapperImpl.java:123)
+	at org.terracotta.ehcache.testing.statistics.MemoryStatsCollector.run(MemoryStatsCollector.java:41)
+	at java.lang.Thread.run(Thread.java:662)
+
+"Thread-3" prio=10 tid=0x00002aaab0474000 nid=0x306e waiting on condition [0x000000004244c000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at java.lang.Thread.sleep(Thread.java:302)
+	at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:328)
+	at org.terracotta.ehcache.testing.statistics.StatsReporter$1.run(StatsReporter.java:105)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0379000 nid=0x306d runnable [0x000000004234b000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.concurrent.ConcurrencyUtil.hash(ConcurrencyUtil.java:53)
+	at net.sf.ehcache.concurrent.ConcurrencyUtil.selectLock(ConcurrencyUtil.java:72)
+	at net.sf.ehcache.concurrent.StripedReadWriteLockSync.getLockForKey(StripedReadWriteLockSync.java:102)
+	at net.sf.ehcache.store.FrontEndCacheTier.getLockFor(FrontEndCacheTier.java:665)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:257)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0377000 nid=0x306c runnable [0x000000004224a000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.concurrent.ConcurrencyUtil.hash(ConcurrencyUtil.java:53)
+	at net.sf.ehcache.concurrent.ConcurrencyUtil.selectLock(ConcurrencyUtil.java:72)
+	at net.sf.ehcache.concurrent.StripedReadWriteLockSync.getLockForKey(StripedReadWriteLockSync.java:102)
+	at net.sf.ehcache.store.FrontEndCacheTier.getLockFor(FrontEndCacheTier.java:665)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:257)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0375000 nid=0x306b runnable [0x0000000042149000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap$Segment.isPinned(SelectableConcurrentHashMap.java:612)
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.isPinned(SelectableConcurrentHashMap.java:457)
+	at net.sf.ehcache.store.MemoryStore.isPinned(MemoryStore.java:222)
+	at net.sf.ehcache.store.MemoryStore.isPinningEnabled(MemoryStore.java:226)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:255)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab036b000 nid=0x306a runnable [0x0000000042048000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x000000070a2ea2d8> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:811)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:842)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1178)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:807)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:258)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0333800 nid=0x3069 runnable [0x0000000041f47000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.unpark(Native Method)
+	at java.util.concurrent.locks.LockSupport.unpark(LockSupport.java:122)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.unparkSuccessor(AbstractQueuedSynchronizer.java:640)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.release(AbstractQueuedSynchronizer.java:1242)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.unlock(ReentrantReadWriteLock.java:992)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:270)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab02f3800 nid=0x3068 runnable [0x0000000041e46000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x000000070a2d0440> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:811)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:842)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1178)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:807)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:258)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab030c800 nid=0x3067 runnable [0x0000000041d45000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x000000070a2d05c0> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:811)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:842)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1178)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:807)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:258)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0181800 nid=0x3066 runnable [0x0000000041c44000]
+   java.lang.Thread.State: RUNNABLE
+	at java.util.concurrent.CopyOnWriteArrayList.iterator(CopyOnWriteArrayList.java:925)
+	at java.util.concurrent.CopyOnWriteArraySet.iterator(CopyOnWriteArraySet.java:308)
+	at net.sf.ehcache.event.RegisteredEventListeners.internalNotifyElementPut(RegisteredEventListeners.java:140)
+	at net.sf.ehcache.event.RegisteredEventListeners.notifyElementPut(RegisteredEventListeners.java:122)
+	at net.sf.ehcache.Cache.notifyPutInternalListeners(Cache.java:1485)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1460)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab02b8000 nid=0x3065 runnable [0x0000000041b43000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.unpark(Native Method)
+	at java.util.concurrent.locks.LockSupport.unpark(LockSupport.java:122)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.unparkSuccessor(AbstractQueuedSynchronizer.java:640)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.release(AbstractQueuedSynchronizer.java:1242)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.unlock(ReentrantReadWriteLock.java:992)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:270)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab00e5800 nid=0x3064 runnable [0x0000000041a42000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.unpark(Native Method)
+	at java.util.concurrent.locks.LockSupport.unpark(LockSupport.java:122)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.unparkSuccessor(AbstractQueuedSynchronizer.java:640)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.release(AbstractQueuedSynchronizer.java:1242)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.unlock(ReentrantReadWriteLock.java:992)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:270)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-ParallelDriver" prio=10 tid=0x00002aaaaf0ea800 nid=0x3063 in Object.wait() [0x0000000041941000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2e3528> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1186)
+	- locked <0x000000070a2e3528> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1239)
+	at org.terracotta.ehcache.testing.driver.ParallelDriver.run(ParallelDriver.java:49)
+	at java.lang.Thread.run(Thread.java:662)
+
+"BigMemory_0" daemon prio=10 tid=0x00002aaab0466000 nid=0x3061 in Object.wait() [0x0000000041840000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2c3648> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0x000000070a2c3648> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"Low Memory Detector" daemon prio=10 tid=0x00002aaaaf004800 nid=0x305f runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" daemon prio=10 tid=0x00002aaaaf001800 nid=0x305e waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" daemon prio=10 tid=0x00002aaaaefb5800 nid=0x305d waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" daemon prio=10 tid=0x00002aaaaefb3000 nid=0x305c waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" daemon prio=10 tid=0x00002aaaaef96000 nid=0x305b in Object.wait() [0x000000004123a000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2b68d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:118)
+	- locked <0x000000070a2b68d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:134)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+"Reference Handler" daemon prio=10 tid=0x00002aaaaef8e800 nid=0x305a in Object.wait() [0x0000000041139000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2b6868> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:485)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+	- locked <0x000000070a2b6868> (a java.lang.ref.Reference$Lock)
+
+"main" prio=10 tid=0x0000000040112800 nid=0x304b in Object.wait() [0x000000004022a000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2d1f48> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1186)
+	- locked <0x000000070a2d1f48> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1239)
+	at org.terracotta.ehcache.testing.driver.ParallelDriver.run(ParallelDriver.java:49)
+	at org.terracotta.offheap.TestRunner.loadCache(TestRunner.java:41)
+	at org.terracotta.offheap.AbstractRunner.run(AbstractRunner.java:131)
+	at org.terracotta.offheap.TestRunner.main(TestRunner.java:73)
+
+"VM Thread" prio=10 tid=0x00002aaaaef88000 nid=0x3059 runnable 
+
+"GC task thread#0 (ParallelGC)" prio=10 tid=0x0000000040126000 nid=0x304c runnable 
+
+"GC task thread#1 (ParallelGC)" prio=10 tid=0x0000000040127800 nid=0x304d runnable 
+
+"GC task thread#2 (ParallelGC)" prio=10 tid=0x0000000040129800 nid=0x304e runnable 
+
+"GC task thread#3 (ParallelGC)" prio=10 tid=0x00002aaaaeed6800 nid=0x304f runnable 
+
+"GC task thread#4 (ParallelGC)" prio=10 tid=0x00002aaaaeed8800 nid=0x3050 runnable 
+
+"GC task thread#5 (ParallelGC)" prio=10 tid=0x00002aaaaeeda000 nid=0x3051 runnable 
+
+"GC task thread#6 (ParallelGC)" prio=10 tid=0x00002aaaaeedc000 nid=0x3052 runnable 
+
+"GC task thread#7 (ParallelGC)" prio=10 tid=0x00002aaaaeede000 nid=0x3053 runnable 
+
+"GC task thread#8 (ParallelGC)" prio=10 tid=0x00002aaaaeedf800 nid=0x3054 runnable 
+
+"GC task thread#9 (ParallelGC)" prio=10 tid=0x00002aaaaeee1800 nid=0x3055 runnable 
+
+"GC task thread#10 (ParallelGC)" prio=10 tid=0x00002aaaaeee3800 nid=0x3056 runnable 
+
+"GC task thread#11 (ParallelGC)" prio=10 tid=0x00002aaaaeee5000 nid=0x3057 runnable 
+
+"GC task thread#12 (ParallelGC)" prio=10 tid=0x00002aaaaeee7000 nid=0x3058 runnable 
+
+"VM Periodic Task Thread" prio=10 tid=0x00002aaaaefb9000 nid=0x3060 waiting on condition 
+
+JNI global references: 1002
+
+Heap
+ PSYoungGen      total 1067072K, used 599984K [0x00000007aaab0000, 0x0000000800000000, 0x0000000800000000)
+  eden space 753152K, 62% used [0x00000007aaab0000,0x00000007c7874340,0x00000007d8a30000)
+  from space 313920K, 40% used [0x00000007d8a30000,0x00000007e0658000,0x00000007ebcc0000)
+  to   space 296256K, 0% used [0x00000007edeb0000,0x00000007edeb0000,0x0000000800000000)
+ PSOldGen        total 2796224K, used 1438006K [0x0000000700000000, 0x00000007aaab0000, 0x00000007aaab0000)
+  object space 2796224K, 51% used [0x0000000700000000,0x0000000757c4db70,0x00000007aaab0000)
+ PSPermGen       total 22912K, used 11184K [0x00000006fae00000, 0x00000006fc460000, 0x0000000700000000)
+  object space 22912K, 48% used [0x00000006fae00000,0x00000006fb8ec338,0x00000006fc460000)
+
+2012-09-18 03:34:48,824 [ConsoleStatsLoggerImpl] ==================================================== Period Stats =========================================
+2012-09-18 03:34:48,824 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:48,825 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:48,825 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:48,825 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES     1,995,055    497,395      0.019          0        338          0
+2012-09-18 03:34:48,826 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL      1,995,055    497,395      0.019          0        338          0
+2012-09-18 03:34:48,826 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:48,826 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:48,827 [ConsoleStatsLoggerImpl] All Caches      WRITES     1,995,055    497,271      0.019          0        338          0
+2012-09-18 03:34:48,827 [ConsoleStatsLoggerImpl] All Caches      TOTAL      1,995,055    497,148      0.019          0        338          0
+2012-09-18 03:34:48,828 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 1,995,029 percentage = 100.0
+10-50 frequency count = 0 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 0 percentage = 0.0
+200-500 frequency count = 29 percentage = 0.0
+500-1000 frequency count = 0 percentage = 0.0
+1000-5000 frequency count = 0 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:48,828 [ConsoleStatsLoggerImpl] ==================================================== Cumulative Stats =========================================
+2012-09-18 03:34:48,828 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:48,828 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:48,829 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:48,829 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES    17,333,645    500,148      0.019          0      3,790          0
+2012-09-18 03:34:48,829 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL     17,333,645    500,148      0.019          0      3,790          0
+2012-09-18 03:34:48,829 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:48,830 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:48,830 [ConsoleStatsLoggerImpl] All Caches      WRITES    17,333,645    500,134      0.019          0      3,790          0
+2012-09-18 03:34:48,831 [ConsoleStatsLoggerImpl] All Caches      TOTAL     17,333,645    500,134      0.019          0      3,790          0
+2012-09-18 03:34:48,832 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 17,333,350 percentage = 100.0
+10-50 frequency count = 3 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 92 percentage = 0.0
+200-500 frequency count = 175 percentage = 0.0
+500-1000 frequency count = 10 percentage = 0.0
+1000-5000 frequency count = 10 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:52
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (20.5-b03 mixed mode):
+
+"Attach Listener" daemon prio=10 tid=0x00002aaab1097800 nid=0x3070 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Thread-4" prio=10 tid=0x00002aaab0483000 nid=0x306f runnable [0x000000004254d000]
+   java.lang.Thread.State: RUNNABLE
+	at java.lang.System.identityHashCode(Native Method)
+	at java.util.IdentityHashMap.hash(IdentityHashMap.java:284)
+	at java.util.IdentityHashMap.containsKey(IdentityHashMap.java:341)
+	at net.sf.ehcache.pool.sizeof.ObjectGraphWalker.walk(ObjectGraphWalker.java:149)
+	at net.sf.ehcache.pool.sizeof.SizeOf.deepSizeOf(SizeOf.java:73)
+	at net.sf.ehcache.pool.impl.DefaultSizeOfEngine.sizeOf(DefaultSizeOfEngine.java:173)
+	at net.sf.ehcache.store.MemoryStore.getInMemorySizeInBytes(MemoryStore.java:758)
+	at net.sf.ehcache.store.FrontEndCacheTier.getInMemorySizeInBytes(FrontEndCacheTier.java:588)
+	at net.sf.ehcache.Cache.calculateInMemorySize(Cache.java:2626)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.getOnHeapSize(CacheWrapperImpl.java:123)
+	at org.terracotta.ehcache.testing.statistics.MemoryStatsCollector.run(MemoryStatsCollector.java:41)
+	at java.lang.Thread.run(Thread.java:662)
+
+"Thread-3" prio=10 tid=0x00002aaab0474000 nid=0x306e waiting on condition [0x000000004244c000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at java.lang.Thread.sleep(Thread.java:302)
+	at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:328)
+	at org.terracotta.ehcache.testing.statistics.StatsReporter$1.run(StatsReporter.java:105)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0379000 nid=0x306d runnable [0x000000004234b000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0377000 nid=0x306c runnable [0x000000004224a000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.event.RegisteredEventListeners.notifyListener(RegisteredEventListeners.java:291)
+	at net.sf.ehcache.event.RegisteredEventListeners.invokeListener(RegisteredEventListeners.java:285)
+	at net.sf.ehcache.event.RegisteredEventListeners.internalNotifyElementEvicted(RegisteredEventListeners.java:265)
+	at net.sf.ehcache.event.RegisteredEventListeners.notifyElementEvicted(RegisteredEventListeners.java:240)
+	at net.sf.ehcache.store.NotifyingMemoryStore.evict(NotifyingMemoryStore.java:62)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:592)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0375000 nid=0x306b runnable [0x0000000042149000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:146)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab036b000 nid=0x306a runnable [0x0000000042048000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0333800 nid=0x3069 runnable [0x0000000041f47000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:169)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab02f3800 nid=0x3068 runnable [0x0000000041e46000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x000000070a2e8590> (a java.util.concurrent.locks.ReentrantReadWriteLock$NonfairSync)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:156)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:811)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:842)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1178)
+	at java.util.concurrent.locks.ReentrantReadWriteLock$WriteLock.lock(ReentrantReadWriteLock.java:807)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:258)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab030c800 nid=0x3067 runnable [0x0000000041d45000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:146)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab0181800 nid=0x3066 runnable [0x0000000041c44000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab02b8000 nid=0x3065 runnable [0x0000000041b43000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:161)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-CacheLoader" prio=10 tid=0x00002aaab00e5800 nid=0x3064 runnable [0x0000000041a42000]
+   java.lang.Thread.State: RUNNABLE
+	at net.sf.ehcache.store.chm.SelectableConcurrentHashMap.getRandomValues(SelectableConcurrentHashMap.java:169)
+	at net.sf.ehcache.store.MemoryStore.sampleElements(MemoryStore.java:618)
+	at net.sf.ehcache.store.MemoryStore.findEvictionCandidate(MemoryStore.java:603)
+	at net.sf.ehcache.store.MemoryStore.removeElementChosenByEvictionPolicy(MemoryStore.java:575)
+	at net.sf.ehcache.store.MemoryStore.checkCapacity(MemoryStore.java:558)
+	at net.sf.ehcache.store.MemoryStore.put(MemoryStore.java:258)
+	at net.sf.ehcache.store.FrontEndCacheTier.put(FrontEndCacheTier.java:261)
+	at net.sf.ehcache.Cache.putInternal(Cache.java:1459)
+	at net.sf.ehcache.Cache.put(Cache.java:1387)
+	at net.sf.ehcache.Cache.put(Cache.java:1352)
+	at org.terracotta.ehcache.testing.cache.CacheWrapperImpl.put(CacheWrapperImpl.java:37)
+	at org.terracotta.ehcache.testing.driver.CacheLoader.run(CacheLoader.java:153)
+	at java.lang.Thread.run(Thread.java:662)
+
+"ParallelDriver-Thread-ParallelDriver" prio=10 tid=0x00002aaaaf0ea800 nid=0x3063 in Object.wait() [0x0000000041941000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2e3528> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1186)
+	- locked <0x000000070a2e3528> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1239)
+	at org.terracotta.ehcache.testing.driver.ParallelDriver.run(ParallelDriver.java:49)
+	at java.lang.Thread.run(Thread.java:662)
+
+"BigMemory_0" daemon prio=10 tid=0x00002aaab0466000 nid=0x3061 in Object.wait() [0x0000000041840000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2c3648> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	- locked <0x000000070a2c3648> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"Low Memory Detector" daemon prio=10 tid=0x00002aaaaf004800 nid=0x305f runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" daemon prio=10 tid=0x00002aaaaf001800 nid=0x305e waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" daemon prio=10 tid=0x00002aaaaefb5800 nid=0x305d waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" daemon prio=10 tid=0x00002aaaaefb3000 nid=0x305c waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" daemon prio=10 tid=0x00002aaaaef96000 nid=0x305b in Object.wait() [0x000000004123a000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2b68d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:118)
+	- locked <0x000000070a2b68d0> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:134)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+"Reference Handler" daemon prio=10 tid=0x00002aaaaef8e800 nid=0x305a in Object.wait() [0x0000000041139000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2b6868> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:485)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+	- locked <0x000000070a2b6868> (a java.lang.ref.Reference$Lock)
+
+"main" prio=10 tid=0x0000000040112800 nid=0x304b in Object.wait() [0x000000004022a000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x000000070a2d1f48> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1186)
+	- locked <0x000000070a2d1f48> (a java.lang.Thread)
+	at java.lang.Thread.join(Thread.java:1239)
+	at org.terracotta.ehcache.testing.driver.ParallelDriver.run(ParallelDriver.java:49)
+	at org.terracotta.offheap.TestRunner.loadCache(TestRunner.java:41)
+	at org.terracotta.offheap.AbstractRunner.run(AbstractRunner.java:131)
+	at org.terracotta.offheap.TestRunner.main(TestRunner.java:73)
+
+"VM Thread" prio=10 tid=0x00002aaaaef88000 nid=0x3059 runnable 
+
+"GC task thread#0 (ParallelGC)" prio=10 tid=0x0000000040126000 nid=0x304c runnable 
+
+"GC task thread#1 (ParallelGC)" prio=10 tid=0x0000000040127800 nid=0x304d runnable 
+
+"GC task thread#2 (ParallelGC)" prio=10 tid=0x0000000040129800 nid=0x304e runnable 
+
+"GC task thread#3 (ParallelGC)" prio=10 tid=0x00002aaaaeed6800 nid=0x304f runnable 
+
+"GC task thread#4 (ParallelGC)" prio=10 tid=0x00002aaaaeed8800 nid=0x3050 runnable 
+
+"GC task thread#5 (ParallelGC)" prio=10 tid=0x00002aaaaeeda000 nid=0x3051 runnable 
+
+"GC task thread#6 (ParallelGC)" prio=10 tid=0x00002aaaaeedc000 nid=0x3052 runnable 
+
+"GC task thread#7 (ParallelGC)" prio=10 tid=0x00002aaaaeede000 nid=0x3053 runnable 
+
+"GC task thread#8 (ParallelGC)" prio=10 tid=0x00002aaaaeedf800 nid=0x3054 runnable 
+
+"GC task thread#9 (ParallelGC)" prio=10 tid=0x00002aaaaeee1800 nid=0x3055 runnable 
+
+"GC task thread#10 (ParallelGC)" prio=10 tid=0x00002aaaaeee3800 nid=0x3056 runnable 
+
+"GC task thread#11 (ParallelGC)" prio=10 tid=0x00002aaaaeee5000 nid=0x3057 runnable 
+
+"GC task thread#12 (ParallelGC)" prio=10 tid=0x00002aaaaeee7000 nid=0x3058 runnable 
+
+"VM Periodic Task Thread" prio=10 tid=0x00002aaaaefb9000 nid=0x3060 waiting on condition 
+
+JNI global references: 1002
+
+Heap
+ PSYoungGen      total 1154048K, used 164609K [0x00000007aaab0000, 0x0000000800000000, 0x0000000800000000)
+  eden space 903744K, 1% used [0x00000007aaab0000,0x00000007abaf0728,0x00000007e1d40000)
+  from space 250304K, 59% used [0x00000007f0b90000,0x00000007f9c10000,0x0000000800000000)
+  to   space 244032K, 0% used [0x00000007e1d40000,0x00000007e1d40000,0x00000007f0b90000)
+ PSOldGen        total 2796224K, used 2103150K [0x0000000700000000, 0x00000007aaab0000, 0x00000007aaab0000)
+  object space 2796224K, 75% used [0x0000000700000000,0x00000007805dbb70,0x00000007aaab0000)
+ PSPermGen       total 22912K, used 11184K [0x00000006fae00000, 0x00000006fc460000, 0x0000000700000000)
+  object space 22912K, 48% used [0x00000006fae00000,0x00000006fb8ec338,0x00000006fc460000)
+
+2012-09-18 03:34:52,832 [ConsoleStatsLoggerImpl] ==================================================== Period Stats =========================================
+2012-09-18 03:34:52,833 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:52,833 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:52,833 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:52,833 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES     1,940,829    484,117      0.019          0        374          0
+2012-09-18 03:34:52,834 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL      1,940,829    483,997      0.019          0        374          0
+2012-09-18 03:34:52,834 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:52,834 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:52,835 [ConsoleStatsLoggerImpl] All Caches      WRITES     1,940,829    483,997      0.019          0        374          0
+2012-09-18 03:34:52,835 [ConsoleStatsLoggerImpl] All Caches      TOTAL      1,940,829    483,876      0.019          0        374          0
+2012-09-18 03:34:52,836 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 1,940,800 percentage = 100.0
+10-50 frequency count = 0 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 0 percentage = 0.0
+200-500 frequency count = 29 percentage = 0.0
+500-1000 frequency count = 0 percentage = 0.0
+1000-5000 frequency count = 0 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:52,836 [ConsoleStatsLoggerImpl] ==================================================== Cumulative Stats =========================================
+2012-09-18 03:34:52,836 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:52,836 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:52,837 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:52,837 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES    19,274,474    498,499      0.019          0      3,790          0
+2012-09-18 03:34:52,838 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL     19,274,474    498,499      0.019          0      3,790          0
+2012-09-18 03:34:52,838 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:52,838 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:52,838 [ConsoleStatsLoggerImpl] All Caches      WRITES    19,274,474    498,486      0.019          0      3,790          0
+2012-09-18 03:34:52,839 [ConsoleStatsLoggerImpl] All Caches      TOTAL     19,274,474    498,486      0.019          0      3,790          0
+2012-09-18 03:34:52,840 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 19,274,150 percentage = 100.0
+10-50 frequency count = 3 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 92 percentage = 0.0
+200-500 frequency count = 204 percentage = 0.0
+500-1000 frequency count = 10 percentage = 0.0
+1000-5000 frequency count = 10 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:57,009 [ConsoleStatsLoggerImpl] ==================================================== Period Stats =========================================
+2012-09-18 03:34:57,009 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:57,009 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:57,010 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:57,010 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES     2,031,488    486,234      0.018          0        412          0
+2012-09-18 03:34:57,010 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL      2,031,488    486,234      0.018          0        412          0
+2012-09-18 03:34:57,011 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:57,011 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:57,011 [ConsoleStatsLoggerImpl] All Caches      WRITES     2,031,488    486,118      0.018          0        412          0
+2012-09-18 03:34:57,012 [ConsoleStatsLoggerImpl] All Caches      TOTAL      2,031,488    486,118      0.018          0        412          0
+2012-09-18 03:34:57,012 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 2,031,466 percentage = 100.0
+10-50 frequency count = 0 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 0 percentage = 0.0
+200-500 frequency count = 22 percentage = 0.0
+500-1000 frequency count = 0 percentage = 0.0
+1000-5000 frequency count = 0 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:34:57,013 [ConsoleStatsLoggerImpl] ==================================================== Cumulative Stats =========================================
+2012-09-18 03:34:57,013 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:34:57,013 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:34:57,013 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:34:57,014 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES    21,305,962    497,326      0.019          0      3,790          0
+2012-09-18 03:34:57,014 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL     21,305,962    497,314      0.019          0      3,790          0
+2012-09-18 03:34:57,014 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:34:57,015 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:34:57,015 [ConsoleStatsLoggerImpl] All Caches      WRITES    21,305,962    497,303      0.019          0      3,790          0
+2012-09-18 03:34:57,015 [ConsoleStatsLoggerImpl] All Caches      TOTAL     21,305,962    497,303      0.019          0      3,790          0
+2012-09-18 03:34:57,017 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 21,305,616 percentage = 100.0
+10-50 frequency count = 3 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 92 percentage = 0.0
+200-500 frequency count = 226 percentage = 0.0
+500-1000 frequency count = 10 percentage = 0.0
+1000-5000 frequency count = 10 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:35:02,067 [ConsoleStatsLoggerImpl] ==================================================== Period Stats =========================================
+2012-09-18 03:35:02,068 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:35:02,068 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:35:02,068 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:35:02,068 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES       723,961    143,103      0.027          0      3,966          0
+2012-09-18 03:35:02,069 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL        723,961    143,103      0.027          0      3,966          0
+2012-09-18 03:35:02,069 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:35:02,069 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:35:02,070 [ConsoleStatsLoggerImpl] All Caches      WRITES       723,961    143,075      0.027          0      3,966          0
+2012-09-18 03:35:02,070 [ConsoleStatsLoggerImpl] All Caches      TOTAL        723,961    143,047      0.027          0      3,966          0
+2012-09-18 03:35:02,071 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 723,951 percentage = 100.0
+10-50 frequency count = 0 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 0 percentage = 0.0
+200-500 frequency count = 4 percentage = 0.0
+500-1000 frequency count = 0 percentage = 0.0
+1000-5000 frequency count = 2 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:35:02,071 [ConsoleStatsLoggerImpl] ==================================================== Cumulative Stats =========================================
+2012-09-18 03:35:02,071 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:35:02,071 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:35:02,072 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:35:02,072 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES    22,029,923    459,914      0.019          0      3,966          0
+2012-09-18 03:35:02,073 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL     22,029,923    459,914      0.019          0      3,966          0
+2012-09-18 03:35:02,073 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:35:02,073 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:35:02,073 [ConsoleStatsLoggerImpl] All Caches      WRITES    22,029,923    459,905      0.019          0      3,966          0
+2012-09-18 03:35:02,074 [ConsoleStatsLoggerImpl] All Caches      TOTAL     22,029,923    459,905      0.019          0      3,966          0
+2012-09-18 03:35:02,075 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 22,029,567 percentage = 100.0
+10-50 frequency count = 3 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 92 percentage = 0.0
+200-500 frequency count = 230 percentage = 0.0
+500-1000 frequency count = 10 percentage = 0.0
+1000-5000 frequency count = 12 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:35:06,076 [ConsoleStatsLoggerImpl] ==================================================== Period Stats =========================================
+2012-09-18 03:35:06,077 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:35:06,077 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:35:06,077 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:35:06,078 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES     2,152,223    536,713       0.03          0      3,966          0
+2012-09-18 03:35:06,078 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL      2,152,223    536,580       0.03          0      3,966          0
+2012-09-18 03:35:06,078 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:35:06,078 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:35:06,078 [ConsoleStatsLoggerImpl] All Caches      WRITES     2,152,223    536,580       0.03          0      3,966          0
+2012-09-18 03:35:06,079 [ConsoleStatsLoggerImpl] All Caches      TOTAL      2,152,223    536,446       0.03          0      3,966          0
+2012-09-18 03:35:06,080 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 2,152,199 percentage = 100.0
+10-50 frequency count = 0 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 0 percentage = 0.0
+200-500 frequency count = 20 percentage = 0.0
+500-1000 frequency count = 0 percentage = 0.0
+1000-5000 frequency count = 7 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+
+2012-09-18 03:35:06,080 [ConsoleStatsLoggerImpl] ==================================================== Cumulative Stats =========================================
+2012-09-18 03:35:06,080 [ConsoleStatsLoggerImpl] Cache           Type       Txn_Count        TPS    Avg_Lat    Min_Lat    Max_Lat NonstopExceptionCount
+2012-09-18 03:35:06,080 [ConsoleStatsLoggerImpl] ==========================================================================================================
+2012-09-18 03:35:06,080 [ConsoleStatsLoggerImpl] BM_0_Store_0    READS              0          0          0          �          �          0
+2012-09-18 03:35:06,080 [ConsoleStatsLoggerImpl] BM_0_Store_0    WRITES    24,182,146    465,865       0.02          0      3,966          0
+2012-09-18 03:35:06,081 [ConsoleStatsLoggerImpl] BM_0_Store_0    TOTAL     24,182,146    465,865       0.02          0      3,966          0
+2012-09-18 03:35:06,081 [ConsoleStatsLoggerImpl] 
+2012-09-18 03:35:06,081 [ConsoleStatsLoggerImpl] All Caches      READS              0          0          0          �          �          0
+2012-09-18 03:35:06,081 [ConsoleStatsLoggerImpl] All Caches      WRITES    24,182,146    465,856       0.02          0      3,966          0
+2012-09-18 03:35:06,082 [ConsoleStatsLoggerImpl] All Caches      TOTAL     24,182,146    465,856       0.02          0      3,966          0
+2012-09-18 03:35:06,083 [ConsoleStatsLoggerImpl] All Caches Histogram: 
+0-10 frequency count = 24,181,766 percentage = 100.0
+10-50 frequency count = 3 percentage = 0.0
+50-100 frequency count = 0 percentage = 0.0
+100-200 frequency count = 92 percentage = 0.0
+200-500 frequency count = 250 percentage = 0.0
+500-1000 frequency count = 10 percentage = 0.0
+1000-5000 frequency count = 19 percentage = 0.0
+5000-PLUS frequency count = 0 percentage = 0.0
+

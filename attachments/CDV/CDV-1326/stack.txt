@@ -1,0 +1,31 @@
+Initial SessionFactory creation failed.java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+Exception in thread "main" java.lang.RuntimeException: java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.hibernate.tutorial.util.HibernateUtil.getSessionFactory(HibernateUtil.java:16)
+	at org.hibernate.tutorial.web.EventManager.listEvents(EventManager.java:45)
+	at org.hibernate.tutorial.web.EventManager.main(EventManager.java:17)
+Caused by: java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.terracotta.modules.hibernatecache.BootstrapCacheProvider.setup(BootstrapCacheProvider.java:163)
+	at org.terracotta.modules.hibernatecache.BootstrapCacheProvider.<init>(BootstrapCacheProvider.java:59)
+	at org.terracotta.hibernate.TerracottaHibernateCacheProvider.createDelegate(TerracottaHibernateCacheProvider.java:34)
+	at org.terracotta.hibernate.TerracottaHibernateCacheProvider.start(TerracottaHibernateCacheProvider.java:52)
+	at org.hibernate.cache.impl.bridge.RegionFactoryCacheProviderBridge.start(RegionFactoryCacheProviderBridge.java:72)
+	at org.hibernate.impl.SessionFactoryImpl.<init>(SessionFactoryImpl.java:215)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1327)
+	at org.hibernate.tutorial.util.HibernateUtil.getSessionFactory(HibernateUtil.java:12)
+	... 2 more
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.terracotta.modules.hibernatecache.BootstrapCacheProvider.setup(BootstrapCacheProvider.java:156)
+	... 9 more
+Caused by: java.lang.LinkageError: loader constraint violation: loader (instance of org/terracotta/modules/hibernatecache/BootstrapCacheProvider$L1Loader) previously initiated loading for a different type with name "com/tc/object/loaders/LoaderDescription"
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:621)
+	at org.terracotta.agent.loader.TCClassLoader.findClass(TCClassLoader.java:44)
+	at org.terracotta.modules.hibernatecache.BootstrapCacheProvider$L1Loader.loadClass(BootstrapCacheProvider.java:354)
+	at java.lang.ClassLoader.loadClassInternal(ClassLoader.java:320)
+	at com.tc.object.loaders.SingleLoaderClassProvider.<init>(SingleLoaderClassProvider.java:13)
+	at com.tc.object.bytecode.hook.impl.DSOContextImpl.createStandaloneContext(DSOContextImpl.java:135)
+	... 14 more

@@ -1,0 +1,34 @@
+<ehcache>
+	<!-- Sets the path to the directory where cache .data files are created. 
+		If the path is a Java System Property it is replaced by its value in the 
+		running VM. The following properties are translated: user.home - User's home 
+		directory user.dir - User's current working directory java.io.tmpdir - Default 
+		temp file path -->
+	<diskStore path="${java.io.tmpdir}/ehcache_${user.name}" />
+
+	<!-- overflowToOffHeap="false" (boolean) This feature is available only 
+		in enterprise versions -->
+
+	<!-- maxBytesLocalHeap="" This attribute's values are given as <number>k|K|m|M|g|G 
+		for kilobytes (k|K), megabytes (m|M), or gigabytes (g|G) -->
+
+	<!-- maxBytesLocalDisk: As for maxBytesLocalHeap, but specifies the limit 
+		of disk storage this cache will ever use. -->
+	<!-- timeToIdleSeconds="0" timeToLiveSeconds="0" -->
+
+
+    <cache name="com.xxx.yyy.partsCache"
+	    maxBytesLocalHeap="150M"
+	    eternal="true"
+	    overflowToDisk="true"
+	    maxBytesLocalDisk="40G"
+	    diskSpoolBufferSizeMB="30"
+	    diskExpiryThreadIntervalSeconds="120"
+	    diskPersistent="false"
+	    clearOnFlush="false"
+	    statistics="false"
+	    memoryStoreEvictionPolicy="LFU"
+	    copyOnRead="false"
+	    copyOnWrite="false" />
+
+</ehcache>

@@ -1,0 +1,51 @@
+Thread [main] (Suspended)	
+XXX	java.lang.management.ManagementFactory.getPlatformMBeanServer() line: 512	
+	com.tc.plugins.ModulesLoader.installTIMByteProvider(org.osgi.framework.Bundle, java.net.URL) line: 216	
+	com.tc.plugins.ModulesLoader.access$200(org.osgi.framework.Bundle, java.net.URL) line: 74	
+	com.tc.plugins.ModulesLoader$2.callback(java.lang.Object) line: 201	
+	com.tc.bundles.KnopflerfishOSGi.startBundle(long, com.tc.bundles.EmbeddedOSGiEventHandler) line: 100	
+	com.tc.bundles.KnopflerfishOSGi.startBundles(java.net.URL[], com.tc.bundles.EmbeddedOSGiEventHandler) line: 73	
+	com.tc.plugins.ModulesLoader.initModules(com.tc.bundles.EmbeddedOSGiRuntime, com.tc.object.config.DSOClientConfigHelper, com.tc.object.loaders.ClassProvider, com.terracottatech.config.Module[], boolean, java.util.Collection<com.tc.bundles.Repository>) line: 210	
+	com.tc.plugins.ModulesLoader.initModules(com.tc.object.config.DSOClientConfigHelper, com.tc.object.loaders.ClassProvider, boolean, java.util.Collection<com.tc.bundles.Repository>) line: 127	
+	com.tc.object.bytecode.hook.impl.DSOContextImpl.<init>(com.tc.object.config.DSOClientConfigHelper, com.tc.object.loaders.ClassProvider, com.tc.object.bytecode.Manager, java.util.Collection<com.tc.bundles.Repository>) line: 175	
+	com.tc.object.bytecode.hook.impl.DSOContextImpl.createGlobalContext() line: 87	
+	sun.reflect.NativeMethodAccessorImpl.invoke0(java.lang.reflect.Method, java.lang.Object, java.lang.Object[]) line: not available [native method]	
+	sun.reflect.NativeMethodAccessorImpl.invoke(java.lang.Object, java.lang.Object[]) line: 39	
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(java.lang.Object, java.lang.Object[]) line: 25	
+	java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object...) line: 592	
+	com.tc.object.bytecode.hook.impl.ClassProcessorHelper.createGlobalContext() line: 494	
+	com.tc.object.bytecode.hook.impl.ClassProcessorHelper.initialize() line: 349	
+	com.tc.object.bytecode.hook.impl.ClassProcessorHelper.defineClass0Pre(java.lang.ClassLoader, java.lang.String, byte[], int, int, java.security.ProtectionDomain) line: 533	
+	sun.misc.Launcher$AppClassLoader(java.lang.ClassLoader).defineClass(java.lang.String, byte[], int, int, java.security.ProtectionDomain) line: 620	
+	sun.misc.Launcher$AppClassLoader(java.security.SecureClassLoader).defineClass(java.lang.String, byte[], int, int, java.security.CodeSource) line: 124	
+	sun.misc.Launcher$AppClassLoader(java.net.URLClassLoader).defineClass(java.lang.String, sun.misc.Resource) line: 260	
+	java.net.URLClassLoader.access$100(java.net.URLClassLoader, java.lang.String, sun.misc.Resource) line: 56	
+	java.net.URLClassLoader$1.run() line: 195	
+	java.security.AccessController.doPrivileged(java.security.PrivilegedExceptionAction<T>, java.security.AccessControlContext) line: not available [native method]	
+	sun.misc.Launcher$AppClassLoader(java.net.URLClassLoader).findClass(java.lang.String) line: 188	
+	sun.misc.Launcher$AppClassLoader.findClass(java.lang.String) line: not available	
+	sun.misc.Launcher$AppClassLoader(java.lang.ClassLoader).loadClass(java.lang.String, boolean) line: 306	
+	sun.misc.Launcher$AppClassLoader.loadClass(java.lang.String, boolean) line: 268	
+	sun.misc.Launcher$AppClassLoader(java.lang.ClassLoader).loadClass(java.lang.String) line: 251	
+	sun.misc.Launcher$AppClassLoader(java.lang.ClassLoader).loadClassInternal(java.lang.String) line: 319	
+	java.lang.Class<T>.forName0(java.lang.String, boolean, java.lang.ClassLoader) line: not available [native method]	
+cycle	java.lang.Class<T>.forName(java.lang.String, boolean, java.lang.ClassLoader) line: 242	
+	com.caucho.loader.SystemClassLoader(com.caucho.loader.DynamicClassLoader).loadClassImpl(java.lang.String, boolean) line: 1281	
+	com.caucho.loader.SystemClassLoader.loadClassImpl(java.lang.String, boolean) line: 217	
+	com.caucho.loader.SystemClassLoader(com.caucho.loader.DynamicClassLoader).loadClass(java.lang.String, boolean) line: 1219	
+	com.caucho.loader.SystemClassLoader(com.caucho.loader.DynamicClassLoader).loadClass(java.lang.String) line: 1203	
+	javax.management.MBeanServerFactory.loadBuilderClass(java.lang.String) line: 441	
+	javax.management.MBeanServerFactory.checkMBeanServerBuilder() line: 484	
+	javax.management.MBeanServerFactory.getNewMBeanServerBuilder() line: 530	
+	javax.management.MBeanServerFactory.newMBeanServer(java.lang.String) line: 304	
+	javax.management.MBeanServerFactory.createMBeanServer(java.lang.String) line: 219	
+	javax.management.MBeanServerFactory.createMBeanServer() line: 180	
+	sun.management.ManagementFactory.createPlatformMBeanServer() line: 264	
+XXX	java.lang.management.ManagementFactory.getPlatformMBeanServer() line: 512	
+	sun.management.jmxremote.ConnectorBootstrap.startLocalConnectorServer() line: 450	
+	sun.management.Agent.premain(java.lang.String) line: 92	
+	sun.reflect.NativeMethodAccessorImpl.invoke0(java.lang.reflect.Method, java.lang.Object, java.lang.Object[]) line: not available [native method]	
+	sun.reflect.NativeMethodAccessorImpl.invoke(java.lang.Object, java.lang.Object[]) line: 39	
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(java.lang.Object, java.lang.Object[]) line: 25	
+	java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object...) line: 592	
+	sun.management.Agent.startAgent() line: 197	

@@ -1,0 +1,211 @@
+2013-04-23 08:55:48,639 [Non Stop initialization of Toolkit] INFO com.terracottatech.general - New logging session started.
+2013-04-23 08:55:48,817 [Non Stop initialization of Toolkit] INFO com.terracottatech.console - Terracotta Enterprise 4.0.0, as of 20130301-064135 (Revision 25020-22359 by cruise@rh5vmo135.terracotta.lan from 4.0.0)
+2013-04-23 08:55:48,830 [Non Stop initialization of Toolkit] INFO com.tc.logging.TCLogging - PID is 8678
+2013-04-23 08:55:49,372 [Non Stop initialization of Toolkit] INFO com.tc.object.bytecode.hook.impl.DSOContextImpl - DSOContext created with expressRejoinClient=true
+2013-04-23 08:55:50,244 [Non Stop initialization of Toolkit] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Attempting to load configuration from the string...
+2013-04-23 08:55:52,477 [Non Stop initialization of Toolkit] INFO com.terracottatech.console - Successfully loaded base configuration from string.
+2013-04-23 08:55:52,527 [Non Stop initialization of Toolkit] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - The configuration specified by 'base configuration from string':
+
+<tc:tc-config xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-6.xsd" xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <servers>
+    <server host="devbox5.build.internal" name="tc1"/>
+  </servers>
+</tc:tc-config>
+2013-04-23 08:55:52,541 [Non Stop initialization of Toolkit] INFO com.tc.properties.TCProperties - Loading default properties from tc.properties
+2013-04-23 08:55:52,541 [Non Stop initialization of Toolkit] WARN com.tc.properties.TCProperties - The property "l2.transactionmanager.logging.enabled" has been removed/renamed in the latest release. Please update the tc.properties file or some of your settings might not work
+2013-04-23 08:55:52,541 [Non Stop initialization of Toolkit] WARN com.tc.properties.TCProperties - The property "l2.transactionmanager.logging.verbose" has been removed/renamed in the latest release. Please update the tc.properties file or some of your settings might not work
+2013-04-23 08:55:52,541 [Non Stop initialization of Toolkit] WARN com.tc.properties.TCProperties - The property "l2.transactionmanager.logging.printStats" has been removed/renamed in the latest release. Please update the tc.properties file or some of your settings might not work
+2013-04-23 08:55:52,541 [Non Stop initialization of Toolkit] WARN com.tc.properties.TCProperties - The property "l2.transactionmanager.logging.printCommits" has been removed/renamed in the latest release. Please update the tc.properties file or some of your settings might not work
+2013-04-23 08:55:52,541 [Non Stop initialization of Toolkit] INFO com.tc.properties.TCProperties - The property "l1.clusterevents.outofbandnotifier.jointime.millis" was read before initialization completed. "l1.clusterevents.outofbandnotifier.jointime.millis" = 100
+2013-04-23 08:55:52,541 [Non Stop initialization of Toolkit] INFO com.tc.properties.TCProperties - The property "tc.config.total.timeout" was read before initialization completed. "tc.config.total.timeout" = 300000
+2013-04-23 08:55:52,541 [Non Stop initialization of Toolkit] INFO com.tc.properties.TCProperties - The property "tc.config.getFromSource.timeout" was read before initialization completed. "tc.config.getFromSource.timeout" = 30000
+2013-04-23 08:55:52,541 [Non Stop initialization of Toolkit] INFO com.tc.properties.TCProperties - The property "l1.objectmanager.fault.count" was read before initialization completed. "l1.objectmanager.fault.count" = 500
+2013-04-23 08:55:52,541 [Non Stop initialization of Toolkit] INFO com.tc.properties.TCProperties - tc-config doesn't have any tc-property. No tc-property will be overridden
+2013-04-23 08:55:52,542 [Non Stop initialization of Toolkit] INFO com.tc.properties.TCProperties - Loaded TCProperties : TCProperties = { appgroups.debug = false, dev.console.max.operator.events = 5000, ehcache.clusterAllCacheManagers = true, ehcache.concurrency = 128, ehcache.evictor.logging.enabled = false, ehcache.evictor.pool.size = 1, ehcache.global.eviction.enable = true, ehcache.global.eviction.frequency = 10, ehcache.global.eviction.rest.timeMillis = 10, ehcache.global.eviction.segments = 2, ehcache.lock.readLevel = READ, ehcache.lock.writeLevel = WRITE, ehcache.logging.enabled = false, ehcache.storageStrategy.dcv2.evictUnexpiredEntries.enabled = true, ehcache.storageStrategy.dcv2.eviction.overshoot = 15, ehcache.storageStrategy.dcv2.localcache.enabled = true, ehcache.storageStrategy.dcv2.perElementTTITTL.enabled = false, ehcache.storageStrategy.dcv2.periodicEviction.enabled = true, http.defaultservlet.attribute.aliases = false;, http.defaultservlet.attribute.dirallowed = false;, http.defaultservlet.enabled = false;, l1.cachemanager.criticalObjectThreshold = -1, l1.cachemanager.criticalThreshold = 70, l1.cachemanager.enabled = true, l1.cachemanager.leastCount = 2, l1.cachemanager.logging.enabled = false, l1.cachemanager.monitorOldGenOnly = true, l1.cachemanager.percentageToEvict = 10, l1.cachemanager.sleepInterval = 3000, l1.cachemanager.threshold = 50, l1.clusterevents.outofbandnotifier.jointime.millis = 100, l1.connect.versionMatchCheck.enabled = true, l1.healthcheck.l2.bindAddress = 0.0.0.0, l1.healthcheck.l2.bindPort = 0, l1.healthcheck.l2.ping.enabled = true, l1.healthcheck.l2.ping.idletime = 5000, l1.healthcheck.l2.ping.interval = 1000, l1.healthcheck.l2.ping.probes = 3, l1.healthcheck.l2.socketConnect = true, l1.healthcheck.l2.socketConnectCount = 13, l1.healthcheck.l2.socketConnectTimeout = 5, l1.jvm.check.compatibility = true, l1.l2.config.validation.enabled = true, l1.lock.statistics.gatherInterval = 1, l1.lock.statistics.traceDepth = 0, l1.lockmanager.pinning.enabled = true, l1.lockmanager.striped.count = 128, l1.lockmanager.timeout.interval = 60000, l1.max.connect.retries = -1, l1.objectmanager.fault.count = 500, l1.objectmanager.fault.logging.enabled = false, l1.objectmanager.flush.logging.enabled = false, l1.objectmanager.objectid.request.size = 50000, l1.objectmanager.remote.batchLookupTimePeriod = 1, l1.objectmanager.remote.logging.enabled = false, l1.objectmanager.remote.maxDNALRUSize = 60, l1.objectmanager.remote.maxRequestSentImmediately = 4, l1.seda.stage.sink.capacity = -1, l1.serverarray.objectCreationStrategy = round-robin, l1.serverarray.objectCreationStrategy.groupAffinity.groupName = mirror-group1, l1.serverarray.objectCreationStrategy.roundRobin.startIndex = sequential, l1.servermapmanager.remote.batchLookupTimePeriod = 1, l1.servermapmanager.remote.maxRequestSentImmediately = 4, l1.shutdown.force.finalization = true, l1.shutdown.threadgroup.gracetime = 30000, l1.socket.connect.timeout = 10000, l1.socket.reconnect.waitInterval = 1000, l1.transactionmanager.completedAckFlushTimeout = 5000, l1.transactionmanager.folding.debug = false, l1.transactionmanager.folding.enabled = true, l1.transactionmanager.folding.lock.limit = 0, l1.transactionmanager.folding.object.limit = 0, l1.transactionmanager.logging.enabled = false, l1.transactionmanager.maxBatchSizeInKiloBytes = 128, l1.transactionmanager.maxOutstandingBatchSize = 4, l1.transactionmanager.maxPendingBatches = 88, l1.transactionmanager.maxSleepTimeBeforeHalt = 1024, l1.transactionmanager.strings.compress.enabled = true, l1.transactionmanager.strings.compress.logging.enabled = false, l1.transactionmanager.strings.compress.minSize = 512, l1.transactionmanager.timeoutForAckOnExit = 300, l2.beanshell.enabled = false, l2.beanshell.port = 9929, l2.dump.on.exception.timeout = 30, l2.enable.legacy.production.mode = false, l2.frs.compactor.lsnGap.maxLoad = 0.80, l2.frs.compactor.lsnGap.minLoad = 0.40, l2.healthcheck.l1.ping.enabled = true, l2.healthcheck.l1.ping.idletime = 5000, l2.healthcheck.l1.ping.interval = 1000, l2.healthcheck.l1.ping.probes = 3, l2.healthcheck.l1.socketConnect = true, l2.healthcheck.l1.socketConnectCount = 10, l2.healthcheck.l1.socketConnectTimeout = 5, l2.healthcheck.l2.ping.enabled = true, l2.healthcheck.l2.ping.idletime = 5000, l2.healthcheck.l2.ping.interval = 1000, l2.healthcheck.l2.ping.probes = 3, l2.healthcheck.l2.socketConnect = true, l2.healthcheck.l2.socketConnectCount = 10, l2.healthcheck.l2.socketConnectTimeout = 5, l2.l1reconnect.enabled = true, l2.l1reconnect.maxDelayedAcks = 16, l2.l1reconnect.sendWindow = 32, l2.l1reconnect.sendqueue.cap = 5000, l2.l1reconnect.timeout.millis = 5000, l2.lockmanager.greedy.lease.enabled = true, l2.lockmanager.greedy.lease.leaseTimeInMillis = 50, l2.lockmanager.greedy.locks.enabled = true, l2.logs.store = 1500, l2.nha.autoRestart = true, l2.nha.dirtydb.autoDelete = true, l2.nha.dirtydb.backup.enabled = true, l2.nha.dirtydb.rolling = 0, l2.nha.send.timeout.millis = 16000, l2.nha.tcgroupcomm.discovery.interval = 1000, l2.nha.tcgroupcomm.handshake.timeout = 5000, l2.nha.tcgroupcomm.reconnect.enabled = true, l2.nha.tcgroupcomm.reconnect.maxDelayedAcks = 16, l2.nha.tcgroupcomm.reconnect.sendWindow = 32, l2.nha.tcgroupcomm.reconnect.sendqueue.cap = 5000, l2.nha.tcgroupcomm.reconnect.timeout = 5000, l2.objectmanager.dgc.inline.cleanup.delaySeconds = 0, l2.objectmanager.dgc.inline.intervalInSeconds = 10, l2.objectmanager.dgc.inline.maxObjects = 10000, l2.objectmanager.dgc.throttle.requestsPerThrottle = 1000, l2.objectmanager.dgc.throttle.timeInMillis = 0, l2.objectmanager.maxTxnsInTxnObjectGrouping = 10, l2.objectmanager.objectrequest.logging.enabled = false, l2.objectmanager.objectrequest.split.size = 500, l2.objectmanager.passive.sync.batch.size = 500, l2.objectmanager.passive.sync.message.maxSizeInMegaBytes = 10, l2.objectmanager.passive.sync.throttle.maxPendingMessages = 10, l2.objectmanager.passive.sync.throttle.timeInMillis = 0, l2.objectmanager.persistor.logging.enabled = false, l2.objectmanager.request.logging.enabled = false, l2.offHeap.allocation.critical = 15000, l2.offHeap.allocation.critical.halt = true, l2.offHeap.allocation.slow = 1500, l2.offHeap.map.concurrency = 1, l2.offHeap.map.tableSize = 128, l2.operator.events.store = 1500, l2.remotejmx.idletime = 5, l2.remotejmx.maxthreads = 50, l2.seda.apply.stage.threads = 8, l2.seda.evictionprocessorstage.sink.capacity = 1000, l2.seda.local.cache.invalidations.sink.capacity = 5000, l2.seda.local.cache.transaction.complete.sink.capacity = 5000, l2.seda.local.cache.transaction.complete.threads = 8, l2.seda.query.threads = 4, l2.seda.search.threads = 16, l2.seda.stage.sink.capacity = -1, l2.serverarray.2pc.enabled = true, l2.servermap.eviction.broadcast.maxkeys = 10000, l2.servermap.eviction.clientObjectReferences.refresh.interval = 60000, l2.startuplock.retries.enabled = false, l2.transactionmanager.logging.enabled = false, l2.transactionmanager.logging.printBroadcastStats = false, l2.transactionmanager.logging.printCommits = false, l2.transactionmanager.logging.printStats = true, l2.transactionmanager.logging.verbose = false, l2.transactionmanager.passive.throttle.enabled = true, l2.transactionmanager.passive.throttle.maxSleepSeconds = 5, l2.transactionmanager.passive.throttle.threshold = 20000, lock.statistics.enabled = false, logging.longgc.threshold = 8000, logging.maxBackups = 20, logging.maxLogFileSize = 512, management.rest.enabled = true, memory.monitor.forcebasic = false, net.core.keepalive = false, net.core.tcpnodelay = true, offHeapFileSystem.file.maxDataPageSize = 262144, offHeapFilesystem.chm.segments = 4, offHeapFilesystem.file.blockSize = 8192, search.lucene.indexes.per.cache = 4, search.lucene.max.boolean.clauses = 1024, search.lucene.max.buffer = 16.0, search.lucene.use.offHeap.directory = false, search.lucene.use.ram.directory = false, search.passive.max.chunk = 2097152, search.passive.max.pending = 8, session.debug.hops = false, session.debug.hops.interval = 100, session.debug.invalidate = false, session.debug.sessions = false, session.invalidator.bench.enabled = true, session.invalidator.sleep = 300, session.request.bench.enabled = false, session.request.tracking = false, session.request.tracking.dump = false, session.request.tracking.interval = 2500, session.request.tracking.threshold = 15000, session.statistics.enabled = false, session.verify.set.attribute = false, session.vhosts.excluded = , stats.printer.intervalInMillis = 5000, tc.bytebuffer.common.pool.maxcount = 3000, tc.bytebuffer.pooling.enabled = true, tc.bytebuffer.threadlocal.pool.maxcount = 2000, tc.config.getFromSource.timeout = 30000, tc.config.total.timeout = 300000, tc.management.mbeans.enabled = true, tc.management.test.mbeans.enabled = false, tc.messages.grouping.enabled = true, tc.messages.grouping.maxSizeKiloBytes = 1024, tc.messages.packup.enabled = true, tc.stage.monitor.delay = 5000, tc.stage.monitor.enabled = false, tc.time.sync.threshold = 30, tc.transport.handshake.timeout = 10000, tcm.monitor.delay = 5, tcm.monitor.enabled = false }
+2013-04-23 08:55:52,604 [Non Stop initialization of Toolkit] INFO com.terracottatech.console - Log file: '/srv/tomcat/idstore/logs-172.25.1.104/terracotta-client.log'.
+2013-04-23 08:55:52,605 [Non Stop initialization of Toolkit] INFO com.tc.logging.TCLogging - All Java System Properties for this Terracotta instance:
+========================================================================
+JVM arguments: [-Dnop, -Dsun.java2d.opengl=false, -Djava.awt.headless=true, -Xms4g, -Xmx4g, -XX:MaxPermSize=512M, -Djava.rmi.server.hostname=172.25.1.104, -Dcom.sun.management.jmxremote, -Dcom.sun.management.jmxremote.port=8999, -Dcom.sun.management.jmxremote.ssl=false, -Dcom.sun.management.jmxremote.authenticate=false, -Dspring.profiles.active=dev, -Dterracotta.config.location=/srv/tomcat/idstore/conf/tc-client-config.xml, -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager, -Djava.endorsed.dirs=/opt/apache-tomcat/endorsed, -Dcatalina.base=/srv/tomcat/idstore, -Dcatalina.home=/opt/apache-tomcat, -Djava.io.tmpdir=/srv/tomcat/idstore/temp]
+awt.toolkit                                  : sun.awt.X11.XToolkit
+catalina.base                                : /srv/tomcat/idstore
+catalina.home                                : /opt/apache-tomcat
+catalina.useNaming                           : true
+com.sun.management.jmxremote                 : 
+com.sun.management.jmxremote.authenticate    : false
+com.sun.management.jmxremote.port            : 8999
+com.sun.management.jmxremote.ssl             : false
+common.loader                                : ${catalina.base}/lib,${catalina.base}/lib/*.jar,${catalina.home}/lib,${catalina.home}/lib/*.jar
+file.encoding                                : UTF-8
+file.encoding.pkg                            : sun.io
+file.separator                               : /
+java.awt.graphicsenv                         : sun.awt.X11GraphicsEnvironment
+java.awt.headless                            : true
+java.awt.printerjob                          : sun.print.PSPrinterJob
+java.class.path                              : /opt/apache-tomcat/bin/bootstrap.jar:/opt/apache-tomcat/bin/tomcat-juli.jar
+java.class.version                           : 51.0
+java.endorsed.dirs                           : /opt/apache-tomcat/endorsed
+java.ext.dirs                                : /usr/java/jdk1.7.0_21/jre/lib/ext:/usr/java/packages/lib/ext
+java.home                                    : /usr/java/jdk1.7.0_21/jre
+java.io.tmpdir                               : /srv/tomcat/idstore/temp
+java.library.path                            : /usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+java.naming.factory.initial                  : org.apache.naming.java.javaURLContextFactory
+java.naming.factory.url.pkgs                 : org.apache.naming
+java.rmi.server.hostname                     : 172.25.1.104
+java.rmi.server.randomIDs                    : true
+java.runtime.name                            : Java(TM) SE Runtime Environment
+java.runtime.version                         : 1.7.0_21-b11
+java.specification.name                      : Java Platform API Specification
+java.specification.vendor                    : Oracle Corporation
+java.specification.version                   : 1.7
+java.util.logging.manager                    : org.apache.juli.ClassLoaderLogManager
+java.vendor                                  : Oracle Corporation
+java.vendor.url                              : http://java.oracle.com/
+java.vendor.url.bug                          : http://bugreport.sun.com/bugreport/
+java.version                                 : 1.7.0_21
+java.vm.info                                 : mixed mode
+java.vm.name                                 : Java HotSpot(TM) 64-Bit Server VM
+java.vm.specification.name                   : Java Virtual Machine Specification
+java.vm.specification.vendor                 : Oracle Corporation
+java.vm.specification.version                : 1.7
+java.vm.vendor                               : Oracle Corporation
+java.vm.version                              : 23.21-b01
+line.separator                               : 
+
+nop                                          : 
+os.arch                                      : amd64
+os.name                                      : Linux
+os.version                                   : 2.6.32-220.7.1.el6.x86_64
+package.access                               : sun.,org.apache.catalina.,org.apache.coyote.,org.apache.tomcat.,org.apache.jasper.
+package.definition                           : sun.,java.,org.apache.catalina.,org.apache.coyote.,org.apache.tomcat.,org.apache.jasper.
+path.separator                               : :
+server.loader                                : 
+shared.loader                                : 
+spring.profiles.active                       : dev
+sun.arch.data.model                          : 64
+sun.boot.class.path                          : /usr/java/jdk1.7.0_21/jre/lib/resources.jar:/usr/java/jdk1.7.0_21/jre/lib/rt.jar:/usr/java/jdk1.7.0_21/jre/lib/sunrsasign.jar:/usr/java/jdk1.7.0_21/jre/lib/jsse.jar:/usr/java/jdk1.7.0_21/jre/lib/jce.jar:/usr/java/jdk1.7.0_21/jre/lib/charsets.jar:/usr/java/jdk1.7.0_21/jre/lib/jfr.jar:/usr/java/jdk1.7.0_21/jre/classes
+sun.boot.library.path                        : /usr/java/jdk1.7.0_21/jre/lib/amd64
+sun.cpu.endian                               : little
+sun.cpu.isalist                              : 
+sun.io.unicode.encoding                      : UnicodeLittle
+sun.java.command                             : org.apache.catalina.startup.Bootstrap start
+sun.java.launcher                            : SUN_STANDARD
+sun.java2d.opengl                            : false
+sun.jnu.encoding                             : UTF-8
+sun.management.compiler                      : HotSpot 64-Bit Tiered Compilers
+sun.os.patch.level                           : unknown
+tc.active                                    : true
+tc.dso.globalmode                            : false
+terracotta.config.location                   : /srv/tomcat/idstore/conf/tc-client-config.xml
+tomcat.util.buf.StringCache.byte.enabled     : true
+tomcat.util.scan.DefaultJarScanner.jarsToSkip: bootstrap.jar,commons-daemon.jar,tomcat-juli.jar,annotations-api.jar,el-api.jar,jsp-api.jar,servlet-api.jar,catalina.jar,catalina-ant.jar,catalina-ha.jar,catalina-tribes.jar,jasper.jar,jasper-el.jar,ecj-*.jar,tomcat-api.jar,tomcat-util.jar,tomcat-coyote.jar,tomcat-dbcp.jar,tomcat-i18n-en.jar,tomcat-i18n-es.jar,tomcat-i18n-fr.jar,tomcat-i18n-ja.jar,tomcat-juli-adapters.jar,catalina-jmx-remote.jar,catalina-ws.jar,tomcat-jdbc.jar,commons-beanutils*.jar,commons-codec*.jar,commons-collections*.jar,commons-dbcp*.jar,commons-digester*.jar,commons-fileupload*.jar,commons-httpclient*.jar,commons-io*.jar,commons-lang*.jar,commons-logging*.jar,commons-math*.jar,commons-pool*.jar,jstl.jar,geronimo-spec-jaxrpc*.jar,wsdl4j*.jar,ant.jar,ant-junit*.jar,aspectj*.jar,jmx.jar,h2*.jar,hibernate*.jar,httpclient*.jar,jmx-tools.jar,jta*.jar,log4j*.jar,mail*.jar,slf4j*.jar,xercesImpl.jar,xmlParserAPIs.jar,xml-apis.jar,dnsns.jar,ldapsec.jar,localedata.jar,sunjce_provider.jar,sunmscapi.jar,sunpkcs11.jar,jhall.jar,tools.jar,sunec.jar,zipfs.jar,apple_provider.jar,AppleScriptEngine.jar,CoreAudio.jar,dns_sd.jar,j3daudio.jar,j3dcore.jar,j3dutils.jar,jai_core.jar,jai_codec.jar,mlibwrapper_jai.jar,MRJToolkit.jar,vecmath.jar,junit.jar,junit-*.jar,ant-launcher.jar
+user.country                                 : US
+user.dir                                     : /srv/tomcat/idstore
+user.home                                    : /home/tomcat
+user.language                                : en
+user.name                                    : tomcat
+user.timezone                                : America/Los_Angeles
+========================================================================
+2013-04-23 08:55:52,681 [Non Stop initialization of Toolkit] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://devbox5.build.internal:9510/groupidmap
+2013-04-23 08:55:52,769 [Non Stop initialization of Toolkit] INFO com.terracottatech.dso - Trying to get Cluster topology from http://devbox5.build.internal:9510/groupinfo
+2013-04-23 08:55:53,324 [Non Stop initialization of Toolkit] INFO com.terracottatech.console - Terracotta license loaded from resource /terracotta-license.key
+Capabilities: ehcache, search, TMC, server array offheap
+Date of Issue: 2013-04-17
+Edition: Free
+Email: greg.adams@build.com
+License Number: 1004106
+License Type: Free Production
+Licensee: Greg Adams, Build.com
+Max Client Count: 4
+Product: BigMemory Max
+terracotta.serverArray.maxOffHeap: 8G
+
+2013-04-23 08:55:53,467 [Non Stop initialization of Toolkit] INFO com.terracottatech.dso - Connection components don't need Active Server Array. Using EnterpriseNonAADSOClientBuilder
+2013-04-23 08:55:53,558 [Non Stop initialization of Toolkit] INFO com.terracottatech.dso - Trying to get Groupname ID Map from http://devbox5.build.internal:9510/groupidmap
+2013-04-23 08:55:53,566 [Non Stop initialization of Toolkit] INFO com.terracottatech.dso - Trying to get Cluster topology from http://devbox5.build.internal:9510/groupinfo
+2013-04-23 08:55:53,571 [Non Stop initialization of Toolkit] INFO com.terracottatech.dso - Trying to get Cluster topology from http://devbox5.build.internal:9510/groupinfo
+2013-04-23 08:55:53,610 [Non Stop initialization of Toolkit] INFO com.terracottatech.dso - Trying to get L1 Reconnect Properties from http://devbox5.build.internal:9510/l1reconnectproperties
+2013-04-23 08:55:53,742 [Non Stop initialization of Toolkit] INFO com.tc.object.ApplicatorDNAEncodingImpl - Compressed String constructor not present
+2013-04-23 08:55:54,424 [Non Stop initialization of Toolkit] INFO com.tc.net.core.TCCommImpl - Comm Worker Threads NOT requested
+2013-04-23 08:55:54,519 [Non Stop initialization of Toolkit] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl: DSO Client - HealthChecker Started
+2013-04-23 08:55:54,686 [Non Stop initialization of Toolkit] INFO com.tc.net.protocol.tcm.CommunicationsManager - HealthCheck CallbackPort Listener started at /0:0:0:0:0:0:0:0:36086
+2013-04-23 08:55:55,549 [Non Stop initialization of Toolkit] INFO com.tc.runtime.TCMemoryManagerImpl - GarbageCollector: PS Scavenge
+2013-04-23 08:55:55,550 [Non Stop initialization of Toolkit] INFO com.tc.runtime.TCMemoryManagerImpl - GarbageCollector: PS MarkSweep
+2013-04-23 08:55:56,046 [L1Management JMX registration] INFO com.tc.management.L1Management - Terracotta JMX connector available at[service:jmx:terracotta://localhost]
+2013-04-23 08:55:56,337 [Non Stop initialization of Toolkit] INFO com.tc.net.core.TCConnection - Comms Message Batching enabled
+2013-04-23 08:55:56,368 [Non Stop initialization of Toolkit] INFO com.tc.net.protocol.transport.ClientMessageTransport - ConnectionID(-1.ffffffffffffffffffffffffffffffff.25652cff-f836-4906-bd63-938b2cefd5a3-13e379ac845)[]: Attaching new connection: com.tc.net.core.TCConnectionImpl@374767520: connected: true, closed: false local=172.25.1.104:52087 remote=172.25.1.105:9510 connect=[Tue Apr 23 08:55:56 PDT 2013] idle=21ms [0 read, 0 write]
+2013-04-23 08:55:56,520 [Non Stop initialization of Toolkit] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl. DSO Client - Health monitoring agent started for devbox5.build.internal:9510
+2013-04-23 08:55:56,558 [L1_L2:TCComm Main Selector Thread_R (listen 0:0:0:0:0:0:0:0:36086)] INFO com.tc.net.protocol.transport.ConnectionHealthCheckerImpl. DSO Client - HealthCheckCallbackPort verification PASSED for devbox5.build.internal:9510(callbackport: 9510)
+2013-04-23 08:55:56,578 [Non Stop initialization of Toolkit] INFO com.tc.platform.rejoin.ClientChannelEventController - Got channel event - type: CHANNEL_OPENED_EVENT, event: com.tc.net.protocol.tcm.ChannelEventImpl@723615348[type = CHANNEL_OPENED_EVENT, timestamp = Tue Apr 23 08:55:56 PDT 2013, channel  = ChannelID=[1]:172.25.1.104:52087 <--> 172.25.1.105:9510 remote node  : GroupID[0]
+2013-04-23 08:55:56,587 [L1_L2:TCComm Main Selector Thread_R (listen 0:0:0:0:0:0:0:0:36086)] INFO com.tc.platform.rejoin.ClientChannelEventController - Got channel event - type: TRANSPORT_CONNECTED_EVENT, event: com.tc.net.protocol.tcm.ChannelEventImpl@603260875[type = TRANSPORT_CONNECTED_EVENT, timestamp = Tue Apr 23 08:55:56 PDT 2013, channel  = ChannelID=[1]:172.25.1.104:52087 <--> 172.25.1.105:9510 remote node  : GroupID[0]
+2013-04-23 08:55:56,595 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.object.handshakemanager.ClientHandshakeManagerImpl - ClientID[1]: Connected: Unpausing from PAUSED RemoteNode : GroupID[0]. Disconnect count : 1
+2013-04-23 08:55:56,673 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.object.handshakemanager.ClientHandshakeManagerImpl - ClientID[1]: Received StripeIDMap size:1
+2013-04-23 08:55:56,673 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.object.handshakemanager.ClientHandshakeManagerImpl - ClientID[1]: Received Handshake ack from remote node :GroupID[0]
+2013-04-23 08:55:56,677 [Non Stop initialization of Toolkit] INFO com.terracottatech.console - Connection successfully established to server at 172.25.1.105:9510
+2013-04-23 08:55:56,677 [Non Stop initialization of Toolkit] INFO com.terracottatech.dso - Connection successfully established to server at 172.25.1.105:9510
+2013-04-23 08:55:56,685 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.object.RemoteObjectManager - ClientID[1]: Sending outstanding servermap requests, num msgs: 0
+2013-04-23 08:55:56,686 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.management.remote.protocol.terracotta.TunnelingEventHandler - Client JMX server ready; sending notification to L2 server
+2013-04-23 08:55:56,689 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.platform.rejoin.RejoinManagerImpl - This node joined the cluster - rejoinEnabled: true, rejoin in progress:false, newNodeId: ClientID[1]
+2013-04-23 08:55:56,709 [WorkerThread(client_coordination_stage, 0)] INFO com.tc.cluster.DsoClusterImpl - NODE_JOINED ClientID[1] rejoinHappened false nodeStatus ClusterNodeState[name=operations-enabled]
+2013-04-23 08:55:56,832 [Non Stop initialization of Toolkit] INFO com.tc.management.remote.protocol.terracotta.TunneledDomainManager - Sending current registered tunneled domains to L2 server to set up the tunneled connections for the mbeans that match.
+2013-04-23 08:55:59,552 [pool-4-thread-1] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:55:59,556 [pool-4-thread-1] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:55:59,592 [pool-4-thread-1] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:55:59,593 [pool-4-thread-1] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,403 [init Store asynchronously productCategory] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,404 [init Store asynchronously productCategory] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,412 [init Store asynchronously vendorEta] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,412 [init Store asynchronously vendorEta] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,420 [init Store asynchronously sourcingRuleFilter_SourcingRuleId] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,420 [init Store asynchronously sourcingRuleFilter_SourcingRuleId] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,424 [init Store asynchronously site] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,424 [init Store asynchronously site] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,430 [init Store asynchronously manufacturerMostUsedVendor] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,430 [init Store asynchronously manufacturerMostUsedVendor] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,431 [init Store asynchronously productComposite] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,431 [init Store asynchronously productComposite] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,444 [init Store asynchronously shippingCalculationNameView] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,444 [init Store asynchronously shippingCalculationNameView] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,452 [init Store asynchronously productMostUsedVendor] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,452 [init Store asynchronously productMostUsedVendor] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,453 [init Store asynchronously productCompositeInternal] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,453 [init Store asynchronously productCompositeInternal] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,464 [init Store asynchronously sourcingRule] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,465 [init Store asynchronously sourcingRule] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,536 [init Store asynchronously productCompositeSiteSpecific] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,536 [init Store asynchronously productCompositeSiteSpecific] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,540 [init Store asynchronously productDrop] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,540 [init Store asynchronously productDrop] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,602 [init Store asynchronously productSpecAttribute] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,602 [init Store asynchronously productSpecAttribute] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,610 [init Store asynchronously productQuestions] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,610 [init Store asynchronously productQuestions] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,691 [init Store asynchronously mostPopularCategoryProduct] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,692 [init Store asynchronously mostPopularCategoryProduct] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,745 [init Store asynchronously shippingCalculationView] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,745 [init Store asynchronously shippingCalculationView] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,784 [init Store asynchronously storeShippingCategory] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,785 [init Store asynchronously storeShippingCategory] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,856 [init Store asynchronously categoryTree] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,856 [init Store asynchronously categoryTree] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,929 [init Store asynchronously pricebookMultiplier] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,930 [init Store asynchronously pricebookMultiplier] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,982 [init Store asynchronously zipLatLong] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,983 [init Store asynchronously zipLatLong] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,994 [init Store asynchronously pricebookCostView] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:02,994 [init Store asynchronously pricebookCostView] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:03,051 [init Store asynchronously product] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:03,051 [init Store asynchronously product] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:03,117 [init Store asynchronously vendorLeadTimeOverride] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:03,118 [init Store asynchronously vendorLeadTimeOverride] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:03,142 [init Store asynchronously siteDatabaseLookup] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:03,143 [init Store asynchronously siteDatabaseLookup] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:03,181 [init Store asynchronously sourcingRuleFilter] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:03,182 [init Store asynchronously sourcingRuleFilter] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:03,255 [init Store asynchronously productSpecValue] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:03,256 [init Store asynchronously productSpecValue] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:03,307 [init Store asynchronously uniqueIdShippingCategory] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:03,308 [init Store asynchronously uniqueIdShippingCategory] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:03,369 [init Store asynchronously manufacturerLeadTimeOverride] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:03,369 [init Store asynchronously manufacturerLeadTimeOverride] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false
+2013-04-23 08:56:03,407 [init Store asynchronously vendorLeadTimeMessage] INFO com.tc.cluster.DsoClusterImpl - event fired |Node Joined|ClientID[1]|OOB Notification false
+2013-04-23 08:56:03,407 [init Store asynchronously vendorLeadTimeMessage] INFO com.tc.cluster.DsoClusterImpl - event fired |Operations Enabled|ClientID[1]|OOB Notification false

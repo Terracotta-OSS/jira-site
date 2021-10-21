@@ -1,0 +1,59 @@
+Index: src/main/java/net/sf/ehcache/distribution/jms/JMSUtil.java
+===================================================================
+--- src/main/java/net/sf/ehcache/distribution/jms/JMSUtil.java	(revision 1588)
++++ src/main/java/net/sf/ehcache/distribution/jms/JMSUtil.java	(working copy)
+@@ -138,9 +138,10 @@
+         if (getQueueBindingName != null) {
+             env.put(GET_QUEUE_BINDING_NAME, getQueueBindingName);
+         }
++        if(providerURL != null){
++          env.put(Context.PROVIDER_URL, providerURL);
++        }
+ 
+-        env.put(Context.PROVIDER_URL, providerURL);
+-
+         if (initialContextFactoryName != null) {
+             env.put(Context.INITIAL_CONTEXT_FACTORY, initialContextFactoryName);
+             if (urlPkgPrefixes != null) {
+Index: src/test/java/net/sf/ehcache/distribution/jms/JMSUtilTest.java
+===================================================================
+--- src/test/java/net/sf/ehcache/distribution/jms/JMSUtilTest.java	(revision 0)
++++ src/test/java/net/sf/ehcache/distribution/jms/JMSUtilTest.java	(revision 0)
+@@ -0,0 +1,37 @@
++package net.sf.ehcache.distribution.jms;
++
++import static org.junit.Assert.*;
++
++import javax.jms.Topic;
++import javax.naming.Context;
++import javax.naming.NamingException;
++
++import org.apache.activemq.broker.BrokerService;
++import org.junit.AfterClass;
++import org.junit.BeforeClass;
++import org.junit.Test;
++
++
++public class JMSUtilTest {
++  private static final String TOPIC_NAME = "topic/name";
++  private static final String INITAL_CTX_FACTORY = "org.apache.activemq.jndi.ActiveMQInitialContextFactory";
++  
++  @Test
++  public void shouldNotSetProviderUrlIfNotProvided() throws NamingException{
++    final String initalContext = null; 
++    
++    Context ctx = JMSUtil.createInitialContext("", "", INITAL_CTX_FACTORY, "", initalContext, TOPIC_NAME, "", "", "");
++    
++    assertFalse(ctx.getEnvironment().containsKey("java.naming.provider.url"));
++  }
++  
++  @Test
++  public void shouldHaveEmptyProviderURLIfProvidedAsEmptyString() throws NamingException{
++    final String initalContext = "foo"; 
++    
++    Context ctx = JMSUtil.createInitialContext("", "", INITAL_CTX_FACTORY, "", initalContext, TOPIC_NAME, "", "", "");
++    
++    assertTrue(ctx.getEnvironment().containsKey("java.naming.provider.url"));
++    
++  }
++}

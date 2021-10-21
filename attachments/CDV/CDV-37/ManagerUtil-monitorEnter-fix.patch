@@ -1,0 +1,25 @@
+Index: code/base/dso-l1/src/com/tc/object/bytecode/ManagerUtil.java
+===================================================================
+--- code/base/dso-l1/src/com/tc/object/bytecode/ManagerUtil.java	(revision 831)
++++ code/base/dso-l1/src/com/tc/object/bytecode/ManagerUtil.java	(working copy)
+@@ -191,7 +191,20 @@
+   }
+ 
+   public static void monitorEnter(Object obj, int type) {
++    boolean interrupted = false;
++    //If thread is interrupted while waiting, ignore Interrupted Exception and set the interrupted status before returning
++    while(true){
++      try {
+     getManager().monitorEnter(obj, type);
++        break;
++      }catch(TCRuntimeException e) {
++        if(!(e.getCause() instanceof InterruptedException))
++          throw e;
++        interrupted = true;
++      }
++    }
++    if(interrupted)
++      Thread.currentThread().interrupt();
+   }
+ 
+   public static void monitorExit(Object obj) {

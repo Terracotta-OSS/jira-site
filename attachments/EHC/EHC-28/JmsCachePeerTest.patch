@@ -1,0 +1,271 @@
+Index: pom.xml
+===================================================================
+--- pom.xml	(revision 1615)
++++ pom.xml	(working copy)
+@@ -19,7 +19,6 @@
+             <version>1.7.3-SNAPSHOT</version>
+         </dependency>
+         <dependency>
+-
+             <groupId>javax.jms</groupId>
+             <artifactId>jms-api</artifactId>
+             <version>1.1-rev-1</version>
+@@ -31,6 +30,12 @@
+             <version>4.4</version>
+             <scope>test</scope>
+         </dependency>
++                <dependency>
++            <groupId>org.mockito</groupId>
++            <artifactId>mockito-all</artifactId>
++            <version>1.8.2</version>
++            <scope>test</scope>
++        </dependency>
+         <!--  Test scope -->
+         <dependency>
+             <groupId>com.sun.messaging.mq</groupId>
+Index: src/test/java/net/sf/ehcache/distribution/jms/JMSCachePeerTest.java
+===================================================================
+--- src/test/java/net/sf/ehcache/distribution/jms/JMSCachePeerTest.java	(revision 0)
++++ src/test/java/net/sf/ehcache/distribution/jms/JMSCachePeerTest.java	(revision 0)
+@@ -0,0 +1,241 @@
++package net.sf.ehcache.distribution.jms;
++
++import java.io.ByteArrayOutputStream;
++import java.io.Serializable;
++import java.rmi.RemoteException;
++import java.util.Arrays;
++
++import javax.jms.BytesMessage;
++import javax.jms.JMSException;
++import javax.jms.Message;
++import javax.jms.MessageProducer;
++import javax.jms.ObjectMessage;
++import javax.jms.QueueSession;
++import javax.jms.Session;
++import javax.jms.TextMessage;
++
++import net.sf.ehcache.CacheManager;
++import net.sf.ehcache.Ehcache;
++import net.sf.ehcache.Element;
++import net.sf.ehcache.MimeTypeByteArray;
++
++import org.apache.activemq.command.ActiveMQBytesMessage;
++import org.apache.activemq.command.ActiveMQObjectMessage;
++import org.apache.activemq.command.ActiveMQTextMessage;
++import org.junit.Before;
++import org.junit.Test;
++import org.junit.runner.RunWith;
++import org.mockito.ArgumentCaptor;
++import org.mockito.Mock;
++import org.mockito.invocation.InvocationOnMock;
++import org.mockito.runners.MockitoJUnitRunner;
++import org.mockito.stubbing.Answer;
++
++import static org.junit.Assert.*;
++import static org.mockito.Mockito.*;
++
++@RunWith(MockitoJUnitRunner.class)
++public class JMSCachePeerTest {
++  @Mock QueueSession getQueueSession;
++  @Mock Session producerSession;
++  @Mock MessageProducer messageProducer;
++  @Mock CacheManager cacheManager;
++  @Mock ObjectMessage message;
++  @Mock Ehcache cache;
++  private JMSCachePeer peer;
++
++  @Before
++  public void beforeEach() {
++    when(cacheManager.getEhcache("fooCache")).thenReturn(cache);
++    peer = new JMSCachePeer(cacheManager, messageProducer, producerSession, getQueueSession);
++
++  }
++
++  @Test
++  public void shouldSendJmsEventsOnTheTopic() throws Exception {
++    JMSEventMessage jmsEvent = new JMSEventMessage(Action.PUT, null, null, "test", "");
++    when(producerSession.createObjectMessage(jmsEvent)).thenReturn(message);
++
++    peer.send(Arrays.asList(jmsEvent));
++
++    verify(messageProducer).send(message);
++  }
++
++ 
++
++  @Test
++  public void shouldHandleRemovAllEvent() throws JMSException {
++    ObjectMessage message = newObjectMessage(new JMSEventMessage(Action.REMOVE_ALL, "", null, "fooCache", ""));
++
++    peer.onMessage(message);
++
++    verify(cacheManager.getEhcache("fooCache")).removeAll(true);
++  }
++
++  @Test
++  public void shouldHandleRemovAllObjectMessage() throws JMSException {
++    ObjectMessage message = newObjectMessage(new Element("key", "value"));
++    setStringProperty(message, JMSEventMessage.ACTION_PROPERTY, Action.REMOVE_ALL.toString());
++    setStringProperty(message, JMSEventMessage.CACHE_NAME_PROPERTY, "fooCache");
++
++    peer.onMessage(message);
++
++    verify(cacheManager.getEhcache("fooCache")).removeAll(true);
++  }
++
++  @Test
++  public void shouldHandleRemoveObjectMessage() throws JMSException {
++    Element element = new Element("key", "value");
++    ObjectMessage message = newObjectMessage(element);
++    setStringProperty(message, JMSEventMessage.ACTION_PROPERTY, Action.REMOVE.toString());
++    setStringProperty(message, JMSEventMessage.CACHE_NAME_PROPERTY, "fooCache");
++    setStringProperty(message, JMSEventMessage.KEY_PROPERTY, "theKey");
++
++    peer.onMessage(message);
++
++    verify(cacheManager.getEhcache("fooCache")).remove("theKey", true);
++  }
++  
++  @Test
++  public void shouldHandlePutObjectMessage() throws JMSException {
++    Element element = new Element("key", "value");
++    ObjectMessage message = newObjectMessage(element);
++    setStringProperty(message, JMSEventMessage.ACTION_PROPERTY, Action.PUT.toString());
++    setStringProperty(message, JMSEventMessage.CACHE_NAME_PROPERTY, "fooCache");
++
++    peer.onMessage(message);
++
++    verify(cacheManager.getEhcache("fooCache")).put(element, true);
++  }
++  @Test
++  public void shouldHandleNonElementPutObjectMessage() throws JMSException {
++    ArgumentCaptor<Element> arg = ArgumentCaptor.forClass(Element.class);
++    ObjectMessage message = newObjectMessage("foo");
++    setStringProperty(message, JMSEventMessage.ACTION_PROPERTY, Action.PUT.toString());
++    setStringProperty(message, JMSEventMessage.CACHE_NAME_PROPERTY, "fooCache");
++    setStringProperty(message, JMSEventMessage.KEY_PROPERTY, "keyName");
++
++    peer.onMessage(message);
++
++    verify(cacheManager.getEhcache("fooCache")).put(arg.capture(), eq(true));
++    
++    Element element = arg.getValue();
++    assertEquals("foo", element.getValue());
++    assertEquals("keyName", element.getKey());
++  }
++  @Test
++  public void shouldHandleRemoveNonElementObjectMessage() throws JMSException {
++    ObjectMessage message = newObjectMessage("zzz");
++    setStringProperty(message, JMSEventMessage.ACTION_PROPERTY, Action.REMOVE.toString());
++    setStringProperty(message, JMSEventMessage.CACHE_NAME_PROPERTY, "fooCache");
++    setStringProperty(message, JMSEventMessage.KEY_PROPERTY, "theKey");
++
++    peer.onMessage(message);
++
++    verify(cacheManager.getEhcache("fooCache")).remove("theKey", true);
++  }
++  @Test
++  public void shouldHandleRemovAllNonElementObjectMessage() throws JMSException {
++    ObjectMessage message = newObjectMessage("foo");
++    setStringProperty(message, JMSEventMessage.ACTION_PROPERTY, Action.REMOVE_ALL.toString());
++    setStringProperty(message, JMSEventMessage.CACHE_NAME_PROPERTY, "fooCache");
++
++    peer.onMessage(message);
++
++    verify(cacheManager.getEhcache("fooCache")).removeAll(true);
++  }
++ @Test
++  public void shouldHandlePutEvent() throws JMSException {
++    Element element = new Element("foo", "bar");
++    ObjectMessage message = newObjectMessage(new JMSEventMessage(Action.PUT, "Foo", element, "fooCache", ""));
++
++    peer.onMessage(message);
++
++    verify(cacheManager.getEhcache("fooCache")).put(element, true);
++  }
++
++  @Test
++  public void shouldHandleRemovalEvent() throws JMSException {
++    ObjectMessage message = newObjectMessage(new JMSEventMessage(Action.REMOVE, "Foo", null, "fooCache", ""));
++
++    peer.onMessage(message);
++
++    verify(cacheManager.getEhcache("fooCache")).remove("Foo", true);
++  }
++
++  // -- bytes
++  
++  @Test
++  public void shouldHandleNonElementPutTextMessage() throws JMSException {
++    ArgumentCaptor<Element> arg = ArgumentCaptor.forClass(Element.class);
++    TextMessage message = new ActiveMQTextMessage();
++    message.setStringProperty(JMSEventMessage.ACTION_PROPERTY, Action.PUT.toString());
++    message.setStringProperty(JMSEventMessage.CACHE_NAME_PROPERTY, "fooCache");
++    message.setStringProperty(JMSEventMessage.KEY_PROPERTY, "keyName");
++    message.setText("foo");
++    
++    peer.onMessage(message);
++
++    verify(cacheManager.getEhcache("fooCache")).put(arg.capture(), eq(true));
++    
++    Element element = arg.getValue();
++    MimeTypeByteArray value = (MimeTypeByteArray) element.getValue();
++    
++    assertEquals("foo", new String(value.getValue()));
++    assertEquals("text/plain", value.getMimeType());
++    assertEquals("keyName", element.getKey());
++  }
++
++  @Test
++  public void shouldHandleNonElementPutByteMessage() throws JMSException {
++    ArgumentCaptor<Element> arg = ArgumentCaptor.forClass(Element.class);
++    BytesMessage message = byteArrayMessageWithContent(new byte[]{'T', 'e', 's', 't'});
++    when(message.getStringProperty(JMSEventMessage.ACTION_PROPERTY)).thenReturn(Action.PUT.toString());
++    when(message.getStringProperty(JMSEventMessage.CACHE_NAME_PROPERTY)).thenReturn( "fooCache");
++    when(message.getStringProperty(JMSEventMessage.KEY_PROPERTY)).thenReturn("keyName");
++    
++    peer.onMessage(message);
++
++    verify(cacheManager.getEhcache("fooCache")).put(arg.capture(), eq(true));
++    
++    Element element = arg.getValue();
++    MimeTypeByteArray value = (MimeTypeByteArray) element.getValue();
++    
++    assertEquals("Test", new String(value.getValue()));
++    assertEquals("application/octet-stream", value.getMimeType());
++    assertEquals("keyName", element.getKey());
++  }
++  
++  private BytesMessage byteArrayMessageWithContent(final byte[] bs) throws JMSException {
++    BytesMessage m = mock(BytesMessage.class);
++    when(m.getBodyLength()).thenReturn((long)bs.length);
++    when(m.readBytes(any(byte[].class))).thenAnswer(new Answer<Integer>() {
++      public Integer answer(InvocationOnMock invocation) throws Throwable {
++        byte[] arg = (byte[]) invocation.getArguments()[0];
++        for(int i = 0; i < bs.length; i++){
++          arg[i] = bs[i];
++        }
++        return 1;
++      }
++    });
++    return m;
++  }
++
++  @Test
++  public void shouldCloseAllResourcesWhenDisposeIsCalled() throws JMSException{
++    peer.dispose();
++    
++    verify(getQueueSession).close();
++    verify(messageProducer).close();
++    verify(producerSession).close();
++  }
++  
++  private ObjectMessage newObjectMessage(Object eventMessage) throws JMSException {
++    ObjectMessage message = mock(ObjectMessage.class);
++    when(message.getObject()).thenReturn((Serializable) eventMessage);
++    return message;
++  }
++  private void setStringProperty(ObjectMessage message2, String actionProperty, String string) throws JMSException {
++    when(message2.getStringProperty(actionProperty)).thenReturn(string);
++  }
++}

@@ -1,0 +1,18 @@
+diff -crB filter (orig)/CachingFilter.java filter (diff)/CachingFilter.java
+*** filter (orig)/CachingFilter.java	2009-12-16 06:01:22.000000000 +0100
+--- filter (diff)/CachingFilter.java	2009-12-16 19:28:20.308504295 +0100
+***************
+*** 181,192 ****
+          logRequestHeaders(request);
+          PageInfo pageInfo = buildPageInfo(request, response, chain);
+  
+-         //return on error or redirect code
+-         int statusCode = pageInfo.getStatusCode();
+-         if (statusCode != HttpServletResponse.SC_OK) {
+-             return;
+-         }
+- 
+          if (response.isCommitted()) {
+              throw new AlreadyCommittedException("Response already committed after doing buildPage"
+                      + "but before writing response from PageInfo.");
+--- 181,186 ----

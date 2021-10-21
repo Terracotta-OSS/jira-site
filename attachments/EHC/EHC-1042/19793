@@ -1,0 +1,2609 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="false"
+	name="cms">
+
+	<!-- Cache disk storage path -->
+
+	<diskStore path="${ehcache.disk.store.path.cms}" />
+
+	<!-- Automatic Peer Discovery -->
+
+	<cacheManagerPeerProviderFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheManagerPeerProviderFactory"
+		properties="file=jgroups.xml, defaultSyncMode=GET_ALL, defaultSyncTimeout=10000" />
+
+	<!-- Distributed session management -->
+
+	<cache name="com.renxo.cms.web.filter.EhCacheDistributedSessionManagementFilter.sessions"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_NONE, syncTimeout=10000, OOB=true, DONT_BUNDLE=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.web.filter.EhCacheDistributedSessionManagementFilter.deltas"
+		maxEntriesLocalHeap="0"
+		eternal="false"
+		timeToLiveSeconds="60"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_NONE, syncTimeout=10000, OOB=true, DONT_BUNDLE=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.web.filter.EhCacheDistributedSessionManagementFilter.lastAccessedTimes"
+		maxEntriesLocalHeap="0"
+		eternal="false"
+		timeToLiveSeconds="60"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_NONE, syncTimeout=10000, OOB=true, DONT_BUNDLE=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.web.filter.EhCacheDistributedSessionManagementFilter.invalidatedSessionIds"
+		maxEntriesLocalHeap="0"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_NONE, syncTimeout=10000, OOB=true, DONT_BUNDLE=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<!-- MonitorAction -->
+
+	<cache name="com.renxo.cms.web.struts.action.monitor.MonitorAction.applicationUrls"
+		maxEntriesLocalHeap="0"
+		eternal="false"
+		timeToIdleSeconds="60"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheEventListenerFactory class="com.renxo.cms.cache.EhCacheAutomaticRemovalEventListenerFactory" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<!-- Spring Security user cache -->
+
+	<cache name="com.renxo.cms.security.spring.USER"
+		maxEntriesLocalHeap="1000"
+		eternal="false"
+		timeToLiveSeconds="1200"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<!-- Standard query cache -->
+
+	<cache name="org.hibernate.cache.StandardQueryCache"
+		maxEntriesLocalHeap="10000"
+		eternal="false"
+		timeToLiveSeconds="3600"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="org.hibernate.cache.UpdateTimestampsCache"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheDecoratorFactory class="com.renxo.cms.dao.hibernate.UpdateTimestampsCacheDecoratorFactory" />		
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+	<!-- findById query caches -->
+
+	<cache name="com.renxo.cms.dao.Dao.findById"
+		maxEntriesLocalHeap="20000"
+		eternal="false"
+		timeToLiveSeconds="3600"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<!-- findAll query caches -->
+
+	<cache name="com.renxo.cms.dao.region.CountryDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.billing.NetworkOperatorBillingClassDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.category.TopLevelNavigationDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.category.TopChartDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.region.RegionDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.region.AreaCodeDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.license.PublishingLicenseDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.license.SupplierLicenseDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.network.NetworkOperatorDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.device.VendorDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.category.CategoryDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.billing.PromotionDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.org.OrganizationDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.network.ShortNumberDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.network.ShortCodeDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.org.TrafficSourceDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.org.WebCampaignDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.subscription.SubscriptionPlanGroupDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.subscription.SubscriptionPlanDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.sim.SimDeckDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.network.SimGatewayDao.findAll"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<!-- DAO-level query caches -->
+
+	<cache name="com.renxo.cms.dao.region.AreaCodeDao"
+		maxEntriesLocalHeap="1000"
+		eternal="false"
+		timeToLiveSeconds="3600"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.network.NumberBlockDao"
+		maxEntriesLocalHeap="10000"
+		eternal="false"
+		timeToLiveSeconds="3600"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.org.StopWordDao"
+		maxEntriesLocalHeap="1000"
+		eternal="false"
+		timeToLiveSeconds="3600"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.license.PublishingLicenseDao"
+		maxEntriesLocalHeap="1000"
+		eternal="false"
+		timeToLiveSeconds="3600"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.subscription.PreferredSubscriptionOfferDao"
+		maxEntriesLocalHeap="1000"
+		eternal="false"
+		timeToLiveSeconds="3600"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.content.ContentElementDao"
+		maxEntriesLocalHeap="10000"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.content.MatrixFileDao"
+		maxEntriesLocalHeap="10000"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.content.ExternalContentUrlDao"
+		maxEntriesLocalHeap="10000"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.content.HovrGameDescriptorDao"
+		maxEntriesLocalHeap="10000"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.dao.content.RecommendationDao"
+		maxEntriesLocalHeap="10000"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<!-- Synchronous report caches -->
+
+	<cache name="com.renxo.cms.report.CONTENT_REQUEST.reportCache"
+		maxEntriesLocalHeap="0"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.CONTENT_REQUEST.userReportIds"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.TEXT_REQUEST.reportCache"
+		maxEntriesLocalHeap="0"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.TEXT_REQUEST.userReportIds"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.CREDIT_REQUEST.reportCache"
+		maxEntriesLocalHeap="0"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.CREDIT_REQUEST.userReportIds"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.SEARCH_PHRASE.reportCache"
+		maxEntriesLocalHeap="0"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.SEARCH_PHRASE.userReportIds"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.CUSTOMER.reportCache"
+		maxEntriesLocalHeap="0"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.CUSTOMER.userReportIds"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.SMS_MESSAGE.reportCache"
+		maxEntriesLocalHeap="0"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.SMS_MESSAGE.userReportIds"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.VISITOR_EVENT.reportCache"
+		maxEntriesLocalHeap="0"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.VISITOR_EVENT.userReportIds"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.VISIT.reportCache"
+		maxEntriesLocalHeap="0"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.VISIT.userReportIds"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.SUBSCRIPTION.reportCache"
+		maxEntriesLocalHeap="0"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.SUBSCRIPTION.userReportIds"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.BILLING.reportCache"
+		maxEntriesLocalHeap="0"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.report.BILLING.userReportIds"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="false">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_ALL, syncTimeout=10000" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<!-- Recommendation subsystem caches -->
+
+	<cache name="com.renxo.cms.recommend.MostRequestedByPartnerRegionAndDeviceRecommendationSource.invocationCache"
+		maxEntriesLocalHeap="1000"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+	<cache name="com.renxo.cms.recommend.MostRequestedByPartnerAndRegionRecommendationSource.invocationCache"
+		maxEntriesLocalHeap="1000"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+	<cache name="com.renxo.cms.recommend.MostRequestedByPartnerAndDeviceRecommendationSource.invocationCache"
+		maxEntriesLocalHeap="1000"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+	<cache name="com.renxo.cms.recommend.MostRequestedByPartnerRecommendationSource.invocationCache"
+		maxEntriesLocalHeap="1000"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+	<!-- TwitterTextServiceEngine caches -->
+
+	<cache name="com.renxo.cms.text.TwitterTextServiceEngine.tweetsCache"
+		maxEntriesLocalHeap="1000"
+		eternal="false"
+		timeToLiveSeconds="3600"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localTempSwap" />
+	</cache>
+
+	<cache name="com.renxo.cms.text.TwitterTextServiceEngine.consumedTweets"
+		maxEntriesLocalHeap="0"
+		eternal="false"
+		timeToLiveSeconds="86400"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_NONE, syncTimeout=10000" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.text.TwitterTextServiceEngine.throttlerMap"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=false, replicateUpdatesViaCopy=true, syncMode=GET_NONE, syncTimeout=10000" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<!-- Entities and collections -->
+
+	<cache name="com.renxo.cms.domain.billing.BillingClass"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.billing.BillingClass.partners"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.billing.Promotion"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.billing.Promotion.networkOperators"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.billing.Promotion.countries"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.billing.Promotion.regions"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.billing.Promotion.areaCodes"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>	
+
+	<cache name="com.renxo.cms.domain.billing.Promotion.shortCodes"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.billing.Promotion.supplierLicenses"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.billing.Promotion.priceReductions"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.billing.PriceReduction"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.Category"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.Category.shortCodes"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.Category.contentElements"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.Category.subCategories"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.Category.allowedContentTags"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+    <cache name="com.renxo.cms.domain.category.Category.authorizedSupplierLicenses"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.Category.localizedFields"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.TopChart"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.TopChart.countries"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.TopChart.regions"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.TopChart.contentElements"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.TopChart.allowedContentTags"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.TopLevelNavigation"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.TopLevelNavigation.countries"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.TopLevelNavigation.regions"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.TopLevelNavigation.categories"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.TopLevelNavigation.topContentElements"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.TopLevelNavigation.topStories"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.TopLevelNavigation.allowedContentTags"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.TopLevelNavigation.shortCodes"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.TopLevelNavigation.authorizedSupplierLicenses"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.category.TopLevelNavigation.forbiddenSupplierLicenses"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.content.ContentElement"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.content.ContentElement.categories"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.content.ContentElement.topCharts"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.content.ContentElement.topLevelNavigations"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.content.ContentElement.contentTags"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.content.ContentElement.languages"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.content.ContentElement.publishingLicenses"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.content.ContentElement.localizedFields"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.content.MatrixFile"
+		maxEntriesLocalHeap="100000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.content.MatrixFile.languages"
+		maxEntriesLocalHeap="100000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.content.MatrixFile.deviceMappings"
+		maxEntriesLocalHeap="100000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.content.ExternalContentUrl"
+		maxEntriesLocalHeap="100000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.content.ExternalContentUrl.deviceCompatibilities"
+		maxEntriesLocalHeap="100000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.content.HovrGameDescriptor"
+		maxEntriesLocalHeap="100000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.content.HovrGameDescriptor.deviceCompatibilities"
+		maxEntriesLocalHeap="100000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.customer.DocumentType"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.device.Device"
+		maxEntriesLocalHeap="20000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.device.Device.userAgents"
+		maxEntriesLocalHeap="20000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.device.Device.profiles"
+		maxEntriesLocalHeap="20000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.device.Device.contentFormats"
+		maxEntriesLocalHeap="20000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.device.Device.javaApis"
+		maxEntriesLocalHeap="20000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.device.Device.imeis"
+		maxEntriesLocalHeap="20000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.device.Device.matrixAliases"
+		maxEntriesLocalHeap="20000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.device.Imei"
+		maxEntriesLocalHeap="20000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.device.Vendor"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.device.Vendor.devices"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.license.PublishingLicense"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.license.PublishingLicense.countries"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.license.SupplierLicense"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.license.SupplierLicense.countries"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.NetworkOperator"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.NetworkOperator.vendors"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.NetworkOperator.devices"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.NetworkOperator.authorizedSupplierLicenses"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.NetworkOperator.networkOperatorBillingClasses"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.NetworkOperator.wapGateways"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.NetworkOperator.shortNumbers"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.NetworkOperator.allowedContentTags"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.NumberBlock"
+		maxEntriesLocalHeap="10000"
+		eternal="false"
+		timeToLiveSeconds="3600"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.ShortCode"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.ShortCode.shortNumbers"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.ShortCode.topCharts"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.ShortCode.categories"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.ShortCode.localizedFields"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.ShortNumber"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.ShortNumber.localizedFields"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.WapGateway"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.Banner"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.Banner.localizedFields"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.Banner.countries"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.Organization"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.Organization.partnerCountries"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.Organization.partnerNetworkOperators"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.Organization.partnerDefaultWebShortNumbers"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.Organization.partnerDefaultWapShortNumbers"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.Organization.partnerDefaultSimShortNumbers"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.Organization.authorizedSupplierLicenses"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.Organization.publishingLicenses"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.Organization.supplierLicenses"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.Organization.partnerLanguages"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.Organization.localizedFields"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.StopWord"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.TrafficSource"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.TrafficSource.shortCodes"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.TrafficSource.webCampaigns"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.org.WebCampaign"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.region.AreaCode"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.region.Country"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.region.Country.languages"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.region.Country.acceptableContentLanguages"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.region.Country.regions"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.region.Region"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.region.Region.areaCodes"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.user.User"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.user.User.roles"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.user.User.subscriptionAdminNetworkOperators"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.alert.AlertMessage"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.alert.Metric"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.alert.Node"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.alert.Node.processes"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.alert.Alert"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.alert.Alert.users"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.alert.Alert.messages"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.alert.Alert.metrics"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.alert.Process"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.alert.Process.metrics"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.content.Recommendation"
+		maxEntriesLocalHeap="100000"
+		eternal="false"
+		timeToLiveSeconds="3600"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<cacheExtensionFactory class="com.renxo.cms.cache.ExpiryThreadCacheExtensionFactory" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.text.TextService"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.text.TextService.textItems"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.text.TextService.shortCodes"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.text.TextItem"
+		maxEntriesLocalHeap="100000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.trivia.Trivia"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.trivia.Trivia.questions"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.trivia.Trivia.shortCodes"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.trivia.TriviaQuestion"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.story.Story"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.story.Story.topLevelNavigations"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionPlanGroup"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionPlanGroup.subscriptionPlans"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionPlanGroup.extraSubscriptionPlans"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionPlanGroup.urlSwitchSubscriptionPlans"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionPlanGroup.localizedFields"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionPlan"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionPlan.localizedFields"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionPlan.initialCredits"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionPlan.awardedCredits"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionPlan.textOnDemandCredits"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionPlan.creditOnDemandCredits"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionPlan.bonusCredits"
+		maxEntriesLocalHeap="10000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionCreditScheme"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionCreditScheme.authorizedSupplierLicenses"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionCreditScheme.lowCostSupplierLicenses"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionCreditScheme.basicSupplierLicenses"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionCreditScheme.premiumSupplierLicenses"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionCreditScheme.nonRedeemableSupplierLicenses"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.SubscriptionCreditScheme.requiredCredits"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.PreferredSubscriptionOffer"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.subscription.PreferredSubscriptionOffer.preferredSubscriptionPlans"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.sim.SimDeck"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.sim.SimDeck.localizedFields"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.sim.SimDeck.menu"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.sim.SimDeck.networkOperators"
+		maxEntriesLocalHeap="1000"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.network.SimGateway"
+		maxEntriesLocalHeap="100"
+		eternal="true"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<cache name="com.renxo.cms.domain.customer.AnonymousVisitor"
+		maxEntriesLocalHeap="10000"
+		eternal="false"
+		timeToLiveSeconds="300"
+		statistics="true">
+		<cacheEventListenerFactory class="com.renxo.cms.cache.jgroups.JGroupsCacheReplicatorFactory"
+			properties="replicateAsynchronously=true, replicateUpdatesViaCopy=true" />
+		<bootstrapCacheLoaderFactory class="com.renxo.cms.cache.jgroups.JGroupsBootstrapCacheLoaderFactory"
+			properties="bootstrapAsynchronously=true, asyncDelay=120000" />
+		<persistence strategy="none" />
+	</cache>
+
+	<!-- Caches for processes and jobs -->
+
+	<!-- EmailSenderImpl -->
+
+	<cache name="com.renxo.cms.mail.EmailSenderImpl.senderQueue"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="false">
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+	<cache name="com.renxo.cms.mail.EmailSenderImpl.callbackQueue"
+		maxEntriesLocalHeap="0"
+		eternal="true"
+		statistics="false">
+		<persistence strategy="localRestartable" synchronousWrites="false" />
+	</cache>
+
+</ehcache>

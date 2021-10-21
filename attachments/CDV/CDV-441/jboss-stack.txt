@@ -1,0 +1,95 @@
+Thread [main] (Suspended (entry into method createURLStreamHandler in org.jboss.net.protocol.URLStreamHandlerFactory))	
+	org.jboss.net.protocol.URLStreamHandlerFactory.createURLStreamHandler(java.lang.String) line: 154	
+	java.net.URL.getURLStreamHandler(java.lang.String) line: 1104	
+	java.net.URL.<init>(java.net.URL, java.lang.String, java.net.URLStreamHandler) line: 572	
+	java.net.URL.<init>(java.net.URL, java.lang.String) line: 464	
+	java.net.URL.<init>(java.lang.String) line: 413	
+	sun.net.www.protocol.jar.JarURLConnection(java.net.JarURLConnection).parseSpecs(java.net.URL) line: 161	
+	sun.net.www.protocol.jar.JarURLConnection(java.net.JarURLConnection).<init>(java.net.URL) line: 144	
+	sun.net.www.protocol.jar.JarURLConnection.<init>(java.net.URL, sun.net.www.protocol.jar.Handler) line: 61	
+	sun.net.www.protocol.jar.Handler.openConnection(java.net.URL) line: 24	
+	java.net.URL.openConnection() line: 943	
+	java.net.URL.openStream() line: 1007	
+	org.jboss.system.server.NoAnnotationURLClassLoader(java.lang.ClassLoader).getResourceAsStream(java.lang.String) line: 1161	
+	com.tc.aspectwerkz.reflect.impl.asm.AsmClassInfo.createClassInfoFromStream(java.lang.String, java.lang.ClassLoader) line: 722	
+	com.tc.aspectwerkz.reflect.impl.asm.AsmClassInfo.getClassInfo(java.lang.String, java.lang.ClassLoader) line: 270	
+	com.tc.aspectwerkz.reflect.impl.asm.AsmClassInfo.getSuperclass() line: 586	
+	com.tc.aspectwerkz.expression.regexp.TypePattern.matchSuperClasses(com.tc.aspectwerkz.reflect.ClassInfo) line: 129	
+	com.tc.aspectwerkz.expression.regexp.TypePattern.matchType(com.tc.aspectwerkz.reflect.ClassInfo) line: 98	
+	com.tc.aspectwerkz.expression.ExpressionVisitor.visit(com.tc.aspectwerkz.expression.ast.ASTClassPattern, java.lang.Object) line: 437	
+	com.tc.aspectwerkz.expression.ast.ASTClassPattern.jjtAccept(com.tc.aspectwerkz.expression.ast.ExpressionParserVisitor, java.lang.Object) line: 24	
+	com.tc.aspectwerkz.expression.ExpressionVisitor.visitAnnotatedNode(com.tc.aspectwerkz.expression.ast.SimpleNode, com.tc.aspectwerkz.reflect.ReflectionInfo) line: 1016	
+	com.tc.aspectwerkz.expression.ExpressionVisitor.visit(com.tc.aspectwerkz.expression.ast.ASTWithin, java.lang.Object) line: 237	
+	com.tc.aspectwerkz.expression.ast.ASTWithin.jjtAccept(com.tc.aspectwerkz.expression.ast.ExpressionParserVisitor, java.lang.Object) line: 22	
+	com.tc.aspectwerkz.expression.ExpressionVisitor.visit(com.tc.aspectwerkz.expression.ast.ASTExpression, java.lang.Object) line: 100	
+	com.tc.aspectwerkz.expression.ast.ASTExpression.jjtAccept(com.tc.aspectwerkz.expression.ast.ExpressionParserVisitor, java.lang.Object) line: 22	
+	com.tc.aspectwerkz.expression.ExpressionVisitor.visit(com.tc.aspectwerkz.expression.ast.Node, java.lang.Object) line: 88	
+	com.tc.aspectwerkz.expression.ExpressionVisitor.match(com.tc.aspectwerkz.expression.ExpressionContext) line: 74	
+	com.tc.object.config.ClassExpressionMatcherImpl.match(com.tc.aspectwerkz.reflect.ClassInfo) line: 24	
+	com.tc.object.config.CompoundExpressionMatcher.match(com.tc.aspectwerkz.reflect.ClassInfo) line: 18	
+	com.tc.object.config.StandardDSOClientConfigHelper.shouldBeAdapted(com.tc.aspectwerkz.reflect.ClassInfo) line: 1345	
+	com.tc.object.bytecode.hook.impl.DefaultWeavingStrategy.transform(java.lang.String, com.tc.aspectwerkz.transform.InstrumentationContext) line: 129	
+	com.tc.object.bytecode.hook.impl.DSOContextImpl.preProcess(java.lang.String, byte[], int, int, java.lang.ClassLoader) line: 137	
+	com.tc.object.bytecode.hook.impl.ClassProcessorHelper.defineClass0Pre(java.lang.ClassLoader, java.lang.String, byte[], int, int, java.security.ProtectionDomain) line: 476	
+	org.jboss.system.server.NoAnnotationURLClassLoader(java.lang.ClassLoader).defineClass(java.lang.String, byte[], int, int, java.security.ProtectionDomain) line: 620	
+	org.jboss.system.server.NoAnnotationURLClassLoader(java.security.SecureClassLoader).defineClass(java.lang.String, byte[], int, int, java.security.CodeSource) line: 124	
+	org.jboss.system.server.NoAnnotationURLClassLoader(java.net.URLClassLoader).defineClass(java.lang.String, sun.misc.Resource) line: 260	
+	java.net.URLClassLoader.access$100(java.net.URLClassLoader, java.lang.String, sun.misc.Resource) line: 56	
+	java.net.URLClassLoader$1.run() line: 195	
+	java.security.AccessController.doPrivileged(java.security.PrivilegedExceptionAction<T>, java.security.AccessControlContext) line: not available [native method]	
+	org.jboss.system.server.NoAnnotationURLClassLoader(java.net.URLClassLoader).findClass(java.lang.String) line: 188	
+	org.jboss.system.server.NoAnnotationURLClassLoader(java.lang.ClassLoader).loadClass(java.lang.String, boolean) line: 306	
+	org.jboss.system.server.NoAnnotationURLClassLoader(java.lang.ClassLoader).loadClass(java.lang.String) line: 251	
+	org.jboss.net.protocol.URLStreamHandlerFactory.createURLStreamHandler(java.lang.String) line: 179	
+	java.net.URL.getURLStreamHandler(java.lang.String) line: 1104	
+	java.net.URL.<init>(java.net.URL, java.lang.String, java.net.URLStreamHandler) line: 572	
+	java.net.URL.<init>(java.net.URL, java.lang.String) line: 464	
+	java.net.URL.<init>(java.lang.String) line: 413	
+	sun.net.www.protocol.jar.JarURLConnection(java.net.JarURLConnection).parseSpecs(java.net.URL) line: 161	
+	sun.net.www.protocol.jar.JarURLConnection(java.net.JarURLConnection).<init>(java.net.URL) line: 144	
+	sun.net.www.protocol.jar.JarURLConnection.<init>(java.net.URL, sun.net.www.protocol.jar.Handler) line: 61	
+	sun.net.www.protocol.jar.Handler.openConnection(java.net.URL) line: 24	
+	java.net.URL.openConnection() line: 943	
+	java.net.URL.openStream() line: 1007	
+	org.jboss.system.server.NoAnnotationURLClassLoader(java.lang.ClassLoader).getResourceAsStream(java.lang.String) line: 1161	
+	com.tc.aspectwerkz.reflect.impl.asm.AsmClassInfo.createClassInfoFromStream(java.lang.String, java.lang.ClassLoader) line: 722	
+	com.tc.aspectwerkz.reflect.impl.asm.AsmClassInfo.getClassInfo(java.lang.String, java.lang.ClassLoader) line: 270	
+	com.tc.aspectwerkz.reflect.impl.asm.AsmClassInfo.getSuperclass() line: 586	
+	com.tc.aspectwerkz.expression.regexp.TypePattern.matchSuperClasses(com.tc.aspectwerkz.reflect.ClassInfo) line: 129	
+	com.tc.aspectwerkz.expression.regexp.TypePattern.matchType(com.tc.aspectwerkz.reflect.ClassInfo) line: 98	
+	com.tc.aspectwerkz.expression.ExpressionVisitor.visit(com.tc.aspectwerkz.expression.ast.ASTClassPattern, java.lang.Object) line: 437	
+	com.tc.aspectwerkz.expression.ast.ASTClassPattern.jjtAccept(com.tc.aspectwerkz.expression.ast.ExpressionParserVisitor, java.lang.Object) line: 24	
+	com.tc.aspectwerkz.expression.ExpressionVisitor.visitAnnotatedNode(com.tc.aspectwerkz.expression.ast.SimpleNode, com.tc.aspectwerkz.reflect.ReflectionInfo) line: 1016	
+	com.tc.aspectwerkz.expression.ExpressionVisitor.visit(com.tc.aspectwerkz.expression.ast.ASTWithin, java.lang.Object) line: 237	
+	com.tc.aspectwerkz.expression.ast.ASTWithin.jjtAccept(com.tc.aspectwerkz.expression.ast.ExpressionParserVisitor, java.lang.Object) line: 22	
+	com.tc.aspectwerkz.expression.ExpressionVisitor.visit(com.tc.aspectwerkz.expression.ast.ASTExpression, java.lang.Object) line: 100	
+	com.tc.aspectwerkz.expression.ast.ASTExpression.jjtAccept(com.tc.aspectwerkz.expression.ast.ExpressionParserVisitor, java.lang.Object) line: 22	
+	com.tc.aspectwerkz.expression.ExpressionVisitor.visit(com.tc.aspectwerkz.expression.ast.Node, java.lang.Object) line: 88	
+	com.tc.aspectwerkz.expression.ExpressionVisitor.match(com.tc.aspectwerkz.expression.ExpressionContext) line: 74	
+	com.tc.object.config.ClassExpressionMatcherImpl.match(com.tc.aspectwerkz.reflect.ClassInfo) line: 24	
+	com.tc.object.config.CompoundExpressionMatcher.match(com.tc.aspectwerkz.reflect.ClassInfo) line: 18	
+	com.tc.object.config.StandardDSOClientConfigHelper.shouldBeAdapted(com.tc.aspectwerkz.reflect.ClassInfo) line: 1345	
+	com.tc.object.bytecode.hook.impl.DefaultWeavingStrategy.transform(java.lang.String, com.tc.aspectwerkz.transform.InstrumentationContext) line: 129	
+	com.tc.object.bytecode.hook.impl.DSOContextImpl.preProcess(java.lang.String, byte[], int, int, java.lang.ClassLoader) line: 137	
+	com.tc.object.bytecode.hook.impl.ClassProcessorHelper.defineClass0Pre(java.lang.ClassLoader, java.lang.String, byte[], int, int, java.security.ProtectionDomain) line: 476	
+	org.jboss.system.server.NoAnnotationURLClassLoader(java.lang.ClassLoader).defineClass(java.lang.String, byte[], int, int, java.security.ProtectionDomain) line: 620	
+	org.jboss.system.server.NoAnnotationURLClassLoader(java.security.SecureClassLoader).defineClass(java.lang.String, byte[], int, int, java.security.CodeSource) line: 124	
+	org.jboss.system.server.NoAnnotationURLClassLoader(java.net.URLClassLoader).defineClass(java.lang.String, sun.misc.Resource) line: 260	
+	java.net.URLClassLoader.access$100(java.net.URLClassLoader, java.lang.String, sun.misc.Resource) line: 56	
+	java.net.URLClassLoader$1.run() line: 195	
+	java.security.AccessController.doPrivileged(java.security.PrivilegedExceptionAction<T>, java.security.AccessControlContext) line: not available [native method]	
+	org.jboss.system.server.NoAnnotationURLClassLoader(java.net.URLClassLoader).findClass(java.lang.String) line: 188	
+	org.jboss.system.server.NoAnnotationURLClassLoader(java.lang.ClassLoader).loadClass(java.lang.String, boolean) line: 306	
+	org.jboss.system.server.NoAnnotationURLClassLoader(java.lang.ClassLoader).loadClass(java.lang.String) line: 251	
+	org.jboss.net.protocol.URLStreamHandlerFactory.createURLStreamHandler(java.lang.String) line: 179	
+	java.net.URL.getURLStreamHandler(java.lang.String) line: 1104	
+	java.net.URL.<init>(java.lang.String, java.lang.String, int, java.lang.String, java.net.URLStreamHandler) line: 393	
+	java.net.URL.<init>(java.lang.String, java.lang.String, int, java.lang.String) line: 283	
+	org.jboss.net.protocol.URLStreamHandlerFactory.preload() line: 126	
+	org.jboss.system.server.ServerImpl.internalInitURLHandlers() line: 278	
+	org.jboss.system.server.ServerImpl.initURLHandlers() line: 246	
+	org.jboss.system.server.ServerImpl.doInit(java.util.Properties) line: 180	
+	org.jboss.system.server.ServerImpl.init(java.util.Properties) line: 147	
+	org.jboss.Main.boot(java.lang.String[]) line: 197	
+	org.jboss.Main$1.run() line: 490	
+	java.lang.Thread.run() line: 595	

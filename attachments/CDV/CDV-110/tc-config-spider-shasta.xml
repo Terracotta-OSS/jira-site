@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:tc-config xmlns:con="http://www.terracotta.org/config">
+   <application>
+      <dso>
+         <roots>
+            <root>
+               <field-name>org.terracotta.commonj.workmanager.routing.DefaultWorkQueueManager.m_workQueues</field-name>
+            </root>
+         </roots>
+         <instrumented-classes>
+            <include>
+               <class-expression>org.terracotta.commonj.workmanager..*</class-expression>
+               <honor-transient>true</honor-transient>
+            </include>
+            <include>
+               <class-expression>org.terracotta.spider..*</class-expression>
+               <honor-transient>true</honor-transient>
+            </include>
+            <include>
+               <class-expression>au.id.jericho..*</class-expression>
+            </include>
+         </instrumented-classes>
+         <locks>
+            <autolock>
+               <method-expression>* *..*.*(..)</method-expression>
+               <lock-level>write</lock-level>
+            </autolock>
+         </locks>
+      </dso>
+   </application>
+   <system>
+      <configuration-model>development</configuration-model>
+   </system>
+   <servers>
+      <server name="localhost">
+         <dso-port>9510</dso-port>
+         <jmx-port>9520</jmx-port>
+         <data>terracotta/server-data</data>
+         <logs>terracotta/server-logs</logs>
+      </server>
+   </servers>
+   <clients>
+      <logs>terracotta/client-logs</logs>
+      <dso>
+         <fault-count>0</fault-count>
+      </dso>
+   </clients>
+</con:tc-config>

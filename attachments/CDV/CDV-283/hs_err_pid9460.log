@@ -1,0 +1,155 @@
+#
+# An unexpected error has been detected by HotSpot Virtual Machine:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x6874fa03, pid=9460, tid=6608
+#
+# Java VM: Java HotSpot(TM) Client VM (1.5.0_11-b03 mixed mode)
+# Problematic frame:
+# C  [jprofilerti.dll+0x4fa03]
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0bc580e0):  JavaThread "_jprofiler_sampler" daemon [_thread_in_native, id=6608]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0x00000000
+
+Registers:
+EAX=0x00000000, EBX=0x0000000d, ECX=0x0bc58668, EDX=0x00000000
+ESP=0x0187fa68, EBP=0x0187fb10, ESI=0x0bc581a0, EDI=0x0000000d
+EIP=0x6874fa03, EFLAGS=0x00010216
+
+Top of Stack: (sp=0x0187fa68)
+0x0187fa68:   0000000d 0bc581a0 0000000d 77c21843
+0x0187fa78:   77c216dc 0bc5827a 0000000a 77c2162d
+0x0187fa88:   0187faa0 68768b90 0187fb30 68768ccb
+0x0187fa98:   00000034 6d86e470 0187fb30 68768c96
+0x0187faa8:   00000034 0bc581a0 0000000d 68768c96
+0x0187fab8:   00000034 0bc581a0 0000000d 0187fad8
+0x0187fac8:   0bc3c108 6d83a236 0187fb1c 6d812af8
+0x0187fad8:   00000000 00000018 0187fb00 779ea171 
+
+Instructions: (pc=0x6874fa03)
+0x6874f9f3:   90 55 89 e5 81 ec 9c 00 00 00 8b 55 08 57 56 53
+0x6874fa03:   8b 02 83 c4 f8 8b 48 64 6a 04 0f bf 51 18 01 d0 
+
+
+Stack: [0x01840000,0x01880000),  sp=0x0187fa68,  free space=254k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [jprofilerti.dll+0x4fa03]
+C  [jprofilerti.dll+0x5bec4]
+C  [jprofilerti.dll+0x1aedf]
+j  com.jprofiler.agent.Sampler.initDescriptions([Ljava/lang/String;[I[J)V+0
+j  com.jprofiler.agent.E.C(Lcom/jprofiler/agent/Sampler;)V+679
+j  com.jprofiler.agent.Sampler.run()V+35
+v  ~StubRoutines::call_stub
+V  [jvm.dll+0x871a8]
+V  [jvm.dll+0xdf462]
+V  [jvm.dll+0x87079]
+V  [jvm.dll+0x86dd6]
+V  [jvm.dll+0xa1a14]
+V  [jvm.dll+0x110aa6]
+V  [jvm.dll+0x110a74]
+C  [MSVCRT.dll+0x262b6]
+C  [MSVCRT.dll+0x263de]
+C  [kernel32.dll+0x43833]
+C  [ntdll.dll+0x3a9bd]
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  com.jprofiler.agent.Sampler.initDescriptions([Ljava/lang/String;[I[J)V+0
+j  com.jprofiler.agent.E.C(Lcom/jprofiler/agent/Sampler;)V+679
+j  com.jprofiler.agent.Sampler.run()V+35
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x0bc5b418 JavaThread "_jprofiler_native_comm" daemon [_thread_in_native, id=8268]
+=>0x0bc580e0 JavaThread "_jprofiler_sampler" daemon [_thread_in_native, id=6608]
+  0x0bb5b568 JavaThread "_jprofiler_trigger_initializer" daemon [_thread_blocked, id=8624]
+  0x0bb5afe0 JavaThread "_jprofiler_comm_java" daemon [_thread_blocked, id=8608]
+  0x0bb147f0 JavaThread "Finalizer" daemon [_thread_blocked, id=1680]
+  0x0bb0d1e0 JavaThread "Reference Handler" daemon [_thread_blocked, id=4640]
+  0x00cb2d58 JavaThread "main" [_thread_blocked, id=7020]
+
+Other Threads:
+  0x0bad91c0 VMThread [id=6036]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 576K, used 272K [0x03a90000, 0x03b30000, 0x03f70000)
+  eden space 512K,  40% used [0x03a90000, 0x03ac4098, 0x03b10000)
+  from space 64K, 100% used [0x03b20000, 0x03b30000, 0x03b30000)
+  to   space 64K,   0% used [0x03b10000, 0x03b10000, 0x03b20000)
+ tenured generation   total 4624K, used 4537K [0x03f70000, 0x043f4000, 0x07a90000)
+   the space 4624K,  98% used [0x03f70000, 0x043de630, 0x043de800, 0x043f4000)
+ compacting perm gen  total 8192K, used 3455K [0x07a90000, 0x08290000, 0x0ba90000)
+   the space 8192K,  42% used [0x07a90000, 0x07defc88, 0x07defe00, 0x08290000)
+No shared spaces configured.
+
+Dynamic libraries:
+0x00400000 - 0x0040d000 	C:\jdk\jdk1.5.0_11\bin\javaw.exe
+0x77bc0000 - 0x77cde000 	C:\Windows\system32\ntdll.dll
+0x76490000 - 0x76568000 	C:\Windows\system32\kernel32.dll
+0x766c0000 - 0x7677f000 	C:\Windows\system32\ADVAPI32.dll
+0x76b40000 - 0x76c03000 	C:\Windows\system32\RPCRT4.dll
+0x776e0000 - 0x7777e000 	C:\Windows\system32\USER32.dll
+0x76810000 - 0x7685b000 	C:\Windows\system32\GDI32.dll
+0x779e0000 - 0x77a8a000 	C:\Windows\system32\MSVCRT.dll
+0x76b20000 - 0x76b3e000 	C:\Windows\system32\IMM32.DLL
+0x76a50000 - 0x76b17000 	C:\Windows\system32\MSCTF.dll
+0x76480000 - 0x76489000 	C:\Windows\system32\LPK.DLL
+0x76570000 - 0x765ed000 	C:\Windows\system32\USP10.dll
+0x77960000 - 0x7798d000 	C:\Windows\system32\WS2_32.dll
+0x77950000 - 0x77956000 	C:\Windows\system32\NSI.dll
+0x762e0000 - 0x76301000 	C:\Windows\system32\NTMARTA.DLL
+0x77ce0000 - 0x77d29000 	C:\Windows\system32\WLDAP32.dll
+0x763e0000 - 0x763e7000 	C:\Windows\system32\PSAPI.DLL
+0x762c0000 - 0x762d1000 	C:\Windows\system32\SAMLIB.dll
+0x77780000 - 0x778c4000 	C:\Windows\system32\ole32.dll
+0x6d740000 - 0x6d8dd000 	C:\jdk\jdk1.5.0_11\jre\bin\client\jvm.dll
+0x74810000 - 0x74843000 	C:\Windows\system32\WINMM.dll
+0x76780000 - 0x7680c000 	C:\Windows\system32\OLEAUT32.dll
+0x75a00000 - 0x75a38000 	C:\Windows\system32\OLEACC.dll
+0x76260000 - 0x7628c000 	C:\Windows\system32\apphelp.dll
+0x00800000 - 0x00817000 	C:\Program Files\Common Files\Logishrd\LVMVFM\LVPrcInj.dll
+0x6d300000 - 0x6d308000 	C:\jdk\jdk1.5.0_11\jre\bin\hpi.dll
+0x68700000 - 0x68805000 	C:\Program Files\jprofiler5\bin\windows\jprofilerti.dll
+0x10000000 - 0x10024000 	C:\Program Files\jprofiler5\bin\windows\LIBEXPAT.dll
+0x6fbc0000 - 0x6fbca000 	C:\Program Files\jprofiler5\bin\windows\mingwm10.dll
+0x72890000 - 0x72897000 	C:\Windows\system32\WSOCK32.DLL
+0x6d710000 - 0x6d71c000 	C:\jdk\jdk1.5.0_11\jre\bin\verify.dll
+0x6d380000 - 0x6d39d000 	C:\jdk\jdk1.5.0_11\jre\bin\java.dll
+0x6d730000 - 0x6d73f000 	C:\jdk\jdk1.5.0_11\jre\bin\zip.dll
+0x6d530000 - 0x6d538000 	C:\jdk\jdk1.5.0_11\jre\bin\management.dll
+0x75940000 - 0x7597b000 	C:\Windows\system32\mswsock.dll
+0x751d0000 - 0x751d6000 	C:\Windows\System32\wshtcpip.dll
+
+VM Arguments:
+jvm_args: -agentlib:jprofilerti=port=31757 -Xbootclasspath/p:c:\Program Files\Terracotta\terracotta-trunk-nightly-rev3308\bin\..\lib\dso-boot\dso-boot-hotspot_win32_150_11.jar -Dtc.install-root=c:\Program Files\Terracotta\terracotta-trunk-nightly-rev3308\bin\.. -Dtc.config=tc-config.xml -Xbootclasspath/a:C:\Program Files\jprofiler5\bin\agent.jar
+java_command: demo.jtable.Main
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\jdk\jdk1.5.0_11
+CLASSPATH=.;C:\Program Files\Java\jre1.6.0_01\lib\ext\QTJava.zip
+PATH=C:\Program Files\jprofiler5\bin\windows;C:\Program Files\jprofiler5\bin\..\bin\windows;C:\jdk\jdk1.5.0_11\bin;c:\ruby\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Common Files\Roxio Shared\DLLShared\;C:\Program Files\Common Files\Roxio Shared\DLLShared\;C:\Program Files\Common Files\Roxio Shared\9.0\DLLShared\;C:\Program Files\QuickTime\QTSystem\;C:\jdk\jdk1.5.0_11\bin;c:\cygwin\bin;c:\jdk\jdk1.5.0_11\bin;c:\program files\java\jre1.6.0_01\bin
+USERNAME=hhuynh
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 15 Stepping 6, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows Vista Build 6000 
+
+CPU:total 2 (cores per cpu 2, threads per core 1) family 6 model 15 stepping 6, cmov, cx8, fxsr, mmx, sse, sse2
+
+Memory: 4k page, physical 2094528k(836032k free), swap 4194303k(2767616k free)
+
+vm_info: Java HotSpot(TM) Client VM (1.5.0_11-b03) for windows-x86, built on Dec 15 2006 01:16:12 by "java_re" with MS VC++ 6.0
+

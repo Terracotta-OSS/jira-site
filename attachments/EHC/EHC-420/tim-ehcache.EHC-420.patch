@@ -1,0 +1,51 @@
+Index: tim-ehcache-1.7-system-tests/src/test/java/org/terracotta/modules/ehcache/store/BlockingCacheTest.java
+===================================================================
+--- tim-ehcache-1.7-system-tests/src/test/java/org/terracotta/modules/ehcache/store/BlockingCacheTest.java	(revision 19720)
++++ tim-ehcache-1.7-system-tests/src/test/java/org/terracotta/modules/ehcache/store/BlockingCacheTest.java	(working copy)
+@@ -56,13 +56,13 @@
+ 
+       final int index = barrier.await();
+ 
+-      CacheManager cacheManager = new CacheManager(getClass().getResourceAsStream("/basic-cache-test.xml"));
++      CacheManager cacheManager = new CacheManager(getClass().getResourceAsStream("/tti-cache-test.xml"));
+ 
+-      Ehcache cache = cacheManager.getCache("test");
++      Ehcache cache = cacheManager.getCache("test1");
+       Assert.assertNotNull("There should be a cache test from that manager!", cache);
+       BlockingCache blockingCache = new BlockingCache(cache);
+       cacheManager.replaceCacheWithDecoratedCache(cache, blockingCache);
+-      cache = cacheManager.getEhcache("test");
++      cache = cacheManager.getEhcache("test1");
+ 
+       if(index == 0) {
+         // Node 0 blocks all other read to the key
+@@ -113,6 +113,29 @@
+           cache.put(new Element(KEY_3, VALUE_3));
+           break;
+       }
++
++      barrier.await();
++
++      // This tests inline eviction (EHC-420)
++      Thread.sleep(12000);
++
++      switch (index) {
++        case 0:
++          assertNull(cache.get(KEY_3));
++          break;
++      }
++
++      barrier.await();
++
++      switch (index) {
++        case 0:
++          Thread.sleep(1500);
++          cache.put(new Element(KEY_3, VALUE_3));
++          break;
++        default:
++          assertNotNull(cache.get(KEY_3));
++          assertEquals(VALUE_3, cache.get(KEY_3).getValue());
++      }
+     }
+ 
+     public static void visitL1DSOConfig(final ConfigVisitor visitor, final DSOClientConfigHelper config) {

@@ -1,0 +1,32 @@
+<ehcache updateCheck="false" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ehcache.sf.net/ehcache.xsd">
+
+   <diskStore path="java.io.tmpdir/cas"/>
+	
+	<!-- Manual peer discovery. NOTE: change the peer's host addresses for each node's deployments 
+		The cas peer node is retrieved based on maven filter property files. The list of urls should not include the 
+		current server that is beind configured. So node 1 will include node 2 in the list only, and vice versa. 
+		
+		Caches are defines inside the ticket registry file through Spring beans. 
+	-->
+	<cacheManagerPeerProviderFactory 
+	            class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+	            properties="peerDiscovery=manual,
+				rmiUrls=//localhost:40001/org.jasig.cas.ticket.ServiceTicket|//localhost:40001/org.jasig.cas.ticket.TicketGrantingTicket" />
+   
+   <!-- Port where it listens for peers. -->
+   <cacheManagerPeerListenerFactory 
+            class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+            properties="port=40001" />
+
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="300"
+            timeToLiveSeconds="300"
+            overflowToDisk="true"
+            maxElementsOnDisk="10000000"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU"
+            />
+</ehcache>

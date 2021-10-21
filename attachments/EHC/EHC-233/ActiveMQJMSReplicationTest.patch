@@ -1,0 +1,79 @@
+Index: ActiveMQJMSReplicationTest.java
+===================================================================
+--- ActiveMQJMSReplicationTest.java	(revision 1542)
++++ ActiveMQJMSReplicationTest.java	(working copy)
+@@ -18,29 +18,32 @@
+ 
+ package net.sf.ehcache.distribution.jms;
+ 
+-import net.sf.ehcache.CacheManager;
+-import net.sf.ehcache.Ehcache;
+-import net.sf.ehcache.Element;
+-import net.sf.ehcache.Status;
+-import net.sf.ehcache.CacheException;
+ import static net.sf.ehcache.distribution.jms.TestUtil.forceVMGrowth;
+-import org.junit.After;
+ import static org.junit.Assert.assertEquals;
+ import static org.junit.Assert.assertNotNull;
+ import static org.junit.Assert.assertNull;
+ import static org.junit.Assert.assertTrue;
+-import org.junit.Before;
+-import org.junit.Test;
+ 
+ import java.io.Serializable;
++import java.util.ArrayList;
+ import java.util.Date;
+-import java.util.ArrayList;
+ import java.util.Map;
+-import java.util.List;
+-import java.util.Random;
+ import java.util.logging.Level;
+ import java.util.logging.Logger;
+ 
++import net.sf.ehcache.CacheException;
++import net.sf.ehcache.CacheManager;
++import net.sf.ehcache.Ehcache;
++import net.sf.ehcache.Element;
++import net.sf.ehcache.Status;
++
++import org.apache.activemq.broker.BrokerService;
++import org.junit.After;
++import org.junit.AfterClass;
++import org.junit.Before;
++import org.junit.BeforeClass;
++import org.junit.Test;
++
+ /**
+  * ActiveMQ seems to have a bug in 5.1 where it does not cleanup temporary queues, even though they have been
+  * deleted. That bug appears to be long standing. 5.2 as of 10/08 was not released.
+@@ -48,8 +51,9 @@
+  * http://issues.apache.org/activemq/browse/AMQ-1255
+  */
+ public class ActiveMQJMSReplicationTest {
++    private static BrokerService broker;
++    
+ 
+-
+     static final int NBR_ELEMENTS = 100;
+ 
+     static final String SAMPLE_CACHE_ASYNC = "sampleCacheAsync";
+@@ -66,6 +70,19 @@
+     protected String getConfigurationFile() {
+         return "distribution/jms/ehcache-distributed-jms-activemq.xml";
+     }
++    
++    @BeforeClass
++    public static void beforeAll() throws Exception{
++      broker =  new BrokerService();
++      broker.setBrokerName("broker");
++      broker.addConnector("tcp://localhost:61616"); 
++      broker.start();
++    }
++    
++    @AfterClass
++    public static void afterAll() throws Exception{
++      broker.stop();
++    }
+ 
+     @Before
+     public void setUp() throws Exception {

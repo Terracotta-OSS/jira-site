@@ -1,0 +1,31 @@
+Index: src/main/java/net/sf/ehcache/config/CacheConfiguration.java
+===================================================================
+--- src/main/java/net/sf/ehcache/config/CacheConfiguration.java	(révision 8890)
++++ src/main/java/net/sf/ehcache/config/CacheConfiguration.java	(copie de travail)
+@@ -2543,7 +2543,7 @@
+     /**
+      * Accessor
+      */
+-    public List getCacheEventListenerConfigurations() {
++    public List<CacheEventListenerFactoryConfiguration> getCacheEventListenerConfigurations() {
+         return cacheEventListenerConfigurations;
+     }
+ 
+@@ -2552,7 +2552,7 @@
+      *
+      * @return the configuration
+      */
+-    public List getCacheExtensionConfigurations() {
++    public List<CacheExtensionFactoryConfiguration> getCacheExtensionConfigurations() {
+         return cacheExtensionConfigurations;
+     }
+ 
+@@ -2561,7 +2561,7 @@
+      *
+      * @return the configuration
+      */
+-    public List getCacheLoaderConfigurations() {
++    public List<CacheLoaderFactoryConfiguration> getCacheLoaderConfigurations() {
+         return cacheLoaderConfigurations;
+     }
+ 

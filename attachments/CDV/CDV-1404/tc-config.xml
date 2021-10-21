@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-5.xsd">
+
+
+  <!-- Tell DSO where to put the generated client logs -->  
+  <clients>
+    <modules>
+            <module name="tim-distributed-cache" version="1.2.0"/> 
+            <module name="tim-concurrent-collections" version="1.2.0"/> 
+            <module name="tim-quartz-1.6.1" version="1.2.0"/>
+    </modules>
+
+    <logs>/home/rstacy/development/terracotta-3.1.0/client-logs</logs>
+  </clients>
+
+  <application>
+    <dso>
+        <transient-fields>
+            <field-name>org.mule.transport.quartz.config.AbstractJobConfig.muleContext</field-name>
+        </transient-fields>
+
+        <instrumented-classes>
+            <include>
+                <class-expression>org.mule.transport.quartz.jobs.EventGeneratorJobConfig</class-expression>
+            </include>
+            <include>
+                <class-expression>org.mule.transport.quartz.config.AbstractJobConfig</class-expression>
+            </include>            				<include>                                                                                                                                
+                <class-expression>org.mule.transport.NullPayload</class-expression>          
+            </include>       
+            <include>
+                <class-expression>org.mule.transport.quartz.jobs.ScheduledDispatchJobConfig</class-expression>
+            </include>
+        </instrumented-classes>
+
+    </dso>
+  </application>
+
+</tc:tc-config>

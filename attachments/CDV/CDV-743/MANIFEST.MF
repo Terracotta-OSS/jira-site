@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: gkeim
+Build-Jdk: 1.6.0_10-ea
+Main-Class: org.terracotta.tools.SnapshotVisualizer
+Class-Path: h2-1.0.67.jar tc.jar commons-httpclient-3.0.1.jar jcommon-1.0.12.jar jfreechart-1.0.7.jar

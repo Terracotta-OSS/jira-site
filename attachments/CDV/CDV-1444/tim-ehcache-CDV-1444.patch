@@ -1,0 +1,191 @@
+Index: tim-ehcache-2.x/src/test/java/org/terracotta/modules/ehcache/store/LocalBufferedMapTest.java
+===================================================================
+--- tim-ehcache-2.x/src/test/java/org/terracotta/modules/ehcache/store/LocalBufferedMapTest.java	(revision 24500)
++++ tim-ehcache-2.x/src/test/java/org/terracotta/modules/ehcache/store/LocalBufferedMapTest.java	(working copy)
+@@ -63,7 +63,8 @@
+     if (map != null) {
+       map.dispose();
+     }
+-    map = new UnclusteredLocalBufferedMap<String, String>(collectingBackend, new MockCacheCoherence(), new MockValueModelHandler());
++    map = new UnclusteredLocalBufferedMap<String, String>(collectingBackend, new MockCacheCoherence(),
++                                                          new MockValueModelHandler());
+     map.startThreadIfNecessary();
+     collectingBackend.reset();
+   }
+@@ -304,20 +305,24 @@
+       return clearCalled;
+     }
+ 
++    @Override
+     public void clear() {
+       clearCalled = true;
+       backendMap.clear();
+     }
+ 
++    @Override
+     public boolean containsKey(Object key) {
+       return backendMap.containsKey(key);
+     }
+ 
++    @Override
+     public Object remove(Object key) {
+       removedKeys.add(key);
+       return backendMap.remove(key);
+     }
+ 
++    @Override
+     public boolean unlockedContainsKey(Object key) {
+       return backendMap.containsKey(key);
+     }
+@@ -326,6 +331,7 @@
+       return backendMap.get(key);
+     }
+ 
++    @Override
+     public void unlockedPutNoReturn(Object key, Object value) {
+       backendMap.put(key, value);
+     }
+@@ -350,6 +356,10 @@
+       // no-op
+     }
+ 
++    public Object fromPortableKey(Object pKey) {
++      return null;
++    }
++
+   }
+ 
+   private static class MockCacheCoherence implements CacheCoherence {
+Index: tim-ehcache-2.x/src/main/java/org/terracotta/modules/ehcache/store/ValueModeHandler.java
+===================================================================
+--- tim-ehcache-2.x/src/main/java/org/terracotta/modules/ehcache/store/ValueModeHandler.java	(revision 24500)
++++ tim-ehcache-2.x/src/main/java/org/terracotta/modules/ehcache/store/ValueModeHandler.java	(working copy)
+@@ -10,7 +10,9 @@
+ public interface ValueModeHandler {
+ 
+   public Object createPortableKey(Object key);
+-  
++
++  public Object fromPortableKey(Object pKey);
++
+   public TimestampedValue createTimestampedValue(Element element);
+ 
+   public void processStoredValue(TimestampedValue value);
+Index: tim-ehcache-2.x/src/main/java/org/terracotta/modules/ehcache/store/ClusteredStore.java
+===================================================================
+--- tim-ehcache-2.x/src/main/java/org/terracotta/modules/ehcache/store/ClusteredStore.java	(revision 24500)
++++ tim-ehcache-2.x/src/main/java/org/terracotta/modules/ehcache/store/ClusteredStore.java	(working copy)
+@@ -501,7 +501,17 @@
+   }
+ 
+   public long getInMemorySizeInBytes() {
+-    throw new UnsupportedOperationException();
++    long sizeInBytes = 0;
++    for (Object o : backend.values()) {
++      TimestampedValue tsv = (TimestampedValue) o;
++      if (tsv != null) {
++        Object value = tsv.getValue();
++        if (value instanceof byte[]) {
++          sizeInBytes += ((byte[]) value).length;
++        }
++      }
++    }
++    return sizeInBytes;
+   }
+ 
+   public int getOnDiskSize() {
+@@ -565,7 +575,7 @@
+     try {
+       List<Object> keys = new ArrayList<Object>();
+       for (Object obj : this.backend.keySet()) {
+-        keys.add(obj);
++        keys.add(valueModeHandler.fromPortableKey(obj));
+       }
+       Object[] backendArr = keys.toArray();
+       if (isIncoherent()) {
+Index: tim-ehcache-2.x/src/main/java/org/terracotta/modules/ehcache/store/ValueModeHandlerIdentity.java
+===================================================================
+--- tim-ehcache-2.x/src/main/java/org/terracotta/modules/ehcache/store/ValueModeHandlerIdentity.java	(revision 24500)
++++ tim-ehcache-2.x/src/main/java/org/terracotta/modules/ehcache/store/ValueModeHandlerIdentity.java	(working copy)
+@@ -33,8 +33,12 @@
+   public Element createElement(final Object key, final TimestampedValue value) {
+     if (null == value) { return null; }
+ 
+-    Element element = ((AbstractElementData)value).createElement(key);
++    Element element = ((AbstractElementData) value).createElement(key);
+     element.setElementEvictionData(new ClusteredElementEvictionData(store, value));
+     return element;
+   }
++
++  public Object fromPortableKey(Object pKey) {
++    return pKey;
++  }
+ }
+Index: tim-ehcache-2.x/src/main/java/org/terracotta/modules/ehcache/store/ValueModeHandlerSerialization.java
+===================================================================
+--- tim-ehcache-2.x/src/main/java/org/terracotta/modules/ehcache/store/ValueModeHandlerSerialization.java	(revision 24500)
++++ tim-ehcache-2.x/src/main/java/org/terracotta/modules/ehcache/store/ValueModeHandlerSerialization.java	(working copy)
+@@ -29,7 +29,8 @@
+     this(store, copyOnRead, new ElementSerializationStrategy());
+   }
+ 
+-  ValueModeHandlerSerialization(final ClusteredStore store, boolean copyOnRead, SerializationStrategy<AbstractElementData> serializationStrategy) {
++  ValueModeHandlerSerialization(final ClusteredStore store, boolean copyOnRead,
++                                SerializationStrategy<AbstractElementData> serializationStrategy) {
+     this.store = store;
+     this.copyOnRead = copyOnRead;
+     this.serializationStrategy = serializationStrategy;
+@@ -38,8 +39,9 @@
+ 
+   // onLoad method - used when clustered version of this object is faulted into another node
+   private void init() {
+-    this.threadContextAwareClassLoader = new ThreadContextAwareClassLoader(ValueModeHandlerSerialization.class
+-        .getClassLoader());
++    this.threadContextAwareClassLoader = new ThreadContextAwareClassLoader(
++                                                                           ValueModeHandlerSerialization.class
++                                                                               .getClassLoader());
+   }
+ 
+   public Object createPortableKey(Object key) {
+@@ -60,15 +62,19 @@
+     value = copyOnRead ? null : value;
+ 
+     if (element.usesCacheDefaultLifespan()) {
+-      return new SerializedEntry<SerializationModeElementData>(value, data,
+-          TimeUtil.toSecs(element.getElementEvictionData().getCreationTime()),
+-          TimeUtil.toSecs(element.getElementEvictionData().getCreationTime()));
++      return new SerializedEntry<SerializationModeElementData>(value, data, TimeUtil.toSecs(element
++          .getElementEvictionData().getCreationTime()), TimeUtil.toSecs(element.getElementEvictionData()
++          .getCreationTime()));
+     } else {
+       int tti = element.getTimeToIdle();
+       int ttl = element.getTimeToLive();
+       return new CustomLifespanSerializedEntry<SerializationModeElementData>(value, data, tti, ttl,
+-          TimeUtil.toSecs(element.getElementEvictionData().getCreationTime()),
+-          TimeUtil.toSecs(element.getElementEvictionData().getCreationTime()));
++                                                                             TimeUtil.toSecs(element
++                                                                                 .getElementEvictionData()
++                                                                                 .getCreationTime()),
++                                                                             TimeUtil.toSecs(element
++                                                                                 .getElementEvictionData()
++                                                                                 .getCreationTime()));
+     }
+   }
+ 
+@@ -107,4 +113,16 @@
+       throw new CacheException(e);
+     }
+   }
++
++  public Object fromPortableKey(Object pKey) {
++    if (pKey instanceof String) {
++      try {
++        return this.serializationStrategy.generateKeyFromString((String) pKey, threadContextAwareClassLoader);
++      } catch (Exception e) {
++        throw new CacheException(e);
++      }
++    } else {
++      return pKey;
++    }
++  }
+ }

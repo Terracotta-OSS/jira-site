@@ -1,0 +1,29 @@
+Index: ElementTest.java
+===================================================================
+--- ElementTest.java	(revision 8458)
++++ ElementTest.java	(working copy)
+@@ -179,18 +179,19 @@
+ 
+     @Test
+     public void testLastAccessTime() throws InterruptedException {
++        long time1 = System.currentTimeMillis();
+         Element element = new Element("", "");
+-        assertThat(element.getLastAccessTime(), is(0L));
++        assertThat(element.getLastAccessTime() >= time1, is(true));
+ 
+-        long time1 = System.currentTimeMillis();
++        long time2 = System.currentTimeMillis();
+         element.updateAccessStatistics();
+-        assertThat(element.getLastAccessTime() >= time1, is(true));
++        assertThat(element.getLastAccessTime() >= time2, is(true));
+ 
+         TimeUnit.MILLISECONDS.sleep(100);
+ 
+-        long time2 = System.currentTimeMillis();
++        long time3 = System.currentTimeMillis();
+         element.resetAccessStatistics();
+-        assertThat(element.getLastAccessTime() >= time2, is(true));
++        assertThat(element.getLastAccessTime() >= time3, is(true));
+     }
+ 
+     @Test

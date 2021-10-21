@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+All content copyright Terracotta, Inc., unless otherwise indicated. All rights reserved.
+
+-->
+<!--All content copyright (c) 2003-2008 Terracotta, Inc.,
+  except as may otherwise be noted in a separate copyright notice.
+  All rights reserved-->
+<!--This config file is used by the server and bootjar tool when none is specified.-->
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config">
+  <servers secure="true">
+    <server name="server1" host="127.0.0.1" bind="127.0.0.1">
+      <data>%(user.home)/terracotta/server-data-server1</data>
+      <logs>%(user.home)/terracotta/server-logs-server1</logs>
+      <statistics>%(user.home)/terracotta/server-statistics-server1</statistics>
+	  <security>
+        <ssl>
+          <certificate>jks:server1alias@keystore-file.jks</certificate>
+        </ssl>
+        <keychain>
+          <class>com.terracotta.management.keychain.FileStoreKeyChain</class>
+          <url>file:///dev/servers/TerracottaEE/server1keychain.tkc</url>
+        </keychain>
+        <auth>
+          <realm>com.tc.net.core.security.ShiroIniRealm</realm>
+          <url>file:///dev/servers/TerracottaEE/my_auth.ini</url>
+          <user>server1username</user>
+        </auth>
+      </security>
+	  <authentication />
+    </server>
+	<server name="server2" host="127.0.0.1" bind="127.0.0.1">
+      <data>%(user.home)/terracotta/server-data-server2</data>
+      <logs>%(user.home)/terracotta/server-logs-server2</logs>
+      <statistics>%(user.home)/terracotta/server-statistics-server2</statistics>
+	  <security>
+        <ssl>
+          <certificate>jks:server2alias@keystore-file2.jks</certificate>
+        </ssl>
+        <keychain>
+          <class>com.terracotta.management.keychain.FileStoreKeyChain</class>
+          <url>file:///dev/servers/TerracottaEE/server2keychain.tkc</url>
+        </keychain>
+        <auth>
+          <realm>com.tc.net.core.security.ShiroIniRealm</realm>
+          <url>file:///dev/servers/TerracottaEE/my_auth.ini</url>
+          <user>server2username</user>
+        </auth>
+      </security>
+      <dso-port>9511</dso-port>
+      <jmx-port>9521</jmx-port>
+      <l2-group-port>9531</l2-group-port>
+	  <authentication />
+	</server>
+  <mirror-groups>
+	  <mirror-group group-name="group1">
+		<members>
+		  <member>server1</member>
+		   <member>server2</member>
+		 </members>
+	   </mirror-group>
+	</mirror-groups> 
+	</servers>
+  <clients>
+    <logs>%(user.home)/terracotta/client-logs</logs>
+  </clients>
+</tc:tc-config>

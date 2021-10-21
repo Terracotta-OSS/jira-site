@@ -1,0 +1,40 @@
+Index: src/main/java/org/terracotta/NativeToolHandler.java
+===================================================================
+--- src/main/java/org/terracotta/NativeToolHandler.java	(revision 24266)
++++ src/main/java/org/terracotta/NativeToolHandler.java	(working copy)
+@@ -93,6 +93,10 @@
+     return System.getProperty("os.name").indexOf("Linux") >= 0;
+   }
+ 
++  private boolean isFreeBSD() {
++    return System.getProperty("os.name").indexOf("FreeBSD") >= 0;
++  }
++
+   private boolean isSolaris() {
+     return System.getProperty("os.name").indexOf("SunOS") >= 0;
+   }
+@@ -135,6 +139,13 @@
+     return machine.indexOf("x86_64") >= 0;
+   }
+ 
++  private boolean isFreeBSD64() {
++    if (!isFreeBSD())
++      return false;
++
++    return System.getProperty("os.arch").indexOf("amd64") >= 0;
++  }
++
+   private File configureToolLocation() {
+     File nativeFolder = new File(installLocation, "native");
+     if (isWindows())
+@@ -147,6 +158,10 @@
+       return new File(nativeFolder, "Linux64");
+     if (isLinux())
+       return new File(nativeFolder, "Linux");
++    if (isFreeBSD())
++      return new File(nativeFolder, "FreeBSD");
++    if (isFreeBSD64())
++      return new File(nativeFolder, "FreeBSD64");
+     throw new RuntimeException("Platform not supported!");
+   }
+ }

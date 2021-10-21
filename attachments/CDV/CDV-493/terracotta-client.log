@@ -1,0 +1,190 @@
+2007-10-01 14:27:44,953 [main] INFO com.tc.properties.TCProperties - Loading default properties from tc.properties
+2007-10-01 14:27:44,953 [main] INFO com.tc.properties.TCProperties - Loaded TCProperties : TCProperties={l2.objectmanager.maxObjectsInTxnObjGrouping=5000, l1.cachemanager.logging.enabled=false, l2.berkeleydb.je.cleaner.minAge=5, ehcache.evictor.pool.size=1, session.debug.hops=false, l2.nha.tribes.mcast.mcastAddress=228.0.0.4, ehcache.evictor.logging.enabled=false, l1.objectmanager.remote.maxDNALRUSize=60, session.request.bench.enabled=false, l2.transactionmanager.logging.printStats=true, l2.nha.send.timeout.millis=16000, l2.nha.tribes.orderinterceptor.enabled=false, l1.connect.versionMatchCheck.enabled=true, l2.berkeleydb.je.lock.timeout=180000000, l2.nha.tribes.mcast.mcastFrequency=500, l2.transactionmanager.logging.verbose=false, l2.berkeleydb.je.maxMemoryPercent=25, l2.transactionmanager.logging.enabled=false, l1.transactionmanager.strings.compress.enabled=true, l2.beanshell.port=9929, l2.cachemanager.logging.enabled=false, l2.cachemanager.criticalThreshold=90, l1.cachemanager.criticalThreshold=90, ehcache.global.eviction.frequency=10, session.debug.hops.interval=100, l2.nha.tribes.mcast.tcpListenHost=127.0.0.1, l2.cachemanager.enabled=true, session.request.tracking.interval=2500, tc.management.test.mbeans.enabled=false, ehcache.logging.enabled=false, l1.transactionmanager.maxOutstandingBatchSize=8, l1.cachemanager.sleepInterval=3000, ehcache.global.eviction.rest.timeMillis=10, session.request.tracking.threshold=15000, l2.seda.commitstage.threads=4, l1.configbundles.default=excludes-config,1.0.0;guimodels-config,1.0.0;jdk15-preinst-config,1.0.0;spring-config,1.0.0;standard-config,1.0.0, session.invalidator.sleep=300, l1.cachemanager.enabled=true, l1.transactionmanager.logging.enabled=false, l1.transactionmanager.maxBatchSizeInKiloBytes=128, l2.berkeleydb.je.cleaner.bytesInterval=20000000, l2.lfu.agingFactor=1, l2.objectmanager.maxObjectsToCommit=5000, l2.cachemanager.leastCount=2, memory.monitor.forcebasic=false, l1.transactionmanager.maxSleepTimeBeforeHalt=1024, session.request.tracking=false, session.debug.invalidate=false, l2.cachemanager.threshold=70, l2.lfu.recentlyAccessedIgnorePercentage=20, l1.reconnect.timeout.millis=5000, l2.cachemanager.sleepInterval=3000, ehcache.global.eviction.segments=2, l2.beanshell.enabled=false, ehcache.concurrency=1, l1.jvm.check.compatibility=true, l2.berkeleydb.je.lock.nLockTables=7, l2.objectmanager.maxTxnsInTxnObjectGrouping=500, l2.nha.tribes.mcast.mcastPort=7777, l1.transactionmanager.maxPendingBatches=32, l1.reconnect.enabled=false, l2.berkeleydb.je.cleaner.lookAheadCacheSize=32768, ehcache.global.eviction.enable=true, l2.berkeleydb.je.checkpointer.bytesInterval=100000000, l2.nha.tribes.mcast.tcpListenPort=4000, l2.objectmanager.cachePolicy=lfu, l2.objectmanager.loadObjectID.longsPerMemoryEntry=128, l2.lfu.debug.enabled=false, l2.cachemanager.percentageToEvict=10, l1.cachemanager.percentageToEvict=10, session.vhosts.excluded=, l2.seda.flushstage.threads=4, tc.management.mbeans.enabled=true, l2.objectmanager.fault.logging.enabled=false, l2.berkeleydb.je.cleaner.detailMaxMemoryPercentage=5, l1.transactionmanager.strings.compress.minSize=512, session.request.tracking.dump=false, l2.nha.mcast.enabled=false, l2.seda.faultstage.threads=4, tc.stage.monitor.enabled=false, l2.cachemanager.monitorOldGenOnly=true, l1.cachemanager.monitorOldGenOnly=true, l2.objectmanager.deleteBatchSize=5000, l1.cachemanager.threshold=70, tc.stage.monitor.delay=5000, l2.objectmanager.loadObjectID.longsPerDiskEntry=4, session.invalidator.bench.enabled=true, l1.transactionmanager.strings.compress.logging.enabled=false, l2.nha.tribes.mcast.memberDropTime=3000, l1.cachemanager.leastCount=2, l1.max.connect.retries=-1}
+2007-10-01 14:27:44,953 [main] INFO com.tc.management.beans.logging.TCLoggingBroadcasterMBean - No resource bundle exists for MBean com.tc.management.beans.logging.TCLoggingBroadcasterMBean
+2007-10-01 14:27:44,968 [main] INFO com.terracottatech.general - New logging session started.
+2007-10-01 14:27:45,000 [main] INFO com.terracottatech.console - Terracotta trunk-nightly-rev5744, as of 20071001-061048 (Revision 5744 by cruise@rh4mo0 from trunk)
+2007-10-01 14:27:45,015 [main] INFO com.tc.logging.TCLogging - Terracotta trunk-nightly-rev5744, as of 20071001-061048 (Revision 5744 by cruise@rh4mo0 from trunk)
+2007-10-01 14:27:45,359 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Attempting to load configuration from the file at 'C:\Documents and Settings\kkannaiy\workspace\jtable5744\tc-config.xml'...
+2007-10-01 14:27:45,375 [main] INFO com.tc.config.schema.setup.StandardXMLFileConfigurationCreator - Successfully loaded configuration from the file at 'C:\Documents and Settings\kkannaiy\workspace\jtable5744\tc-config.xml'. Config is:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<con:tc-config xmlns:con="http://www.terracotta.org/config">
+  <servers>
+    <server host="%i" name="localhost">
+      <dso-port>9510</dso-port>
+      <jmx-port>9520</jmx-port>
+      <data>terracotta/server-data</data>
+      <logs>terracotta/server-logs</logs>
+    </server>
+  </servers>
+  <clients>
+    <logs>terracotta/client-logs</logs>
+  </clients>
+  <application>
+    <dso>
+      <transient-fields>
+        <field-name>jtable.Main.model</field-name>
+      </transient-fields>
+    </dso>
+  </application>
+</con:tc-config>
+2007-10-01 14:27:45,640 [main] INFO com.terracottatech.console - Configuration loaded from the file at 'C:\Documents and Settings\kkannaiy\workspace\jtable5744\tc-config.xml'.
+2007-10-01 14:27:45,921 [main] INFO com.terracottatech.console - Log file: 'C:\Documents and Settings\kkannaiy\workspace\jtable5744\terracotta\client-logs\terracotta-client.log'.
+2007-10-01 14:27:45,921 [main] INFO com.tc.logging.TCLogging - ========================================================================
+All Java System Properties for this Terracotta instance:
+awt.toolkit                  : sun.awt.windows.WToolkit
+file.encoding                : Cp1252
+file.encoding.pkg            : sun.io
+file.separator               : \
+java.awt.graphicsenv         : sun.awt.Win32GraphicsEnvironment
+java.awt.printerjob          : sun.awt.windows.WPrinterJob
+java.class.path              : C:\Documents and Settings\kkannaiy\workspace\jtable5744\bin
+java.class.version           : 49.0
+java.endorsed.dirs           : C:\Program Files\Java\jre1.5.0_09\lib\endorsed
+java.ext.dirs                : C:\Program Files\Java\jre1.5.0_09\lib\ext
+java.home                    : C:\Program Files\Java\jre1.5.0_09
+java.io.tmpdir               : C:\DOCUME~1\kkannaiy\LOCALS~1\Temp\
+java.library.path            : C:\Program Files\Java\jre1.5.0_09\bin;.;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\jre1.5.0_09\bin\client;C:\Program Files\Java\jre1.5.0_09\bin;C:\Program Files\Java\jre1.5.0_09\bin\client;C:\Program Files\Java\jre1.5.0_09\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\ATI Technologies\ATI Control Panel;C:\Program Files\BitKeeper;C:\Program Files\SSH Communications Security\SSH Secure Shell;C:\Program Files\Java\jdk1.5.0_09\bin;C:\Program Files\Java\jdk1.5.0_09\lib\tools.jar;C:\bea\weblogic81\server\lib\webservices.jar;C:\marathon-1.0.5
+java.runtime.name            : Java(TM) 2 Runtime Environment, Standard Edition
+java.runtime.version         : 1.5.0_09-b01
+java.specification.name      : Java Platform API Specification
+java.specification.vendor    : Sun Microsystems Inc.
+java.specification.version   : 1.5
+java.vendor                  : Sun Microsystems Inc.
+java.vendor.url              : http://java.sun.com/
+java.vendor.url.bug          : http://java.sun.com/cgi-bin/bugreport.cgi
+java.version                 : 1.5.0_09
+java.vm.info                 : mixed mode
+java.vm.name                 : Java HotSpot(TM) Client VM
+java.vm.specification.name   : Java Virtual Machine Specification
+java.vm.specification.vendor : Sun Microsystems Inc.
+java.vm.specification.version: 1.0
+java.vm.vendor               : Sun Microsystems Inc.
+java.vm.version              : 1.5.0_09-b01
+line.separator               : 
+
+os.arch                      : x86
+os.name                      : Windows XP
+os.version                   : 5.1
+path.separator               : ;
+project.name                 : jtable5744
+sun.arch.data.model          : 32
+sun.boot.class.path          : C:\eclipse\plugins\org.terracotta.dso_1.0.0.trunk_nightly_r5744_v20071001\lib\dso-boot\dso-boot-hotspot_win32_150_09.jar;C:\Program Files\Java\jre1.5.0_09\lib\rt.jar;C:\Program Files\Java\jre1.5.0_09\lib\i18n.jar;C:\Program Files\Java\jre1.5.0_09\lib\sunrsasign.jar;C:\Program Files\Java\jre1.5.0_09\lib\jsse.jar;C:\Program Files\Java\jre1.5.0_09\lib\jce.jar;C:\Program Files\Java\jre1.5.0_09\lib\charsets.jar;C:\Program Files\Java\jre1.5.0_09\classes
+sun.boot.library.path        : C:\Program Files\Java\jre1.5.0_09\bin
+sun.cpu.endian               : little
+sun.cpu.isalist              : 
+sun.desktop                  : windows
+sun.io.unicode.encoding      : UnicodeLittle
+sun.jnu.encoding             : Cp1252
+sun.management.compiler      : HotSpot Client Compiler
+sun.os.patch.level           : Service Pack 2
+tc.config                    : C:\Documents and Settings\kkannaiy\workspace\jtable5744\tc-config.xml
+tc.install-root              : C:\eclipse\plugins\org.terracotta.dso_1.0.0.trunk_nightly_r5744_v20071001
+user.country                 : US
+user.dir                     : C:\Documents and Settings\kkannaiy\workspace\jtable5744
+user.home                    : C:\Documents and Settings\kkannaiy
+user.language                : en
+user.name                    : kkannaiy
+user.timezone                : America/Los_Angeles
+user.variant                 : 
+========================================================================
+
+2007-10-01 14:27:46,421 [main] INFO com.tc.bundles.EmbeddedOSGiRuntime - OSGi Bundle Repositories:
+2007-10-01 14:27:46,546 [main] INFO com.terracottatech.dso.runtime - Module service 'com.tc.object.config.StandardDSOClientConfigHelperImpl' successfully registered
+2007-10-01 14:27:46,562 [main] WARN com.terracottatech.console - Unable to resolve repository location, verify that it exists and that it is a valid repository: 'file:/C:/eclipse/plugins/org.terracotta.dso_1.0.0.trunk_nightly_r5744_v20071001/build/modules'
+2007-10-01 14:27:46,640 [main] INFO com.terracottatech.dso.runtime - Module 'org.terracotta.modules.modules_common' successfully installed
+2007-10-01 14:27:46,640 [main] INFO com.terracottatech.dso.runtime - Module 'org.terracotta.modules.excludes_config' successfully installed
+2007-10-01 14:27:46,656 [main] INFO com.terracottatech.dso.runtime - Module 'org.terracotta.modules.guimodels_config' successfully installed
+2007-10-01 14:27:46,656 [main] INFO com.terracottatech.dso.runtime - Module 'org.terracotta.modules.jdk15_preinst_config' successfully installed
+2007-10-01 14:27:46,656 [main] INFO com.terracottatech.dso.runtime - Module 'org.terracotta.modules.spring_config' successfully installed
+2007-10-01 14:27:46,656 [main] INFO com.terracottatech.dso.runtime - Module 'org.terracotta.modules.standard_config' successfully installed
+2007-10-01 14:27:46,656 [main] INFO com.terracottatech.dso.runtime - Starting module 'org.terracotta.modules.modules_common'
+2007-10-01 14:27:46,656 [main] INFO com.terracottatech.dso.runtime - Module 'org.terracotta.modules.modules_common' successfully started
+2007-10-01 14:27:46,671 [main] WARN com.tc.plugins.ModulesLoader - The config file 'terracotta.xml', for module 'org.terracotta.modules.modules_common' does not appear to be a part of the module's config-bundle jar file contents.
+2007-10-01 14:27:46,671 [main] INFO com.terracottatech.dso.runtime - Starting module 'org.terracotta.modules.excludes_config'
+2007-10-01 14:27:48,421 [main] INFO com.terracottatech.dso.runtime - Module 'org.terracotta.modules.excludes_config' successfully started
+2007-10-01 14:27:48,421 [main] WARN com.tc.plugins.ModulesLoader - The config file 'terracotta.xml', for module 'org.terracotta.modules.excludes_config' does not appear to be a part of the module's config-bundle jar file contents.
+2007-10-01 14:27:48,421 [main] INFO com.terracottatech.dso.runtime - Starting module 'org.terracotta.modules.guimodels_config'
+2007-10-01 14:27:48,531 [main] INFO com.terracottatech.dso.runtime - Module 'org.terracotta.modules.guimodels_config' successfully started
+2007-10-01 14:27:48,546 [main] WARN com.tc.plugins.ModulesLoader - The config file 'terracotta.xml', for module 'org.terracotta.modules.guimodels_config' does not appear to be a part of the module's config-bundle jar file contents.
+2007-10-01 14:27:48,546 [main] INFO com.terracottatech.dso.runtime - Starting module 'org.terracotta.modules.jdk15_preinst_config'
+2007-10-01 14:27:48,546 [main] INFO com.terracottatech.dso.runtime - Module 'org.terracotta.modules.jdk15_preinst_config' successfully started
+2007-10-01 14:27:48,546 [main] WARN com.tc.plugins.ModulesLoader - The config file 'terracotta.xml', for module 'org.terracotta.modules.jdk15_preinst_config' does not appear to be a part of the module's config-bundle jar file contents.
+2007-10-01 14:27:48,546 [main] INFO com.terracottatech.dso.runtime - Starting module 'org.terracotta.modules.spring_config'
+2007-10-01 14:27:50,171 [main] INFO com.terracottatech.dso.runtime - Module 'org.terracotta.modules.spring_config' successfully started
+2007-10-01 14:27:50,187 [main] WARN com.tc.plugins.ModulesLoader - The config file 'terracotta.xml', for module 'org.terracotta.modules.spring_config' does not appear to be a part of the module's config-bundle jar file contents.
+2007-10-01 14:27:50,187 [main] INFO com.terracottatech.dso.runtime - Starting module 'org.terracotta.modules.standard_config'
+2007-10-01 14:27:50,187 [main] INFO com.terracottatech.dso.runtime - Module 'org.terracotta.modules.standard_config' successfully started
+2007-10-01 14:27:50,187 [main] WARN com.tc.plugins.ModulesLoader - The config file 'terracotta.xml', for module 'org.terracotta.modules.standard_config' does not appear to be a part of the module's config-bundle jar file contents.
+2007-10-01 14:27:50,343 [main] INFO com.terracottatech.dso - * java.awt.geom.Rectangle2D... missing
+2007-10-01 14:27:50,343 [main] INFO com.terracottatech.dso - * java.util.Arrays... missing
+2007-10-01 14:27:50,343 [main] INFO com.terracottatech.dso - * java.util.concurrent.Executors$RunnableAdapter... missing
+2007-10-01 14:27:50,343 [main] INFO com.terracottatech.dso - * java.awt.geom.RectangularShape... missing
+2007-10-01 14:27:50,343 [main] INFO com.terracottatech.dso - * java.util.Arrays$ArrayList... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.geom.Ellipse2D$Double... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.Rectangle... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.event.MouseMotionAdapter... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.geom.Rectangle2D$Float... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.lang.RuntimeException... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * sun.misc.Unsafe... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * javax.swing.tree.TreePath... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.geom.RoundRectangle2D$Float... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.Point... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * javax.swing.tree.DefaultMutableTreeNode... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.geom.RoundRectangle2D$Double... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.lang.Exception... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.geom.RoundRectangle2D... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.io.IOException... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.util.ConcurrentModificationException... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.BasicStroke... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.geom.Point2D... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.geom.GeneralPath... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.geom.Line2D$Float... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.util.NoSuchElementException... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.io.File... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * javax.swing.event.TableModelEvent... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.geom.Dimension2D... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.AWTException... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.lang.Error... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.geom.Ellipse2D... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.geom.Rectangle2D$Double... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.geom.Line2D... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.geom.Point2D$Float... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.geom.Ellipse2D$Float... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.lang.InterruptedException... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.event.MouseAdapter... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.util.EventObject... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.io.FileNotFoundException... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * javax.swing.table.AbstractTableModel... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.Color... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * javax.swing.AbstractListModel... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.geom.Line2D$Double... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * com.tcclient.util.DSOUnsafe... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * javax.swing.table.DefaultTableModel... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * javax.swing.DefaultListModel... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.Dimension... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.awt.geom.Point2D$Double... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * java.util.concurrent.TimeUnit... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - * javax.swing.tree.DefaultTreeModel... missing
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - Number of classes in the DSO boot jar:102
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - Number of classes expected to be in the DSO boot jar:116
+2007-10-01 14:27:50,359 [main] INFO com.terracottatech.dso - Number of classes found missing from the DSO boot jar:50
+2007-10-01 14:27:50,359 [main] ERROR com.tc.object.bytecode.hook.impl.DSOContextImpl - Exception thrown
+com.tc.object.config.UnverifiedBootJarException: BootJarException occurred while attempting to verify the contents of the boot jar.
+	at com.tc.object.config.StandardDSOClientConfigHelperImpl.verifyBootJarContents(StandardDSOClientConfigHelperImpl.java:1703)
+	at com.tc.object.bytecode.hook.impl.DSOContextImpl.validateBootJar(DSOContextImpl.java:93)
+	at com.tc.object.bytecode.hook.impl.DSOContextImpl.<init>(DSOContextImpl.java:88)
+	at com.tc.object.bytecode.hook.impl.DSOContextImpl.createGlobalContext(DSOContextImpl.java:63)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.tc.object.bytecode.hook.impl.ClassProcessorHelper.createGlobalContext(ClassProcessorHelper.java:504)
+	at com.tc.object.bytecode.hook.impl.ClassProcessorHelper.init(ClassProcessorHelper.java:374)
+	at com.tc.object.bytecode.hook.impl.ClassProcessorHelper.systemLoaderInitialized(ClassProcessorHelper.java:673)
+	at java.lang.ClassLoader.initSystemClassLoader(Unknown Source)
+	at java.lang.ClassLoader.getSystemClassLoader(Unknown Source)
+Caused by: com.tc.object.config.IncompleteBootJarException: Incomplete DSO boot jar; 50 pre-instrumented class(es) found missing.
+	at com.tc.object.config.StandardDSOClientConfigHelperImpl.scanForMissingClassesDeclaredInConfig(StandardDSOClientConfigHelperImpl.java:1689)
+	at com.tc.object.config.StandardDSOClientConfigHelperImpl.verifyBootJarContents(StandardDSOClientConfigHelperImpl.java:1701)
+	... 12 more
