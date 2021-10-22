@@ -1,82 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<con:tc-config xmlns:con="http://www.terracotta.org/config">
-<!--
-  <system>
-    <configuration-model>production</configuration-model>
-  </system>
-  <tc-properties>
-    <property name="l2.nha.tcgroupcomm.reconnect.enabled" value="true" />
-    <property name="l2.nha.tcgroupcomm.reconnect.timeout" value="7000" />
-    <property name="l2.nha.mcast.enabled" value="false" />
-    <property name="bogus" value="true" />
-    <property name="l2.l1reconnect.enabled" value="true" />
-    <property name="l2.l1reconnect.timeout.millis" value="15000" />
-    <property name="bogus" value="true" />
-    <property name="l2.healthcheck.l1.ping.enabled" value="true" />
-    <property name="l2.healthcheck.l1.ping.idletime" value="1000" />
-    <property name="l2.healthcheck.l1.ping.interval" value="500" />
-    <property name="bogus" value="true" />
-    <property name="l2.healthcheck.l2.ping.enabled" value="true" />
-    <property name="l2.healthcheck.l2.ping.idletime" value="1000" />
-    <property name="l2.healthcheck.l2.ping.interval" value="500" />
-    <property name="bogus" value="true" />
-    <property name="l1.healthcheck.l2.ping.enabled" value="true" />
-    <property name="l1.healthcheck.l2.ping.idletime" value="1000" />
-    <property name="l1.healthcheck.l2.ping.interval" value="500" />
-    <property name="bogus" value="true" />
-    <property name="net.core.keepalive" value="true" />
-  </tc-properties>
-  -->
+<tc:tc-config xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-4.xsd" xmlns:tc="http://www.terracotta.org/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <servers>
-    <server name="L2S2" host="localhost" bind="localhost">
-      <l2-group-port>7201</l2-group-port>
-      <dso-port>7202</dso-port>
-      <jmx-port>7203</jmx-port>
-      <data>/tmp/dfghwrthwdfgwggwrtterra/server2-data/%D</data>
-      <logs>/tmp/dfghwrthwdfgwggwrtterra/server2-logs/%D</logs>
-      <statistics>/tmp/dfghwrthwdfgwggwrtterra/cluster2-statistics/%D</statistics>
+    <server name="server1" host="localhost">
+      <data>terracotta/server1/data</data>
+      <logs>terracotta/server1/logs</logs>
+      <statistics>terracotta/server1/statistics</statistics>
+      <jmx-port>9520</jmx-port>
+      <l2-group-port>9543</l2-group-port>
+      <dso-port>9510</dso-port>
       <dso>
         <persistence>
           <mode>permanent-store</mode>
         </persistence>
-        <client-reconnect-window>30</client-reconnect-window>
-        <garbage-collection>
-          <interval>300</interval>
-        </garbage-collection>
       </dso>
     </server>
-    <server name="L2S3" host="localhost" bind="localhost">
-      <l2-group-port>7301</l2-group-port>
-      <dso-port>7302</dso-port>
-      <jmx-port>7303</jmx-port>
-      <data>/tmp/dfghwrthwdfgwggwrtterra/server3-data/%D</data>
-      <logs>/tmp/dfghwrthwdfgwggwrtterra/server3-logs/%D</logs>
-      <statistics>/tmp/dfghwrthwdfgwggwrtterra/cluster3-statistics/%D</statistics>
+    <server name="server2" host="localhost">
+      <data>terracotta/server2/data</data>
+      <logs>terracotta/server2/logs</logs>
+      <statistics>terracotta/server2/statistics</statistics>
+      <jmx-port>9521</jmx-port>
+      <l2-group-port>9544</l2-group-port>
+      <dso-port>9511</dso-port>
       <dso>
         <persistence>
           <mode>permanent-store</mode>
         </persistence>
-        <client-reconnect-window>30</client-reconnect-window>
-        <garbage-collection>
-          <interval>300</interval>
-        </garbage-collection>
-      </dso>
-    </server>
-    <server name="L2S1" host="localhost" bind="localhost">
-      <l2-group-port>7101</l2-group-port>
-      <dso-port>7102</dso-port>
-      <jmx-port>7103</jmx-port>
-      <data>/tmp/dfghwrthwdfgwggwrtterra/server1-data/%D</data>
-      <logs>/tmp/dfghwrthwdfgwggwrtterra/server1-logs/%D</logs>
-      <statistics>/tmp/dfghwrthwdfgwggwrtterra/cluster1-statistics/%D</statistics>
-      <dso>
-        <persistence>
-          <mode>permanent-store</mode>
-        </persistence>
-        <client-reconnect-window>30</client-reconnect-window>
-        <garbage-collection>
-          <interval>300</interval>
-        </garbage-collection>
       </dso>
     </server>
     <ha>
@@ -85,62 +32,27 @@
         <election-time>5</election-time>
       </networked-active-passive>
     </ha>
-    <update-check>
-      <enabled>false</enabled>
-      <period-days>10</period-days>
-    </update-check>
   </servers>
   <clients>
-  <!--
-    <modules>
-      <module name="tim-jmx-util" version="1.0.3" />
-    </modules>
-    -->
-    <logs>/tmp/dfghwrthwdfgwggwrtterra/client-logs/%D</logs>
-    <statistics>/tmp/dfghwrthwdfgwggwrtterra/client-statistics/%D</statistics>
-    <dso>
-      <debugging>
-        <instrumentation-logging>
-          <roots>true</roots>
-          <distributed-methods>true</distributed-methods>
-          <locks>true</locks>
-          <class>true</class>
-        </instrumentation-logging>
-        <runtime-logging>
-          <lock-debug>true</lock-debug>
-          <distributed-method-debug>true</distributed-method-debug>
-          <field-change-debug>true</field-change-debug>
-          <wait-notify-debug>true</wait-notify-debug>
-          <new-object-debug>true</new-object-debug>
-        </runtime-logging>
-      </debugging>
-    </dso>
+    <logs>terracotta/%(tomcat.instance.name)/logs</logs>
+    <statistics>terracotta/%(tomcat.instance.name)/statistics</statistics>
   </clients>
   <application>
     <dso>
-      <locks>
-        <autolock auto-synchronized="false">
-          <method-expression>int org.zzz.eto.Dat.getVal()</method-expression>
-          <lock-level>synchronous-write</lock-level>
-        </autolock>
-        <autolock auto-synchronized="false">
-          <method-expression>org.zzz.eto.Dat org.zzz.eto.Dat.getInstance()</method-expression>
-          <lock-level>read</lock-level>
-        </autolock>
-      </locks>
       <instrumented-classes>
-        <include>
-          <class-expression>org.zzz.eto.Dat</class-expression>
-        </include>
+		<include>
+			<class-expression>*..*</class-expression>
+			<honor-transient>true</honor-transient>
+		</include>
+        <!--But exclude Tomcat internals to improve performance of webapp load-->
+        <exclude>org.apache.coyote..*</exclude>
+        <exclude>org.apache.catalina..*</exclude>
+        <exclude>org.apache.jasper..*</exclude>
+        <exclude>org.apache.tomcat..*</exclude>
       </instrumented-classes>
-      <roots>
-        <root>
-          <field-name>org.zzz.eto.Dat.instance</field-name>
-        </root>
-        <root>
-          <field-name>org.zzz.eto.Dat.lock</field-name>
-        </root>
-      </roots>
+      <web-applications>
+        <web-application>Cart</web-application>
+	</web-applications>
     </dso>
   </application>
-</con:tc-config>
+</tc:tc-config>
