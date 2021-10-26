@@ -50,7 +50,7 @@ Sourceforge Ticket ID: 1831446 - Opened By: scotte - 14 Nov 2007 00:17 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 Originator: NO
 
 Scotte

@@ -43,15 +43,15 @@ Requirements:
 "Configuration Modules" refers to bundles each with a separate configuration file to be layered on top of each other.  This will make it easier for framework developers and other 3rd parties to build integrations and will make it easier for operators to deploy those integrations with Terracotta into their environments.
 
 Application Developer/Operator --
-    \1 List modules going to use
-    \1 Have spot to put and/or retrieve modules
-    \1 Be notified when Boot JAR needs rebuilding
+    * List modules going to use
+    * Have spot to put and/or retrieve modules
+    * Be notified when Boot JAR needs rebuilding
 
 Framework Provider --
-    \1 Specify Terracotta configuration information (tc-config.xml) for a JAR
-    \1 Specify dependencies
-    \1 Tool for creating module
-    \1 Needs version information
+    * Specify Terracotta configuration information (tc-config.xml) for a JAR
+    * Specify dependencies
+    * Tool for creating module
+    * Needs version information
 
 Allow kits to be shipped with default modules.  For example, if there is a Swing module, it should be included in the kit so that running the JTable sample application can be done out-of-the-box without rebuilding the Boot JAR.
 

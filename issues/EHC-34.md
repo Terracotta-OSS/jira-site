@@ -102,7 +102,7 @@ log4j.logger.net.sf.ehcache.distribution=DEBUG
 It will e easier if cacheManagerPeerListenerFactory could use automatically the ips and ports defined in cacheManagerPeerProviderFactory 
 
 Additionally  i added as attachment the partial logs files for both machines and  ehcache.xml file for the first machine
-Sourceforge Ticket ID: 2809212 - Opened By: aldo\1gg - 19 Jun 2009 19:47 UTC
+Sourceforge Ticket ID: 2809212 - Opened By: aldo\_gg - 19 Jun 2009 19:47 UTC
 
 </div>
 

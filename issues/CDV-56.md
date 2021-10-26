@@ -40,7 +40,7 @@ Motivation:
 Assist operators detect a networking error that could cause cluster problems.
 
 Requirements:
-   \1 Detect half open L1 to L2 socket (seems open but not communicating) to facilitate quicker failures.
+   \* Detect half open L1 to L2 socket (seems open but not communicating) to facilitate quicker failures.
 
 
 </div>

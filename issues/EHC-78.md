@@ -43,7 +43,7 @@ The following line in PropertyUtil.parseProperties attempts to use String.replac
 propertyLines = propertyLines.replace(propertySeparatorLocal, "\n");
 
 I'm guessing that 1.4 compatibility is still desired/required, so this probably should be changed back to using String.replace(char, char) if possible.
-Sourceforge Ticket ID: 1732424 - Opened By: ben\1piper - 6 Jun 2007 22:34 UTC
+Sourceforge Ticket ID: 1732424 - Opened By: ben\_piper - 6 Jun 2007 22:34 UTC
 
 </div>
 
@@ -56,7 +56,7 @@ Sourceforge Ticket ID: 1732424 - Opened By: ben\1piper - 6 Jun 2007 22:34 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 Originator: NO
 
 Ben

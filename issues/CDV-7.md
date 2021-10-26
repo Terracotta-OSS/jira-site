@@ -49,9 +49,9 @@ For example:
 
 Reasons
 
-    \1 App startup time reduced since instrumentation doesn't have to happen at runtime
-    \1 Some amount of static error and consistency checking becomes possible, improved dev experience
-    \1 Simplified deployment: conceivably could allow us to eliminate bootjar/-Xbootclasspath requirement
+    * App startup time reduced since instrumentation doesn't have to happen at runtime
+    * Some amount of static error and consistency checking becomes possible, improved dev experience
+    * Simplified deployment: conceivably could allow us to eliminate bootjar/-Xbootclasspath requirement
 
 
 </div>

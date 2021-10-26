@@ -66,7 +66,7 @@ Sourceforge Ticket ID: 1828351 - Opened By: bulenterdemir - 8 Nov 2007 15:29 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 Originator: NO
 
 Hi

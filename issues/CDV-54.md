@@ -40,20 +40,20 @@ Motivation:
 Provide access to cluster events and node data to enable integrations to custom cluster aware features and various projects with multi-node support. For example, some new Tomcat integrations may require this capability.
 
 Requirements:
-   \1 Make cluster events accessible to developer and/or operator:
-       \1 Notify when a node joins or leaves the cluster.
-       \1 Notify L1 to L2 connect timeout
-           \1 Default handler is to exit
-           \1 Time is configurable
-       \1 Notify when L1 to L2 connection established
-       \1 Notify when L1 to L2 connection closed
-       \1 Notify when L1 to L2 connection error
-   \1 User application must have access to a data structure or can request a data structure that represents the cluster members
+   \* Make cluster events accessible to developer and/or operator:
+       * Notify when a node joins or leaves the cluster.
+       * Notify L1 to L2 connect timeout
+           * Default handler is to exit
+           * Time is configurable
+       * Notify when L1 to L2 connection established
+       * Notify when L1 to L2 connection closed
+       * Notify when L1 to L2 connection error
+   \* User application must have access to a data structure or can request a data structure that represents the cluster members
 
 Optional:
-   \1 All default handlers can be overridden (depends somewhat on if the implementation has the notion of 'handlers').
-   \1 Make node list and status available via JMX -- both viable via management consoles and by developers from their applications.
-   \1 Allow attaching meta-data (an arbitrary object) for each node.  For example, support custom routing based on info like node name or node capacity.
+   \* All default handlers can be overridden (depends somewhat on if the implementation has the notion of 'handlers').
+   \* Make node list and status available via JMX -- both viable via management consoles and by developers from their applications.
+   \* Allow attaching meta-data (an arbitrary object) for each node.  For example, support custom routing based on info like node name or node capacity.
 
 Use Case:
 An e-commerce company wants to integrate a custom load balancer with Terracotta such that Terracotta will notify the load balancer when an application server leaves the cluster.  The load balancer may then take the desired action such as re-booting the application server or paging the appropriate operations personnel.

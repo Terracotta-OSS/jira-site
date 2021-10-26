@@ -42,7 +42,7 @@ element, I got an error something like this.
 16:10:37,438 ERROR [XMLHelper$ErrorLogger] XMLHelper:48
 - Error parsing XML: XML InputStream(17) The content of
 element type "hibernate-mapping" must match
-"(meta\1,import\1,(class|subclass|joined-subclass)\1,query\1,sql-query\1)".
+"(meta\*,import\*,(class|subclass|joined-subclass)\*,query\*,sql-query\*)".
 
 
 I am using hibernate 2.1.2 and ehcache 0.7

@@ -39,7 +39,7 @@ resolved: "2007-05-03T19:48:10.000-0400"
 ParameterSubstituter should only support two or three wildcards and should have a unit test to verify that they work correctly. Currently d, h, i, H, n, o, a, v, t, and all environment variables are supported. This is almost impossible to validate and complete overkill.
 
 
-switch (nextChar) {
+switch (nextChar) \{
           case 'd':
             value = getUniqueTempDirectory();
             break;

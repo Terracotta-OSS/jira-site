@@ -63,7 +63,7 @@ Sourceforge Ticket ID: 1075256 - Opened By: gwynevans - 29 Nov 2004 13:54 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Hi, Could I get you to submit a test
 Comment by: gregluck - 7 Mar 2005 01:30 UTC

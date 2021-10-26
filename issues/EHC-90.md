@@ -50,7 +50,7 @@ this by adding the following method to CacheManager:
 
     public static CacheManager
 createNewInstance(InputStream inputStream) throws
-CacheException {
+CacheException \{
         return new CacheManager(inputStream);
      }
 
@@ -69,15 +69,15 @@ ByteArrayInputStream(sb.toString().getBytes("UTF-8"));
 CacheManager.createNewInstance(bin);
   final boolean bCacheToDisk = true;
   final boolean bEternal = true;
-  final Cache cache1 = new Cache(".DO\1NOT\1REMOVE",
+  final Cache cache1 = new Cache(".DO\_NOT\_REMOVE",
 1000, bCacheToDisk, bEternal, 0, 0,bCacheToDisk,120);
   manager1.addCache(cache1);
   Element el= cache1.get("name");
-  if(el != null){
+  if(el != null)\{
    System.out.println("name(1) is "+(String)el.getValue());
-  }else{
+  \}else\{
    System.out.println("no name(1)");
-  }
+  \}
   Element element = new Element("name", "FirstCache!");
   cache1.put(element);
   sb = new StringBuffer();
@@ -90,15 +90,15 @@ CacheManager.createNewInstance(bin);
 ByteArrayInputStream(sb.toString().getBytes("UTF-8"));
   CacheManager manager2 =
 CacheManager.createNewInstance(bin);
-  Cache cache2 = new Cache(".DO\1NOT\1REMOVE", 1000,
+  Cache cache2 = new Cache(".DO\_NOT\_REMOVE", 1000,
 bCacheToDisk, bEternal, 0, 0,bCacheToDisk,120);
   manager2.addCache(cache2);
   el= cache2.get("name");
-  if(el != null){
+  if(el != null)\{
    System.out.println("name(2) is "+(String)el.getValue());
-  }else{
+  \}else\{
    System.out.println("no name(2)");
-  }
+  \}
   Element element2 = new Element("name", "SecondCache!");
   cache2.put(element2);
   element = new Element("name", "FirstCache - updated!");

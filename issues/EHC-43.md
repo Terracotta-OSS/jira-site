@@ -36,7 +36,7 @@ resolved: "2009-09-22T23:44:26.000-0400"
 
 <div markdown="1" class="description">
 
-I compared to 1.5 and 1.6 ehcache.jar.  The one in 1.6 is missing this folder:  net/sf/ehcache/distribution/jgroups/\1.classes
+I compared to 1.5 and 1.6 ehcache.jar.  The one in 1.6 is missing this folder:  net/sf/ehcache/distribution/jgroups/\*.classes
 
 The 1.6 distribution jar is attached and released at Thu Jun 18 2009 08:28
 Please fix it.

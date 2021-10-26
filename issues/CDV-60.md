@@ -38,11 +38,11 @@ resolved: ""
 
 For before advice
 
-public class SimpleBeforeAdvice implements MethodBeforeAdvice {
-  public void before(Method method, Object[] args, Object target) throws Throwable {
+public class SimpleBeforeAdvice implements MethodBeforeAdvice \{
+  public void before(Method method, Object[] args, Object target) throws Throwable \{
      ...
-  }
-}
+  \}
+\}
 
 on JP of  "MessageWriter.writeMessage()"
 

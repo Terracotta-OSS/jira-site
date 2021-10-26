@@ -39,11 +39,11 @@ resolved: "2007-01-17T14:52:17.000-0500"
 Reduce the time it takes to get an application running.  Streamline the process of using Terracotta the first time on an existing application.  Give the user actionable items in the face of non-portable errors.
 
 Requirements:
-    \1 Show object graph containing the offending object
-    \1 All parent objects of the offending object should be expanded
+    * Show object graph containing the offending object
+    * All parent objects of the offending object should be expanded
 
 Optional:
-    \1 Integration into Terracotta DSO Eclipse Plug-in and/or Terracotta Sessions Configurator
+    * Integration into Terracotta DSO Eclipse Plug-in and/or Terracotta Sessions Configurator
 
 
 </div>

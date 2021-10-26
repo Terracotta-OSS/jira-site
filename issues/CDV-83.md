@@ -48,18 +48,18 @@ package test;
 
 import java.lang.reflect.Field;
 
-/\1\1
-\1
+/\*\*
+\*
 
-    \1 @author <a href="mailto:alex@gnilux.com">Alexandre Vasseur</a>
-      \1/
+    * @author <a href="mailto:alex@gnilux.com">Alexandre Vasseur</a>
+      */
       public class AlexRef {
 
 public final double d = -1;
 
 public static void main(String args[])
-{
-try {
+\{
+try \{
 Class cls = Class.forName("test.AlexRef");
 Field fld = cls.getField("d");
 fld.setAccessible(true);
@@ -67,12 +67,12 @@ AlexRef f2obj = new AlexRef();
 System.out.println("d = " + f2obj.d);
 fld.setDouble(f2obj, 12.34);
 System.out.println("d = " + f2obj.d);
-}
-catch (Throwable e) {
+\}
+catch (Throwable e) \{
 System.err.println(e);
-}
-}
-}
+\}
+\}
+\}
 
 
 </div>

@@ -65,26 +65,26 @@ Sourceforge Ticket ID: 1506399 - Opened By: robertdw - 14 Jun 2006 23:38 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Hi
 
 I have added a fallback class loader which is tried if the context class loader 
 fails.
 
-/\1\1
-     \1 Gets a fallback <code>ClassLoader</code> that all classes in ehcache, 
+/\*\*
+     * Gets a fallback <code>ClassLoader</code> that all classes in ehcache, 
 and extensions, should use for classloading.
-     \1 This is used if the context class loader does not work.
-     \1 @return the <code>ClassLoaderUtil.class.getClassLoader();</code>
-     \1/
+     * This is used if the context class loader does not work.
+     * @return the <code>ClassLoaderUtil.class.getClassLoader();</code>
+     */
     public static ClassLoader getFallbackClassLoader() {
         return ClassLoaderUtil.class.getClassLoader();
     }
 
 The code that uses it is:
 
-try {
+try \{
             clazz = Class.forName(className, true, getStandardClassLoader());
         } catch (ClassNotFoundException e) {
             //try fallback

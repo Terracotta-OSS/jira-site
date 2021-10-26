@@ -66,7 +66,7 @@ Sourceforge Ticket ID: 1324221 - Opened By: nobody - 11 Oct 2005 21:03 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Ben
 

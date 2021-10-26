@@ -42,7 +42,7 @@ We need to be tolerant of intermittent network failures and allow disconnected L
 
 We can handle this condition in the comms layer seamlessly since other components need not really know about this. The following things are needed to be implemented for realizing this feature.
 1) On normal disconnect (like client terminating) L1s send a goodbye message. L2 doesnt wait for reconnect
-2) On abnormal disconnect, L2 comms layer waits for "timeout" period for allowing reconnect before throwing the CONNECTION\1CLOSED event to the application code.
+2) On abnormal disconnect, L2 comms layer waits for "timeout" period for allowing reconnect before throwing the CONNECTION\_CLOSED event to the application code.
 3) If client reconnects before timeout, a comms level handshake happens to reestablish connection.
 4) Any message written out to channel in the meantime is queued for delivery.
 5) On reconnect, messages are delivered as usual including the queued messages.

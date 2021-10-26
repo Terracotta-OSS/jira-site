@@ -32,9 +32,9 @@ resolved: "2010-10-13T20:21:12.000-0400"
 
 
 ## Attachments
-  
+
 * <em>edalquis</em> (30.000 k, text/plain) [channelName.patch](/attachments/EHC/EHC-33/channelName.patch)
-  
+
 
 
 
@@ -46,14 +46,14 @@ Running multiple EHCacheâ€™s in a single application (web-application) ,  t
 
 The reason being that in package:  net.sf.ehcache.distribution.jgroups.JGroupManager
 
-The Channel Name ("EH\1CACHE") is hard coded. 
-notificationBus = new NotificationBus("EH\1CACHE", connect);
+The Channel Name ("EH\_CACHE") is hard coded. 
+notificationBus = new NotificationBus("EH\_CACHE", connect);
 
 As a suggestion could you make it so that you can specify the Channel name as part of the properties,
 to allow JGroups to uniquely communicate updates to the different caches.
 
 <cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.jgroups.JGroupsCacheManagerPeerProviderFactory"
-properties="channel=EH\1CACHE\11:connect=UDP(...."
+properties="channel=EH\_CACHE\_1:connect=UDP(...."
 propertySeparator="::"
 
 
@@ -115,28 +115,28 @@ Sample config:
 
 ``` 
  <cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.jgroups.JGroupsCacheManagerPeerProviderFactory"
-     properties="channel=CANAL\11:connect=UDP(mcast\1addr=231.12.21.132;mcast\1port=45566;ip\1ttl=32;
-     mcast\1send\1buf\1size=150000;mcast\1recv\1buf\1size=80000):
-     PING(timeout=2000;num\1initial\1members=6):
-     MERGE2(min\1interval=5000;max\1interval=10000):
-     FD\1SOCK:VERIFY\1SUSPECT(timeout=1500):
-     pbcast.NAKACK(gc\1lag=10;retransmit\1timeout=3000):
+     properties="channel=CANAL_1:connect=UDP(mcast_addr=231.12.21.132;mcast_port=45566;ip_ttl=32;
+     mcast_send_buf_size=150000;mcast_recv_buf_size=80000):
+     PING(timeout=2000;num_initial_members=6):
+     MERGE2(min_interval=5000;max_interval=10000):
+     FD_SOCK:VERIFY_SUSPECT(timeout=1500):
+     pbcast.NAKACK(gc_lag=10;retransmit_timeout=3000):
      UNICAST(timeout=5000):
-     pbcast.STABLE(desired\1avg\1gossip=20000):
+     pbcast.STABLE(desired_avg_gossip=20000):
      FRAG:
-     pbcast.GMS(join\1timeout=5000;join\1retry\1timeout=2000;
-     shun=false;print\1local\1addr=true;)"
+     pbcast.GMS(join_timeout=5000;join_retry_timeout=2000;
+     shun=false;print_local_addr=true;)"
  propertySeparator="::"
      />
 ```
 
 And this is what I see in the glassfish log:
-{quote}
+\{quote\}
 INFO: -------------------------------------------------------------------
-GMS: address=xxxxxxx-xxxxx, cluster=EH\1CACHE, physical address=...
+GMS: address=xxxxxxx-xxxxx, cluster=EH\_CACHE, physical address=...
 -------------------------------------------------------------------
-{quote}
-Am I doing anything wrong? Shouldn't "cluster" be "CANAL\11" in this case (channel property)?
+\{quote\}
+Am I doing anything wrong? Shouldn't "cluster" be "CANAL\_1" in this case (channel property)?
 
 Thanks very much!
 
@@ -162,16 +162,16 @@ The config is this:
 ```
  <cacheManagerPeerProviderFactory
          class="net.sf.ehcache.distribution.jgroups.JGroupsCacheManagerPeerProviderFactory"
-         properties="channel=channeljuan^connect=UDP(mcast\1addr=231.12.21.132;mcast\1port=45566;ip\1ttl=32;
-         mcast\1send\1buf\1size=150000;mcast\1recv\1buf\1size=80000):
-         PING(timeout=2000;num\1initial\1members=6):
-         MERGE2(min\1interval=5000;max\1interval=10000):
-         FD\1SOCK:VERIFY\1SUSPECT(timeout=1500):
-         pbcast.NAKACK(gc\1lag=10;retransmit\1timeout=3000):
+         properties="channel=channeljuan^connect=UDP(mcast_addr=231.12.21.132;mcast_port=45566;ip_ttl=32;
+         mcast_send_buf_size=150000;mcast_recv_buf_size=80000):
+         PING(timeout=2000;num_initial_members=6):
+         MERGE2(min_interval=5000;max_interval=10000):
+         FD_SOCK:VERIFY_SUSPECT(timeout=1500):
+         pbcast.NAKACK(gc_lag=10;retransmit_timeout=3000):
          UNICAST(timeout=5000):
-         pbcast.STABLE(desired\1avg\1gossip=20000):
+         pbcast.STABLE(desired_avg_gossip=20000):
          FRAG:
-         pbcast.GMS(join\1timeout=5000;join\1retry\1timeout=2000;shun=false;print\1local\1addr=false)"
+         pbcast.GMS(join_timeout=5000;join_retry_timeout=2000;shun=false;print_local_addr=false)"
          propertySeparator="^"
      />
 ```
@@ -189,7 +189,7 @@ Thanks!
 
 <div markdown="1" class="comment">
 
-In previous comment the property "print\1local\1addr" was true, sorry.
+In previous comment the property "print\_local\_addr" was true, sorry.
 
 
 
@@ -203,10 +203,10 @@ In previous comment the property "print\1local\1addr" was true, sorry.
 
 Well, after read properly the config documentacion, I've came across this line:
 
-{quote}
+\{quote\}
 "Multiple JGroups clusters may be run on the same network by specifying a different CacheManager name. The name
      is used as the cluster name".
-{quote}
+\{quote\}
 
 After setting "name" attribute in ehcache xml now I see that name in logs.
 
@@ -237,7 +237,7 @@ In trunk a single JChannel is created for each CacheManager. The logic to determ
             return this.cacheManager.getName();
         }
         
-        return "EH\1CACHE";
+        return "EH_CACHE";
     }
 ```
 
@@ -256,7 +256,7 @@ For your usage, how many ehcache.xml files do you have to configure your caches?
 
 <div markdown="1" class="comment">
 
-Also adding a CHANNEL\1NAME property seems like a good enhancement. It would simply get added to the cluster name resolution logic:
+Also adding a CHANNEL\_NAME property seems like a good enhancement. It would simply get added to the cluster name resolution logic:
 
 
 ```
@@ -269,7 +269,7 @@ Also adding a CHANNEL\1NAME property seems like a good enhancement. It would sim
             return this.cacheManager.getName();
         }
         
-        return "EH\1CACHE";
+        return "EH_CACHE";
     }
 ```
 
@@ -284,7 +284,7 @@ I'll get a patch put together for that change.
 
 <div markdown="1" class="comment">
 
-Adds a channel\1name property to the JGroups peer provider configuration that explicitly sets the JChannel name.
+Adds a channel\_name property to the JGroups peer provider configuration that explicitly sets the JChannel name.
 
 </div>
 
@@ -312,24 +312,24 @@ My config is like this:
 
 ```
  <cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.jgroups.JGroupsCacheManagerPeerProviderFactory"
-                                     properties="connect=UDP(singleton\1name=UDP\1SINGLE;mcast\1addr=238.255.0.3;mcast\1port=45566;ip\1ttl=32;
-                                     mcast\1send\1buf\1size=150000;mcast\1recv\1buf\1size=80000):
-                                     PING(timeout=2000;num\1initial\1members=6):
-                                     MERGE2(min\1interval=5000;max\1interval=10000):
-                                     FD\1SOCK:VERIFY\1SUSPECT(timeout=1500):
-                                     pbcast.NAKACK(gc\1lag=10;retransmit\1timeout=3000):
+                                     properties="connect=UDP(singleton_name=UDP_SINGLE;mcast_addr=238.255.0.3;mcast_port=45566;ip_ttl=32;
+                                     mcast_send_buf_size=150000;mcast_recv_buf_size=80000):
+                                     PING(timeout=2000;num_initial_members=6):
+                                     MERGE2(min_interval=5000;max_interval=10000):
+                                     FD_SOCK:VERIFY_SUSPECT(timeout=1500):
+                                     pbcast.NAKACK(gc_lag=10;retransmit_timeout=3000):
                                      UNICAST(timeout=5000):
-                                     pbcast.STABLE(desired\1avg\1gossip=20000):
+                                     pbcast.STABLE(desired_avg_gossip=20000):
                                      FRAG:
-                                     pbcast.GMS(join\1timeout=5000;join\1retry\1timeout=2000;shun=false;print\1local\1addr=true)"
+                                     pbcast.GMS(join_timeout=5000;join_retry_timeout=2000;shun=false;print_local_addr=true)"
                                      propertySeparator="::"
                                      />
 ```
 
 
-As you can see above, with "singleton\1name" property I can get only one shared transport for all ehcaches (since jGroups 2.6). Unfortunately, this doesn't work well if I don't set a different "name" attribute for each <ehcache> (it throws an error when loading JGroupsBootStrapCacheLoader).
+As you can see above, with "singleton\_name" property I can get only one shared transport for all ehcaches (since jGroups 2.6). Unfortunately, this doesn't work well if I don't set a different "name" attribute for each <ehcache> (it throws an error when loading JGroupsBootStrapCacheLoader).
 
-Please can you send me an example of "channel\1name" in config XML? I suppose this change in 1.4 SNAPSHOT won't be in this URL 
+Please can you send me an example of "channel\_name" in config XML? I suppose this change in 1.4 SNAPSHOT won't be in this URL 
 
 http://oss.sonatype.org/content/repositories/sourceforge-snapshots/net/sf/ehcache/ehcache-jgroupsreplication/1.4-SNAPSHOT/
 
@@ -391,16 +391,16 @@ First we initialize the first cache (new CacheManager(URL)), with this config:
 
    <cacheManagerPeerProviderFactory
          class="net.sf.ehcache.distribution.jgroups.JGroupsCacheManagerPeerProviderFactory"
-         properties="connect=UDP(singleton\1name=UDP\1SINGLE;mcast\1addr=231.12.21.132;mcast\1port=45566;ip\1ttl=32;
-         mcast\1send\1buf\1size=150000;mcast\1recv\1buf\1size=80000):
-         PING(timeout=2000;num\1initial\1members=6):
-         MERGE2(min\1interval=5000;max\1interval=10000):
-         FD\1SOCK:VERIFY\1SUSPECT(timeout=1500):
-         pbcast.NAKACK(gc\1lag=10;retransmit\1timeout=3000):
+         properties="connect=UDP(singleton_name=UDP_SINGLE;mcast_addr=231.12.21.132;mcast_port=45566;ip_ttl=32;
+         mcast_send_buf_size=150000;mcast_recv_buf_size=80000):
+         PING(timeout=2000;num_initial_members=6):
+         MERGE2(min_interval=5000;max_interval=10000):
+         FD_SOCK:VERIFY_SUSPECT(timeout=1500):
+         pbcast.NAKACK(gc_lag=10;retransmit_timeout=3000):
          UNICAST(timeout=5000):
-         pbcast.STABLE(desired\1avg\1gossip=20000):
+         pbcast.STABLE(desired_avg_gossip=20000):
          FRAG:
-         pbcast.GMS(join\1timeout=5000;join\1retry\1timeout=2000;shun=false;print\1local\1addr=true)"
+         pbcast.GMS(join_timeout=5000;join_retry_timeout=2000;shun=false;print_local_addr=true)"
          propertySeparator="::"
      />
 
@@ -443,7 +443,7 @@ Next we initialize a second cache manager with this config:
 
        <cacheManagerPeerProviderFactory
          class="net.sf.ehcache.distribution.jgroups.JGroupsCacheManagerPeerProviderFactory"
-         properties="connect=UDP(singleton\1name=UDP\1SINGLE)"
+         properties="connect=UDP(singleton_name=UDP_SINGLE)"
          propertySeparator="::"
      />
  
@@ -466,12 +466,12 @@ replicateRemovals=true" />
 
 
 After that you'll something like this in logs:
-{quote}
+\{quote\}
 ------------------------------------
 GMS: address=xxxxxxxxx, cluster=CACHE1, physical address=xxxxxxxxx:yyyyy
 -----------------------------------
-{quote}
-So we have a single thread for two ehcaches instances. The first ehcache must have the "name" attribute in <ehcache> tag, and the singleton\1name and UDP well configured.The second instances and beyond must have the "singleton\1name" attribute only to tell JGroups which transport we want to use.
+\{quote\}
+So we have a single thread for two ehcaches instances. The first ehcache must have the "name" attribute in <ehcache> tag, and the singleton\_name and UDP well configured.The second instances and beyond must have the "singleton\_name" attribute only to tell JGroups which transport we want to use.
 
 Please tell me if what I am saying makes sense.
 
@@ -495,7 +495,7 @@ Patch committed.
 
 <div markdown="1" class="comment">
 
-Guys, applied Eric's patch. To remain consistent with Ehcache's configuration conventions, I renamed channel\1name to channelName. 
+Guys, applied Eric's patch. To remain consistent with Ehcache's configuration conventions, I renamed channel\_name to channelName. 
 
 </div>
 

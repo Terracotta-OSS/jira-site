@@ -32,9 +32,9 @@ resolved: "2007-01-04T20:28:32.000-0500"
 
 
 ## Attachments
-  
+
 * <em>teck</em> (2.000 M, application/x-zip-compressed) [jsf-cardemo.war](/attachments/CDV/CDV-39/jsf-cardemo.war)
-  
+
 
 
 
@@ -44,7 +44,7 @@ resolved: "2007-01-04T20:28:32.000-0500"
 
 From forum posting (http://forums.terracotta.org/forums/posts/list/108.page)
 
-To reproduce this, import the attached WAR (from the JSF1.1\102 sun release) to a tomcat instance with DSO enabled
+To reproduce this, import the attached WAR (from the JSF1.1\_02 sun release) to a tomcat instance with DSO enabled
 
 This is the cycle causing the stack overflow:
 	at java.util.ArrayList.<init>(ArrayList.java:136)

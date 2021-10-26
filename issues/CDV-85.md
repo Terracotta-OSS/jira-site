@@ -44,13 +44,13 @@ might be other issues with regular mixin use as well, don't know
 now it seems to happen only when you tweak the definition
 
 See comment is DocumentParser line: 1138
-/\1
+/\*
 DefinitionParserHelper.createAndAddAdvisableDef(
 // TODO add ctor to expression - BUT: problem with mixin and ctor, ordering issue, Jp.invoke() calls field instance that has not been init yet in ctor (since body not invoked)
-"(execution(!static \1 .(..)) && " + withinPointcut + ')',
+"(execution(!static \* .(..)) && " + withinPointcut + ')',
 definition
 );
-\1/
+\*/
 
 fix this code when issue solved (along with the other TODOs in the same method)
 

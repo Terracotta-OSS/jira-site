@@ -60,7 +60,7 @@ net.sf.ehcache.CacheManagerTest.testCreateCacheManagerFromFile(CacheManagerTest.
 
 Solution: set the junit task's dir attribute:
 
-dir="${basedir}"
+dir="$\{basedir\}"
 Sourceforge Ticket ID: 1003659 - Opened By: zacjacobson - 4 Aug 2004 23:52 UTC
 
 </div>
@@ -74,7 +74,7 @@ Sourceforge Ticket ID: 1003659 - Opened By: zacjacobson - 4 Aug 2004 23:52 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Added to CVS. This will be released with ehcache 1.0, in
 August or September. Thanks for your report.

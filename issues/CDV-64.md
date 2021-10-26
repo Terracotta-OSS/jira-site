@@ -82,31 +82,31 @@ I modified ClientTunnelingEventHandler to have the log print out lots of log and
 
 
 
-	private void connectToL1JmxServer(final MessageChannel channel) {
+	private void connectToL1JmxServer(final MessageChannel channel) \{
 		logger.info("L1[" + channel.getChannelID()
 				+ "] notified us that their JMX server is now available");
 		EventContext msg = new L1ConnectionMessage(l2MBeanServer, channel,
 				channelIdToJmxConnector, channelIdToMsgConnection, true);
-		synchronized (sinkLock) {
-			if (connectStageSink == null) {
+		synchronized (sinkLock) \{
+			if (connectStageSink == null) \{
 				throw new AssertionError("ConnectStageSink was not set.");
-			}
+			\}
 			connectStageSink.add(msg);
-		}
+		\}
 		
-		for (int i = 1024; i < 50\11024; i += 1024) {
+		for (int i = 1024; i < 50\*1024; i += 1024) \{
 			logger.info(makeString(i));
-		}
+		\}
 
-	}
+	\}
 
-	private String makeString(int length) {
+	private String makeString(int length) \{
 		StringBuffer b = new StringBuffer(""+length);
-		for (int i = 0; i < length; i++) {
+		for (int i = 0; i < length; i++) \{
 			b.append("a");
-		}
+		\}
 		return b.toString();
-	}
+	\}
 
 </div>
 

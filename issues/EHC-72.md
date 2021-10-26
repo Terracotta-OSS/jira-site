@@ -66,7 +66,7 @@ Code))
 java.security.SecureClassLoader.defineClass(SecureClassLoader.java(Compiled
 Code))
  at
-com.ibm.ws.classloader.CompoundClassLoader.\1defineClass(CompoundClassLoader.java:446)
+com.ibm.ws.classloader.CompoundClassLoader.\_defineClass(CompoundClassLoader.java:446)
  at
 com.ibm.ws.classloader.CompoundClassLoader.findClass(CompoundClassLoader.java(Compiled
 Code))

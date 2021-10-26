@@ -32,9 +32,9 @@ resolved: "2007-03-20T14:03:47.000-0400"
 
 
 ## Attachments
-  
+
 * <em>eellis</em> (21.000 k, application/x-compressed-tar) [lucene.tgz](/attachments/CDV/CDV-52/lucene.tgz)
-  
+
 
 
 

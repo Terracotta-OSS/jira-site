@@ -53,7 +53,7 @@ Sourceforge Ticket ID: 1556288 - Opened By: fnl - 11 Sep 2006 11:42 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 I think this is a broken link in features. Fixed.
 Comment by: gregluck - 12 Sep 2006 08:57 UTC

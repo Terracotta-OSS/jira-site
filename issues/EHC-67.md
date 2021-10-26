@@ -41,7 +41,7 @@ ehcache leaves its expiry and spool threads running
 when the cache gets shut down. 
 
 I notice in the browsable CVS that the version of
-DiskStore that is tagged ehcahe\108, as well as the most
+DiskStore that is tagged ehcahe\_08, as well as the most
 recent doesn't wake up very often, at least I would
 have expected the threads to have stopped after a
 couple minutes with my settings, and they last much
@@ -53,7 +53,7 @@ configuration.getDiskCachePath());
 
 This does not pass in the supplied
 expiryThreadInterval, so DiskStore's default interval
-of 5 \1 60 \1 5 seconds is used (25 minutes!). This is a
+of 5 \* 60 \* 5 seconds is used (25 minutes!). This is a
 very long time, and probably not what the developer
 specifies. I know hibernate specifies 120 seconds by
 default.

@@ -50,7 +50,7 @@ Sourceforge Ticket ID: 1033061 - Opened By: bdargan - 23 Sep 2004 01:14 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Added some missing finally clauses which set the thread name back to 
 the old thread name. I have added a test for thread name.

@@ -32,9 +32,9 @@ resolved: ""
 
 
 ## Attachments
-  
+
 * <em>ekulesho</em> (19.000 k, text/plain) [errors.txt](/attachments/CDV/CDV-81/errors.txt)
-  
+
 
 
 
@@ -50,11 +50,11 @@ To support that we'll need to add an "alias" attribute to <application-context> 
 
 <application>
   <spring>
-    <jee-application name="\1">
+    <jee-application name="*">
       <application-contexts>
         <application-context alias="clusteredServices">
           <paths>
-            <path>\1/context.xml</path>
+            <path>*/context.xml</path>
           </paths>
           <beans>
             <bean name="master" />

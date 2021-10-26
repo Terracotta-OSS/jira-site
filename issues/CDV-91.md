@@ -134,7 +134,7 @@ dateext
 delaycompress
 extension ext
 ifempty
-include file\1or\1directory
+include file\_or\_directory
 mail address
 mailfirst
 maillast

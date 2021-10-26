@@ -32,9 +32,9 @@ resolved: "2007-02-27T20:10:53.000-0500"
 
 
 ## Attachments
-  
+
 * <em>tgautier</em> (1.000 k, application/x-gzip) [unit-npe.tgz](/attachments/CDV/CDV-75/unit-npe.tgz)
-  
+
 
 
 
@@ -69,10 +69,10 @@ To use the project, compile it with maven2:
 > mvn package
 
 To run with terracotta, install Terracotta 2.2+, and start a demo server:
-> $TC\1HOME/dso/samples/start-demo-server.sh
+> $TC\_HOME/dso/samples/start-demo-server.sh
 
 Start the app (cd into the target directory):
-target> java `$TC\1HOME/dso/bin/dso-env.sh` -Dtc.config=resources/conf/tc-config.xml -classpath classes unit.test.Main
+target> java \`$TC\_HOME/dso/bin/dso-env.sh\` -Dtc.config=resources/conf/tc-config.xml -classpath classes unit.test.Main
 
 </div>
 

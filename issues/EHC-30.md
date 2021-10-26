@@ -40,10 +40,10 @@ Looks like the ehcache-1.6.0 and 1.6.1 artifacts on oss.sonatype.org and by exte
 
 Downloading: http://repo1.maven.org/maven2/net/sf/ehcache/ehcache/1.6.1/ehcache-1.6.1-osgi.jar
 4222K downloaded
-[WARNING] \1\1\1 CHECKSUM FAILED - Checksum failed on download: local = 'b743344bf636af2a0b5d79a1031ff469f208b510'; remote = '8dbd0fe09757ae4a695e8cc1f4884b643fc9fcab' - RETRYING
+[WARNING] \*\*\* CHECKSUM FAILED - Checksum failed on download: local = 'b743344bf636af2a0b5d79a1031ff469f208b510'; remote = '8dbd0fe09757ae4a695e8cc1f4884b643fc9fcab' - RETRYING
 Downloading: http://repo1.maven.org/maven2/net/sf/ehcache/ehcache/1.6.1/ehcache-1.6.1-osgi.jar
 4222K downloaded
-[WARNING] \1\1\1 CHECKSUM FAILED - Checksum failed on download: local = 'b743344bf636af2a0b5d79a1031ff469f208b510'; remote = '8dbd0fe09757ae4a695e8cc1f4884b643fc9fcab' - IGNORING
+[WARNING] \*\*\* CHECKSUM FAILED - Checksum failed on download: local = 'b743344bf636af2a0b5d79a1031ff469f208b510'; remote = '8dbd0fe09757ae4a695e8cc1f4884b643fc9fcab' - IGNORING
 
 Manually checked the checksums on oss.sonatype.org for 1.6.1 and had similar results for the main artifact as well as the javadoc, osgi, and sources artifacts.
 Sourceforge Ticket ID: 2835847 - Opened By: ksmith2000 - 11 Aug 2009 21:21 UTC

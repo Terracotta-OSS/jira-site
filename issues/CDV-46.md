@@ -39,14 +39,14 @@ resolved: "2007-02-15T16:38:36.000-0500"
 The intent of this is primarily to assist support.  The intent is to wrap up the details of collecting (and knowing) all of the relevant information into a single script.  The output of this script is all the debugging information required by support personnel to assist in resolving an issue.  
 
 Requirements:
-    \1 In the event of an exception with the Terracotta software, there should be a tool (usable for both L1 and L2 environments) to capture Terracotta instance data:
-       \1 user environment variables (this information is stored in the tc-logs)
-       \1 terracotta logs (client or server)
-       \1 terracotta logs
-       \1 stack traces etc. (these are printed to the logs)
-    \1 Full mode
-       \1 includes the heap also (or other large objects as deemed required) - specifically, this refers to the L2 database files
-    \1 compressed into a single file archive (a zip)
+    * In the event of an exception with the Terracotta software, there should be a tool (usable for both L1 and L2 environments) to capture Terracotta instance data:
+       * user environment variables (this information is stored in the tc-logs)
+       * terracotta logs (client or server)
+       * terracotta logs
+       * stack traces etc. (these are printed to the logs)
+    * Full mode
+       * includes the heap also (or other large objects as deemed required) - specifically, this refers to the L2 database files
+    * compressed into a single file archive (a zip)
 
 
 
@@ -63,7 +63,7 @@ Requirements:
 
 Additional requirement
 
-\1 We must explicitly define the set of environment variables we \1will\1 send.  We cannot implement sending environment settings by filtering out those which we do not want to send (such as username).  This will ensure that we only send information that is relevant, and not accidentally include sensitive information.
+\* We must explicitly define the set of environment variables we \*will\* send.  We cannot implement sending environment settings by filtering out those which we do not want to send (such as username).  This will ensure that we only send information that is relevant, and not accidentally include sensitive information.
 
 
 </div>

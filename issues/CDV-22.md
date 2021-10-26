@@ -48,7 +48,7 @@ Actual:
 operable program or batch file.
 The system cannot find the path specified.
 -Xbootclasspath/p:"C:\Program Files\Terracotta\terracotta-2.2\common\lib\dso-boo
-t\dso-boot-hotspot\1win32\1150\109.jar" -Dtc.install-root="C:\Program Files\Terraco
+t\dso-boot-hotspot\_win32\_150\_09.jar" -Dtc.install-root="C:\Program Files\Terraco
 tta\terracotta-2.2"
 
 
@@ -100,7 +100,7 @@ See rev 267
 
 Had to modify the first lines in dso-env.bat
 
-Also modified the behavior for the tc-function call to tc\1set\1dso\1boot\1jar in both the batch and shell script so that it wont print the location of the DSO boot jar anymore when the DSO\1BOOT\1JAR variable is already set --- this allows the user to call the dso-env script several times and get the same results.
+Also modified the behavior for the tc-function call to tc\_set\_dso\_boot\_jar in both the batch and shell script so that it wont print the location of the DSO boot jar anymore when the DSO\_BOOT\_JAR variable is already set --- this allows the user to call the dso-env script several times and get the same results.
 
 </div>
 
@@ -122,9 +122,9 @@ Run dso-env.bat , it is not printing any variable in the command prompt.
 
 <div markdown="1" class="comment">
 
-The -v parameter needs to be passed  for dso-env to display the value of TC\1JAVA\1OPTS
+The -v parameter needs to be passed  for dso-env to display the value of TC\_JAVA\_OPTS
 
-I've switched it so that the default action for dso-env is to print TC\1JAVA\1OPTS, that way it will work if it was invoked via the Windows Explorer (no params), or from the command-line.
+I've switched it so that the default action for dso-env is to print TC\_JAVA\_OPTS, that way it will work if it was invoked via the Windows Explorer (no params), or from the command-line.
 
 Pass -q to make it quiet.
 

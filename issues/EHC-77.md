@@ -56,7 +56,7 @@ Sourceforge Ticket ID: 1110505 - Opened By: nobody - 27 Jan 2005 08:27 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Thanks. I have fixed that. Thanks for the report.
 Comment by: gregluck - 7 Mar 2005 01:38 UTC

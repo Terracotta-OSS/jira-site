@@ -57,7 +57,7 @@ Sourceforge Ticket ID: 1730999 - Opened By: fleiter - 4 Jun 2007 20:29 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 Originator: NO
 
 Yes

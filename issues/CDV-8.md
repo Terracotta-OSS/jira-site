@@ -40,18 +40,18 @@ To facilitate minimizing scheduled downtime, support upgrading the application o
 
 New Features:
 
-    \1 Similar to the "onLoad" BeanShell script, add an "onSet" method that can be called when fields are mutated.
-    \1 Create an "Open" mode for loading config files that allows the application node (L1) to be restated with a new and different config file. If reasonable, just rename "Development" mode to "Open" mode.
-    \1 Add capability to attach a version number to objects via a new "metadata" attribute in the "<include>" tag.
+    * Similar to the "onLoad" BeanShell script, add an "onSet" method that can be called when fields are mutated.
+    * Create an "Open" mode for loading config files that allows the application node (L1) to be restated with a new and different config file. If reasonable, just rename "Development" mode to "Open" mode.
+    * Add capability to attach a version number to objects via a new "metadata" attribute in the "<include>" tag.
 
 Customer Steps:
 
-    \1 Run Terracotta in "Open" mode.
-    \1 Identify new fields and fields whose type has changed in the new version of the application.
-    \1 For new fields, edit the existing config file to initialize the field value using custom BeanShell script off the "onLoad" method.
-    \1 For fields whose type has changed, edit the config file to handle upgrading and downgrading the field value using custom BeanShell script off the "onSet" method. Optionally, leverage the metadata information to track version number.
-    \1 Modify the existing config file to use custom BeanShell scripts in the "onSet" of fields where the data type has changed or other computation is required to convert old values to new values ...
-    \1 fields to new...
+    * Run Terracotta in "Open" mode.
+    * Identify new fields and fields whose type has changed in the new version of the application.
+    * For new fields, edit the existing config file to initialize the field value using custom BeanShell script off the "onLoad" method.
+    * For fields whose type has changed, edit the config file to handle upgrading and downgrading the field value using custom BeanShell script off the "onSet" method. Optionally, leverage the metadata information to track version number.
+    * Modify the existing config file to use custom BeanShell scripts in the "onSet" of fields where the data type has changed or other computation is required to convert old values to new values ...
+    * fields to new...
 
 
 </div>

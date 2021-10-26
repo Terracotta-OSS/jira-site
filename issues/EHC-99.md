@@ -42,9 +42,9 @@ current beta release and CVS head.
 Error details:
 net.sf.ehcache.CacheException: Error configuring from
 jar:file:/C:/documents and
-settings/jt/LOCALS~1/Temp/config\129212.jar!/ehcache.xml.
+settings/jt/LOCALS~1/Temp/config\_29212.jar!/ehcache.xml.
 Error was file:\C:\documents and
-settings\jt\LOCALS~1\Temp\config\129212.jar!\ehcache.xml
+settings\jt\LOCALS~1\Temp\config\_29212.jar!\ehcache.xml
 (The filename, directory name, or volume label syntax
 is incorrect)
  at

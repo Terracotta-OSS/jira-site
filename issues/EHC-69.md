@@ -87,7 +87,7 @@ Sourceforge Ticket ID: 1025130 - Opened By: nobody - 9 Sep 2004 13:59 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Currently when the default cache is used to create a new cache it emits a 
 warning level log message. I think this is a good balance of convenience 

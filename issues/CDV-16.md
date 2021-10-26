@@ -39,16 +39,16 @@ resolved: "2007-04-22T22:52:51.000-0400"
 
 Support clustering of Quartz:
 
-    \1 Request came from a couple of sources including Rob Harrop (cofounder of Interface21). I think the primary requirements are:
+    * Request came from a couple of sources including Rob Harrop (cofounder of Interface21). I think the primary requirements are:
 
-    \1 1. Availaiblity:
+    * 1. Availaiblity:
                 + Cluster the job schedules (so machine hosting job schedule is not SPOF)
                 + Machine excuting job is not SPOF - i.e. master restarts work when node recovers.
-    \1 2. JobPersistence:
+    * 2. JobPersistence:
                 + Replace RAMJobStore with DSO based implementation: This allows the scheduling engine to work without a database. "RAMJobStore is the simplest JobStore to use, it is also the most performant (in terms of CPU time). RAMJobStore gets its name in the obvious way: it keeps all of its data in RAM. This is why it's lightning-fast, and also why it's so simple to configure. The drawback is that when your application ends (or crashes) all of the scheduling information is lost - this means RAMJobStore cannot honor the setting of "non-volatility" on jobs and triggers. For some applications this is acceptable - or even the desired behavior, but for other applications, this may be disasterous."
-    \1 3. Transactions:
+    * 3. Transactions:
                 + Quartz can participate in JTA transactions. We can't support now, but another data-point around that.
-    \1 4. Monitoring:
+    * 4. Monitoring:
                 + Cluster-wide monitoring and Stats.
 
 

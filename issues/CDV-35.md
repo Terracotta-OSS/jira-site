@@ -61,13 +61,13 @@ All necessary configuration, class loading/instrumentation, etc. would be handle
 Currently investigating some existing plugin architectures that we could use, the most obvious to me is to make use of the OSGi standard which is proven to be successful in the case of the Eclipse platform (though with some deviations from the official standard).  There will be native support in the JRE someday for this, but it looks like it won't happen until Java 7 or later, per JSR-277.
 
 Standardized or aspiring module/plugin specifications:
-   \1 JSR-277, "Java Module System": http://www.jcp.org/en/jsr/detail?id=277
-   \1 OSGi: http://www.osgi.org/
+   \* JSR-277, "Java Module System": http://www.jcp.org/en/jsr/detail?id=277
+   \* OSGi: http://www.osgi.org/
 
 A few open source OSGi implementations:
-   \1 Eclipse Equinox (EPL): http://www.eclipse.org/equinox/
-   \1 Knopflerfish (BSD-ish dual licensing): http://www.knopflerfish.org/
-   \1 Apache Felix (incubator): http://cwiki.apache.org/FELIX/index.html
+   \* Eclipse Equinox (EPL): http://www.eclipse.org/equinox/
+   \* Knopflerfish (BSD-ish dual licensing): http://www.knopflerfish.org/
+   \* Apache Felix (incubator): http://cwiki.apache.org/FELIX/index.html
 
 </div>
 
@@ -79,7 +79,7 @@ A few open source OSGi implementations:
 
 Adding another JSR to the mix, one that closely ties with OSGi and supports a more dynamic environment until JSR-277 comes into play in Java 7.
 
-   \1 JSR-291, "Dynamic Component Support for Java SE": http://jcp.org/en/jsr/detail?id=291
+   \* JSR-291, "Dynamic Component Support for Java SE": http://jcp.org/en/jsr/detail?id=291
 
 </div>
 

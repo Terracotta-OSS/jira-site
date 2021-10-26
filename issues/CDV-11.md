@@ -40,15 +40,15 @@ Mode allowed for applications nodes (L1s) to continue to function as standalone 
 
 Details:
 
-    \1 Just for Sessions
-    \1 Should it timeout before disconnected mode kicks in
-    \1 Application nodes can swap objects in and out, and only load a configured portion of each session, and configure the L1s accordingly.
-    \1 Exception thrown is application attempts to accesses to shared object not in the application node (L1) DSO cache.
-    \1 Queue up DSO transactions (L1 mutates an object that's already in its local DSO cache).
-    \1 Upon reconnect, what happens? Meaning of <client-reconnect-window>.
-    \1 Allow dirty reads?
+    * Just for Sessions
+    * Should it timeout before disconnected mode kicks in
+    * Application nodes can swap objects in and out, and only load a configured portion of each session, and configure the L1s accordingly.
+    * Exception thrown is application attempts to accesses to shared object not in the application node (L1) DSO cache.
+    * Queue up DSO transactions (L1 mutates an object that's already in its local DSO cache).
+    * Upon reconnect, what happens? Meaning of <client-reconnect-window>.
+    * Allow dirty reads?
 
-Virtual Router Redundancy Protocol (VRRP): http://en.wikipedia.org/wiki/Virtual\1router\1redundancy\1protocol
+Virtual Router Redundancy Protocol (VRRP): http://en.wikipedia.org/wiki/Virtual\_router\_redundancy\_protocol
 
 </div>
 

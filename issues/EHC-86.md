@@ -55,7 +55,7 @@ Sourceforge Ticket ID: 1224325 - Opened By: nobody - 20 Jun 2005 18:26 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Documentation fixed. Access means get.
 Comment by: gregluck - 8 Feb 2006 07:17 UTC

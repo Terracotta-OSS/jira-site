@@ -37,12 +37,12 @@ resolved: "2007-02-28T19:47:56.000-0500"
 <div markdown="1" class="description">
 
 Motivation:
-  \1 Create the foundation of an integration into the O/R mapping space.
-  \1 Drive transparency through real-world applications.
+  \* Create the foundation of an integration into the O/R mapping space.
+  \* Drive transparency through real-world applications.
 
 Requirements:
-  \1 Create a sample application that utilizes POJOs generated from iBATIS O/R mapping engine.
-  \1 We must be able to cluster the "data" POJOs generated from iBATIS, which means we can successfully read all fields in a second JVM.
+  \* Create a sample application that utilizes POJOs generated from iBATIS O/R mapping engine.
+  \* We must be able to cluster the "data" POJOs generated from iBATIS, which means we can successfully read all fields in a second JVM.
 
 
 </div>

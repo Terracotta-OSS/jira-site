@@ -38,7 +38,7 @@ resolved: "2009-09-22T23:44:26.000-0400"
 
 Hi Greg,
 
-The new sampling algorithm used for eviction from the MemoryStore when maxElementsInMemory > TOO\1LARGE\1TO\1EFFICIENTLY\1ITERATE (5000) causes a very marked memory usage increase when the following conditions are met:
+The new sampling algorithm used for eviction from the MemoryStore when maxElementsInMemory > TOO\_LARGE\_TO\_EFFICIENTLY\_ITERATE (5000) causes a very marked memory usage increase when the following conditions are met:
 
 1) maxElementsInMemory > 5000 (this selects the keyArray sampling technique, otherwise it does not apply)
 2) maxElementsInMemory is oversized with respect to actual cache key cardinality (eg: maxElementsInMemory = 10000 with perhaps only about 1000 unique keys)
@@ -54,9 +54,9 @@ Our applications happen to meet all of the above criteria for several caches. Le
 
 You may argue that many of the above issues affect cache key quality/overhead and it's true - in fact we have several optimizations in place to avoid excessive memory usage and all was going well until we tried out EhCache 1.6.0 betas. The optimization we use most of the time is replacing Hibernate entities with their identifiers when constructing the cache key from the MethodInvocation and its arguments. However, one of our cached methods has an argument that is not a Hibernate entity, but CONTAINS an internal reference to a Hibernate entity. Thus, our optimization did not kick in.
 
-Before you discard this as a programming error, let's analyze the difference in behaviour between 1.5.0 and 1.6.0 betas. In previous versions, with a cache key cardinality of 1000 the memory consumption of this particular case was bounded at (cache key cardinality = 1000) \1 (size in memory of the suboptimal cache key). However, in 1.6.0, this value is bounded at:
+Before you discard this as a programming error, let's analyze the difference in behaviour between 1.5.0 and 1.6.0 betas. In previous versions, with a cache key cardinality of 1000 the memory consumption of this particular case was bounded at (cache key cardinality = 1000) \* (size in memory of the suboptimal cache key). However, in 1.6.0, this value is bounded at:
 
-((maxElementsInMemory = 10000) + (cache key cardinality = 1000)) \1 (size in memory of the suboptimal cache key)
+((maxElementsInMemory = 10000) + (cache key cardinality = 1000)) \* (size in memory of the suboptimal cache key)
 
 This is 11x the memory consumption in our example. The reason is behind keyArray which is used for sampling keys eligible for eviction. Since maxElementsInMemory > 5000, a keyArray[maxElementsInMemory] is created at MemoryStore construction-time. keySamplePointer is incremented every single time an Element is put in the cache, and every position is filled with a cache key reference until it wraps around and starts over again. This means that even though cache key cardinality may be 1, eventually there will be maxElementsInMemory references to the same logical cache key (though they may be different object instances). If the key is lightweight, pooled or interned then it's not a problem at all. However when it's not (as in our example) and when it's big (again, as in our example) it's a recipe for disaster.
 

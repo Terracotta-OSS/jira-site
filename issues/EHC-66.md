@@ -51,7 +51,7 @@ Attached is a patch which (1) removes the shutdown hook
 from the runtime and (2) actually starts the thread
 such that the thread is removed from the system -
 actually from the thread group. Both actions are called
-from the Cache.dispose() method \1after\1 setting the
+from the Cache.dispose() method \_after\_ setting the
 state to shutdown.
 
 Note on starting the thread: When the shutdown hook

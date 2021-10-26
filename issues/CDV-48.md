@@ -43,11 +43,11 @@ Requirements:
 Add an outline view for Terracotta applications which displays a high-level tree hierarchy of the configuration items.
 
 Below the top-level Application Configuration node, show the expandable sub-nodes --
-    \1 Roots
-    \1 Shared Locks
-    \1 Transient Fields
-    \1 Boot JAR Classes
-    \1 Instrumented Classes
+    * Roots
+    * Shared Locks
+    * Transient Fields
+    * Boot JAR Classes
+    * Instrumented Classes
 
 Within each sub-node, list the appropriate DSO configuration items and allow users to add or edit the items comparable to the way it is done in the other panels.
 

@@ -60,7 +60,7 @@ Sourceforge Ticket ID: 1579761 - Opened By: nobody - 18 Oct 2006 14:58 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Hi
 

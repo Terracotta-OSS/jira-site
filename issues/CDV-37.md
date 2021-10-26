@@ -32,19 +32,19 @@ resolved: "2007-05-01T19:35:21.000-0400"
 
 
 ## Attachments
-  
+
 * <em></em> (304.000, text/x-java) [LockContainer.java](/attachments/CDV/CDV-37/LockContainer.java)
-  
+
 * <em></em> (919.000, text/plain) [ManagerUtil-monitorEnter-fix.patch](/attachments/CDV/CDV-37/ManagerUtil-monitorEnter-fix.patch)
-  
+
 * <em></em> (1.000 k, text/x-java) [Node1.java](/attachments/CDV/CDV-37/Node1.java)
-  
+
 * <em></em> (861.000, text/x-java) [Node2.java](/attachments/CDV/CDV-37/Node2.java)
-  
+
 * <em></em> (3.000 k, text/plain) [ReentrantLock-JDK1.5-mismatch.patch](/attachments/CDV/CDV-37/ReentrantLock-JDK1.5-mismatch.patch)
-  
+
 * <em></em> (611.000, text/xml) [tc-config.xml](/attachments/CDV/CDV-37/tc-config.xml)
-  
+
 
 
 
@@ -108,16 +108,16 @@ package test;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.Condition;
 
-public class Issue2 {
+public class Issue2 \{
   private ReentrantLock lock = new ReentrantLock(true);
   Condition cond = lock.newCondition();
-  public static void main(String args[]) throws Exception {
+  public static void main(String args[]) throws Exception \{
     new Issue2().TestLockWait();
-  }
+  \}
 
-  public void TestLockWait() throws Exception {
-    /\1\1 This thread prints the interrupted exception, if thread is interrupted while waiting 
-     \1 The thread will end without any exception in JDK while exception trace will be printed in TC\1\1/
+  public void TestLockWait() throws Exception \{
+    /** This thread prints the interrupted exception, if thread is interrupted while waiting 
+     * The thread will end without any exception in JDK while exception trace will be printed in TC**/
 
     Thread thread1 = new Thread("Thread1") {
       public void run() {
@@ -134,20 +134,20 @@ public class Issue2 {
 
 
     thread1.start();
-    /\1\1
-     \1 1. Wait so that Thread1 acquires the lock first 
-     \1 2. acquire the lock,  
-     \1 3. send signal to Thread1 so that it comes out of wait and starts the procedure of acquiring lock 
-     \1 4. Interrupt Thread1
-     \1 5. unlock, so that Thread1 grabs it 
-     \1\1/
+    /**
+     * 1. Wait so that Thread1 acquires the lock first 
+     * 2. acquire the lock,  
+     * 3. send signal to Thread1 so that it comes out of wait and starts the procedure of acquiring lock 
+     * 4. Interrupt Thread1
+     * 5. unlock, so that Thread1 grabs it 
+     **/
     Thread.sleep(1000);
     lock.lock();
     cond.signalAll();
     thread1.interrupt();
     lock.unlock();
-  }
-}
+  \}
+\}
 
 Issue 3 -
 ------------
@@ -157,15 +157,15 @@ package test;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.Condition;
 
-public class Issue3 {
+public class Issue3 \{
   private ReentrantLock lock = new ReentrantLock(true);
   Condition cond = lock.newCondition();
-  public static void main(String args[]) throws Exception {
+  public static void main(String args[]) throws Exception \{
     new Issue3().TestLockWait();
-  }
+  \}
 
-  public void TestLockWait() throws Exception {
-    /\1\1 This thread prints the interrupted status. Incase of JDK it will print true, in case of TC it will print false \1\1/
+  public void TestLockWait() throws Exception \{
+    /** This thread prints the interrupted status. Incase of JDK it will print true, in case of TC it will print false **/
 
     Thread thread1 = new Thread("Thread1") {
       public void run() {
@@ -178,20 +178,20 @@ public class Issue3 {
 
 
     thread1.start();
-    /\1\1
-     \1 1. Wait so that Thread1 acquires the lock first 
-     \1 2. acquire the lock,  
-     \1 3. Interrupt Thread1
-     \1 4. send signal to Thread1 so that it comes out of wait and starts the procedure of acquiring lock 
-     \1 5. unlock, so that Thread1 grabs it 
-     \1\1/
+    /**
+     * 1. Wait so that Thread1 acquires the lock first 
+     * 2. acquire the lock,  
+     * 3. Interrupt Thread1
+     * 4. send signal to Thread1 so that it comes out of wait and starts the procedure of acquiring lock 
+     * 5. unlock, so that Thread1 grabs it 
+     **/
     Thread.sleep(1000);
     lock.lock();
     thread1.interrupt();
     cond.signalAll();
     lock.unlock();
-  }
-}
+  \}
+\}
 
 Issue 4 -
 -----------
@@ -200,17 +200,17 @@ package test;
 
 import java.util.concurrent.locks.ReentrantLock;
 
-public class Issue4 {
+public class Issue4 \{
   private ReentrantLock lock = new ReentrantLock(true);
 
-  public static void main(String args[]) throws Exception {
+  public static void main(String args[]) throws Exception \{
     new Issue4().TestLockWait();
-  }
+  \}
 
-  public void TestLockWait() throws Exception {
-    /\1\1 one of Thread1 and Thread2 acquires the lock, while other waits in the queue
-     \1 JDK's implementation prints the waiting thread as 1, while TC implementation prints 0.
-     \1/
+  public void TestLockWait() throws Exception \{
+    /** one of Thread1 and Thread2 acquires the lock, while other waits in the queue
+     * JDK's implementation prints the waiting thread as 1, while TC implementation prints 0.
+     */
     
     new Thread("Thread1") {
       public void run() {
@@ -225,12 +225,12 @@ public class Issue4 {
       }
     }.start();
 
-    /\1\1 sleep for some time so that both Thread1 and Thread2 are done with their run method execution\1\1/
+    /** sleep for some time so that both Thread1 and Thread2 are done with their run method execution**/
     Thread.sleep(1000);
     
     System.out.println("Number of waiting thread = " + lock.getQueueLength());
-  }
-}
+  \}
+\}
 
 
 

@@ -36,7 +36,7 @@ resolved: ""
 
 <div markdown="1" class="description">
 
-When we currently manage (read/write/parse) Session Cookie we don't take into account possible optional fields containing JVM Rout info used to mod\1jk load balancing implementation
+When we currently manage (read/write/parse) Session Cookie we don't take into account possible optional fields containing JVM Rout info used to mod\_jk load balancing implementation
 
 </div>
 

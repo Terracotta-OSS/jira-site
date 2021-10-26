@@ -42,11 +42,11 @@ on page
 http://ehcache.sourceforge.net/documentation/#mozTocId635920
 The line that reads
 <property
-name="hibernate.cache.provider\1class">net.sf.ehcache.hibernate.Provider</property>
+name="hibernate.cache.provider\_class">net.sf.ehcache.hibernate.Provider</property>
 
 should instead read
 <property
-name="hibernate.cache.provider\1class">net.sf.hibernate.cache.EhCacheProvider</property>
+name="hibernate.cache.provider\_class">net.sf.hibernate.cache.EhCacheProvider</property>
 
 Sourceforge Ticket ID: 1247019 - Opened By: nobody - 28 Jul 2005 19:16 UTC
 
@@ -61,7 +61,7 @@ Sourceforge Ticket ID: 1247019 - Opened By: nobody - 28 Jul 2005 19:16 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Ok. I have updated the documentation and also deprecated the Provider and 
 Plugin. In addition a warning will be issued advising users to change to the 

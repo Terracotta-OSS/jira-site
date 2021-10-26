@@ -70,7 +70,7 @@ Sourceforge Ticket ID: 1204307 - Opened By: nobody - 18 May 2005 14:09 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Your config probably resulted in elements being immediately deleted. i.e. 
 maxElementsInMemory will overflow to disk on the first insertion. But you have 

@@ -32,9 +32,9 @@ resolved: ""
 
 
 ## Attachments
-  
+
 * <em>carrja99</em> (10.000 k, text/plain) [JmsCachePeerTest.patch](/attachments/EHC/EHC-28/JmsCachePeerTest.patch)
-  
+
 
 
 
@@ -48,17 +48,17 @@ The "instance of" used in the source code of ehcache jms replication provided by
 
 File Name is JMSCachePeer
 
-private void handleObjectMessage(Message message) throws JMSException, RemoteException {
+private void handleObjectMessage(Message message) throws JMSException, RemoteException \{
         ObjectMessage objectMessage = (ObjectMessage) message;
         Object object = objectMessage.getObject();
 
         //If a non-cache publisher sends an Element
         if (object instanceof Element) {
-            /\1\1 some code \1\1/
+            /** some code **/
         } else if (object instanceof JMSEventMessage) {
-            /\1\1 some code \1\1/
+            /** some code **/
         } else {
-            /\1\1 some code \1\1/
+            /** some code **/
         }
 
 Even though the object is of type JMSEventMessage, the control does not go in the second if. rather it goes in the last else.

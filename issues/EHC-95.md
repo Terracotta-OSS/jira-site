@@ -59,7 +59,7 @@ the 3 other configure methods in Configurator to first
 create a FileInputStream and then call the configure
 method that accepts InputStream.
 
-Sourceforge Ticket ID: 1237017 - Opened By: sandip\1ghosh - 12 Jul 2005 23:07 UTC
+Sourceforge Ticket ID: 1237017 - Opened By: sandip\_ghosh - 12 Jul 2005 23:07 UTC
 
 </div>
 

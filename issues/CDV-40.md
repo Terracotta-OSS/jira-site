@@ -37,16 +37,16 @@ resolved: "2007-02-06T19:36:19.000-0500"
 <div markdown="1" class="description">
 
 Requirements:
-   \1 Build Unix/Linux kit without a JRE
-   \1 Include both Solaris and Unix Boot JARs in dso-boot folder (4 total files)
-       \1 dso-boot-hotspot\1solaris\1142\113.jar
-       \1 dso-boot-hotspot\1solaris\1150\110.jar
-       \1 dso-boot-hotspot\1linux\1142\113.jar
-       \1 dso-boot-hotspot\1linux\1150\110.jar
+   \* Build Unix/Linux kit without a JRE
+   \* Include both Solaris and Unix Boot JARs in dso-boot folder (4 total files)
+       * dso-boot-hotspot_solaris_142_13.jar
+       * dso-boot-hotspot_solaris_150_10.jar
+       * dso-boot-hotspot_linux_142_13.jar
+       * dso-boot-hotspot_linux_150_10.jar
 
-   \1 TC-Welcome auto-gens boot jar if needed
-   \1 Update Installation section user guides with instructions on setting and/or verifying JAVA\1HOME and TC\1JAVA\1HOME.
-   \1 Update web site to refer to "Unix/Linux" kits.
+   \* TC-Welcome auto-gens boot jar if needed
+   \* Update Installation section user guides with instructions on setting and/or verifying JAVA\_HOME and TC\_JAVA\_HOME.
+   \* Update web site to refer to "Unix/Linux" kits.
 
 
 </div>

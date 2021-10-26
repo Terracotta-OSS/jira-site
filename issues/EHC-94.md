@@ -63,7 +63,7 @@ Sourceforge Ticket ID: 1261613 - Opened By: orthanc - 17 Aug 2005 03:46 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Eddy,
 

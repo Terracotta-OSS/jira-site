@@ -32,9 +32,9 @@ resolved: ""
 
 
 ## Attachments
-  
+
 * <em>jhartley</em> (26.000 k, image/png) [DSO+and+Frameworks.png](/attachments/CDV/CDV-9/DSO+and+Frameworks.png)
-  
+
 
 
 

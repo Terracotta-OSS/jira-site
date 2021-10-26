@@ -81,7 +81,7 @@ Sourceforge Ticket ID: 1488853 - Opened By: dhulley - 15 May 2006 13:24 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Derek
 

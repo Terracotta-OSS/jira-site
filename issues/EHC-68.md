@@ -76,7 +76,7 @@ Sourceforge Ticket ID: 1024334 - Opened By: nobody - 8 Sep 2004 12:03 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 This bug was reported in the forums and fixed in CVS back on the 17 
 July. I have been production testing some large scale changes to the Disk 

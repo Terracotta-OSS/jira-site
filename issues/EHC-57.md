@@ -46,7 +46,7 @@ following issue
 
 It seems to ehcache hase 1 singleton instance and not 
 reinit for new factory. (old instance has ststus 
-NOT\1ALIVE) 
+NOT\_ALIVE) 
 
 Exception: 
 java.lang.IllegalStateException 

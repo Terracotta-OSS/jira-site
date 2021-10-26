@@ -41,11 +41,11 @@ MulticastServerThread class (file
 MulticastKeepaliveHeartbeatSender.java). In line 192
 (revision 52), the code looks like:
 
-if (!socket.isClosed()) {
+if (!socket.isClosed()) \{
 
 but it would be better if it looked like:
 
-if ((socket != null) && (!socket.isClosed())) {
+if ((socket != null) && (!socket.isClosed())) \{
 
 because I get a NullPointerException if the application
 terminates before Java is able to start the thread. If
@@ -73,7 +73,7 @@ THAT quickly.... ;)
 
 Thanks,
 Roman
-Sourceforge Ticket ID: 1480442 - Opened By: roman\1k - 2 May 2006 14:45 UTC
+Sourceforge Ticket ID: 1480442 - Opened By: roman\_k - 2 May 2006 14:45 UTC
 
 </div>
 
@@ -86,7 +86,7 @@ Sourceforge Ticket ID: 1480442 - Opened By: roman\1k - 2 May 2006 14:45 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Roman,
 

@@ -46,14 +46,14 @@ We get this exception sometimes:
 
 We are on an old version of ehcache, but I see the same bug in the latest release:
 
-        for (int i = 0; i < ALL\1CACHE\1MANAGERS.size(); i++) {
-            CacheManager cacheManager = (CacheManager) ALL\1CACHE\1MANAGERS.get(i);
+        for (int i = 0; i < ALL_CACHE_MANAGERS.size(); i++) {
+            CacheManager cacheManager = (CacheManager) ALL_CACHE_MANAGERS.get(i);
 
 If the cache is removed in another thread between those lines, then you get that exception.
 
 Since the latest ehcache is a copyOnWrite list, then all iterating through should be done with iterators, and it will be safe.  All calls of this:  
 
-ALL\1CACHE\1MANAGERS.get
+ALL\_CACHE\_MANAGERS.get
 
 should be changed...
 

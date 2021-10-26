@@ -40,11 +40,11 @@ When a non-portable exception is encountered, the specific object that tripped t
 
 Display:
 
-    \1 Show object graph containing the offending object
-    \1 All parent objects of the offending object should be expanded
-    \1 Highlight (possibly in red) the offending object
-    \1 Position the highlighted object for easy viewing (possibly in center of page)
-    \1 If information about other offending object is available, highlight them too (possibly in yellow)
+    * Show object graph containing the offending object
+    * All parent objects of the offending object should be expanded
+    * Highlight (possibly in red) the offending object
+    * Position the highlighted object for easy viewing (possibly in center of page)
+    * If information about other offending object is available, highlight them too (possibly in yellow)
 
 You set a root and fire up your client. No locks, no transients, no bootjar classes. Errors are logged and at shutdown a suggested config file is spit to the log, or the specified config file is just updated. This could be the development mode of operation.
 

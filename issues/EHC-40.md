@@ -46,10 +46,10 @@ The number of slow-walks (v.s. fast array selections) increases over time until 
 I suggest the following two algorithms (can provide code if desired)
 Alg 1)
 init-phase)
- \1 until maxElements have been put, atomicly increment a keyArray index as currently done.
- \1 every time a random-sample is computed for eviction detection, IF the map doesn't find the key, null out from the array and add to the free-list and continue search for a replacement sample (indices[i]+retryK) (changes lines 575 .. 580).
+ \* until maxElements have been put, atomicly increment a keyArray index as currently done.
+ \* every time a random-sample is computed for eviction detection, IF the map doesn't find the key, null out from the array and add to the free-list and continue search for a replacement sample (indices[i]+retryK) (changes lines 575 .. 580).
 filled-phase)
- \1 pull from the free-list.  If empty for whatever reason, continue walking the atomicKeyIncrementer as done currently.
+ \* pull from the free-list.  If empty for whatever reason, continue walking the atomicKeyIncrementer as done currently.
 
 Alg 2)
 Ideally the element stores the index of the keyArray.. Then any eviction can clear out the key. Then your statistics table will always be legit. The freelist will then never be null in the filled-phase above.

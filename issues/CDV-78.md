@@ -38,8 +38,8 @@ resolved: "2007-02-05T23:31:11.000-0500"
 
 Currently we always include execution stack trace into synthetic id generated for Spring app context. This is done to allow scenario like this:
 
-ctx1 = new ClasspathXmlApplicationContext(new String[] {"ctx.xml"});
-ctx2 = new ClasspathXmlApplicationContext(new String[] {"ctx.xml"});
+ctx1 = new ClasspathXmlApplicationContext(new String[] \{"ctx.xml"\});
+ctx2 = new ClasspathXmlApplicationContext(new String[] \{"ctx.xml"\});
 
 So, ctx1 and ctx2 won't be linked together as a clustered context and will stay unrelated, though instance of ctx1 or ctx2 can be still clustered with context created at the same location on different node.
 

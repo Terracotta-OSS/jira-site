@@ -40,11 +40,11 @@ Motivation:
 Target Quartz Job Scheduler (http://www.opensymphony.com/quartz/) support to increase Terracotta's transparency and add to the portfolio of Terracotta clustered frameworks.
 
 Clustering Quartz Requirements:
-   \1 Fail-over - if one node is running a job, and fails, the job will run on another node
-   \1 Load balancing of jobs - to execute on the first (or "most") available node
-   \1 "Pinning" of jobs - to execute on a specific node
-   \1 "Ubiquitous" jobs - to execute on every node
-   \1 "Appropriating" of jobs - to execute on the node that has the given capabilities the job requires
+   \* Fail-over - if one node is running a job, and fails, the job will run on another node
+   \* Load balancing of jobs - to execute on the first (or "most") available node
+   \* "Pinning" of jobs - to execute on a specific node
+   \* "Ubiquitous" jobs - to execute on every node
+   \* "Appropriating" of jobs - to execute on the node that has the given capabilities the job requires
 
 Use Case:
 We could implement a simple use case like a Tournament system which should cover basic scheduling capabilities and test fail-over and scalability (through load balancing).  Pinning would involve running some maintenance jobs like vacuuming a database.  Ubiquitous jobs could be something like refreshing a local (not shared) cache.  Appropriate jobs are kind of like pinning and could involve things like creating backups of a datastore.
@@ -139,7 +139,7 @@ Thanks
 From: "Steven Harris" <steve@terracottatech.com>
 To: "Orion Letizi" <orion@terracotta.org>
 Cc: "pm" <pm@terracottatech.com>, "Nitin Jain" <njain@terracottatech.com>, "sales" <sales@terracotta.org>, "fieldeng" <fieldeng@terracottatech.com>
-Sent: Tuesday, November 20, 2007 10:11:16 AM (GMT-0800) America/Los\1Angeles
+Sent: Tuesday, November 20, 2007 10:11:16 AM (GMT-0800) America/Los\_Angeles
 Subject: Re: [Pm] [Fieldeng] Clustering Quartz
 
 I think it should be in the forge and develop and mature.

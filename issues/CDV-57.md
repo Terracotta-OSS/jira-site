@@ -40,12 +40,12 @@ Motivation:
 Target Wicket (http://wicket.sourceforge.net/) support to increase Terracotta's transparency and add to the portfolio of Terracotta clustered frameworks.
 
 Clustering Wicket Requirements:
-   \1 Support versions 1.2
-   \1 Session clustering support
-   \1 Support for all examples - e.g. each example runs as expected, fail a node and see that the example continues to run in secondary app server
+   \* Support versions 1.2
+   \* Session clustering support
+   \* Support for all examples - e.g. each example runs as expected, fail a node and see that the example continues to run in secondary app server
 
 Optional:
-   \1 Spring component
+   \* Spring component
 
 
 </div>

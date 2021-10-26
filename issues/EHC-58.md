@@ -39,15 +39,15 @@ resolved: "2009-09-22T23:44:27.000-0400"
 I was attempting to work with a large expire time TTL of 2592000 (30 
 days) for a disk-persistent cache, but the expire time was always 
 returning "expired". Upon investigation, I believe it might be due to the 
-net.sf.ehcache.Element.ONE\1SECOND constant, which is an int. When used  
+net.sf.ehcache.Element.ONE\_SECOND constant, which is an int. When used  
 as
 
-long ttlExpiry = creationTime + timeToLive \1 ONE\1SECOND
+long ttlExpiry = creationTime + timeToLive \* ONE\_SECOND
 
 in the getExpirationTime() method, this causes the integer result of 
-(timeToLive \1 ONE\1SECOND) to overflow into a negative value.
+(timeToLive \* ONE\_SECOND) to overflow into a negative value.
 
-Changing the ONE\1SECOND constant into a long fixed the problem for 
+Changing the ONE\_SECOND constant into a long fixed the problem for 
 me.
 Sourceforge Ticket ID: 1548314 - Opened By: msqr - 29 Aug 2006 04:09 UTC
 
@@ -62,7 +62,7 @@ Sourceforge Ticket ID: 1548314 - Opened By: msqr - 29 Aug 2006 04:09 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Matt
 

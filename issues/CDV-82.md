@@ -38,9 +38,9 @@ resolved: "2007-05-31T13:42:16.000-0400"
 
 if:
 
-    \1 no 'regular' advice in compiled JIT JP
+    * no 'regular' advice in compiled JIT JP
       AND
-    \1 all array lengths (member fields in JP) are 0
+    * all array lengths (member fields in JP) are 0
       THEN
       gen code block to call target member directly
 

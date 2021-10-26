@@ -56,7 +56,7 @@ New Kit Structure
    /config-examples
       tc-config-reference.xml
    /modules
-      /<module-name>\1<version>
+      /<module-name>_<version>
          /config-examples
             tc-config-<module-name>.xml
          /docs
@@ -66,8 +66,8 @@ New Kit Structure
             /sample1
          /tools
             run-something.sh
-      /org.terracotta.core-dso\12.3.0  (module or not?)
-      /org.terracotta.pojos\12.3.0
+      /org.terracotta.core-dso_2.3.0  (module or not?)
+      /org.terracotta.pojos_2.3.0
          /config-examples
             tc-config-dso.xml
          /docs
@@ -75,7 +75,7 @@ New Kit Structure
          /samples
             /jtable
             /sharededitor
-      /org.terracotta.sessions\12.3.0
+      /org.terracotta.sessions_2.3.0
          /config-examples
             tc-config-sessions.xml
             tc-config-sessions-tomcat.xml
@@ -94,7 +94,7 @@ New Kit Structure
             /tomcat5.0
             /tomcat5.5
             /wls8.1
-      /org.terracotta.spring\12.3.0
+      /org.terracotta.spring_2.3.0
          /config-examples
             tc-config-spring.xml
          /docs

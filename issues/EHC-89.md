@@ -39,13 +39,13 @@ resolved: "2009-09-22T23:44:29.000-0400"
 The ehcache-1.2.3.jar classes contain a runtime
 dependency on Clover.  It appears that this has
 happened a number of times:
-http://sourceforge.net/tracker/index.php?func=detail&aid=1553144&group\1id=93232&atid=603559
-http://sourceforge.net/tracker/index.php?func=detail&aid=1422906&group\1id=93232&atid=603559
+http://sourceforge.net/tracker/index.php?func=detail&aid=1553144&group\_id=93232&atid=603559
+http://sourceforge.net/tracker/index.php?func=detail&aid=1422906&group\_id=93232&atid=603559
 
 [CLOVER] FATAL ERROR: Clover could not be initialised.
 Are you sure you have Clover in the runtime classpath?
 (class
-java.lang.NoClassDefFoundError:com\1cenqua\1clover/CloverVersionInfo)
+java.lang.NoClassDefFoundError:com\_cenqua\_clover/CloverVersionInfo)
 java.lang.reflect.InvocationTargetException
         at
 sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -56,7 +56,7 @@ sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.jav
         at java.lang.reflect.Method.invoke(Method.java:585)
 ...
 Caused by: java.lang.NoClassDefFoundError:
-com\1cenqua\1clover/g
+com\_cenqua\_clover/g
         at
 net.sf.ehcache.CacheManager.create(CacheManager.java:337)
         at
@@ -79,7 +79,7 @@ Sourceforge Ticket ID: 1554434 - Opened By: ferraro - 7 Sep 2006 23:53 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=599784
+user\_id=599784
 
 Duplicate...  Sorry.
 Comment by: ferraro - 7 Sep 2006 23:54 UTC

@@ -51,7 +51,7 @@ Sourceforge Ticket ID: 1987751 - Opened By: prophecyslides - 7 Jun 2008 23:25 UT
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 Originator: NO
 
 Hi

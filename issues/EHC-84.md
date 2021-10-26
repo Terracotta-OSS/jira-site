@@ -36,12 +36,12 @@ resolved: "2009-09-22T23:44:29.000-0400"
 
 <div markdown="1" class="description">
 
-The RELEASE\1NOTES.txt says in Java Requirements:
+The RELEASE\_NOTES.txt says in Java Requirements:
 
 "When compiling from source, the build process requires
 JDK 1.4 or 5."
 
-\1\1\1
+\*\*\*
 
 When i compile the source with jdk1.4 i get compile
 errors with one
@@ -57,7 +57,7 @@ response.getText().contains("timestamp");
 
 String.contains(String) exists only with jdk1.5+.
 
-\1\1\1
+\*\*\*
 
 A solution would be to use the old fashioned way: 
 
@@ -78,7 +78,7 @@ Sourceforge Ticket ID: 1185149 - Opened By: knigge - 18 Apr 2005 12:56 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Thanks for that. I added source="1.4" to the usages of javac
 in ehcache and ehcache-constructs to try and control issues

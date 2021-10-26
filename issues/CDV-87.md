@@ -92,9 +92,9 @@ Anyways, I dont have a good solution for this problem. But nevertheless I would 
 
 //===================code sample to illustrate the problem====================
 
-remove(object o) {
+remove(object o) \{
    node n = head;
-   synchronized(this) {
+   synchronized(this) \{
       while(n != null && n.value != o) {
          n = n.next;
       }
@@ -102,12 +102,12 @@ remove(object o) {
          if(n.prev != null) n.prev.next = n.next;
          if(n.next != null) n.next.prev = n.prev;
       }
-   }
+   \}
   // problem code -- here --- n is not referenceable at this point. So it is ok to modify it out side the sync block. But dso will throw an exception
   n.next = null;
   n.prev = null;
   n.value = null;
-}
+\}
 
 
 

@@ -50,7 +50,7 @@ There is more than one way to fix this problem, and I think it's even already be
 
 <div markdown="1" class="comment">
 
-Assigning to Kirkham for now. If we have a fix in the near term (i.e. before the NTT fix release)\1 we should fix this in the Judah branch and main
+Assigning to Kirkham for now. If we have a fix in the near term (i.e. before the NTT fix release)\_ we should fix this in the Judah branch and main
 
 </div>
 

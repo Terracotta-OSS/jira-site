@@ -46,7 +46,7 @@ original:
 
 
    private synchronized void readIndex() throws
-IOException {
+IOException \{
         ObjectInputStream objectInputStream = null;
         if (indexFile.exists()) {
             try {
@@ -90,7 +90,7 @@ should probably look like this
 
 
     private synchronized void readIndex() throws
-IOException {
+IOException \{
         ObjectInputStream objectInputStream = null;
         FileInputStream fin = null;
         if (indexFile.exists()) {
@@ -140,7 +140,7 @@ Sourceforge Ticket ID: 1063908 - Opened By: nobody - 10 Nov 2004 15:58 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Hi
 

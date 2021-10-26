@@ -46,7 +46,7 @@ fis = new FileInputStream(new File
 
 it throw exception
 ===================
-java.lang.NoClassDefFoundError: com\1cenqua\1clover/g
+java.lang.NoClassDefFoundError: com\_cenqua\_clover/g
  at net.sf.ehcache.CacheManager.<init>
 (CacheManager.java:170)
 
@@ -68,7 +68,7 @@ Sourceforge Ticket ID: 1553144 - Opened By: nobody - 6 Sep 2006 03:57 UTC
 <div markdown="1" class="comment">
 
 Logged In: YES 
-user\1id=693320
+user\_id=693320
 
 Hi
 

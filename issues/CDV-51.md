@@ -40,10 +40,10 @@ Motivation:
 Add clustering support for additional classes to increase Terracotta's transparency.
 
 Cluster Requirements:
-   \1 java.util.AbstractList
-   \1 java.util.AbstractMap
-   \1 java.util.EnumMap
-   \1 java.util.EnumSet
+   \* java.util.AbstractList
+   \* java.util.AbstractMap
+   \* java.util.EnumMap
+   \* java.util.EnumSet
 
 
 </div>

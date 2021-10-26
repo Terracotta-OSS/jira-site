@@ -37,20 +37,20 @@ resolved: "2007-06-07T13:57:45.000-0400"
 <div markdown="1" class="description">
 
 Requirements:
-   \1 Remove need for shared disk infrastructure.
-   \1 Use of local disk ok. Continue to support large virtual heap.
-   \1 Maintain current contract around ACID.
-   \1 Specify diskless a/p mode in configuration file...
-   \1 Should work in both persistent and non-persistent mode
-   \1 Performance may only drop by TBD (20%) percentage
+   \* Remove need for shared disk infrastructure.
+   \* Use of local disk ok. Continue to support large virtual heap.
+   \* Maintain current contract around ACID.
+   \* Specify diskless a/p mode in configuration file...
+   \* Should work in both persistent and non-persistent mode
+   \* Performance may only drop by TBD (20%) percentage
 
 Optional:
-   \1 No split the brain
-  \1 Support abiity to specify N passive Terracotta Servers
+   \* No split the brain
+  \* Support abiity to specify N passive Terracotta Servers
 
 Engineering Requirements
-   \1 Synchronously Share State With a Passive - w/out need for disk infrastructure
-   \1 Can add/remove passives without pause for Active
+   \* Synchronously Share State With a Passive - w/out need for disk infrastructure
+   \* Can add/remove passives without pause for Active
 
 Use Cases:
    A large number of potential Open Terracotta deployments are for department level applications on 2 nodes with a requirement to keep new hardware purchases to an absolute minimum. Desired clustering deployment architecture will be both an L1 and L2 on each of the two nodes without access to a shared NFS. Adding a crossover cable to connect the L2s is acceptable. If either nodes dies, the other node takes over all L1 work and becomes the only (and primary) L2. When the dead node is restarted, it becomes a working L1 and the passive L2.
