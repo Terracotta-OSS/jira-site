@@ -24,19 +24,18 @@ created: "2009-09-21T15:07:37.000-0400"
 updated: "2010-01-12T10:37:26.000-0500"
 resolved: ""
 
+attachments:
+- filename: "JmsCachePeerTest.patch"
+  author: "carrja99"
+  size: 10.00 k
+  mimeType: text/plain
+
+
+
+
 ---
 
-
-
 {% raw %}
-
-
-## Attachments
-
-* <em>carrja99</em> (10.000 k, text/plain) [JmsCachePeerTest.patch](/attachments/EHC/EHC-28/JmsCachePeerTest.patch)
-
-
-
 
 ## Description
 

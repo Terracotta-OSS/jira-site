@@ -24,19 +24,18 @@ created: "2007-01-23T04:09:55.000-0500"
 updated: "2012-07-27T19:59:35.000-0400"
 resolved: "2007-01-30T12:51:32.000-0500"
 
+attachments:
+- filename: "LinkedBlockingQueueTest.tar.gz"
+  author: "ssubbiah"
+  size: 4.00 k
+  mimeType: application/x-gzip
+
+
+
+
 ---
 
-
-
 {% raw %}
-
-
-## Attachments
-
-* <em>ssubbiah</em> (4.000 k, application/x-gzip) [LinkedBlockingQueueTest.tar.gz](/attachments/CDV/CDV-90/LinkedBlockingQueueTest.tar.gz)
-
-
-
 
 ## Description
 

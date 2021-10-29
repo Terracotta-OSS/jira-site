@@ -24,19 +24,18 @@ created: "2006-11-30T18:52:36.000-0500"
 updated: "2010-03-19T18:58:56.000-0400"
 resolved: ""
 
+attachments:
+- filename: "DSO+and+Frameworks.png"
+  author: "jhartley"
+  size: 26.00 k
+  mimeType: image/png
+
+
+
+
 ---
 
-
-
 {% raw %}
-
-
-## Attachments
-
-* <em>jhartley</em> (26.000 k, image/png) [DSO+and+Frameworks.png](/attachments/CDV/CDV-9/DSO+and+Frameworks.png)
-
-
-
 
 ## Description
 

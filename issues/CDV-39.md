@@ -24,19 +24,18 @@ created: "2007-01-04T20:16:30.000-0500"
 updated: "2012-07-27T19:59:52.000-0400"
 resolved: "2007-01-04T20:28:32.000-0500"
 
+attachments:
+- filename: "jsf-cardemo.war"
+  author: "teck"
+  size: 2.00 M
+  mimeType: application/x-zip-compressed
+
+
+
+
 ---
 
-
-
 {% raw %}
-
-
-## Attachments
-
-* <em>teck</em> (2.000 M, application/x-zip-compressed) [jsf-cardemo.war](/attachments/CDV/CDV-39/jsf-cardemo.war)
-
-
-
 
 ## Description
 

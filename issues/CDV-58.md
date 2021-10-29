@@ -24,19 +24,18 @@ created: "2007-01-10T17:38:48.000-0500"
 updated: "2012-07-27T19:59:47.000-0400"
 resolved: "2007-02-16T18:44:59.000-0500"
 
+attachments:
+- filename: "threads.txt"
+  author: "teck"
+  size: 4.00 k
+  mimeType: text/plain
+
+
+
+
 ---
 
-
-
 {% raw %}
-
-
-## Attachments
-
-* <em>teck</em> (4.000 k, text/plain) [threads.txt](/attachments/CDV/CDV-58/threads.txt)
-
-
-
 
 ## Description
 

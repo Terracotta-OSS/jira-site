@@ -24,19 +24,18 @@ created: "2006-10-03T19:57:02.000-0400"
 updated: "2010-03-19T18:59:57.000-0400"
 resolved: ""
 
+attachments:
+- filename: "errors.txt"
+  author: "ekulesho"
+  size: 19.00 k
+  mimeType: text/plain
+
+
+
+
 ---
 
-
-
 {% raw %}
-
-
-## Attachments
-
-* <em>ekulesho</em> (19.000 k, text/plain) [errors.txt](/attachments/CDV/CDV-81/errors.txt)
-
-
-
 
 ## Description
 

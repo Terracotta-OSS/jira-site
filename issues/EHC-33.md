@@ -24,19 +24,18 @@ created: "2009-09-21T15:07:38.000-0400"
 updated: "2012-07-27T20:00:51.000-0400"
 resolved: "2010-10-13T20:21:12.000-0400"
 
+attachments:
+- filename: "channelName.patch"
+  author: "edalquis"
+  size: 30.00 k
+  mimeType: text/plain
+
+
+
+
 ---
 
-
-
 {% raw %}
-
-
-## Attachments
-
-* <em>edalquis</em> (30.000 k, text/plain) [channelName.patch](/attachments/EHC/EHC-33/channelName.patch)
-
-
-
 
 ## Description
 

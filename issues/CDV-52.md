@@ -24,19 +24,18 @@ created: "2007-01-07T16:51:05.000-0500"
 updated: "2012-07-27T19:59:32.000-0400"
 resolved: "2007-03-20T14:03:47.000-0400"
 
+attachments:
+- filename: "lucene.tgz"
+  author: "eellis"
+  size: 21.00 k
+  mimeType: application/x-compressed-tar
+
+
+
+
 ---
 
-
-
 {% raw %}
-
-
-## Attachments
-
-* <em>eellis</em> (21.000 k, application/x-compressed-tar) [lucene.tgz](/attachments/CDV/CDV-52/lucene.tgz)
-
-
-
 
 ## Description
 

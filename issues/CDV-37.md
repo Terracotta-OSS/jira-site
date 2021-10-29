@@ -24,29 +24,38 @@ created: "2006-12-21T13:00:42.000-0500"
 updated: "2007-06-06T13:07:34.000-0400"
 resolved: "2007-05-01T19:35:21.000-0400"
 
+attachments:
+- filename: "LockContainer.java"
+  author: ""
+  size: 304.00
+  mimeType: text/x-java
+- filename: "ManagerUtil-monitorEnter-fix.patch"
+  author: ""
+  size: 919.00
+  mimeType: text/plain
+- filename: "Node1.java"
+  author: ""
+  size: 1.00 k
+  mimeType: text/x-java
+- filename: "Node2.java"
+  author: ""
+  size: 861.00
+  mimeType: text/x-java
+- filename: "ReentrantLock-JDK1.5-mismatch.patch"
+  author: ""
+  size: 3.00 k
+  mimeType: text/plain
+- filename: "tc-config.xml"
+  author: ""
+  size: 611.00
+  mimeType: text/xml
+
+
+
+
 ---
 
-
-
 {% raw %}
-
-
-## Attachments
-
-* <em></em> (304.000, text/x-java) [LockContainer.java](/attachments/CDV/CDV-37/LockContainer.java)
-
-* <em></em> (919.000, text/plain) [ManagerUtil-monitorEnter-fix.patch](/attachments/CDV/CDV-37/ManagerUtil-monitorEnter-fix.patch)
-
-* <em></em> (1.000 k, text/x-java) [Node1.java](/attachments/CDV/CDV-37/Node1.java)
-
-* <em></em> (861.000, text/x-java) [Node2.java](/attachments/CDV/CDV-37/Node2.java)
-
-* <em></em> (3.000 k, text/plain) [ReentrantLock-JDK1.5-mismatch.patch](/attachments/CDV/CDV-37/ReentrantLock-JDK1.5-mismatch.patch)
-
-* <em></em> (611.000, text/xml) [tc-config.xml](/attachments/CDV/CDV-37/tc-config.xml)
-
-
-
 
 ## Description
 
